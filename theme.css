@@ -50,6 +50,10 @@ h3 { font-size: 1.15rem; }
 h4 { font-size: 1rem; }
 p { margin: 0; }
 .wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
 .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
 .hint { color: var(--ink-soft); }
 

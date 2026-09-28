@@ -8,7 +8,7 @@
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import puppeteer from "C:/workspaces/programming/github/investigation-workflow-suite/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js";
+import puppeteer from "file:///C:/workspaces/programming/github/investigation-workflow-suite/node_modules/puppeteer-core/lib/puppeteer/puppeteer-core.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const out = join(here, "review");
