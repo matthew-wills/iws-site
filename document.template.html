@@ -1,0 +1,50 @@
+<title>%%TITLE%%</title>
+<style>
+%%THEME%%
+  .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .pages { display: flex; flex-direction: column; gap: 18px; align-items: center; padding-block: 12px 32px; }
+  .page { width: 100%; max-width: 920px; }
+  .page img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 4px; }
+  .page figcaption { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 6px; }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#reports">Reports</a>
+      <a href="../index.html#exports" aria-current="page">Exports</a>
+      <a href="../index.html#download">Download</a>
+      <a href="../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Published document, Tarlton Springs case study</span>
+    <h1>%%HEADING%%</h1>
+    <p>%%BLURB%%</p>
+    <div class="doc-actions">
+      <a class="btn btn-primary" href="%%PDF%%" target="_blank" rel="noopener">Download the PDF</a>
+      %%EXTRA%%
+    </div>
+  </div>
+  <div class="pages">
+%%PAGES%%
+  </div>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../index.html#exports">Back to exports</a></span>
+  </footer>
+</main>
