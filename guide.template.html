@@ -1,0 +1,66 @@
+<title>User Guide</title>
+<style>
+%%THEME%%
+  .guide-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .guide-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+    /* The app's own guide styles follow (src/help/help.css); the shell
+     around them is the site's. The in-app guide scrolls inside a dialog,
+     so its own height limits are lifted here and the table of contents
+     becomes a sticky column beside the text. */
+  .guide-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .guide-body .manual { display: contents; }
+  .guide-body .manual__toc { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - 100px); overflow-y: auto; }
+  .guide-body .manual__toc button { text-align: left; font-family: inherit; font-size: 0.93rem; color: var(--ink-soft); background: transparent; border: none; padding: 5px 8px; border-radius: 6px; cursor: pointer; }
+  .guide-body .manual__toc button:hover { background: var(--paper); color: var(--ink); }
+  .guide-body .manual__content { max-height: none; overflow: visible; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 28px 32px; }
+  .guide-body .manual__content section { scroll-margin-top: 80px; }
+  @media (max-width: 860px) {
+    .guide-body { grid-template-columns: 1fr; }
+    .guide-body .manual__toc { position: static; max-height: none; flex-direction: row; flex-wrap: wrap; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#editions">Editions</a>
+      <a href="index.html#download">Download</a>
+      <a href="guide.html" aria-current="page">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="guide-head">
+    <span class="eyebrow">User guide, version 0.9.1</span>
+    <h1>The user guide, as the app ships it</h1>
+    <p>This is the same guide you will find under Help inside the application, rendered from the same source, so it always matches the version you download.</p>
+  </div>
+  <div class="guide-body">
+%%GUIDE%%
+  </div>
+</main>
+
+<script>
+  // The in-app table of contents scrolls the guide's own panel; here the
+  // page scrolls, so each button scrolls to its section on the page.
+  document.querySelectorAll(".manual__toc button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var label = b.textContent.trim();
+      var target = Array.prototype.find.call(document.querySelectorAll(".manual__content section h3"), function (h) {
+        return h.textContent.trim() === label;
+      });
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+</script>

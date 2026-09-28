@@ -1,0 +1,740 @@
+<title>Investigation Workflow Suite</title>
+<style>
+%%THEME%%
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 40px; align-items: center; padding-block: 56px 44px; }
+  .hero-copy { display: flex; flex-direction: column; gap: 20px; }
+  .hero-copy .lede { font-size: 1.15rem; color: var(--ink-soft); max-width: 50ch; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: 0.9rem; color: var(--ink-faint); }
+
+  /* What it is */
+  .whatis { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+  .whatis .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 62ch; }
+  .whatis .prose strong { color: var(--ink); font-weight: 600; }
+  .parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .part { padding: 12px 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
+  .part h4 { font-size: 0.95rem; margin-bottom: 3px; }
+  .part p { font-size: 0.88rem; color: var(--ink-soft); }
+
+  /* Walkthrough */
+  .walk { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr); gap: 36px; align-items: start; }
+  .walk__stage { padding-block: 30px 8px; }
+  .walk__stage:first-child { padding-top: 0; }
+  .walk__stage-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .walk__tint { display: inline-block; width: 30px; height: 6px; border-radius: 3px; }
+  .walk__stage h3 { font-size: 1.25rem; }
+  .step { padding: 14px 18px; border-left: 3px solid var(--line); margin-block: 8px; border-radius: 0 10px 10px 0; transition: border-color 200ms ease, background 200ms ease; }
+  .step h4 { margin-bottom: 6px; }
+  .step p { color: var(--ink-soft); font-size: 0.97rem; }
+  .step p + p { margin-top: 8px; }
+  .step.is-active { border-left-color: var(--accent); background: var(--paper); }
+  .step img.inline { display: none; }
+  .walk__media { position: sticky; top: 80px; }
+  .walk__frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); cursor: zoom-in; }
+  .walk__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity 320ms ease; }
+  .walk__frame img.is-shown { opacity: 1; }
+  .walk__frame img.tall { object-fit: contain; background: var(--paper); }
+  .walk__enlarge { position: absolute; right: 12px; bottom: 12px; z-index: 2; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.94); color: var(--ink); font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: zoom-in; }
+  .walk__caption { margin-top: 10px; font-size: 0.92rem; color: var(--ink-soft); min-height: 1.4em; }
+
+  /* Tests */
+  .tests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .test { display: flex; flex-direction: column; gap: 8px; }
+  .test .q { font-size: 1.05rem; font-weight: 650; color: var(--ink); }
+  .test p { color: var(--ink-soft); font-size: 0.95rem; }
+  .test .verdict { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .legend { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
+  .legend li { list-style: none; font-size: 0.95rem; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+  .legend ul { margin: 0; padding: 0; display: contents; }
+  .swatch { flex: none; width: 34px; height: 22px; border-radius: 6px; border: 1.5px solid #2f5ea8; background: #c7dcfb; margin-top: 2px; }
+  .swatch.other { background: #fbd9a6; border-color: #c2782a; }
+  .swatch.excluded { background: #fff; border: 1.5px dashed #94a3b8; }
+  .swatch.positive { background: #bbf7d0; border-color: #15803d; border-radius: 11px; }
+  .swatch.critical { background: #f8c3c3; border-color: #b91c1c; border-width: 2px; border-radius: 11px; }
+  .swatch.untested { background: #fff; border: 1.5px dashed #64748b; }
+  .arrow { flex: none; width: 34px; height: 22px; margin-top: 2px; }
+
+  /* Assists */
+  .assists { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 28px; }
+  .assist { display: flex; flex-direction: column; gap: 4px; padding-block: 14px; border-top: 1px solid var(--line); }
+  .assist h4 { font-size: 1rem; }
+  .assist p { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* AI */
+  .ai-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  .ai-intro .prose { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); font-size: 1.02rem; max-width: 60ch; }
+  .ai-intro .prose strong { color: var(--ink); font-weight: 600; }
+  .risks { display: flex; flex-direction: column; gap: 8px; }
+  .risks li { list-style: none; display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 0.95rem; color: var(--ink-soft); }
+  .risks ul { margin: 0; padding: 0; display: contents; }
+  .risks .x { width: 18px; height: 18px; border-radius: 50%; background: var(--risk-soft); color: var(--risk); font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; margin-top: 3px; }
+  .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+  .compare .card { display: flex; flex-direction: column; gap: 10px; }
+  .compare .card.pipe { border-color: #86efac; }
+  .compare .tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
+  .compare .card.pipe .tag { color: var(--proof); }
+  .compare h3 { font-size: 1.1rem; }
+  .pipeline { margin-top: 32px; }
+  .pipeline svg { width: 100%; height: auto; display: block; }
+  .stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+  .stage { padding: 12px 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
+  .stage h4 { font-size: 0.95rem; margin-bottom: 4px; }
+  .stage p { font-size: 0.88rem; color: var(--ink-soft); }
+  .endpoints { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+  .endpoint { padding: 12px 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
+  .endpoint h4 { font-size: 0.95rem; margin-bottom: 3px; }
+  .endpoint p { font-size: 0.88rem; color: var(--ink-soft); }
+
+  /* Reports */
+  .styles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .style { padding: 14px 16px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+  .style h4 { font-size: 0.98rem; }
+  .style p { font-size: 0.9rem; color: var(--ink-soft); }
+  .examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+  .example { display: flex; flex-direction: column; gap: 10px; }
+  .example .meta { font-size: 0.85rem; color: var(--ink-faint); font-family: var(--font-mono); }
+  .example p { color: var(--ink-soft); font-size: 0.95rem; }
+  .example .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+
+  /* Settings */
+  .settings-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .settings-grid figure { display: flex; flex-direction: column; }
+
+  /* Editions */
+  .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .tier { display: flex; flex-direction: column; gap: 10px; }
+  .tier.lead { border-color: #93c5fd; }
+  .tier h3 { font-size: 1.15rem; }
+  .tier .who { font-size: 0.92rem; color: var(--ink-soft); }
+  .tier ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; display: flex; flex-direction: column; gap: 5px; }
+  .tier .price { font-weight: 650; font-size: 1.1rem; margin-top: auto; }
+  .tier .price small { font-weight: 400; font-size: 0.85rem; color: var(--ink-soft); }
+  .org { margin-top: 16px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
+
+  /* Download */
+  .download { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .dl-card { display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
+  .dl-card .ver { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+  .dl-card dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; font-size: 0.93rem; }
+  .dl-card dt { color: var(--ink-faint); }
+  .dl-card dd { margin: 0; }
+  .dl-side { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .dl-side h3 { color: var(--ink); font-size: 1.05rem; }
+  .privacy { padding: 14px 16px; background: var(--warn-soft); border-radius: 10px; color: var(--ink); font-size: 0.95rem; }
+
+  /* Changelog */
+  .changelog { display: flex; flex-direction: column; max-width: 78ch; }
+  .release { display: grid; grid-template-columns: 120px 1fr; gap: 18px; padding-block: 16px; border-top: 1px solid var(--line); }
+  .release .v { font-family: var(--font-mono); font-size: 0.9rem; }
+  .release .d { display: block; font-size: 0.85rem; color: var(--ink-faint); margin-top: 3px; }
+  .release ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.95rem; display: flex; flex-direction: column; gap: 6px; }
+
+  @media (max-width: 960px) {
+    .hero, .whatis, .ai-intro, .walk, .compare, .download, .settings-grid, .examples { grid-template-columns: 1fr; }
+    .hero { padding-block: 40px 32px; }
+    .walk__media { display: none; }
+    .step img.inline { display: block; width: 100%; height: auto; margin-top: 12px; border-radius: 8px; border: 1px solid var(--line); cursor: zoom-in; }
+    .tests, .assists, .tiers, .stages, .endpoints, .styles, .settings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .tests, .assists, .tiers, .stages, .endpoints, .styles, .parts, .legend { grid-template-columns: 1fr; }
+    .release { grid-template-columns: 1fr; gap: 6px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .walk__frame img, .step { transition: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="#what">What it is</a>
+      <a href="#how">How it works</a>
+      <a href="#ai">AI drafting</a>
+      <a href="#reports">Reports</a>
+      <a href="#exports">Exports</a>
+      <a href="#settings">Settings</a>
+      <a href="#editions">Editions</a>
+      <a href="#download">Download</a>
+      <a href="guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Safety investigation software for Windows</span>
+      <h1>Collect and organise your evidence. Build your causal map. Test every factor. Draft the report from what passed.</h1>
+      <p class="lede">A desktop application for occurrence investigations. The checklist, the evidence, the interviews, the timeline, the causal map, the analysis and the report drafts live in one investigation file that stays on your machine or your organisation's shared drive.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#download">Download 0.9.1 for Windows</a>
+        <a class="btn" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">Every feature is available for 28 days. After that the record, the map and report assembly keep working; AI drafting needs a licence.</p>
+    </div>
+    <img class="shot zoomable" data-caption="The finished causal map for the Tarlton Springs case study." src="%%SHOT_11%%" alt="The finished AcciMap for the Tarlton Springs case study: six tinted lanes, tested factors, excluded hypotheses struck through, proven causal arrows converging on the runway overrun">
+  </section>
+
+  <section class="block" id="what">
+    <div class="section-head">
+      <span class="eyebrow">What it is</span>
+      <h2>One place to run a safety investigation from notification to report</h2>
+    </div>
+    <div class="whatis">
+      <div class="prose">
+        <p>Most investigations are run across a dozen tools: notes in one application, evidence in a folder, interviews in another folder, a diagram drawn by hand, and a report written from memory of all of it. The record and the report drift apart, and the reasoning that connects a piece of evidence to a finding lives only in the investigator's head.</p>
+        <p>The Investigation Workflow Suite is a single application, and a single file, for the whole of that work. <strong>The record is the source of truth</strong>: every piece of evidence is filed once and linked to whatever rests on it, every interview is a finalised account, every event sits on a timeline, and every hypothesis is an object on a causal map that must pass its tests before it can be called a finding. <strong>The report is a view of the record.</strong> Findings are derived from the tests, not asserted, and a drafted report is checked against the evidence before it leaves.</p>
+        <p>The method is a systemic one. The map uses the AcciMap layout, with organisational levels as lanes, and each factor is tested for Existence, Influence and Importance, with a recorded confidence, so a reader can tell a proven contributing factor from an untested idea at a glance.</p>
+        <p>It is built for safety investigators and investigation teams in aviation and other high-consequence industries, and for the people learning the discipline. It runs on the investigator's own computer. Nothing is uploaded, no account is needed, and the investigation file can be kept on a secure shared drive while the work runs and archived when it is closed.</p>
+      </div>
+      <div class="parts" aria-label="What the investigation file holds">
+        <div class="part"><h4>Checklist and to-do list</h4><p>A running checklist of what the investigation should cover, and one list of jobs outstanding.</p></div>
+        <div class="part"><h4>Evidence register</h4><p>Every capture filed once, with what it is, why it matters, and what rests on it.</p></div>
+        <div class="part"><h4>Interviews and safety reports</h4><p>Transcripts and notes as finalised records, with people identified by role.</p></div>
+        <div class="part"><h4>Timeline</h4><p>The sequence of events, each with its source and its time basis.</p></div>
+        <div class="part"><h4>Causal map</h4><p>Every hypothesis as an object, tested, connected, and shown in its organisational lane.</p></div>
+        <div class="part"><h4>Analysis and report</h4><p>Findings derived from the tests; reports assembled or drafted from the record.</p></div>
+        <div class="part"><h4>Distribution and log</h4><p>Who the report goes to, and a running log of the investigation's own decisions.</p></div>
+        <div class="part"><h4>One JSON file</h4><p>The whole investigation in a single, readable file. Shared drive while it runs, database when it is done.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Worked through on a case study</h2>
+      <p>The Tarlton Springs case study ships with the application: a fictional rejected take-off and runway overrun at a regional aerodrome. Scroll through it here from the first checklist item to the finished report. Click any picture to see it at full size.</p>
+    </div>
+    <div class="walk" id="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-controls)"></span><h3>Stage 1: the checklist and the evidence</h3></div>
+          <article class="step" data-shot="s04" data-caption="The Checklist tab: the investigation's running checklist, the to-do list, and the distribution list.">
+            <h4>Start from a checklist that follows your process</h4>
+            <p>The checklist runs from notification and triage through evidence gathering, interviews, analysis and reporting. Each item is answered yes, no or not applicable, and the tab shows how much is still open.</p>
+            <p>It is a template, not a fixed list. An investigator edits it in Settings to suit how they work; an organisation's own edition ships with its own checklist, so every investigation starts from the same standard.</p>
+            <img class="inline" src="%%SHOT_04%%" alt="The checklist with answered items, the to-do list and the distribution list">
+          </article>
+          <article class="step" data-shot="s04" data-caption="The to-do list: one list for the investigation, including jobs raised from inside an object's form.">
+            <h4>One to-do list for the whole investigation</h4>
+            <p>Anything that needs chasing goes on a single list. A job raised while filling in an object's form appears here with a link back to that object, so the list can be read in one place and handed to a colleague.</p>
+          </article>
+          <article class="step" data-shot="s01" data-caption="The evidence register, grouped by where each item is used.">
+            <h4>File every piece of material once</h4>
+            <p>Screenshots, extracts and documents go into one register with a caption, its significance, a category and a reference. Each item is linked to whatever rests on it, so when a source turns out to be unreliable it is clear what has to be revisited.</p>
+            <img class="inline" src="%%SHOT_01%%" alt="The evidence register grouped by where each item is used">
+          </article>
+          <article class="step" data-shot="s02" data-caption="An interview: the record header, the Teams transcript with speakers mapped to roles, and the investigator's notes.">
+            <h4>Interviews become records, with people identified by role</h4>
+            <p>Import the Teams transcript, as the .docx or .vtt download, or paste it; correct what the transcription got wrong; add your notes; finalise. From then on the account is settled and report drafting treats it that way.</p>
+            <p>De-identification is built in. Each speaker in a transcript is mapped to a role, and it is the role, never the name, that reaches the record, the collation, or any drafting model.</p>
+            <img class="inline" src="%%SHOT_02%%" alt="An interview with its transcript, the speaker to role mapping, and notes">
+          </article>
+          <article class="step" data-shot="s05" data-caption="The timeline: every event with its source and its time basis, and the critical event marked.">
+            <h4>Build the sequence of events</h4>
+            <p>Each event carries its source and its time basis, so the sequence can be defended. The timeline exports as an image beside the report.</p>
+            <img class="inline" src="%%SHOT_05%%" alt="The timeline tab">
+          </article>
+        </div>
+
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-local)"></span><h3>Stage 2: the causal map</h3></div>
+          <article class="step" data-shot="s06" data-caption="The map with only the critical event placed, bottom right.">
+            <h4>Place the critical event</h4>
+            <p>The occurrence goes in the bottom lane, with what happened and the proof of its significance recorded. Everything else on the map exists to explain this one object.</p>
+            <img class="inline" src="%%SHOT_06%%" alt="The map with only the critical event placed">
+          </article>
+          <article class="step" data-shot="s07" data-caption="Every hypothesis placed in its lane, untested. Nothing is filtered yet.">
+            <h4>Put every hypothesis on the map</h4>
+            <p>An object for every event or condition that might have played a part, in the lane it belongs to and roughly where it sits in time. Nothing is filtered at this point: the method works by testing, not by intuition, and a hypothesis that is later excluded still strengthens the record.</p>
+            <img class="inline" src="%%SHOT_07%%" alt="Untested hypotheses scattered across the lanes">
+          </article>
+          <article class="step" data-shot="s08" data-caption="Half the objects tested. The map is adjusted live as the evidence comes in, until it is complete.">
+            <h4>Adjust the map live as the evidence comes in</h4>
+            <p>An investigation does not arrive in order. A transcript changes what a factor means, a record arrives that closes a line of enquiry, a new hypothesis appears in week three. Objects are moved, tested, connected and reconnected as that happens, and the map is never more than the current state of the evidence.</p>
+            <p>Every arrow is a claim that one thing led to another. It stays grey until the object it comes from has passed its tests, and turns green when it has, so the picture builds itself as the work is done.</p>
+            <img class="inline" src="%%SHOT_08%%" alt="Half the objects tested, with arrows appearing">
+          </article>
+        </div>
+
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-actions)"></span><h3>Stage 3: testing an object</h3></div>
+          <article class="step" data-shot="s09" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad.">
+            <h4>Record the evidence and answer three questions</h4>
+            <ul class="plain" style="margin-bottom: 8px">
+              <li>Did this event or condition actually exist?</li>
+              <li>Did it influence anything else, and if so in what way?</li>
+              <li>If it did not influence anything, is it still important enough to raise in the report?</li>
+            </ul>
+            <p>Each answer carries a confidence, recorded as a percentage and read back in the calibrated verbal probability terms the report will use. The standard of proof a factor must reach before it counts as established is set for the investigation, from the balance of probabilities upwards, and the form warns when a pass falls short of it.</p>
+            <img class="inline" src="%%SHOT_09%%" alt="An object's evidence form with verdicts and a confidence slider">
+          </article>
+          <article class="step" data-shot="s10" data-caption="An argued test: evidence for and against, weighed into a confidence rather than a yes or no.">
+            <h4>Argue the contested ones</h4>
+            <p>When the evidence cuts both ways, record it for and against and let the confidence say how far the argument reaches. The report will carry that confidence word, not a certainty the record does not support.</p>
+            <img class="inline" src="%%SHOT_10%%" alt="An object's form showing evidence for and against influence">
+          </article>
+        </div>
+
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-events)"></span><h3>Stage 4: the finished map and the report</h3></div>
+          <article class="step" data-shot="s11" data-caption="The finished map: the direction of the investigation and every line of enquiry in one image.">
+            <h4>Read the whole investigation in one image</h4>
+            <p>Left to right is time. Bottom to top is organisational depth. Green arrows are the proven chains; a grey dashed arrow is a claim still under test; struck-through objects are the closed lines of enquiry. A green dot marks an object whose investigation is complete, an amber dot one still being investigated.</p>
+            <img class="inline" src="%%SHOT_11%%" alt="The finished map, fitted to the window">
+          </article>
+          <article class="step" data-shot="s13" data-caption="The Report tab: findings derived from the tests, the record assembled under a report style's headings.">
+            <h4>Assemble or draft the report from the record</h4>
+            <p>Findings and the factor lists come straight from the tests. Choose a style, assemble the report from the record by hand, or draft it with a model and have it checked against the record before it leaves. See <a href="#ai">AI drafting</a> and <a href="#reports">Reports</a> below.</p>
+            <img class="inline" src="%%SHOT_13%%" alt="The Report tab with the assembled report">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" id="walk-frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s01" src="%%SHOT_01%%" alt="">
+          <img id="s02" class="tall" src="%%SHOT_02%%" alt="">
+          <img id="s04" src="%%SHOT_04%%" alt="">
+          <img id="s05" src="%%SHOT_05%%" alt="">
+          <img id="s06" src="%%SHOT_06%%" alt="">
+          <img id="s07" src="%%SHOT_07%%" alt="">
+          <img id="s08" src="%%SHOT_08%%" alt="">
+          <img id="s09" src="%%SHOT_09%%" alt="">
+          <img id="s10" src="%%SHOT_10%%" alt="">
+          <img id="s11" src="%%SHOT_11%%" alt="">
+          <img id="s13" src="%%SHOT_13%%" alt="">
+        </div>
+        <p class="walk__caption" id="walk-caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="method">
+    <div class="section-head">
+      <span class="eyebrow">The tests</span>
+      <h2>Nothing is a finding until it has passed its tests</h2>
+      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. What the object becomes on the map follows from the answers.</p>
+    </div>
+    <div class="tests">
+      <article class="test card">
+        <span class="eyebrow">Existence</span>
+        <p class="q">Did this event or condition actually exist?</p>
+        <p>If it did, the border turns solid and the next question is asked. If it did not, the hypothesis is excluded: it stays on the map, struck through, with the reason recorded.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Inconclusive</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Influence</span>
+        <p class="q">Did it influence anything else, and if so in what way?</p>
+        <p>If it did, it is a contributing safety factor and its outgoing arrows become proven causal paths. Where the evidence cuts both ways, the test is argued with evidence for and against.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Argued</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Importance</span>
+        <p class="q">If it did not influence anything, is it still important enough to raise in the report?</p>
+        <p>A factor that played no part in this occurrence may still be a risk worth addressing. If so, it is a finding in its own right, an other risk factor, and it carries no arrows.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span></div>
+      </article>
+    </div>
+    <div class="legend" aria-label="What the shapes and colours mean">
+      <ul>
+        <li><span class="swatch"></span><span><strong>Blue, solid border:</strong> a contributing safety factor. It existed and it influenced the occurrence.</span></li>
+        <li><span class="swatch other"></span><span><strong>Orange:</strong> an other risk factor. It existed, it did not influence this occurrence, and it is still worth raising.</span></li>
+        <li><span class="swatch excluded"></span><span><strong>Struck through, dashed:</strong> an excluded hypothesis. It did not exist, and the reason is on the record.</span></li>
+        <li><span class="swatch positive"></span><span><strong>Green, rounded:</strong> a positive event, something that reduced the risk or limited the outcome.</span></li>
+        <li><span class="swatch critical"></span><span><strong>Red, rounded:</strong> the critical event, the occurrence itself.</span></li>
+        <li><span class="swatch untested"></span><span><strong>White, dashed:</strong> not yet tested, or a test left inconclusive.</span></li>
+        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#15803d" stroke-width="2.2"/><path d="M24 6l7 5-7 5z" fill="#15803d"/></svg><span><strong>Green arrow:</strong> a proven causal path. The object it comes from has passed Influence.</span></li>
+        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/><path d="M24 6l7 5-7 5z" fill="#94a3b8"/></svg><span><strong>Grey dashed arrow:</strong> a claim still under test.</span></li>
+        <li><span class="dot green" style="margin-top:6px"></span><span><strong>Green dot:</strong> the object's investigation is complete and its evidence finalised.</span></li>
+        <li><span class="dot amber" style="margin-top:6px"></span><span><strong>Amber dot:</strong> still being investigated.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="assists">
+    <div class="section-head">
+      <span class="eyebrow">How it assists with investigations</span>
+      <h2>What changes when the record and the report are the same thing</h2>
+    </div>
+    <div class="assists">
+      <div class="assist"><h4>The direction of the investigation in a single image</h4><p>The map shows every line of enquiry and its state: what is proven, what is argued, what has been closed, and what has not yet been looked at.</p></div>
+      <div class="assist"><h4>Several reports from one workspace</h4><p>A preliminary update while the investigation runs, the standard investigation report, an executive brief. All from the same record, assembled by hand or drafted with a model, and further styles can be added for an organisation.</p></div>
+      <div class="assist"><h4>A checklist that follows your process</h4><p>The running checklist is a template the investigator can edit, and an organisation's edition carries its own, so every investigation starts to the same standard.</p></div>
+      <div class="assist"><h4>Confidence stated, standard of proof chosen</h4><p>Every verdict carries a confidence on a calibrated verbal probability scale, so a report says "likely" or "virtually certain" rather than gut feel. The standard of proof the investigation works to is chosen in Settings: the balance of probabilities at 50 per cent, the 60 per cent some Just Culture frameworks require, "likely" at 66 per cent, or stricter, and the form warns when a passed test sits below it.</p></div>
+      <div class="assist"><h4>One file, held where you decide</h4><p>The entire investigation is one JSON file. It sits on a secure shared drive while the work runs and goes into a database when it is concluded. No account, no cloud, no upload.</p></div>
+      <div class="assist"><h4>Built for your organisation</h4><p>A custom build carries an organisation's own framework, templates, report shape and workflow, licensed to its investigators, without changing the application underneath.</p></div>
+      <div class="assist"><h4>Shared folders, safely</h4><p>Two investigators with the same file open cannot silently overwrite each other: a save that would lose the other person's work is held for a decision, and a lock beside the file says who has it open.</p></div>
+      <div class="assist"><h4>Legacy compatible</h4><p>Older investigation files open and migrate on load, and the file format stays readable outside the application.</p></div>
+      <div class="assist"><h4>Exports beside the investigation</h4><p>Word and markdown reports, the map and the timeline as images, the E/I/I tables, and a collated export of the whole record, all written into the investigation's own folder.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="ai">
+    <div class="section-head">
+      <span class="eyebrow">AI for drafting the report</span>
+      <h2>Useful, and only under control</h2>
+    </div>
+    <div class="ai-intro">
+      <div class="prose">
+        <p>A capable language model writes fluent, well-structured prose from a large body of material in minutes, and it will read a record more consistently than a tired investigator at the end of a long week. For a report that is mostly the record retold under headings, that is real value.</p>
+        <p>The same model, left to itself, will also do things a safety investigation cannot tolerate. It fills gaps in what it was given from its own general knowledge. It rounds "likely" up to "certain" because that reads better. It turns a factor that failed its Influence test into one that "contributed", because that is the shape of the sentence it has seen most often. It invents a recommendation because reports usually have one. None of that is visible in the prose, which is the problem: <strong>the errors read exactly like the truths.</strong></p>
+        <p>So the question is not whether to use a model, but how to use one so that every sentence it writes can be traced to the record and checked against it.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">What goes wrong without control</span>
+        <div class="risks" style="margin-top: 10px">
+          <ul>
+            <li><span class="x">1</span><span>Facts and figures invented to fill a gap, in the same confident voice as the real ones.</span></li>
+            <li><span class="x">2</span><span>Confidence overstated: "very likely" becomes "certain", and an argued test becomes a settled fact.</span></li>
+            <li><span class="x">3</span><span>Evidence reweighed: a factor the investigator excluded is quietly written back in as contributing.</span></li>
+            <li><span class="x">4</span><span>Recommendations the investigation never made, because reports usually end with some.</span></li>
+            <li><span class="x">5</span><span>A protected report quoted as if it were an ordinary statement.</span></li>
+            <li><span class="x">6</span><span>People named where a role was all the report needed.</span></li>
+            <li><span class="x">7</span><span>Investigation material sent to a service that keeps it, trains on it, or is outside the organisation's control.</span></li>
+            <li><span class="x">8</span><span>No record of which model, which prompt, or which version of the evidence produced the text.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <article class="card">
+        <span class="tag">A chat window</span>
+        <h3>Fluent and unaccountable</h3>
+        <ul class="plain">
+          <li>The investigator pastes what they remember to paste. The model sees a fragment of the record and fills the rest from its own knowledge.</li>
+          <li>The reply lands in the document as written. Every one of the eight failures above is left for the investigator to catch by hand, on every draft.</li>
+          <li>Nothing records what the model saw or which version of the evidence it worked from, so the text cannot be audited later.</li>
+          <li>The material has gone to whichever service was open in the browser, on whatever terms it was offered.</li>
+        </ul>
+      </article>
+      <article class="card pipe">
+        <span class="tag">This application</span>
+        <h3>Grounded, checked, and on the record</h3>
+        <ul class="plain">
+          <li>The model is sent the whole record, structured: every object with its tests and confidences, the timeline, the finalised interviews, the evidence and why each item matters. Never a fragment.</li>
+          <li>Grounding rules travel with every prompt: nothing that is not in the record, no invented figures, no recommendation the record does not carry, the confidence word the test actually produced, roles rather than names, protected reports handled as protected.</li>
+          <li>Every draft is audited against the record by a second pass that reports each claim it cannot find, then checked mechanically: each factor's category and confidence word against its test, the findings against the derived classification.</li>
+          <li>Contradictions the model notices in the record itself are reported separately for the investigator to resolve, never smoothed over in the prose.</li>
+          <li>Every draft records which model wrote it and which version of the record it came from. It goes stale visibly when the record changes, and nothing is final until the investigator finalises it.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="pipeline">
+      <h3 style="margin-bottom: 6px">The drafting pipeline</h3>
+      <p class="hint" style="max-width: 70ch; margin-bottom: 16px">The application's own pipeline, run the same way whichever model is behind it. Each stage exists to catch one of the failures above.</p>
+      <svg viewBox="0 0 1160 200" role="img" aria-label="The drafting pipeline: the record is collated, sections are drafted under grounding rules with approved sections as context, the whole is smoothed, then audited against the record, mechanically checked, and finalised by the investigator">
+        <defs>
+          <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+        </defs>
+        <g font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#0f172a">
+          <g>
+            <rect x="4" y="30" width="176" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+            <text x="92" y="60" text-anchor="middle" font-weight="600">The record</text>
+            <text x="92" y="82" text-anchor="middle" font-size="11.5" fill="#475569">tests and confidences</text>
+            <text x="92" y="98" text-anchor="middle" font-size="11.5" fill="#475569">timeline, interviews</text>
+            <text x="92" y="114" text-anchor="middle" font-size="11.5" fill="#475569">evidence and significance</text>
+          </g>
+          <path d="M182 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
+          <g>
+            <rect x="206" y="30" width="176" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+            <text x="294" y="60" text-anchor="middle" font-weight="600">Collation</text>
+            <text x="294" y="82" text-anchor="middle" font-size="11.5" fill="#475569">the whole record, structured</text>
+            <text x="294" y="98" text-anchor="middle" font-size="11.5" fill="#475569">roles, never names</text>
+            <text x="294" y="114" text-anchor="middle" font-size="11.5" fill="#475569">only the terms that appear</text>
+          </g>
+          <path d="M384 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
+          <g>
+            <rect x="408" y="30" width="176" height="100" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+            <text x="496" y="60" text-anchor="middle" font-weight="600">Section drafts</text>
+            <text x="496" y="82" text-anchor="middle" font-size="11.5" fill="#475569">grounding rules on every prompt</text>
+            <text x="496" y="98" text-anchor="middle" font-size="11.5" fill="#475569">approved sections as context</text>
+            <text x="496" y="114" text-anchor="middle" font-size="11.5" fill="#475569">review notes kept apart</text>
+          </g>
+          <path d="M586 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
+          <g>
+            <rect x="610" y="30" width="150" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+            <text x="685" y="60" text-anchor="middle" font-weight="600">Cohesion</text>
+            <text x="685" y="82" text-anchor="middle" font-size="11.5" fill="#475569">one voice throughout</text>
+            <text x="685" y="98" text-anchor="middle" font-size="11.5" fill="#475569">nothing added</text>
+            <text x="685" y="114" text-anchor="middle" font-size="11.5" fill="#475569">nothing reweighed</text>
+          </g>
+          <path d="M762 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
+          <g>
+            <rect x="786" y="30" width="196" height="100" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+            <text x="884" y="60" text-anchor="middle" font-weight="600">Audit and checks</text>
+            <text x="884" y="82" text-anchor="middle" font-size="11.5" fill="#475569">every claim found in the record</text>
+            <text x="884" y="98" text-anchor="middle" font-size="11.5" fill="#475569">categories and confidence words</text>
+            <text x="884" y="114" text-anchor="middle" font-size="11.5" fill="#475569">findings against the classification</text>
+          </g>
+          <path d="M984 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
+          <g>
+            <rect x="1008" y="30" width="148" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+            <text x="1082" y="60" text-anchor="middle" font-weight="600">The investigator</text>
+            <text x="1082" y="82" text-anchor="middle" font-size="11.5" fill="#475569">reads against the record</text>
+            <text x="1082" y="98" text-anchor="middle" font-size="11.5" fill="#475569">corrects</text>
+            <text x="1082" y="114" text-anchor="middle" font-size="11.5" fill="#475569">finalises</text>
+          </g>
+          <path d="M1082 132v34H92v-2" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <text x="580" y="186" text-anchor="middle" font-size="12" fill="#94a3b8">A change to the record marks every draft built from it as out of date</text>
+        </g>
+      </svg>
+      <div class="stages">
+        <div class="stage"><h4>Connected through an endpoint, on your terms</h4><p>The application speaks the standard model APIs. Point it at a model running on your own machine, at a hosted API with your own key, or at your organisation's own gateway. Nothing is sent anywhere until an endpoint is chosen, and the Settings pane says so plainly.</p></div>
+        <div class="stage"><h4>Drafted a section at a time, or the whole report</h4><p>Each section is drafted from the record's own outline for that section, with the sections already approved as context, so the report follows on from what the investigator accepted. A whole-report run is available for models with the context for it.</p></div>
+        <div class="stage"><h4>Audited, then checked</h4><p>A second pass reads the draft against the record and reports every claim it cannot find. A mechanical check then compares each factor's category and confidence word, and the findings, against what the tests actually say.</p></div>
+        <div class="stage"><h4>Provenance and staleness</h4><p>Every draft records the model and the version of the record it came from. When the record changes, the drafts built on it are marked out of date rather than quietly kept.</p></div>
+      </div>
+      <div class="endpoints">
+        <div class="endpoint"><h4>Local</h4><p>A model running on the investigator's own machine (LM Studio). Nothing leaves the computer.</p></div>
+        <div class="endpoint"><h4>Hosted, your key</h4><p>A public API such as Anthropic's or OpenAI's, with a key the investigator holds. The pane states what will be sent before it is sent.</p></div>
+        <div class="endpoint"><h4>Organisation gateway</h4><p>An organisation's own secured endpoint, such as a private model deployment, so the material never leaves its control.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reports">
+    <div class="section-head">
+      <span class="eyebrow">Reports</span>
+      <h2>Several report styles from one record</h2>
+      <p>A report style is a set of headings with guidance for each, and the record is assembled or drafted under them. The styles below ship with the application; an organisation's own style, matching its template, is added on request.</p>
+    </div>
+    <div class="styles">
+      <div class="style"><h4>Preliminary update</h4><p>Issued while the investigation runs: what happened, what has been established so far, the risk exposure, the open lines of enquiry. No findings.</p></div>
+      <div class="style"><h4>Standard investigation</h4><p>The full report: executive summary, event overview, analysis, findings summary and appendices.</p></div>
+      <div class="style"><h4>Executive brief</h4><p>The occurrence, the findings and the actions on a few pages for the people who decide.</p></div>
+      <div class="style"><h4>Your organisation's</h4><p>A style written to your report template, with your headings, your cover and your findings tables, in a custom build.</p></div>
+    </div>
+    <p class="hint" style="margin-top: 18px; max-width: 74ch">Every report is written to a Word template: a cover page, the distribution list, the headings of the chosen style, and the organisation's own layout where a custom template has been supplied. The examples below are the published documents, exactly as the application exported them, converted to PDF.</p>
+    <div class="examples">
+      <article class="example card">
+        <span class="eyebrow">Example</span>
+        <a href="exports/report_standard.pdf"><img class="shot" src="exports/report_standard.png" alt="Cover page of the standard investigation report" style="max-width: 320px"></a>
+        <h3>Standard investigation report, Tarlton Springs</h3>
+        <span class="meta">%%STANDARD_META%%</span>
+        <p>Drafted through the pipeline above with a Claude model behind a sealed transport that shows it nothing but what the application sends, then audited and checked. Published exactly as it landed, with the audit and the record check beside it, because catching what the audit caught is the point.</p>
+        <div class="links"><a class="btn btn-primary" href="exports/report_standard.pdf">Open the PDF</a><a class="btn" href="reports/standard.html">Read it in the browser</a><a class="btn" href="reports/standard.html#audit">The audit</a></div>
+      </article>
+      <article class="example card">
+        <span class="eyebrow">Example</span>
+        <a href="exports/report_preliminary.pdf"><img class="shot" src="exports/report_preliminary.png" alt="Cover page of the preliminary investigation update" style="max-width: 320px"></a>
+        <h3>Preliminary update, Tarlton Springs</h3>
+        <span class="meta">%%PRELIMINARY_META%%</span>
+        <p>The same record, drafted in the preliminary style: what has been established and what is still open, with no findings. Same pipeline, same audit, same checks.</p>
+        <div class="links"><a class="btn btn-primary" href="exports/report_preliminary.pdf">Open the PDF</a><a class="btn" href="reports/preliminary.html">Read it in the browser</a><a class="btn" href="reports/preliminary.html#audit">The audit</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="exports">
+    <div class="section-head">
+      <span class="eyebrow">Exports and the audit trail</span>
+      <h2>Everything the investigator enters can be output for audit</h2>
+      <p>A report is only the last of the documents the record produces. The same record exports the tables behind every finding, the map and the timeline as images, and a collated copy of the whole investigation, all written beside the investigation file.</p>
+    </div>
+    <div class="examples">
+      <article class="example card">
+        <span class="eyebrow">E/I/I tables</span>
+        <a href="exports/eii_tables.pdf"><img class="shot" src="exports/eii_tables_p2.png" alt="A page of the E/I/I tables document: one table per object with each test, its confidence and the evidence" style="max-width: 320px"></a>
+        <h3>The tests behind every object, as Word tables</h3>
+        <p>One table per object: each test's result and confidence, the evidence recorded for it and against it, and the investigator's reasoning. This is the working that a reviewer, a regulator or a court would ask for, in a document rather than a screen.</p>
+        <div class="links"><a class="btn btn-primary" href="exports/eii_tables.pdf">Open the PDF</a></div>
+      </article>
+      <article class="example card">
+        <span class="eyebrow">The full record</span>
+        <h3>The collated export</h3>
+        <p>The entire investigation as one readable document: every object with its tests, the timeline, the finalised interviews, the safety reports, the evidence register with each item's significance. It is what a drafting model is sent, and it is what an auditor can read to see exactly what the report rested on.</p>
+        <p>Alongside it, the map and the timeline export as images, and the investigation file itself is plain JSON that any organisation can archive and read back without the application.</p>
+        <div class="links"><a class="btn" href="exports/collation.md">Open the collated export</a></div>
+      </article>
+    </div>
+    <p class="org" style="margin-top: 22px">Organisational templates: a custom build writes every report and every table to your own Word template, with your cover, headers, findings tables and distribution block, so what the application produces is what your organisation already publishes.</p>
+  </section>
+
+  <section class="block" id="settings">
+    <div class="section-head">
+      <span class="eyebrow">Settings</span>
+      <h2>The templates, the proof threshold, and how a model is reached</h2>
+      <p>Settings is where an investigator or an organisation makes the application their own. The templates behind the checklist and the interview protocols are editable. The standard of proof is chosen to suit the framework the investigation answers to: the balance of probabilities at 50 per cent, the 60 per cent some Just Culture frameworks set, "likely" at 66 per cent, "clearly likely" at 75, or "very likely" at 90. And AI access is a choice between none, a copied prompt, or a configured endpoint.</p>
+    </div>
+    <div class="settings-grid">
+      <figure><img class="shot zoomable" data-caption="Settings: the checklist template, editable as plain text." src="%%SHOT_14%%" alt="The Settings dialog open on the checklist template"><figcaption>The checklist template. Sections and items are plain text; edit them and every new investigation starts from your version.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="%%SHOT_17%%" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof. The confidence a passed test must reach before a factor counts as established, with the verbal probability it reads as.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Settings: AI access, the choice between no model, a copied prompt, and a configured endpoint." src="%%SHOT_15%%" alt="The Settings dialog open on AI access"><figcaption>AI access. None, Chat, or Endpoint, with what each means spelled out. The Endpoint pane holds the models the application can reach.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="editions">
+    <div class="section-head">
+      <span class="eyebrow">Editions</span>
+      <h2>The same application, three levels of AI access</h2>
+      <p>The record, the map and report assembly are the product. What changes between levels is only how a drafting model is reached.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier card">
+        <h3>Standard</h3>
+        <p class="who">For an investigation with no model involved, or after a trial ends.</p>
+        <ul>
+          <li>Checklist, evidence, interviews, timeline, causal map</li>
+          <li>E/I/I tables, map and timeline exports</li>
+          <li>Reports assembled from the record, in any style</li>
+        </ul>
+        <p class="price">Included <small>exports watermarked until licensed</small></p>
+      </article>
+      <article class="tier card lead">
+        <h3>Chat</h3>
+        <p class="who">Copy a prompt out to the chat tool you already have; paste the reply back.</p>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>Section and whole-report prompts, built from the record</li>
+          <li>Pasted drafts land, are checked, and can be finalised</li>
+        </ul>
+        <p class="price">Licence <small>pricing to be announced</small></p>
+      </article>
+      <article class="tier card">
+        <h3>Endpoint</h3>
+        <p class="who">A configured model: local, hosted with your own key, or your organisation's gateway.</p>
+        <ul>
+          <li>Everything in Chat</li>
+          <li>Section and whole-report drafting and audits inside the application</li>
+          <li>Record checks on every draft</li>
+        </ul>
+        <p class="price">Licence <small>pricing to be announced</small></p>
+      </article>
+    </div>
+    <p class="org">Organisations: a custom build carries your own framework, templates, report style and workflow, licensed to your investigators, with the application underneath unchanged. Talk to us.</p>
+  </section>
+
+  <section class="block" id="download">
+    <div class="download">
+      <div class="dl-card card">
+        <span class="eyebrow">Download</span>
+        <h2>Investigation Workflow Suite 0.9.1</h2>
+        <p class="ver">Windows 10 and 11, 64-bit. Released 27 September 2026.</p>
+        <dl>
+          <dt>Installer</dt><dd>Investigation Workflow Suite_0.9.1_x64-setup.exe</dd>
+          <dt>Portable</dt><dd>Investigation Workflow Suite_0.9.1_portable.exe, runs without installing</dd>
+          <dt>Checksums</dt><dd>SHA256SUMS.txt</dd>
+          <dt>Trial</dt><dd>28 days, every feature, on request with an email address</dd>
+        </dl>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download">Request a trial licence</a>
+          <a class="btn" href="guide.html">Read the user guide</a>
+        </div>
+      </div>
+      <div class="dl-side">
+        <h3>Before you install</h3>
+        <p>The first launch of a new build can trigger a Windows SmartScreen prompt. Choose More info, then Run anyway. Signed builds are coming.</p>
+        <h3>Students and educators</h3>
+        <p>The training edition carries public teaching material and an educational watermark on exports. It is the build to use for coursework.</p>
+        <p class="privacy">Your investigation never leaves your machine unless you choose an AI endpoint, and the application tells you what it will send before it sends it. The only thing the licence server ever sees is the email address you request a licence with.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="changelog">
+    <div class="section-head">
+      <span class="eyebrow">Changelog</span>
+      <h2>What changed, release by release</h2>
+    </div>
+    <div class="changelog">
+      <div class="release">
+        <div><span class="v">0.9.1</span><span class="d">27 September 2026</span></div>
+        <ul>
+          <li>Shared folders: a save that would overwrite another investigator's changes is held, with reload, copy or overwrite as the choices, and a lock file beside the open investigation tells the other person it is in use.</li>
+          <li>Causal map: Shift+click adds to the selection, Shift+drag draws a selection box, and the selection drags as one.</li>
+          <li>Object forms carry a to-do list; every to-do appears on the Checklist tab with a link back to its object.</li>
+          <li>Settings panes scroll on their own.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <div><span class="v">0.9.0</span><span class="d">25 September 2026</span></div>
+        <ul>
+          <li>Editable abbreviations lists in Settings, with import, merge, export and a reset to the shipped list.</li>
+          <li>Glossary sets chosen per interview; only the terms that appear in the record are sent to a model.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <div><span class="v">0.8.x</span><span class="d">September 2026</span></div>
+        <ul>
+          <li>Whole-report drafting in one run, landed as one document and as sections.</li>
+          <li>Delete and a full-size viewer for captured evidence; a link to the original on each safety report.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="#top">Back to top</a></span>
+  </footer>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
+  <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
+  <div class="lightbox__body">
+    <img id="lb-img" src="" alt="">
+    <p class="lightbox__caption" id="lb-caption"></p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var steps = Array.prototype.slice.call(document.querySelectorAll("#walk .step"));
+    var frames = {};
+    Array.prototype.forEach.call(document.querySelectorAll(".walk__frame img"), function (img) { frames[img.id] = img; });
+    var caption = document.getElementById("walk-caption");
+    var current = null;
+    function show(step) {
+      if (!step || step === current) return;
+      current = step;
+      steps.forEach(function (s) { s.classList.toggle("is-active", s === step); });
+      Object.keys(frames).forEach(function (id) { frames[id].classList.toggle("is-shown", id === step.dataset.shot); });
+      caption.textContent = step.dataset.caption || "";
+    }
+    show(steps[0]);
+    if ("IntersectionObserver" in window) {
+      var visible = new Map();
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { visible.set(e.target, e.intersectionRatio); });
+        var best = null, bestRatio = 0;
+        steps.forEach(function (s) { var r = visible.get(s) || 0; if (r > bestRatio) { best = s; bestRatio = r; } });
+        if (best && bestRatio > 0) show(best);
+      }, { rootMargin: "-35% 0px -45% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] });
+      steps.forEach(function (s) { io.observe(s); });
+    }
+
+    // Lightbox: any screenshot at full size.
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lb-img");
+    var lbCaption = document.getElementById("lb-caption");
+    function openImage(src, text) {
+      lbImg.src = src; lbCaption.textContent = text || "";
+      lb.classList.add("is-open"); document.body.classList.add("has-lightbox");
+    }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    var frame = document.getElementById("walk-frame");
+    function openCurrent() { if (current && frames[current.dataset.shot]) openImage(frames[current.dataset.shot].src, current.dataset.caption); }
+    frame.addEventListener("click", openCurrent);
+    frame.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCurrent(); } });
+    steps.forEach(function (s) { var inline = s.querySelector("img.inline"); if (inline) inline.addEventListener("click", function () { openImage(inline.src, s.dataset.caption); }); });
+    Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
+    document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    lb.addEventListener("click", closeLb);
+    window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
+  })();
+</script>

@@ -1,0 +1,62 @@
+<title>%%TITLE%%</title>
+<style>
+%%THEME%%
+%%MARKDOWN_CSS%%
+  .report-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .report-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .report-meta { display: flex; gap: 14px 24px; flex-wrap: wrap; font-size: 0.88rem; color: var(--ink-soft); font-family: var(--font-mono); margin-top: 6px; }
+  .report-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; position: sticky; top: 56px; z-index: 10; background: var(--ground); padding-block: 10px; }
+  .report-tabs a { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; }
+  .report-tabs a:hover { background: #f1f5f9; color: var(--ink); }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 22px; scroll-margin-top: 120px; }
+  .panel h2.panel-title { font-size: 1.2rem; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .panel .md { max-width: 80ch; }
+  .panel .md table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  .panel .md th, .panel .md td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); margin-bottom: 18px; max-width: 80ch; }
+  @media (max-width: 700px) { .panel { padding: 18px; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#ai">AI drafting</a>
+      <a href="../index.html#reports" aria-current="page">Reports</a>
+      <a href="../index.html#download">Download</a>
+      <a href="../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="report-head">
+    <span class="eyebrow">Example report, Tarlton Springs case study</span>
+    <h1>%%HEADING%%</h1>
+    <p>%%BLURB%%</p>
+    <div class="report-meta">%%META%%</div>
+  </div>
+  <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the people and every record. The report is published exactly as the pipeline produced it, faults and all. The grounding audit and the record check below are what the application reported about its own draft, and they are the reason a draft is never final until an investigator has read it.</p>
+  <nav class="report-tabs" aria-label="Report parts">
+    <a href="#report">Report</a>
+    <a href="#audit">Grounding audit</a>
+    <a href="#check">Record check</a>
+    <a href="#notes">Review notes</a>
+  </nav>
+  <section class="panel" id="report"><h2 class="panel-title">The report as drafted</h2>%%REPORT%%</section>
+  <section class="panel" id="audit"><h2 class="panel-title">Grounding audit</h2><p class="hint" style="margin-bottom:12px">A second pass over the finished draft against the full record: each claim it could not find, or found contradicted, with the evidence.</p>%%AUDIT%%</section>
+  <section class="panel" id="check"><h2 class="panel-title">Mechanical record check</h2><p class="hint" style="margin-bottom:12px">No model involved: each factor's category and confidence word in the text compared with its recorded test, the findings compared with the derived classification, and the section lengths against their targets.</p>%%CHECK%%</section>
+  <section class="panel" id="notes"><h2 class="panel-title">Review notes</h2><p class="hint" style="margin-bottom:12px">Observations the model made about the record itself while drafting, kept apart from the prose for the investigator to resolve.</p>%%NOTES%%</section>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../index.html#reports">Back to reports</a></span>
+  </footer>
+</main>
