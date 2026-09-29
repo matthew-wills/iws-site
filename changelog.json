@@ -1,0 +1,48 @@
+[
+  {
+    "version": "0.10.0",
+    "date": "29 September 2026",
+    "features": [
+      "Two standard builds, generic and training, each as an installer and a portable exe.",
+      "Interviews are a record: import a Teams transcript (docx or vtt) or type notes, keep the investigator's notes beside it, name people by role, and mark it final. Drafting uses the finalised record as the interview's evidence.",
+      "The checklist and interview templates are written for any investigator and edited in Settings.",
+      "The standard of proof presets are named by what they mean, from the balance of probabilities at 50 per cent to very likely at 90."
+    ],
+    "fixes": [
+      "Object forms open at about 80 per cent of the window, so a long argument is readable without resizing.",
+      "The Checklist tab's to-do column is wide enough to read a to-do with its source line."
+    ]
+  },
+  {
+    "version": "0.9.1",
+    "date": "27 September 2026",
+    "features": [
+      "Shared folders: a save that would overwrite another investigator's changes is held, with reload, copy or overwrite as the choices, and a lock file beside the open investigation tells the other person it is in use.",
+      "Causal map: Shift+click adds to the selection, Shift+drag draws a selection box, and the selection drags as one.",
+      "Object forms carry a to-do list, and every to-do appears on the Checklist tab with a link back to its object."
+    ],
+    "fixes": [
+      "Settings panes scroll on their own, so a long pane no longer scrolls the dialog behind it."
+    ]
+  },
+  {
+    "version": "0.9.0",
+    "date": "25 September 2026",
+    "features": [
+      "Editable abbreviations lists in Settings, with import, merge, export and a reset to the shipped list.",
+      "Glossary sets chosen per interview, so only the terms that appear in the record are sent to a model."
+    ],
+    "fixes": []
+  },
+  {
+    "version": "0.8.x",
+    "date": "September 2026",
+    "features": [
+      "Whole-report drafting in one run, landed as one document and as sections.",
+      "A full-size viewer for captured evidence, and a link to the original on each safety report."
+    ],
+    "fixes": [
+      "Captured evidence can be deleted again."
+    ]
+  }
+]

@@ -45,17 +45,46 @@ mkdirSync(join(here, "exports"), { recursive: true });
 if (existsSync(exportsDir)) {
   for (const f of readdirSync(exportsDir).filter((f) => /.(pdf|png|md)$/.test(f))) copyFileSync(join(exportsDir, f), join(here, "exports", f));
 }
-let index = readFileSync(join(here, "index.template.html"), "utf8").replace("%%THEME%%", theme);
-for (const f of readdirSync(shotsDir).filter((f) => f.endsWith(".png"))) {
-  copyFileSync(join(shotsDir, f), join(here, "shots", f));
-  index = index.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${f}`);
-}
-index = index
+// The case-study screenshots: copied in once, and every %%SHOT_NN%% on a
+// page rewritten to the path here.
+const shotFiles = readdirSync(shotsDir).filter((f) => f.endsWith(".png"));
+for (const f of shotFiles) copyFileSync(join(shotsDir, f), join(here, "shots", f));
+const withShots = (html) => shotFiles.reduce((h, f) => h.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${f}`), html);
+
+const index = withShots(readFileSync(join(here, "index.template.html"), "utf8").replace("%%THEME%%", theme))
   .replace("%%STANDARD_META%%", meta(reports.standard))
   .replace("%%PRELIMINARY_META%%", meta(reports.preliminary))
   .replace("%%EXECUTIVE_META%%", meta(reports.executive));
-const unfilled = index.match(/%%[A-Z_0-9]+%%/g);
 writeFileSync(join(here, "index.html"), index);
+
+// The case study: the walkthrough the home page used to carry, as a
+// step-by-step guide through the workflow.
+const caseStudy = withShots(readFileSync(join(here, "case-study.template.html"), "utf8").replace("%%THEME%%", theme));
+writeFileSync(join(here, "case-study.html"), document("Case study: Tarlton Springs", caseStudy));
+
+// The changelog: one entry per release from changelog.json, features and
+// fixes only, so a release is recorded in one place and the page follows.
+const releases = JSON.parse(readFileSync(join(here, "changelog.json"), "utf8"));
+const changeList = (label, items) =>
+  items && items.length
+    ? `        <div><span class="eyebrow">${label}</span><ul>\n${items.map((i) => `          <li>${i}</li>`).join("\n")}\n        </ul></div>`
+    : "";
+const releaseHtml = releases
+  .map((r) =>
+    [
+      `    <div class="release">`,
+      `      <div><span class="v">${r.version}</span><span class="d">${r.date}</span></div>`,
+      `      <div class="parts">`,
+      [changeList("Added", r.features), changeList("Fixed", r.fixes)].filter(Boolean).join("\n"),
+      `      </div>`,
+      `    </div>`,
+    ].join("\n"),
+  )
+  .join("\n");
+const changelog = readFileSync(join(here, "changelog.template.html"), "utf8").replace("%%THEME%%", theme).replace("%%RELEASES%%", releaseHtml);
+writeFileSync(join(here, "changelog.html"), document("Changelog", changelog));
+
+const unfilled = [index, caseStudy, changelog].join("").match(/%%[A-Z_0-9]+%%/g);
 
 const fragment = readFileSync(join(here, "guide-fragment.html"), "utf8");
 const guide = readFileSync(join(here, "guide.template.html"), "utf8").replace("%%THEME%%", theme).replace("%%GUIDE%%", fragment);
@@ -118,4 +147,6 @@ if (existsSync(pagesRoot)) {
   }
 }
 
-console.log(`index.html ${index.length} chars, guide.html ${guide.length} chars, reports: ${Object.keys(reports).join(", ")}, unfilled: ${unfilled ? unfilled.join(",") : "none"}`);
+console.log(
+  `index.html ${index.length} chars, case-study.html ${caseStudy.length} chars, changelog.html ${releases.length} releases, guide.html ${guide.length} chars, reports: ${Object.keys(reports).join(", ")}, unfilled: ${unfilled ? unfilled.join(",") : "none"}`,
+);

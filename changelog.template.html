@@ -1,0 +1,49 @@
+<title>Changelog</title>
+<style>
+%%THEME%%
+  .log-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .log-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .changelog { display: flex; flex-direction: column; max-width: 90ch; padding-bottom: 20px; }
+  .release { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding-block: 22px; border-top: 1px solid var(--line); }
+  .release .v { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; }
+  .release .d { display: block; font-size: 0.85rem; color: var(--ink-faint); margin-top: 3px; }
+  .release .parts { display: flex; flex-direction: column; gap: 14px; }
+  .release ul { margin: 6px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.95rem; display: flex; flex-direction: column; gap: 6px; }
+  @media (max-width: 560px) { .release { grid-template-columns: 1fr; gap: 8px; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="case-study.html">Case study</a>
+      <a href="index.html#download">Download</a>
+      <a href="changelog.html" aria-current="page">Changelog</a>
+      <a href="guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="log-head">
+    <span class="eyebrow">Changelog</span>
+    <h1>What changed, release by release</h1>
+    <p>What an investigator notices in each release: the features added and the bugs fixed. Housekeeping and internal work is left out. The current release is on the <a href="index.html#download">download</a> section of the home page.</p>
+  </div>
+  <div class="changelog">
+%%RELEASES%%
+  </div>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="index.html#download">Download the current release</a></span>
+  </footer>
+</main>

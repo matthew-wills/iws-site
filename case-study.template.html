@@ -1,0 +1,417 @@
+<title>Case study: Tarlton Springs</title>
+<style>
+%%THEME%%
+
+  [id] { scroll-margin-top: 76px; }
+
+  /* Head */
+  .case-head { padding-block: 40px 10px; display: flex; flex-direction: column; gap: 10px; max-width: 80ch; }
+  .case-head p { color: var(--ink-soft); font-size: 1.04rem; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); max-width: 80ch; }
+  .contents { display: flex; gap: 8px; flex-wrap: wrap; padding-block: 14px 0; }
+  .contents a { padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; }
+  .contents a:hover { background: #f1f5f9; color: var(--ink); }
+
+  /* Walkthrough, the same sticky frame the home page used to carry */
+  .walk { display: grid; grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.6fr); gap: 32px; align-items: start; }
+  .walk__stage { padding-block: 30px 8px; }
+  .walk__stage:first-child { padding-top: 0; }
+  .walk__stage-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .walk__tint { display: inline-block; width: 30px; height: 6px; border-radius: 3px; }
+  .walk__stage h3 { font-size: 1.25rem; }
+  .step { padding: 14px 18px; border-left: 3px solid var(--line); margin-block: 8px; border-radius: 0 10px 10px 0; transition: border-color 200ms ease, background 200ms ease; }
+  .step h4 { margin-bottom: 6px; }
+  .step p { color: var(--ink-soft); font-size: 0.97rem; }
+  .step p + p { margin-top: 8px; }
+  .step .records { color: var(--ink); font-size: 0.93rem; margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }
+  .step .records span { color: var(--ink-faint); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .step.is-active { border-left-color: var(--accent); background: var(--paper); }
+  .step img.inline { display: none; }
+  /* Room under the last step, so it reaches the activation band while the
+     grid still extends below the sticky frame: without it the frame scrolls
+     away with the grid before the last screenshot is shown. */
+  .walk__steps { padding-bottom: min(45vh, 520px); }
+  .walk__media { position: sticky; top: 72px; }
+  .walk__frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); cursor: zoom-in; }
+  .walk__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity 320ms ease; }
+  .walk__frame img.is-shown { opacity: 1; }
+  .walk__frame img.tall { object-fit: contain; background: var(--paper); }
+  .walk__enlarge { position: absolute; right: 12px; bottom: 12px; z-index: 2; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.94); color: var(--ink); font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: zoom-in; }
+  .walk__caption { margin-top: 10px; font-size: 0.92rem; color: var(--ink-soft); min-height: 1.4em; }
+
+  /* The tests */
+  .tests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .test { display: flex; flex-direction: column; gap: 8px; }
+  .test .q { font-size: 1.05rem; font-weight: 650; color: var(--ink); }
+  .test p { color: var(--ink-soft); font-size: 0.95rem; }
+  .test .verdict { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .legend { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
+  .legend li { list-style: none; font-size: 0.95rem; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+  .legend ul { margin: 0; padding: 0; display: contents; }
+  .swatch { flex: none; width: 34px; height: 22px; border-radius: 6px; border: 1.5px solid #2f5ea8; background: #c7dcfb; margin-top: 2px; }
+  .swatch.other { background: #fbd9a6; border-color: #c2782a; }
+  .swatch.excluded { background: #fff; border: 1.5px dashed #94a3b8; }
+  .swatch.positive { background: #bbf7d0; border-color: #15803d; border-radius: 11px; }
+  .swatch.critical { background: #f8c3c3; border-color: #b91c1c; border-width: 2px; border-radius: 11px; }
+  .swatch.untested { background: #fff; border: 1.5px dashed #64748b; }
+  .arrow { flex: none; width: 34px; height: 22px; margin-top: 2px; }
+
+  /* What it published */
+  .published { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .published .card { display: flex; flex-direction: column; gap: 10px; }
+  .published img { max-width: 260px; }
+  .published p { color: var(--ink-soft); font-size: 0.95rem; }
+  .published .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+
+  @media (max-width: 960px) {
+    .walk { grid-template-columns: 1fr; }
+    .walk__media { display: none; }
+    .walk__steps { padding-bottom: 0; }
+    .step img.inline { display: block; width: 100%; height: auto; margin-top: 12px; border-radius: 8px; border: 1px solid var(--line); cursor: zoom-in; }
+    .tests, .published { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .tests, .published, .legend { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .walk__frame img, .step { transition: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="case-study.html" aria-current="page">Case study</a>
+      <a href="index.html#download">Download</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="case-head">
+    <span class="eyebrow">Case study, worked end to end</span>
+    <h1>An investigation from the notification to the published report</h1>
+    <p>Tarlton Springs is a rejected take-off and runway overrun at a regional aerodrome at night, investigated in the application from the first checklist item to the reports that were issued. Every stage below is a real screen from that investigation. Click any picture to see it at full size.</p>
+    <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the aircraft, the people and every record. The documents at the end are published exactly as the application produced them, faults and all.</p>
+    <nav class="contents" aria-label="The stages">
+      <a href="#triage">Notification and triage</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#map">Building the map</a>
+      <a href="#tests">The three tests</a>
+      <a href="#testing">Testing each factor</a>
+      <a href="#report">Drafting and checking</a>
+      <a href="#published">What it published</a>
+    </nav>
+  </div>
+
+  <section class="block block--wide" id="triage">
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-controls)"></span><h3>Notification and triage</h3></div>
+          <article class="step" data-shot="s04" data-caption="The Checklist tab: the investigation's running checklist, the to-do list, and the distribution list.">
+            <h4>Open the investigation and triage what came in</h4>
+            <p>The notification arrives, the occurrence is risk rated, and the decision to investigate is made. File &gt; New investigation creates a folder with the investigation file inside it, and the first checklist section is the one that covers notification, triage and the terms of reference.</p>
+            <p>The checklist runs from there through evidence gathering, interviews, analysis and reporting. Each item is answered yes, no or not applicable, and the tab shows how much is still open.</p>
+            <p class="records"><span>What the app records</span>The occurrence title, the checklist with every answer, and the distribution list the report will eventually go to.</p>
+            <img class="inline" src="%%SHOT_04%%" alt="The checklist with answered items, the to-do list and the distribution list">
+          </article>
+          <article class="step" data-shot="s04" data-caption="The to-do list: one list for the investigation, including jobs raised from inside an object's form.">
+            <h4>Work the checklist, and keep one to-do list</h4>
+            <p>Anything that needs chasing goes on a single list. A job raised while filling in an object's form appears here with a link back to that object, so the list can be read in one place and handed to a colleague.</p>
+            <p>The checklist is a template, not a fixed list. An investigator edits it in Settings to suit how they work; an organisation's own edition ships with its own, so every investigation starts from the same standard.</p>
+            <p class="records"><span>What the app records</span>Every to-do with its source, and which checklist items are still open.</p>
+          </article>
+        </div>
+
+        <div class="walk__stage" id="evidence">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-org)"></span><h3>Collecting the evidence</h3></div>
+          <article class="step" data-shot="s01" data-caption="The evidence register, grouped by where each item is used.">
+            <h4>File every piece of material once</h4>
+            <p>Screenshots, extracts and documents go into one register with a caption, its significance, a category and a reference. Each item is linked to whatever rests on it, so when a source turns out to be unreliable it is clear what has to be revisited.</p>
+            <p class="records"><span>What the app records</span>The capture itself inside the investigation file, why it matters, and every object, interview or finding that depends on it.</p>
+            <img class="inline" src="%%SHOT_01%%" alt="The evidence register grouped by where each item is used">
+          </article>
+          <article class="step" data-shot="s03" data-caption="A safety report: the submission details, the confidential scheme flag, and the account exactly as it was written.">
+            <h4>Take in the safety reports as they were written</h4>
+            <p>The reports submitted by the people involved are pasted in as written, with who submitted them by role, when, and the reference in the reporting system. They feed the picture the same way an interview does.</p>
+            <p>One tick says the report came in under a confidential or just-culture scheme. From then on drafting is told the account may inform the investigation but must not be quoted into a document that will be distributed.</p>
+            <p class="records"><span>What the app records</span>The account verbatim, its reference and time, the submitter's role, and the protection it was given.</p>
+            <img class="inline" src="%%SHOT_03%%" alt="A safety report with its submission details and the report text">
+          </article>
+          <article class="step" data-shot="s02" data-caption="An interview: the record header, the Teams transcript with speakers mapped to roles, and the investigator's notes.">
+            <h4>Turn the interviews into settled records</h4>
+            <p>Import the Teams transcript, as the .docx or .vtt download, or paste it; correct what the transcription got wrong; add your notes; finalise. From then on the account is settled and report drafting treats it that way.</p>
+            <p>De-identification is built in. Each speaker in a transcript is mapped to a role, and it is the role, never the name, that reaches the record, the collation, or any drafting model.</p>
+            <p class="records"><span>What the app records</span>The corrected transcript, the role for every speaker, the investigator's notes beside it, and whether the account has been finalised.</p>
+            <img class="inline" src="%%SHOT_02%%" alt="An interview with its transcript, the speaker to role mapping, and notes">
+          </article>
+          <article class="step" data-shot="s05" data-caption="The timeline: every event with its source and its time basis, and the critical event marked.">
+            <h4>Build the sequence of events</h4>
+            <p>Each event carries its source and its time basis, so the sequence can be defended when two records disagree about when something happened. The timeline exports as an image beside the report.</p>
+            <p class="records"><span>What the app records</span>The ordered events, the evidence behind each one, the time basis it rests on, and which event is the critical one.</p>
+            <img class="inline" src="%%SHOT_05%%" alt="The timeline tab">
+          </article>
+        </div>
+
+        <div class="walk__stage" id="map">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-local)"></span><h3>Building the causal map</h3></div>
+          <article class="step" data-shot="s06" data-caption="The map with only the critical event placed, bottom right.">
+            <h4>Place the critical event</h4>
+            <p>The occurrence goes in the bottom lane, with what happened and the proof of its significance recorded. Everything else on the map exists to explain this one object.</p>
+            <p class="records"><span>What the app records</span>The critical event as an object, in its lane, at its point in time.</p>
+            <img class="inline" src="%%SHOT_06%%" alt="The map with only the critical event placed">
+          </article>
+          <article class="step" data-shot="s07" data-caption="Every hypothesis placed in its lane, untested. Nothing is filtered yet.">
+            <h4>Put every hypothesis on the map</h4>
+            <p>An object for every event or condition that might have played a part, in the lane it belongs to and roughly where it sits in time. Nothing is filtered at this point: the method works by testing, not by intuition, and a hypothesis that is later excluded still strengthens the record.</p>
+            <p class="records"><span>What the app records</span>Each hypothesis as an untested object, shown with a dashed white border until someone has tested it.</p>
+            <img class="inline" src="%%SHOT_07%%" alt="Untested hypotheses scattered across the lanes">
+          </article>
+          <article class="step" data-shot="s08" data-caption="Half the objects tested. The map is adjusted live as the evidence comes in, until it is complete.">
+            <h4>Adjust the map live as the evidence comes in</h4>
+            <p>An investigation does not arrive in order. A transcript changes what a factor means, a record arrives that closes a line of enquiry, a new hypothesis appears in week three. Objects are moved, tested, connected and reconnected as that happens, and the map is never more than the current state of the evidence.</p>
+            <p>Every arrow is a claim that one thing led to another. It stays grey until the object it comes from has passed its tests, and turns green when it has, so the picture builds itself as the work is done.</p>
+            <p class="records"><span>What the app records</span>Every object and every connection, with the state of each test behind them.</p>
+            <img class="inline" src="%%SHOT_08%%" alt="Half the objects tested, with arrows appearing">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s01" src="%%SHOT_01%%" alt="">
+          <img id="s02" class="tall" src="%%SHOT_02%%" alt="">
+          <img id="s03" src="%%SHOT_03%%" alt="">
+          <img id="s04" src="%%SHOT_04%%" alt="">
+          <img id="s05" src="%%SHOT_05%%" alt="">
+          <img id="s06" src="%%SHOT_06%%" alt="">
+          <img id="s07" src="%%SHOT_07%%" alt="">
+          <img id="s08" src="%%SHOT_08%%" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="tests">
+    <div class="section-head">
+      <span class="eyebrow">The three tests</span>
+      <h2>Nothing is a finding until it has passed its tests</h2>
+      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. What the object becomes on the map follows from the answers.</p>
+    </div>
+    <div class="tests">
+      <article class="test card">
+        <span class="eyebrow">Existence</span>
+        <p class="q">Did this event or condition actually exist?</p>
+        <p>If it did, the border turns solid and the next question is asked. If it did not, the hypothesis is excluded: it stays on the map, struck through, with the reason recorded.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Inconclusive</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Influence</span>
+        <p class="q">Did it influence anything else, and if so in what way?</p>
+        <p>If it did, it is a contributing safety factor and its outgoing arrows become proven causal paths. Where the evidence cuts both ways, the test is argued with evidence for and against.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Argued</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Importance</span>
+        <p class="q">If it did not influence anything, is it still important enough to raise in the report?</p>
+        <p>A factor that played no part in this occurrence may still be a risk worth addressing. If so, it is a finding in its own right, an other risk factor, and it carries no arrows.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span></div>
+      </article>
+    </div>
+    <div class="legend" aria-label="What the shapes and colours mean">
+      <ul>
+        <li><span class="swatch"></span><span><strong>Blue, solid border:</strong> a contributing safety factor. It existed and it influenced the occurrence.</span></li>
+        <li><span class="swatch other"></span><span><strong>Orange:</strong> an other risk factor. It existed, it did not influence this occurrence, and it is still worth raising.</span></li>
+        <li><span class="swatch excluded"></span><span><strong>Struck through, dashed:</strong> an excluded hypothesis. It did not exist, and the reason is on the record.</span></li>
+        <li><span class="swatch positive"></span><span><strong>Green, rounded:</strong> a positive event, something that reduced the risk or limited the outcome.</span></li>
+        <li><span class="swatch critical"></span><span><strong>Red, rounded:</strong> the critical event, the occurrence itself.</span></li>
+        <li><span class="swatch untested"></span><span><strong>White, dashed:</strong> not yet tested, or a test left inconclusive.</span></li>
+        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#15803d" stroke-width="2.2"/><path d="M24 6l7 5-7 5z" fill="#15803d"/></svg><span><strong>Green arrow:</strong> a proven causal path. The object it comes from has passed Influence.</span></li>
+        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/><path d="M24 6l7 5-7 5z" fill="#94a3b8"/></svg><span><strong>Grey dashed arrow:</strong> a claim still under test.</span></li>
+        <li><span class="dot green" style="margin-top:6px"></span><span><strong>Green dot:</strong> the object's investigation is complete and its evidence finalised.</span></li>
+        <li><span class="dot amber" style="margin-top:6px"></span><span><strong>Amber dot:</strong> still being investigated.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block block--wide" id="testing">
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-actions)"></span><h3>Testing each factor</h3></div>
+          <article class="step" data-shot="s09" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad.">
+            <h4>Record the evidence and answer three questions</h4>
+            <ul class="plain" style="margin-bottom: 8px">
+              <li>Did this event or condition actually exist?</li>
+              <li>Did it influence anything else, and if so in what way?</li>
+              <li>If it did not influence anything, is it still important enough to raise in the report?</li>
+            </ul>
+            <p>Each answer carries a confidence, recorded as a percentage and read back in the calibrated verbal probability terms the report will use. The standard of proof a factor must reach before it counts as established is set for the investigation, from the balance of probabilities upwards, and the form warns when a pass falls short of it.</p>
+            <p class="records"><span>What the app records</span>Each verdict with its confidence and its evidence, the investigator's reasoning, and the amber dot that turns green when the object's own investigation is finished.</p>
+            <img class="inline" src="%%SHOT_09%%" alt="An object's evidence form with verdicts and a confidence slider">
+          </article>
+          <article class="step" data-shot="s10" data-caption="An argued test: evidence for and against, weighed into a confidence rather than a yes or no.">
+            <h4>Argue the contested ones</h4>
+            <p>When the evidence cuts both ways, record it for and against and let the confidence say how far the argument reaches. The report will carry that confidence word, not a certainty the record does not support.</p>
+            <p class="records"><span>What the app records</span>Both sides of the argument as separate evidence, and the confidence the investigator settled on after weighing them.</p>
+            <img class="inline" src="%%SHOT_10%%" alt="An object's form showing evidence for and against influence">
+          </article>
+        </div>
+
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-events)"></span><h3>The finished map</h3></div>
+          <article class="step" data-shot="s11" data-caption="The finished map: the direction of the investigation and every line of enquiry in one image.">
+            <h4>Read the whole investigation in one image</h4>
+            <p>Left to right is time. Bottom to top is organisational depth. Green arrows are the proven chains; a grey dashed arrow is a claim still under test; struck-through objects are the closed lines of enquiry. A green dot marks an object whose investigation is complete, an amber dot one still being investigated.</p>
+            <p class="records"><span>What the app records</span>The map as the analysis, exported as an image beside the report, with the findings derived from the tests rather than typed in.</p>
+            <img class="inline" src="%%SHOT_11%%" alt="The finished map, fitted to the window">
+          </article>
+        </div>
+
+        <div class="walk__stage" id="report">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-external)"></span><h3>Drafting, checking and publishing</h3></div>
+          <article class="step" data-shot="s12" data-caption="The Draft report tab: a style, a section at a time, or the whole report in one run.">
+            <h4>Draft the report a section at a time, or in one run</h4>
+            <p>Choose a style and work through its sections: draft one, correct it, finalise it, and nothing regenerates over a section that has been finalised. A whole-report run is there for a model with the context for the entire investigation.</p>
+            <p>With AI access off, the tab says so and the report is assembled from the record by hand instead. Nothing is sent anywhere until an endpoint has been chosen.</p>
+            <p class="records"><span>What the app records</span>Each section with the model and the version of the record that produced it, so a draft goes visibly stale when the record moves on.</p>
+            <img class="inline" src="%%SHOT_12%%" alt="The Draft report tab with its sections and the whole-report run">
+          </article>
+          <article class="step" data-shot="s16" data-caption="Settings: the endpoint the drafting and audit models are reached through.">
+            <h4>Choose where the model lives</h4>
+            <p>The application speaks the standard model APIs. This investigation was drafted through a model on the investigator's own machine; the same pane takes a hosted API with your own key, or an organisation's own gateway. Keys are stored on the machine and never written into the investigation file or an export.</p>
+            <p class="records"><span>What the app records</span>The endpoint and the drafting and audit models, on this machine only, and how much of each argument is sent with a safety factor.</p>
+            <img class="inline" src="%%SHOT_16%%" alt="The Settings pane for LLM endpoints">
+          </article>
+          <article class="step" data-shot="s13" data-caption="The Report tab: findings derived from the tests, the record assembled under a report style's headings.">
+            <h4>Audit the draft, check it mechanically, then finalise it</h4>
+            <p>A second pass reads the finished draft against the whole record and reports every claim it could not find or found contradicted. A mechanical check with no model in it then compares each factor's category and confidence word in the text against its recorded test, and the findings against the derived classification.</p>
+            <p>Both are published with the reports below, because what the audit caught is the reason a draft is never final until an investigator has read it.</p>
+            <p class="records"><span>What the app records</span>The audit and the record check beside the draft, the review notes the model made about the record itself, and the investigator's decision to finalise.</p>
+            <img class="inline" src="%%SHOT_13%%" alt="The Report tab with the assembled report">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s09" src="%%SHOT_09%%" alt="">
+          <img id="s10" src="%%SHOT_10%%" alt="">
+          <img id="s11" src="%%SHOT_11%%" alt="">
+          <img id="s12" src="%%SHOT_12%%" alt="">
+          <img id="s13" src="%%SHOT_13%%" alt="">
+          <img id="s16" class="tall" src="%%SHOT_16%%" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="published">
+    <div class="section-head">
+      <span class="eyebrow">What it published</span>
+      <h2>The documents this investigation produced</h2>
+      <p>The same record, written to the application's Word template and converted to PDF. Each report is published as it landed, with the grounding audit and the mechanical record check beside it.</p>
+    </div>
+    <div class="published">
+      <article class="card">
+        <span class="eyebrow">Reports</span>
+        <a href="exports/report_standard.html"><img class="shot" src="exports/report_standard.png" alt="Cover page of the standard investigation report"></a>
+        <h3>Three reports from the one record</h3>
+        <p>The standard investigation report, the preliminary update issued while the work was running, and the executive brief for the people who decide.</p>
+        <div class="links"><a class="btn btn-primary" href="exports/report_standard.html">Standard</a><a class="btn" href="exports/report_preliminary.html">Preliminary</a><a class="btn" href="exports/report_executive.html">Executive</a></div>
+      </article>
+      <article class="card">
+        <span class="eyebrow">The working</span>
+        <a href="exports/eii_tables.html"><img class="shot" src="exports/eii_tables_p2.png" alt="A page of the E/I/I tables document: one table per object with each test, its confidence and the evidence"></a>
+        <h3>The E/I/I tables behind every finding</h3>
+        <p>One table per object: each test's result and confidence, the evidence for it and against it, and the investigator's reasoning. This is what a reviewer, a regulator or a court would ask for.</p>
+        <div class="links"><a class="btn btn-primary" href="exports/eii_tables.html">Read the tables</a><a class="btn" href="exports/eii_tables.pdf" target="_blank" rel="noopener">PDF</a></div>
+      </article>
+      <article class="card">
+        <span class="eyebrow">The audit trail</span>
+        <h3>The collation, the audit and the record check</h3>
+        <p>The collated export is the whole investigation as one readable document, and it is exactly what the drafting model was sent. The audit and the check that followed each draft are published with the reports.</p>
+        <p>The map and the timeline export as images, and the investigation file itself is plain JSON that any organisation can archive and read back without the application.</p>
+        <div class="links"><a class="btn" href="exports/collation.md">The collated export</a><a class="btn" href="reports/standard.html#audit">The audit and checks</a></div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="index.html#download">Download the application</a> · <a href="#top">Back to top</a></span>
+  </footer>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
+  <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
+  <div class="lightbox__body">
+    <img id="lb-img" src="" alt="">
+    <p class="lightbox__caption" id="lb-caption"></p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lb-img");
+    var lbCaption = document.getElementById("lb-caption");
+    function openImage(src, text) {
+      lbImg.src = src; lbCaption.textContent = text || "";
+      lb.classList.add("is-open"); document.body.classList.add("has-lightbox");
+    }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+
+    // Each walkthrough drives its own sticky frame: the step nearest the
+    // middle of the window is the active one, and its screenshot is shown.
+    Array.prototype.forEach.call(document.querySelectorAll(".walk"), function (walk) {
+      var steps = Array.prototype.slice.call(walk.querySelectorAll(".step"));
+      var frames = {};
+      Array.prototype.forEach.call(walk.querySelectorAll(".walk__frame img"), function (img) { frames[img.id] = img; });
+      var caption = walk.querySelector(".walk__caption");
+      var current = null;
+      function show(step) {
+        if (!step || step === current) return;
+        current = step;
+        steps.forEach(function (s) { s.classList.toggle("is-active", s === step); });
+        Object.keys(frames).forEach(function (id) { frames[id].classList.toggle("is-shown", id === step.dataset.shot); });
+        caption.textContent = step.dataset.caption || "";
+      }
+      show(steps[0]);
+      if ("IntersectionObserver" in window) {
+        var visible = new Map();
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { visible.set(e.target, e.intersectionRatio); });
+          var best = null, bestRatio = 0;
+          steps.forEach(function (s) { var r = visible.get(s) || 0; if (r > bestRatio) { best = s; bestRatio = r; } });
+          if (best && bestRatio > 0) show(best);
+        }, { rootMargin: "-35% 0px -45% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] });
+        steps.forEach(function (s) { io.observe(s); });
+      }
+      var frame = walk.querySelector(".walk__frame");
+      function openCurrent() { if (current && frames[current.dataset.shot]) openImage(frames[current.dataset.shot].src, current.dataset.caption); }
+      frame.addEventListener("click", openCurrent);
+      frame.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCurrent(); } });
+      steps.forEach(function (s) { var inline = s.querySelector("img.inline"); if (inline) inline.addEventListener("click", function () { openImage(inline.src, s.dataset.caption); }); });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
+    document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    lb.addEventListener("click", closeLb);
+    window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
+  })();
+</script>

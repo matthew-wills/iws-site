@@ -7,18 +7,26 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
 ## What is here
 
 - `theme.css` - the application's own look, shared by every page.
-- `index.template.html`, `guide.template.html`, `report.template.html` -
-  the page templates. `%%THEME%%` takes the theme; `%%SHOT_NN%%` takes a
-  screenshot path; `%%GUIDE%%` takes the rendered user guide.
-- `build-site.mjs` - assembles `index.html`, `guide.html` and
-  `reports/*.html`, copying the screenshots and the published documents in.
+- `index.template.html`, `case-study.template.html`,
+  `changelog.template.html`, `guide.template.html`, `report.template.html`,
+  `document.template.html` - the page templates. `%%THEME%%` takes the
+  theme; `%%SHOT_NN%%` takes a screenshot path; `%%GUIDE%%` takes the
+  rendered user guide; `%%RELEASES%%` takes the changelog entries.
+- `changelog.json` - one entry per release (`version`, `date`, `features`,
+  `fixes`), user-facing items only. The changelog page is built from it, so
+  a release is recorded here and nowhere else.
+- `build-site.mjs` - assembles `index.html`, `case-study.html`,
+  `changelog.html`, `guide.html`, `reports/*.html` and `exports/*.html`,
+  copying the screenshots and the published documents in.
 - `guide-fragment.html` - the in-app user guide rendered to HTML (generated).
 - `reports/*.json` - the case study's drafted reports, audits and checks
   rendered to HTML (generated), with the app's `markdown.css`.
 - `shots/`, `exports/` - the case study screenshots and the published
-  documents (PDF, cover renders, the collated export), copied in by the build.
-- `index.html`, `guide.html`, `reports/*.html` - the built pages, committed
-  so the repo can be served as it stands (GitHub Pages, Cloudflare Pages).
+  documents (PDF, cover renders, page renders, the collated export), copied
+  in by the build.
+- `index.html`, `case-study.html`, `changelog.html`, `guide.html`,
+  `reports/*.html`, `exports/*.html` - the built pages, committed so the
+  repo can be served as it stands (GitHub Pages, Cloudflare Pages).
 - `review-shots.mjs` - renders the built pages locally at desktop width
   for review; run it from the application repo so `puppeteer-core` resolves.
 

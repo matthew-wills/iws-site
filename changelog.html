@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>E/I/I Tables</title>
+<title>Changelog</title>
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -111,20 +111,22 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
-  .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
-  .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
-  .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-  .pages { display: flex; flex-direction: column; gap: 18px; align-items: center; padding-block: 12px 32px; }
-  .page { width: 100%; max-width: 920px; }
-  .page img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 4px; }
-  .page figcaption { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 6px; }
+  .log-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .log-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .changelog { display: flex; flex-direction: column; max-width: 90ch; padding-bottom: 20px; }
+  .release { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding-block: 22px; border-top: 1px solid var(--line); }
+  .release .v { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; }
+  .release .d { display: block; font-size: 0.85rem; color: var(--ink-faint); margin-top: 3px; }
+  .release .parts { display: flex; flex-direction: column; gap: 14px; }
+  .release ul { margin: 6px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.95rem; display: flex; flex-direction: column; gap: 6px; }
+  @media (max-width: 560px) { .release { grid-template-columns: 1fr; gap: 8px; } }
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="../index.html" aria-label="Investigation Workflow Suite, home">
+    <a class="brand" href="index.html" aria-label="Investigation Workflow Suite, home">
       <svg viewBox="0 0 28 28" aria-hidden="true">
         <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
         <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
@@ -134,38 +136,75 @@ footer a { color: var(--ink-soft); }
       Investigation Workflow Suite
     </a>
     <nav class="nav" aria-label="Site">
-      <a href="../index.html">Home</a>
-      <a href="../case-study.html#published" aria-current="page">Case study</a>
-      <a href="../index.html#download">Download</a>
-      <a href="../guide.html">User guide</a>
+      <a href="index.html">Home</a>
+      <a href="case-study.html">Case study</a>
+      <a href="index.html#download">Download</a>
+      <a href="changelog.html" aria-current="page">Changelog</a>
+      <a href="guide.html">User guide</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="doc-head">
-    <span class="eyebrow">Published document, Tarlton Springs case study</span>
-    <h1>E/I/I test tables, as published</h1>
-    <p>One table per object: each test’s result and confidence, the evidence recorded for and against it, and the investigator’s reasoning.</p>
-    <div class="doc-actions">
-      <a class="btn btn-primary" href="eii_tables.pdf" target="_blank" rel="noopener">Download the PDF</a>
-      
-    </div>
+  <div class="log-head">
+    <span class="eyebrow">Changelog</span>
+    <h1>What changed, release by release</h1>
+    <p>What an investigator notices in each release: the features added and the bugs fixed. Housekeeping and internal work is left out. The current release is on the <a href="index.html#download">download</a> section of the home page.</p>
   </div>
-  <div class="pages">
-    <figure class="page"><img src="pages/eii_tables/p01.png" alt="Page 1 of 9" loading="eager"><figcaption>Page 1 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p02.png" alt="Page 2 of 9" loading="eager"><figcaption>Page 2 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p03.png" alt="Page 3 of 9" loading="lazy"><figcaption>Page 3 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p04.png" alt="Page 4 of 9" loading="lazy"><figcaption>Page 4 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p05.png" alt="Page 5 of 9" loading="lazy"><figcaption>Page 5 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p06.png" alt="Page 6 of 9" loading="lazy"><figcaption>Page 6 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p07.png" alt="Page 7 of 9" loading="lazy"><figcaption>Page 7 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p08.png" alt="Page 8 of 9" loading="lazy"><figcaption>Page 8 of 9</figcaption></figure>
-    <figure class="page"><img src="pages/eii_tables/p09.png" alt="Page 9 of 9" loading="lazy"><figcaption>Page 9 of 9</figcaption></figure>
+  <div class="changelog">
+    <div class="release">
+      <div><span class="v">0.10.0</span><span class="d">29 September 2026</span></div>
+      <div class="parts">
+        <div><span class="eyebrow">Added</span><ul>
+          <li>Two standard builds, generic and training, each as an installer and a portable exe.</li>
+          <li>Interviews are a record: import a Teams transcript (docx or vtt) or type notes, keep the investigator's notes beside it, name people by role, and mark it final. Drafting uses the finalised record as the interview's evidence.</li>
+          <li>The checklist and interview templates are written for any investigator and edited in Settings.</li>
+          <li>The standard of proof presets are named by what they mean, from the balance of probabilities at 50 per cent to very likely at 90.</li>
+        </ul></div>
+        <div><span class="eyebrow">Fixed</span><ul>
+          <li>Object forms open at about 80 per cent of the window, so a long argument is readable without resizing.</li>
+          <li>The Checklist tab's to-do column is wide enough to read a to-do with its source line.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="release">
+      <div><span class="v">0.9.1</span><span class="d">27 September 2026</span></div>
+      <div class="parts">
+        <div><span class="eyebrow">Added</span><ul>
+          <li>Shared folders: a save that would overwrite another investigator's changes is held, with reload, copy or overwrite as the choices, and a lock file beside the open investigation tells the other person it is in use.</li>
+          <li>Causal map: Shift+click adds to the selection, Shift+drag draws a selection box, and the selection drags as one.</li>
+          <li>Object forms carry a to-do list, and every to-do appears on the Checklist tab with a link back to its object.</li>
+        </ul></div>
+        <div><span class="eyebrow">Fixed</span><ul>
+          <li>Settings panes scroll on their own, so a long pane no longer scrolls the dialog behind it.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="release">
+      <div><span class="v">0.9.0</span><span class="d">25 September 2026</span></div>
+      <div class="parts">
+        <div><span class="eyebrow">Added</span><ul>
+          <li>Editable abbreviations lists in Settings, with import, merge, export and a reset to the shipped list.</li>
+          <li>Glossary sets chosen per interview, so only the terms that appear in the record are sent to a model.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="release">
+      <div><span class="v">0.8.x</span><span class="d">September 2026</span></div>
+      <div class="parts">
+        <div><span class="eyebrow">Added</span><ul>
+          <li>Whole-report drafting in one run, landed as one document and as sections.</li>
+          <li>A full-size viewer for captured evidence, and a link to the original on each safety report.</li>
+        </ul></div>
+        <div><span class="eyebrow">Fixed</span><ul>
+          <li>Captured evidence can be deleted again.</li>
+        </ul></div>
+      </div>
+    </div>
   </div>
   <footer>
     <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
-    <span><a href="../case-study.html#published">Back to the case study</a></span>
+    <span><a href="index.html#download">Download the current release</a></span>
   </footer>
 </main>
 
