@@ -37,6 +37,7 @@ In the application repository:
     npx vite-node scripts/render-user-guide.tsx ../iws-site/guide-fragment.html
     npx vite-node scripts/render-case-reports.tsx tarlton-springs-rto ../iws-site/reports
     npx vite-node scripts/export-case-study-docs.tsx tarlton-springs-rto
+    npx vite-node scripts/case-study-source-pack.tsx tarlton-springs-rto
     powershell -NoProfile -ExecutionPolicy Bypass -File scripts/docx-to-pdf.ps1 case-studies/tarlton-springs-rto/exports
     node scripts/case-study-shots.mjs case-studies/tarlton-springs-rto/shots/stages case-studies/tarlton-springs-rto/shots
 
