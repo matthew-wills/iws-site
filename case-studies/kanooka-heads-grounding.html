@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study: Kanooka Heads</title>
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+
+  [id] { scroll-margin-top: 76px; }
+
+  /* Head */
+  .case-head { padding-block: 40px 10px; display: flex; flex-direction: column; gap: 10px; max-width: 80ch; }
+  .case-head p { color: var(--ink-soft); font-size: 1.04rem; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); max-width: 80ch; }
+  .contents { display: flex; gap: 8px; flex-wrap: wrap; padding-block: 14px 0; }
+  .contents a { padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; }
+  .contents a:hover { background: #f1f5f9; color: var(--ink); }
+  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
+
+  /* Walkthrough, the same sticky frame the home page used to carry */
+  .walk { display: grid; grid-template-columns: minmax(0, 0.5fr) minmax(0, 1.75fr); gap: 32px; align-items: start; }
+  .walk__stage { padding-block: 30px 8px; }
+  .walk__stage:first-child { padding-top: 0; }
+  .walk__stage-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .walk__tint { display: inline-block; width: 30px; height: 6px; border-radius: 3px; }
+  .walk__stage h3 { font-size: 1.25rem; }
+  .step { padding: 14px 18px; border-left: 3px solid var(--line); margin-block: 8px; border-radius: 0 10px 10px 0; transition: border-color 200ms ease, background 200ms ease; }
+  .step h4 { margin-bottom: 6px; }
+  .step p { color: var(--ink-soft); font-size: 0.97rem; }
+  .step p + p { margin-top: 8px; }
+  .step .records { color: var(--ink); font-size: 0.93rem; margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }
+  .step .records span { color: var(--ink-faint); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .step.is-active { border-left-color: var(--accent); background: var(--paper); }
+  .step img.inline { display: none; }
+  /* Room under the last step, so it reaches the activation band while the
+     grid still extends below the sticky frame: without it the frame scrolls
+     away with the grid before the last screenshot is shown. */
+  .walk__steps { padding-bottom: min(45vh, 520px); }
+  .walk__media { position: sticky; top: 72px; }
+  .walk__frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); cursor: zoom-in; }
+  /* The frame takes each screenshot's own proportions (set from the image
+     by the script below), so nothing is cropped or squeezed: contain is
+     only a fallback until the image has loaded. */
+  .walk__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 320ms ease; }
+  .walk__frame img.is-shown { opacity: 1; }
+  .walk__frame img.tall { object-fit: contain; background: var(--paper); }
+  .walk__enlarge { position: absolute; right: 12px; bottom: 12px; z-index: 2; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.94); color: var(--ink); font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: zoom-in; }
+  .walk__caption { margin-top: 10px; font-size: 0.92rem; color: var(--ink-soft); min-height: 1.4em; }
+
+  /* The occurrence as first notified */
+  .brief { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+  .brief .prose { display: flex; flex-direction: column; gap: 12px; }
+  .brief .prose p { color: var(--ink-soft); font-size: 1.02rem; }
+  .brief .prose p.lead { color: var(--ink); }
+  .facts { display: grid; grid-template-columns: 10ch minmax(0, 1fr); gap: 8px 16px; font-size: 0.93rem; margin: 10px 0 0; }
+  .facts dt { color: var(--ink-faint); font-weight: 600; }
+  .facts dd { margin: 0; color: var(--ink); }
+
+  /* The evidence pack */
+  .sources { display: flex; flex-direction: column; margin-block: 4px 26px; }
+  .source { display: grid; grid-template-columns: minmax(0, 26ch) minmax(0, 1fr); gap: 6px 26px; padding-block: 13px; border-top: 1px solid var(--line); }
+  .source:last-child { border-bottom: 1px solid var(--line); }
+  .source h4 { font-size: 0.99rem; }
+  .source p { color: var(--ink-soft); font-size: 0.96rem; }
+  .pack { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr); gap: 24px; align-items: center; }
+  .pack img { max-width: 260px; }
+  .pack h3 { margin-block: 6px 8px; }
+  .pack p { color: var(--ink-soft); font-size: 0.97rem; }
+  .pack p + p { margin-top: 8px; }
+  .pack .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+  /* The finished map */
+  .map-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-top: 24px; }
+  .map-notes p { color: var(--ink-soft); font-size: 0.96rem; margin-top: 8px; }
+
+  /* The tests */
+  .tests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .test { display: flex; flex-direction: column; gap: 8px; }
+  .test .q { font-size: 1.05rem; font-weight: 650; color: var(--ink); }
+  .test p { color: var(--ink-soft); font-size: 0.95rem; }
+  .test .verdict { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .legend { margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
+  .legend li { list-style: none; font-size: 0.95rem; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+  .legend ul { margin: 0; padding: 0; display: contents; }
+  .swatch { flex: none; width: 34px; height: 22px; border-radius: 6px; border: 1.5px solid #2f5ea8; background: #c7dcfb; margin-top: 2px; }
+  .swatch.other { background: #fbd9a6; border-color: #c2782a; }
+  .swatch.excluded { background: #fff; border: 1.5px dashed #94a3b8; }
+  .swatch.positive { background: #bbf7d0; border-color: #15803d; border-radius: 11px; }
+  .swatch.critical { background: #f8c3c3; border-color: #b91c1c; border-width: 2px; border-radius: 11px; }
+  .swatch.untested { background: #fff; border: 1.5px dashed #64748b; }
+  .arrow { flex: none; width: 34px; height: 22px; margin-top: 2px; }
+
+  /* What it published */
+  .published { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .published .card { display: flex; flex-direction: column; gap: 10px; }
+  .published img { max-width: 260px; }
+  .published p { color: var(--ink-soft); font-size: 0.95rem; }
+  .published .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+
+  @media (max-width: 960px) {
+    .walk { grid-template-columns: 1fr; }
+    .walk__media { display: none; }
+    .walk__steps { padding-bottom: 0; }
+    .step img.inline { display: block; width: 100%; height: auto; margin-top: 12px; border-radius: 8px; border: 1px solid var(--line); cursor: zoom-in; }
+    .tests, .published { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .brief, .pack, .source { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .tests, .published, .legend { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .walk__frame img, .step { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#case-studies" aria-current="page">Case studies</a>
+      <a href="../index.html#download">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="case-head">
+    <span class="eyebrow">Case study, worked end to end</span>
+    <h1>A grounding at night, from the first report to the published findings</h1>
+    <p>Kanooka Heads is a passenger ferry that left a dredged channel in darkness and grounded on a sandbank with 38 people aboard. What follows is that investigation in the order it happened: what came in, what the investigator did with it, and what the application recorded at each step. Every picture is a real screen from that file. Click one to see it at full size.</p>
+    <p>The source documents the investigation worked from are published with it, so the analysis can be read back against the same material the investigator had.</p>
+    <p class="note">Everything in this case study is fictional: the operator, the port, the vessel, the waterway, the people and every record. The documents at the end are published exactly as the application produced them, faults and all.</p>
+    <nav class="contents" aria-label="The stages">
+      <a href="#occurrence">1. The occurrence</a>
+      <a href="#first">2. What came in first</a>
+      <a href="#sources">3. The evidence pack</a>
+      <a href="#interviews">4. Interviews</a>
+      <a href="#timeline">5. The timeline</a>
+      <a href="#map">6. Building the map</a>
+      <a href="#tests">7. Testing a factor</a>
+      <a href="#finished">8. The finished map</a>
+      <a href="#tables">9. The E/I/I tables</a>
+      <a href="#drafting">10. Drafting and audit</a>
+      <a href="#published">11. The reports</a>
+    </nav>
+  </div>
+
+  <section class="block" id="occurrence">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">1</span> The occurrence as first notified</span>
+      <h2>A ferry off the side of a dredged channel, in the dark, on a falling tide</h2>
+      <p>This is what was known on the evening of 07/07/2026 and the morning after, before anybody had pulled a track or opened a manual. It is the brief the investigation started from.</p>
+    </div>
+    <div class="brief">
+      <div class="prose">
+        <p class="lead">Service TF18 was the last of the day, running from Muntari Island to the town wharf at Kanooka Heads with 38 passengers aboard. It was the first winter of a timetable that had moved that service from 16:15 to 17:35, so the transit of the Weerona Channel was made in full darkness, 35 minutes after the end of civil twilight, with no moon.</p>
+        <p>The channel is dredged to 3.2 m and is 40 m wide. The vessel entered it on the charted centreline and held it. Ninety seconds past the No. 2 beacon the bridge chart plotter froze: the chart picture stayed on the screen, the vessel symbol stopped moving, and the display would not take a touch. The master did not stop. He went looking out of the window for the No. 4 starboard-hand beacon, which is the secondary means of position fixing named in the passage plan.</p>
+        <p>It took him 91 seconds to find it, and while he was looking the vessel eased five degrees to starboard. It crossed the channel's western edge 114 seconds after the freeze. The echo sounder's shallow alarm gave 16 seconds' warning, the master had both engines astern four seconds after it, and the vessel struck Boolarong Bank at 6.8 kt, 54 m outside the channel.</p>
+        <p>Nobody was seriously hurt. The starboard hull was holed and the vessel took water in one void. The master stopped the engines, refused to back a holed vessel off a bank on a falling tide, got lifejackets onto everyone and had all 38 passengers ashore by workboat within 74 minutes.</p>
+        <p>His own report, written from the vessel forty minutes later under the company's just culture scheme, was in the safety system before the operator's own notification was raised, and it is what opened this investigation. It put two things on the record before anyone asked. He had been told about the plotter at the handover and had not written it down. And the No. 4 beacon had been getting harder to see for two years, and every master on the route knew it, and none of them had ever reported it.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">As notified</span>
+        <dl class="facts">
+          <dt>Date</dt><dd>07/07/2026, 18:12 local</dd>
+          <dt>Where</dt><dd>Weerona Channel, Kanooka River entrance; dredged to 3.2 m, 40 m wide</dd>
+          <dt>Service</dt><dd>TF18, Tarrakin Ferries, Muntari Island to Kanooka Heads</dd>
+          <dt>Vessel</dt><dd>MV Tarrakin Star, 24.4 m aluminium catamaran, 96 passengers certificated</dd>
+          <dt>On board</dt><dd>38 passengers, master, deckhand, kiosk attendant</dd>
+          <dt>Injuries</dt><dd>Nil serious. One grazed shin; two passengers treated for distress</dd>
+          <dt>Damage</dt><dd>Substantial: starboard hull holed, propeller, shaft, rudder stock and skeg</dd>
+          <dt>Rating</dt><dd>High, so an investigation was required</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block--wide" id="first">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">2</span> What came in first</span>
+      <h2>The first material, filed before anyone had a theory</h2>
+      <p>In the days after the grounding the two safety reports, the notification and the first records arrive. They go into the file as they are, and the checklist starts the work that follows from them.</p>
+    </div>
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-events)"></span><h3>The first material</h3></div>
+          <article class="step" data-shot="s03" data-caption="The safety reports: the submission details, the just culture flag, and each account exactly as it was written.">
+            <h4>Take the safety reports in as they were written</h4>
+            <p>SR-2026-0288 was submitted by the master at 18:52 local, from the vessel, while the workboat was still running passengers ashore. It goes in as written, with the submitter recorded by role, the time, and the reference in the reporting system. No name goes into the file.</p>
+            <p>One tick says the report came in under the company's just culture scheme. From then on report drafting is told the account may inform the investigation and must not be quoted into a distributed document, and the audit checks that it was not.</p>
+            <p>A second report, SR-2026-0291, arrived two days later from the deckhand. It is not about the grounding at all. It is about the lifejacket locker in the forward saloon, which she had to reach by squeezing behind the kiosk counter while handing jackets out. Nobody had asked her about it. It became a finding.</p>
+            <p class="records"><span>What the app recorded</span>Each account verbatim, its reference and time, the submitter's role, and the protection it was given.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/03-safety-report.png" alt="A safety report with its submission details and the report text">
+          </article>
+          <article class="step" data-shot="s01" data-caption="The evidence register, grouped by where each item is used.">
+            <h4>File the material once, and link it from what rests on it</h4>
+            <p>Seventeen items go into the register over the following fortnight: the notification, the shore AIS track, the engine and steering recorder, the plotter's own event log and its bench test, the echo sounder alarm log, both VHF channels and the bridge camera audio, the tide gauge record and the weather, the aids to navigation code, the port services agreement, two operations manuals, the route risk assessment and the change record, the defect book, the survey, the stowage survey, the crew records, the Port Authority's register and the foreshore lighting survey.</p>
+            <p>Each carries what it is, where it came from, whether it is held verbatim or as a description, and one line on why it matters. Nothing is filed twice. Every object on the map, every timeline event and both safety reports link to the items they rest on, so a finding can be followed back to the document that produced it and a document can be asked what is resting on it.</p>
+            <p class="records"><span>What the app recorded</span>Each item once, with its category, its reference, its record type and its significance, and every link from the material that uses it.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/01-evidence-register.png" alt="The evidence register grouped by where each item is used">
+          </article>
+          <article class="step" data-shot="s04" data-caption="The Checklist tab: the investigation's running checklist, the to-do list, and the distribution list.">
+            <h4>Work the checklist, and keep the open questions where they can be seen</h4>
+            <p>The checklist is the investigation's own procedure, worked question by question and answered yes, no or not applicable. Twelve of them are still answered no when the standard report is drafted, because they are honestly no: two objects are not finalised, the preliminary update has not gone out, nobody outside the investigation has read the draft, and the investigation cannot be closed.</p>
+            <p>The to-do list sits beside it. Six items, four of them still open: the firmware fix has not been proved to be the fix, nobody has said what it would take to fund the sightline work, the operator has not answered whether a second person belongs on the bridge at night, and only two of the five masters on the route have been asked whether the plotter has ever frozen on them. Two of the six were raised from an object's own form and link straight back to it.</p>
+            <p class="records"><span>What the app recorded</span>Every checklist answer, the to-do list with what raised each item, the distribution list, and a running log of the investigation's own actions.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/04-checklist-todos.png" alt="The checklist with answered items, the to-do list and the distribution list">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s01" src="../shots/kanooka-heads-grounding/01-evidence-register.png" alt="">
+          <img id="s03" src="../shots/kanooka-heads-grounding/03-safety-report.png" alt="">
+          <img id="s04" src="../shots/kanooka-heads-grounding/04-checklist-todos.png" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sources">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">3</span> The evidence pack</span>
+      <h2>Nine documents, and what each one settled</h2>
+      <p>By the end of the gathering phase the investigation held nine source documents. They are published here as one pack, so everything below can be read against the same material the investigator had.</p>
+    </div>
+    <div class="sources">
+      <div class="source">
+        <h4>Safety reports, master and deckhand</h4>
+        <p>The master's account, written from the vessel forty minutes after the grounding under the just culture scheme, and the deckhand's, submitted two days later about the lifejacket locker. The first opened the investigation. The second added a finding nobody had gone looking for. Both are protected, so they inform the work without being quoted into anything distributed.</p>
+      </div>
+      <div class="source">
+        <h4>Occurrence notification</h4>
+        <p>The operator's own notification: what happened, where, the damage, the injuries, the risk rating and the actions taken that night. It fixed the agreed facts and seeded the first timeline events.</p>
+      </div>
+      <div class="source">
+        <h4>Voyage data, AIS track and equipment logs</h4>
+        <p>The shore AIS receiver's track of the transit second by second, the engine and steering recorder, and the chart plotter's and echo sounder's own logs. It fixed the moment the vessel left the centreline, showed the set west as a held heading change rather than a current, and closed the steering failure hypothesis: every parameter was normal until the impact.</p>
+      </div>
+      <div class="source">
+        <h4>VHF and bridge audio extract</h4>
+        <p>Both VHF channels and the vessel's own bridge camera audio, from the departure call to the last passenger ashore. It is the evidence behind the plotter freeze, behind the 91 seconds between "Where's four" and "There's four", and behind the decision not to refloat.</p>
+      </div>
+      <div class="source">
+        <h4>Tide, weather and light</h4>
+        <p>The tide predictions and the port's own gauge record, the weather observations, and the light and moon data. It established the transit in full darkness, and it excluded the tide hypothesis: the gauge was within 0.03 m of prediction at the moment of the grounding.</p>
+      </div>
+      <div class="source">
+        <h4>Operator and port procedure extracts</h4>
+        <p>The aids to navigation code, the port services agreement, the passage planning and defect reporting manuals, the route risk assessment and the change record. Everything in the external, organisational and risk control lanes rests on these seven pages.</p>
+      </div>
+      <div class="source">
+        <h4>Vessel, port and crewing records</h4>
+        <p>The defect book and the maintenance system, the post-grounding survey, the lifejacket stowage survey, the crew and roster records, and the Port Authority's aids to navigation register with the range and visibility check and the foreshore lighting survey. The screened beacon, the halved range and the three deferred works rounds come from here.</p>
+      </div>
+      <div class="source">
+        <h4>Interview transcript, master</h4>
+        <p>The master's account in his own words, taken once the records were in hand. It is what turned the beacon from a complaint in a tearoom into a factor that could be tested, and it is where he explains a five degree alteration he says he never decided to make.</p>
+      </div>
+      <div class="source">
+        <h4>Interview notes, deckhand and outgoing master</h4>
+        <p>Two interviews that were not recorded, one at the interviewee's request and one by telephone. The investigator's notes are the record of both. The deckhand's gave the lifejacket finding and the question of who keeps a lookout; the outgoing master's gave the other half of the handover.</p>
+      </div>
+    </div>
+    <div class="card pack">
+      <a href="../exports/kanooka-heads-grounding/source_pack.html"><img class="shot" src="../exports/kanooka-heads-grounding/source_pack.png" alt="Cover page of the investigation source pack"></a>
+      <div>
+        <span class="eyebrow">Read along</span>
+        <h3>The source pack, 29 pages</h3>
+        <p>All nine documents in one file, in reading order, with the interview material at the back. It is compiled from the same source material the investigation was built from, and written through the application's own Word export, so it looks like everything else the app publishes.</p>
+        <p>Read it first and the analysis below is an argument you can check, rather than a conclusion you have to take on trust.</p>
+        <div class="links"><a class="btn btn-primary" href="../exports/kanooka-heads-grounding/source_pack.html">Read the pack</a><a class="btn" href="../exports/kanooka-heads-grounding/source_pack.pdf" target="_blank" rel="noopener">PDF</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block--wide" id="interviews">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">4</span> Interviews, and <span class="stage-no">5</span> the timeline</span>
+      <h2>Three accounts, two of them without a recording, and the sequence they have to fit</h2>
+      <p>The master, the deckhand and the master who had the vessel that morning were all interviewed once the records were in hand, so the questions could be about what the records did not say. The sequence of events is then built from everything at once.</p>
+    </div>
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-actions)"></span><h3>The interviews</h3></div>
+          <article class="step" data-shot="s02" data-caption="An interview: the record header, the Teams transcript with speakers mapped to roles, and the investigator's own write-up beside it.">
+            <h4>Import the one transcript, write up the other two</h4>
+            <p>Three interviews, each on its own sub-tab. Only one was recorded. The master's was conducted over Teams and the transcript came in as the .vtt download, imported straight into the record; a .docx download, or a pasted transcript, import the same way.</p>
+            <p>De-identification is built into the import. Every speaker in a transcript is mapped to a role, and it is the role, never the name, that reaches the record, the collated export or any drafting model. On this file the speakers are lead investigator, second investigator and master, and that is all anyone downstream ever sees.</p>
+            <p>The other two were not recorded, one because the deckhand asked that it not be and one because it was taken by telephone. There the investigator's own three note windows are the record: free recall, additional questions, follow-up questions. Nothing pretends to be a transcript, and the collated export tells a drafting model which it is looking at.</p>
+            <p>Two of the three records are finalised. The deckhand's is deliberately not, because her question about who keeps a lookout is still out with the operator and her answer may have to be put to her again. An unfinalised record is not hidden from drafting; drafting is told to treat it as a working draft rather than a settled account.</p>
+            <p class="records"><span>What the app recorded</span>The corrected transcript where there was one, the role for every speaker, the three note windows, the investigator's notes beside them, and whether the account has been finalised.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/02-interviews.png" alt="An interview with its transcript, the speaker to role mapping, and notes">
+          </article>
+        </div>
+        <div class="walk__stage" id="timeline">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-local)"></span><h3>The timeline</h3></div>
+          <article class="step" data-shot="s05" data-caption="The timeline: every event with its source and its time basis, and the critical event marked.">
+            <h4>Build the sequence, and say what each time rests on</h4>
+            <p>The timeline runs from the change of master at the town wharf at 13:05, five hours before anything went wrong, through to the last passenger stepping off the workboat. It mixes sources: the shore AIS gives the track to the second, the bridge camera gives the words, the plotter's own log gives the freeze, and the port's VHF recording gives the response.</p>
+            <p>The handover is on it for a reason. It is where the fault the vessel grounded with was passed from one man to another and written down by neither, and putting it on the same line as the grounding is what makes that visible rather than something buried in a manual finding.</p>
+            <p>Each event carries its source and its time basis, so the sequence can be defended when two records disagree about when something happened. Here one pair did: the plotter and echo sounder clocks ran two seconds fast against the AIS receiver, and the correction is recorded rather than quietly applied.</p>
+            <p class="records"><span>What the app recorded</span>The ordered events, the evidence behind each one, the time basis it rests on, and which event is the critical one.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/05-timeline.png" alt="The timeline tab">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s02" class="tall" src="../shots/kanooka-heads-grounding/02-interviews.png" alt="">
+          <img id="s05" src="../shots/kanooka-heads-grounding/05-timeline.png" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block--wide" id="map">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">6</span> Building the map</span>
+      <h2>The analysis, built one stage at a time</h2>
+      <p>The map is the analysis. It starts with the occurrence itself, fills with everything that might have played a part, and is then cut down by testing rather than by opinion. These are three real states of this investigation's own file.</p>
+    </div>
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-org)"></span><h3>Three states of the same map</h3></div>
+          <article class="step" data-shot="s06" data-caption="Stage one: the critical event alone, placed bottom right.">
+            <h4>Place the critical event, and nothing else</h4>
+            <p>One object goes down first: <strong>Grounding on Boolarong Bank with 38 passengers embarked</strong>, in the Occurrence Events lane at the bottom right, with what happened and the proof of its significance recorded against it.</p>
+            <p>Everything else on the map exists to explain this one object. Putting it down first is what stops the analysis drifting into everything that was ever wrong with the operation or with the port.</p>
+            <p class="records"><span>What the app recorded</span>The critical event as an object, in its lane, at its point in time.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/06-map-stage-a.png" alt="The map with only the critical event placed">
+          </article>
+          <article class="step" data-shot="s07" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested, nothing filtered out.">
+            <h4>Put every hypothesis up, including the ones you expect to fail</h4>
+            <p>Eighteen more objects go up, scattered roughly where they belong in lane and in time. The occurrence sequence: the vessel left the dredged channel and tracked onto Boolarong Bank, and the shoaling was not detected until sixteen seconds before contact. The people on the night: the plotter fault passed on verbally at the change of master and not entered in the defect book, the transit continued at eight knots after the plotter froze, and the engines stopped with no attempt made to refloat on a falling tide.</p>
+            <p>The conditions they worked in: the No. 4 beacon not visible from the channel over the half mile before the vessel left it, the chart plotter frozen, day nine of twelve on a split duty, and the new foreshore floodlighting behind the beacon. Above them the controls and the organisations: no night passage plan and no hold point if the primary means of fixing is lost, a change-of-master defect brief that is verbal with nothing checking it, a lifejacket locker behind a kiosk counter, a beacon converted to solar with its range halved and nobody told, a sightline clearing deferred unfunded for three works rounds, a winter timetable approved without reopening the route risk assessment, and an aids to navigation code that asks for no availability standard and no notice to anybody on a waterway like this one.</p>
+            <p>Two of them are up there to be disproved: <strong>Steering or propulsion failure caused the vessel to sheer off track</strong> and <strong>Water level below prediction reduced the depth over Boolarong Bank</strong>. Nothing is filtered at this point. The method works by testing, not by intuition, and a hypothesis that is later excluded still strengthens the record.</p>
+            <p class="records"><span>What the app recorded</span>Each hypothesis as an untested object, drawn with a dashed white border until someone has tested it.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/07-map-stage-b.png" alt="Untested hypotheses scattered across the lanes">
+          </article>
+          <article class="step" data-shot="s08" data-caption="Stage three: half the map tested, seven arrows drawn, and both excluded hypotheses struck through.">
+            <h4>Test as the evidence arrives, and let the arrows follow</h4>
+            <p>Nine objects have been tested here. The occurrence sequence is joined up, off track to undetected shoaling to the grounding, and the beacon chain has started to form above it, from the code's scope down through the solar conversion and the deferred sightline to a light that was not there to be seen. Both hypotheses raised to be disproved have failed Existence and are struck through on the map, with the reason on the record.</p>
+            <p>An investigation does not arrive in order. Here the beacon chain was tested first because the range and visibility check had to be done at night, from a boat, before anyone touched the mangroves; the defect chain waited on a bench test that took three weeks and then found nothing. Objects are moved, tested, connected and reconnected as that happens, and the map is never more than the current state of the evidence.</p>
+            <p>Every arrow is a claim that one thing led to another. It stays grey and dashed until the object it comes from has passed its tests, and turns green when it has, so the picture builds itself as the work is done.</p>
+            <p class="records"><span>What the app recorded</span>Every object and every connection, with the state of each test behind them.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s06" src="../shots/kanooka-heads-grounding/06-map-stage-a.png" alt="">
+          <img id="s07" src="../shots/kanooka-heads-grounding/07-map-stage-b.png" alt="">
+          <img id="s08" src="../shots/kanooka-heads-grounding/08-map-stage-c.png" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="tests">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">7</span> Testing a factor</span>
+      <h2>Nothing is a finding until it has passed its tests</h2>
+      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. What the object becomes follows from the answers, not from the investigator's view of it.</p>
+    </div>
+    <div class="tests">
+      <article class="test card">
+        <span class="eyebrow">Existence</span>
+        <p class="q">Did this event or condition actually exist?</p>
+        <p>If it did, the border turns solid and the next question is asked. If it did not, the hypothesis is excluded: it stays on the map, struck through, with the reason recorded.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Inconclusive</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Influence</span>
+        <p class="q">Did it influence anything else, and if so in what way?</p>
+        <p>If it did, it is a contributing safety factor and its outgoing arrows become proven causal paths. Where the evidence cuts both ways, the test is argued with evidence for and against.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Argued</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Importance</span>
+        <p class="q">If it did not influence anything, is it still important enough to raise in the report?</p>
+        <p>A factor that played no part in this occurrence may still be a risk worth addressing. If so, it is a finding in its own right, an other risk factor, and it carries no arrows.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block block--wide">
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-controls)"></span><h3>The three questions, on one object</h3></div>
+          <article class="step" data-shot="s09" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad.">
+            <h4>Ask them of the operator's own missing defence</h4>
+            <p>The object is <strong>No night passage plan for the channel, and no hold point if the primary means of fixing is lost</strong>. The passage plan names the chart plotter as the primary means of position fixing and the No. 4 beacon as the secondary, and it closes with a note that the plan is written for the daylight transit and that night transits are not scheduled. There is no night plan. There is no abort point, no hold point, and no guidance anywhere on what to do if the plotter goes.</p>
+            <p>Did it exist? Yes, at 100 per cent: the manual text and the appendix are documentary, and the operator confirmed no night plan was ever written. Did it influence the occurrence? Yes, at 90 per cent. The master had 96 seconds between the freeze and the channel edge, on flat water, with no other traffic, and a named hold point would have been available throughout it. The missing 10 per cent allows that a master who did not think of stopping unprompted might not have applied a written rule under the same pressure.</p>
+            <p>The corner dot says how far the object's own investigation has got: amber while it is still being worked, green when the investigator has finished with it. Seventeen of the nineteen objects on this map are green, and two were deliberately left amber.</p>
+            <p class="records"><span>What the app recorded</span>Each verdict with its confidence and its evidence, the investigator's reasoning, and the standard of proof the investigation set. The form warns when a pass falls short of it.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/09-object-form.png" alt="An object's evidence form with verdicts and a confidence slider">
+          </article>
+          <article class="step" data-shot="s10" data-caption="An argued test: the evidence for and against, weighed into a confidence rather than a yes or no.">
+            <h4>Argue the one the evidence cuts both ways on</h4>
+            <p>At the top of the map is <strong>Aids to navigation on this waterway carry no availability standard and no duty to tell users anything</strong>. Nobody is in breach of anything, which is the point of putting it in the External Influences lane: the code applies its availability target, its recording duty and its notices to mariners only on a declared shipping channel, and the Weerona Channel is not one.</p>
+            <p>For: the notification duty is the one mechanism in the whole file that would have put the halved range in front of the operator, whose passage plan still said six miles on the night. Against: nothing in the code stopped the Authority trimming the mangroves, measuring the light or picking up a telephone; it chose not to for reasons of money and priority. And an availability figure would have caught none of this, because the lantern was lit and working the whole time. The problem was that it could not be seen, and no availability figure measures that.</p>
+            <p>Influence was accepted at 70 per cent, argued. The investigation's standard of proof is the application's default of 66 per cent, so this clears it, but only just, and it is the weakest of the influence findings on the map. The report carries that as its confidence word rather than presenting the finding as settled.</p>
+            <p class="records"><span>What the app recorded</span>Both sides of the argument as separate evidence, the confidence the investigator settled on after weighing them, and the reasoning for that number.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/10-object-form-argued.png" alt="An object's form showing evidence for and against influence">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s09" src="../shots/kanooka-heads-grounding/09-object-form.png" alt="">
+          <img id="s10" src="../shots/kanooka-heads-grounding/10-object-form-argued.png" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block--wide" id="finished">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">8</span> The finished map</span>
+      <h2>The whole investigation in one image</h2>
+      <p>Nineteen objects and sixteen arrows. Left to right is time, bottom to top is organisational depth, and the critical event sits at the bottom right where every chain arrives.</p>
+    </div>
+    <figure>
+      <img class="shot zoomable" src="../shots/kanooka-heads-grounding/11-map-final.png" alt="The finished map, fitted to the window" data-caption="The finished map: twelve contributing safety factors in three chains, two other risk factors, two excluded hypotheses, one positive event and one object still open on Existence.">
+      <figcaption>Click the map to see it at full size.</figcaption>
+    </figure>
+    <div class="map-notes">
+      <div class="card">
+        <h3>What the map says</h3>
+        <p>Three chains converge. A beacon chain runs from the code's scope through two separate port decisions, the solar conversion and the deferred sightline clearing, down to a light that was not visible over the half mile that mattered, and from there to the vessel leaving the channel. A defect chain runs from a verbal handover rule through the entry that was never made to a plotter that froze with a known fix nobody had applied. A short timetable chain runs from a change record approved one level too low to a night transit with no plan for it. All three arrive at the same two objects and through them at the grounding.</p>
+        <p>A green arrow also runs from the positive event, the engines stopped with no attempt made to refloat, because that changed the outcome as well. The two orange objects carry no arrows at all. They failed Influence, so there is no proven causal path to draw and an arrow would be a claim the evidence does not support. They stay on the map because they are findings in their own right.</p>
+      </div>
+      <div class="card">
+        <h3>The one unproven arrow</h3>
+        <p>One arrow is grey and dashed: the claim that the new foreshore floodlighting behind the beacon is part of why the master could not pick it up. Fourteen unshielded floodlights went in ten days before the winter timetable began, and from half a mile north they sit behind the beacon within four degrees of the same bearing. Both masters interviewed described the same thing in almost the same words. That shows a condition. It does not show an effect on detection.</p>
+        <p>And there is a harder problem with it: over the stretch where the master was actually looking, the beacon is screened by mangroves and would not have been visible against a black sky either. Existence was left inconclusive at 45 per cent, so the object never reached Influence and its arrow cannot be drawn as proven. The application draws it grey and dashed rather than dropping it, because an open line of enquiry is part of the record and the report has to say that it is open.</p>
+      </div>
+    </div>
+    <div class="legend" aria-label="What the shapes and colours mean">
+      <ul>
+        <li><span class="swatch"></span><span><strong>Blue, solid border:</strong> a contributing safety factor. It existed and it influenced the occurrence.</span></li>
+        <li><span class="swatch other"></span><span><strong>Orange:</strong> an other risk factor. It existed, it did not influence this occurrence, and it is still worth raising.</span></li>
+        <li><span class="swatch excluded"></span><span><strong>Struck through, dashed:</strong> an excluded hypothesis. It did not exist, and the reason is on the record.</span></li>
+        <li><span class="swatch positive"></span><span><strong>Green, rounded:</strong> a positive event, something that reduced the risk or limited the outcome.</span></li>
+        <li><span class="swatch critical"></span><span><strong>Red, rounded:</strong> the critical event, the occurrence itself.</span></li>
+        <li><span class="swatch untested"></span><span><strong>White, dashed:</strong> not yet tested, or a test left inconclusive.</span></li>
+        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#15803d" stroke-width="2.2"/><path d="M24 6l7 5-7 5z" fill="#15803d"/></svg><span><strong>Green arrow:</strong> a proven causal path. The object it comes from has passed Influence.</span></li>
+        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/><path d="M24 6l7 5-7 5z" fill="#94a3b8"/></svg><span><strong>Grey dashed arrow:</strong> a claim still under test.</span></li>
+        <li><span class="dot green" style="margin-top:6px"></span><span><strong>Green dot:</strong> the object's investigation is complete and its evidence finalised.</span></li>
+        <li><span class="dot amber" style="margin-top:6px"></span><span><strong>Amber dot:</strong> still being investigated.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="tables">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">9</span> The E/I/I tables</span>
+      <h2>The working behind every finding, written out</h2>
+      <p>The map is the picture. The tables are the proof, exported from the same record, one table per object, in the order the map reads.</p>
+    </div>
+    <div class="card pack">
+      <a href="../exports/kanooka-heads-grounding/eii_tables.html"><img class="shot" src="../exports/kanooka-heads-grounding/eii_tables_p2.png" alt="A page of the E/I/I tables document: one table per object with each test, its confidence and the evidence"></a>
+      <div>
+        <span class="eyebrow">The working</span>
+        <h3>One table per object</h3>
+        <p>Each test's result and confidence, the evidence recorded for it and against it where it was argued, the proof of significance, and the investigator's own reasoning. None of it is typed twice: it is the same record the map draws from and the same record the report is drafted from.</p>
+        <p>This is the document a reviewer, a regulator or a court would ask for, and it is why a finding in the report can be followed back to the evidence that produced it.</p>
+        <div class="links"><a class="btn btn-primary" href="../exports/kanooka-heads-grounding/eii_tables.html">Read the tables</a><a class="btn" href="../exports/kanooka-heads-grounding/eii_tables.pdf" target="_blank" rel="noopener">PDF</a><a class="btn" href="../exports/kanooka-heads-grounding/collation.md">The collated export</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block--wide" id="drafting">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">10</span> Drafting, audit and repair</span>
+      <h2>The report is written from the record, then argued with</h2>
+      <p>Drafting is not the end of the work. Every draft is audited against the record that produced it, and what the audit finds is acted on before anything is finalised.</p>
+    </div>
+    <div class="walk">
+      <div class="walk__steps">
+        <div class="walk__stage">
+          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-external)"></span><h3>The pipeline</h3></div>
+          <article class="step" data-shot="s12" data-caption="The Draft report tab: a style, a section at a time, or the whole report in one run.">
+            <h4>Draft</h4>
+            <p>A style is chosen and its sections are drafted from one collated copy of the whole record: an outline pass, a call per section, then a cohesion edit across the lot. The model is given the record and nothing else, and the findings, the categories and the confidence words all come from the record, so a section cannot claim more than the tests behind it support. Each section is corrected and finalised by hand, and nothing regenerates over a finalised one. This investigation was drafted through a model reached from the investigator's own machine; the endpoint is a setting, so the same pipeline runs against a local model, a hosted API with your own key, or an organisation's gateway. With AI access off the tab says so and the report is assembled from the record instead.</p>
+            <p class="records"><span>What the app recorded</span>Each section with the model and the version of the record that produced it, so a draft goes visibly stale when the record moves on.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/12-draft-report.png" alt="The Draft report tab with its sections and the whole-report run">
+          </article>
+          <article class="step" data-shot="s13" data-caption="The Report tab: findings derived from the tests, the record assembled under a report style's headings.">
+            <h4>Audit, repair, then finalise</h4>
+            <p>An adversarial pass then reads the finished draft back against the whole record and verdicts every claim in it, naming what it could not find and what it found contradicted. A mechanical check with no model in it runs beside it, comparing each factor's category and confidence word in the text against its recorded test, and the report's findings against the derived classification. The repair pass takes only what those two flagged: it sends the section carrying a flagged item, with the record and the cited excerpt, under one rule, change what is flagged and nothing else, then re-audits the reply and keeps it only if the re-audit is clean or strictly better. Nothing lands on its own. A repaired section is shown beside the text it would replace and landed by hand, and it carries "repaired against the audit" in its provenance.</p>
+            <p>The model also writes review notes as it drafts: contradictions, gaps and inconsistencies it finds in the record itself rather than in its own text. Those are published below with the audits, because on this investigation they caught things worth catching, and because what the audit finds is the reason a draft is never final until an investigator has read it.</p>
+            <p class="records"><span>What the app recorded</span>The audit and the record check beside the draft, the review notes the model made about the record itself, which section each repair touched, and the investigator's decision to finalise.</p>
+            <img class="inline" src="../shots/kanooka-heads-grounding/13-report.png" alt="The Report tab with the assembled report">
+          </article>
+        </div>
+      </div>
+      <div class="walk__media">
+        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
+          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
+          <img id="s12" src="../shots/kanooka-heads-grounding/12-draft-report.png" alt="">
+          <img id="s13" src="../shots/kanooka-heads-grounding/13-report.png" alt="">
+        </div>
+        <p class="walk__caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="published">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">11</span> The published reports</span>
+      <h2>Three reports from the one record</h2>
+      <p>The same investigation written three ways, on the application's Word template and converted to PDF. Each is published exactly as it landed, with the grounding audit and the mechanical record check beside it.</p>
+    </div>
+    <div class="published">
+      <article class="card">
+        <span class="eyebrow">Example</span>
+        <a href="../exports/kanooka-heads-grounding/report_standard.html"><img class="shot" src="../exports/kanooka-heads-grounding/report_standard.png" alt="Cover page of the standard investigation report"></a>
+        <h3>Standard investigation report</h3>
+        <p>The full report: executive summary, event overview, analysis, findings summary and appendices, drafted section by section from the record.</p>
+        <div class="links"><a class="btn btn-primary" href="../exports/kanooka-heads-grounding/report_standard.html">Read the report</a><a class="btn" href="../reports/kanooka-heads-grounding/standard.html#audit">The audit and checks</a></div>
+      </article>
+      <article class="card">
+        <span class="eyebrow">Example</span>
+        <a href="../exports/kanooka-heads-grounding/report_preliminary.html"><img class="shot" src="../exports/kanooka-heads-grounding/report_preliminary.png" alt="Cover page of the preliminary investigation update"></a>
+        <h3>Preliminary update</h3>
+        <p>The interim style, issued while the work was still running: what has been established so far, the risk exposure and the open lines of enquiry, with no findings.</p>
+        <div class="links"><a class="btn btn-primary" href="../exports/kanooka-heads-grounding/report_preliminary.html">Read the update</a><a class="btn" href="../reports/kanooka-heads-grounding/preliminary.html#audit">The audit and checks</a></div>
+      </article>
+      <article class="card">
+        <span class="eyebrow">Example</span>
+        <a href="../exports/kanooka-heads-grounding/report_executive.html"><img class="shot" src="../exports/kanooka-heads-grounding/report_executive.png" alt="Cover page of the executive brief"></a>
+        <h3>Executive brief</h3>
+        <p>The same record cut to a few pages of plain language: the occurrence, the findings and the actions, for the people who decide.</p>
+        <div class="links"><a class="btn btn-primary" href="../exports/kanooka-heads-grounding/report_executive.html">Read the brief</a><a class="btn" href="../reports/kanooka-heads-grounding/executive.html#audit">The audit and checks</a></div>
+      </article>
+    </div>
+    <p class="hint" style="margin-top: 20px; max-width: 78ch">Beside the reports, the same record exports the <a href="../exports/kanooka-heads-grounding/eii_tables.html">E/I/I tables</a> behind every finding, the map and the timeline as images, and a <a href="../exports/kanooka-heads-grounding/collation.md">collated copy</a> of the whole investigation, all written into the investigation's own folder. The investigation file itself is plain JSON, so an organisation can archive it and read it back without the application.</p>
+  </section>
+
+
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../index.html#case-studies">All case studies</a> · <a href="../index.html#download">Download the application</a> · <a href="#top">Back to top</a></span>
+  </footer>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
+  <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
+  <div class="lightbox__body">
+    <img id="lb-img" src="" alt="">
+    <p class="lightbox__caption" id="lb-caption"></p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lb-img");
+    var lbCaption = document.getElementById("lb-caption");
+    function openImage(src, text) {
+      lbImg.src = src; lbCaption.textContent = text || "";
+      lb.classList.add("is-open"); document.body.classList.add("has-lightbox");
+    }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+
+    // Each walkthrough drives its own sticky frame: the step nearest the
+    // middle of the window is the active one, and its screenshot is shown.
+    Array.prototype.forEach.call(document.querySelectorAll(".walk"), function (walk) {
+      var steps = Array.prototype.slice.call(walk.querySelectorAll(".step"));
+      var frames = {};
+      Array.prototype.forEach.call(walk.querySelectorAll(".walk__frame img"), function (img) { frames[img.id] = img; });
+      var caption = walk.querySelector(".walk__caption");
+      var current = null;
+      function show(step) {
+        if (!step || step === current) return;
+        current = step;
+        steps.forEach(function (s) { s.classList.toggle("is-active", s === step); });
+        Object.keys(frames).forEach(function (id) { frames[id].classList.toggle("is-shown", id === step.dataset.shot); });
+        caption.textContent = step.dataset.caption || "";
+      }
+      show(steps[0]);
+      if ("IntersectionObserver" in window) {
+        var visible = new Map();
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { visible.set(e.target, e.intersectionRatio); });
+          var best = null, bestRatio = 0;
+          steps.forEach(function (s) { var r = visible.get(s) || 0; if (r > bestRatio) { best = s; bestRatio = r; } });
+          if (best && bestRatio > 0) show(best);
+        }, { rootMargin: "-35% 0px -45% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] });
+        steps.forEach(function (s) { io.observe(s); });
+      }
+      var frame = walk.querySelector(".walk__frame");
+      function fitFrame(img) {
+        if (!img) return;
+        if (img.naturalWidth && img.naturalHeight) frame.style.aspectRatio = img.naturalWidth + " / " + img.naturalHeight;
+        else img.addEventListener("load", function () { if (frames[current.dataset.shot] === img) fitFrame(img); }, { once: true });
+      }
+      var baseShow = show;
+      show = function (step) { var was = current; baseShow(step); if (current !== was) fitFrame(frames[current.dataset.shot]); };
+      fitFrame(frames[current.dataset.shot]);
+      function openCurrent() { if (current && frames[current.dataset.shot]) openImage(frames[current.dataset.shot].src, current.dataset.caption); }
+      frame.addEventListener("click", openCurrent);
+      frame.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCurrent(); } });
+      steps.forEach(function (s) { var inline = s.querySelector("img.inline"); if (inline) inline.addEventListener("click", function () { openImage(inline.src, s.dataset.caption); }); });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
+    document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    lb.addEventListener("click", closeLb);
+    window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
+  })();
+</script>
+
+</body>
+</html>

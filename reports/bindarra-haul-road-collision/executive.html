@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Brief, Bindarra</title>
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+/* Rendered preview of a drafted report section. Sized to read like a
+   report page rather than a web page: generous line height, restrained
+   headings, and a measure that does not run the full window width. */
+.md {
+  max-width: 78ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #0f172a;
+}
+
+.md h1 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 650;
+  color: #0f766e;
+}
+
+.md h2 {
+  margin: 24px 0 10px;
+  font-size: 18px;
+  font-weight: 650;
+  color: #115e59;
+}
+
+.md h3 {
+  margin: 20px 0 8px;
+  font-size: 15.5px;
+  font-weight: 650;
+}
+
+.md h4 {
+  margin: 16px 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.md p {
+  margin: 0 0 12px;
+}
+
+.md ul,
+.md ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.md li {
+  margin-bottom: 4px;
+}
+
+.md blockquote {
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border-left: 3px solid #cbd5e1;
+  color: #475569;
+  font-style: italic;
+}
+
+.md code {
+  padding: 1px 5px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-family: "Consolas", monospace;
+  font-size: 13px;
+}
+
+.md hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+}
+
+.md__table-wrap {
+  overflow-x: auto;
+  margin: 0 0 14px;
+}
+
+.md table {
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.md th,
+.md td {
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.md th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+/* The markers an investigator must not miss before a draft goes out */
+.md__marker {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* The Interview Synopsis Tool's [[? ... ]] uncertainty marker: red,
+   distinct from the amber drafting-pipeline markers above, since this
+   is something the investigator resolves by editing the text. */
+.md__uncertain {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+  .report-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .report-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .report-meta { display: flex; gap: 14px 24px; flex-wrap: wrap; font-size: 0.88rem; color: var(--ink-soft); font-family: var(--font-mono); margin-top: 6px; }
+  .report-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; position: sticky; top: 56px; z-index: 10; background: var(--ground); padding-block: 10px; }
+  .report-tabs a { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; }
+  .report-tabs a:hover { background: #f1f5f9; color: var(--ink); }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 22px; scroll-margin-top: 120px; }
+  .panel h2.panel-title { font-size: 1.2rem; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .panel .md { max-width: 80ch; }
+  .panel .md table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  .panel .md th, .panel .md td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); margin-bottom: 18px; max-width: 80ch; }
+  @media (max-width: 700px) { .panel { padding: 18px; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../../index.html">Home</a>
+      <a href="../../case-studies/bindarra-haul-road-collision.html">Case study</a>
+      <a href="../../index.html#reports" aria-current="page">Reports</a>
+      <a href="../../index.html#download">Download</a>
+      <a href="../../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="report-head">
+    <span class="eyebrow">Example report, Bindarra case study</span>
+    <h1>Executive brief</h1>
+    <p>The occurrence, the findings and the actions on a few pages for the people who decide.</p>
+    <div class="report-meta"><span>1,946 words</span><span>claude:opus</span><span>7 model calls</span><span>drafted 30/09/2026</span></div>
+  </div>
+  <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the people and every record. The report is published exactly as the pipeline produced it, faults and all. The grounding audit and the record check below are what the application reported about its own draft, and they are the reason a draft is never final until an investigator has read it.</p>
+  <nav class="report-tabs" aria-label="Report parts">
+    <a href="#report">Report</a>
+    <a href="#audit">Grounding audit</a>
+    <a href="#check">Record check</a>
+    <a href="#notes">Review notes</a>
+  </nav>
+  <section class="panel" id="report"><h2 class="panel-title">The report as drafted</h2><div class="md"><h1><span>What happened</span></h1><p><span>On 2 August 2026, a new access road, the RL 312 spur, was opened to light vehicles in the Stage 4 open pit at Bindarra Gold Mine to serve dewatering bore DW-14. The spur joined the main haul ramp beyond a crest. The construction sign at its mouth was removed that day, and no sign, give-way control or road marking was installed afterwards. On 4 August, a dewatering technician leaving the spur found a descending haul truck about 60 m away. He reversed back into the spur and let it pass. He reported the near miss that night, describing the rise, the windrow (a raised earth bank along the road edge), the missing sign and his view that truck operators did not know the road was there. Two days later the report was closed with a reminder to the crew to take care and give way to haul trucks. Its risk rating was lowered from Medium to Low, and it was not referred beyond the dewatering department.</span></p><p><span>At 18:22 UTC on 11 August, the pit returned to work after the crib (meal) break. A grade control technician employed by a survey subcontractor was on his third night shift at the mine. He finished a set of levels at the bore and drove light vehicle LV-118 along the 240 m spur towards the ramp. Nobody else on shift knew he was in the pit, because there was no permit, call-in or board that could have told them. Haul truck HT-407, a 220 t class rigid truck, was coming down the ramp empty. At 18:47:06 UTC, the truck was travelling at 37 km/h and was 41 m above the intersection. Within 1.4 seconds its operator braked hard, applied full retarder (an additional braking system) and steered right. The truck&#x27;s collision awareness system detected the light vehicle at 21.4 m. However, the truck was inside an area of the system called the S4-LOAD geofence, and there the alert was suppressed, so nothing appeared in the cab. At 18:47:12 UTC (02:47 local time), the truck struck the right side of the light vehicle at 24 km/h, 6.2 m into the ramp. It pushed the light vehicle 18.4 m down the ramp, and the light vehicle rolled onto its left side against the inner windrow. The seatbelt and roll-over protection structure both showed loading. Dispatch stopped all Stage 4 traffic 49 seconds later and paged the emergency response team at 18:48. The first response vehicle arrived at 18:54, and the second responder arrived with the hydraulic rescue tool at 19:07. The driver, who stayed conscious throughout, was freed through the rear of the vehicle between 19:14 and 19:21, 27 minutes after the collision. He had a fractured left collarbone, three fractured left ribs and a small pneumothorax (air around the lung). He was flown to the metropolitan trauma centre at 23:40 UTC (07:40 local). The light vehicle was destroyed. The truck was damaged at the front left and returned to service on 14 August. The pit stood down for 9 hours 15 minutes, and the ramp below RL 340 was closed for 22 hours.</span></p><h1><span>Why it happened</span></h1><p><span>The collision happened because the truck and the light vehicle reached the intersection with neither operator aware of the other. The investigation found this was extremely likely, and extremely likely to have led to the collision. Four conditions at the intersection combined to produce it.</span></p><p><span>The most significant was the layout of the intersection. The spur met the ramp beyond a crest, giving 41 m of sight line against a plan minimum of 120 m. This very likely contributed. With so little distance to see each other, neither operator had room to detect the other in time.</span></p><p><span>The light vehicle then entered the ramp from the spur without stopping and without establishing the truck&#x27;s position. This very likely contributed. Neither operator made a positive call on the pit channel before entering the intersection, which likely contributed. The truck&#x27;s collision awareness system did detect the light vehicle. However, its alerts were suppressed inside the S4-LOAD geofence (a mapped zone within which the system behaves differently), and that geofence had been extended to cover the new intersection. So the one system that detected the light vehicle gave the operator no warning. This was a safety issue that likely contributed.</span></p><p><span>These conditions came from how the spur was introduced and how traffic was controlled. The spur was cut and opened to traffic under a works order, and no management of change (a formal process for assessing the risks of a change before it is made) was raised. This was a safety issue that very likely contributed. It led to an intersection that opened with a sight line well short of the plan minimum. It also affected how radio calls were managed there.</span></p><p><span>Positive radio calls were required only at intersections on a list, and that list was rewritten once a year. This was a safety issue that very likely contributed to neither operator making a call.</span></p><p><span>The traffic management guidance </span><mark class="md__marker">[NOT ESTABLISHED: issuing body of the traffic management guidance]</mark><span> left undefined what should trigger a review of traffic arrangements. It also left the identification of interaction zones to the site. This was a safety issue that likely contributed. It lay behind both the absence of a management of change for the spur and the reliance on a once-a-year list for radio calls.</span></p><p><span>The driver&#x27;s own entry onto the ramp was shaped by how he was brought onto site. The survey subcontractor&#x27;s induction was accepted as equivalent to the mine&#x27;s own. The site supplement and the pit driving assessment were never verified. This was extremely likely to have occurred and was a safety issue that likely contributed to the light vehicle entering the ramp without stopping.</span></p><p><span>The investigation also examined whether dust on the ramp reduced the truck operator&#x27;s ability to see the light vehicle. The matter could not be settled. It was about as likely as not that dust was present to that effect, so no finding is made. Any dust would have been at the right place and time to matter. Against this, the operator sighted the light vehicle at the distance the road geometry predicts in clear air, which leaves dust with nothing to explain. Its effect on detection cannot be established either way with the information that exists.</span></p><h1><span>What we found</span></h1><h2><span>Contributing safety factors</span></h2><ul><li><span>The collision awareness alerts were suppressed, with virtual certainty, inside a geofence that had been extended to cover the new intersection. This likely contributed to the collision. (Safety issue)</span></li><li><span>It is very likely that both vehicles arrived at the intersection with neither operator aware of the other, and very likely that this contributed to the collision.</span></li><li><span>The haul truck&#x27;s front left struck the right side of the light vehicle at 24 km/h. This is virtually certain, and it is virtually certain that the impact contributed to the driver&#x27;s injuries.</span></li><li><span>The light vehicle was pushed 18 m down the ramp and rolled onto its left side. Both the event and its contribution to the driver&#x27;s injuries are virtually certain.</span></li><li><span>The traffic management guidance leaves the review trigger undefined and the interaction zones to the site; this is virtually certain. It likely contributed by leaving new roads with no defined route into the mine&#x27;s traffic plan. The mine was not in breach of the guidance. (Safety issue)</span></li><li><span>The access spur was cut and opened to traffic under a works order, with no management of change raised. This is virtually certain and very likely contributed to the collision. (Safety issue)</span></li><li><span>With virtual certainty, the spur met the ramp beyond a crest, giving 41 m of sight line against a plan minimum of 120 m. This very likely contributed to the collision.</span></li><li><span>Positive radio calls were required only at listed intersections, and the list was rewritten once a year. This arrangement is virtually certain and very likely contributed to the collision. (Safety issue)</span></li><li><span>Neither operator made a positive call on the pit channel before entering the intersection, which is virtually certain. The absence of a call likely contributed to the collision.</span></li><li><span>The contractor&#x27;s induction was very likely accepted as equivalent to the mine&#x27;s own, with the site supplement and pit driving assessment never verified. On balance, this contributed to the collision. (Safety issue)</span></li><li><span>It is virtually certain that the light vehicle entered the ramp from the spur without stopping and without establishing the truck&#x27;s position, and very likely that this contributed to the collision.</span></li></ul><h2><span>Other factors that increased risk</span></h2><ul><li><span>Only one emergency response paramedic was rostered on night shift, with the second responder called in from the village. This is virtually certain and very likely increased risk. It did not affect the outcome of this occurrence. (Safety issue)</span></li><li><span>The truck operator was on night 10 of 14, in the eleventh hour of a 12.5 hour night shift, in the circadian low (the period of lowest natural alertness). This is virtually certain. The recorded data did not support an effect on this occurrence, but the roster pattern likely increased risk.</span></li></ul><h2><span>Other findings</span></h2><ul><li><span>It was very unlikely that the ramp surface was wet and that the truck could not stop in the distance available. This was examined and ruled out.</span></li><li><span>It was very unlikely that the haul truck&#x27;s service brakes were degraded and could not achieve the required stopping performance. This was examined and ruled out.</span></li><li><span>The truck operator braked and steered into the windrow within 1.4 seconds of sighting. This is virtually certain, and it very likely reduced the severity of the outcome.</span></li></ul><h1><span>What is being done</span></h1><p><strong>Traffic management guidance.</strong><span> Mines Safety Guideline MSG-14 sets no trigger for reviewing a traffic management plan. It also leaves sites to set their own interaction zones (where heavy and light vehicles meet). The mine was not in breach; the issue is the guideline&#x27;s latitude, not any failure by the Inspectorate. </span><mark class="md__marker">[NOT ESTABLISHED: any action proposed or taken in relation to MSG-14, and by whom]</mark></p><p><strong>Management of change for new roads.</strong><span> Procedure CRL-PRO-022 treated the RL 312 spur works order as routine earthworks, so no management of change was raised. The same applied to eleven of fourteen new Stage 4 roads built since the last plan review. </span><mark class="md__marker">[NOT ESTABLISHED: any action taken or proposed on the CRL-PRO-022 clause 5.3 exclusion, and its status]</mark></p><p><strong>Contractor induction.</strong><span> Standard CRL-STD-009 requires contractors driving in an operating pit to complete the site supplement and pit driving assessment. The access card system cannot verify either before issuing a card. </span><mark class="md__marker">[NOT ESTABLISHED: any action taken or proposed on verifying the site supplement and pit driving assessment, and its status]</mark></p><p><strong>Positive radio calls.</strong><span> On the night of the collision, the mine directed positive radio calls at every Stage 4 intersection, listed or not. The investigation confirmed that new intersections cannot be listed between annual reviews and raised this with the Mining Manager. A preliminary update was issued on 28 August 2026. </span><mark class="md__marker">[NOT ESTABLISHED: whether the direction remains in force and whether BIN-TMP-004 has been amended]</mark></p><p><strong>Collision awareness geofence.</strong><span> The alert-suppression geofence was extended in June 2026 to the new intersection without checking the traffic management plan. </span><mark class="md__marker">[NOT ESTABLISHED: any action taken or proposed on the geofence boundary, suppression reporting or training, and its status]</mark></p><p><strong>Night shift emergency response.</strong><span> Night shift rosters one paramedic, and the second responder is called from the village. The emergency response coordinator is checking the other three night shifts&#x27; rosters, and the finding remains open. </span><mark class="md__marker">[NOT ESTABLISHED: any action taken or proposed on night shift responder rostering]</mark></p></div></section>
+  <section class="panel" id="audit"><h2 class="panel-title">Grounding audit</h2><p class="hint" style="margin-bottom:12px">A second pass over the finished draft against the full record: each claim it could not find, or found contradicted, with the evidence.</p><div class="md"><div class="md__table-wrap"><table><thead><tr><th><span>claim</span></th><th><span>verdict</span></th><th><span>evidence</span></th></tr></thead><tbody><tr><td><span>&quot;It is very likely that both vehicles arrived at the intersection with neither operator aware of the other, and very likely that this contributed to the collision.&quot; (What we found)</span></td><td><span>CONTRADICTED</span></td><td><span>Source: &quot;Existence Pass - extremely likely / Influence Pass - extremely likely&quot;. The draft&#x27;s own &quot;Why it happened&quot; section correctly says extremely likely.</span></td></tr><tr><td><span>&quot;The contractor&#x27;s induction was very likely accepted as equivalent to the mine&#x27;s own...&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>Source: &quot;Existence Pass - extremely likely&quot;.</span></td></tr><tr><td><span>&quot;On balance, this contributed to the collision.&quot; (contractor induction)</span></td><td><span>CONTRADICTED</span></td><td><span>Source: &quot;Influence Pass - likely&quot;. &quot;On balance&quot; is the phrasing for &quot;more likely than not&quot;, not &quot;likely&quot;.</span></td></tr><tr><td><span>&quot;The traffic management guidance </span><mark class="md__marker">[NOT ESTABLISHED: issuing body of the traffic management guidance]</mark><span>&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The source does establish the issuing body. MSG-14 was &quot;Issued by the State Mines Inspectorate, revision 4, 2021. A guideline made under regulation 6.22 of the Mining Operations Safety Regulations 2018.&quot;</span></td></tr></tbody></table></div><p><span>Checked: 60 claims. Supported: 56. Unsupported: 0. Contradicted: 4.</span></p></div></section>
+  <section class="panel" id="check"><h2 class="panel-title">Mechanical record check</h2><p class="hint" style="margin-bottom:12px">No model involved: each factor's category and confidence word in the text compared with its recorded test, the findings compared with the derived classification, and the section lengths against their targets.</p><div class="md"><h1><span>Mechanical record check</span></h1><ul><li><span>{&quot;section&quot;:&quot;What we found&quot;,&quot;factor_id&quot;:&quot;ei-guideline-scope&quot;,&quot;severity&quot;:&quot;error&quot;,&quot;code&quot;:&quot;findings-term-changed&quot;,&quot;message&quot;:&quot;Traffic management guidance leaves the review trigger undefined and the interaction zones to the site: the drafted bullet says \&quot;virtually certain\&quot;, but the investigation&#x27;s recorded Influence confidence is \&quot;likely\&quot;. This is the factor&#x27;s recorded Existence confidence, not its Influence confidence.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we found&quot;,&quot;factor_id&quot;:&quot;ia-no-radio-call&quot;,&quot;severity&quot;:&quot;error&quot;,&quot;code&quot;:&quot;findings-term-changed&quot;,&quot;message&quot;:&quot;Neither operator made a positive call on the pit channel before entering the intersection: the drafted bullet says \&quot;virtually certain\&quot;, but the investigation&#x27;s recorded Influence confidence is \&quot;likely\&quot;. This is the factor&#x27;s recorded Existence confidence, not its Influence confidence.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we found&quot;,&quot;factor_id&quot;:&quot;oi-induction-equivalence&quot;,&quot;severity&quot;:&quot;error&quot;,&quot;code&quot;:&quot;findings-term-missing&quot;,&quot;message&quot;:&quot;Contractor induction accepted as equivalent, with the site supplement and pit driving assessment never verified: the bullet&#x27;s contribution clause carries no probability term anywhere. The investigation&#x27;s recorded Influence confidence is \&quot;likely\&quot;.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we found&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;findings-term-offscale&quot;,&quot;message&quot;:&quot;\&quot;on balance\&quot; (\&quot;more likely than not\&quot;) is not one of the seven findings-scale expressions and must not appear in a Findings section.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What is being done&quot;,&quot;severity&quot;:&quot;info&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The text carries the outline&#x27;s \&quot;</span><mark class="md__marker">[NOT ESTABLISHED: ...]</mark><span>\&quot; notation rather than saying so in prose (6 occurrences).&quot;}</span></li><li><span>{&quot;section&quot;:&quot;Why it happened&quot;,&quot;severity&quot;:&quot;info&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The text carries the outline&#x27;s \&quot;</span><mark class="md__marker">[NOT ESTABLISHED: ...]</mark><span>\&quot; notation rather than saying so in prose (1 occurrence).&quot;}</span></li></ul></div></section>
+  <section class="panel" id="notes"><h2 class="panel-title">Review notes</h2><p class="hint" style="margin-bottom:12px">Observations the model made about the record itself while drafting, kept apart from the prose for the investigator to resolve.</p><div class="md"><ul><li><span>[What happened] - Emergency response log extract (critical event, &quot;Why Bindarra emergency response log… matters&quot;): refers to &quot;the nine minutes in the middle of&quot; the response. However, the timeline shows 13 minutes from the first response vehicle&#x27;s arrival (18:54) to the second responder&#x27;s arrival (19:07), and 7 minutes from then to the start of extrication (19:14). Neither interval is nine minutes, so the figure needs reconciling.</span></li><li><span>Collision awareness event (18:47:09 UTC): a closing speed of 13 km/h is recorded at 21.4 m. The fleet management data show the truck at 37 km/h three seconds earlier and 24 km/h at impact three seconds later. The basis of the closing-speed figure (relative or along-track) may need confirming.</span></li><li><span>[Why it happened] - &quot;Access spur cut and opened to traffic under a works order, with no management of change raised&quot; is recorded as leading to &quot;Positive radio calls required only at listed intersections, and the list is rewritten once a year&quot;. The once-a-year list requirement appears to be a standing arrangement that would predate the spur works order, so this edge may run backwards in time. It may instead describe the spur not being added to the list, which the record does not state.</span></li><li><span>&quot;Dust on the ramp reduced the truck operator&#x27;s ability to see the light vehicle&quot;: the Existence note says &quot;The deviation is real&quot;, yet Existence is recorded as Inconclusive, about as likely as not. These appear inconsistent. The draft does not assert that dust was present.</span></li><li><span>&quot;One emergency response paramedic rostered on night shift, with the second responder called from the village&quot; appears both under Safety issues and under Other risk factors, and is not finalised. It has been left out of this section because it failed Influence.</span></li><li><span>&quot;The light vehicle was pushed 18 m down the ramp&quot; differs from the 18.4 m in the approved &quot;What happened&quot; section. This is likely rounding, but it should be confirmed for consistency.</span></li><li><span>[What we found] - &quot;Why it happened&quot; (approved section) marks the issuing body of the traffic management guidance as </span><mark class="md__marker">[NOT ESTABLISHED]</mark><span>. The record states that MSG-14 revision 4 was issued by the State Mines Inspectorate under r 6.22 of the Mining Operations Safety Regulations 2018. The marker can be resolved.</span></li><li><span>Truck braking figures (WMS-TS-2026-114; positive event &quot;Truck operator braked and steered...&quot;): the recorded speeds are 37 km/h at brake application (18:47:07.4) and 24 km/h at impact (18:47:12.0), 4.6 s apart. That gives a mean deceleration of about 0.8 m/s², not the recorded 1.85 m/s².</span></li><li><span>Positive event note on Influence: this note says &quot;a third of the impact energy was taken out.&quot; Going from 37 to 24 km/h removes roughly 58 per cent of the kinetic energy. The figure should be checked.</span></li><li><span>Distances in the sequence may not reconcile. Sighting was at 41 m above the intersection, followed by a 1.4 s response at 37 km/h, which covers about 14 m. Yet the scene records the braked scuff starting 38.5 m up-ramp of the spur mouth. The truck&#x27;s rest position is also given as 19 m below the intersection (FMS), while the 62 m scuff from 38.5 m up-ramp implies about 23.5 m below the spur mouth. The reference points may differ, and this should be confirmed.</span></li><li><span>Fatigue object (&quot;Night 10 of 14...&quot;): the &quot;Evidence against influence&quot; field opens with &quot;For influence:&quot; and contains both arguments. The for and against fields appear to be mislabelled or merged.</span></li><li><span>The dust hypothesis (inconclusive) is not in the findings list for this section. It is discussed in &quot;Why it happened&quot;. The investigator may want to decide whether it also needs a line under Other findings.</span></li><li><span>[What is being done] - One emergency response paramedic rostered on night shift: the evidence gives the response times (02:48, 02:51, 02:54, 03:07, 03:14) without naming the time base. Nearly all other evidence uses UTC. The approved &quot;What happened&quot; section converted them to 18:48 to 19:14 UTC, and gives extrication as &quot;between 19:14 and 19:21&quot;, but the record gives a single time of 03:14. Please confirm the time base and the extrication times.</span></li><li><span>&quot;What we found&quot; (approved text) differs from the recorded confidences in two places. &quot;Both vehicles arrived at the intersection with neither operator aware of the other&quot; is recorded as Existence and Influence both extremely likely, but the approved text says &quot;very likely&quot;. &quot;Contractor induction accepted as equivalent&quot; is recorded as Existence extremely likely and Influence likely, but the approved text says &quot;very likely&quot; and &quot;On balance&quot;, which is not a permitted likelihood term.</span></li><li><span>The traffic management guidance safety issue: &quot;Why it happened&quot; marks the issuing body as not established. The record identifies the guidance as MSG-14 revision 4, made under Mining Operations Safety Regulations 2018 r 6.22, but does not name the body that issued it.</span></li></ul></div></section>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../../case-studies/bindarra-haul-road-collision.html#published">Back to the case study</a> · <a href="../../index.html#reports">Back to reports</a></span>
+  </footer>
+</main>
+
+</body>
+</html>

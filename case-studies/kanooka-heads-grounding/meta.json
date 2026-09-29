@@ -1,0 +1,11 @@
+{
+  "slug": "kanooka-heads-grounding",
+  "title": "Kanooka Heads",
+  "pageTitle": "Case study: Kanooka Heads",
+  "sector": "Maritime",
+  "blurb": "A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to three published reports.",
+  "cover": "11-map-final.png",
+  "order": 2,
+  "reports": ["standard", "preliminary", "executive"],
+  "documents": ["source_pack", "eii_tables"]
+}

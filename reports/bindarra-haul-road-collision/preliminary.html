@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preliminary Update, Bindarra</title>
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+/* Rendered preview of a drafted report section. Sized to read like a
+   report page rather than a web page: generous line height, restrained
+   headings, and a measure that does not run the full window width. */
+.md {
+  max-width: 78ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #0f172a;
+}
+
+.md h1 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 650;
+  color: #0f766e;
+}
+
+.md h2 {
+  margin: 24px 0 10px;
+  font-size: 18px;
+  font-weight: 650;
+  color: #115e59;
+}
+
+.md h3 {
+  margin: 20px 0 8px;
+  font-size: 15.5px;
+  font-weight: 650;
+}
+
+.md h4 {
+  margin: 16px 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.md p {
+  margin: 0 0 12px;
+}
+
+.md ul,
+.md ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.md li {
+  margin-bottom: 4px;
+}
+
+.md blockquote {
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border-left: 3px solid #cbd5e1;
+  color: #475569;
+  font-style: italic;
+}
+
+.md code {
+  padding: 1px 5px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-family: "Consolas", monospace;
+  font-size: 13px;
+}
+
+.md hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+}
+
+.md__table-wrap {
+  overflow-x: auto;
+  margin: 0 0 14px;
+}
+
+.md table {
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.md th,
+.md td {
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.md th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+/* The markers an investigator must not miss before a draft goes out */
+.md__marker {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* The Interview Synopsis Tool's [[? ... ]] uncertainty marker: red,
+   distinct from the amber drafting-pipeline markers above, since this
+   is something the investigator resolves by editing the text. */
+.md__uncertain {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+  .report-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .report-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .report-meta { display: flex; gap: 14px 24px; flex-wrap: wrap; font-size: 0.88rem; color: var(--ink-soft); font-family: var(--font-mono); margin-top: 6px; }
+  .report-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; position: sticky; top: 56px; z-index: 10; background: var(--ground); padding-block: 10px; }
+  .report-tabs a { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; }
+  .report-tabs a:hover { background: #f1f5f9; color: var(--ink); }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 22px; scroll-margin-top: 120px; }
+  .panel h2.panel-title { font-size: 1.2rem; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .panel .md { max-width: 80ch; }
+  .panel .md table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  .panel .md th, .panel .md td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); margin-bottom: 18px; max-width: 80ch; }
+  @media (max-width: 700px) { .panel { padding: 18px; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../../index.html">Home</a>
+      <a href="../../case-studies/bindarra-haul-road-collision.html">Case study</a>
+      <a href="../../index.html#reports" aria-current="page">Reports</a>
+      <a href="../../index.html#download">Download</a>
+      <a href="../../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="report-head">
+    <span class="eyebrow">Example report, Bindarra case study</span>
+    <h1>Preliminary investigation update</h1>
+    <p>The interim style: what happened, what has been established so far, the risk exposure and the open lines of enquiry. No findings.</p>
+    <div class="report-meta"><span>1,260 words</span><span>claude:opus</span><span>11 model calls</span><span>drafted 30/09/2026</span></div>
+  </div>
+  <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the people and every record. The report is published exactly as the pipeline produced it, faults and all. The grounding audit and the record check below are what the application reported about its own draft, and they are the reason a draft is never final until an investigator has read it.</p>
+  <nav class="report-tabs" aria-label="Report parts">
+    <a href="#report">Report</a>
+    <a href="#audit">Grounding audit</a>
+    <a href="#check">Record check</a>
+    <a href="#notes">Review notes</a>
+  </nav>
+  <section class="panel" id="report"><h2 class="panel-title">The report as drafted</h2><div class="md"><p><em>Preliminary update - the information in this report is based on the evidence available at the time of writing and may change as the investigation proceeds.</em></p><p><span>At 02:47 on 11/08/2026, haul truck HT-407, descending the Stage 4 ramp at Bindarra Gold Mine, struck LV-118 leaving the RL 312 dewatering spur. The impact pushed LV-118 18.4 m and onto its left side. The driver, a subcontracted grade control technician, was flown to a metropolitan trauma centre with a fractured left clavicle, three fractured left ribs and a small pneumothorax. LV-118 was destroyed and HT-407 was damaged. The pit stood down for 9 hours 15 minutes, and the ramp below RL 340 closed for 22 hours. Under examination are how the spur was opened, how intersections are added to the traffic management plan, the collision awareness system&#x27;s alert suppression, contractor access checks and night shift arrangements. A wet surface and degraded brakes are ruled out. A site-wide direction requires positive radio calls at every Stage 4 intersection.</span></p><h1><span>What we know</span></h1><p><span>Stage 4 is an open pit at the Bindarra Gold Mine. On 31/07/2026 the RL 312 dewatering spur, a 240 m road to a new dewatering bore, was completed under a works order recording that a management of change was not required. On 02/08/2026 the bore was energised, light vehicles began using the spur, and the construction sign at its mouth was removed without replacement. The spur joins the main ramp 34 m beyond a crest. Survey found that a descending haul truck operator first has line of sight to the spur mouth at 41 m.</span></p><p><span>At about 22:10 local on 04/08/2026, a dewatering technician drove out of the spur in front of a descending haul truck. He estimated it was &quot;maybe sixty metres up&quot; and reversed to let it pass. His hazard report described a rise in the ramp, the windrow (the earth bund along the road edge), and no sign or give-way control at the mouth. The report was closed on 06/08/2026 after the crew were reminded to take care and give way to haul trucks. Its risk rating was reduced from Medium to Low, and it was not referred outside the dewatering department.</span></p><p><span>On 11/08/2026 (all times local), crews returned from their meal break at 02:22. Haul truck HT-407 was descending empty on its second cycle. A grade control technician from a survey subcontractor, on his third night shift at the mine, was driving light vehicle LV-118 out of the spur. By his account, he slowed to about 25 km/h at the mouth, looked up the ramp, saw nothing and drove out without stopping. Neither driver made a radio call. The spur is not among the nine intersections where the site&#x27;s traffic management plan requires one.</span></p><p><span>At 02:47:06 HT-407 was travelling at 37 km/h, 41 m above the intersection. The operator braked, applied the retarder and steered right 1.4 seconds later. The collision awareness system detected LV-118 at 21.4 m but gave no in-cab alert because the intersection lay inside a suppression geofence (an area where alerts are switched off). At 02:47:12 the truck&#x27;s front left struck LV-118&#x27;s right side at 24 km/h. The impact pushed LV-118 18.4 m down the ramp and rolled it onto its left side.</span></p><p><span>At 02:48:01 dispatch stopped Stage 4 traffic and paged the emergency response team. The second responder arrived with the hydraulic rescue tool at 03:07. The driver was extricated through the rear at 03:14, 27 minutes after the collision. The site&#x27;s review recorded a delay of approximately 9 minutes awaiting the second responder and tool.</span></p><p><span>The driver was wearing his seatbelt. He had a fractured left clavicle, three fractured left ribs and a small pneumothorax (air in the chest cavity), and was flown to a metropolitan trauma centre at 07:40. The roll-over protection structure was deformed but not breached. LV-118 was destroyed. HT-407 returned to service on 14/08/2026. The truck operator and shift supervisor returned negative drug and alcohol tests. The pit stood down for 9 hours 15 minutes, and the ramp below RL 340 was closed for 22 hours.</span></p><h1><span>What we are looking at</span></h1><ol><li><strong>How the RL 312 spur was built and opened.</strong><span> This covers the works order used to cut the spur, why it recorded a management of change as not required, and what happens to referrals as a result. A management of change normally triggers three referrals: the traffic management plan owner; the survey department, for the in-cab road network; and the contractor&#x27;s technical services group, for the collision awareness system. Eleven of the fourteen new Stage 4 roads cut since the last plan review used a works order.</span></li></ol><ol><li><strong>How intersections are added to the traffic management plan.</strong><span> This covers how intersections reach the radio-call list, sight distance and signage requirements, why the list changes only at the annual review, and how intersection hazard reports are assessed and closed. It also covers how the state guideline MSG-14 leaves the review trigger and choice of interaction zones to each site. This is a question of the guideline&#x27;s structure, not the Inspectorate&#x27;s performance.</span></li></ol><ol><li><strong>The collision awareness system&#x27;s suppression geofence.</strong><span> This covers how the boundary came to be moved on 09/06/2026 without review against the traffic management plan, how suppressed detections are reported, and what operators understood the system to monitor.</span></li></ol><ol><li><strong>Contractor induction and access.</strong><span> This covers how the site checks completion of the site supplement and the pit driving assessment before issuing a contractor access card. The contractor&#x27;s site supplement records are still outstanding.</span></li></ol><ol><li><strong>Night shift arrangements across the site.</strong><span> This covers the emergency response roster on the site&#x27;s other night shifts and the night roster pattern on all four pits, given the risk each presents on every night shift.</span></li></ol><ol><li><strong>Dust on the ramp.</strong><span> Whether dust affected the truck operator&#x27;s view remains open.</span></li></ol><p><span>A wet road surface and degraded truck brakes were examined and ruled out.</span></p><h1><span>Containment and next steps</span></h1><p><strong>Interim action</strong></p><ul><li><span>Overnight after the collision, a site-wide direction was issued requiring a positive radio call on the pit channel at every Stage 4 intersection, whether or not it is listed in the traffic management plan. It applies to all vehicles operating in Stage 4. </span><mark class="md__marker">[NOT ESTABLISHED: who issued the direction, and whether it remains in force or has been built into BIN-TMP-004.]</mark></li><li><span>The Mining Manager has been told how intersections are added to the plan&#x27;s radio-call list, which currently happens only at the annual review. </span><mark class="md__marker">[NOT ESTABLISHED: any action decided as a result.]</mark></li><li><span>HT-407 returned to service on 14/08/2026 after a repeat brake performance test.</span></li></ul><p><span>No other interim safety action or containment has been recorded. In particular, no action is recorded on:</span></p><ul><li><span>the collision awareness system geofence</span></li><li><span>the works order exclusion from management of change</span></li><li><span>the checks made before a contractor access card is issued</span></li><li><span>the night shift emergency response roster.</span></li></ul><p><strong>Next steps</strong></p><ul><li><span>Obtain the emergency response roster for the site&#x27;s other three night shifts from the emergency response coordinator.</span></li><li><span>Obtain the survey subcontractor&#x27;s records for the site supplement, and hold a second conversation with the light vehicle driver.</span></li><li><span>Finalise the interview write-ups.</span></li><li><span>Record whether dust affected the truck operator&#x27;s view as still open. The available evidence cannot settle it.</span></li><li><span>Have the draft read by someone outside the investigation.</span></li><li><span>Give the people and areas it describes the chance to correct matters of fact.</span></li><li><span>Confirm an owner and a date for each safety action.</span></li></ul><p><span>The fuller report is expected </span><mark class="md__marker">[NOT ESTABLISHED: expected date of the final report]</mark><span>.</span></p></div></section>
+  <section class="panel" id="audit"><h2 class="panel-title">Grounding audit</h2><p class="hint" style="margin-bottom:12px">A second pass over the finished draft against the full record: each claim it could not find, or found contradicted, with the evidence.</p><div class="md"><div class="md__table-wrap"><table><thead><tr><th><span>claim</span></th><th><span>verdict</span></th><th><span>evidence</span></th></tr></thead><tbody><tr><td><span>&quot;</span><mark class="md__marker">[NOT ESTABLISHED: who issued the direction, and whether it remains in force or has been built into BIN-TMP-004.]</mark><span>&quot; (states the issuer is unknown)</span></td><td><span>CONTRADICTED</span></td><td><span>The occurrence notification names the issuer, the time and the duration: &quot;Site-wide direction issued by the Mining Manager at 05:10 local … until further notice.&quot; Only whether it has been built into BIN-TMP-004 is actually not established.</span></td></tr></tbody></table></div><p><span>Checked: 55 claims. Supported: 54. Unsupported: 0. Contradicted: 1.</span></p></div></section>
+  <section class="panel" id="check"><h2 class="panel-title">Mechanical record check</h2><p class="hint" style="margin-bottom:12px">No model involved: each factor's category and confidence word in the text compared with its recorded test, the findings compared with the derived classification, and the section lengths against their targets.</p><div class="md"><h1><span>Mechanical record check</span></h1><ul><li><span>{&quot;section&quot;:&quot;Summary&quot;,&quot;severity&quot;:&quot;error&quot;,&quot;code&quot;:&quot;section-missing&quot;,&quot;message&quot;:&quot;\&quot;Summary\&quot; has drafted text but the checked report carries no heading for it - it may have been dropped, or the drafting or cohesion pass may have stopped before reaching it.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;ei-guideline-scope&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Traffic management guidance leaves the review trigger undefined and the interaction zones to the site (External Influences) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;ia-lv-entered-ramp&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Light vehicle entered the ramp from the spur without stopping and without establishing the truck&#x27;s position (Individual Actions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;ia-no-radio-call&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Neither operator made a positive call on the pit channel before entering the intersection (Individual Actions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;lc-roster-fatigue&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Night 10 of 14, in the eleventh hour of a 12.5 hour night shift, in the circadian low (Local Conditions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;lc-sight-distance&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;The spur meets the ramp beyond a crest, giving 41 m of sight line against a plan minimum of 120 m (Local Conditions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oe-converge&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Both vehicles arrived at the intersection with neither operator aware of the other (Occurrence Events) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oe-impact&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;The haul truck&#x27;s front left struck the right side of the light vehicle at 24 km/h (Occurrence Events) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oe-pushed-rolled&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;The light vehicle was pushed 18 m down the ramp and rolled onto its left side (Occurrence Events) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oi-induction-equivalence&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Contractor induction accepted as equivalent, with the site supplement and pit driving assessment never verified (Organisational Influences) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;rc-night-medic&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;One emergency response paramedic rostered on night shift, with the second responder called from the village (Risk Controls) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;rc-positive-comms-list&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Positive radio calls required only at listed intersections, and the list is rewritten once a year (Risk Controls) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we know&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;section-overlength&quot;,&quot;message&quot;:&quot;\&quot;What we know\&quot; runs to 511 words, over 120 per cent of its 400-word target.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;Containment and next steps&quot;,&quot;severity&quot;:&quot;info&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The text carries the outline&#x27;s \&quot;</span><mark class="md__marker">[NOT ESTABLISHED: ...]</mark><span>\&quot; notation rather than saying so in prose (3 occurrences).&quot;}</span></li></ul></div></section>
+  <section class="panel" id="notes"><h2 class="panel-title">Review notes</h2><p class="hint" style="margin-bottom:12px">Observations the model made about the record itself while drafting, kept apart from the prose for the investigator to resolve.</p><div class="md"><ul><li><span>[What we know] - </span><strong>LV-118 departure time:</strong><span> The timeline gives the light vehicle&#x27;s departure from the bore collar as 18:44:40 to 18:47:00 UTC. The unfinalised driver interview has him leaving &quot;at about ten to three&quot; local, which would be 18:50 UTC, after the 18:47:12 collision. The draft does not state a departure time.</span></li><li><strong>Braking start point:</strong><span> The scene examination records the HT-407 braked scuff starting 38.5 m up-ramp of the spur mouth. The download puts the truck 41 m above the intersection at 18:47:06 and records brake pressure rising 1.4 s later at 37 km/h. At that speed the truck would travel roughly 14 m before braking began, which places the start of braking well below 38.5 m up-ramp. The two sources do not appear to reconcile.</span></li><li><strong>HT-407 rest position:</strong><span> The scene scuff starts 38.5 m up-ramp and runs 62 m to the truck&#x27;s resting position, putting it about 23.5 m below the spur mouth. The download and timeline give &quot;19 m below the intersection&quot;. This may reflect different datums, but it should be confirmed.</span></li><li><strong>Extrication end time:</strong><span> The timeline entry for extrication runs 19:14:00 to 19:21:00 (7 m). The sources give only the extrication time of 03:14 local (19:14 UTC). No source supports the 19:21 end time.</span></li><li><strong>Push distance:</strong><span> The occurrence notification gives the push distance as approximately 18 m, and the scene examination gives 18.4 m. The draft uses the measured 18.4 m.</span></li><li><strong>Sighting description in the outline:</strong><span> The &quot;What we know&quot; outline says the operator saw the light vehicle&#x27;s beacon. That detail comes only from the protected report ASR-2026-0341, so it has not been reproduced.</span></li><li><span>[What we are looking at] - Positive event &quot;Truck operator braked and steered into the windrow&quot;: the Influence note says a third of the impact energy was taken out by braking. A reduction from 37 km/h to 24 km/h removes about 58 per cent of the kinetic energy, not a third.</span></li><li><span>Collision awareness system factor, Influence note: it refers to &quot;fourteen months of silence on that ramp&quot;. The geofence was drawn on 14/03/2025, about 17 months before the occurrence, and extended over the intersection on 09/06/2026, about two months before. Neither interval matches fourteen months.</span></li><li><span>Fatigue factor (&quot;Night 10 of 14&quot;): the &quot;Evidence against influence&quot; field opens with &quot;For influence:&quot; and contains the arguments for influence. The &quot;Evidence for influence&quot; field contains an Importance argument rather than an influence argument. The fields appear to be transposed or mislabelled.</span></li><li><span>Emergency response factor: it appears twice, under Safety issues and under Other risk factors, with identical content. It is also labelled &quot;Safety issue&quot; in the Risk Controls scaffold. Its category should be confirmed.</span></li><li><span>[Containment and next steps] - Investigation log, 12/08/2026 entry: this says &quot;both operators&quot; were tested for drugs and alcohol, which reads as the truck operator and the light vehicle driver. The approved &quot;What we know&quot; section says the truck operator and the shift supervisor were tested. One of these needs to be reconciled.</span></li><li><span>Investigation log, 12/08/2026 entry: the site-wide positive-call direction is recorded without the person who decided it or its current status. The containment checklist item on recording who decided an action and when is marked Yes, but the log does not show this.</span></li><li><span>Time basis: the radio extract, CAS event and download times are in UTC (for example 18:47:09.2). The emergency response times in the night-shift paramedic factor are in local time (02:48, 03:07, 03:14). The offset is consistent, but the factor does not state which time basis it uses.</span></li><li><span>[Summary] - Critical event evidence line (&quot;Light vehicle driver seriously injured…&quot;): this line says the truck was descending &quot;empty at 24 km/h&quot;. The HT-407 download gives a different picture. It records 37 km/h at 18:47:06 and a 24 km/h impact speed after 4.6 seconds of braking. This is also reflected in the &quot;Both vehicles arrived…&quot; and &quot;Truck operator braked…&quot; factors. The critical event wording appears to have given the impact speed as the descent speed, and the &quot;What happened&quot; text repeats it. The summary uses neither figure, but the investigator should correct that line.</span></li><li><span>The summary is written as seven sentences rather than the specified three or four. This keeps every sentence short for the plain-English reader and still meets the requirement to state the date and full outcome. The investigator may prefer to merge sentences to meet the three-to-four sentence specification.</span></li><li><span>The summary opens with the required italic preliminary line, placed directly after the heading, because this appears to be the report&#x27;s first section. It should be moved if the harness places that line elsewhere.</span></li></ul></div></section>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../../case-studies/bindarra-haul-road-collision.html#published">Back to the case study</a> · <a href="../../index.html#reports">Back to reports</a></span>
+  </footer>
+</main>
+
+</body>
+</html>

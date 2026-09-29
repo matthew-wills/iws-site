@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Brief, Kanooka Heads</title>
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+  .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .pages { display: flex; flex-direction: column; gap: 18px; align-items: center; padding-block: 12px 32px; }
+  .page { width: 100%; max-width: 920px; }
+  .page img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 4px; }
+  .page figcaption { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../../index.html">Home</a>
+      <a href="../../case-studies/kanooka-heads-grounding.html#published" aria-current="page">Case study</a>
+      <a href="../../index.html#download">Download</a>
+      <a href="../../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="doc-head">
+    <span class="eyebrow">Published document, Kanooka Heads case study</span>
+    <h1>Executive brief, as published</h1>
+    <p>The short style on the same template: the occurrence, what was found and what is being done, in a few pages of plain language for the people who decide.</p>
+    <div class="doc-actions">
+      <a class="btn btn-primary" href="report_executive.pdf" target="_blank" rel="noopener">Download the PDF</a>
+      <a class="btn" href="../../reports/kanooka-heads-grounding/executive.html#audit">The audit and checks</a>
+    </div>
+  </div>
+  <div class="pages">
+    <figure class="page"><img src="pages/report_executive/p01.png" alt="Page 1 of 6" loading="eager"><figcaption>Page 1 of 6</figcaption></figure>
+    <figure class="page"><img src="pages/report_executive/p02.png" alt="Page 2 of 6" loading="eager"><figcaption>Page 2 of 6</figcaption></figure>
+    <figure class="page"><img src="pages/report_executive/p03.png" alt="Page 3 of 6" loading="lazy"><figcaption>Page 3 of 6</figcaption></figure>
+    <figure class="page"><img src="pages/report_executive/p04.png" alt="Page 4 of 6" loading="lazy"><figcaption>Page 4 of 6</figcaption></figure>
+    <figure class="page"><img src="pages/report_executive/p05.png" alt="Page 5 of 6" loading="lazy"><figcaption>Page 5 of 6</figcaption></figure>
+    <figure class="page"><img src="pages/report_executive/p06.png" alt="Page 6 of 6" loading="lazy"><figcaption>Page 6 of 6</figcaption></figure>
+  </div>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../../case-studies/kanooka-heads-grounding.html#published">Back to the case study</a></span>
+  </footer>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preliminary Update, Kanooka Heads</title>
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+/* Rendered preview of a drafted report section. Sized to read like a
+   report page rather than a web page: generous line height, restrained
+   headings, and a measure that does not run the full window width. */
+.md {
+  max-width: 78ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #0f172a;
+}
+
+.md h1 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 650;
+  color: #0f766e;
+}
+
+.md h2 {
+  margin: 24px 0 10px;
+  font-size: 18px;
+  font-weight: 650;
+  color: #115e59;
+}
+
+.md h3 {
+  margin: 20px 0 8px;
+  font-size: 15.5px;
+  font-weight: 650;
+}
+
+.md h4 {
+  margin: 16px 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.md p {
+  margin: 0 0 12px;
+}
+
+.md ul,
+.md ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.md li {
+  margin-bottom: 4px;
+}
+
+.md blockquote {
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border-left: 3px solid #cbd5e1;
+  color: #475569;
+  font-style: italic;
+}
+
+.md code {
+  padding: 1px 5px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-family: "Consolas", monospace;
+  font-size: 13px;
+}
+
+.md hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+}
+
+.md__table-wrap {
+  overflow-x: auto;
+  margin: 0 0 14px;
+}
+
+.md table {
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.md th,
+.md td {
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.md th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+/* The markers an investigator must not miss before a draft goes out */
+.md__marker {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* The Interview Synopsis Tool's [[? ... ]] uncertainty marker: red,
+   distinct from the amber drafting-pipeline markers above, since this
+   is something the investigator resolves by editing the text. */
+.md__uncertain {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+  .report-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .report-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .report-meta { display: flex; gap: 14px 24px; flex-wrap: wrap; font-size: 0.88rem; color: var(--ink-soft); font-family: var(--font-mono); margin-top: 6px; }
+  .report-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; position: sticky; top: 56px; z-index: 10; background: var(--ground); padding-block: 10px; }
+  .report-tabs a { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; }
+  .report-tabs a:hover { background: #f1f5f9; color: var(--ink); }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 22px; scroll-margin-top: 120px; }
+  .panel h2.panel-title { font-size: 1.2rem; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .panel .md { max-width: 80ch; }
+  .panel .md table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  .panel .md th, .panel .md td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); margin-bottom: 18px; max-width: 80ch; }
+  @media (max-width: 700px) { .panel { padding: 18px; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../../index.html">Home</a>
+      <a href="../../case-studies/kanooka-heads-grounding.html">Case study</a>
+      <a href="../../index.html#reports" aria-current="page">Reports</a>
+      <a href="../../index.html#download">Download</a>
+      <a href="../../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="report-head">
+    <span class="eyebrow">Example report, Kanooka Heads case study</span>
+    <h1>Preliminary investigation update</h1>
+    <p>The interim style: what happened, what has been established so far, the risk exposure and the open lines of enquiry. No findings.</p>
+    <div class="report-meta"><span>1,182 words</span><span>claude:opus</span><span>9 model calls</span><span>drafted 30/09/2026</span></div>
+  </div>
+  <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the people and every record. The report is published exactly as the pipeline produced it, faults and all. The grounding audit and the record check below are what the application reported about its own draft, and they are the reason a draft is never final until an investigator has read it.</p>
+  <nav class="report-tabs" aria-label="Report parts">
+    <a href="#report">Report</a>
+    <a href="#audit">Grounding audit</a>
+    <a href="#check">Record check</a>
+    <a href="#notes">Review notes</a>
+  </nav>
+  <section class="panel" id="report"><h2 class="panel-title">The report as drafted</h2><div class="md"><h1><span>Summary</span></h1><p><span>On 07/07/2026 the passenger ferry MV Tarrakin Star, carrying 38 passengers, a master, a deckhand and a kiosk attendant on service TF18, grounded on Boolarong Bank, outside the dredged Weerona Channel at Kanooka Heads, at 18:12 in darkness. No one was seriously injured: one passenger reported a grazed shin, and two were treated at the wharf for distress. The vessel had substantial damage to its starboard hull, propeller, shaft, rudder and skeg, including a split that let water into one void space. The channel was closed to commercial traffic for 19 hours. The investigation is examining four matters: the freezing of the vessel&#x27;s chart plotter during the transit, the arrangements for night operations on the route, the visibility of the No. 4 beacon, and how the channel&#x27;s aids to navigation are managed. The vessel has been withdrawn from service.</span></p><h1><span>What we know</span></h1><p><span>On 07/07/2026 the MV Tarrakin Star, a 24.4 m aluminium catamaran ferry certificated for 96 passengers, operated TF18, the day&#x27;s last service from Muntari Island to Kanooka Heads. It carried 38 passengers, a master, a deckhand and a kiosk attendant. Times are local.</span></p><p><span>The master took over the vessel at the town wharf at about 13:05. The outgoing master told him that the chart plotter (the electronic chart display) had frozen twice that morning and had recovered by itself each time. Neither master entered this in the defect book.</span></p><p><span>TF18 departed at 17:35. Civil twilight had ended at 17:29, so the channel transit was in full darkness. The vessel entered the Weerona Channel from the north at about 18:04. At 18:05:30 it was on the charted centreline abeam the No. 2 beacon at 8.4 knots. By then the deckhand had left the bridge to collect fares.</span></p><p><span>At 18:07:06 the plotter froze and did not recover. The master left the throttles unchanged and looked for the No. 4 beacon on the western side of the channel. He sighted it at 18:10:02, 91 seconds after he began looking. Meanwhile, the heading increased from 195 to 200 degrees over about a minute and was held. The vessel crossed the western edge of the dredged channel at about 18:09 and was over Boolarong Bank by about 18:11. Engine and steering data show no fault or alarm during the transit.</span></p><p><span>The echo sounder&#x27;s shallow alarm, set at 0.9 m under the keel, sounded at 18:11:48, and both throttles went astern four seconds later. At 18:12:04 the vessel struck the bank at 6.8 knots, 74 m west of the charted centreline and 54 m outside the dredged channel. It stopped within 11 m, heeled 4 degrees to starboard, on a falling tide.</span></p><p><span>The master stopped both engines and did not attempt to refloat. At 18:13:04 he made a pan pan (urgency) call to Kanooka Heads Port Control on VHF channel 16. All passengers were in lifejackets by about 18:22. Issue was slower in the forward saloon, where the locker is behind the kiosk counter. Water in the No. 2 starboard void rose from approximately 75 mm at 18:16 to approximately 260 mm by 00:20. The port workboat came alongside at 18:41, and the last passenger was ashore at 19:26.</span></p><p><span>No one was seriously injured. One passenger reported a grazed shin, and two were treated at the wharf for distress. Damage was to the starboard side:</span></p><ul><li><span>bottom plating set up over 4.1 m, with a 180 mm split</span></li><li><span>propeller and shaft bent</span></li><li><span>rudder stock distorted</span></li><li><span>skeg torn away.</span></li></ul><p><span>The vessel refloated at 00:20 on 08/07/2026 and was withdrawn from service. The Weerona Channel was closed to commercial traffic for 19 hours.</span></p><h1><span>What we are looking at</span></h1><ol><li><strong>The chart plotter and how its fault was reported.</strong><span> The investigation is examining why the plotter display froze. Its event log records the same fault twice that morning. A 46 hour bench test did not reproduce it, and a manufacturer&#x27;s firmware update issued in 11/2024 had not been applied to the unit. Also being examined is how defects are passed between masters at handover and entered in the defect book.</span></li></ol><ol><li><strong>The move of TF18 into darkness.</strong><span> The winter timetable moved TF18 from 16:15 to 17:35. The investigation is examining how that change was assessed against the route risk assessment RRA-07, which restricts the channel to daylight transits, and what the operator&#x27;s passage plan provides for a night transit or loss of the plotter.</span></li></ol><ol><li><strong>How the transit was conducted after the plotter froze.</strong><span> This includes the master&#x27;s options, the speed held, the absence of a lookout on the bridge, and the echo sounder&#x27;s shallow alarm setting, unchanged since 2019.</span></li></ol><ol><li><strong>The visibility of the No. 4 beacon.</strong><span> Matters being examined are:</span></li></ol><ul><li><span>its conversion to a solar lantern with a lower rated range</span></li><li><span>mangrove growth on Weerona Islet between the beacon and the northern approach</span></li><li><span>how the beacon is inspected and maintained</span></li><li><span>the requirements for aids to navigation on this channel.</span></li></ul><ol><li><strong>Crew rostering and lifejacket access.</strong><span> Two further matters are being examined separately: the winter roster, which places the last darkness transit at the end of a split duty; and access to the forward saloon lifejacket locker, which sits behind a kiosk counter fitted in a 2019 refit. The same counter is fitted to the operator&#x27;s two other 24 m vessels.</span></li></ol><ol><li><strong>New foreshore floodlighting.</strong><span> Whether new floodlighting at the boat ramp, behind the beacon as seen from the channel, affected the master&#x27;s ability to see it could not be resolved on the available evidence and remains open.</span></li></ol><h1><span>Containment and next steps</span></h1><h2><span>Interim action and containment</span></h2><ul><li><strong>Evening services suspended.</strong><span> On 08/07/2026, the day after the grounding, the General Manager Operations suspended the evening Muntari services. Whether the suspension remains in place, and on what terms, is </span><mark class="md__marker">[NOT ESTABLISHED: current status of the suspension of evening Muntari services]</mark><span>.</span></li><li><strong>Vessel withdrawn.</strong><span> The MV Tarrakin Star has been out of service since it refloated.</span></li><li><strong>No. 4 beacon.</strong><span> The investigation has told the Port Authority and the operator what it has found about the beacon: it is screened from the northern approach, and its range fell after the solar conversion. Any action either body has taken in response is </span><mark class="md__marker">[NOT ESTABLISHED: response of the Port Authority and the operator]</mark><span>.</span></li><li><strong>Forward saloon lifejacket locker.</strong><span> The question of whether the same kiosk counter affects the operator&#x27;s two other 24 m vessels is with the operator and the state regulator.</span></li></ul><p><span>No other interim safety action has been recorded.</span></p><h2><span>Next steps</span></h2><p><span>The investigation is now:</span></p><ul><li><span>waiting for the operator&#x27;s and the state regulator&#x27;s answers on lifejacket access across the fleet</span></li><li><span>examining the foreshore floodlighting question, which remains open</span></li><li><span>seeking a formal account from the Operations Manager, whose account so far was given verbally</span></li><li><span>having the draft reviewed by someone outside the investigation</span></li><li><span>giving the people and organisations it covers the chance to correct matters of fact</span></li><li><span>confirming who owns each safety action and when it is due.</span></li></ul><p><span>The expected date for the final report is </span><mark class="md__marker">[NOT ESTABLISHED: timeframe for the final report]</mark><span>.</span></p></div></section>
+  <section class="panel" id="audit"><h2 class="panel-title">Grounding audit</h2><p class="hint" style="margin-bottom:12px">A second pass over the finished draft against the full record: each claim it could not find, or found contradicted, with the evidence.</p><div class="md"><div class="md__table-wrap"><table><thead><tr><th><span>claim</span></th><th><span>verdict</span></th><th><span>evidence</span></th></tr></thead><tbody><tr><td><span>The investigation is now &quot;seeking a formal account from the Operations Manager, whose account so far was given verbally&quot;</span></td><td><span>UNSUPPORTED</span></td><td><span>The source says only that the Operations Manager&#x27;s account &quot;was given verbally and has not been taken as a formal interview&quot; (note on Existence, winter timetable object). No step to seek a formal account is recorded in the log, the checklist or any follow-up list.</span></td></tr></tbody></table></div><p><span>Checked: 45 claims. Supported: 44. Unsupported: 1. Contradicted: 0.</span></p></div></section>
+  <section class="panel" id="check"><h2 class="panel-title">Mechanical record check</h2><p class="hint" style="margin-bottom:12px">No model involved: each factor's category and confidence word in the text compared with its recorded test, the findings compared with the derived classification, and the section lengths against their targets.</p><div class="md"><h1><span>Mechanical record check</span></h1><ul><li><span>{&quot;section&quot;:&quot;Summary&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;summary-outcome-missing&quot;,&quot;message&quot;:&quot;The summary is missing the outcome&#x27;s own figures (4.1 m, 180 mm, 260 mm, 1.4 mm, 3 degrees, 19:26, 00:20, 0.50 m, 30 m, 0.35 m).&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;ia-continued-visually&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Transit continued at eight knots after the plotter froze, rather than stopping in the channel (Individual Actions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;ia-defect-not-recorded&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Plotter fault passed on verbally at the change of master and not entered in the defect book (Individual Actions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;lc-light-not-visible&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;No. 4 beacon not visible from the channel over the half mile before the vessel left it (Local Conditions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;lc-roster&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Day nine of twelve, on a split duty across a thirteen hour forty spread (Local Conditions) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oe-no-depth-warning&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Shoaling not detected until sixteen seconds before contact (Occurrence Events) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oe-off-track&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Vessel left the dredged channel and tracked onto Boolarong Bank (Occurrence Events) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oi-aton-downgrade&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Beacon converted to solar, nominal range halved, and no operator was told (Organisational Influences) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oi-vegetation-deferred&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Clearing of the beacon&#x27;s sightline deferred unfunded for three works rounds (Organisational Influences) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;oi-winter-timetable&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Winter timetable moved the last service into darkness without reopening the route risk assessment (Organisational Influences) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;rc-defect-handover&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;Change-of-master defect brief is verbal, with nothing checking that what is said gets written down (Risk Controls) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;What we are looking at&quot;,&quot;factor_id&quot;:&quot;rc-passage-plan&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;factor-not-argued&quot;,&quot;message&quot;:&quot;No night passage plan for the channel, and no hold point if the primary means of fixing is lost (Risk Controls) is a recorded factor but is never named in the drafted analysis.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;Containment and next steps&quot;,&quot;severity&quot;:&quot;info&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The text carries the outline&#x27;s \&quot;</span><mark class="md__marker">[NOT ESTABLISHED: ...]</mark><span>\&quot; notation rather than saying so in prose (3 occurrences).&quot;}</span></li></ul></div></section>
+  <section class="panel" id="notes"><h2 class="panel-title">Review notes</h2><p class="hint" style="margin-bottom:12px">Observations the model made about the record itself while drafting, kept apart from the prose for the investigator to resolve.</p><div class="md"><ul><li><span>[What we know] - Timeline entry for service TF18&#x27;s departure (07:35:02 UTC) calls TF18 &quot;the first winter-timetable evening return&quot;. The occurrence notification says evening returns have been made in darkness since 01/06/2026, and the master&#x27;s interview refers to twenty six previous darkness transits.</span></li><li><span>The darkness-transit counts may not reconcile. The master refers to twenty six previous darkness transits, and the outgoing master says he did 5 of the 31. Whether 31 includes TF18 is not stated, and 26 + 5 + TF18 would give 32.</span></li><li><span>The master&#x27;s pan pan at 18:13:04 stated the vessel was upright. The occurrence notification, critical event and track record the vessel heeled 4 degrees to starboard. This was not reconciled in the text.</span></li><li><span>The master&#x27;s interview notes put the shallow alarm &quot;about a minute&quot; after he sighted the No. 4 beacon. The recorded interval is 106 seconds (18:10:02 to 18:11:48).</span></li><li><span>Void sounding at 18:16: the deckhand&#x27;s words on the audio are &quot;two, maybe three inches&quot;, while the master&#x27;s VHF report and the survey give approximately 75 mm. The text uses approximately 75 mm.</span></li><li><span>[What we are looking at] - &quot;No. 4 beacon not visible from the channel over the half mile before the vessel left it&quot;: the evidence says the master called the beacon at 0.25 nm and that &quot;the whole of his search took place inside the screened arc&quot;. However, the screened arc ends at 0.34 nm. The floodlighting &quot;Evidence against&quot; separately says the master picked the light up at 0.34 nm. Two different values are given for the pick-up distance, and the 0.25 nm figure places the sighting outside the screened arc.</span></li><li><span>&quot;Engines stopped and no attempt made to refloat on a falling tide&quot;: this is recorded as &quot;Led to: Grounding on Boolarong Bank&quot;. The causal edge runs backwards in time, because the action followed the grounding.</span></li><li><span>&quot;Engines stopped and no attempt made to refloat on a falling tide&quot;: the Significance says the decision &quot;was not made, and it was not made quickly&quot;. The investigator notes say what was done after the impact &quot;was right and was done fast&quot;. The Significance wording appears to contradict the notes.</span></li><li><span>&quot;Chart plotter display froze during the channel transit and did not recover&quot;: the Influence confidence (extremely likely) is higher than the Existence confidence (very likely). This should be checked, because influence cannot be more certain than the existence of the condition.</span></li><li><span>[Containment and next steps] - Foreshore floodlighting (evidence against): this states the master &quot;picked the light up at 0.34 nm&quot;. The No. 4 beacon visibility factor instead places the sighting call at 0.25 nm, and gives 0.34 nm as the southern edge of the screened arc. These two values need reconciling.</span></li><li><span>Shoaling factor versus approved &quot;What we know&quot;: the shoaling factor uses 7.1 kt over the 16 seconds before contact, while the approved section and the tide hypothesis give 6.8 kt at contact. The figures may be compatible (an average over a decelerating interval versus speed at contact), but this should be confirmed.</span></li><li><span>Evening service suspension (investigation log, 08/07): no end date, scope or current status is given, and none of the safety issues carries a recorded safety action. The suspension is therefore not tied to any issue.</span></li><li><span>[Summary] - &quot;What we know&quot; (approved) calls TF18 &quot;the day&#x27;s last service from Muntari Island to Kanooka Heads&quot;. Muntari Island does not appear in the evidence, which only says the vessel was inbound on TF18. CHG-2026-014 describes TF18 as &quot;the last service&quot;.</span></li><li><span>&quot;Containment and next steps&quot; (approved) says the General Manager Operations suspended the evening Muntari services on 08/07/2026. No such action appears in the evidence, and the Summary scaffold states &quot;No safety action recorded&quot;. For that reason the Summary names only the vessel&#x27;s withdrawal from service.</span></li><li><span>&quot;Containment and next steps&quot; (approved) says the investigation has told the Port Authority and the operator its beacon findings. The evidence does not show this. The Clearing of the beacon&#x27;s sightline factor notes only that the investigator &quot;would put [it] in front of the Authority first&quot;.</span></li><li><span>&quot;What we know&quot; (approved) gives void water at &quot;approximately 75 mm at 18:16&quot;. The positive event (Engines stopped...) records 75 mm as reported to Port Control at 18:17:05.</span></li><li><span>&quot;What we know&quot; (approved) says civil twilight ended at 17:29. MET-TIDE-0093-070726 is summarised only as saying the transit was &quot;35 minutes after the end of civil twilight&quot;. No clock time for the end of twilight is given.</span></li><li><span>In the Summary scaffold, the safety issue &quot;Forward saloon lifejacket locker&quot; carries &quot;(unlikely)&quot;. That is its failed Influence grade, not a contributing-factor likelihood. It passed Importance at &quot;very likely&quot;.</span></li></ul></div></section>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../../case-studies/kanooka-heads-grounding.html#published">Back to the case study</a> · <a href="../../index.html#reports">Back to reports</a></span>
+  </footer>
+</main>
+
+</body>
+</html>
