@@ -50,7 +50,10 @@ for (const f of readdirSync(shotsDir).filter((f) => f.endsWith(".png"))) {
   copyFileSync(join(shotsDir, f), join(here, "shots", f));
   index = index.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${f}`);
 }
-index = index.replace("%%STANDARD_META%%", meta(reports.standard)).replace("%%PRELIMINARY_META%%", meta(reports.preliminary));
+index = index
+  .replace("%%STANDARD_META%%", meta(reports.standard))
+  .replace("%%PRELIMINARY_META%%", meta(reports.preliminary))
+  .replace("%%EXECUTIVE_META%%", meta(reports.executive));
 const unfilled = index.match(/%%[A-Z_0-9]+%%/g);
 writeFileSync(join(here, "index.html"), index);
 
@@ -63,6 +66,7 @@ const markdownCss = existsSync(join(here, "reports", "markdown.css")) ? readFile
 const headings = {
   standard: ["Standard Report", "Standard investigation report", "The full report style: executive summary, event overview, analysis, findings summary and appendices, drafted section by section from the record."],
   preliminary: ["Preliminary Update", "Preliminary investigation update", "The interim style: what happened, what has been established so far, the risk exposure and the open lines of enquiry. No findings."],
+  executive: ["Executive Brief", "Executive brief", "The occurrence, the findings and the actions on a few pages for the people who decide."],
 };
 for (const [style, r] of Object.entries(reports)) {
   const [title, heading, blurb] = headings[style] ?? [style, style, ""];
@@ -88,6 +92,7 @@ const pagesRoot = join(exportsDir, "pages");
 const docs = {
   report_standard: ["Standard Report", "Standard investigation report, as published", "The full report written to the application’s Word template and converted to PDF: cover, distribution list and the report as drafted, section by section from the record.", `<a class="btn" href="../reports/standard.html#audit">The audit and checks</a>`],
   report_preliminary: ["Preliminary Update", "Preliminary investigation update, as published", "The interim style on the same template: what has been established so far and what is still open, with no findings.", `<a class="btn" href="../reports/preliminary.html#audit">The audit and checks</a>`],
+  report_executive: ["Executive Brief", "Executive brief, as published", "The short style on the same template: the occurrence, what was found and what is being done, in a few pages of plain language for the people who decide.", `<a class="btn" href="../reports/executive.html#audit">The audit and checks</a>`],
   eii_tables: ["E/I/I Tables", "E/I/I test tables, as published", "One table per object: each test’s result and confidence, the evidence recorded for and against it, and the investigator’s reasoning.", ""],
 };
 if (existsSync(pagesRoot)) {

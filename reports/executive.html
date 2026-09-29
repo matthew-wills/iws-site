@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Brief</title>
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+/* Rendered preview of a drafted report section. Sized to read like a
+   report page rather than a web page: generous line height, restrained
+   headings, and a measure that does not run the full window width. */
+.md {
+  max-width: 78ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #0f172a;
+}
+
+.md h1 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 650;
+  color: #0f766e;
+}
+
+.md h2 {
+  margin: 24px 0 10px;
+  font-size: 18px;
+  font-weight: 650;
+  color: #115e59;
+}
+
+.md h3 {
+  margin: 20px 0 8px;
+  font-size: 15.5px;
+  font-weight: 650;
+}
+
+.md h4 {
+  margin: 16px 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.md p {
+  margin: 0 0 12px;
+}
+
+.md ul,
+.md ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.md li {
+  margin-bottom: 4px;
+}
+
+.md blockquote {
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border-left: 3px solid #cbd5e1;
+  color: #475569;
+  font-style: italic;
+}
+
+.md code {
+  padding: 1px 5px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-family: "Consolas", monospace;
+  font-size: 13px;
+}
+
+.md hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+}
+
+.md__table-wrap {
+  overflow-x: auto;
+  margin: 0 0 14px;
+}
+
+.md table {
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.md th,
+.md td {
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.md th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+/* The markers an investigator must not miss before a draft goes out */
+.md__marker {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* The Interview Synopsis Tool's [[? ... ]] uncertainty marker: red,
+   distinct from the amber drafting-pipeline markers above, since this
+   is something the investigator resolves by editing the text. */
+.md__uncertain {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+  .report-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .report-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
+  .report-meta { display: flex; gap: 14px 24px; flex-wrap: wrap; font-size: 0.88rem; color: var(--ink-soft); font-family: var(--font-mono); margin-top: 6px; }
+  .report-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; position: sticky; top: 56px; z-index: 10; background: var(--ground); padding-block: 10px; }
+  .report-tabs a { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; }
+  .report-tabs a:hover { background: #f1f5f9; color: var(--ink); }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 22px; scroll-margin-top: 120px; }
+  .panel h2.panel-title { font-size: 1.2rem; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .panel .md { max-width: 80ch; }
+  .panel .md table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  .panel .md th, .panel .md td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); margin-bottom: 18px; max-width: 80ch; }
+  @media (max-width: 700px) { .panel { padding: 18px; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Investigation Workflow Suite, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
+        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
+        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Investigation Workflow Suite
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#ai">AI drafting</a>
+      <a href="../index.html#reports" aria-current="page">Reports</a>
+      <a href="../index.html#download">Download</a>
+      <a href="../guide.html">User guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="report-head">
+    <span class="eyebrow">Example report, Tarlton Springs case study</span>
+    <h1>Executive brief</h1>
+    <p>The occurrence, the findings and the actions on a few pages for the people who decide.</p>
+    <div class="report-meta"><span>1,733 words</span><span>claude:opus</span><span>5 model calls</span><span>drafted 29/09/2026</span></div>
+  </div>
+  <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the people and every record. The report is published exactly as the pipeline produced it, faults and all. The grounding audit and the record check below are what the application reported about its own draft, and they are the reason a draft is never final until an investigator has read it.</p>
+  <nav class="report-tabs" aria-label="Report parts">
+    <a href="#report">Report</a>
+    <a href="#audit">Grounding audit</a>
+    <a href="#check">Record check</a>
+    <a href="#notes">Review notes</a>
+  </nav>
+  <section class="panel" id="report"><h2 class="panel-title">The report as drafted</h2><div class="md"><h1><span>What happened</span></h1><p><span>On 18 June 2026, Saltbush Air flight SB512, a 50-seat twin-turboprop aircraft registered VH-SBQ, was preparing to depart runway 09 at Tarlton Springs Aerodrome in the hour after last light. On board were 44 passengers, 2 flight crew and 1 cabin crew. The aerodrome operator had carried out its only runway inspection of the day at 21:35 UTC on the previous day, before the first scheduled arrival, and recorded the movement area as clear. No further inspection was carried out or requested. At 07:29:10 UTC, the tower cleared the aircraft for take-off with the wind reported as 090 degrees at 6 kt. The tower did not offer a runway inspection and the crew did not request one. No transmission about wildlife was made on the tower channel in the preceding 90 minutes. The first officer was flying the aircraft. The take-off roll began at 07:30:02 with both engines producing matching power, and the calculated V1 of 112 kt was called at 07:30:29.</span></p><p><span>Two seconds later, the first officer saw two kangaroos crossing the runway from the northern side to the southern side and called &quot;Roos - roos, roos, on the left&quot;. The kangaroos were first seen at an estimated range of around 200 m. At 07:30:32, the captain took control and rejected the take-off at 118 kt, which was 6 kt and 3 seconds past V1, with 695 m of sealed runway remaining. The power levers reached flight idle within 0.6 seconds. About a second later, the aircraft struck both animals. The right (No. 2) propeller was damaged, and reverse thrust on that engine was unavailable for the rest of the stop. Maximum braking was established 2 seconds after the decision to reject, compared with a fleet average of 3.2 seconds. The anti-skid system was active on all four wheels, and reverse thrust was selected on the left (No. 1) engine at 07:30:36. The aircraft left the end of the sealed runway at approximately 21 kt at 07:30:51. It came to rest at 07:30:57, upright and on the extended centreline, 62 m into the 90 m runway end safety area. It stopped 28 m short of the end of the prepared area, beyond which the ground is ungraded. There was no fire.</span></p><p><span>At the captain&#x27;s request, the tower activated the aerodrome emergency plan at 07:32:10. The crew did not command an evacuation. Passengers left the aircraft by the forward airstair between 07:34:40 and 07:38:48. No one was seriously injured. One cabin crew member reported bruising sustained during the disembarkation. The aircraft was substantially damaged. The damage included:</span></p><ul><li><span>three No. 2 propeller blades damaged beyond limits</span></li><li><span>distorted right main landing gear doors</span></li><li><span>both right main tyres deflated</span></li><li><span>punctures to the lower right fuselage</span></li></ul><p><span>Both kangaroos were killed. The aerodrome was closed for 4 hours 20 minutes.</span></p><h1><span>Why it happened</span></h1><p><span>The overrun resulted from a take-off rejected above V1 after two kangaroos moved onto the runway. In the stop that followed, the aircraft could not decelerate as well as its scheduled accelerate-stop performance assumed.</span></p><p><span>It is very likely that the two kangaroos entered the runway strip and moved onto the sealed surface during the take-off roll. It is extremely likely that their presence led both to the strike and to the decision to reject. The captain rejected the take-off 6 kt above V1, and it is extremely likely that this contributed to the aircraft decelerating less than its scheduled accelerate-stop performance. The strike on the No. 2 propeller and right main gear also contributed, which is virtually certain. It is virtually certain that the reduced deceleration resulted in the aircraft leaving the sealed runway and entering the runway end safety area.</span></p><p><span>The decision to reject above V1 was shaped by training. Rejected take-off training covered only aircraft system failures below V1 (Safety issue), and it is likely that this influenced the decision.</span></p><p><span>Three conditions came together to put the kangaroos on the runway:</span></p><ul><li><span>Repair of the aerodrome perimeter fence had been deferred for three budget cycles (Safety issue). It is very likely this contributed to the animals reaching the runway.</span></li><li><span>The aircraft departed in the hour after last light, which is the peak of kangaroo movement. This likely contributed.</span></li><li><span>No runway inspection was requested before this first departure after last light. This likely contributed.</span></li></ul><p><span>The absence of an inspection was not simply an individual omission. A runway inspection was required only at listed aerodromes, and the criterion for listing was that a strike had occurred there (Safety issue). It is very likely that this contributed to no inspection being requested. How the evening service was introduced also influenced that arrangement. The service was approved as a schedule change, and the route risk assessment was not reopened (Safety issue). It is likely that this contributed.</span></p><p><span>More broadly, a documented wildlife plan was required only above a size threshold that the aerodrome did not meet (Safety issue). It is likely that this contributed both to the fence repair being deferred and to the inspection arrangement described above.</span></p><p><span>Once the take-off was rejected, the crew applied maximum braking and No. 1 reverse without delay. It is very likely that this contributed to the aircraft coming to rest within the runway end safety area.</span></p><p><span>The investigation also examined whether reduced runway edge lighting intensity limited the crew&#x27;s ability to see the animals. A measured deviation in lighting intensity was confirmed, and it was in a location relevant to the sighting. However, whether it affected the crew&#x27;s ability to detect the animals was about as likely as not. It could not be established either way with the evidence available, so no conclusion is drawn. </span><mark class="md__marker">[NOT ESTABLISHED: what further evidence would be needed to resolve the lighting question]</mark></p><h1><span>What we found</span></h1><h2><span>Contributing safety factors</span></h2><ul><li><span>A documented wildlife plan was required only above a size threshold that the aerodrome does not meet. It is virtually certain that this existed, and likely that it contributed. (Safety issue)</span></li><li><span>Repair of the perimeter fence was deferred for three budget cycles. It is virtually certain that this existed, and very likely that it contributed. (Safety issue)</span></li><li><span>Two kangaroos entered the runway strip and moved onto the sealed surface. It is very likely that this existed, and very likely that it contributed.</span></li><li><span>The take-off was rejected 6 kt above V1. It is virtually certain that this existed, and very likely that it contributed.</span></li><li><span>The deceleration achieved was below the scheduled accelerate-stop performance. It is virtually certain that this existed, and virtually certain that it contributed.</span></li><li><span>The aircraft departed in the hour after last light, which is the peak of kangaroo movement. It is very likely that this existed, and likely that it contributed.</span></li><li><span>A runway inspection was required only at listed aerodromes, and the listing criterion was a strike. It is virtually certain that this existed, and very likely that it contributed. (Safety issue)</span></li><li><span>No runway inspection was requested before the first departure after last light. It is virtually certain that this existed, and likely that it contributed.</span></li><li><span>The evening service was approved as a schedule change, and the route risk assessment was not reopened. It is very likely that this existed, and likely that it contributed. (Safety issue)</span></li><li><span>Rejected take-off training covered aircraft system failures below V1 only. It is very likely that this existed, and likely that it contributed. (Safety issue)</span></li><li><span>The No. 2 propeller and right main gear struck two kangaroos. It is virtually certain that this existed, and virtually certain that it contributed.</span></li></ul><h2><span>Other factors that increased risk</span></h2><ul><li><span>Part of the cabin floor proximity emergency lighting was unserviceable. It is virtually certain that this existed, and very likely that it increased risk. (Safety issue)</span></li><li><span>The flight was the fifth sector of the day, 11 hours into the crew&#x27;s duty and 40 minutes behind schedule. It is virtually certain that this existed, and likely that it increased risk.</span></li></ul><h2><span>Other findings</span></h2><ul><li><span>The investigation examined whether the take-off began with a tailwind above limits, and ruled it out.</span></li><li><span>The investigation examined whether the No. 2 engine lost power during the take-off roll, and ruled it out.</span></li><li><span>The investigation examined the crew&#x27;s application of maximum braking and No. 1 reverse without delay, and found that it reduced risk.</span></li></ul><h1><span>What is being done</span></h1><p><strong>Documented wildlife plan required only above a size threshold the aerodrome does not meet.</strong><span> Tarlton Springs was not in breach of Aerodrome Standard AS-139. The issue lies in the threshold itself, which left an aerodrome of this size without a documented, audited wildlife programme. No action has been recorded against this issue. </span><mark class="md__marker">[NOT ESTABLISHED: any action taken or proposed in response to this issue, and by whom]</mark></p><p><strong>Perimeter fence repair deferred for three budget cycles.</strong><span> The failed northern fence section remains recorded in the aerodrome works register under items WR-221 and WR-263. No action has been recorded against this issue. </span><mark class="md__marker">[NOT ESTABLISHED: whether the fence repair has since been funded, scheduled or completed]</mark></p><p><strong>Evening service approved as a schedule change, route risk assessment not reopened.</strong><span> On 19 June 2026, the Head of Flying Operations suspended the evening Tarlton Springs service. No action has been recorded on the change management process or on route risk assessment RRA-041. </span><mark class="md__marker">[NOT ESTABLISHED: whether the suspension remains in place, and any action on the change management process or RRA-041]</mark></p><p><strong>Runway inspection required only at listed aerodromes, and the listing criterion is a strike.</strong><span> On 2 July 2026, the investigation raised this issue with the operator&#x27;s Safety Department. It identified two problems. Only a reported strike at an aerodrome can place it on the list, and no provision asks crews to report sightings. </span><mark class="md__marker">[NOT ESTABLISHED: the Safety Department&#x27;s response and any action taken or proposed]</mark></p><p><strong>Rejected take-off training covers aircraft system failures below V1 only.</strong><span> No action has been recorded against this issue. </span><mark class="md__marker">[NOT ESTABLISHED: any action taken or proposed on the training syllabus or Operations Manual Part B 4.6]</mark></p><p><strong>Cabin floor proximity emergency lighting partially unserviceable.</strong><span> The investigation has referred the question of whether the same failed ballast affects the rest of the fleet to engineering, and that answer is pending. No action has been recorded on the 24-month functional test interval. </span><mark class="md__marker">[NOT ESTABLISHED: the outcome of the fleet-wide engineering review and any action on the test interval]</mark></p></div></section>
+  <section class="panel" id="audit"><h2 class="panel-title">Grounding audit</h2><p class="hint" style="margin-bottom:12px">A second pass over the finished draft against the full record: each claim it could not find, or found contradicted, with the evidence.</p><div class="md"><div class="md__table-wrap"><table><thead><tr><th><span>claim</span></th><th><span>verdict</span></th><th><span>evidence</span></th></tr></thead><tbody><tr><td><span>&quot;The take-off was rejected 6 kt above V1. ... very likely that it contributed.&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The source rates Influence as &quot;Pass - extremely likely&quot;. The draft&#x27;s own &quot;Why it happened&quot; section also says &quot;extremely likely&quot;.</span></td></tr><tr><td><span>&quot;Two kangaroos entered the runway strip ... very likely that it contributed.&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The source rates Influence as &quot;Pass - extremely likely&quot;.</span></td></tr><tr><td><span>&quot;The aircraft departed in the hour after last light ... very likely that this existed&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The source rates Existence as &quot;Pass - extremely likely&quot;.</span></td></tr><tr><td><span>&quot;The evening service was approved as a schedule change ... very likely that this existed&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The source rates Existence as &quot;Pass - extremely likely&quot;.</span></td></tr><tr><td><span>&quot;Rejected take-off training covered aircraft system failures below V1 only. It is very likely that this existed&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The source rates Existence as &quot;Pass - extremely likely&quot;.</span></td></tr><tr><td><span>&quot;On 19 June 2026, the Head of Flying Operations suspended the evening Tarlton Springs service.&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The suspension is already listed under &quot;Immediate actions taken&quot; in notification SBA-OCC-2026-0417, which was raised on &quot;18/06/2026 08:14 UTC&quot;. The 19/06 log entry records the suspension but does not date it.</span></td></tr><tr><td><span>&quot;whether reduced runway edge lighting intensity limited the crew&#x27;s ability to see the animals&quot;</span></td><td><span>CONTRADICTED</span></td><td><span>The lighting was not reduced. The photometric check found &quot;four ... edge lights ... between 118% and 131% of the nominal intensity for stage 3&quot;. The source&#x27;s hypothesis is that the lighting intensity reduced the crew&#x27;s ability to detect the animals.</span></td></tr></tbody></table></div><p><span>Checked: 72 claims. Supported: 65. Unsupported: 0. Contradicted: 7.</span></p></div></section>
+  <section class="panel" id="check"><h2 class="panel-title">Mechanical record check</h2><p class="hint" style="margin-bottom:12px">No model involved: each factor's category and confidence word in the text compared with its recorded test, the findings compared with the derived classification, and the section lengths against their targets.</p><div class="md"><h1><span>Mechanical record check</span></h1><ul><li><span>{&quot;section&quot;:&quot;What we found&quot;,&quot;factor_id&quot;:&quot;lc-last-light&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;findings-missing&quot;,&quot;message&quot;:&quot;Departure in the hour after last light, the peak of kangaroo movement is a contributing safety factor but is missing from Contributing safety factors in the drafted Findings.&quot;}</span></li><li><span>{&quot;section&quot;:&quot;Why it happened&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The paragraph carries the outline&#x27;s \&quot;(Safety issue)\&quot; tag rather than saying so in prose (4 occurrences).&quot;}</span></li></ul></div></section>
+  <section class="panel" id="notes"><h2 class="panel-title">Review notes</h2><p class="hint" style="margin-bottom:12px">Observations the model made about the record itself while drafting, kept apart from the prose for the investigator to resolve.</p><div class="md"><ul><li><span>[What happened] - Timeline, &quot;Precautionary disembarkation by the forward airstair&quot;: this entry states &quot;Passengers clear 4 minutes 8 seconds after the aircraft stopped&quot;. However, the aircraft came to rest at 07:30:57 and disembarkation ran from 07:34:40 to 07:38:48. On those times, passengers were clear about 7 minutes 51 seconds after the aircraft stopped. The 4 minutes 8 seconds appears to be the length of the disembarkation itself. For this reason, the draft states the clock times only.</span></li><li><span>Timeline, &quot;Daily movement area inspection&quot;: the entry is timed 17/06/2026 21:35 UTC but is sourced to the &quot;Aerodrome daily inspection log, 18/06/2026&quot;. This is probably a difference between local and UTC dates, but the date should be confirmed. The supporting extract for this entry is also labelled &quot;Tarlton Springs wildlife sighting log, 01/2025 to 06/2026&quot;, which does not match the named source.</span></li><li><span>Causal chains, &quot;Maximum braking and No. 1 reverse applied without delay -&gt; Runway overrun onto the runway end safety area&quot;: the evidence describes this crew response as faster than the fleet average, which would have reduced the overrun rather than contributed to it. The direction or nature of this link should be checked.</span></li><li><span>[Why it happened] - &quot;Runway edge lighting intensity reduced the crew&#x27;s ability to detect the animals&quot;: this factor is listed as leading to &quot;Take-off rejected 6 kt above V1&quot;, yet its Existence test is Inconclusive and its Influence test was not done. The causal link is asserted without testing.</span></li><li><span>&quot;Two kangaroos entered the runway strip and moved onto the sealed surface&quot;: Existence is recorded as &quot;very likely&quot;. The strike itself (&quot;No. 2 propeller and right main gear struck two kangaroos&quot;) and the sighting in the approved text are recorded as virtually certain. Please confirm whether the lower confidence refers specifically to the animals&#x27; route of entry into the strip.</span></li><li><span>&quot;Cabin floor proximity emergency lighting partially unserviceable&quot;: this appears both as a safety issue and as an other risk factor, and is marked &quot;Finalised: no&quot; in both places.</span></li><li><span>&quot;Runway edge lighting intensity&quot; note: it gives no indication of what evidence would resolve the matter. A marker has been inserted.</span></li><li><span>Several safety issues do not identify which organisation owned the deficient requirement (rejected take-off training, the runway inspection listing, the evening service approval, the wildlife plan threshold). This has left attribution to organisations unstated in the text.</span></li><li><span>[What we found] - Perimeter fence / Two kangaroos factor: the distance from the fence animal pad (1,050 m) to the first carcass (1,188 m) appears as 110 m (fence factor evidence), 138 m (kangaroo factor evidence) and 140 m (fence factor significance: &quot;140 m apart&quot;). The arithmetic gives 138 m.</span></li><li><span>Pilot in command interview background: duty is recorded as beginning at 05:10 local, but the crew duty record gives sign-on at 06:30 local. The interview also gives the most recent training as a recurrent simulator check in February 2026, while the crew record gives the last cyclic simulator as 11/03/2026.</span></li><li><span>First officer interview background: &quot;17 months (joined April 2025)&quot; conflicts with the crew record&#x27;s &quot;14 months with the company&quot;. April 2025 to June 2026 is about 14 months.</span></li><li><span>Causal chain &quot;Evening service approved as a schedule change … -&gt; Runway inspection required only at listed aerodromes, and the listing criterion is a strike&quot;: the Appendix 8A criterion (Part A revision 9, 04/2024) predates CMR-2025-118 (approved 22/05/2025). The edge appears to run backwards in time. The service change may have exposed the gap, but it could not have produced the criterion.</span></li><li><span>Causal chain &quot;Documented wildlife plan … -&gt; Runway inspection required only at listed aerodromes&quot;: the AS-139 threshold governs the aerodrome operator, while Appendix 8A is the airline&#x27;s own manual provision. The record does not state the mechanism linking the two.</span></li><li><span>Deceleration factor: the evidence gives the 2.6 m/s2 mean as &quot;from maximum braking to the runway end&quot;, but the FDR readout states it for 07:30:34 to 07:30:44 only. The runway end was reached at 07:30:51.</span></li><li><span>Maximum braking positive event, influence note: an additional 30 to 40 m beyond the 62 m stopping point would total 92 to 102 m. That exceeds the 90 m RESA rather than being &quot;close to the far edge&quot;.</span></li><li><span>Checklist &quot;Has each interview been written up … and finalised?&quot; is marked Yes, but both interview records are marked as not finalised.</span></li><li><span>[What is being done] - Perimeter fence repair / Two kangaroos entered the runway strip: The distance from the animal pad at 1,050 m to the first carcass at 1,188 m is recorded three ways. The fence factor says &quot;110 m before&quot;, the kangaroo factor says &quot;138 m before&quot;, and the fence significance says &quot;140 m apart&quot;. The arithmetic gives 138 m.</span></li><li><span>Approved &quot;What we found&quot; section: Several stated likelihoods do not match the recorded test results.</span></li><li><span>Two kangaroos entered the runway: the record gives Influence as &quot;extremely likely&quot;, but the section says &quot;very likely&quot;.</span></li><li><span>Take-off rejected 6 kt above V1: the record gives Influence as &quot;extremely likely&quot;, but the section says &quot;very likely&quot;.</span></li><li><span>Departure in the hour after last light: the record gives Existence as &quot;extremely likely&quot;, but the section says &quot;very likely&quot;.</span></li><li><span>Evening service approved as a schedule change: the record gives Existence as &quot;extremely likely&quot;, but the section says &quot;very likely&quot;.</span></li><li><span>Rejected take-off training: the record gives Existence as &quot;extremely likely&quot;, but the section says &quot;very likely&quot;.</span></li><li><span>Approved &quot;Why it happened&quot; section, runway edge lighting: The record gives &quot;about as likely as not&quot; as the Existence result for the whole hypothesis. The section attributes that term specifically to whether the lighting affected detection, which blurs the difference between whether the effect existed and whether it had an influence.</span></li><li><span>Fifth sector, 11 hours into duty: The field labelled &quot;Evidence against influence&quot; begins with &quot;For influence:&quot;, and the &quot;Evidence for influence&quot; field contains an importance argument. The fields appear to be mislabelled.</span></li></ul></div></section>
+  <footer>
+    <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
+    <span><a href="../index.html#reports">Back to reports</a></span>
+  </footer>
+</main>
+
+</body>
+</html>
