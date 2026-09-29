@@ -123,7 +123,7 @@ footer a { color: var(--ink-soft); }
   .contents a:hover { background: #f1f5f9; color: var(--ink); }
 
   /* Walkthrough, the same sticky frame the home page used to carry */
-  .walk { display: grid; grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.6fr); gap: 32px; align-items: start; }
+  .walk { display: grid; grid-template-columns: minmax(0, 0.5fr) minmax(0, 1.75fr); gap: 32px; align-items: start; }
   .walk__stage { padding-block: 30px 8px; }
   .walk__stage:first-child { padding-top: 0; }
   .walk__stage-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
@@ -143,7 +143,10 @@ footer a { color: var(--ink-soft); }
   .walk__steps { padding-bottom: min(45vh, 520px); }
   .walk__media { position: sticky; top: 72px; }
   .walk__frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); cursor: zoom-in; }
-  .walk__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity 320ms ease; }
+  /* The frame takes each screenshot's own proportions (set from the image
+     by the script below), so nothing is cropped or squeezed: contain is
+     only a fallback until the image has loaded. */
+  .walk__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 320ms ease; }
   .walk__frame img.is-shown { opacity: 1; }
   .walk__frame img.tall { object-fit: contain; background: var(--paper); }
   .walk__enlarge { position: absolute; right: 12px; bottom: 12px; z-index: 2; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.94); color: var(--ink); font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: zoom-in; }
@@ -514,6 +517,14 @@ footer a { color: var(--ink-soft); }
         steps.forEach(function (s) { io.observe(s); });
       }
       var frame = walk.querySelector(".walk__frame");
+      function fitFrame(img) {
+        if (!img) return;
+        if (img.naturalWidth && img.naturalHeight) frame.style.aspectRatio = img.naturalWidth + " / " + img.naturalHeight;
+        else img.addEventListener("load", function () { if (frames[current.dataset.shot] === img) fitFrame(img); }, { once: true });
+      }
+      var baseShow = show;
+      show = function (step) { var was = current; baseShow(step); if (current !== was) fitFrame(frames[current.dataset.shot]); };
+      fitFrame(frames[current.dataset.shot]);
       function openCurrent() { if (current && frames[current.dataset.shot]) openImage(frames[current.dataset.shot].src, current.dataset.caption); }
       frame.addEventListener("click", openCurrent);
       frame.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCurrent(); } });
