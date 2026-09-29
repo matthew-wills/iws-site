@@ -131,9 +131,13 @@ footer a { color: var(--ink-soft); }
   .flow .st .n { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
   .flow .st h4 { font-size: 0.93rem; }
   .flow .st p { font-size: 0.85rem; color: var(--ink-soft); }
-  .teaser { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 30px; align-items: center; margin-top: 26px; }
-  .teaser .copy { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-  .teaser .copy p { color: var(--ink-soft); max-width: 58ch; }
+
+  /* Case studies */
+  .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .case { display: flex; flex-direction: column; gap: 10px; }
+  .case h3 { font-size: 1.1rem; }
+  .case p { color: var(--ink-soft); font-size: 0.95rem; }
+  .case .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
 
   /* Why it helps */
   .assists { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 28px; }
@@ -197,12 +201,12 @@ footer a { color: var(--ink-soft); }
   .contact { display: flex; flex-direction: column; gap: 12px; max-width: 70ch; color: var(--ink-soft); }
 
   @media (max-width: 960px) {
-    .hero, .whatis, .ai-intro, .download, .teaser, .examples { grid-template-columns: 1fr; }
+    .hero, .whatis, .ai-intro, .download, .examples { grid-template-columns: 1fr; }
     .hero { padding-block: 40px 32px; }
-    .flow, .tests, .assists, .tiers, .stages, .endpoints, .styles, .settings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow, .tests, .assists, .tiers, .stages, .endpoints, .styles, .settings-grid, .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 560px) {
-    .flow, .assists, .tiers, .stages, .endpoints, .styles, .parts, .settings-grid { grid-template-columns: 1fr; }
+    .flow, .assists, .tiers, .stages, .endpoints, .styles, .parts, .settings-grid, .cases { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -224,7 +228,7 @@ footer a { color: var(--ink-soft); }
       <a href="#reports">Reports</a>
       <a href="#settings">Settings</a>
       <a href="#download">Download</a>
-      <a href="case-study.html">Case study</a>
+      <a href="#case-studies">Case studies</a>
       <a href="changelog.html">Changelog</a>
       <a href="guide.html">User guide</a>
     </nav>
@@ -239,11 +243,11 @@ footer a { color: var(--ink-soft); }
       <p class="lede">A desktop application for occurrence investigations. The checklist, the evidence, the interviews, the timeline, the causal map, the analysis and the report all live in one investigation file that stays on your machine.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#download">Download 0.10.0 for Windows</a>
-        <a class="btn" href="case-study.html">Walk through a case study</a>
+        <a class="btn" href="#case-studies">Walk through a case study</a>
       </div>
       <p class="hero-note">Every feature is available for 28 days. After that the record, the map and report assembly keep working; AI drafting needs a licence.</p>
     </div>
-    <img class="shot zoomable" data-caption="The finished causal map for the Tarlton Springs case study." src="shots/11-map-final.png" alt="The finished AcciMap for the Tarlton Springs case study: six tinted lanes, tested factors, excluded hypotheses struck through, proven causal arrows converging on the runway overrun">
+    <img class="shot zoomable" data-caption="The finished causal map for the Tarlton Springs case study." src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished AcciMap for the Tarlton Springs case study: six tinted lanes, tested factors, excluded hypotheses struck through, proven causal arrows converging on the runway overrun">
   </section>
 
   <section class="block" id="what">
@@ -285,16 +289,22 @@ footer a { color: var(--ink-soft); }
       <div class="st"><span class="n">06</span><h4>The tests</h4><p>Existence, Influence, Importance, each with a confidence.</p></div>
       <div class="st"><span class="n">07</span><h4>Report and exports</h4><p>Findings derived from the tests, then published.</p></div>
     </div>
-    <div class="teaser">
-      <div class="copy">
-        <h3>Worked through, screen by screen, on a case study</h3>
-        <p>Tarlton Springs is a fictional rejected take-off and runway overrun at a regional aerodrome. The case study page follows it through all seven stages, with the real screens and the documents it published at the end.</p>
-        <a class="btn btn-primary" href="case-study.html">See the whole workflow on the case study</a>
-      </div>
-      <figure>
-        <img class="shot zoomable" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad." src="shots/09-object-form.png" alt="An object's evidence form with verdicts and a confidence slider">
-        <figcaption>Testing one factor in the Tarlton Springs investigation: the evidence, the verdict on each question, and the confidence.</figcaption>
-      </figure>
+  </section>
+
+  <section class="block" id="case-studies">
+    <div class="section-head">
+      <span class="eyebrow">Case studies</span>
+      <h2>Whole investigations, worked through screen by screen</h2>
+      <p>Each one is a fictional occurrence taken from the first notification to the published report, with the real screens at every stage and the documents the application produced at the end.</p>
+    </div>
+    <div class="cases">
+      <article class="case card">
+        <a href="case-studies/tarlton-springs-rto.html"><img class="shot" src="shots/tarlton-springs-rto/11-map-final.png" alt="Tarlton Springs: the finished causal map"></a>
+        <span class="eyebrow">Aviation</span>
+        <h3>Tarlton Springs</h3>
+        <p>A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to three published reports.</p>
+        <div class="links"><a class="btn btn-primary" href="case-studies/tarlton-springs-rto.html">Walk through it</a></div>
+      </article>
     </div>
   </section>
 
@@ -428,30 +438,30 @@ footer a { color: var(--ink-soft); }
     <div class="examples">
       <article class="example card">
         <span class="eyebrow">Example</span>
-        <a href="exports/report_standard.html"><img class="shot" src="exports/report_standard.png" alt="Cover page of the standard investigation report" style="max-width: 320px"></a>
+        <a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the standard investigation report" style="max-width: 320px"></a>
         <h3>Standard investigation report, Tarlton Springs</h3>
         <span class="meta">10,270 words · claude:opus · 10 model calls · drafted 28/09/2026</span>
         <p>Drafted through the pipeline above and published exactly as it landed, with the audit and the record check beside it, because catching what the audit caught is the point.</p>
-        <div class="links"><a class="btn btn-primary" href="exports/report_standard.html">Read the published report</a><a class="btn" href="reports/standard.html#audit">The audit and checks</a></div>
+        <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/report_standard.html">Read the published report</a><a class="btn" href="reports/tarlton-springs-rto/standard.html#audit">The audit and checks</a></div>
       </article>
       <article class="example card">
         <span class="eyebrow">Example</span>
-        <a href="exports/report_preliminary.html"><img class="shot" src="exports/report_preliminary.png" alt="Cover page of the preliminary investigation update" style="max-width: 320px"></a>
+        <a href="exports/tarlton-springs-rto/report_preliminary.html"><img class="shot" src="exports/tarlton-springs-rto/report_preliminary.png" alt="Cover page of the preliminary investigation update" style="max-width: 320px"></a>
         <h3>Preliminary update, Tarlton Springs</h3>
         <span class="meta">1,232 words · claude:opus · 5 model calls · drafted 29/09/2026</span>
         <p>The same record in the preliminary style: what has been established and what is still open, with no findings. Same pipeline, same audit, same checks.</p>
-        <div class="links"><a class="btn btn-primary" href="exports/report_preliminary.html">Read the published update</a><a class="btn" href="reports/preliminary.html#audit">The audit and checks</a></div>
+        <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/report_preliminary.html">Read the published update</a><a class="btn" href="reports/tarlton-springs-rto/preliminary.html#audit">The audit and checks</a></div>
       </article>
       <article class="example card">
         <span class="eyebrow">Example</span>
-        <a href="exports/report_executive.html"><img class="shot" src="exports/report_executive.png" alt="Cover page of the executive brief" style="max-width: 320px"></a>
+        <a href="exports/tarlton-springs-rto/report_executive.html"><img class="shot" src="exports/tarlton-springs-rto/report_executive.png" alt="Cover page of the executive brief" style="max-width: 320px"></a>
         <h3>Executive brief, Tarlton Springs</h3>
         <span class="meta">1,733 words · claude:opus · 5 model calls · drafted 29/09/2026</span>
         <p>The same record again, cut to a few pages of plain language: the occurrence, the findings and the actions. Same pipeline, same audit, same checks.</p>
-        <div class="links"><a class="btn btn-primary" href="exports/report_executive.html">Read the published brief</a><a class="btn" href="reports/executive.html#audit">The audit and checks</a></div>
+        <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/report_executive.html">Read the published brief</a><a class="btn" href="reports/tarlton-springs-rto/executive.html#audit">The audit and checks</a></div>
       </article>
     </div>
-    <p class="hint" style="margin-top: 20px; max-width: 78ch">Beside the reports, the same record exports the <a href="exports/eii_tables.html">E/I/I tables</a> behind every finding, the map and the timeline as images, and a <a href="exports/collation.md">collated copy</a> of the whole investigation, all written into the investigation's own folder. The <a href="case-study.html#published">case study</a> shows what one investigation published.</p>
+    <p class="hint" style="margin-top: 20px; max-width: 78ch">Beside the reports, the same record exports the <a href="exports/tarlton-springs-rto/eii_tables.html">E/I/I tables</a> behind every finding, the map and the timeline as images, and a <a href="exports/tarlton-springs-rto/collation.md">collated copy</a> of the whole investigation, all written into the investigation's own folder. The <a href="case-studies/tarlton-springs-rto.html#published">case study</a> shows what one investigation published.</p>
   </section>
 
   <section class="block" id="settings">
@@ -461,9 +471,9 @@ footer a { color: var(--ink-soft); }
       <p>The checklist and interview templates are plain text an investigator edits. The standard of proof is chosen to suit the framework the investigation answers to, from the balance of probabilities at 50 per cent to very likely at 90. AI access is a choice between none, a copied prompt, and a configured endpoint.</p>
     </div>
     <div class="settings-grid">
-      <figure><img class="shot zoomable" data-caption="Settings: the checklist template, editable as plain text." src="shots/14-settings-checklist.png" alt="The Settings dialog open on the checklist template"><figcaption>The checklist template. Edit it and every new investigation starts from your version.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="shots/17-settings-proof.png" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof, with the verbal probability each threshold reads as.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="Settings: AI access, the choice between no model, a copied prompt, and a configured endpoint." src="shots/15-settings-ai-access.png" alt="The Settings dialog open on AI access"><figcaption>AI access. None, Chat, or Endpoint, with what each means spelled out.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Settings: the checklist template, editable as plain text." src="shots/tarlton-springs-rto/14-settings-checklist.png" alt="The Settings dialog open on the checklist template"><figcaption>The checklist template. Edit it and every new investigation starts from your version.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="shots/tarlton-springs-rto/17-settings-proof.png" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof, with the verbal probability each threshold reads as.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Settings: AI access, the choice between no model, a copied prompt, and a configured endpoint." src="shots/tarlton-springs-rto/15-settings-ai-access.png" alt="The Settings dialog open on AI access"><figcaption>AI access. None, Chat, or Endpoint, with what each means spelled out.</figcaption></figure>
     </div>
     <div class="tiers">
       <article class="tier card">
@@ -542,7 +552,7 @@ footer a { color: var(--ink-soft); }
 
   <footer>
     <span>Investigation Workflow Suite. Working name; company and contact details to follow.</span>
-    <span><a href="case-study.html">Case study</a> · <a href="changelog.html">Changelog</a> · <a href="guide.html">User guide</a> · <a href="#top">Back to top</a></span>
+    <span><a href="#case-studies">Case studies</a> · <a href="changelog.html">Changelog</a> · <a href="guide.html">User guide</a> · <a href="#top">Back to top</a></span>
   </footer>
 </main>
 

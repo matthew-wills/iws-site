@@ -11,39 +11,115 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
   `changelog.template.html`, `guide.template.html`, `report.template.html`,
   `document.template.html` - the page templates. `%%THEME%%` takes the
   theme; `%%SHOT_NN%%` takes a screenshot path; `%%GUIDE%%` takes the
-  rendered user guide; `%%RELEASES%%` takes the changelog entries.
+  rendered user guide; `%%RELEASES%%` takes the changelog entries;
+  `%%CONTENT%%` takes one case study's page body.
+- `case-studies/<slug>/` - one folder per case study, holding `meta.json`
+  and `content.html`. This is the only place a case study is described.
 - `changelog.json` - one entry per release (`version`, `date`, `features`,
   `fixes`), user-facing items only. The changelog page is built from it, so
   a release is recorded here and nowhere else.
-- `build-site.mjs` - assembles `index.html`, `case-study.html`,
-  `changelog.html`, `guide.html`, `reports/*.html` and `exports/*.html`,
-  copying the screenshots and the published documents in.
+- `build-site.mjs` - assembles every page and copies the screenshots and
+  published documents in. Takes the application repository's `case-studies`
+  folder as its argument.
+- `check-links.mjs` - checks every relative link and in-page anchor on the
+  built pages against the disk. Reads `build-manifest.json`, so pages left
+  behind by an older layout are ignored.
+- `build-manifest.json` - the pages the last build wrote (generated).
 - `guide-fragment.html` - the in-app user guide rendered to HTML (generated).
-- `reports/*.json` - the case study's drafted reports, audits and checks
-  rendered to HTML (generated), with the app's `markdown.css`.
-- `shots/`, `exports/` - the case study screenshots and the published
-  documents (PDF, cover renders, page renders, the collated export), copied
-  in by the build.
-- `index.html`, `case-study.html`, `changelog.html`, `guide.html`,
-  `reports/*.html`, `exports/*.html` - the built pages, committed so the
-  repo can be served as it stands (GitHub Pages, Cloudflare Pages).
-- `review-shots.mjs` - renders the built pages locally at desktop width
-  for review; run it from the application repo so `puppeteer-core` resolves.
+- `reports/<slug>/*.json` - a case study's drafted reports, audits and
+  checks rendered to HTML (generated), with the app's `markdown.css`.
+- `shots/<slug>/`, `exports/<slug>/` - a case study's screenshots and
+  published documents (PDF, cover renders, page renders, the collated
+  export), copied in by the build.
+- `index.html`, `case-studies/<slug>.html`, `changelog.html`, `guide.html`,
+  `reports/<slug>/*.html`, `exports/<slug>/*.html` - the built pages,
+  committed so the repo can be served as it stands (GitHub Pages,
+  Cloudflare Pages).
+- `review-shots.mjs` - renders the built pages locally for review; run it
+  from the application repo so `puppeteer-core` resolves. Takes an optional
+  width and an optional list of pages: `node review-shots.mjs 1920 index.html`.
 
 ## Regenerating the content
 
-In the application repository:
+In the application repository, once per case study slug (here
+`tarlton-springs-rto`):
 
     npx vite-node scripts/render-user-guide.tsx ../iws-site/guide-fragment.html
-    npx vite-node scripts/render-case-reports.tsx tarlton-springs-rto ../iws-site/reports
+    npx vite-node scripts/render-case-reports.tsx tarlton-springs-rto ../iws-site/reports/tarlton-springs-rto
     npx vite-node scripts/export-case-study-docs.tsx tarlton-springs-rto
     npx vite-node scripts/case-study-source-pack.tsx tarlton-springs-rto
     powershell -NoProfile -ExecutionPolicy Bypass -File scripts/docx-to-pdf.ps1 case-studies/tarlton-springs-rto/exports
     node scripts/case-study-shots.mjs case-studies/tarlton-springs-rto/shots/stages case-studies/tarlton-springs-rto/shots
 
-Then here:
+The user guide line is the whole site's, not a study's; run it once.
 
-    node build-site.mjs ../investigation-workflow-suite/case-studies/tarlton-springs-rto/shots
+Then here, once for the whole site:
+
+    node build-site.mjs ../investigation-workflow-suite/case-studies
+    node check-links.mjs
+
+The build prints a line per study ending in `unfilled: none`, then a line
+for the site. A study whose application folder is missing is skipped with a
+printed note rather than failing the build. If a study's reports have not
+been rendered yet, the build runs `render-case-reports.tsx` for it; if that
+cannot run, it says so and builds the study without its report pages.
+
+## Adding a case study
+
+Two folders, and nothing else. Nothing shared is edited: not
+`build-site.mjs`, not `case-study.template.html`, not `index.template.html`.
+
+In the application repository, `case-studies/<slug>/` holding what the
+regeneration recipe above produces:
+
+- `shots/*.png` - the screenshots, each named `NN-description.png`. The
+  two-digit prefix is what `%%SHOT_NN%%` refers to.
+- `exports/*.pdf`, `*.png`, `*.md` - the published documents, their cover
+  renders and the collated export.
+- `exports/pages/<doc>/*.png` - the page-by-page renders behind each
+  document's viewer, one folder per document (`report_standard`,
+  `report_preliminary`, `report_executive`, `eii_tables`, `source_pack`).
+- `reports/<style>/` - the drafted reports the site renders from.
+
+Here, `case-studies/<slug>/` holding two files:
+
+- `meta.json`, with these fields:
+    - `slug` - the folder name in both repositories. Must match.
+    - `title` - the study's short name, used on cards, page titles and the
+      eyebrow on report and document pages (for example "Tarlton Springs").
+    - `pageTitle` - optional. The browser title for the study's own page.
+      Defaults to "Case study: " plus the title.
+    - `sector` - the eyebrow on the home page card, for example "Aviation",
+      "Maritime", "Mining".
+    - `blurb` - one sentence for the home page card.
+    - `cover` - the file name of the shot used on that card, from the
+      study's own `shots/` folder.
+    - `order` - optional number, lowest first. The lowest-ordered study is
+      the one the home page features in its example reports section.
+      Defaults to 99, then slug order.
+    - `reports` - the report styles this study published, in the order they
+      should appear. Each name is a folder under the application study's
+      `reports/`, and each gets a page at `reports/<slug>/<style>.html` and
+      a document viewer at `exports/<slug>/report_<style>.html`.
+    - `documents` - the other published documents with page renders, each
+      getting a viewer at `exports/<slug>/<doc>.html`. Usually
+      `["source_pack", "eii_tables"]`.
+- `content.html`, the page body for this study: everything between
+  `<main>` and the footer, with no header, nav, lightbox or script of its
+  own. Those come from the shared shell, along with all the CSS, so use
+  the same classes the existing study uses (`case-head`, `walk`, `step`,
+  `card pack`, `published`, and the rest). Write links relative to
+  `case-studies/`, which is where the built page sits:
+    - screenshots: `%%SHOT_NN%%`, which the build rewrites to
+      `../shots/<slug>/NN-description.png`
+    - a document viewer: `../exports/<slug>/source_pack.html`
+    - a PDF or the collated export: `../exports/<slug>/source_pack.pdf`,
+      `../exports/<slug>/collation.md`
+    - a report page: `../reports/<slug>/standard.html#audit`
+    - the home page: `../index.html`
+
+Then run the recipe above. The home page card, the nav entry, the study's
+page, its report pages and its document viewers are all generated.
 
 ## Not yet
 
