@@ -136,6 +136,10 @@ footer a { color: var(--ink-soft); }
   .step p + p { margin-top: 8px; }
   .step.is-active { border-left-color: var(--accent); background: var(--paper); }
   .step img.inline { display: none; }
+  /* Room under the last step, so it reaches the activation band while the
+     grid still extends below the sticky frame: without it the frame scrolls
+     away with the grid before the last screenshot is shown. */
+  .walk__steps { padding-bottom: min(45vh, 520px); }
   .walk__media { position: sticky; top: 72px; }
   .walk__frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); cursor: zoom-in; }
   .walk__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity 320ms ease; }
@@ -246,6 +250,7 @@ footer a { color: var(--ink-soft); }
     .settings-grid figure:nth-child(3) img { width: 100%; }
     .hero { padding-block: 40px 32px; }
     .walk__media { display: none; }
+    .walk__steps { padding-bottom: 0; }
     .step img.inline { display: block; width: 100%; height: auto; margin-top: 12px; border-radius: 8px; border: 1px solid var(--line); cursor: zoom-in; }
     .tests, .assists, .tiers, .stages, .endpoints, .styles, .settings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
