@@ -19,7 +19,7 @@
  * been rendered and cannot be rendered here, is skipped with a printed
  * note rather than failing the build.
  */
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -189,6 +189,9 @@ for (const study of studies) {
     const [title, heading, blurb] = docCopy[name] ?? [name, name, ""];
     const style = name.startsWith("report_") ? name.slice("report_".length) : null;
     const extra = style && reports[style] ? `<a class="btn" href="../../reports/${slug}/${style}.html#audit">The audit and checks</a>` : "";
+    // Start from an empty folder: a document that lost pages (a shorter
+    // redraft) must not keep the old renders beside the new ones.
+    rmSync(join(here, "exports", slug, "pages", name), { recursive: true, force: true });
     const pages = copyInto(join(pagesRoot, name), join(here, "exports", slug, "pages", name), /\.png$/).sort();
     const figures = pages
       .map((f, i) => `    <figure class="page"><img src="pages/${name}/${f}" alt="Page ${i + 1} of ${pages.length}" loading="${i < 2 ? "eager" : "lazy"}"><figcaption>Page ${i + 1} of ${pages.length}</figcaption></figure>`)
