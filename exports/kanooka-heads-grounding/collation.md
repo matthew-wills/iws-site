@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-09-30T06:04:47.209Z
+Generated: 2026-09-30T08:02:57.236Z
 
 ## Sources requested for this section that are empty
 
