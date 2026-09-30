@@ -1,5 +1,24 @@
 [
   {
+    "version": "0.11.0",
+    "date": "2026-09-30",
+    "features": [
+      "Six report styles: standard, three-page preliminary update, executive brief, ATSB-style, probable cause, and causal and contributory factors.",
+      "Repair against the audit: flagged sections sent back with the record excerpts, re-audited, and landed one at a time.",
+      "Probability wording per band and finding terms, adjustable in Settings; the confidence slider offers 5 and 95.",
+      "Evidence items as read-only cards edited in a full form, with Finalise and Reopen.",
+      "Interview note windows and a Finalise that renders the record as one document; Teams transcripts import from docx or vtt.",
+      "The investigation log records the app's own actions with a timestamp.",
+      "Reports carry a contents page, section page breaks and an activity appendix.",
+      "Signed licences with a 30-day trial; an unlicensed copy runs as the Standard tier with a watermark."
+    ],
+    "fixes": [
+      "The record check reads findings through their subheadings and compares like with like.",
+      "Notations from the scaffold no longer leak into report prose.",
+      "Word's leftover instances after a PDF run are closed by the publishing script."
+    ]
+  },
+  {
     "version": "0.10.0",
     "date": "29 September 2026",
     "features": [
