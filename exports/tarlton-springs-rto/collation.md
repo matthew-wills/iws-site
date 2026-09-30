@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-09-29T03:18:43.143Z
+Generated: 2026-09-30T03:13:15.959Z
 
 ## Sources requested for this section that are empty
 
@@ -1389,7 +1389,7 @@ naming what is missing, and draft the rest from what IS here.
 - Lane: Local Conditions
 - Tests: Existence Inconclusive - about as likely as not / Influence Not tested / Importance Not tested
 - Note on Existence: Inconclusive, and recorded as inconclusive rather than dropped. The measured deviation is real and is in the right place; the effect on detection is not established either way and cannot be with the evidence available. The report owes the reader this reasoning rather than silence.
-- Finalised: no
+- Finalised: yes
 - Evidence for: For: the pilot in command described the lighting as 'brighter than I'd want', a corridor of light with everything outside it black, and said anything off the seal could not be seen coming. The photometric check on 25/06/2026 measured four northern edge lights between the 900 m and 1,200 m markers at 118% to 131% of nominal for stage 3, in the exact section the animals crossed, and the aerodrome's maintenance programme checks lamp serviceability without ever measuring intensity.
 - Evidence against: Against: the first officer, who actually saw the animals, described the lighting as normal and said she saw them completely clearly once they were on the sealed surface, at around 200 m. She also said plainly that with two daylight landings to compare against she is not well placed to judge whether it was unusual. The captain was heads-in on the engine page after V1, which is where the procedure puts him, so his non-detection has an explanation that does not require the lighting at all. No measurement exists of what the lights were doing on the night, only a check seven days later, and nothing establishes a link between a 131% edge light and detection of an object on the runway.
 - Investigator notes: Left in draft on purpose. Both accounts are honest and they do not agree, the one measurement shows a deviation but not an effect, and there is no way to close it with what is available. Say so in the report rather than picking a side.
@@ -2374,7 +2374,7 @@ The investigator has NOT finalised this record yet. Treat it as a working draft 
 
 Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
 
-Free recall:
+Investigator's notes:
 Recorded interview, transcript is the record. Notes below are my own working points, not a substitute for it.
 Free recall was clean and chronological and he did not need prompting. He volunteered the reject above V1 before I asked about it, and he volunteered that it was outside procedure.
 Two things he raised unprompted that I had not put on my list. First, he expected Tarlton Springs to be on the Appendix 8A list and had checked since and found it was not. Second, that every stop or go scenario he has ever been given has been an engine, below V1.
@@ -2403,7 +2403,7 @@ The investigator has NOT finalised this record yet. Treat it as a working draft 
 
 Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
 
-Free recall:
+Investigator's notes:
 Recorded interview, transcript is the record.
 She is the only person who actually saw the animals. Her account is consistent throughout and she was careful about what she could and could not say: around 200 m at first sight, 'it could have been less', and she would not put a number on the gap between her call and the captain taking control.
 Direct conflict with the pilot in command on the runway lighting. She described it as normal. She then qualified that herself, unprompted, by saying she has two daylight landings there to compare against, which is the right qualification and the reason the glare object cannot be settled either way.

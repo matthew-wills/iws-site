@@ -3,9 +3,9 @@
   "title": "Bindarra",
   "pageTitle": "Case study: Bindarra Gold Mine",
   "sector": "Mining",
-  "blurb": "A haul truck and a light vehicle meeting at a new intersection on a night shift, from the hazard report nobody acted on to three published reports.",
+  "blurb": "A haul truck and a light vehicle meeting at a new intersection on a night shift, from the hazard report nobody acted on to six published reports.",
   "cover": "11-map-final.png",
   "order": 3,
-  "reports": ["standard", "preliminary", "executive"],
+  "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
   "documents": ["source_pack", "eii_tables"]
 }

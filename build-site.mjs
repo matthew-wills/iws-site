@@ -71,6 +71,9 @@ const docCopy = {
   report_standard: ["Standard Report", "Standard investigation report, as published", "The full report written to the application’s Word template and converted to PDF: cover, distribution list and the report as drafted, section by section from the record."],
   report_preliminary: ["Preliminary Update", "Preliminary investigation update, as published", "The interim style on the same template: what has been established so far and what is still open, with no findings."],
   report_executive: ["Executive Brief", "Executive brief, as published", "The short style on the same template: the occurrence, what was found and what is being done, in a few pages of plain language for the people who decide."],
+  report_atsb: ["ATSB-style Final Report", "ATSB-style final report, as published", "Modelled on the structure and conventions of published ATSB final reports, on the same template: summary, occurrence, context, safety analysis, findings, safety issues and actions."],
+  report_ntsb: ["Probable Cause Report", "Probable cause report, as published", "The NTSB-shaped style on the same template: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations."],
+  report_aaib: ["Causal and Contributory Factors Report", "Causal and contributory factors report, as published", "The AAIB-shaped style on the same template: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations."],
   eii_tables: ["E/I/I Tables", "E/I/I test tables, as published", "One table per object: each test’s result and confidence, the evidence recorded for and against it, and the investigator’s reasoning."],
   source_pack: ["Source Pack", "Investigation source pack", "Every source document this investigation worked from, in one file and in reading order: the safety report, the records and extracts, and the interview transcripts."],
 };
@@ -80,6 +83,9 @@ const reportCopy = {
   standard: ["Standard Report", "Standard investigation report", "The full report style: executive summary, event overview, analysis, findings summary and appendices, drafted section by section from the record."],
   preliminary: ["Preliminary Update", "Preliminary investigation update", "The interim style: what happened, what has been established so far, the risk exposure and the open lines of enquiry. No findings."],
   executive: ["Executive Brief", "Executive brief", "The occurrence, the findings and the actions on a few pages for the people who decide."],
+  atsb: ["ATSB-style Final Report", "ATSB-style final report", "Modelled on the structure and conventions of published ATSB final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions."],
+  ntsb: ["Probable Cause Report", "Probable cause report", "The NTSB-shaped style: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations."],
+  aaib: ["Causal and Contributory Factors Report", "Causal and contributory factors report", "The AAIB-shaped style: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations."],
 };
 
 // ---------------------------------------------------------------- studies

@@ -3,9 +3,9 @@
   "title": "Tarlton Springs",
   "pageTitle": "Case study: Tarlton Springs",
   "sector": "Aviation",
-  "blurb": "A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to three published reports.",
+  "blurb": "A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to six published reports.",
   "cover": "11-map-final.png",
   "order": 1,
-  "reports": ["standard", "preliminary", "executive"],
+  "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
   "documents": ["source_pack", "eii_tables"]
 }

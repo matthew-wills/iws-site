@@ -166,6 +166,9 @@ footer a { color: var(--ink-soft); }
 
   /* Reports */
   .styles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  /* Seven tiles in a four-column grid: the last one, "Your organisation's",
+     takes the spare column so both rows run the full width. */
+  .styles .style:last-child { grid-column: span 2; }
   .style { padding: 14px 16px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
   .style h4 { font-size: 0.98rem; }
   .style p { font-size: 0.9rem; color: var(--ink-soft); }
@@ -207,6 +210,7 @@ footer a { color: var(--ink-soft); }
   }
   @media (max-width: 560px) {
     .flow, .assists, .tiers, .stages, .endpoints, .styles, .parts, .settings-grid, .cases { grid-template-columns: 1fr; }
+    .styles .style:last-child { grid-column: auto; }
   }
 </style>
 
@@ -302,21 +306,21 @@ footer a { color: var(--ink-soft); }
         <a href="case-studies/tarlton-springs-rto.html"><img class="shot" src="shots/tarlton-springs-rto/11-map-final.png" alt="Tarlton Springs: the finished causal map"></a>
         <span class="eyebrow">Aviation</span>
         <h3>Tarlton Springs</h3>
-        <p>A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to three published reports.</p>
+        <p>A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to six published reports.</p>
         <div class="links"><a class="btn btn-primary" href="case-studies/tarlton-springs-rto.html">Walk through it</a></div>
       </article>
       <article class="case card">
         <a href="case-studies/kanooka-heads-grounding.html"><img class="shot" src="shots/kanooka-heads-grounding/11-map-final.png" alt="Kanooka Heads: the finished causal map"></a>
         <span class="eyebrow">Maritime</span>
         <h3>Kanooka Heads</h3>
-        <p>A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to three published reports.</p>
+        <p>A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to six published reports.</p>
         <div class="links"><a class="btn btn-primary" href="case-studies/kanooka-heads-grounding.html">Walk through it</a></div>
       </article>
       <article class="case card">
         <a href="case-studies/bindarra-haul-road-collision.html"><img class="shot" src="shots/bindarra-haul-road-collision/11-map-final.png" alt="Bindarra: the finished causal map"></a>
         <span class="eyebrow">Mining</span>
         <h3>Bindarra</h3>
-        <p>A haul truck and a light vehicle meeting at a new intersection on a night shift, from the hazard report nobody acted on to three published reports.</p>
+        <p>A haul truck and a light vehicle meeting at a new intersection on a night shift, from the hazard report nobody acted on to six published reports.</p>
         <div class="links"><a class="btn btn-primary" href="case-studies/bindarra-haul-road-collision.html">Walk through it</a></div>
       </article>
     </div>
@@ -447,6 +451,9 @@ footer a { color: var(--ink-soft); }
       <div class="style"><h4>Preliminary update</h4><p>Issued while the investigation runs: what has been established, the risk exposure, the open lines of enquiry. No findings.</p></div>
       <div class="style"><h4>Standard investigation</h4><p>The full report: executive summary, event overview, analysis, findings summary and appendices.</p></div>
       <div class="style"><h4>Executive brief</h4><p>The occurrence, the findings and the actions on a few pages for the people who decide.</p></div>
+      <div class="style"><h4>ATSB-style final report</h4><p>Modelled on the structure and conventions of published ATSB final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions.</p></div>
+      <div class="style"><h4>Probable cause report</h4><p>The NTSB-shaped style: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations.</p></div>
+      <div class="style"><h4>Causal and contributory factors report</h4><p>The AAIB-shaped style: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations.</p></div>
       <div class="style"><h4>Your organisation's</h4><p>A style written to your report template, with your headings, cover and findings tables, in a custom build.</p></div>
     </div>
     <div class="examples">
