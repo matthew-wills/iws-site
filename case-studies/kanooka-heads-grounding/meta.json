@@ -7,5 +7,6 @@
   "cover": "11-map-final.png",
   "order": 2,
   "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
-  "documents": ["source_pack", "eii_tables"]
+  "documents": ["source_pack", "eii_tables"],
+  "note": "This case study was produced with version 0.11 and will be updated once 0.12 is released."
 }

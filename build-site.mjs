@@ -216,9 +216,13 @@ for (const study of studies) {
     write(join("exports", slug, `${name}.html`), document(`${title}, ${study.title}`, html));
   }
 
-  // The study's own page: the shared shell plus this study's fragment.
+  // The study's own page: the shared shell plus this study's fragment. A
+  // study held at an older version (meta.json's optional "note") gets that
+  // note rendered where its content.html carries %%VERSION_NOTE%%; a study
+  // with neither just drops the placeholder.
   const shell = readFileSync(join(here, "case-study.template.html"), "utf8");
-  const content = readFileSync(join(study.dir, "content.html"), "utf8");
+  const versionNote = study.note ? `<p class="note">${esc(study.note)}</p>` : "";
+  const content = readFileSync(join(study.dir, "content.html"), "utf8").replace("%%VERSION_NOTE%%", () => versionNote);
   const pageTitle = study.pageTitle ?? `Case study: ${study.title}`;
   const page = withShots(
     shell.replace("%%THEME%%", theme).replace("%%TITLE%%", esc(pageTitle)).replace("%%CONTENT%%", () => content),
