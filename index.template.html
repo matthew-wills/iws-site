@@ -36,6 +36,9 @@
   .assist { display: flex; flex-direction: column; gap: 4px; padding-block: 14px; border-top: 1px solid var(--line); }
   .assist h4 { font-size: 1rem; }
   .assist p { color: var(--ink-soft); font-size: 0.95rem; }
+  .scale-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 12px 0 0; font-size: 0.93rem; }
+  .scale-list dt { color: var(--ink); font-weight: 600; }
+  .scale-list dd { margin: 0; color: var(--ink-soft); font-family: var(--font-mono); }
 
   /* AI */
   .ai-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
@@ -207,10 +210,27 @@
     <div class="assists">
       <div class="assist"><h4>The direction of the investigation in a single image</h4><p>The map shows every line of enquiry and its state: what is proven, what is argued, what has been closed, and what has not yet been looked at.</p></div>
       <div class="assist"><h4>Findings that carry their working</h4><p>Findings are derived from the tests rather than asserted, and the evidence behind each one exports as a table a reviewer can read.</p></div>
-      <div class="assist"><h4>Confidence stated, standard of proof chosen</h4><p>Every verdict carries a confidence on a calibrated verbal probability scale, and the standard a passed test must reach is set for the investigation in Settings.</p></div>
+      <div class="assist"><h4>Confidence stated, standard of proof chosen</h4><p>Every verdict carries a confidence on the probability scale printed below, and the standard a passed test must reach is set for the investigation in Settings.</p></div>
       <div class="assist"><h4>Several reports from one workspace</h4><p>A preliminary update while the work runs, the standard report, an executive brief, all from the same record and in the same styles.</p></div>
       <div class="assist"><h4>One file, held where you decide</h4><p>The entire investigation is one JSON file. No account, no cloud, no upload, and nothing to read it back with in ten years but a text editor.</p></div>
       <div class="assist"><h4>Shared folders, safely</h4><p>Two investigators with the same file open cannot silently overwrite each other: the save that would lose work is held for a decision.</p></div>
+    </div>
+    <div class="card" style="margin-top: 24px">
+      <h4>The probability scale</h4>
+      <p class="hint" style="margin-top: 4px">Every confidence recorded against a test, and every finding, is stated in one of these ten terms rather than a number alone, so a reader sees the same words the investigator judged the evidence by.</p>
+      <dl class="scale-list">
+        <dt>Virtually certain</dt><dd>100%</dd>
+        <dt>Extremely likely</dt><dd>95 to 99%</dd>
+        <dt>Very likely</dt><dd>90 to 94%</dd>
+        <dt>Likely</dt><dd>67 to 89%</dd>
+        <dt>More likely than not</dt><dd>51 to 66%</dd>
+        <dt>About as likely as not</dt><dd>33 to 50%</dd>
+        <dt>Unlikely</dt><dd>10 to 32%</dd>
+        <dt>Very unlikely</dt><dd>5 to 9%</dd>
+        <dt>Extremely unlikely</dt><dd>1 to 4%</dd>
+        <dt>Exceptionally unlikely</dt><dd>under 1%</dd>
+      </dl>
+      <p class="hint" style="margin-top: 10px">A Findings section is held to seven of these terms: narrower wording for the sentences that end up as the investigation's own conclusions.</p>
     </div>
   </section>
 
@@ -222,7 +242,7 @@
     <div class="ai-intro">
       <div class="prose">
         <p>A capable language model writes fluent prose from a large body of material in minutes, and it reads a record more consistently than a tired investigator at the end of a long week. For a report that is mostly the record retold under headings, that is real value.</p>
-        <p>The same model, left to itself, will also fill gaps from its own general knowledge, round "likely" up to "certain", and write a factor that failed its Influence test back in as contributing. None of that is visible in the prose, which is the problem: <strong>the errors read exactly like the truths.</strong> So the question is how to use a model such that every sentence it writes can be traced to the record and checked against it.</p>
+        <p>The same model, left to itself, will also fill gaps from its own general knowledge, round "likely" up to "virtually certain", and write a factor that failed its Influence test back in as contributing. None of that is visible in the prose, which is the problem: <strong>the errors read exactly like the truths.</strong> So the question is how to use a model such that every sentence it writes can be traced to the record and checked against it.</p>
         <p>What the model produces is a first draft of each section, built from the record. The investigator works from that head start: reading it against the record, correcting what is wrong or overstated, and finalising it. The report that gets published is the investigator's, not the model's.</p>
       </div>
       <div class="card">
@@ -230,7 +250,7 @@
         <div class="risks" style="margin-top: 10px">
           <ul>
             <li><span class="x">1</span><span>Facts and figures invented to fill a gap, in the same confident voice as the real ones.</span></li>
-            <li><span class="x">2</span><span>Confidence overstated: "very likely" becomes "certain", and an argued test becomes a settled fact.</span></li>
+            <li><span class="x">2</span><span>Confidence overstated: "very likely" becomes "virtually certain", and an argued test becomes a settled fact.</span></li>
             <li><span class="x">3</span><span>Evidence reweighed: a factor the investigator excluded is quietly written back in as contributing.</span></li>
             <li><span class="x">4</span><span>Recommendations the investigation never made, because reports usually end with some.</span></li>
             <li><span class="x">5</span><span>A protected report quoted as if it were an ordinary statement.</span></li>
