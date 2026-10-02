@@ -25,6 +25,9 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
+/** The maker's wordmark, prefixed onto every page title except the home
+ *  page's, which stays product-led. */
+const BRAND = "Synoptic";
 const appCaseStudies = process.argv[2];
 if (!appCaseStudies) {
   console.error("usage: node build-site.mjs <appCaseStudiesDir>");
@@ -178,7 +181,7 @@ for (const study of studies) {
       .replace("%%CHECK%%", r.recordCheck || '<p class="hint">No record check was recorded for this run.</p>')
       .replace("%%NOTES%%", r.reviewNotes || '<p class="hint">No review notes.</p>');
     pageHoles.push(...unfilled(html));
-    write(join("reports", slug, `${style}.html`), document(`${title}, ${study.title}`, html));
+    write(join("reports", slug, `${style}.html`), document(`${BRAND} | ${title}, ${study.title}`, html));
   }
 
   // A page-by-page viewer for each published document, from the page
@@ -213,7 +216,7 @@ for (const study of studies) {
       .replace("%%EXTRA%%", extra)
       .replace("%%PAGES%%", figures);
     pageHoles.push(...unfilled(html));
-    write(join("exports", slug, `${name}.html`), document(`${title}, ${study.title}`, html));
+    write(join("exports", slug, `${name}.html`), document(`${BRAND} | ${title}, ${study.title}`, html));
   }
 
   // The study's own page: the shared shell plus this study's fragment. A
@@ -229,7 +232,7 @@ for (const study of studies) {
     "../",
   );
   const holes = [...new Set([...unfilled(page), ...pageHoles])];
-  write(join("case-studies", `${slug}.html`), document(pageTitle, page));
+  write(join("case-studies", `${slug}.html`), document(`${BRAND} | ${pageTitle}`, page));
   study.reportsBuilt = declaredReports.filter((s) => reports[s]);
   study.docsBuilt = docs;
   study.reportData = reports;
@@ -292,11 +295,11 @@ const releaseHtml = releases
   )
   .join("\n");
 const changelog = readFileSync(join(here, "changelog.template.html"), "utf8").replace("%%THEME%%", theme).replace("%%RELEASES%%", releaseHtml);
-write("changelog.html", document("Changelog", changelog));
+write("changelog.html", document(`${BRAND} | Changelog`, changelog));
 
 const fragment = readFileSync(join(here, "guide-fragment.html"), "utf8");
 const guide = readFileSync(join(here, "guide.template.html"), "utf8").replace("%%THEME%%", theme).replace("%%GUIDE%%", () => fragment);
-write("guide.html", document("User Guide", guide));
+write("guide.html", document(`${BRAND} | User Guide`, guide));
 
 writeFileSync(join(here, "build-manifest.json"), `${JSON.stringify(built.sort(), null, 2)}\n`);
 
