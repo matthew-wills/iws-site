@@ -38,10 +38,11 @@
   .snags .x { width: 17px; height: 17px; border-radius: 50%; background: var(--warn-soft); color: var(--warn); font-size: 0.7rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; margin-top: 4px; }
 
   /* ---- Band: the loop ---- */
-  .workflow-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .workflow-body .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 74ch; }
+  .workflow-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .workflow-body .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 68ch; }
   .workflow-body .prose strong { color: var(--ink); font-weight: 600; }
-  .loop-wrap { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+  /* The words beside the text, the diagram on its own beneath. */
+  .workflow-lead { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 
   /* The loop diagram holds no fixed colours: every fill, stroke and
      label reads one of these tokens, and each token reads the theme's
@@ -58,7 +59,11 @@
     --la: var(--accent);
     --las: var(--accent-soft);
   }
+  /* The diagram takes more than the text column: the arrows carry
+     wording, so it needs the room to stay readable. */
+  .loopfig { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
   .loopfig svg { width: 100%; height: auto; display: block; }
+  .loopfig figcaption { max-width: 86ch; margin-inline: auto; text-align: center; }
 
   /* ---- Band: what you get ---- */
   .parts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
@@ -148,7 +153,7 @@
     .parts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 960px) {
-    .hero, .problem, .ai-intro, .download, .examples, .loop-wrap, .scale, .live { grid-template-columns: 1fr; }
+    .hero, .problem, .ai-intro, .download, .examples, .workflow-lead, .scale, .live { grid-template-columns: 1fr; }
     .tiers, .stages, .endpoints, .styles, .assists, .shotrow, .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 560px) {
@@ -242,75 +247,96 @@
       <h2>Collecting and examining evidence is not a straight line, so the workflow does not pretend it is</h2>
     </div>
     <div class="workflow-body">
-      <div class="prose">
-        <p>Evidence arrives when it arrives. A recorder download lands a week in, an interview changes what an earlier statement meant, a maintenance record turns up after the analysis looked settled. <strong>The investigation has to stay flexible as new information comes in</strong>, and that is what this application is for.</p>
-        <p>You are notified, you decide an investigation is required, and the checklist starts with whatever is on hand. From there the work runs in rounds: what has come in is recorded, it is analysed, the gaps it exposes become requests for more information, the picture on the map is built out, the evidence behind each object is tested, and round it goes. The report is drawn off the loop when the picture holds, rather than at the point in a sequence where a method says it is due.</p>
-      </div>
-      <div class="loop-wrap">
-        <figure class="loopfig">
-          <svg viewBox="0 0 1120 440" role="img" aria-label="The investigation loop: information and evidence come in and are recorded; the record is analysed; the gaps it exposes become requests for more information, which bring more evidence in; the picture is built on the map; the evidence behind it is tested; and the loop runs again. The report is drawn off the loop when the picture holds.">
-            <defs>
-              <marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0 0L10 5L0 10z" fill="var(--ll)"/>
-              </marker>
-              <marker id="lb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0 0L10 5L0 10z" fill="var(--la)"/>
-              </marker>
-            </defs>
-            <g font-family="Segoe UI Variable Text, Segoe UI, system-ui, sans-serif" fill="var(--li)">
-
-              <!-- what comes in -->
-              <rect x="20" y="252" width="196" height="96" rx="10" fill="var(--lp)" stroke="var(--ll)" stroke-dasharray="5 4"/>
-              <text x="118" y="283" text-anchor="middle" font-size="14" font-weight="600">Information and evidence</text>
-              <text x="118" y="304" text-anchor="middle" font-size="11.5" fill="var(--ls)">notification, reports, data,</text>
-              <text x="118" y="320" text-anchor="middle" font-size="11.5" fill="var(--ls)">interviews, inspections</text>
-              <path d="M220 292C250 288 266 262 289 242" fill="none" stroke="var(--ll)" stroke-width="2" marker-end="url(#la)"/>
-
-              <!-- the four stations -->
-              <rect x="295" y="187" width="190" height="66" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-              <text x="390" y="214" text-anchor="middle" font-size="15" font-weight="600">Record it</text>
-              <text x="390" y="234" text-anchor="middle" font-size="11.5" fill="var(--ls)">filed once, with its source</text>
-
-              <rect x="445" y="37" width="190" height="66" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-              <text x="540" y="64" text-anchor="middle" font-size="15" font-weight="600">Analyse it</text>
-              <text x="540" y="84" text-anchor="middle" font-size="11.5" fill="var(--ls)">what it means, what is missing</text>
-
-              <rect x="595" y="187" width="190" height="66" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-              <text x="690" y="214" text-anchor="middle" font-size="15" font-weight="600">Build the picture</text>
-              <text x="690" y="234" text-anchor="middle" font-size="11.5" fill="var(--ls)">objects, links, timeline</text>
-
-              <rect x="445" y="337" width="190" height="66" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-              <text x="540" y="364" text-anchor="middle" font-size="15" font-weight="600">Test the evidence</text>
-              <text x="540" y="384" text-anchor="middle" font-size="11" fill="var(--ls)">existence, influence, importance</text>
-
-              <!-- round the loop, clockwise -->
-              <path d="M412 184C420 140 440 112 464 104" fill="none" stroke="var(--ll)" stroke-width="2" marker-end="url(#la)"/>
-              <path d="M616 104C640 112 660 140 668 184" fill="none" stroke="var(--ll)" stroke-width="2" marker-end="url(#la)"/>
-              <path d="M668 256C660 300 640 328 616 336" fill="none" stroke="var(--ll)" stroke-width="2" marker-end="url(#la)"/>
-              <path d="M464 336C440 328 420 300 412 256" fill="none" stroke="var(--ll)" stroke-width="2" marker-end="url(#la)"/>
-
-              <!-- the gaps go back out as requests, and bring more in -->
-              <path d="M443 62C360 44 292 92 298 178" fill="none" stroke="var(--ll)" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#la)"/>
-              <text x="348" y="26" text-anchor="middle" font-size="12" fill="var(--ls)">requests for more information</text>
-
-              <text x="540" y="214" text-anchor="middle" font-size="12" fill="var(--lf)">round again</text>
-              <text x="540" y="232" text-anchor="middle" font-size="12" fill="var(--lf)">until it holds</text>
-
-              <!-- the report, drawn off the loop -->
-              <path d="M790 220H886" fill="none" stroke="var(--la)" stroke-width="2" marker-end="url(#lb)"/>
-              <rect x="898" y="178" width="204" height="84" rx="10" fill="var(--las)" stroke="var(--la)"/>
-              <text x="1000" y="207" text-anchor="middle" font-size="15" font-weight="600">The report</text>
-              <text x="1000" y="227" text-anchor="middle" font-size="11.5" fill="var(--ls)">drawn off the loop when</text>
-              <text x="1000" y="243" text-anchor="middle" font-size="11.5" fill="var(--ls)">the picture holds</text>
-            </g>
-          </svg>
-          <figcaption>New information can enter at any point. Nothing is thrown away when it does: the record takes it, the analysis adjusts around it, and the loop runs again.</figcaption>
-        </figure>
+      <div class="workflow-lead">
+        <div class="prose">
+          <p>Evidence arrives when it arrives. A recorder download lands a week in, an interview changes what an earlier statement meant, a maintenance record turns up after the analysis looked settled. <strong>The investigation has to stay flexible as new information comes in</strong>, and that is what this application is for.</p>
+          <p>You are notified, you decide an investigation is required, and the checklist starts with whatever is on hand. From there the work runs in rounds: what has come in is recorded, it is analysed, the gaps it exposes become requests for more information, the picture on the map is built out, the evidence behind each object is tested, and round it goes. The report is drawn off the loop when the picture holds, rather than at the point in a sequence where a method says it is due.</p>
+        </div>
         <div class="card">
           <span class="eyebrow">Centralised</span>
           <p style="margin-top: 8px; color: var(--ink-soft); font-size: 0.95rem;">One to-do list and one evidence store for the whole investigation. A to-do written on an object's form is the same list the Checklist tab shows, with a jump back to the object it came from, so what is outstanding is visible at any point. A capture pasted into an object is held once and appears in the Evidence tab grouped by what rests on it.</p>
         </div>
       </div>
+      <figure class="loopfig">
+        <svg viewBox="0 55 1240 475" role="img" aria-label="The investigation loop. Information and evidence come in and become the record. Analysis turns the record into an account of what it means and where the gaps are. Those gaps go back out as requests for more, which bring more information in. Building the picture turns the account into the map and timeline, testing the evidence settles each object, and round again returns to the record. When the picture is complete the loop is left for the report.">
+          <defs>
+            <marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0L10 5L0 10z" fill="var(--ll)"/>
+            </marker>
+            <marker id="lb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0L10 5L0 10z" fill="var(--la)"/>
+            </marker>
+          </defs>
+          <g font-family="Segoe UI Variable Text, Segoe UI, system-ui, sans-serif" fill="var(--li)">
+
+            <!-- what comes in, and the request that goes back out to it -->
+            <rect x="20" y="390" width="236" height="104" rx="10" fill="var(--lp)" stroke="var(--ll)" stroke-dasharray="5 4"/>
+            <text x="138" y="422" text-anchor="middle" font-size="15" font-weight="600">What comes in</text>
+            <text x="138" y="444" text-anchor="middle" font-size="12" fill="var(--ls)">notification, reports, data,</text>
+            <text x="138" y="462" text-anchor="middle" font-size="12" fill="var(--ls)">interviews, inspections</text>
+            <path d="M150 386C180 340 240 305 309 299" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+            <path d="M493 110C330 62 60 110 86 382" fill="none" stroke="var(--ll)" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#la)"/>
+
+            <!-- the four states the investigation passes through -->
+            <rect x="315" y="253" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="420" y="283" text-anchor="middle" font-size="16" font-weight="600">The record</text>
+            <text x="420" y="305" text-anchor="middle" font-size="12" fill="var(--ls)">filed once, with its source</text>
+
+            <rect x="495" y="73" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="600" y="103" text-anchor="middle" font-size="16" font-weight="600">What it means</text>
+            <text x="600" y="125" text-anchor="middle" font-size="12" fill="var(--ls)">the account so far, and its gaps</text>
+
+            <rect x="675" y="253" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="780" y="283" text-anchor="middle" font-size="16" font-weight="600">The picture</text>
+            <text x="780" y="305" text-anchor="middle" font-size="12" fill="var(--ls)">map, timeline, objects, links</text>
+
+            <rect x="495" y="433" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="600" y="463" text-anchor="middle" font-size="16" font-weight="600">Tested objects</text>
+            <text x="600" y="485" text-anchor="middle" font-size="12" fill="var(--ls)">existence, influence, importance</text>
+
+            <!-- round the loop, clockwise -->
+            <path d="M450 250C452 210 480 168 516 149" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+            <path d="M684 150C722 170 748 210 750 249" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+            <path d="M750 331C748 370 722 410 686 430" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+            <path d="M516 430C480 410 452 370 450 331" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+
+            <text x="600" y="284" text-anchor="middle" font-size="12.5" fill="var(--lf)">the same record</text>
+            <text x="600" y="302" text-anchor="middle" font-size="12.5" fill="var(--lf)">all the way round</text>
+
+            <!-- the way out, once every object has been tested -->
+            <path d="M709 470H936" fill="none" stroke="var(--la)" stroke-width="2.2" marker-end="url(#lb)"/>
+            <rect x="950" y="428" width="260" height="84" rx="10" fill="var(--las)" stroke="var(--la)"/>
+            <text x="1080" y="459" text-anchor="middle" font-size="16" font-weight="600">The report</text>
+            <text x="1080" y="481" text-anchor="middle" font-size="12" fill="var(--ls)">assembled or drafted from</text>
+            <text x="1080" y="498" text-anchor="middle" font-size="12" fill="var(--ls)">that same record</text>
+
+            <!-- the words the arrows carry -->
+            <g font-size="13" font-weight="600" text-anchor="middle">
+              <rect x="110" y="317" width="200" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+              <text x="210" y="334">information and evidence in</text>
+
+              <rect x="148" y="113" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+              <text x="219" y="130">requests for more</text>
+
+              <rect x="430" y="179" width="82" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+              <text x="471" y="196">analysis</text>
+
+              <rect x="660" y="179" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+              <text x="731" y="196">build the picture</text>
+
+              <rect x="660" y="374" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+              <text x="731" y="391">test the evidence</text>
+
+              <rect x="419" y="375" width="102" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+              <text x="470" y="392">round again</text>
+
+              <rect x="720" y="457" width="206" height="26" rx="13" fill="var(--lp)" stroke="var(--la)"/>
+              <text x="823" y="474" fill="var(--la)">when the picture is complete</text>
+            </g>
+          </g>
+        </svg>
+        <figcaption>New information can enter at any point. Nothing is thrown away when it does: the record takes it, the analysis adjusts around it, and the loop runs again until the picture holds.</figcaption>
+      </figure>
     </div>
   </section>
 
