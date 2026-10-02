@@ -10,7 +10,11 @@
       "A PDF or any file dropped onto an object's evidence panel or the Evidence tab becomes evidence; opening it hands it to the system's own reader.",
       "A ticked to-do moves to a collapsed Completed section; unticking brings it back.",
       "An image evidence item can go into the report as a numbered figure with a bordered image, a Word caption and cross-reference links from the text.",
-      "The suite builds and tests under the training edition as well as the generic one."
+      "The suite builds and tests under the training edition as well as the generic one.",
+      "Record sits before Draft report in the tab order, and the Draft report page reads as style, then sections, then check and export.",
+      "Captured material lists the newest capture first, text captures read as extracts rather than raw markup, and the evidence categories are editable in Settings.",
+      "Conclusive wording at the ends of the probability scale: conclusively established, the evidence is conclusive; conclusively excluded, conclusively ruled out.",
+      "The maker is named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
     ],
     "fixes": [
       "The measured-fact record check reads only the sentence that restates the factor's own proposition.",
