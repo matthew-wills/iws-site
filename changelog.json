@@ -1,5 +1,25 @@
 [
   {
+    "version": "0.12.0",
+    "date": "2026-10-03",
+    "features": [
+      "Probability wording as a band table in Settings: adjustable percentage edges, a tick per accepted phrase, defaults from the ATSB scale.",
+      "The object form says what a confidence slider position reads as: the term, its band and whether it passes the standard of proof.",
+      "The style picker explains each report style and its length, links the example PDF where one ships, and the export can carry the AcciMap, the Timeline and the E/I/I tables as appendices.",
+      "A Findings list says that a finding stated without a likelihood term was established as fact, whenever one is.",
+      "A PDF or any file dropped onto an object's evidence panel or the Evidence tab becomes evidence; opening it hands it to the system's own reader.",
+      "A ticked to-do moves to a collapsed Completed section; unticking brings it back.",
+      "An image evidence item can go into the report as a numbered figure with a bordered image, a Word caption and cross-reference links from the text.",
+      "The suite builds and tests under the training edition as well as the generic one."
+    ],
+    "fixes": [
+      "The measured-fact record check reads only the sentence that restates the factor's own proposition.",
+      "The orphan-factor record check no longer flags excluded hypotheses and other factors that increased risk, which the method leaves unconnected.",
+      "A figure's reference reads as its own sentence after the caption, and a single mention is one cross-reference.",
+      "The user guide: stale names and passages corrected, the negated-term and backwards-edge checks documented, Log in its right place."
+    ]
+  },
+  {
     "version": "0.11.0",
     "date": "2026-09-30",
     "features": [
