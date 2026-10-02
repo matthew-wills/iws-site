@@ -125,12 +125,9 @@ footer a { color: var(--ink-soft); }
   .part h4 { font-size: 0.95rem; margin-bottom: 3px; }
   .part p { font-size: 0.88rem; color: var(--ink-soft); }
 
-  /* The workflow in one pass */
-  .flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
-  .flow .st { padding: 12px 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
-  .flow .st .n { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
-  .flow .st h4 { font-size: 0.93rem; }
-  .flow .st p { font-size: 0.85rem; color: var(--ink-soft); }
+  /* The workflow */
+  .workflow-body { display: flex; flex-direction: column; gap: 20px; }
+  .workflow-body .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 72ch; }
 
   /* Case studies */
   .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -144,6 +141,9 @@ footer a { color: var(--ink-soft); }
   .assist { display: flex; flex-direction: column; gap: 4px; padding-block: 14px; border-top: 1px solid var(--line); }
   .assist h4 { font-size: 1rem; }
   .assist p { color: var(--ink-soft); font-size: 0.95rem; }
+  .scale-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 12px 0 0; font-size: 0.93rem; }
+  .scale-list dt { color: var(--ink); font-weight: 600; }
+  .scale-list dd { margin: 0; color: var(--ink-soft); font-family: var(--font-mono); }
 
   /* AI */
   .ai-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
@@ -206,10 +206,10 @@ footer a { color: var(--ink-soft); }
   @media (max-width: 960px) {
     .hero, .whatis, .ai-intro, .download, .examples { grid-template-columns: 1fr; }
     .hero { padding-block: 40px 32px; }
-    .flow, .tests, .assists, .tiers, .stages, .endpoints, .styles, .settings-grid, .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tests, .assists, .tiers, .stages, .endpoints, .styles, .settings-grid, .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 560px) {
-    .flow, .assists, .tiers, .stages, .endpoints, .styles, .parts, .settings-grid, .cases { grid-template-columns: 1fr; }
+    .assists, .tiers, .stages, .endpoints, .styles, .parts, .settings-grid, .cases { grid-template-columns: 1fr; }
     .styles .style:last-child { grid-column: auto; }
   }
 </style>
@@ -244,14 +244,14 @@ footer a { color: var(--ink-soft); }
     <div class="hero-copy">
       <span class="eyebrow">Safety investigation software for Windows</span>
       <h1>One customisable workflow for a safety investigation, from the notification all the way through to the report</h1>
-      <p class="lede">A desktop application for occurrence investigations. The checklist, the evidence, the interviews, the timeline, the causal map, the analysis and the report all live in one investigation file that stays on your machine.</p>
+      <p class="lede">A desktop application for occurrence investigations. The checklist, the evidence, the interviews, the timeline, the AcciMap, the analysis and the report all live in one investigation file that stays on your machine.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#download">Download 0.11.0 for Windows</a>
         <a class="btn" href="#case-studies">Walk through a case study</a>
       </div>
       <p class="hero-note">Every feature is available for 28 days. After that the record, the map and report assembly keep working; AI drafting needs a licence.</p>
     </div>
-    <img class="shot zoomable" data-caption="The finished causal map for the Tarlton Springs case study." src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished AcciMap for the Tarlton Springs case study: six tinted lanes, tested factors, excluded hypotheses struck through, proven causal arrows converging on the runway overrun">
+    <img class="shot zoomable" data-caption="The finished AcciMap for the Tarlton Springs case study." src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished AcciMap for the Tarlton Springs case study: six tinted lanes, tested factors, excluded hypotheses struck through, proven causal arrows converging on the runway overrun">
   </section>
 
   <section class="block" id="what">
@@ -262,17 +262,16 @@ footer a { color: var(--ink-soft); }
     <div class="whatis">
       <div class="prose">
         <p>Most investigations are run across a dozen tools: notes in one application, evidence in a folder, interviews in another, a diagram drawn by hand, and a report written from memory of all of it. The record and the report drift apart, and the reasoning that connects a piece of evidence to a finding lives only in the investigator's head.</p>
-        <p>This is one application, and one file, for the whole of that work. Every hypothesis is an object on a causal map that must pass its tests before it can be called a finding, and <strong>the report is a view of the record</strong>, not a separate document. The method is a systemic one: the map uses the AcciMap layout, with organisational levels as lanes, and each factor is tested for Existence, Influence and Importance with a recorded confidence.</p>
+        <p>This is one application, and one file, for the whole of that work. Every hypothesis is an object on the AcciMap that must pass its tests before it can be called a finding, and <strong>the report is a view of the record</strong>, not a separate document. The method is a systemic one: the map uses the AcciMap layout, with organisational levels as lanes, and each factor is tested for Existence, Influence and Importance with a recorded confidence.</p>
         <p>It runs on the investigator's own computer. Nothing is uploaded, no account is needed, and the file can sit on a secure shared drive while the work runs and be archived when it is closed.</p>
       </div>
       <div class="parts" aria-label="What the investigation file holds">
-        <div class="part"><h4>Checklist and to-do list</h4><p>What the investigation should cover, and the jobs outstanding.</p></div>
-        <div class="part"><h4>Evidence register</h4><p>Every capture filed once, with what rests on it.</p></div>
-        <div class="part"><h4>Interviews and safety reports</h4><p>Finalised accounts, with people identified by role.</p></div>
+        <div class="part"><h4>Checklist</h4><p>What the investigation should cover, the jobs outstanding, and who the report goes to.</p></div>
+        <div class="part"><h4>Evidence</h4><p>Every capture filed once, with what rests on it. Interviews and safety reports are finalised alongside it, people identified by role.</p></div>
         <div class="part"><h4>Timeline</h4><p>The sequence of events, each with its source and time basis.</p></div>
-        <div class="part"><h4>Causal map</h4><p>Every hypothesis as an object, tested and connected.</p></div>
-        <div class="part"><h4>Analysis and report</h4><p>Findings derived from the tests; reports assembled or drafted.</p></div>
-        <div class="part"><h4>Distribution and log</h4><p>Who the report goes to, and the investigation's own decisions.</p></div>
+        <div class="part"><h4>AcciMap</h4><p>Every hypothesis as an object, tested and connected.</p></div>
+        <div class="part"><h4>Record</h4><p>Findings derived from the tests, reports assembled or drafted.</p></div>
+        <div class="part"><h4>Log</h4><p>The investigation's own decisions, recorded automatically as the work moves.</p></div>
         <div class="part"><h4>One JSON file</h4><p>Readable without the application, on the drive you choose.</p></div>
       </div>
     </div>
@@ -281,17 +280,19 @@ footer a { color: var(--ink-soft); }
   <section class="block" id="workflow">
     <div class="section-head">
       <span class="eyebrow">The workflow</span>
-      <h2>The workflow runs in one pass, from notification to the report</h2>
-      <p>Seven stages, one file, no hand-off between tools. Each stage feeds the next, and the report at the end is assembled from what the stages before it recorded.</p>
+      <h2>The investigation runs in loops, not a straight line</h2>
+      <p>One file, no hand-off between tools, but no fixed order either. The record builds up in rounds, and the report at the end is assembled from what those rounds produced.</p>
     </div>
-    <div class="flow">
-      <div class="st"><span class="n">01</span><h4>Notification and triage</h4><p>The occurrence is rated and the investigation opened.</p></div>
-      <div class="st"><span class="n">02</span><h4>Checklist and to-dos</h4><p>A template checklist, and one list of jobs outstanding.</p></div>
-      <div class="st"><span class="n">03</span><h4>Evidence and interviews</h4><p>Captures filed once; transcripts made records, by role.</p></div>
-      <div class="st"><span class="n">04</span><h4>Timeline</h4><p>Each event with its source and its time basis.</p></div>
-      <div class="st"><span class="n">05</span><h4>Causal map</h4><p>Every hypothesis placed in its organisational lane.</p></div>
-      <div class="st"><span class="n">06</span><h4>The tests</h4><p>Existence, Influence, Importance, each with a confidence.</p></div>
-      <div class="st"><span class="n">07</span><h4>Report and exports</h4><p>Findings derived from the tests, then published.</p></div>
+    <div class="workflow-body">
+      <div class="prose">
+        <p>The investigator is notified of the occurrence and decides whether an investigation is required. From there the checklist starts, and whatever evidence is immediately on hand goes in. The timeline and the AcciMap are started early too, often from very little.</p>
+        <p>The rest of the work runs as a loop rather than a sequence. More evidence is gathered to fill in the timeline and the map, and to fill out the objects placed on it. The checklist, the log and the to-do list are kept up to date as that happens, and the loop continues until the timeline and the map are complete.</p>
+        <p>An object on the map carries its own to-dos, and needs more evidence before it can be finalised. A to-do raised on an object goes straight onto the main to-do list, so what is still outstanding, whether that is evidence to chase or research to do, is visible at any point in the investigation.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">One list, one evidence store</span>
+        <p style="margin-top: 8px; color: var(--ink-soft); font-size: 0.95rem;">A to-do written on an object's form is the same list as the Checklist tab's to-do list, not a copy of it, with a jump back to the object it came from. Evidence pasted into an object's form is held once, and it shows in the Evidence tab grouped by what it is used for, so the investigator can see what rests on what without leaving the map.</p>
+      </div>
     </div>
   </section>
 
@@ -334,10 +335,27 @@ footer a { color: var(--ink-soft); }
     <div class="assists">
       <div class="assist"><h4>The direction of the investigation in a single image</h4><p>The map shows every line of enquiry and its state: what is proven, what is argued, what has been closed, and what has not yet been looked at.</p></div>
       <div class="assist"><h4>Findings that carry their working</h4><p>Findings are derived from the tests rather than asserted, and the evidence behind each one exports as a table a reviewer can read.</p></div>
-      <div class="assist"><h4>Confidence stated, standard of proof chosen</h4><p>Every verdict carries a confidence on a calibrated verbal probability scale, and the standard a passed test must reach is set for the investigation in Settings.</p></div>
+      <div class="assist"><h4>Confidence stated, standard of proof chosen</h4><p>Every verdict carries a confidence on the probability scale printed below, and the standard a passed test must reach is set for the investigation in Settings.</p></div>
       <div class="assist"><h4>Several reports from one workspace</h4><p>A preliminary update while the work runs, the standard report, an executive brief, all from the same record and in the same styles.</p></div>
       <div class="assist"><h4>One file, held where you decide</h4><p>The entire investigation is one JSON file. No account, no cloud, no upload, and nothing to read it back with in ten years but a text editor.</p></div>
       <div class="assist"><h4>Shared folders, safely</h4><p>Two investigators with the same file open cannot silently overwrite each other: the save that would lose work is held for a decision.</p></div>
+    </div>
+    <div class="card" style="margin-top: 24px">
+      <h4>The probability scale</h4>
+      <p class="hint" style="margin-top: 4px">Every confidence recorded against a test, and every finding, is stated in one of these ten terms rather than a number alone, so a reader sees the same words the investigator judged the evidence by.</p>
+      <dl class="scale-list">
+        <dt>Virtually certain</dt><dd>100%</dd>
+        <dt>Extremely likely</dt><dd>95 to 99%</dd>
+        <dt>Very likely</dt><dd>90 to 94%</dd>
+        <dt>Likely</dt><dd>67 to 89%</dd>
+        <dt>More likely than not</dt><dd>51 to 66%</dd>
+        <dt>About as likely as not</dt><dd>33 to 50%</dd>
+        <dt>Unlikely</dt><dd>10 to 32%</dd>
+        <dt>Very unlikely</dt><dd>5 to 9%</dd>
+        <dt>Extremely unlikely</dt><dd>1 to 4%</dd>
+        <dt>Exceptionally unlikely</dt><dd>under 1%</dd>
+      </dl>
+      <p class="hint" style="margin-top: 10px">A Findings section is held to seven of these terms: narrower wording for the sentences that end up as the investigation's own conclusions.</p>
     </div>
   </section>
 
@@ -349,14 +367,15 @@ footer a { color: var(--ink-soft); }
     <div class="ai-intro">
       <div class="prose">
         <p>A capable language model writes fluent prose from a large body of material in minutes, and it reads a record more consistently than a tired investigator at the end of a long week. For a report that is mostly the record retold under headings, that is real value.</p>
-        <p>The same model, left to itself, will also fill gaps from its own general knowledge, round "likely" up to "certain", and write a factor that failed its Influence test back in as contributing. None of that is visible in the prose, which is the problem: <strong>the errors read exactly like the truths.</strong> So the question is how to use a model such that every sentence it writes can be traced to the record and checked against it.</p>
+        <p>The same model, left to itself, will also fill gaps from its own general knowledge, round "likely" up to "virtually certain", and write a factor that failed its Influence test back in as contributing. None of that is visible in the prose, which is the problem: <strong>the errors read exactly like the truths.</strong> So the question is how to use a model such that every sentence it writes can be traced to the record and checked against it.</p>
+        <p>What the model produces is a first draft of each section, built from the record. The investigator works from that head start: reading it against the record, correcting what is wrong or overstated, and finalising it. The report that gets published is the investigator's, not the model's.</p>
       </div>
       <div class="card">
         <span class="eyebrow">What goes wrong without control</span>
         <div class="risks" style="margin-top: 10px">
           <ul>
             <li><span class="x">1</span><span>Facts and figures invented to fill a gap, in the same confident voice as the real ones.</span></li>
-            <li><span class="x">2</span><span>Confidence overstated: "very likely" becomes "certain", and an argued test becomes a settled fact.</span></li>
+            <li><span class="x">2</span><span>Confidence overstated: "very likely" becomes "virtually certain", and an argued test becomes a settled fact.</span></li>
             <li><span class="x">3</span><span>Evidence reweighed: a factor the investigator excluded is quietly written back in as contributing.</span></li>
             <li><span class="x">4</span><span>Recommendations the investigation never made, because reports usually end with some.</span></li>
             <li><span class="x">5</span><span>A protected report quoted as if it were an ordinary statement.</span></li>
@@ -461,7 +480,7 @@ footer a { color: var(--ink-soft); }
         <span class="eyebrow">Example</span>
         <a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the standard investigation report" style="max-width: 320px"></a>
         <h3>Standard investigation report, Tarlton Springs</h3>
-        <span class="meta">10,270 words · claude:opus · 10 model calls · drafted 28/09/2026</span>
+        <span class="meta">10,327 words · claude:opus · 8 model calls · drafted 02/10/2026</span>
         <p>Drafted through the pipeline above and published exactly as it landed, with the audit and the record check beside it, because catching what the audit caught is the point.</p>
         <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/report_standard.html">Read the published report</a><a class="btn" href="reports/tarlton-springs-rto/standard.html#audit">The audit and checks</a></div>
       </article>
@@ -469,7 +488,7 @@ footer a { color: var(--ink-soft); }
         <span class="eyebrow">Example</span>
         <a href="exports/tarlton-springs-rto/report_preliminary.html"><img class="shot" src="exports/tarlton-springs-rto/report_preliminary.png" alt="Cover page of the preliminary investigation update" style="max-width: 320px"></a>
         <h3>Preliminary update, Tarlton Springs</h3>
-        <span class="meta">1,232 words · claude:opus · 5 model calls · drafted 29/09/2026</span>
+        <span class="meta">1,323 words · claude:opus · 5 model calls · drafted 02/10/2026</span>
         <p>The same record in the preliminary style: what has been established and what is still open, with no findings. Same pipeline, same audit, same checks.</p>
         <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/report_preliminary.html">Read the published update</a><a class="btn" href="reports/tarlton-springs-rto/preliminary.html#audit">The audit and checks</a></div>
       </article>
@@ -477,7 +496,7 @@ footer a { color: var(--ink-soft); }
         <span class="eyebrow">Example</span>
         <a href="exports/tarlton-springs-rto/report_executive.html"><img class="shot" src="exports/tarlton-springs-rto/report_executive.png" alt="Cover page of the executive brief" style="max-width: 320px"></a>
         <h3>Executive brief, Tarlton Springs</h3>
-        <span class="meta">1,733 words · claude:opus · 5 model calls · drafted 29/09/2026</span>
+        <span class="meta">1,790 words · claude:opus · 5 model calls · drafted 02/10/2026</span>
         <p>The same record again, cut to a few pages of plain language: the occurrence, the findings and the actions. Same pipeline, same audit, same checks.</p>
         <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/report_executive.html">Read the published brief</a><a class="btn" href="reports/tarlton-springs-rto/executive.html#audit">The audit and checks</a></div>
       </article>
@@ -501,7 +520,7 @@ footer a { color: var(--ink-soft); }
         <h3>Standard</h3>
         <p class="who">For an investigation with no model involved, or after a trial ends.</p>
         <ul>
-          <li>Checklist, evidence, interviews, timeline, causal map</li>
+          <li>Checklist, evidence, interviews, timeline, AcciMap</li>
           <li>E/I/I tables, map and timeline exports</li>
           <li>Reports assembled from the record, in any style</li>
         </ul>
