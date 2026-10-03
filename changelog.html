@@ -159,29 +159,23 @@ footer a { color: var(--ink-soft); }
       <div><span class="v">0.12.0</span><span class="d">2026-10-03</span></div>
       <div class="parts">
         <div><span class="eyebrow">Added</span><ul>
-          <li>Probability wording as a band table in Settings: adjustable percentage edges, a tick per accepted phrase, defaults from the ATSB scale.</li>
-          <li>The object form says what a confidence slider position reads as: the term, its band and whether it passes the standard of proof.</li>
-          <li>The style picker explains each report style and its length, links the example PDF where one ships, and the export can carry the AcciMap, the Timeline and the E/I/I tables as appendices.</li>
-          <li>A Findings list says that a finding stated without a likelihood term was established as fact, whenever one is.</li>
-          <li>A PDF or any file dropped onto an object's evidence panel or the Evidence tab becomes evidence; opening it hands it to the system's own reader.</li>
-          <li>A ticked to-do moves to a collapsed Completed section; unticking brings it back.</li>
-          <li>An image evidence item can go into the report as a numbered figure with a bordered image, a Word caption and cross-reference links from the text.</li>
-          <li>The suite builds and tests under the training edition as well as the generic one.</li>
-          <li>Record sits before Draft report in the tab order, and the Draft report page reads as style, then sections, then check and export.</li>
-          <li>Captured material lists the newest capture first, text captures read as extracts rather than raw markup, and the evidence categories are editable in Settings.</li>
-          <li>Conclusive wording at the ends of the probability scale: conclusively established, the evidence is conclusive; conclusively excluded, conclusively ruled out.</li>
-          <li>The maker is named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software.</li>
-          <li>The Checklist tab becomes the Dashboard: completeness tiles with a jump to where the work is, above the checklist and the to-do list.</li>
-          <li>A to-do's origin, an evidence item's use and a record check's factor take you to that object on the AcciMap with it highlighted.</li>
-          <li>The Timeline carries a time precision and zone, a source kind, a status, a link to objects on the map, phases and the investigation's own columns, with a full guide section.</li>
-          <li>The E/I/I tables Word document opens with a contents page and the AcciMap, keeps each table whole on a page, and can carry each object's evidence under its table.</li>
-          <li>An opt-in setting keeps dropped files in an attachments folder beside the investigation; the single file stays the rule by default.</li>
+          <li>Dashboard: completeness tiles above the checklist and the to-do list, each with a jump to the work.</li>
+          <li>Jump to the map: a to-do's origin, an evidence item's use or a record check takes you to the object, highlighted.</li>
+          <li>Timeline: time precision and zone, source, status, links to the map, phases and your own columns.</li>
+          <li>Evidence: drop a PDF or any file onto an object or the Evidence tab; open it in your own reader; newest first; text extracts read as extracts; your own categories; an optional attachments folder beside the investigation.</li>
+          <li>Figures: tick an image to carry it into the report with a caption and cross-reference links.</li>
+          <li>E/I/I tables document: a contents page, the map, one table per page, and the evidence under each table as an option.</li>
+          <li>Report styles: each described with its length and an example; the map, timeline and E/I/I tables as optional appendices.</li>
+          <li>Probability wording: the likelihood bands and their accepted phrases adjustable in Settings; the object form shows what a slider position reads as.</li>
+          <li>A Findings list says when a finding stated without a likelihood term was established as fact.</li>
+          <li>Record before Draft report in the tab order; the Draft report page in three bands.</li>
+          <li>The user guide illustrated throughout, with every control explained.</li>
+          <li>The maker named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software.</li>
         </ul></div>
         <div><span class="eyebrow">Fixed</span><ul>
-          <li>The measured-fact record check reads only the sentence that restates the factor's own proposition.</li>
-          <li>The orphan-factor record check no longer flags excluded hypotheses and other factors that increased risk, which the method leaves unconnected.</li>
-          <li>A figure's reference reads as its own sentence after the caption, and a single mention is one cross-reference.</li>
-          <li>The user guide: stale names and passages corrected, the negated-term and backwards-edge checks documented, Log in its right place.</li>
+          <li>Record checks read only the sentence that restates a factor's own claim, leave excluded hypotheses and other risk factors unconnected by design, and read a numbered Findings list item by item.</li>
+          <li>The command-line export carries figures like the app's own export, and a figure's caption reads as its own sentence.</li>
+          <li>User guide passages that named old tabs or described behaviour the app no longer has are corrected.</li>
         </ul></div>
       </div>
     </div>
@@ -189,7 +183,7 @@ footer a { color: var(--ink-soft); }
       <div><span class="v">0.11.0</span><span class="d">2026-09-30</span></div>
       <div class="parts">
         <div><span class="eyebrow">Added</span><ul>
-          <li>Six report styles: standard, three-page preliminary update, executive brief, ATSB-style, probable cause, and causal and contributory factors.</li>
+          <li>Six report styles: standard, three-page preliminary update, executive brief, and three final-report styles modelled on published investigation reports.</li>
           <li>Repair against the audit: flagged sections sent back with the record excerpts, re-audited, and landed one at a time.</li>
           <li>Probability wording per band and finding terms, adjustable in Settings; the confidence slider offers 5 and 95.</li>
           <li>Evidence items as read-only cards edited in a full form, with Finalise and Reopen.</li>
