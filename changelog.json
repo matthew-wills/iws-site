@@ -14,7 +14,12 @@
       "Record sits before Draft report in the tab order, and the Draft report page reads as style, then sections, then check and export.",
       "Captured material lists the newest capture first, text captures read as extracts rather than raw markup, and the evidence categories are editable in Settings.",
       "Conclusive wording at the ends of the probability scale: conclusively established, the evidence is conclusive; conclusively excluded, conclusively ruled out.",
-      "The maker is named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
+      "The maker is named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software.",
+      "The Checklist tab becomes the Dashboard: completeness tiles with a jump to where the work is, above the checklist and the to-do list.",
+      "A to-do's origin, an evidence item's use and a record check's factor take you to that object on the AcciMap with it highlighted.",
+      "The Timeline carries a time precision and zone, a source kind, a status, a link to objects on the map, phases and the investigation's own columns, with a full guide section.",
+      "The E/I/I tables Word document opens with a contents page and the AcciMap, keeps each table whole on a page, and can carry each object's evidence under its table.",
+      "An opt-in setting keeps dropped files in an attachments folder beside the investigation; the single file stays the rule by default."
     ],
     "fixes": [
       "The measured-fact record check reads only the sentence that restates the factor's own proposition.",
