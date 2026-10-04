@@ -57,6 +57,24 @@
   font-size: 13px;
 }
 
+/* An evidence capture's own quote block (issue #71), not the drafting
+   harness's "> " bullet convention above: a real extract from the source
+   document, set off as an indented block with a left rule. */
+.md blockquote.md__quote {
+  margin: 0 0 12px;
+  padding: 2px 14px;
+  border-left: 3px solid #cbd5e1;
+  color: #334155;
+}
+
+.md blockquote.md__quote p {
+  margin: 0 0 6px;
+}
+
+.md blockquote.md__quote p:last-child {
+  margin-bottom: 0;
+}
+
 .md hr {
   margin: 20px 0;
   border: none;
@@ -138,6 +156,23 @@
   color: #0f172a;
 }
 
+/* The title as a link to the object it names (issue #80): it reads as
+   the heading it is until the pointer is over it. */
+.md-card__title-link {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.md-card__title-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
 .md-card__tag {
   padding: 2px 9px;
   font-size: 11.5px;
@@ -178,6 +213,32 @@
   padding: 0;
   border: 1px solid #000000;
   box-shadow: none;
+}
+
+/* A text figure: the extract inside the same frame, with the quoted
+   lines behind a left rule and the source line under them, matching
+   the single-cell table the Word export draws. */
+.md__figure-frame {
+  border: 1px solid #000000;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.md__figure-extract {
+  margin: 4px 0 6px 20px;
+}
+
+.md__figure-quote {
+  margin-left: 34px;
+  padding-left: 10px;
+  border-left: 2px solid #000000;
+}
+
+.md__figure-source {
+  margin: 8px 0 0 20px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: #64748b;
 }
 
 .md__figure figcaption {

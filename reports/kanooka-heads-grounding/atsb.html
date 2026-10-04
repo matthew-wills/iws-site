@@ -331,6 +331,32 @@ footer a { color: var(--ink-soft); }
   box-shadow: none;
 }
 
+/* A text figure: the extract inside the same frame, with the quoted
+   lines behind a left rule and the source line under them, matching
+   the single-cell table the Word export draws. */
+.md__figure-frame {
+  border: 1px solid #000000;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.md__figure-extract {
+  margin: 4px 0 6px 20px;
+}
+
+.md__figure-quote {
+  margin-left: 34px;
+  padding-left: 10px;
+  border-left: 2px solid #000000;
+}
+
+.md__figure-source {
+  margin: 8px 0 0 20px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: #64748b;
+}
+
 .md__figure figcaption {
   margin-top: 6px;
   font-size: 12.5px;
