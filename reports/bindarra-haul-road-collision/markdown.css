@@ -49,20 +49,30 @@
   margin-bottom: 4px;
 }
 
-.md blockquote {
-  margin: 0 0 12px;
-  padding: 6px 14px;
-  border-left: 3px solid #cbd5e1;
-  color: #475569;
-  font-style: italic;
-}
-
 .md code {
   padding: 1px 5px;
   background: #f1f5f9;
   border-radius: 4px;
   font-family: "Consolas", monospace;
   font-size: 13px;
+}
+
+/* An evidence capture's own quote block (issue #71), not the drafting
+   harness's "> " bullet convention above: a real extract from the source
+   document, set off as an indented block with a left rule. */
+.md blockquote.md__quote {
+  margin: 0 0 12px;
+  padding: 2px 14px;
+  border-left: 3px solid #cbd5e1;
+  color: #334155;
+}
+
+.md blockquote.md__quote p {
+  margin: 0 0 6px;
+}
+
+.md blockquote.md__quote p:last-child {
+  margin-bottom: 0;
 }
 
 .md hr {
@@ -112,4 +122,108 @@
   padding: 1px 5px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+/* --- Per-object cards (issue 20) --------------------------------------
+   Where a page discusses one object from the map after another, each
+   block is rendered as a card with the object's title, and its
+   classification, outside and above it: the break between one object
+   and the next is then a break in the page, not a heading to notice.
+   Only the Record tab asks for this (MarkdownPreview's `cardLevel`);
+   the markdown itself, and everything exported from it, is unchanged. */
+.md-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.md-card-group {
+  margin: 18px 0 6px;
+}
+
+.md-card-group__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.md-card__title {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 650;
+  color: #0f172a;
+}
+
+/* The title as a link to the object it names (issue #80): it reads as
+   the heading it is until the pointer is over it. */
+.md-card__title-link {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.md-card__title-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.md-card__tag {
+  padding: 2px 9px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #0f766e;
+  background: #ccfbf1;
+  border-radius: 999px;
+}
+
+.md-card {
+  padding: 10px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #99f6e4;
+  border-radius: 8px;
+}
+
+.md-card .md > :first-child {
+  margin-top: 0;
+}
+
+.md-card .md > :last-child {
+  margin-bottom: 0;
+}
+
+/* A figure in the preview: the same thin black frame and the same
+   caption line the Word export draws (`export/docxFigures.ts`), so the
+   screen and the file agree. The border is 1px here rather than the
+   0.75pt Word uses - a CSS pixel is the nearest a screen has. */
+.md__figure {
+  margin: 16px 0 20px;
+  text-align: center;
+}
+
+.md__figure img {
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+  border: 1px solid #000000;
+  box-shadow: none;
+}
+
+.md__figure figcaption {
+  margin-top: 6px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: #64748b;
+}
+
+/* "Figure 3" in the prose, linking to the figure below it. */
+.md__figure-ref {
+  color: #0563c1;
+  text-decoration: underline;
 }

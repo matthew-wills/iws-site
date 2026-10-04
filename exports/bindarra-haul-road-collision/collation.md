@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-09-30T08:04:15.159Z
+Generated: 2026-10-04T02:50:33.642Z
 
 ## Sources requested for this section that are empty
 
@@ -19,16 +19,17 @@ naming what is missing, and draft the rest from what IS here.
 - Lane: Occurrence Events
 - Tests: Existence Pass - virtually certain / Influence Pass - virtually certain / Importance Not tested
 - Finalised: yes
-- Evidence: At 18:47:12 UTC on 11/08/2026, 02:47 local, a 220 t class rigid haul truck descending the main ramp of the Stage 4 open pit at Bindarra Gold Mine empty at 24 km/h struck the right side of a light vehicle emerging from the RL 312 dewatering spur, pushed it 18.4 m down the ramp and rolled it onto its left side against the inner windrow. The light vehicle carried one occupant, a grade control technician employed by a survey subcontractor, on his third night shift at the mine. He was conscious throughout, was extricated through the rear of the vehicle 27 minutes after the collision, and was flown to the metropolitan trauma centre at 07:40 local.
+- Evidence: At 02:47:12 on 12/08/2026 (18:47:12 UTC on 11/08/2026) a 220 t class rigid haul truck descending the main ramp of the Stage 4 open pit at Bindarra Gold Mine empty at 24 km/h struck the right side of a light vehicle emerging from the RL 312 dewatering spur, pushed it 18.4 m down the ramp and rolled it onto its left side against the inner windrow. The light vehicle carried one occupant, a grade control technician employed by a survey subcontractor, on his third night shift at the mine. He was conscious throughout, was extricated through the rear of the vehicle 27 minutes after the collision, and was flown to the metropolitan trauma centre at 07:40.
 - Significance: A serious injury: a fractured left clavicle, three fractured left ribs and a small pneumothorax, treated at the surface medical facility and evacuated by air. The light vehicle was destroyed; its roll-over protection structure was deformed inward at the right rear mounting and the seatbelt webbing carried loading marks, so two defences were loaded to the point of showing it. The haul truck was damaged at the front left and returned to service on 14/08/2026. The Stage 4 pit stood down for 9 hours 15 minutes and the main ramp below RL 340 was closed for 22 hours. The occurrence was notified to the State Mines Inspectorate as a reportable injury.
 - Investigator notes: The critical event. Everything else on this map exists to explain it.
-- Why Notification CRL-OCC-2026-0332, raised 11/08/2026 19:26 UTC matters: The first record of the occurrence and the source of the agreed facts: place, time, the two vehicles, the injuries, the damage and the actions taken that night. Everything else in the file is dated against it.
+- Why Notification CRL-OCC-2026-0332, raised 12/08/2026 03:26 local (11/08/2026 19:26 UTC) matters: The first record of the occurrence and the source of the agreed facts: place, time, the two vehicles, the injuries, the damage and the actions taken that night. Everything else in the file is dated against it.
 - Attached extract (Occurrence notification CRL-OCC-2026-0332) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   HT-407 was descending the main ramp empty, returning to the Stage 4 loading
   face at the end of the second dump cycle after the crib break. LV-118 was
   travelling outbound on the RL 312 dewatering spur, a 240 m access road cut
-  eleven days earlier to reach the new dewatering bore, and was returning to
+  under works order WO-26-4471 to reach the new dewatering bore, completed on
+  31/07/2026 and opened to light vehicles on 02/08/2026. It was returning to
   the ramp after the grade control technician had completed a pickup at the
   bore collar.
   
@@ -406,7 +407,7 @@ naming what is missing, and draft the rest from what IS here.
 - Significance: This is the mine's own defence against exactly this interaction, and at this intersection it was unarmed by its own terms. The next date on which the spur could have been listed is 12/11/2026, three months after the collision.
 - Investigator notes: The safety issue the map exists to find. The control is sound and its trigger is circular: an intersection reaches the list through a drawing that is only reissued at the review, and nothing requires a new road to be referred at all. Recommend this one in its own right whatever else the report says.
 - Why RAD-2026-0332, transcribed 17/08/2026, verified by a second investigator matters: What was actually said, in order, across the whole period. It shows that no call was made by either vehicle about the spur, the ramp or a light vehicle being anywhere in the pit, and it fixes the emergency response times from the collision onwards.
-- Attached extract (Pit channel radio extract, 18:20 to 18:52 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+- Attached extract (Pit channel radio extract, 02:20 to 02:52 local (18:20 to 18:52 UTC)) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   18:22:41  Dispatch      All Stage 4 units, crib's done, back to work please.
   18:22:49  HT-411        411 rolling.
@@ -524,7 +525,7 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Existence: The configuration, the event log and the twelve month statistics come from the system itself and were downloaded sealed.
 - Note on Influence: Argued, and accepted at 75%. The influence is not the alert that did not sound in the last three seconds; it is that fourteen months of silence on that ramp taught an operator that silence meant an empty road, and he said so in his own report before he was asked. That expectation is a condition he carried into the crest. The report should carry both readings.
 - Finalised: yes
-- Evidence: The collision awareness system on the Stage 4 haul fleet operates at Level 7, operator advisory; Level 9 intervention is available on the fleet and is not enabled at Bindarra. Advisory alerts are raised on a tag entering the 60 m ring above a 10 km/h closing rate, except inside the S4-LOAD suppression geofence, which was drawn around the loading face on 14/03/2025 to stop nuisance alerts and extended northward on 09/06/2026 when the face advanced. The extended boundary lies 180 m up-ramp of the RL 312 intersection, placing the intersection inside the suppressed area. The extension was made as a system configuration task by the contractor's technical services group, is not recorded in the traffic management plan, and was not reviewed against it. The log records a proximity event at 18:47:09.2 at 21.4 m and 13 km/h closing, alert suppressed. In the twelve months before the occurrence HT-407 raised 412 advisory alerts, every one outside the geofence and none inside it, while 68 proximity events inside it were suppressed, nine of them a light vehicle tag on the main ramp below the boundary. No training record anywhere on site, for any person, covers the geofences.
+- Evidence: The collision awareness system on the Stage 4 haul fleet operates at Level 7, operator advisory; Level 9 intervention is available on the fleet and is not enabled at Bindarra. Advisory alerts are raised on a tag entering the 60 m ring above a 10 km/h closing rate, except inside the S4-LOAD suppression geofence, which was drawn around the loading face on 14/03/2025 to stop nuisance alerts and extended northward on 09/06/2026 when the face advanced. The extended boundary lies 180 m up-ramp of the RL 312 intersection, placing the intersection inside the suppressed area. The extension was made as a system configuration task by the contractor's technical services group, is not recorded in the traffic management plan, and was not reviewed against it. The log records a proximity event at 02:47:09.2 (18:47:09.2 UTC) at 21.4 m and 13 km/h closing, alert suppressed. In the twelve months before the occurrence HT-407 raised 412 advisory alerts, every one outside the geofence and none inside it, while 68 proximity events inside it were suppressed, nine of them a light vehicle tag on the main ramp below the boundary. No training record anywhere on site, for any person, covers the geofences.
 - Evidence for influence: Nine earlier events of exactly this kind were recorded by the system, visible to anyone who queried it, and reported to nobody, because the standing report covers alert counts and system health and does not report suppressions at all.
 - Evidence against influence: Against: the alert would have come at 18:47:09.2, which is 1.8 seconds after the operator had already begun braking and 2.8 seconds before impact, so on this occasion an advisory tone would have told him something he already knew. The system is advisory only and carries no intervention, and at 41 m of sight line the outcome was fixed before either the alert or the sighting. On that reading the suppression is a serious finding about the fleet and not a cause of this collision.
 - Investigator notes: Both the operator and the supervisor raised this unprompted and the statistics bear them out. The finding is not that the geofence exists; nuisance alerts around an excavator will destroy a system. The finding is that its boundary moved 180 m in June and nobody outside the group that moved it was told.
@@ -694,7 +695,8 @@ naming what is missing, and draft the rest from what IS here.
 - Attached extract (Hazard report HAZ-2026-0917 and its closure entry) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   **Submitted by:** Dewatering technician, Corella Resources
-  **Submitted:** 04/08/2026 22:10 local, seven days before the occurrence
+  **Submitted:** 04/08/2026 23:48 local, the same night as the near miss it
+  describes and seven days before the occurrence
   **Category:** Hazard - traffic and mobile equipment
   **Risk rating applied by the submitter:** Medium
   **Risk rating on closure:** Low
@@ -739,11 +741,11 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Existence: Established by a continuous recording of the whole period and confirmed by all three interviews.
 - Note on Influence: A call from either vehicle would have been heard by the other, by dispatch and by the supervisor, and the dispatcher was already tracking the truck closely enough to place it. Discounted from certainty because a call gives knowledge, not separation, and the two vehicles still had to resolve who went first over 41 m of sight line.
 - Finalised: yes
-- Evidence: The pit channel was logged continuously and the investigator listened to the whole period from the shift's return from crib to two minutes after the collision. There is no transmission by either vehicle about the RL 312 spur, the dewatering bore, or a light vehicle being anywhere in the Stage 4 pit. LV-118 made no transmission on the channel at all that shift beyond logging on at 17:04 UTC. No call was required: BIN-TMP-004 clause 4.3.2 requires none at an intersection not listed at Appendix B, and this one is not listed. The truck operator, the light vehicle driver and the night shift supervisor each described the same practice independently and without being led: calls are made at the nine intersections on the crib room board and at no others, and the supervisor said plainly that he has never corrected anybody for not calling elsewhere and that requiring calls everywhere would make the channel unusable.
+- Evidence: The pit channel was logged continuously and the investigator listened to the whole period from the shift's return from crib to two minutes after the collision. There is no transmission by either vehicle about the RL 312 spur, the dewatering bore, or a light vehicle being anywhere in the Stage 4 pit. LV-118 made no transmission on the channel at all that shift beyond logging on at 18:04 (10:04 UTC), at the start of shift. No call was required: BIN-TMP-004 clause 4.3.2 requires none at an intersection not listed at Appendix B, and this one is not listed. The truck operator, the light vehicle driver and the night shift supervisor each described the same practice independently and without being led: calls are made at the nine intersections on the crib room board and at no others, and the supervisor said plainly that he has never corrected anybody for not calling elsewhere and that requiring calls everywhere would make the channel unusable.
 - Significance: The one action that would have put each vehicle in the other's knowledge was available, cost nothing, and was on neither operator's mind, because no document put it there and the local practice matched the document exactly.
 - Investigator notes: Careful with the wording of this one. It is an omission with no owner: the plan expressly requires no call there, every operator on the pit described the same practice, and the supervisor confirmed he has never pulled anybody up for it.
 - Why RAD-2026-0332, transcribed 17/08/2026, verified by a second investigator matters: What was actually said, in order, across the whole period. It shows that no call was made by either vehicle about the spur, the ramp or a light vehicle being anywhere in the pit, and it fixes the emergency response times from the collision onwards.
-- Attached extract (Pit channel radio extract, 18:20 to 18:52 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+- Attached extract (Pit channel radio extract, 02:20 to 02:52 local (18:20 to 18:52 UTC)) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   18:22:41  Dispatch      All Stage 4 units, crib's done, back to work please.
   18:22:49  HT-411        411 rolling.
@@ -1032,7 +1034,7 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Existence: Recorded data, the damage pattern and the debris field all agree.
 - Note on Influence: The impact is the mechanism by which the convergence became an injury.
 - Finalised: yes
-- Evidence: Impact at 18:47:12.0 at 24 km/h, 4.6 seconds after the brake application and 6.2 m into the ramp from the eastern edge of the spur mouth, 3.1 m out from the inner windrow toe. The truck's accelerometer logged 1.9 g longitudinal. Damage to LV-118 is concentrated on the right side from the B pillar forward; damage to HT-407 is confined to the front left bumper, the left mudguard and the lower two steps of the access ladder, with nothing above the bumper line. Right side glass and mirror fragments lie from 4.8 m to 14 m down-ramp of the impact position.
+- Evidence: Impact at 02:47:12.0 (18:47:12.0 UTC) at 24 km/h, 4.6 seconds after the brake application and 6.2 m into the ramp from the eastern edge of the spur mouth, 3.1 m out from the inner windrow toe. The truck's accelerometer logged 1.9 g longitudinal. Damage to LV-118 is concentrated on the right side from the B pillar forward; damage to HT-407 is confined to the front left bumper, the left mudguard and the lower two steps of the access ladder, with nothing above the bumper line. Right side glass and mirror fragments lie from 4.8 m to 14 m down-ramp of the impact position.
 - Significance: A 220 tonne vehicle striking the side of a 3 tonne one leaves the outcome entirely to the light vehicle's structure, the restraint and the speed, and two of those three were already settled before the sighting.
 - Investigator notes: The link to make sure the report draws: the truck struck the side of the vehicle, not the front, which is what the intersection geometry makes inevitable and what the roll-over protection then had to deal with.
 - Why Warrigal Mining Services technical services report WMS-TS-2026-114, issued 18/08/2026 matters: The load-bearing physical evidence for the sequence. It settles the truck's speed, the 1.4 second response, the braking actually achieved against the unit's own tested figure, the 24 km/h impact speed, and that the in-cab road network never contained the spur.
@@ -1111,13 +1113,14 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: A continuous gouge runs 18.4 m down-ramp from the impact position, changing at 11.2 m from tyre scuff to body panel gouge, which is where the vehicle went over. LV-118 came to rest on its left side against the inner windrow, facing down-ramp, 18.4 m below the impact. The roll-over protection structure is deformed inward at the right rear mounting and was not breached. The driver's seatbelt was found fastened with loading marks on the webbing. The occupant sustained a fractured left clavicle, three fractured left ribs and a small pneumothorax, and was conscious throughout. The door on the resting side was against the ground, so extrication was through the rear of the vehicle.
 - Significance: The injuries are the ones a side impact and a roll-over produce when the structure holds and the restraint is worn. The same sequence with either of those absent is a different report.
 - Investigator notes: The mechanism of injury, and the place to say what worked: the restraint was fastened and loaded, and the roll-over structure deformed without being breached. Both belong in the report.
-- Why Notification CRL-OCC-2026-0332, raised 11/08/2026 19:26 UTC matters: The first record of the occurrence and the source of the agreed facts: place, time, the two vehicles, the injuries, the damage and the actions taken that night. Everything else in the file is dated against it.
+- Why Notification CRL-OCC-2026-0332, raised 12/08/2026 03:26 local (11/08/2026 19:26 UTC) matters: The first record of the occurrence and the source of the agreed facts: place, time, the two vehicles, the injuries, the damage and the actions taken that night. Everything else in the file is dated against it.
 - Attached extract (Occurrence notification CRL-OCC-2026-0332) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   HT-407 was descending the main ramp empty, returning to the Stage 4 loading
   face at the end of the second dump cycle after the crib break. LV-118 was
   travelling outbound on the RL 312 dewatering spur, a 240 m access road cut
-  eleven days earlier to reach the new dewatering bore, and was returning to
+  under works order WO-26-4471 to reach the new dewatering bore, completed on
+  31/07/2026 and opened to light vehicles on 02/08/2026. It was returning to
   the ramp after the grade control technician had completed a pickup at the
   bore collar.
   
@@ -1288,7 +1291,7 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Existence: Recorded data throughout, corroborated by the scene marks.
 - Note on Influence: Recorded as a decrease in risk. A third of the impact energy was taken out in 4.6 seconds of braking, and the steering input put the collision against the wall side of the road.
 - Finalised: yes
-- Evidence: The download records the last steady data point at 18:47:06 at 37 km/h, 41 m above the intersection, and service brake pressure rising from 0 to 620 kPa in 0.4 seconds from 18:47:07.4, with the retarder taken to maximum and 14 degrees of right steering input in the same movement. That is a 1.4 second response, inside the 1.5 seconds the plan's own stopping distance calculation allows. Mean deceleration from the brake application to the collision was 1.85 m/s2 against the unit's tested 1.9. Impact speed was 24 km/h; with no braking it would have been 37 km/h. The scene shows the braked scuff deviating 1.4 m right over its first 20 m, into the wall side, which is the only direction that did not take the light vehicle down a 100 m drop with him. He stopped 19 m below the intersection, called the collision, followed the dispatcher's instruction to stay in the cab until the ramp was stopped, then went down and stayed with the driver until the response team arrived.
+- Evidence: The download records the last steady data point at 02:47:06 (18:47:06 UTC) at 37 km/h, 41 m above the intersection, and service brake pressure rising from 0 to 620 kPa in 0.4 seconds from 02:47:07.4, with the retarder taken to maximum and 14 degrees of right steering input in the same movement. That is a 1.4 second response, inside the 1.5 seconds the plan's own stopping distance calculation allows. Mean deceleration from the brake application to the collision was 1.85 m/s2 against the unit's tested 1.9. Impact speed was 24 km/h; with no braking it would have been 37 km/h. The scene shows the braked scuff deviating 1.4 m right over its first 20 m, into the wall side, which is the only direction that did not take the light vehicle down a 100 m drop with him. He stopped 19 m below the intersection, called the collision, followed the dispatcher's instruction to stay in the cab until the ramp was stopped, then went down and stayed with the driver until the response team arrived.
 - Significance: The difference between a 37 km/h and a 24 km/h impact on the side of a light vehicle is the difference between the injuries actually sustained and a very different outcome. The steering decision is what kept the vehicle against the inner windrow rather than over the edge.
 - Investigator notes: Recorded as a positive event because it is one. The same investigation that finds a 41 m sight line should say that what the operator did inside those four seconds is the reason this is a survivable injury and not a fatality.
 - Why Warrigal Mining Services technical services report WMS-TS-2026-114, issued 18/08/2026 matters: The load-bearing physical evidence for the sequence. It settles the truck's speed, the 1.4 second response, the braking actually achieved against the unit's own tested figure, the 24 km/h impact speed, and that the in-cab road network never contained the spur.
@@ -1365,7 +1368,7 @@ naming what is missing, and draft the rest from what IS here.
 - Tests: Existence Fail - very unlikely / Influence Not tested / Importance Not tested
 - Note on Existence: Three independent sources agree: the weather record, the surface as examined, and the deceleration actually achieved, which is the figure the truck achieves dry.
 - Finalised: yes
-- Evidence: Hypothesis tested because an 18 m push down a 9 per cent grade invites a question about the surface. It fails. The met station records no precipitation on the night and the last rainfall at the site was 26 days before the occurrence. The water cart log puts the last pass on that section at 17:10 UTC, 1 hour 37 minutes before, and the standing night shift instruction is a pass every 90 minutes, so the surface had been drying for longer than the interval rather than freshly watered. The investigator examined the ramp at 06:20 local and found it dry throughout, with no damp patches, ponding or greasy film at or above the intersection. The braked tyre scuff runs continuously for 62 m with no sign of a locked or sliding wheel, and the download gives a mean deceleration of 1.85 m/s2 against the unit's own tested 1.9 m/s2 on a dry 9 per cent grade. There is no evidence of a wet or slippery surface from any source.
+- Evidence: Hypothesis tested because an 18 m push down a 9 per cent grade invites a question about the surface. It fails. The met station records no precipitation on the night and the last rainfall at the site was 26 days before the occurrence. The water cart log puts the last pass on that section at 01:10 (17:10 UTC), 1 hour 37 minutes before, and the standing night shift instruction is a pass every 90 minutes, so the surface had been drying for longer than the interval rather than freshly watered. The investigator examined the ramp at 06:20 local and found it dry throughout, with no damp patches, ponding or greasy film at or above the intersection. The braked tyre scuff runs continuously for 62 m with no sign of a locked or sliding wheel, and the download gives a mean deceleration of 1.85 m/s2 against the unit's own tested 1.9 m/s2 on a dry 9 per cent grade. There is no evidence of a wet or slippery surface from any source.
 - Investigator notes: Raised early because a 220 tonne truck sliding down a wet ramp is the first thing anybody pictures. Disposed of in a morning and kept on the map so the report can say it was tested rather than assumed away.
 - Why INV-2026-0332-SCENE, scene examined 12/08/2026 before recovery matters: The physical record of the collision: where the braking began, where the impact was, how far the light vehicle was pushed, where it went over, and that the restraint and the roll-over protection did their work.
 - Attached extract (Scene examination, RL 312 intersection) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
@@ -1398,7 +1401,7 @@ naming what is missing, and draft the rest from what IS here.
   the lower two steps of the access ladder. There is no damage above the
   bumper line.
   ```
-- Why Met station, water cart log and fixed dust monitor records, 11/08/2026 matters: Disposes of the road surface as a factor and gives the dust hypothesis everything there is to give it: a water cart pass seven minutes overdue and a particulate reading well above the shift mean and well below the site trigger. It is not a measurement of what could be seen.
+- Why Met station, water cart log and fixed dust monitor records, night of 11 to 12/08/2026 matters: Disposes of the road surface as a factor and gives the dust hypothesis everything there is to give it: a water cart pass seven minutes overdue and a particulate reading well above the shift mean and well below the site trigger. It is not a measurement of what could be seen.
 - Attached extract (Light, surface, weather and dust records) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   **Light.** The occurrence was at 02:47 local, in darkness. There is no fixed
@@ -1413,14 +1416,15 @@ naming what is missing, and draft the rest from what IS here.
   patches, ponding or greasy film at or above the intersection.
   
   **Water cart and dust.** The water cart log records the main ramp between RL
-  280 and RL 400 last watered at 17:10 UTC, 1 hour 37 minutes before the
-  occurrence. The standing instruction on night shift is a ramp pass every 90
-  minutes, so a pass was 7 minutes overdue. The fixed dust monitor at the ramp
-  crest, 180 m up-ramp of the intersection, logged PM10 at 142 micrograms per
-  cubic metre in the 18:40 to 18:50 UTC interval, against a shift mean of 88
-  and a site trigger of 250. That is a measure of airborne particulate at the
-  monitor head. Nothing at Bindarra measures visibility, and no measurement
-  exists of what could be seen from either cab on the night.
+  280 and RL 400 last watered at 01:10 local (17:10 UTC), 1 hour 37 minutes
+  before the occurrence. The standing instruction on night shift is a ramp pass
+  every 90 minutes, so a pass was 7 minutes overdue. The fixed dust monitor at
+  the ramp crest, 180 m up-ramp of the intersection, logged PM10 at 142
+  micrograms per cubic metre in the 02:40 to 02:50 local interval (18:40 to
+  18:50 UTC), against a shift mean of 88 and a site trigger of 250. That is a
+  measure of airborne particulate at the monitor head. Nothing at Bindarra
+  measures visibility, and no measurement exists of what could be seen from
+  either cab on the night.
   ```
 
 ### The haul truck's service brakes were degraded and could not achieve the required stopping performance
@@ -1532,7 +1536,7 @@ naming what is missing, and draft the rest from what IS here.
   the lower two steps of the access ladder. There is no damage above the
   bumper line.
   ```
-- Why Met station, water cart log and fixed dust monitor records, 11/08/2026 matters: Disposes of the road surface as a factor and gives the dust hypothesis everything there is to give it: a water cart pass seven minutes overdue and a particulate reading well above the shift mean and well below the site trigger. It is not a measurement of what could be seen.
+- Why Met station, water cart log and fixed dust monitor records, night of 11 to 12/08/2026 matters: Disposes of the road surface as a factor and gives the dust hypothesis everything there is to give it: a water cart pass seven minutes overdue and a particulate reading well above the shift mean and well below the site trigger. It is not a measurement of what could be seen.
 - Attached extract (Light, surface, weather and dust records) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   **Light.** The occurrence was at 02:47 local, in darkness. There is no fixed
@@ -1547,20 +1551,24 @@ naming what is missing, and draft the rest from what IS here.
   patches, ponding or greasy film at or above the intersection.
   
   **Water cart and dust.** The water cart log records the main ramp between RL
-  280 and RL 400 last watered at 17:10 UTC, 1 hour 37 minutes before the
-  occurrence. The standing instruction on night shift is a ramp pass every 90
-  minutes, so a pass was 7 minutes overdue. The fixed dust monitor at the ramp
-  crest, 180 m up-ramp of the intersection, logged PM10 at 142 micrograms per
-  cubic metre in the 18:40 to 18:50 UTC interval, against a shift mean of 88
-  and a site trigger of 250. That is a measure of airborne particulate at the
-  monitor head. Nothing at Bindarra measures visibility, and no measurement
-  exists of what could be seen from either cab on the night.
+  280 and RL 400 last watered at 01:10 local (17:10 UTC), 1 hour 37 minutes
+  before the occurrence. The standing instruction on night shift is a ramp pass
+  every 90 minutes, so a pass was 7 minutes overdue. The fixed dust monitor at
+  the ramp crest, 180 m up-ramp of the intersection, logged PM10 at 142
+  micrograms per cubic metre in the 02:40 to 02:50 local interval (18:40 to
+  18:50 UTC), against a shift mean of 88 and a site trigger of 250. That is a
+  measure of airborne particulate at the monitor head. Nothing at Bindarra
+  measures visibility, and no measurement exists of what could be seen from
+  either cab on the night.
   ```
 - Led to: Both vehicles arrived at the intersection with neither operator aware of the other
 
-## Timeline (sequence of events, all times UTC; corrections are the investigator's zone or clock adjustments)
+## Timeline (sequence of events, all times local time; corrections are the investigator's zone or clock adjustments)
 
-- 02/08/2026 01:15:00 [Mine operator] The RL 312 spur is opened to light vehicles - Bore DW-14 energised and the spur first used. The 'ROAD CLOSED - CONSTRUCTION' sign at the mouth is removed on the same day and nothing is installed in its place. No sign, give-way control or delineation is added at any point afterwards. [Source: Works order WO-26-4471 and the works log]
+
+**Before the shift**
+
+- 02/08/2026 [Mine operator] The RL 312 spur is opened to light vehicles (established) - Bore DW-14 energised and the spur first used, two days after the works order recorded the earthworks complete on 31/07/2026. The 'ROAD CLOSED - CONSTRUCTION' sign at the mouth is removed on the same day and nothing is installed in its place. No sign, give-way control or delineation is added at any point afterwards. [Location: RL 312 dewatering spur, Stage 4 pit] [Source: Operator record: Works order WO-26-4471 and the Stage 4 works log] [Factors: Access spur cut and opened to traffic under a works order, with no management of change raised; The spur meets the ramp beyond a crest, giving 41 m of sight line against a plan minimum of 120 m; Positive radio calls required only at listed intersections, and the list is rewritten once a year]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     At the time of the occurrence the RL 312 spur intersection carried:
@@ -1607,11 +1615,12 @@ naming what is missing, and draft the rest from what IS here.
     any of them could have been recorded and it reads "N/A".
     ```
     Investigator note: Works order WO-26-4471, RL 312 dewatering access
-- 04/08/2026 14:10:00 [Mine operator] A near miss at the same intersection is reported - A dewatering technician comes out of the spur in front of a descending haul truck about 60 m away, reverses back into the spur and lets it pass. He writes it up the same night, describing the rise, the windrow, the absence of a sign and his view that the trucks do not know the road is there. [Source: Hazard report HAZ-2026-0917]
+- 04/08/2026 about 22:10 [Mine operator] A near miss at the same intersection, written up the same night (reported) - A dewatering technician comes out of the spur in front of a descending haul truck about 60 m away, reverses back into the spur and lets it pass. He writes it up before the end of shift, describing the rise, the windrow, the absence of a sign and his view that the trucks do not know the road is there. [Location: RL 312 spur intersection, main ramp] [Source: Interview or account: Hazard report HAZ-2026-0917, the technician's own account of the time, submitted 04/08/2026 23:48] [Factors: The spur meets the ramp beyond a crest, giving 41 m of sight line against a plan minimum of 120 m]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     **Submitted by:** Dewatering technician, Corella Resources
-    **Submitted:** 04/08/2026 22:10 local, seven days before the occurrence
+    **Submitted:** 04/08/2026 23:48 local, the same night as the near miss it
+    describes and seven days before the occurrence
     **Category:** Hazard - traffic and mobile equipment
     **Risk rating applied by the submitter:** Medium
     **Risk rating on closure:** Low
@@ -1649,7 +1658,7 @@ naming what is missing, and draft the rest from what IS here.
     the only action recorded against it.
     ```
     Investigator note: Hazard report HAZ-2026-0917 and its closure entry
-- 06/08/2026 05:30:00 [Mine operator] The hazard report is closed with a reminder to the crew - Closed by the Dewatering Superintendent two days after it was raised. The crew are reminded at pre-start to take care and to give way to haul trucks. The report is not referred to the mining department, the contractor, the survey department or the traffic management plan owner, and the risk rating is reduced from Medium to Low on closure. [Source: Hazard report HAZ-2026-0917, closure entry]
+- 06/08/2026 [Mine operator] The hazard report is closed with a reminder to the crew (established) - Closed by the Dewatering Superintendent two days after it was raised. The crew were reminded at the pre-start on 05/08 to take care and to give way to haul trucks. The report is not referred to the mining department, the contractor, the survey department or the traffic management plan owner, and the risk rating is reduced from Medium to Low on closure. [Location: Dewatering department, Bindarra Gold Mine] [Source: Operator record: Hazard report HAZ-2026-0917, closure entry of 06/08/2026] [Factors: Positive radio calls required only at listed intersections, and the list is rewritten once a year]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     Document register, BIN-TMP-004.
@@ -1677,7 +1686,8 @@ naming what is missing, and draft the rest from what IS here.
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     **Submitted by:** Dewatering technician, Corella Resources
-    **Submitted:** 04/08/2026 22:10 local, seven days before the occurrence
+    **Submitted:** 04/08/2026 23:48 local, the same night as the near miss it
+    describes and seven days before the occurrence
     **Category:** Hazard - traffic and mobile equipment
     **Risk rating applied by the submitter:** Medium
     **Risk rating on closure:** Low
@@ -1715,7 +1725,58 @@ naming what is missing, and draft the rest from what IS here.
     the only action recorded against it.
     ```
     Investigator note: Hazard report HAZ-2026-0917 and its closure entry
-- 11/08/2026 18:22:41 [Dispatch and supervision] Stage 4 returns from crib - Dispatch calls the pit back to work. HT-407 begins the first of the post-crib cycles; the collision occurs on the second, coming back down empty. [Source: Pit channel recording RAD-2026-0332]
+- 09/08/2026 [Mine operator] Site access card issued to the light vehicle driver (established) - Issued at the gatehouse against Merrivale's recognition agreement after a 20 minute briefing on muster points, speed limits and personal protective equipment. No Bindarra site supplement and no light vehicle pit driving assessment is held, asked for or recorded, and nothing in the card system distinguishes a person who may drive in an operating pit from one who may not. The first of his three night shifts at Bindarra begins the same evening. [Location: Bindarra gatehouse] [Source: Operator record: Bindarra gatehouse access card register and the Merrivale training file] [Factors: Contractor induction accepted as equivalent, with the site supplement and pit driving assessment never verified]
+  - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+    ```
+    > **7.3** A contractor's own general induction may be accepted as equivalent
+    > to the Bindarra general induction where the contractor holds a current
+    > recognition agreement with Corella Resources.
+    >
+    > **7.4** Equivalence under 7.3 does not extend to the Bindarra
+    > site-specific supplement, or to the Bindarra light vehicle pit driving
+    > assessment, which shall be completed at site by every person who will
+    > drive a vehicle in an operating pit and shall not be substituted.
+    >
+    > **7.5** The engaging department is responsible for verifying that 7.4 has
+    > been completed before a site access card is issued.
+    
+    Merrivale Survey & Geotechnical has held a recognition agreement since 2023.
+    The gatehouse issues site access cards against the recognition agreement
+    alone; it holds no record of the supplement or the pit driving assessment
+    and is not asked for one. Nothing in the access card system distinguishes a
+    person who may drive in an operating pit from a person who may not.
+    ```
+    Investigator note: Contractor Management Standard CRL-STD-009, clauses 7.3 to 7.5
+  - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+    ```
+    Fourteen months at
+    Bindarra, seven years on haul trucks across three sites. Verification of
+    competency on the 220 t class unit issued 06/2025 and current. Annual
+    refresher completed 02/2026. Site general induction 06/2025. The record
+    shows no traffic management refresher of any kind since the general
+    induction, and the general induction module on traffic management is a
+    23 slide package that names the nine Appendix B intersections and does not
+    mention what to do at an intersection that is not listed. There is no
+    training record anywhere on site, for any person, covering the collision
+    awareness system's suppression geofences.
+    
+    **Light vehicle driver, induction and training record.** Merrivale Survey &
+    Geotechnical training file and the Bindarra gatehouse access card register.
+    Merrivale general mining induction, a two hour online module, completed
+    24/07/2026. Bindarra site access card issued 09/08/2026 against Merrivale's
+    recognition agreement, following a 20 minute gatehouse briefing covering
+    muster points, speed limits and personal protective equipment. There is no
+    record of the Bindarra site-specific supplement being issued, completed or
+    signed for. There is no record of the Bindarra light vehicle pit driving
+    assessment. Neither record is required by the gatehouse before a card is
+    issued, and neither was asked for. The driver had worked three night shifts
+    at Bindarra: 09/08, 10/08 and 11/08.
+    ```
+    Investigator note: Training, competency and induction records, both drivers
+
+**The night shift**
+
+- 12/08/2026 02:22:41 [Dispatch and supervision] Stage 4 returns from crib (recorded 18:22:41 UTC, correction +8:00) (established) - Dispatch calls the pit back to work. HT-407 begins the first of the post-crib cycles; the collision occurs on the second, coming back down empty. The pit channel is logged continuously from here to well past the collision, and the investigator listened to the whole of it. [Location: Stage 4 pit] [Source: Voice recording: Pit channel recording RAD-2026-0332, repeater clock, checked to the fleet management system within 0.4 s] [Factors: Neither operator made a positive call on the pit channel before entering the intersection]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     18:22:41  Dispatch      All Stage 4 units, crib's done, back to work please.
@@ -1751,8 +1812,35 @@ naming what is missing, and draft the rest from what IS here.
                             ERT.
     18:51:20  ERT 1         ERT 1 entering the pit, RL three-eighty.
     ```
-    Investigator note: Pit channel radio extract, 18:20 to 18:52 UTC
-- 11/08/2026 18:44:40 to 18:47:00 (2 m 20 s) [Light vehicle LV-118] The light vehicle leaves the bore collar for the ramp - The grade control technician finishes a set of levels at the DW-14 collar and drives the 240 m of spur out towards the main ramp. Nobody on the shift knows he is in the pit: there is no permit, call-in or board by which they could. [Source: Interview notes, light vehicle driver, 21/08/2026]
+    Investigator note: Pit channel radio extract, 02:20 to 02:52 local (18:20 to 18:52 UTC)
+
+**The approach**
+
+- 12/08/2026 about 02:45 to about 02:47 (2 m 06 s) [Light vehicle LV-118] The light vehicle leaves the bore collar for the ramp (estimated) - The grade control technician finishes a set of levels at the DW-14 collar and drives the 240 m of spur out towards the main ramp, reaching the mouth at 02:47. Nobody on the shift knows he is in the pit: there is no permit, call-in or board by which they could. [Location: Bore DW-14 collar, RL 312, to the spur mouth] [Source: Interview or account: The driver's account of the pickup, worked back from the 240 m spur and his position at the first sighting; his own 'about ten to three' is later than the recorded collision and is not used] [Factors: Light vehicle entered the ramp from the spur without stopping and without establishing the truck's position]
+  - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+    ```
+    The survey department picked up the intersection, the crest and the eye
+    positions of both vehicles.
+    
+    The spur meets the ramp 34 m beyond the high point of a crest in the ramp.
+    An operator descending the ramp, seated at an eye height of 5.80 m above the
+    running surface, first has line of sight to the spur mouth at 41 m. A driver
+    at the spur mouth, at an eye height of 1.45 m, first has line of sight to a
+    descending truck at 38 m; the inner windrow, 1.6 m high, stands between the
+    spur and the ramp for the last 25 m of the spur's approach and takes the
+    truck's lower body out of view before that.
+    
+    The Bindarra traffic management plan, clause 6.2, requires that at every
+    intersection the available sight distance shall be not less than the
+    stopping distance of the largest vehicle using the road at the posted speed,
+    and in no case less than 120 m. The stopping distance of a 220 t class truck
+    travelling empty at the posted 40 km/h on a 9 per cent descending grade,
+    calculated with the manufacturer's data and a 1.5 second response, is 96 m.
+    
+    The available sight distance at this intersection is 41 m. The intersection
+    does not meet clause 6.2 on either limb.
+    ```
+    Investigator note: Survey of the RL 312 intersection and sight distances
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     Fourteen months at
@@ -1779,7 +1867,7 @@ naming what is missing, and draft the rest from what IS here.
     at Bindarra: 09/08, 10/08 and 11/08.
     ```
     Investigator note: Training, competency and induction records, both drivers
-- 11/08/2026 18:47:06 [Haul truck HT-407] First sighting, at 41 m - The truck's last steady data point: 37 km/h, RL 314, 41 m above the intersection. 1.4 seconds later service brake pressure rises from 0 to 620 kPa in 0.4 seconds, the retarder goes to maximum and 14 degrees of right steering is applied. [Source: Fleet management system download, WMS-TS-2026-114]
+- 12/08/2026 02:47:06 [Haul truck HT-407] First sighting, at 41 m (recorded 18:47:06 UTC, correction +8:00) (established) - The truck's last steady data point: 37 km/h, RL 314, 41 m above the intersection. 1.4 seconds later service brake pressure rises from 0 to 620 kPa in 0.4 seconds, the retarder goes to maximum and 14 degrees of right steering is applied. [Location: Main ramp, RL 314, 41 m above the RL 312 intersection] [Source: Recorded data: Fleet management system download, WMS-TS-2026-114] [Factors: The spur meets the ramp beyond a crest, giving 41 m of sight line against a plan minimum of 120 m; Truck operator braked and steered into the windrow within 1.4 seconds of sighting; Dust on the ramp reduced the truck operator's ability to see the light vehicle; Night 10 of 14, in the eleventh hour of a 12.5 hour night shift, in the circadian low]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     **Haul truck HT-407, descending the main ramp, empty.**
@@ -1838,7 +1926,7 @@ naming what is missing, and draft the rest from what IS here.
     does not meet clause 6.2 on either limb.
     ```
     Investigator note: Survey of the RL 312 intersection and sight distances
-- 11/08/2026 18:47:09 [Haul truck HT-407] The collision awareness system logs the vehicles and suppresses the alert - Proximity event at 21.4 m, closing at 13 km/h, inside the S4-LOAD geofence. Alert suppressed. Nothing is presented in the cab. The event is recorded in the system and is visible to anyone who queries it. [Source: Collision awareness system event log, HT-407]
+- 12/08/2026 02:47:09 [Haul truck HT-407] The collision awareness system logs the vehicles and suppresses the alert (recorded 18:47:09 UTC, correction +8:00) (established) - Proximity event at 21.4 m, closing at 13 km/h, inside the S4-LOAD geofence. Alert suppressed. Nothing is presented in the cab. The event is recorded in the system and is visible to anyone who queries it. [Location: Main ramp, RL 313, 21.4 m from the light vehicle] [Source: Recorded data: Collision awareness system event log, HT-407, logged at 18:47:09.2 UTC] [Factors: Collision awareness alerts suppressed inside a geofence extended to cover the new intersection]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     **Configuration as found on HT-407.** System operating at Level 7
@@ -1873,7 +1961,10 @@ naming what is missing, and draft the rest from what IS here.
     indication in the cab.
     ```
     Investigator note: Collision awareness system configuration and event log, HT-407
-- 11/08/2026 18:47:12 to 18:47:14 (2 s) [Light vehicle LV-118] Collision with a haul truck on the main ramp - Impact at 24 km/h, 6.2 m into the ramp from the spur mouth. The light vehicle is pushed 18.4 m down-ramp and rolls onto its left side against the inner windrow at about 11 m. The truck stops 19 m below the intersection. [Source: Fleet management system download and scene examination]
+
+**The collision**
+
+- 12/08/2026 02:47:12 to 02:47:14 (2 s) [Light vehicle LV-118] Collision with a haul truck on the main ramp (recorded 18:47:12 UTC, correction +8:00) (established) - Impact at 24 km/h, 6.2 m into the ramp from the spur mouth. The light vehicle is pushed 18.4 m down-ramp and rolls onto its left side against the inner windrow at about 11 m. The truck stops 19 m below the intersection at 02:47:14.3. [Location: Main ramp at the RL 312 spur intersection, 6.2 m in from the spur mouth] [Source: Recorded data: Fleet management system download WMS-TS-2026-114 and the scene examination INV-2026-0332-SCENE] [Factors: Both vehicles arrived at the intersection with neither operator aware of the other; The haul truck's front left struck the right side of the light vehicle at 24 km/h; The light vehicle was pushed 18 m down the ramp and rolled onto its left side; Light vehicle driver seriously injured in a collision with a haul truck on the main ramp]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     **Haul truck HT-407, descending the main ramp, empty.**
@@ -1939,7 +2030,10 @@ naming what is missing, and draft the rest from what IS here.
     bumper line.
     ```
     Investigator note: Scene examination, RL 312 intersection
-- 11/08/2026 18:48:01 [Dispatch and supervision] Dispatch stops all Stage 4 traffic - 49 seconds after the collision and 20 seconds after the operator's first call. The operator is told to stay in the cab until the ramp is stopped above and below him, and is released at 18:48:44. The emergency response team is paged at 18:48. [Source: Pit channel recording RAD-2026-0332 and the emergency response log]
+
+**The response**
+
+- 12/08/2026 02:48:01 [Dispatch and supervision] Dispatch stops all Stage 4 traffic (recorded 18:48:01 UTC, correction +8:00) (established) - 49 seconds after the collision and 20 seconds after the operator's first call. The operator is told to stay in the cab until the ramp is stopped above and below him, and is released at 02:48:44. The emergency response team is paged at 02:48. [Location: Stage 4 pit, from the dispatch office] [Source: Voice recording: Pit channel recording RAD-2026-0332, with the emergency response log for the paging] [Factors: Truck operator braked and steered into the windrow within 1.4 seconds of sighting]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     18:22:41  Dispatch      All Stage 4 units, crib's done, back to work please.
@@ -1975,7 +2069,7 @@ naming what is missing, and draft the rest from what IS here.
                             ERT.
     18:51:20  ERT 1         ERT 1 entering the pit, RL three-eighty.
     ```
-    Investigator note: Pit channel radio extract, 18:20 to 18:52 UTC
+    Investigator note: Pit channel radio extract, 02:20 to 02:52 local (18:20 to 18:52 UTC)
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     Bindarra emergency response log and the
@@ -1994,13 +2088,14 @@ naming what is missing, and draft the rest from what IS here.
     injuries were stable and the patient was conscious throughout.
     ```
     Investigator note: Emergency response log and post-incident review
-- 11/08/2026 19:14:00 to 19:21:00 (7 m) [Emergency response] The driver is extricated through the rear of the vehicle - 27 minutes after the collision. The first response vehicle reached the scene at 18:54; the second responder arrived with the hydraulic rescue tool at 19:07. The driver reached the surface medical facility at 19:41 and was flown out at 23:40 UTC. [Source: Emergency response log and post-incident review]
+- 12/08/2026 03:14 [Emergency response] The driver is extricated through the rear of the vehicle (established) - 27 minutes after the collision. The team was paged at 02:48, the first response vehicle entered the pit at 02:51 and reached the scene at 02:54, and the second responder arrived from the village with the hydraulic rescue tool at 03:07. The driver reached the surface medical facility at 03:41 and was flown out at 07:40. [Location: Main ramp, 18.4 m below the RL 312 intersection] [Source: Operator record: Bindarra emergency response log and the post-incident review, obtained 26/08/2026] [Factors: One emergency response paramedic rostered on night shift, with the second responder called from the village]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     HT-407 was descending the main ramp empty, returning to the Stage 4 loading
     face at the end of the second dump cycle after the crib break. LV-118 was
     travelling outbound on the RL 312 dewatering spur, a 240 m access road cut
-    eleven days earlier to reach the new dewatering bore, and was returning to
+    under works order WO-26-4471 to reach the new dewatering bore, completed on
+    31/07/2026 and opened to light vehicles on 02/08/2026. It was returning to
     the ramp after the grade control technician had completed a pickup at the
     bore collar.
     
@@ -2124,8 +2219,8 @@ a bore. There's forty of those in this pit."
 
 **Was it ever discussed at a pre-start, on either side?** Not that he can
 recall, and nothing in his pre-start notes mentions it. He checked his own
-notes for the eleven days between the spur being cut and the occurrence and
-found nothing.
+notes for the ten days between the spur opening on 02/08 and the occurrence
+and found nothing.
 
 **Should the operators have made a call at the spur?** He gave a careful
 answer. His view is that he would want a call. He also said plainly that the
@@ -2173,7 +2268,7 @@ The line worth carrying into the report is his own: he knew the collision awaren
 
 Additional questions:
 Asked whether he knew the spur was open to traffic. Answer: yes, and he had never thought of it as an intersection. 'There's forty of those in this pit.'
-Asked whether it was ever raised at a pre-start on either side. Answer: not that he can recall, and he checked his own pre-start notes for the eleven days and found nothing.
+Asked whether it was ever raised at a pre-start on either side. Answer: not that he can recall, and he checked his own pre-start notes for the ten days since the spur opened and found nothing.
 Asked whether the operators should have called at the spur. Answer: he would want a call; the plan does not require one; he has never pulled anybody up for it.
 Asked whether he knew the collision awareness system was suppressed at RL 312. Answer: he knew it was off at the dig from mid 2025 and did not know the geofence had been extended in June 2026.
 Asked whether any process exists for a light vehicle entering an operating pit. Answer: none that he knows of.
@@ -2297,7 +2392,7 @@ Action for me: chase Merrivale's training records for the Bindarra site suppleme
 First-person accounts written by the people involved, usually close to the event. Treat them as evidence of what that person understood and did, not as established fact, and reconcile them against the other sources rather than preferring them.
 
 ### Hazard report, RL 312 spur intersection
-Submitted by: Dewatering technician, Corella Resources | Submitted: 04/08/2026 22:10 local | Reference: HAZ-2026-0917
+Submitted by: Dewatering technician, Corella Resources | Submitted: 04/08/2026 23:48 local | Reference: HAZ-2026-0917
 
 Coming out of the new dewatering road onto the main ramp tonight about ten
 past ten I have come out and there was a truck coming down the ramp maybe
@@ -2340,7 +2435,8 @@ road is there.
 - Attached extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   **Submitted by:** Dewatering technician, Corella Resources
-  **Submitted:** 04/08/2026 22:10 local, seven days before the occurrence
+  **Submitted:** 04/08/2026 23:48 local, the same night as the near miss it
+  describes and seven days before the occurrence
   **Category:** Hazard - traffic and mobile equipment
   **Risk rating applied by the submitter:** Medium
   **Risk rating on closure:** Low
@@ -2422,7 +2518,8 @@ back to is that I should have had more than forty metres.
   HT-407 was descending the main ramp empty, returning to the Stage 4 loading
   face at the end of the second dump cycle after the crib break. LV-118 was
   travelling outbound on the RL 312 dewatering spur, a 240 m access road cut
-  eleven days earlier to reach the new dewatering bore, and was returning to
+  under works order WO-26-4471 to reach the new dewatering bore, completed on
+  31/07/2026 and opened to light vehicles on 02/08/2026. It was returning to
   the ramp after the grade control technician had completed a pickup at the
   bore collar.
   
