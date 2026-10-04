@@ -6,7 +6,16 @@
   "blurb": "A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to six published reports.",
   "cover": "11-map-final.png",
   "order": 2,
-  "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
-  "documents": ["source_pack", "eii_tables"],
-  "note": "This case study was produced with version 0.11 and will be updated once 0.12 is released."
+  "reports": [
+    "standard",
+    "preliminary",
+    "executive",
+    "atsb",
+    "ntsb",
+    "aaib"
+  ],
+  "documents": [
+    "source_pack",
+    "eii_tables"
+  ]
 }
