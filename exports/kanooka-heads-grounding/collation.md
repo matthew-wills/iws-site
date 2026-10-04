@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-09-30T08:02:57.236Z
+Generated: 2026-10-03T16:21:53.121Z
 
 ## Sources requested for this section that are empty
 
@@ -22,7 +22,7 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: MV Tarrakin Star, a 24.4 m aluminium catamaran passenger ferry certificated for 96 passengers, made contact with Boolarong Bank at 6.8 kt over the ground at 18:12:04 local on 07/07/2026 while inbound on service TF18, and came to rest within 11 m, heeled 4 degrees to starboard, 74 m west of the charted centreline of the Weerona Channel and 54 m outside the dredged channel, on a falling tide in darkness. 38 passengers, a master, a deckhand and a kiosk attendant were on board. Furrows consistent with the starboard hull and skeg run 11 m from the point of first contact on a heading of 197 degrees.
 - Significance: Substantial damage: starboard hull bottom plating set up over 4.1 m with a 180 mm split in way of the No. 2 void and progressive flooding of that void to approximately 260 mm by the time the vessel refloated; starboard propeller blades bent and the shaft bent 1.4 mm; starboard rudder stock distorted 3 degrees; starboard skeg torn away. Nil serious injuries; one passenger reported a grazed shin and two were treated at the wharf for distress. All 38 passengers were transferred ashore by the port workboat by 19:26. The vessel refloated on the tide at 00:20 and was withdrawn from service. The Weerona Channel was closed to commercial traffic for 19 hours. The vessel came to rest where the bed is 0.50 m below chart datum; 30 m further west the bed is 0.35 m higher again, and there it would have taken the ground harder and taken a larger list.
 - Investigator notes: The critical event. Everything else on this map exists to explain it.
-- Why Notification TFP-OCC-2026-0093, raised 07/07/2026 09:05 UTC matters: The first agreed statement of the occurrence and the source of the facts everything else is dated against: the vessel, the voyage, the position, the persons on board, the injuries and the damage.
+- Why Notification TFP-OCC-2026-0093, raised 07/07/2026 19:05 AEST (09:05 UTC) matters: The first agreed statement of the occurrence and the source of the facts everything else is dated against: the vessel, the voyage, the position, the persons on board, the injuries and the damage.
 - Attached extract (Occurrence notification TFP-OCC-2026-0093) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
   TF18 was the last service of the day, one of the winter timetable's evening
@@ -404,9 +404,9 @@ naming what is missing, and draft the rest from what IS here.
 
 ### Winter timetable moved the last service into darkness without reopening the route risk assessment
 - Lane: Organisational Influences
-- Tests: Existence Pass - extremely likely / Influence Pass - likely / Importance Not tested
-- Note on Existence: Both documents are current controlled copies. The 5% reflects that the Operations Manager's account of what he understood the restriction to mean was given verbally and has not been taken as a formal interview.
-- Note on Influence: A review of RRA-07 against a night operation would have reached the unlit reach between the No. 2 and No. 4 beacons, which the assessment already names as a hazard, and would have required a night passage plan before the first service ran. Not certain, because a review might have produced a plan that said no more than the daylight one does.
+- Tests: Existence Pass - virtually certain / Influence Pass - likely / Importance Not tested
+- Note on Existence: Both documents are current controlled copies and neither is in dispute: RRA-07 issue 2 carries the daylight restriction and names the approver, and CHG-2026-014 carries the approval, the 'timetable change only' assessment and the 'No' against route risk assessment review. There is no issue 3 and no night passage plan. What the Operations Manager understood the restriction to mean goes to why the change was approved that way, not to whether it was, and that uncertainty is carried under Influence.
+- Note on Influence: A review of RRA-07 against a night operation would have reached the unlit reach between the No. 2 and No. 4 beacons, which the assessment already names as a hazard, and would have required a night passage plan before the first service ran. Not certain, because a review might have produced a plan that said no more than the daylight one does, and because the Operations Manager's own understanding of what the restriction required of him has been given verbally and has not been taken as a formal interview.
 - Finalised: yes
 - Evidence: RRA-07 issue 2 (03/2023) is the current route risk assessment for the Weerona Channel. It carries the operating restriction 'daylight transits only', and states that a night transit requires the General Manager Operations' approval and a specific passage plan. CHG-2026-014, approved by the Operations Manager on 22/04/2026, moved service TF18 from 16:15 to 17:35 for the winter timetable from 01/06/2026, assessed the change as 'timetable change only', recorded 'no new hazard identified' and answered 'No' to route risk assessment review required. RRA-07 was not reopened and no issue 3 exists. No night passage plan was written and the General Manager Operations' approval was neither sought nor given. TF18 ran 31 times in darkness between 01/06/2026 and the occurrence.
 - Significance: The change put a 96-passenger vessel through a 40 m channel in darkness 31 times, in explicit contradiction of a live restriction, through a process that asked whether the change was new rather than whether the assessment still held.
@@ -788,13 +788,13 @@ naming what is missing, and draft the rest from what IS here.
 
 ### Chart plotter display froze during the channel transit and did not recover
 - Lane: Local Conditions
-- Tests: Existence Pass - very likely / Influence Pass - extremely likely / Importance Not tested
-- Note on Existence: The event log, the audio and the master's account agree. The 90% reflects that the fault could not be reproduced on a 46 hour bench test and no physical defect was found, so what the log records is the software's own report of itself rather than an independently demonstrated failure.
+- Tests: Existence Pass - virtually certain / Influence Pass - extremely likely / Importance Not tested
+- Note on Existence: Three independent records place the freeze at 18:07:06 and none of them is contradicted: the unit's own event log, the bridge audio to the second, and the master's account. That the 46 hour bench test could not reproduce the fault and found no physical defect goes to what caused the freeze, which is a question for the firmware and the maintenance chain, not to whether the display froze during the transit. The doubt was carried here until 04/10/2026 and has been moved to where it belongs.
 - Note on Influence: The vessel held the centreline while the plotter worked and left it within two minutes of the freeze, and the master's own search for the beacon begins 85 seconds after it.
 - Finalised: yes
 - Evidence: The plotter's internal event log records the display process not responding at 18:07:06 local with no accompanying reset, and the same cause code 0x51 at 10:42 and 11:17 that morning, where the unit recovered itself. The bridge audio matches to the second: 'Oh, come on' at 18:07:11, repeated screen taps at 18:07:26, and '(unintelligible) frozen again' at 18:07:44. The master's account is that the chart picture remained on the screen with the vessel symbol stationary and the display not accepting touch input. The unit was bench tested for 46 hours on 21/07/2026 with the same antenna and cabling; the fault did not recur and no defect was found. The contractor identified cause code 0x51 as known to the manufacturer and addressed by firmware issued in 11/2024, which this unit had never had applied.
 - Significance: This is the moment the transit stopped being the one in the passage plan. Everything the master did afterwards he did without the primary means of position fixing the plan told him to use.
-- Investigator notes: The trigger, and the one object on the map whose Existence is not certain, because the bench test could not reproduce it. The unit's own log is what carries it.
+- Investigator notes: The trigger. Existence sat at 90% for a fortnight because the bench test could not reproduce the fault, which was the wrong place to carry that doubt: the bench test goes to what caused the freeze, not to whether the display froze. The freeze itself is established three independent ways and is now graded as such, and the cause question sits in the to-do list against this object.
 - Why Plotter event log recovered 09/07/2026; contractor bench test report, 21/07/2026 matters: The unit's own account of itself, and the one piece of evidence that ties the morning's two freezes to the evening's. It also sets the limit of what can be proved: the fault did not recur on a 46 hour bench test and no defect was found.
 - Attached extract (Chart plotter internal event log and bench test) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1642,9 +1642,9 @@ naming what is missing, and draft the rest from what IS here.
 ### Water level below prediction reduced the depth over Boolarong Bank
 - Lane: Local Conditions
 - Tests: Existence Fail - very unlikely / Influence Not tested / Importance Not tested
-- Note on Existence: The gauge record and the prediction are independent of each other and of the vessel, and they agree to within 0.03 m at the moment of the grounding.
+- Note on Existence: The gauge record and the tide table are independent of each other and of the vessel, and they agree to within 0.03 m at the moment of the grounding. The 5% is the standing of the hypothesis and not of those readings, which are themselves settled; the note is written so the two cannot be read as one claim.
 - Finalised: yes
-- Evidence: Hypothesis tested because the vessel grounded three hours into a falling tide with a two-day westerly behind it, and a set-down of a few tenths would have mattered. It fails. The Port Authority's gauge at Kanooka Heads recorded 0.91 m at 18:12 against a prediction of 0.94 m, a difference of 0.03 m, and its largest departure from prediction in the twelve hours to 20:00 was 0.07 m. With the bed at the contact point surveyed at 0.50 m below chart datum there was 1.41 m of water over it, against a static draught of 1.35 m and a calculated squat of 0.18 m at 6.8 kt. The vessel touched because it was 54 m outside a channel dredged to 3.2 m, not because the water was lower than the chart and the tide table said it would be.
+- Evidence: Hypothesis tested because the vessel grounded three hours into a falling tide with a two-day westerly behind it, and a set-down of a few tenths would have mattered. It fails, and what refutes it is measurement rather than argument. The Port Authority's gauge at Kanooka Heads read 0.91 m at 18:12. The height predicted for that minute was 0.94 m, so the stand was 0.03 m under the tide table, and the gauge's largest departure from the table in the twelve hours to 20:00 was 0.07 m. With the bed at the contact point surveyed at 0.50 m below chart datum there was 1.41 m of water over it, against a static draught of 1.35 m and a calculated squat of 0.18 m at 6.8 kt. The vessel touched because it was 54 m outside a channel dredged to 3.2 m, not because the water was lower than the chart and the tide table said it would be.
 - Investigator notes: Raised on the first day because a grounding on a falling tide invites it, and because an offshore wind had been blowing for two days. Disposed of in a morning with the port's own gauge, and kept on the map so the report can say it was tested.
 - Why MET-TIDE-0093-070726, retrieved 09/07/2026 matters: Disposes of the weather and the tide as factors and establishes the one environmental condition that matters: a transit made 35 minutes after the end of civil twilight with no moon, in which every reference available to the master was an artificial light.
 - Attached extract (Tide predictions and gauge record, weather observations, light and moon) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
@@ -1709,9 +1709,9 @@ naming what is missing, and draft the rest from what IS here.
 ### Steering or propulsion failure caused the vessel to sheer off track
 - Lane: Occurrence Events
 - Tests: Existence Fail - very unlikely / Influence Not tested / Importance Not tested
-- Note on Existence: Recorded parameters, the shape of the turn and the post-occurrence examination agree. The starboard shaft, propeller and rudder damage all date from the contact, not before it.
+- Note on Existence: The recorder traces, the shape of the turn and the post-occurrence examination agree. The starboard shaft, propeller and rudder damage all date from the contact, not before it. The 5% is the standing of the hypothesis and not of the traces, which are themselves settled.
 - Finalised: yes
-- Evidence: Hypothesis tested because a five degree heading change followed by a steady set out of the channel is what a jammed rudder or a lost engine looks like from outside. It fails, on two independent grounds. The engine recorder gives both engines at 1,780 and 1,784 rpm within 12 rpm of each other from 18:03 to 18:11:52 with no alarm, no excursion and no throttle movement; steering gear hydraulic pressure recorded continuously at 96 to 99 bar against a normal band of 90 to 105; and rudder angle following helm demand within 1.5 degrees throughout. The recorded rate of turn peaks at 2.1 degrees per minute and returns to zero, which is a heading applied and then held, not a sheer. Separately, the whole steering system was removed and function tested on 12/07/2026 and every component was serviceable with no internal leakage and no sign of a pre-existing defect. The bridge audio contains no steering or engine remark at any point.
+- Evidence: Hypothesis tested because a five degree heading change followed by a steady set out of the channel is what a jammed rudder or a lost engine looks like from outside. It fails, on two independent grounds, and what refutes it is measurement rather than argument. The engine recorder gives both engines at 1,780 and 1,784 rpm within 12 rpm of each other from 18:03 to 18:11:52 with no alarm, no excursion and no throttle movement; steering gear hydraulic pressure holds continuously at 96 to 99 bar against a normal band of 90 to 105; and rudder angle follows helm demand within 1.5 degrees throughout. The rate of turn on the recorder peaks at 2.1 degrees per minute and returns to zero, which is a heading applied and then held, not a sheer. Separately, the whole steering system was removed and function tested on 12/07/2026 and every component was serviceable with no internal leakage and no sign of a pre-existing defect. The bridge audio contains no steering or engine remark at any point.
 - Investigator notes: The first hypothesis anyone offers for a vessel that leaves a channel, and the first one the data kills. Kept on the map because the report should show it was tested, not assumed away.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
@@ -1896,9 +1896,12 @@ naming what is missing, and draft the rest from what IS here.
   ```
 - Led to: Vessel left the dredged channel and tracked onto Boolarong Bank
 
-## Timeline (sequence of events, all times UTC; corrections are the investigator's zone or clock adjustments)
+## Timeline (sequence of events, all times local time; corrections are the investigator's zone or clock adjustments)
 
-- 03:05:00 [Bridge] Change of master at the town wharf - The outgoing master told the relieving master that the chart plotter had frozen twice that morning and recovered itself both times. Neither entered it in the defect book. No entry of any kind was made for 07/07/2026 before the occurrence. [Source: Both masters' accounts, the wheelhouse defect book and the plotter event log]
+
+**Before the voyage**
+
+- about 13:05 [Bridge] Change of master at the town wharf (reported) - The outgoing master told the relieving master that the chart plotter had frozen twice that morning and recovered itself both times. Neither entered it in the defect book. No entry of any kind was made for 07/07/2026 before the occurrence. [Location: Kanooka Heads town wharf] [Source: Interview or account: Both masters' accounts, taken 13/07/2026 and 17/07/2026, against the wheelhouse defect book and the plotter event log] [Factors: Change-of-master defect brief is verbal, with nothing checking that what is said gets written down; Plotter fault passed on verbally at the change of master and not entered in the defect book]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     The plotter is a 12-inch multifunction display fed by a separate GPS antenna
@@ -1945,7 +1948,10 @@ naming what is missing, and draft the rest from what IS here.
     manufacturer's bulletins existed.
     ```
     Investigator note: Vessel maintenance history and wheelhouse defect book
-- 07:35:02 [Vessel] Service TF18 departs Muntari Island - The last service of the day, one of the winter timetable's evening returns, which have been made in darkness on every day since 01/06/2026; the thirty-first of them. 38 passengers and 3 crew. Departure reported to Port Control on VHF channel 12. Sunset was at 17:02 and the end of civil twilight at 17:29. [Source: VHF channel 12 recording and the operator's departure record]
+
+**The voyage**
+
+- 17:35:02 [Vessel] Service TF18 departs Muntari Island (recorded 07:35:02 UTC, correction +10:00) (established) - The last service of the day, one of the winter timetable's evening returns, which have been made in darkness on every day since 01/06/2026; the thirty-first of them. 38 passengers and 3 crew. Departure reported to Port Control on VHF channel 12. Sunset was at 17:02 and the end of civil twilight at 17:29. [Location: Muntari Island jetty] [Source: Voice recording: Port Control VHF channel 12 recording AUD-2026-0093 and the operator's departure record] [Factors: Winter timetable moved the last service into darkness without reopening the route risk assessment]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     TF18 was the last service of the day, one of the winter timetable's evening
@@ -2044,7 +2050,10 @@ naming what is missing, and draft the rest from what IS here.
                     passengers ashore, crew of three remaining on board.
     ```
     Investigator note: VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local
-- 08:05:30 [Bridge] Abeam the No. 2 beacon, on the charted centreline - Entered the Weerona Channel from the north at 18:03:58 and held the centreline to within 3 m. Speed over the ground 8.4 kt, course 195 degrees. The deckhand had been sent from the bridge to collect fares at 18:04:14. [Source: Shore AIS receiver log and bridge camera audio]
+
+**The channel transit**
+
+- 18:05:30 [Bridge] Abeam the No. 2 beacon, on the charted centreline (recorded 08:05:30 UTC, correction +10:00) (established) - Entered the Weerona Channel from the north at 18:03:58 and held the centreline to within 3 m. Speed over the ground 8.4 kt, course 195 degrees. The deckhand had been sent from the bridge to collect fares at 18:04:14. [Location: Weerona Channel, abeam the No. 2 beacon, 0.90 nm north of the No. 4] [Source: Surveillance track: Shore AIS receiver log AIS-2026-0093-R1, with the bridge camera audio]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     | UTC | Local | Offset from centreline | North of No. 4 | Speed over ground | Course over ground | Note |
@@ -2172,7 +2181,7 @@ naming what is missing, and draft the rest from what IS here.
                     passengers ashore, crew of three remaining on board.
     ```
     Investigator note: VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local
-- 08:07:06 to 08:09:00 (1 m 54 s) [Bridge] Chart plotter display freezes and does not recover - Cause code 0x51, the same code logged at 10:42 and 11:17 that morning, but with no reset recorded this time. The chart picture remained on screen with the vessel symbol stationary and the display not accepting touch input. [Source: Plotter internal event log and bridge camera audio]
+- 18:07:06 to 18:09:00 (1 m 54 s) [Bridge] Chart plotter display freezes and does not recover (recorded 08:07:06 UTC, correction +10:00) (established) - Cause code 0x51, the same code logged at 10:42 and 11:17 that morning, but with no reset recorded this time. The chart picture remained on screen with the vessel symbol stationary and the display not accepting touch input. The span is to the moment the vessel crossed the channel's western edge, which is the whole of the time stopping was available. [Location: Weerona Channel, 0.68 nm north of the No. 4 beacon] [Source: Recorded data: Chart plotter internal event log, corrected 2 seconds to the AIS receiver clock, with the bridge camera audio] [Factors: Chart plotter display froze during the channel transit and did not recover; Transit continued at eight knots after the plotter froze, rather than stopping in the channel]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
     The plotter is a 12-inch multifunction display fed by a separate GPS antenna
@@ -2267,65 +2276,7 @@ naming what is missing, and draft the rest from what IS here.
                     passengers ashore, crew of three remaining on board.
     ```
     Investigator note: VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local
-- 08:09:00 [Vessel] Vessel crosses the channel's western edge - Heading now 199 degrees, held. Speed 8.0 kt with no throttle movement recorded. From this point the vessel is outside the dredged channel and making 12 m of westing a minute. [Source: Shore AIS receiver log]
-  - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
-    ```
-    | UTC | Local | Offset from centreline | North of No. 4 | Speed over ground | Course over ground | Note |
-    | --- | --- | --- | --- | --- | --- | --- |
-    | 08:03:58 | 18:03:58 | 2 m east | 1.13 nm | 8.4 kt | 195 | Abeam No. 1 beacon, entering the channel |
-    | 08:05:30 | 18:05:30 | 1 m west | 0.90 nm | 8.4 kt | 195 | Abeam No. 2 beacon, on the centreline |
-    | 08:07:06 | 18:07:06 | 3 m west | 0.68 nm | 8.4 kt | 196 | Chart plotter event log records a display freeze at this time |
-    | 08:08:00 | 18:08:00 | 7 m west | 0.54 nm | 8.1 kt | 198 | |
-    | 08:08:31 | 18:08:31 | 12 m west | 0.47 nm | 8.0 kt | 199 | Bridge audio: "Right. Where's four" |
-    | 08:09:00 | 18:09:00 | 20 m west | 0.40 nm | 8.0 kt | 199 | Vessel now at the channel's western edge |
-    | 08:10:02 | 18:10:02 | 39 m west | 0.25 nm | 7.9 kt | 200 | Bridge audio: "There's four"; outside the dredged channel |
-    | 08:11:00 | 18:11:00 | 58 m west | 0.13 nm | 7.6 kt | 199 | Over Boolarong Bank |
-    | 08:11:48 | 18:11:48 | 70 m west | 0.03 nm | 7.1 kt | 198 | Echo sounder shallow alarm, 0.9 m under keel |
-    | 08:11:52 | 18:11:52 | 71 m west | -- | 7.0 kt | 198 | Both engine throttles to astern |
-    | 08:12:04 | 18:12:04 | 74 m west | abeam | 6.8 kt | 197 | Contact. Longitudinal deceleration spike; speed to zero in 11 m |
-    | 08:12:31 | 18:12:31 | -- | -- | 0 kt | -- | Both engines stopped |
-    
-    The grounding position was surveyed on 08/07/2026 at 74 m west of the charted
-    channel centreline, which is 54 m west of the channel's western edge and
-    34 m west of the No. 4 beacon.
-    
-    ## What the track shows
-    
-    The vessel was on the charted centreline abeam the No. 2 beacon and held it
-    until 08:07:06. From that time the heading increased steadily from 195 to
-    200 degrees and the vessel set west at an average rate of 12 m per minute,
-    crossing the channel's western edge at about 08:09:00 and reaching the bank
-    at about 08:11:00.
-    
-    The set is not a current effect. It is a continuous heading change of five
-    degrees applied over about a minute and then held, consistent with a vessel
-    steered onto a new heading and kept there. The recorded rate of turn peaks at
-    2.1 degrees per minute at 08:07:40 and returns to zero by 08:08:50.
-    
-    Speed over the ground fell from 8.4 kt to 7.6 kt between 08:07 and 08:11 with
-    no throttle movement recorded, consistent with the increasing drag of
-    shoaling water beneath the hulls.
-    
-    The distance north of the No. 4 beacon is given at each point because the
-    beacon's own visibility varies with it. The vessel was 1.13 nm north of the
-    beacon entering the channel, 0.90 nm abeam the No. 2, 0.68 nm when the
-    plotter froze, 0.47 nm when the master began looking for it, and 0.25 nm when
-    he called it.
-    
-    ## Engine monitoring recorder
-    
-    Both engines ran at 1,780 and 1,784 rpm from 08:03 to 08:11:52, within
-    12 rpm of each other throughout, with no alarm, no temperature or pressure
-    excursion and no throttle movement in that period. Steering gear hydraulic
-    pressure is recorded continuously at 96 to 99 bar against a normal band of
-    90 to 105 bar, with no loss at any point. Rudder angle follows helm demand
-    within 1.5 degrees throughout the transit.
-    
-    At 08:11:52 both throttles move to the astern detent together. Astern thrust
-    is developing at the moment of contact but had not reached full.
-    ```
-    Investigator note: AIS track, engine monitoring recorder and steering data, service TF18
-- 08:10:02 [Bridge] Master sights the No. 4 beacon, 91 seconds after starting to look - 'Right. Where's four' at 18:08:31; 'There's four. Keep her over' at 18:10:02. The later range and visibility check found the beacon is not visible from the channel between 0.84 nm and 0.34 nm north of it, the stretch the vessel covered between those two remarks. [Source: Bridge camera audio and the range and visibility check of 18/07/2026]
+- 18:08:31 to 18:10:02 (1 m 31 s) [Bridge] Master begins looking for the No. 4 beacon; sights it 91 seconds later (recorded 08:08:31 UTC, correction +10:00) (established) - 'Right. Where's four' at 18:08:31; the wheelhouse window slid open at 18:09:40, in case it was the glass; 'There's four. Keep her over' at 18:10:02. The vessel was 0.47 nm north of the beacon when he began and 0.25 nm when he called it. The later range and visibility check found the beacon is not visible from the channel between 0.84 nm and 0.34 nm north of it, so the whole of the search took place inside the screened arc. [Location: Weerona Channel, 0.47 nm to 0.25 nm north of the No. 4 beacon] [Source: Voice recording: Bridge camera audio AUD-2026-0093, against the range and visibility check of 18/07/2026] [Factors: No. 4 beacon not visible from the channel over the half mile before the vessel left it]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     07:32:10  MAS   [Public address] Good evening everyone, welcome aboard, we're
@@ -2444,7 +2395,68 @@ naming what is missing, and draft the rest from what IS here.
     Ferries.
     ```
     Investigator note: Port Authority aids to navigation records for the No. 4 beacon
-- 08:11:48 to 08:12:04 (16 s) [Bridge] Echo sounder shallow alarm sounds - Set at 0.9 m under the keel since commissioning in 2019. Both throttles to astern together 4 seconds later. The vessel's trials figure for a crash stop from 8 kt is 92 m; it covered 58 m before contact. [Source: Echo sounder alarm log and bridge camera audio]
+- about 18:09 [Vessel] Vessel crosses the channel's western edge (recorded about 08:09 UTC, correction +10:00) (estimated) - Heading now 199 degrees, held. Speed 8.0 kt with no throttle movement recorded. From this point the vessel is outside the dredged channel and making 12 m of westing a minute. [Location: Western edge of the dredged Weerona Channel] [Source: Surveillance track: Shore AIS receiver log AIS-2026-0093-R1, offset from the centreline against the charted 20 m half width] [Factors: Vessel left the dredged channel and tracked onto Boolarong Bank]
+  - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+    ```
+    | UTC | Local | Offset from centreline | North of No. 4 | Speed over ground | Course over ground | Note |
+    | --- | --- | --- | --- | --- | --- | --- |
+    | 08:03:58 | 18:03:58 | 2 m east | 1.13 nm | 8.4 kt | 195 | Abeam No. 1 beacon, entering the channel |
+    | 08:05:30 | 18:05:30 | 1 m west | 0.90 nm | 8.4 kt | 195 | Abeam No. 2 beacon, on the centreline |
+    | 08:07:06 | 18:07:06 | 3 m west | 0.68 nm | 8.4 kt | 196 | Chart plotter event log records a display freeze at this time |
+    | 08:08:00 | 18:08:00 | 7 m west | 0.54 nm | 8.1 kt | 198 | |
+    | 08:08:31 | 18:08:31 | 12 m west | 0.47 nm | 8.0 kt | 199 | Bridge audio: "Right. Where's four" |
+    | 08:09:00 | 18:09:00 | 20 m west | 0.40 nm | 8.0 kt | 199 | Vessel now at the channel's western edge |
+    | 08:10:02 | 18:10:02 | 39 m west | 0.25 nm | 7.9 kt | 200 | Bridge audio: "There's four"; outside the dredged channel |
+    | 08:11:00 | 18:11:00 | 58 m west | 0.13 nm | 7.6 kt | 199 | Over Boolarong Bank |
+    | 08:11:48 | 18:11:48 | 70 m west | 0.03 nm | 7.1 kt | 198 | Echo sounder shallow alarm, 0.9 m under keel |
+    | 08:11:52 | 18:11:52 | 71 m west | -- | 7.0 kt | 198 | Both engine throttles to astern |
+    | 08:12:04 | 18:12:04 | 74 m west | abeam | 6.8 kt | 197 | Contact. Longitudinal deceleration spike; speed to zero in 11 m |
+    | 08:12:31 | 18:12:31 | -- | -- | 0 kt | -- | Both engines stopped |
+    
+    The grounding position was surveyed on 08/07/2026 at 74 m west of the charted
+    channel centreline, which is 54 m west of the channel's western edge and
+    34 m west of the No. 4 beacon.
+    
+    ## What the track shows
+    
+    The vessel was on the charted centreline abeam the No. 2 beacon and held it
+    until 08:07:06. From that time the heading increased steadily from 195 to
+    200 degrees and the vessel set west at an average rate of 12 m per minute,
+    crossing the channel's western edge at about 08:09:00 and reaching the bank
+    at about 08:11:00.
+    
+    The set is not a current effect. It is a continuous heading change of five
+    degrees applied over about a minute and then held, consistent with a vessel
+    steered onto a new heading and kept there. The recorded rate of turn peaks at
+    2.1 degrees per minute at 08:07:40 and returns to zero by 08:08:50.
+    
+    Speed over the ground fell from 8.4 kt to 7.6 kt between 08:07 and 08:11 with
+    no throttle movement recorded, consistent with the increasing drag of
+    shoaling water beneath the hulls.
+    
+    The distance north of the No. 4 beacon is given at each point because the
+    beacon's own visibility varies with it. The vessel was 1.13 nm north of the
+    beacon entering the channel, 0.90 nm abeam the No. 2, 0.68 nm when the
+    plotter froze, 0.47 nm when the master began looking for it, and 0.25 nm when
+    he called it.
+    
+    ## Engine monitoring recorder
+    
+    Both engines ran at 1,780 and 1,784 rpm from 08:03 to 08:11:52, within
+    12 rpm of each other throughout, with no alarm, no temperature or pressure
+    excursion and no throttle movement in that period. Steering gear hydraulic
+    pressure is recorded continuously at 96 to 99 bar against a normal band of
+    90 to 105 bar, with no loss at any point. Rudder angle follows helm demand
+    within 1.5 degrees throughout the transit.
+    
+    At 08:11:52 both throttles move to the astern detent together. Astern thrust
+    is developing at the moment of contact but had not reached full.
+    ```
+    Investigator note: AIS track, engine monitoring recorder and steering data, service TF18
+
+**The grounding**
+
+- 18:11:48 to 18:12:04 (16 s) [Bridge] Echo sounder shallow alarm sounds (recorded 08:11:48 UTC, correction +10:00) (established) - Set at 0.9 m under the keel since commissioning in 2019. Both throttles to astern together 4 seconds later. The vessel's trials figure for a crash stop from 8 kt is 92 m; it covered 58 m before contact. [Location: Over Boolarong Bank, 70 m west of the charted centreline] [Source: Recorded data: Echo sounder alarm log, corrected 2 seconds to the AIS receiver clock, with the bridge camera audio] [Factors: Shoaling not detected until sixteen seconds before contact]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     Shallow alarm set to 0.9 m under the keel. This is the value written into the
@@ -2527,7 +2539,7 @@ naming what is missing, and draft the rest from what IS here.
                     passengers ashore, crew of three remaining on board.
     ```
     Investigator note: VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local
-- 08:12:04 [Vessel] Contact with Boolarong Bank at 6.8 kt - 74 m west of the charted centreline and 54 m outside the dredged channel. The vessel stopped within 11 m and came to rest heeled 4 degrees to starboard, holed in way of the No. 2 starboard void. [Source: Shore AIS receiver log, post-grounding survey and the occurrence notification]
+- 18:12:04 [Vessel] Contact with Boolarong Bank at 6.8 kt (recorded 08:12:04 UTC, correction +10:00) (established) - 74 m west of the charted centreline and 54 m outside the dredged channel. The vessel stopped within 11 m and came to rest heeled 4 degrees to starboard, holed in way of the No. 2 starboard void. [Location: Boolarong Bank, 74 m west of the charted centreline, abeam the No. 4 beacon] [Source: Surveillance track: Shore AIS receiver log AIS-2026-0093-R1, the survey of 08/07/2026 and notification TFP-OCC-2026-0093] [Factors: Grounding on Boolarong Bank with 38 passengers embarked]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     TF18 was the last service of the day, one of the winter timetable's evening
@@ -2637,7 +2649,10 @@ naming what is missing, and draft the rest from what IS here.
       point of first contact on a heading of 197 degrees.
     ```
     Investigator note: Post-grounding survey, slipping and steering gear examination
-- 08:13:04 [Port Control] Pan pan broadcast; Port Control called out the workboat - Position, persons on board, injuries and pollution passed at the first attempt, with the decision not to refloat already made and stated. Port Control acknowledged and called the workboat at 18:13:29. [Source: VHF channel 16 recording]
+
+**The response**
+
+- 18:13:04 [Port Control] Pan pan broadcast; Port Control called out the workboat (recorded 08:13:04 UTC, correction +10:00) (established) - Both engines had been stopped at 18:12:31 and were not restarted. Position, persons on board, injuries and pollution passed at the first attempt, with the decision not to refloat already made and stated. Port Control acknowledged and called the workboat at 18:13:29. [Location: Boolarong Bank] [Source: Voice recording: Port Control VHF channel 16 recording AUD-2026-0093] [Factors: Engines stopped and no attempt made to refloat on a falling tide]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     07:32:10  MAS   [Public address] Good evening everyone, welcome aboard, we're
@@ -2708,7 +2723,7 @@ naming what is missing, and draft the rest from what IS here.
                     passengers ashore, crew of three remaining on board.
     ```
     Investigator note: VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local
-- 08:14:52 to 09:26:08 (1 h 11 m) [Vessel] Passengers mustered in lifejackets and transferred ashore - All 38 in lifejackets by about 18:22, the forward saloon delayed by the locker behind the kiosk counter. The No. 2 starboard void was sounded at 18:16 and every ten minutes after. The workboat came alongside at 18:41 and the last passenger was ashore at 19:26. [Source: VHF channel 16 recording, bridge camera audio and the deckhand's account]
+- 18:14:52 to 19:26:08 (1 h 11 m) [Vessel] Passengers mustered in lifejackets and transferred ashore (recorded 08:14:52 UTC, correction +10:00) (established) - All 38 in lifejackets by about 18:22, the forward saloon delayed by the locker behind the kiosk counter. The No. 2 starboard void was sounded at 18:16 and every ten minutes after. The workboat came alongside at 18:41 and the last passenger was ashore at 19:26. [Location: MV Tarrakin Star, aground on Boolarong Bank] [Source: Voice recording: Port Control VHF channel 16 and bridge camera audio AUD-2026-0093, with the deckhand's account] [Factors: Forward saloon lifejacket locker not reachable from most of the saloon it serves]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
     07:32:10  MAS   [Public address] Good evening everyone, welcome aboard, we're
@@ -3051,7 +3066,7 @@ Action for me: check whether the company reporting system has any category a mas
 First-person accounts written by the people involved, usually close to the event. Treat them as evidence of what that person understood and did, not as established fact, and reconcile them against the other sources rather than preferring them.
 
 ### Master's report
-Submitted by: Master, MV Tarrakin Star | Submitted: 07/07/2026 08:52 UTC | Reference: SR-2026-0288
+Submitted by: Master, MV Tarrakin Star | Submitted: 07/07/2026 18:52 AEST (08:52 UTC) | Reference: SR-2026-0288
 PROTECTED: submitted under a confidential or just-culture reporting scheme. Use it to understand what happened and attribute it by role where the report style calls for attribution, but do NOT quote it verbatim and do not reproduce identifying detail from it.
 
 TF18 Muntari to Kanooka Heads, 7 July, last service. Thirty eight passengers
@@ -3128,7 +3143,7 @@ me on a worse night.
   breach and progressive flooding of the No. 2 void were confirmed.
   ```
 ### Deckhand's report
-Submitted by: Deckhand, MV Tarrakin Star | Submitted: 09/07/2026 23:10 UTC | Reference: SR-2026-0291
+Submitted by: Deckhand, MV Tarrakin Star | Submitted: 10/07/2026 09:10 AEST (09/07/2026 23:10 UTC) | Reference: SR-2026-0291
 PROTECTED: submitted under a confidential or just-culture reporting scheme. Use it to understand what happened and attribute it by role where the report style calls for attribution, but do NOT quote it verbatim and do not reproduce identifying detail from it.
 
 I want to report something about the lifejackets in the forward saloon
