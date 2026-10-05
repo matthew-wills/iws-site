@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-10-04T13:54:20.793Z
+Generated: 2026-10-05T03:14:46.238Z
 
 ## Sources requested for this section that are empty
 
@@ -2374,6 +2374,66 @@ Background: Role at the time of the occurrence: Captain, twin-turboprop fleet, p
 
 The investigator has NOT finalised this record yet. Treat it as a working draft - the transcript may still be part-corrected and the notes unfinished - and do not quote from it as though it were settled.
 
+Verbatim transcript of the interview, as corrected by the investigator. Speakers are named by the role the investigator assigned them. It is what was actually said: where the notes below differ from it, the transcript is what happened.
+
+Lead investigator: Right, we're recording now. Thanks again for coming in. Just so it's on the record, you're happy with us recording this?
+
+Pilot in command: Yeah, no problem.
+
+Lead investigator: Good. So what I'd like first is just for you to take me through the day in your own words. Start wherever you want to start and don't worry about what I might be after. I'll hold my questions to the end.
+
+Pilot in command: Sure. So it was a four-sector day that turned into five, because we picked up the Tarlton evening run when the other crew went sick. Sign on was oh six thirty local. Sydney, Dubbo, Sydney, then out to Tarlton and back. The Tarlton one is the long one. We were running late from about the second sector on. There was a ground delay in Sydney in the middle of the day and we never got it back. By the time we got into Tarlton we were about thirty five down. Turnaround's thirty minutes there, so. Nothing unusual on the ground. Fuelled, forty four on, bags on, we were pushing for the doors and we closed up about forty behind. It was dark. It's dark out there early in June. There's nothing around that aerodrome, no town lights, nothing. The FO was flying the sector. Normal brief, normal figures, flap ten, dry runway zero nine. We had a good headwind, five or six knots. Nothing about the performance was tight in my head at the time. Taxi, line up, cleared for take-off, she set power. Everything normal, both engines good, eighty knots. I called V one. And then - Then she just yelled. Roos, roos. And I looked up and there were two of them, big ones, already on the seal, coming across left to right. And I stopped. I said stopping, I have control, and I stopped. We hit at least one of them almost straight away. You felt it through the airframe, it was a proper thump, and something let go on the right. Max brakes. I went for reverse and number two wasn't there. Number one came in, number two was just dead. And I remember thinking, about halfway through, we're not stopping on this. I could see the end lights coming and I knew. We went off the end doing maybe twenty knots. It's gravel out there, it's graded, we just dug in and stopped. Nothing on the board, no fire, so I didn't evacuate. Shut the engines down, told the cabin to sit tight, talked to the tower. We got them off by the airstair a few minutes later. Nobody was hurt. That's it, really.
+
+Lead investigator: That's good, thank you. Can I take you back to the turnaround at Tarlton.
+
+Pilot in command: Yep.
+
+Lead investigator: Was there any discussion at any point, with anyone, about animals on the aerodrome?
+
+Pilot in command: No. None. And I want to be fair here, I'm not saying anyone should have. It just never came up. Nobody said anything and I didn't ask.
+
+Lead investigator: Is there anything in the company documentation that would have prompted you to ask, that you're aware of?
+
+Pilot in command: There's a wildlife section in Part A. Eight something. It's got a list of aerodromes in the back where you request an inspection before the first one after dark. Tarlton's not on it. I've looked since. I'd have bet money it was on it, and it isn't.
+
+Lead investigator: When you say you'd have bet money - why would you have expected it to be there?
+
+Pilot in command: Because everyone who flies out there knows there are roos. You see them on the strip. Not on the seal, out on the grass, in the lights, most evenings. I've seen them there myself, I don't know, four or five times. Daytime you never see one. Evening you do.
+
+Lead investigator: Have you ever reported that to the company?
+
+Pilot in command: No. I've mentioned it to the ground staff out there, and they say yeah, they're always around. I've never put in a report about seeing a kangaroo. You'd report a strike. Nobody writes up a sighting. I don't think I've ever seen anyone do that.
+
+Second investigator: Can I just come in on the evening service. How long has the company been operating that sector after dark?
+
+Pilot in command: The evening one started, what, last year some time. Middle of last year. Before that Tarlton was a middle-of-the-day run, in and out in daylight.
+
+Second investigator: And did anything change for the crews when the evening sector came in? Any briefing, anything new?
+
+Pilot in command: Not that reached me. It just appeared on the roster. Same aeroplane, same aerodrome, later.
+
+Lead investigator: I want to ask about the decision to stop. You've said you called V one and then stopped. Talk me through that.
+
+Pilot in command: Yeah. I know what the book says. Above V one you go. And I know that, I've known that for twenty years, and I stopped anyway. But what I had in front of me was two animals the size of a person on the runway, and I'm about to rotate into them at a hundred and twenty knots. If I take that on the gear at rotate, or through a prop, I'm airborne with a broken aeroplane over country with nowhere to go at night. So I took the one I could see the end of. I'm not going to sit here and tell you it was by the book. It wasn't.
+
+Lead investigator: In your recurrent training, have you ever been given a stop or go scenario that wasn't an engine problem?
+
+Pilot in command: No. It's always an engine. Engine fire, engine failure, config warning, and they're all below V one anyway. That's the whole design of the exercise. Above V one in the sim you continue, because the thing they've given you is an engine, and the aeroplane flies on one. Nobody's ever put something on the runway.
+
+Second investigator: The runway lighting that evening. How was it for you? Did it help or hinder?
+
+Pilot in command: It was bright. Honestly it was brighter than I'd want. You've got this corridor of lights and everything outside it is black, so anything off the seal you don't see coming. I couldn't tell you if that's why I never picked them up. I was heads-in on the engine page after V one, which is where I'm meant to be.
+
+Lead investigator: How were you feeling by that point in the day? Honestly.
+
+Pilot in command: Tired. It was eleven hours in and it was the fifth sector. But not - I wasn't struggling. The decision wasn't slow, if that's what you're asking. If you'd asked me to fly another sector I'd have said no. For the two seconds that mattered, I was there.
+
+Lead investigator: Last one from me. Is there anything you think we should be looking at that we haven't asked about?
+
+Pilot in command: The list. Whatever the rule is that decides which aerodromes go on that list, go and look at it, because it's got Tarlton wrong and I doubt it's the only one.
+
+Lead investigator: That's helpful. Thanks. I'll stop the recording there.
+
 Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
 
 Investigator's notes:
@@ -2402,6 +2462,70 @@ Attendees: Lead: Lead investigator, Fleet Safety; Assisting: Second investigator
 Background: Role at the time of the occurrence: First officer, twin-turboprop fleet; Time in the role: 14 months; Time with the organisation: 17 months (joined April 2025); Where normally based: Sydney; Experience on this type or equipment: 405 hours on type; Other ratings or qualifications held: None; Total experience in the industry: 1,655 hours total; Most recent training or check: Line check, May 2026; Duty and rest in the days before the occurrence: Same duty as the captain; one rest day before
 
 The investigator has NOT finalised this record yet. Treat it as a working draft - the transcript may still be part-corrected and the notes unfinished - and do not quote from it as though it were settled.
+
+Verbatim transcript of the interview, as corrected by the investigator. Speakers are named by the role the investigator assigned them. It is what was actually said: where the notes below differ from it, the transcript is what happened.
+
+Lead investigator: We're recording. You're happy with that, and you've got the support person outside if you want them in at any point?
+
+First officer: Yes, that's fine.
+
+Lead investigator: Same as we discussed. Tell me about the eighteenth in your own words, from wherever you'd like to start, and I'll save my questions.
+
+First officer: OK. It was a long day but it was a normal day, right up until it wasn't. Five sectors, we picked up the last one. I'd only been into Tarlton twice before and both of those were daylight. So that was my first one out there in the dark. I was flying the sector out and the captain was flying the one home. The brief was normal. We talked about the runway length because it's not long, and the figures, and the headwind, and that was it. Nothing about animals. I didn't think of it and he didn't raise it. I'd have followed his lead if he had. Power set, all normal. Eighty knots. And then somewhere just after V one I had two roos in the landing lights. They came in from the left. They were on the seal by the time I registered what I was looking at. I called them. I think I just said roos, roos. I don't remember what I said exactly. And he said stopping, I have control, and I gave him control, and then we hit one. It was loud. It was really loud, and there was a bang on the right that was different to the first one, and vibration. I was calling speeds. Sixty, fifty. And I could see the runway end lights and I remember saying end's coming up. We went off. It wasn't violent. It was like driving onto a dirt shoulder, just noisy. Then it was quiet and he did the shutdown and we got everyone off. That's what I've got.
+
+Lead investigator: Thank you. Can I go back to the moment you saw them. How far out were they?
+
+First officer: I've thought about this a lot. Two hundred metres, maybe. It could have been less. It was the length of a fair bit of runway, is the honest answer.
+
+Lead investigator: And how clearly could you see them, once you had them?
+
+First officer: Clearly. Completely clearly. Once they were on the seal they were lit up, I could see the two of them and I could see which way they were going. It was before that I couldn't see anything. Outside the lights it's just black. They didn't appear, they arrived, if that makes sense.
+
+Second investigator: The captain told us he found the runway lighting quite bright that night. Was that your impression?
+
+First officer: I wouldn't have said that. It looked normal to me. But I've got two landings there to compare it with and both of them were in daylight, so.
+
+Second investigator: You're saying you're not well placed to judge whether it was unusual.
+
+First officer: That's right. It didn't strike me as bright. It didn't strike me as anything. I was looking down the runway.
+
+Lead investigator: Between your call and the captain taking control - are you able to put any number on how long that was?
+
+First officer: No. It felt like nothing. It was, I called, he called, it was one thing, not two things.
+
+Lead investigator: Had you and the captain briefed anything about who'd make a stop decision, or what you'd stop for?
+
+First officer: We do the standard take-off brief, so it's the captain's decision to reject, below V one, and above V one we continue. That's the words. But we don't brief a list of things. It's just below V one, reject for the stated items. Nobody ever briefs what you do about something on the runway.
+
+Second investigator: Is that something you'd been taught, in your training here or before?
+
+First officer: In the sim it's always engines. Failure, fire, or a config warning on the roll. All of those come at you well before V one, every single time. I've never seen an obstruction scenario in a simulator anywhere. I don't think the box even has a way of putting something on the runway.
+
+Lead investigator: Did you have any knowledge, from anywhere, that kangaroos were an issue at Tarlton Springs?
+
+First officer: No, and that's the bit that's stayed with me. It turns out everybody knew. The ground crew out there told me afterwards it's every night, that's their words. And I've flown in there and I had no way of knowing that, because it's nowhere.
+
+Lead investigator: Nowhere meaning - can you be specific about what you looked at before the flight?
+
+First officer: The plan, the charts, the ERSA entry, the company aerodrome brief page for Tarlton. None of them say anything about animals. The company page has got a note about the runway width and the turning bay. That's it.
+
+Second investigator: I want to ask about after you stopped. Talk me through the disembarkation, anything you noticed.
+
+First officer: It was calm. Genuinely calm. He made the announcement, the cabin crew got them up by rows, out the front door down the stairs. One thing. When I came back through the cabin the floor lights weren't all on. There's a strip down the aisle and there were sections of it out.
+
+Second investigator: Were the emergency lights selected on at that point?
+
+First officer: Yes, he'd armed them, and the ceiling ones were on. It was just the floor strip, there were gaps in it, two patches I think, towards the back. It didn't matter on the night because the cabin lights were still on and it was an orderly walk-off. But I noticed it. I raised it with the engineer the next morning. I don't know what came of that.
+
+Lead investigator: How were you feeling at that point in the duty? It was sector five and you'd been on eleven hours.
+
+First officer: Tired, but that's a normal five-sector day for me. I wasn't fighting it. I'd had a proper break in Sydney in the middle.
+
+Lead investigator: Anything you'd want an investigation like this to look at?
+
+First officer: Whether anybody at the company actually knew about the roos out there. Because the people on the ground knew, and it never got to us, and I'd like to know where it stopped.
+
+Lead investigator: That's a fair question and we'll follow it. Thank you. Stopping the recording.
 
 Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
 
