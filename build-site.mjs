@@ -334,7 +334,7 @@ write("index.html", index);
 /** The other top-level pages: template, nav key, title and description. */
 const sitePages = [
   ["product", "Product", "Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record."],
-  ["methodology", "Methodology", "How IWS moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a stated standard of proof and a fixed probability scale."],
+  ["methodology", "Methodology", "How IWS moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
   ["ai-security", "AI and security", "What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting."],
   ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite."],
   ["download", "Download", "Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, licensing and the 30-day trial."],
