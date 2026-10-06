@@ -63,9 +63,6 @@
   table.bands td { padding: 6px 0; border-bottom: 1px solid var(--line); }
   table.bands td:last-child { text-align: right; font-family: var(--font-mono); color: var(--ink-soft); white-space: nowrap; }
   .wording h3 { font-size: 1rem; }
-  .wording dl { display: grid; grid-template-columns: max-content 1fr; gap: 7px 16px; margin: 12px 0 0; font-size: 0.92rem; }
-  .wording dt { color: var(--ink); font-weight: 600; }
-  .wording dd { margin: 0; color: var(--ink-soft); }
 
   /* The tables */
   .pack { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr); gap: 28px; align-items: center; }
@@ -83,8 +80,6 @@
   }
   @media (max-width: 560px) {
     .tests, .shotrow, .chain-notes { grid-template-columns: 1fr; }
-    .wording dl { grid-template-columns: 1fr; gap: 2px 0; }
-    .wording dd { margin-bottom: 6px; }
   }
 </style>
 
@@ -137,7 +132,7 @@
       <div><h3>Proposition</h3>An event or condition that might have played a part, placed on the map whether it is expected to hold or to fail.</div>
       <div><h3>Testing</h3>Three questions asked in order, with the evidence for and against each answer recorded.</div>
       <div><h3>Confidence</h3>Every answer carries a probability, and a pass has to reach the investigation's standard of proof.</div>
-      <div><h3>Finding</h3>What the object becomes follows from its results, not from the investigator's view of it.</div>
+      <div><h3>Finding</h3>The test results determine how the object is classified, while the investigator remains responsible for the judgements behind those results.</div>
     </div>
   </section>
 
@@ -148,7 +143,7 @@
     </div>
     <div class="prose">
       <p>You are notified, you decide an investigation is required, and the checklist starts with whatever is on hand. From there the work runs in rounds: what has come in is recorded, it is analysed, the gaps it exposes become requests for more information, the picture on the map is built out, the evidence behind each object is tested, and round it goes.</p>
-      <p>The report is drawn off the loop when the picture holds, rather than at the point in a sequence where a method says it is due. <strong>Nothing is thrown away when new information arrives</strong>: the record takes it, and the objects it bears on are tested again.</p>
+      <p><strong>Investigation is iterative rather than linear.</strong> New information can enter at any point: the record absorbs it, the analysis adjusts around it, and the propositions it bears on are tested again. The report is drawn from the record when the picture holds, rather than because the investigation has reached the end of a prescribed sequence.</p>
     </div>
     <figure class="loopfig">
       <svg viewBox="0 55 1240 475" role="img" aria-label="The investigation loop. Information and evidence come in and become the record. Analysis turns the record into an account of what it means and where the gaps are. Those gaps go back out as requests for more, which bring more information in. Building the picture turns the account into the map and timeline, testing the evidence settles each object, and round again returns to the record. When the picture is complete the loop is left for the report.">
@@ -228,7 +223,7 @@
           </g>
         </g>
       </svg>
-      <figcaption>New information can enter at any point. Nothing is thrown away when it does: the record takes it, the analysis adjusts around it, and the loop runs again until the picture holds.</figcaption>
+      <figcaption>The investigation loop: round on the same record until the picture holds, then out to the report.</figcaption>
     </figure>
   </section>
 
@@ -309,7 +304,7 @@
     </div>
     <div class="two">
       <div class="prose">
-        <p>Before the tests are worth anything, the investigation has to say how sure it needs to be. IWS asks for that once, as the standard of proof, from the balance of probabilities at 50 per cent up to very likely at 90. The application's default is 66 per cent.</p>
+        <p>Before the tests are worth anything, the investigation has to say how sure it needs to be. In the methodology IWS implements, that is the standard of proof: one threshold, selected for the investigation and applied to every test in it. IWS offers values from the balance of probabilities at 50 per cent up to very likely at 90, with 66 per cent as its default. They are settings of the method, chosen for each investigation, rather than a figure set by any outside authority.</p>
         <p>Every test then carries its confidence on the probability scale below, and the object's form warns when a pass falls short of the standard. A finding that only just clears the bar is reported with the confidence it actually has, rather than presented as settled.</p>
       </div>
       <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="%%SHOT_17%%" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof, set in Settings.</figcaption></figure>
@@ -320,14 +315,13 @@
   <section class="block" id="scale">
     <div class="section-head">
       <span class="eyebrow">Probability and confidence</span>
-      <h2>Ten fixed bands, so confidence means the same thing in every investigation</h2>
-      <p>A confidence word in a report is only useful if every reader takes it the same way. IWS records every confidence and every finding as one of ten bands of a fixed probability scale, so two investigations can be compared, and a reviewer can see exactly how strongly each finding was held.</p>
-      <p>The prose does not have to repeat the same ten words. Each band accepts a short list of phrases that state that band and nothing else, and the checks read any of them back as the band it belongs to.</p>
+      <h2>Ten fixed terms, so confidence means the same thing in every investigation</h2>
+      <p>A confidence word in a report is only useful if every reader takes it the same way. IWS records every confidence and every finding as one of the ten terms of its probability scale, so two investigations can be compared, and a reviewer can see exactly how strongly each finding was held. The percentages below are the application's defaults; an organisation working to different boundaries can set its own in Settings.</p>
     </div>
     <div class="scale">
       <div>
         <table class="bands">
-          <caption>The probability scale</caption>
+          <caption>The probability scale, at its default boundaries</caption>
           <thead><tr><th scope="col">Term</th><th scope="col">Probability</th></tr></thead>
           <tbody>
             <tr><td>Virtually certain</td><td>100%</td></tr>
@@ -345,17 +339,7 @@
       </div>
       <div class="card wording">
         <h3>How a band may be worded</h3>
-        <dl>
-          <dt>Virtually certain</dt><dd>stated plainly, with no hedge in front of it</dd>
-          <dt>Extremely likely</dt><dd>almost certainly, near certain</dd>
-          <dt>Very likely</dt><dd>highly likely, highly probable</dd>
-          <dt>Likely</dt><dd>probably, in all likelihood</dd>
-          <dt>More likely than not</dt><dd>on balance, on the balance of probabilities</dd>
-          <dt>About as likely as not</dt><dd>an even chance, the evidence is evenly balanced</dd>
-          <dt>Unlikely</dt><dd>probably not, improbable, doubtful</dd>
-          <dt>Extremely unlikely</dt><dd>almost certainly not, extremely improbable</dd>
-        </dl>
-        <p class="hint" style="margin-top: 12px">A Findings section is held to seven of the ten bands: narrower wording for the sentences that become the investigation's own conclusions. The wording lists can be edited in Settings.</p>
+        <p style="margin-top: 10px; color: var(--ink-soft); font-size: 0.95rem;">The prose does not have to repeat the same ten words. Each band can recognise equivalent approved wording, such as "probably" for likely, while preserving the underlying probability classification: a phrase belongs to one band only, and the checks read it back as that band. A Findings section is held to seven of the ten bands. Organisation-specific wording can be configured in Settings, and the <a href="guide.html#manual-templates">user guide</a> describes how.</p>
       </div>
     </div>
   </section>
