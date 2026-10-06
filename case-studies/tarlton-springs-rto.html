@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Synoptic | Case study: Tarlton Springs</title>
 <meta name="description" content="A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to six published reports.">
-
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -114,6 +113,15 @@ body.has-lightbox { overflow: hidden; }
 
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
+
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
 
 
   [id] { scroll-margin-top: 76px; }
@@ -305,7 +313,7 @@ footer a { color: var(--ink-soft); }
           <article class="step" data-shot="s03" data-caption="The captain's air safety report: the submission details, the just culture flag, and the account exactly as it was written.">
             <h4>Take the safety report in as it was written</h4>
             <p>ASR-2026-1184 was submitted by the pilot in command at 02:40 UTC the next morning. It goes in as written, with the submitter recorded by role, the time, and the reference in the reporting system. No name goes into the file.</p>
-            <p>One tick says the report came in under the company's just culture scheme. From then on report drafting is told the account may inform the investigation and must not be quoted into a distributed document, and the audit checks that it was not.</p>
+            <p>One tick says the report came in under the company's just culture scheme. From then on report drafting is told the account may inform the investigation and must not be quoted into a distributed document, and the audit, the application's model check against the record, looks for any place it was.</p>
             <p class="records"><span>What the app recorded</span>The account verbatim, its reference and time, the submitter's role, and the protection it was given.</p>
             <img class="inline" src="../shots/tarlton-springs-rto/03-safety-report.png" alt="A safety report with its submission details and the report text">
           </article>
@@ -485,7 +493,7 @@ footer a { color: var(--ink-soft); }
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">7</span> Testing a factor</span>
       <h2>Nothing is a finding until it has passed its tests</h2>
-      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. What the object becomes follows from the answers, not from the investigator's view of it.</p>
+      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. The test results determine how the object is classified, while the investigator remains responsible for the judgements behind those results.</p>
     </div>
     <div class="tests">
       <article class="test card">
@@ -585,7 +593,7 @@ footer a { color: var(--ink-soft); }
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">9</span> The Evidence and Argument Tables</span>
       <h2>The working behind every finding, written out</h2>
-      <p>The map is the picture. The tables are the proof, exported from the same record, one table per object, in the order the map reads.</p>
+      <p>The map is the picture. The tables are the working behind it, exported from the same record, one table per object, in the order the map reads.</p>
     </div>
     <div class="card pack">
       <a href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="shot" src="../exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Evidence and Argument Tables document: one table per object with each test, its confidence and the evidence"></a>
@@ -611,13 +619,13 @@ footer a { color: var(--ink-soft); }
           <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-external)"></span><h3>The pipeline</h3></div>
           <article class="step" data-shot="s12" data-caption="The Draft report tab: a style, a section at a time, or the whole report in one run.">
             <h4>Draft</h4>
-            <p>A style is chosen and its sections are drafted from one collated copy of the whole record: an outline pass, a call per section, then a cohesion edit across the lot. The model is given the record and nothing else, and the findings, the categories and the confidence words all come from the record, so a section cannot claim more than the tests behind it support. Each section is corrected and finalised by hand, and nothing regenerates over a finalised one. This investigation was drafted through a model reached from the investigator's own machine; the endpoint is a setting, so the same pipeline runs against a local model, a hosted API with your own key, or an organisation's gateway. With AI access off the tab says so and the report is assembled from the record instead. The drafts published here were produced by a Claude-based pipeline run through the suite's own sealed command-line transport, standing in for the kind of private cloud endpoint an organisation would use.</p>
+            <p>A style is chosen and its sections are drafted from one collated copy of the whole record: an outline pass, a call per section, then a cohesion edit across the lot. The model drafts from the investigation record under instructions not to go beyond what the tests support, with the findings, the categories and the confidence words taken from that record. The checks that follow compare the draft back against the record before the investigator reviews it. Each section is corrected and finalised by hand, and nothing regenerates over a finalised one. This investigation was drafted through a model reached from the investigator's own machine; the endpoint is a setting, so the same pipeline runs against a local model, a hosted API with your own key, or an organisation's gateway. With AI access off the tab says so and the report is assembled from the record instead. The drafts published here were produced by a Claude-based pipeline run through the suite's own sealed command-line transport, standing in for the kind of private cloud endpoint an organisation would use.</p>
             <p class="records"><span>What the app recorded</span>Each section with the model and the version of the record that produced it, so a draft goes visibly stale when the record moves on.</p>
             <img class="inline" src="../shots/tarlton-springs-rto/12-draft-report.png" alt="The Draft report tab with its sections and the whole-report run">
           </article>
           <article class="step" data-shot="s13" data-caption="The Record tab: findings derived from the tests, the record assembled under a report style's headings.">
             <h4>Audit, repair, then finalise</h4>
-            <p>An adversarial pass then reads the finished draft back against the whole record and verdicts every claim in it, naming what it could not find and what it found contradicted. A mechanical check with no model in it runs beside it, comparing each factor's category and confidence word in the text against its recorded test, and the report's findings against the derived classification. The repair pass takes only what those two flagged: it sends the section carrying a flagged item, with the record and the cited excerpt, under one rule, change what is flagged and nothing else, then re-audits the reply and keeps it only if the re-audit is clean or strictly better. Nothing lands on its own. A repaired section is shown beside the text it would replace and landed by hand, and it carries "repaired against the audit" in its provenance. The audit and the check are published with the reports below, because what the audit caught is the reason a draft is never final until an investigator has read it.</p>
+            <p>The audit, a second model pass, then reads the finished draft back against the whole record and gives a verdict on the claims it identifies, naming what it could not find and what it found contradicted. It is the application's own model check rather than an independent review, and like any model output it can miss things. A mechanical check with no model in it runs beside it, comparing each factor's category and confidence word in the text against its recorded test, and the report's findings against the derived classification. The repair pass takes only what those two flagged: it sends the section carrying a flagged item, with the record and the cited excerpt, under one rule, change what is flagged and nothing else, then re-audits the reply and keeps it only if the re-audit is clean or strictly better. Nothing lands on its own. A repaired section is shown beside the text it would replace and landed by hand, and it carries "repaired against the audit" in its provenance. The audit and the check are published with the reports below, because what the audit caught is the reason a draft is never final until an investigator has read it.</p>
             <p class="records"><span>What the app recorded</span>The audit and the record check beside the draft, the review notes the model made about the record itself, which section each repair touched, and the investigator's decision to finalise.</p>
             <img class="inline" src="../shots/tarlton-springs-rto/13-report.png" alt="The Record tab with the assembled report">
           </article>
@@ -638,7 +646,7 @@ footer a { color: var(--ink-soft); }
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">11</span> The published reports</span>
       <h2>Six reports from the one record</h2>
-      <p>The same investigation written six ways, on the application's Word template and converted to PDF. Three are the application's general styles; the other three follow the shapes of published safety investigation reports (a final report, a probable-cause report and a causal and contributory factors report), so an investigator can see the same record under the structure their own organisation expects. Each is published exactly as it landed, with the grounding audit and the mechanical record check beside it.</p>
+      <p>The same investigation written six ways, on the application's Word template and converted to PDF. Three are the application's general styles; the other three follow the shapes of published safety investigation reports (a final report, a probable-cause report and a causal and contributory factors report), so an investigator can see the same record under the structure their own organisation expects. Each is published exactly as it landed, with the audit (the model's check against the record) and the mechanical record check beside it.</p>
     </div>
     <div class="published">
       <article class="card">

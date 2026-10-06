@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Synoptic | Causal and Contributory Factors Report, Tarlton Springs</title>
 <meta name="description" content="The causal and contributory factors style on the same template: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations.">
-
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -114,6 +113,15 @@ body.has-lightbox { overflow: hidden; }
 
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
+
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
 
   .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
   .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }

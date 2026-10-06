@@ -114,6 +114,15 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -138,7 +147,7 @@ footer a { color: var(--ink-soft); }
   .tier h3 { font-size: 1.15rem; }
   .tier .who { font-size: 0.92rem; color: var(--ink-soft); }
   .tier ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; display: flex; flex-direction: column; gap: 5px; }
-  .pricing { margin-top: 16px; color: var(--ink-soft); max-width: 84ch; }
+  .trial { margin-top: 16px; color: var(--ink-soft); max-width: 84ch; }
   .org { margin-top: 16px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
   .training { max-width: 72ch; color: var(--ink-soft); display: flex; flex-direction: column; gap: 10px; }
 
@@ -200,7 +209,7 @@ footer a { color: var(--ink-soft); }
       <div class="dl-side">
         <h3>Before you install</h3>
         <p>The first launch of a new build can trigger a Windows SmartScreen prompt. Choose More info, then Run anyway.</p>
-        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The application tells you what it will send before it sends it. The only thing the licence server ever sees is the email address you request a licence with.</p>
+        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The endpoint settings and the drafting controls say where an action would send investigation text off the machine.</p>
       </div>
     </div>
   </section>
@@ -240,7 +249,7 @@ footer a { color: var(--ink-soft); }
         </ul>
       </article>
     </div>
-    <p class="pricing">Licence pricing is being finalised. A 30-day trial licence is free, and an unlicensed copy runs as the Standard tier with an evaluation watermark.</p>
+    <p class="trial">An unlicensed copy runs as the Standard tier with an evaluation watermark; a 30-day trial licence turns everything on.</p>
     <p class="org">Organisations: a custom build carries your own framework, templates, report style and workflow, licensed to your investigators, with the application underneath unchanged.</p>
     <p class="hint" style="margin-top: 14px">Where each mode sends data, and what stays on the machine, is set out on the <a href="ai-security.html#data">AI and security</a> page.</p>
   </section>

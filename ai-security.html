@@ -114,6 +114,15 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -202,7 +211,8 @@ footer a { color: var(--ink-soft); }
       <h2>Drafting from the record, checked against the record, finalised by the investigator</h2>
     </div>
     <div class="prose" style="margin-bottom: 26px">
-      <p>The model is sent the whole record, with roles in place of names, and drafts each section under grounding rules. A second pass checks the prose against the record and reports every claim it cannot find there. A mechanical check, with no model in it, then compares each factor's category and confidence word against the test that produced it. <strong>What reaches you is a first draft with its own errors already marked.</strong></p>
+      <p>The model is sent the whole record, with roles in place of names, and drafts each section under grounding rules that instruct it to use only information in the record and not to go beyond what the tests support. Two checks then compare the draft back against the record, and they work differently.</p>
+      <p>The first, which the application calls the audit, is a second model pass: a semantic check of the prose against the record that flags material it cannot support, for the investigator to review. It is the application's own check, and like any model output it can miss things. The second has no model in it. It compares each factor's category and confidence word in the draft with the test that produced it, deterministically, so the same draft always gets the same result. <strong>What reaches you is a first draft with what the checks found already marked.</strong></p>
       <p>You read it against the record, correct what is wrong or overstated, and finalise it. The report that gets published is yours, not the model's.</p>
     </div>
     <div class="pipeline">
@@ -239,16 +249,16 @@ footer a { color: var(--ink-soft); }
             <rect x="610" y="30" width="150" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
             <text x="685" y="60" text-anchor="middle" font-weight="600">Polish</text>
             <text x="685" y="82" text-anchor="middle" font-size="11.5" fill="#475569">one voice throughout</text>
-            <text x="685" y="98" text-anchor="middle" font-size="11.5" fill="#475569">nothing added</text>
-            <text x="685" y="114" text-anchor="middle" font-size="11.5" fill="#475569">nothing reweighed</text>
+            <text x="685" y="98" text-anchor="middle" font-size="11.5" fill="#475569">asked to add nothing</text>
+            <text x="685" y="114" text-anchor="middle" font-size="11.5" fill="#475569">and reweigh nothing</text>
           </g>
           <path d="M762 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
           <g>
             <rect x="786" y="30" width="196" height="100" rx="10" fill="#f0fdf4" stroke="#86efac"/>
             <text x="884" y="60" text-anchor="middle" font-weight="600">Check against the record</text>
-            <text x="884" y="82" text-anchor="middle" font-size="11.5" fill="#475569">every claim found in the record</text>
-            <text x="884" y="98" text-anchor="middle" font-size="11.5" fill="#475569">categories and confidence words</text>
-            <text x="884" y="114" text-anchor="middle" font-size="11.5" fill="#475569">findings against the classification</text>
+            <text x="884" y="82" text-anchor="middle" font-size="11.5" fill="#475569">model: claims vs the record</text>
+            <text x="884" y="98" text-anchor="middle" font-size="11.5" fill="#475569">mechanical: categories and</text>
+            <text x="884" y="114" text-anchor="middle" font-size="11.5" fill="#475569">confidence words vs the tests</text>
           </g>
           <path d="M984 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
           <g>
@@ -264,8 +274,8 @@ footer a { color: var(--ink-soft); }
       </svg>
       <div class="stages">
         <div class="stage"><h3>The whole record, never a fragment</h3><p>Every object with its tests and confidences, the timeline, the finalised interviews and the evidence, with roles in place of names.</p></div>
-        <div class="stage"><h3>Grounding rules on every prompt</h3><p>Nothing that is not in the record, no invented figures, no recommendation the record does not carry, and the confidence word the test actually produced.</p></div>
-        <div class="stage"><h3>Checked twice</h3><p>A model pass reports every claim it cannot find in the record. A mechanical check then compares each factor's category and confidence word against its test.</p></div>
+        <div class="stage"><h3>Grounding rules on every prompt</h3><p>Each prompt instructs the model to use only information in the investigation record, to add no figures or recommendations the record does not carry, and to use the confidence word the test actually produced.</p></div>
+        <div class="stage"><h3>Two kinds of check</h3><p>The model check is a semantic pass that flags claims it cannot support from the record, for investigator review. The mechanical check is deterministic: each factor's category and confidence word in the draft against the test that produced it.</p></div>
         <div class="stage"><h3>Provenance and staleness</h3><p>Every draft records the model and the version of the record it came from, and is marked out of date when the record changes.</p></div>
       </div>
     </div>
@@ -280,11 +290,11 @@ footer a { color: var(--ink-soft); }
     <table class="risks">
       <thead><tr><th scope="col">What can go wrong</th><th scope="col">The control in IWS</th></tr></thead>
       <tbody>
-        <tr><td><span class="x">1</span>Wording that the evidence does not support, in the same confident voice as the rest.</td><td>Grounding rules allow nothing that is not in the record, and the check against the record names every claim it cannot find there.</td></tr>
+        <tr><td><span class="x">1</span>Wording that the evidence does not support, in the same confident voice as the rest.</td><td>Grounding rules instruct the model to use only information in the investigation record. A second model pass checks claims against the record and flags material it cannot support for investigator review.</td></tr>
         <tr><td><span class="x">2</span>Confidence language drifting: "very likely" becomes "virtually certain".</td><td>The mechanical check compares every confidence word with the test that produced it.</td></tr>
         <tr><td><span class="x">3</span>A factor the investigator excluded written back in as contributing.</td><td>The mechanical check compares each factor's category and the findings with the classification derived from the tests.</td></tr>
-        <tr><td><span class="x">4</span>Recommendations the investigation never made.</td><td>No recommendation goes in that the record does not carry.</td></tr>
-        <tr><td><span class="x">5</span>A protected report quoted as if it were an ordinary statement, or people named where a role would do.</td><td>A protected report informs the draft without being quoted, and roles replace names when an interview or transcript comes into the record.</td></tr>
+        <tr><td><span class="x">4</span>Recommendations the investigation never made.</td><td>The grounding rules instruct the model to include only the recommendations the record carries, and the mechanical check flags a safety issue drafted with a recommendation the record does not hold.</td></tr>
+        <tr><td><span class="x">5</span>A protected report quoted as if it were an ordinary statement, or people named where a role would do.</td><td>A protected report is marked in the record, and the model is instructed to let it inform the draft without quoting it. Roles replace names when an interview or transcript comes into the record, before any drafting.</td></tr>
         <tr><td><span class="x">6</span>No record of which model, or which version of the evidence, produced the text.</td><td>Each draft records its model and record version, and goes visibly out of date when the record moves on.</td></tr>
       </tbody>
     </table>

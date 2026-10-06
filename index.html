@@ -109,6 +109,15 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
+
 
   /* Mockup additions. Tokens and components are the live site's own theme.css above. */
   html, body { background: var(--ground); }
@@ -292,7 +301,7 @@ footer a { color: var(--ink-soft); }
     <div class="hero-copy">
       <span class="eyebrow">Purpose-built safety investigation software</span>
       <h1>A structured workflow for safety investigations.</h1>
-      <p class="lede">Investigation Workflow Suite (IWS) keeps the evidence, the reasoning, the analysis and the report connected throughout an investigation.</p>
+      <p class="lede">Investigation Workflow Suite (IWS) keeps the evidence, reasoning, analysis and reporting connected throughout an investigation.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="download.html">Download</a>
         <a class="btn" href="case-studies/tarlton-springs-rto.html">See a worked case study</a>
@@ -337,7 +346,7 @@ footer a { color: var(--ink-soft); }
         </ul>
       </div>
       <div class="card compact lead">
-        <span class="eyebrow">Our workflow with IWS</span>
+        <span class="eyebrow">With IWS</span>
         <ul>
           <li>One record for the entire investigation</li>
           <li>Evidence, interviews, timelines and analysis stay connected</li>
@@ -403,7 +412,7 @@ footer a { color: var(--ink-soft); }
       <ol class="stepper">
         <li><span class="dotn">1</span><div><h4>Draft</h4><p>Drafted from the investigation record under grounding rules.</p></div></li>
         <li class="hi"><span class="dotn">2</span><div><h4>Check against the record</h4><p>Claims and confidence language are checked against the underlying analysis.</p></div></li>
-        <li><span class="dotn">3</span><div><h4>Polish</h4><p>Language and consistency only. No new findings.</p></div></li>
+        <li><span class="dotn">3</span><div><h4>Polish</h4><p>Language and consistency only, under instructions to add no new findings.</p></div></li>
         <li><span class="dotn">4</span><div><h4>Investigator assessment</h4><p>Review, correct and finalise. The investigator owns the conclusion.</p></div></li>
       </ol>
       <svg class="flow-arrow" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 12h30M24 4l10 8-10 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
