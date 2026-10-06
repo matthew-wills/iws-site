@@ -78,7 +78,7 @@ regeneration recipe above produces:
   renders and the collated export.
 - `exports/pages/<doc>/*.png` - the page-by-page renders behind each
   document's viewer, one folder per document (`report_standard`,
-  `report_preliminary`, `report_executive`, `eii_tables`, `source_pack`).
+  `report_preliminary`, `report_executive`, `evidence_argument_tables`, `source_pack`).
 - `reports/<style>/` - the drafted reports the site renders from.
 
 Here, `case-studies/<slug>/` holding two files:
@@ -103,7 +103,7 @@ Here, `case-studies/<slug>/` holding two files:
       a document viewer at `exports/<slug>/report_<style>.html`.
     - `documents` - the other published documents with page renders, each
       getting a viewer at `exports/<slug>/<doc>.html`. Usually
-      `["source_pack", "eii_tables"]`.
+      `["source_pack", "evidence_argument_tables"]`. (a study not yet re-drafted may still carry the older `eii_tables`; the build handles either name)
 - `content.html`, the page body for this study: everything between
   `<main>` and the footer, with no header, nav, lightbox or script of its
   own. Those come from the shared shell, along with all the CSS, so use
