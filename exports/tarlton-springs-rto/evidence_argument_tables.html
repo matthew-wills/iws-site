@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Synoptic | Evidence and Argument Tables, Tarlton Springs</title>
-
+<meta name="description" content="One table per object: each test’s result and confidence, the evidence recorded for and against it, and the investigator’s reasoning.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -114,6 +114,15 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
+
   .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
   .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
   .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
@@ -128,19 +137,17 @@ footer a { color: var(--ink-soft); }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../../index.html" aria-label="Synoptic, home">
-      <svg viewBox="0 0 28 28" aria-hidden="true">
-        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
-        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
-        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      </svg>
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="../../index.html">Home</a>
-      <a href="../../case-studies/tarlton-springs-rto.html#published" aria-current="page">Case study</a>
-      <a href="../../index.html#download">Download</a>
-      <a href="../../guide.html">User guide</a>
+      <a href="../../product.html">Product</a>
+      <a href="../../methodology.html">Methodology</a>
+      <a href="../../ai-security.html">AI and security</a>
+      <a href="../../case-studies.html" aria-current="page">Case studies</a>
+      <a href="../../guide.html">Documentation</a>
+      <a href="../../download.html">Download</a>
     </nav>
   </div>
 </header>
@@ -156,32 +163,35 @@ footer a { color: var(--ink-soft); }
     </div>
   </div>
   <div class="pages">
-    <figure class="page"><img src="pages/evidence_argument_tables/p01.png" alt="Page 1 of 22" loading="eager"><figcaption>Page 1 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p02.png" alt="Page 2 of 22" loading="eager"><figcaption>Page 2 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p03.png" alt="Page 3 of 22" loading="lazy"><figcaption>Page 3 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p04.png" alt="Page 4 of 22" loading="lazy"><figcaption>Page 4 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p05.png" alt="Page 5 of 22" loading="lazy"><figcaption>Page 5 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p06.png" alt="Page 6 of 22" loading="lazy"><figcaption>Page 6 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p07.png" alt="Page 7 of 22" loading="lazy"><figcaption>Page 7 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p08.png" alt="Page 8 of 22" loading="lazy"><figcaption>Page 8 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p09.png" alt="Page 9 of 22" loading="lazy"><figcaption>Page 9 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p10.png" alt="Page 10 of 22" loading="lazy"><figcaption>Page 10 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p11.png" alt="Page 11 of 22" loading="lazy"><figcaption>Page 11 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p12.png" alt="Page 12 of 22" loading="lazy"><figcaption>Page 12 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p13.png" alt="Page 13 of 22" loading="lazy"><figcaption>Page 13 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p14.png" alt="Page 14 of 22" loading="lazy"><figcaption>Page 14 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p15.png" alt="Page 15 of 22" loading="lazy"><figcaption>Page 15 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p16.png" alt="Page 16 of 22" loading="lazy"><figcaption>Page 16 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p17.png" alt="Page 17 of 22" loading="lazy"><figcaption>Page 17 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p18.png" alt="Page 18 of 22" loading="lazy"><figcaption>Page 18 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p19.png" alt="Page 19 of 22" loading="lazy"><figcaption>Page 19 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p20.png" alt="Page 20 of 22" loading="lazy"><figcaption>Page 20 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p21.png" alt="Page 21 of 22" loading="lazy"><figcaption>Page 21 of 22</figcaption></figure>
-    <figure class="page"><img src="pages/evidence_argument_tables/p22.png" alt="Page 22 of 22" loading="lazy"><figcaption>Page 22 of 22</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p01.png" alt="Page 1 of 25" loading="eager"><figcaption>Page 1 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p02.png" alt="Page 2 of 25" loading="eager"><figcaption>Page 2 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p03.png" alt="Page 3 of 25" loading="lazy"><figcaption>Page 3 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p04.png" alt="Page 4 of 25" loading="lazy"><figcaption>Page 4 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p05.png" alt="Page 5 of 25" loading="lazy"><figcaption>Page 5 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p06.png" alt="Page 6 of 25" loading="lazy"><figcaption>Page 6 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p07.png" alt="Page 7 of 25" loading="lazy"><figcaption>Page 7 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p08.png" alt="Page 8 of 25" loading="lazy"><figcaption>Page 8 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p09.png" alt="Page 9 of 25" loading="lazy"><figcaption>Page 9 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p10.png" alt="Page 10 of 25" loading="lazy"><figcaption>Page 10 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p11.png" alt="Page 11 of 25" loading="lazy"><figcaption>Page 11 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p12.png" alt="Page 12 of 25" loading="lazy"><figcaption>Page 12 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p13.png" alt="Page 13 of 25" loading="lazy"><figcaption>Page 13 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p14.png" alt="Page 14 of 25" loading="lazy"><figcaption>Page 14 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p15.png" alt="Page 15 of 25" loading="lazy"><figcaption>Page 15 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p16.png" alt="Page 16 of 25" loading="lazy"><figcaption>Page 16 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p17.png" alt="Page 17 of 25" loading="lazy"><figcaption>Page 17 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p18.png" alt="Page 18 of 25" loading="lazy"><figcaption>Page 18 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p19.png" alt="Page 19 of 25" loading="lazy"><figcaption>Page 19 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p20.png" alt="Page 20 of 25" loading="lazy"><figcaption>Page 20 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p21.png" alt="Page 21 of 25" loading="lazy"><figcaption>Page 21 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p22.png" alt="Page 22 of 25" loading="lazy"><figcaption>Page 22 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p23.png" alt="Page 23 of 25" loading="lazy"><figcaption>Page 23 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p24.png" alt="Page 24 of 25" loading="lazy"><figcaption>Page 24 of 25</figcaption></figure>
+    <figure class="page"><img src="pages/evidence_argument_tables/p25.png" alt="Page 25 of 25" loading="lazy"><figcaption>Page 25 of 25</figcaption></figure>
   </div>
   <footer>
-    <span>© 2026 Synoptic Safety Investigation Software</span>
-    <span><a href="../../case-studies/tarlton-springs-rto.html#published">Back to the case study</a></span>
+    <span class="legal">Investigation Workflow Suite is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span><a href="../../case-studies/tarlton-springs-rto.html#published">Back to the case study</a> · <a href="../../case-studies.html">All case studies</a> · <a href="../../changelog.html">Changelog</a></span>
   </footer>
 </main>
 
