@@ -200,8 +200,8 @@ footer .legal { line-height: 1.6; }
 <main class="wrap" id="top">
   <section class="page-head">
     <span class="eyebrow">AI and security</span>
-    <h1>A model can draft the report. It does not investigate.</h1>
-    <p class="lede">The investigation record establishes the facts and findings. AI can help turn that record into prose.</p>
+    <h1>An AI model cannot conduct the investigation, but it can help with drafting the report.</h1>
+    <p class="lede">The investigator creates the investigation record, evaluates the evidence and establishes the findings. AI works downstream of that: it may draft the report from the record and check the draft against it. The investigator then reviews and finalises the result.</p>
     <p class="optional"><strong>AI is optional.</strong> With AI access set to No AI, IWS assembles every report from the record and nothing is sent anywhere. The evidence, the tests and the findings are the investigator's in every setting.</p>
   </section>
 
@@ -211,9 +211,8 @@ footer .legal { line-height: 1.6; }
       <h2>Drafting from the record, checked against the record, finalised by the investigator</h2>
     </div>
     <div class="prose" style="margin-bottom: 26px">
-      <p>The model is sent the whole record, with roles in place of names, and drafts each section under grounding rules that instruct it to use only information in the record and not to go beyond what the tests support. Two checks then compare the draft back against the record, and they work differently.</p>
-      <p>The first, which the application calls the audit, is a second model pass: a semantic check of the prose against the record that flags material it cannot support, for the investigator to review. It is the application's own check, and like any model output it can miss things. The second has no model in it. It compares each factor's category and confidence word in the draft with the test that produced it, deterministically, so the same draft always gets the same result. <strong>What reaches you is a first draft with what the checks found already marked.</strong></p>
-      <p>You read it against the record, correct what is wrong or overstated, and finalise it. The report that gets published is yours, not the model's.</p>
+      <p>The model receives the investigation record, with roles in place of names, and drafts each section under grounding instructions. A second model pass, which the application calls the audit, checks the draft against the record and flags claims it cannot support. It is a semantic check, and like any model output it can miss things. A separate mechanical check then compares factor classifications and confidence language against the underlying tests. It has no model in it, so the same draft always gets the same result.</p>
+      <p>The investigator reviews the draft, the flagged issues and the underlying record before correcting and finalising the report. The report that gets published is the investigator's, not the model's.</p>
     </div>
     <div class="pipeline">
       <svg viewBox="0 0 1160 200" role="img" aria-label="The drafting pipeline: the record is collated, sections are drafted under grounding rules with approved sections as context, the whole is smoothed for cohesion, then checked against the record and mechanically checked, and finalised by the investigator">

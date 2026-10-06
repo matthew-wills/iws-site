@@ -152,7 +152,9 @@ footer .legal { line-height: 1.6; }
 
   /* What comes out */
   .styles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-  .styles .style:last-child { grid-column: span 2; }
+  .styles-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .group-label { display: block; margin: 26px 0 10px; }
+  .section-head + .group-label { margin-top: 0; }
   .style { padding: 14px 16px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
   .style h3 { font-size: 0.98rem; }
   .style p { font-size: 0.9rem; color: var(--ink-soft); }
@@ -175,7 +177,6 @@ footer .legal { line-height: 1.6; }
   }
   @media (max-width: 560px) {
     .styles, .parts, .assists, .shotrow, .outputs { grid-template-columns: 1fr; }
-    .styles .style:last-child { grid-column: auto; }
   }
 </style>
 </head>
@@ -221,7 +222,7 @@ footer .legal { line-height: 1.6; }
     <div class="section-head">
       <span class="eyebrow">One investigation record</span>
       <h2>One file that holds the whole investigation, and a report that is a view of it</h2>
-      <p>Everything the investigation knows sits in one JSON file on the drive you choose, archivable when the work closes.</p>
+      <p>The investigation is held in one portable file on the drive you choose. It can be archived with the investigation and read independently of IWS. The underlying file is human-readable JSON.</p>
     </div>
     <div class="parts" aria-label="What the investigation file holds">
       <div class="part"><h3>Checklist</h3><p>What the investigation should cover, what is outstanding, and who the report goes to.</p></div>
@@ -245,9 +246,9 @@ footer .legal { line-height: 1.6; }
       <div class="assist"><h3>Everything in the report traces to something recorded</h3><p>A finding is derived from the tests on an object, and the evidence behind it exports as a table. The report is built from information held in the investigation record, preserving the trail back to its source.</p></div>
       <div class="assist"><h3>The direction of the investigation in one image</h3><p>The map shows every line of enquiry and its state: proven, argued, closed, or not yet looked at.</p></div>
       <div class="assist"><h3>Confidence stated, standard of proof chosen</h3><p>Every verdict carries a confidence on the probability scale, and the standard a passed test must reach is set once for the investigation. The <a href="methodology.html#scale">methodology</a> explains both.</p></div>
-      <div class="assist"><h3>Several reports from one record</h3><p>A preliminary update while the work runs, the full report and an executive brief, all from the same file.</p></div>
-      <div class="assist"><h3>Readable independently of IWS</h3><p>One JSON file. No account, no database, and nothing needed to read it back but a text editor.</p></div>
-      <div class="assist"><h3>Shared folders, safely</h3><p>Two investigators with the same file open cannot silently overwrite each other: the save that would lose work is held for a decision.</p></div>
+      <div class="assist"><h3>Several reports from one record</h3><p>A preliminary update while the work runs and the full report at the end, both from the same file.</p></div>
+      <div class="assist"><h3>Readable independently of IWS</h3><p>One portable file, with no account and no database behind it. The file is human-readable JSON, so a text editor is enough to read it back.</p></div>
+      <div class="assist"><h3>Shared-folder conflict protection</h3><p>A save that would overwrite a change made on another machine is held for a decision. A lock file beside the open file warns the other investigator, and every resolution is whole-file: keep theirs, save yours as a copy, or save yours over theirs.</p></div>
     </div>
   </section>
 
@@ -287,21 +288,21 @@ footer .legal { line-height: 1.6; }
       <h2>Several reports, and the working behind them, from the one record</h2>
       <p>A report style is a set of headings with guidance for each, and the record is assembled or drafted under them. Every report is written to a Word template, with your organisation's layout where a custom template has been supplied.</p>
     </div>
-    <div class="styles">
+    <span class="eyebrow group-label">Operational reporting</span>
+    <div class="styles styles-three">
       <div class="style"><h3>Preliminary update</h3><p>Issued while the investigation runs: what has been established, the risk exposure, the open lines of enquiry. No findings.</p></div>
       <div class="style"><h3>Standard investigation report</h3><p>The full report: executive summary, event overview, analysis, findings summary and appendices.</p></div>
       <div class="style"><h3>Executive brief</h3><p>The occurrence, the findings and the actions on a few pages for the people who decide.</p></div>
+    </div>
+    <span class="eyebrow group-label">Alternative report structures</span>
+    <div class="styles">
       <div class="style"><h3>Final report</h3><p>Modelled on the structure of published safety investigation final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions.</p></div>
       <div class="style"><h3>Probable-cause report</h3><p>Factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations.</p></div>
       <div class="style"><h3>Causal and contributory factors report</h3><p>Synopsis, factual information, analysis, conclusions splitting causal from contributory factors, then safety action and recommendations.</p></div>
       <div class="style"><h3>Your organisation's own</h3><p>A style written to your report template, with your headings, cover and findings tables, in a custom build.</p></div>
     </div>
+    <span class="eyebrow group-label">Investigation record</span>
     <div class="outputs">
-      <figure class="output">
-        <a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the Tarlton Springs standard investigation report"></a>
-        <h3>The reports</h3>
-        <p>Each style, written to the Word template. <a href="exports/tarlton-springs-rto/report_standard.html">Read the Tarlton Springs report</a>.</p>
-      </figure>
       <figure class="output">
         <a href="exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="shot" src="exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Evidence and Argument Tables: one table per object with each test, its confidence and the evidence"></a>
         <h3>Evidence and Argument Tables</h3>
@@ -311,6 +312,11 @@ footer .legal { line-height: 1.6; }
         <img class="shot zoomable" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished causal map for the Tarlton Springs case study" data-caption="The finished causal map, exported as an image.">
         <h3>The map, the timeline and the record</h3>
         <p>The causal map and the timeline as images, a <a href="exports/tarlton-springs-rto/collation.md">collated copy</a> of the whole investigation, and the investigation file itself, readable without the application.</p>
+      </figure>
+      <figure class="output">
+        <a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the Tarlton Springs standard investigation report"></a>
+        <h3>The reports drawn from it</h3>
+        <p>Each style, written to the Word template. <a href="exports/tarlton-springs-rto/report_standard.html">Read the Tarlton Springs report</a>.</p>
       </figure>
     </div>
   </section>
