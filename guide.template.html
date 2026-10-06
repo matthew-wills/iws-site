@@ -1,4 +1,4 @@
-<title>User Guide</title>
+<title>Documentation</title>
 <style>
 %%THEME%%
   .guide-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
@@ -12,6 +12,11 @@
   .guide-body .manual__toc { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - 100px); overflow-y: auto; }
   .guide-body .manual__toc button { text-align: left; font-family: inherit; font-size: 0.93rem; color: var(--ink-soft); background: transparent; border: none; padding: 5px 8px; border-radius: 6px; cursor: pointer; }
   .guide-body .manual__toc button:hover { background: var(--paper); color: var(--ink); }
+  .guide-body .manual__toc button.is-current { background: var(--accent-soft); color: var(--accent-deep); font-weight: 600; }
+  .guide-pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .guide-pager a { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); text-decoration: none; font-size: 0.93rem; }
+  .guide-pager a:hover { background: #f1f5f9; }
+  .guide-pager a[hidden] { display: none; }
   .guide-body .manual__content { max-height: none; overflow: visible; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 28px 32px; }
   .guide-body .manual__content section { scroll-margin-top: 80px; }
   @media (max-width: 860px) {
@@ -20,48 +25,70 @@
   }
 </style>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Synoptic, home">
-      <svg viewBox="0 0 28 28" aria-hidden="true">
-        <rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-        <rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/>
-        <rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/>
-        <path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      </svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
-    </a>
-    <nav class="nav" aria-label="Site">
-      <a href="index.html">Home</a>
-      <a href="product.html#case-studies">Case studies</a>
-      <a href="product.html#download">Download</a>
-      <a href="changelog.html">Changelog</a>
-      <a href="guide.html" aria-current="page">User guide</a>
-    </nav>
-  </div>
-</header>
+%%HEADER%%
 
-<main class="wrap">
+<main class="wrap" id="top">
   <div class="guide-head">
-    <span class="eyebrow">User guide, version 0.9.1</span>
+    <span class="eyebrow">Documentation</span>
     <h1>The user guide, as the app ships it</h1>
-    <p>This is the same guide you will find under Help inside the application, rendered from the same source, so it always matches the version you download.</p>
+    <p>This is the same guide you will find under Help inside the application, rendered from the same source, so it matches the version you download. The ideas behind the method are on the <a href="methodology.html">Methodology</a> page; this guide is about operating the software.</p>
   </div>
   <div class="guide-body">
 %%GUIDE%%
   </div>
+  <nav class="guide-pager" aria-label="Guide sections">
+    <a id="guide-prev" href="#top" hidden>Previous section</a>
+    <a id="guide-next" href="#top" hidden>Next section</a>
+  </nav>
+%%FOOTER%%
 </main>
 
 <script>
   // The in-app table of contents scrolls the guide's own panel; here the
-  // page scrolls, so each button scrolls to its section on the page.
-  document.querySelectorAll(".manual__toc button").forEach(function (b) {
-    b.addEventListener("click", function () {
+  // page scrolls, so each button scrolls to its section on the page and
+  // puts the section's id in the address bar, so a section can be linked.
+  // The button for the section in view is marked, and the previous and
+  // next links follow it.
+  (function () {
+    var buttons = Array.prototype.slice.call(document.querySelectorAll(".manual__toc button"));
+    var heads = Array.prototype.slice.call(document.querySelectorAll(".manual__content section h3"));
+    var sectionFor = function (b) {
       var label = b.textContent.trim();
-      var target = Array.prototype.find.call(document.querySelectorAll(".manual__content section h3"), function (h) {
-        return h.textContent.trim() === label;
+      var h = heads.find(function (x) { return x.textContent.trim() === label; });
+      return h ? h.closest("section") || h : null;
+    };
+    var pairs = buttons.map(function (b) { return { button: b, section: sectionFor(b) }; }).filter(function (p) { return p.section; });
+    var prev = document.getElementById("guide-prev"), next = document.getElementById("guide-next");
+    function go(p) {
+      p.section.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (p.section.id) history.replaceState(null, "", "#" + p.section.id);
+      mark(p);
+    }
+    function mark(p) {
+      var i = pairs.indexOf(p);
+      pairs.forEach(function (o) { o.button.classList.toggle("is-current", o === p); });
+      var before = pairs[i - 1], after = pairs[i + 1];
+      prev.hidden = !before; next.hidden = !after;
+      if (before) { prev.textContent = "Previous: " + before.button.textContent.trim(); prev.href = "#" + (before.section.id || "top"); }
+      if (after) { next.textContent = "Next: " + after.button.textContent.trim(); next.href = "#" + (after.section.id || "top"); }
+    }
+    pairs.forEach(function (p) { p.button.addEventListener("click", function () { go(p); }); });
+    [prev, next].forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var p = pairs.find(function (o) { return "#" + o.section.id === a.getAttribute("href"); });
+        if (p) { e.preventDefault(); go(p); }
       });
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-  });
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var p = pairs.find(function (o) { return o.section === e.target; });
+          if (p) mark(p);
+        });
+      }, { rootMargin: "-20% 0px -70% 0px" });
+      pairs.forEach(function (p) { io.observe(p.section); });
+    }
+    if (pairs.length) mark(pairs[0]);
+  })();
 </script>
