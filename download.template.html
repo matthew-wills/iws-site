@@ -1,0 +1,128 @@
+<title>Synoptic | Download</title>
+<style>
+%%THEME%%
+
+  [id] { scroll-margin-top: 76px; }
+
+  .page-head { padding-block: 44px 28px; display: flex; flex-direction: column; gap: 12px; max-width: 78ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  .download { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .dl-card { display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
+  .dl-card .ver { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+  .dl-card dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0; font-size: 0.93rem; }
+  .dl-card dt { color: var(--ink-faint); }
+  .dl-card dd { margin: 0; }
+  .dl-card dd small { display: block; color: var(--ink-soft); font-size: 0.85rem; }
+  .dl-side { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .dl-side h3 { color: var(--ink); font-size: 1.05rem; }
+  .privacy { padding: 14px 16px; background: var(--warn-soft); border-radius: 10px; color: var(--ink); font-size: 0.95rem; }
+
+  .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .tier { display: flex; flex-direction: column; gap: 10px; }
+  .tier.lead { border-color: #93c5fd; }
+  .tier h3 { font-size: 1.15rem; }
+  .tier .who { font-size: 0.92rem; color: var(--ink-soft); }
+  .tier ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; display: flex; flex-direction: column; gap: 5px; }
+  .pricing { margin-top: 16px; color: var(--ink-soft); max-width: 84ch; }
+  .org { margin-top: 16px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
+  .training { max-width: 72ch; color: var(--ink-soft); display: flex; flex-direction: column; gap: 10px; }
+
+  @media (max-width: 960px) {
+    .download { grid-template-columns: 1fr; }
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .tiers { grid-template-columns: 1fr; }
+    .dl-card dl { grid-template-columns: 1fr; gap: 2px 0; }
+    .dl-card dd { margin-bottom: 8px; }
+  }
+</style>
+
+%%HEADER%%
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">Download</span>
+    <h1>Download Investigation Workflow Suite</h1>
+    <p class="lede">Windows 10 and 11 · 64-bit · No account required</p>
+  </section>
+
+  <section class="block" id="get" style="border-top: none; padding-top: 8px">
+    <div class="download">
+      <div class="dl-card card">
+        <span class="eyebrow">Current release</span>
+        <h2>0.12.0 for Windows, coming shortly</h2>
+        <p class="ver">The 0.12.0 release is being finalised. The download link appears here when it is out.</p>
+        <dl>
+          <dt>Installer</dt><dd>Investigation Workflow Suite_0.12.0_x64-setup.exe<small>Recommended for most users.</small></dd>
+          <dt>Portable</dt><dd>Investigation Workflow Suite_0.12.0_portable.exe<small>Runs IWS without installing it.</small></dd>
+          <dt>Checksums</dt><dd>SHA256SUMS.txt<small>The SHA256 hash of each file, to check a download before running it.</small></dd>
+          <dt>Requires</dt><dd>Windows 10 or 11, 64-bit</dd>
+        </dl>
+        <div class="hero-actions">
+          <a class="btn" href="changelog.html">What changed</a>
+          <a class="btn" href="guide.html">Read the user guide</a>
+        </div>
+      </div>
+      <div class="dl-side">
+        <h3>Before you install</h3>
+        <p>The first launch of a new build can trigger a Windows SmartScreen prompt. Choose More info, then Run anyway.</p>
+        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The application tells you what it will send before it sends it. The only thing the licence server ever sees is the email address you request a licence with.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="licensing">
+    <div class="section-head">
+      <span class="eyebrow">Licensing</span>
+      <h2>Three tiers, set by how much model work your organisation wants</h2>
+      <p>The record, the map, the tests and the report assembly are the application in every tier. The tier sets how much model work sits on top of them, from none at all to a configured endpoint.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier card">
+        <h3>Standard</h3>
+        <p class="who">For an investigation with no model involved.</p>
+        <ul>
+          <li>Checklist, evidence, interviews, timeline, causal map</li>
+          <li>Evidence and Argument Tables, map and timeline exports</li>
+          <li>Reports assembled from the record, in any style</li>
+        </ul>
+      </article>
+      <article class="tier card lead">
+        <h3>Chat</h3>
+        <p class="who">Copy a prompt out to a chat tool you are entitled to use, and paste the reply back.</p>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>Section and whole-report prompts, built from the record</li>
+          <li>Pasted drafts land, are checked, and can be finalised</li>
+        </ul>
+      </article>
+      <article class="tier card">
+        <h3>Endpoint</h3>
+        <p class="who">A configured model: local, an organisation gateway, or a hosted API with your own key.</p>
+        <ul>
+          <li>Everything in Chat</li>
+          <li>Section and whole-report drafting and checks inside the application</li>
+          <li>Record checks on every draft</li>
+        </ul>
+      </article>
+    </div>
+    <p class="pricing">Licence pricing is being finalised. A 30-day trial licence is free, and an unlicensed copy runs as the Standard tier with an evaluation watermark.</p>
+    <p class="org">Organisations: a custom build carries your own framework, templates, report style and workflow, licensed to your investigators, with the application underneath unchanged.</p>
+    <p class="hint" style="margin-top: 14px">Where each mode sends data, and what stays on the machine, is set out on the <a href="ai-security.html#data">AI and security</a> page.</p>
+  </section>
+
+  <section class="block" id="training">
+    <div class="section-head">
+      <span class="eyebrow">Students and educators</span>
+      <h2>The training edition</h2>
+    </div>
+    <div class="training">
+      <p>The training edition carries public teaching material and an educational watermark on exports. It is the build to use for coursework.</p>
+    </div>
+  </section>
+
+%%FOOTER%%
+</main>

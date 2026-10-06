@@ -1,0 +1,102 @@
+<title>Synoptic | Case studies</title>
+<style>
+%%THEME%%
+
+  [id] { scroll-margin-top: 76px; }
+
+  .page-head { padding-block: 44px 30px; display: flex; flex-direction: column; gap: 14px; max-width: 78ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); max-width: 80ch; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  /* The featured study, stage by stage */
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 36px; align-items: start; }
+  .feature .prose { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); font-size: 1.02rem; }
+  .trail { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: stage; }
+  .trail li { display: flex; flex-direction: column; gap: 6px; counter-increment: stage; }
+  .trail a.thumb { display: block; }
+  .trail img { box-shadow: none; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+  .trail h3 { font-size: 1rem; display: flex; gap: 8px; align-items: center; }
+  .trail h3::before { content: counter(stage); display: inline-flex; align-items: center; justify-content: center; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.78rem; font-weight: 700; }
+  .trail p { color: var(--ink-soft); font-size: 0.92rem; }
+  .docs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+  .docs figure { display: flex; flex-direction: column; gap: 8px; }
+  .docs img { max-width: 220px; }
+  .docs p { color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* The case cards */
+  .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .case { display: flex; flex-direction: column; gap: 10px; }
+  .case h3 { font-size: 1.1rem; }
+  .case p { color: var(--ink-soft); font-size: 0.95rem; }
+  .case .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+
+  @media (max-width: 960px) {
+    .feature { grid-template-columns: 1fr; }
+    .trail, .docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .trail, .docs, .cases { grid-template-columns: 1fr; }
+  }
+</style>
+
+%%HEADER%%
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">Worked case studies</span>
+    <h1>See a complete investigation</h1>
+    <p class="lede">Fictional occurrences worked from first notification to final report using the actual application.</p>
+    <p class="note">Every case study here is fictional: the organisations, the places, the people and every record. None of them describes a real occurrence. The documents are published exactly as the application produced them, faults and all.</p>
+  </section>
+
+  <!-- The featured study (the lowest "order" in its meta.json, Tarlton Springs today). The words and the stage anchors below describe that study; rewrite them if another study is featured. -->
+  <section class="block" id="featured">
+    <div class="feature">
+      <div>
+        <div class="section-head">
+          <span class="eyebrow">%%FEATURED_KIND%%</span>
+          <h2>%%FEATURED_TITLE%%</h2>
+        </div>
+        <div class="prose">
+          <p>A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome at night, worked through screen by screen. The source documents the investigation started from are published with it, so the analysis can be read back against the same material the investigator had.</p>
+          <p>Follow it stage by stage and check, at each one, that what the report says can be traced to something the record holds.</p>
+        </div>
+        <div class="hero-actions" style="margin-top: 18px">
+          <a class="btn btn-primary" href="case-studies/%%FEATURED%%.html">Walk through the whole investigation</a>
+        </div>
+      </div>
+      <figure><a href="case-studies/%%FEATURED%%.html#finished"><img class="shot" src="%%SHOT_11%%" alt="The finished causal map for the %%FEATURED_TITLE%% case study"></a><figcaption>The finished causal map: every line of enquiry, how it was tested, and what the evidence supports.</figcaption></figure>
+    </div>
+    <ol class="trail" aria-label="The stages of the %%FEATURED_TITLE%% investigation">
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#occurrence"><img class="shot" src="%%SHOT_03%%" alt="The captain's safety report as filed in the investigation"></a><h3>Occurrence</h3><p>What was known that night, and the captain's own report as it was written.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#sources"><img class="shot" src="%%SHOT_01%%" alt="The evidence register"></a><h3>Evidence</h3><p>Nine source documents, each filed once, and what each one settled.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#timeline"><img class="shot" src="%%SHOT_05%%" alt="The timeline tab"></a><h3>Timeline</h3><p>The sequence, with the source and time basis behind every event.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#map"><img class="shot" src="%%SHOT_07%%" alt="Untested hypotheses across the lanes of the causal map"></a><h3>Lines of enquiry</h3><p>Every hypothesis on the map, including two put up to be disproved.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#tests"><img class="shot" src="%%SHOT_09%%" alt="An object's form with its three tests"></a><h3>Testing</h3><p>Existence, Influence and Importance asked of each object, one of them argued.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#finished"><img class="shot" src="%%SHOT_11%%" alt="The finished causal map"></a><h3>Findings</h3><p>The finished map, and the one line of enquiry deliberately left open.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#tables"><img class="shot" src="exports/%%FEATURED%%/%%FEATURED_TABLES%%_p2.png" alt="A page of the Evidence and Argument Tables"></a><h3>The working</h3><p>The Evidence and Argument Tables behind every finding.</p></li>
+      <li><a class="thumb" href="case-studies/%%FEATURED%%.html#published"><img class="shot" src="%%SHOT_13%%" alt="The Record tab with the assembled report"></a><h3>Reporting</h3><p>Six reports from the one record, each with its checks beside it.</p></li>
+    </ol>
+    <div class="docs">
+      <figure><a href="exports/%%FEATURED%%/source_pack.html"><img class="shot" src="exports/%%FEATURED%%/source_pack.png" alt="Cover page of the investigation source pack"></a><h3>Source pack</h3><p>Every document the investigation worked from. <a href="exports/%%FEATURED%%/source_pack.html">Read it</a></p></figure>
+      <figure><a href="exports/%%FEATURED%%/report_preliminary.html"><img class="shot" src="exports/%%FEATURED%%/report_preliminary.png" alt="Cover page of the preliminary update"></a><h3>Preliminary update</h3><p>%%PRELIMINARY_WORDS%%. <a href="exports/%%FEATURED%%/report_preliminary.html">Read it</a></p></figure>
+      <figure><a href="exports/%%FEATURED%%/report_executive.html"><img class="shot" src="exports/%%FEATURED%%/report_executive.png" alt="Cover page of the executive brief"></a><h3>Executive brief</h3><p>%%EXECUTIVE_WORDS%%. <a href="exports/%%FEATURED%%/report_executive.html">Read it</a></p></figure>
+      <figure><a href="exports/%%FEATURED%%/report_standard.html"><img class="shot" src="exports/%%FEATURED%%/report_standard.png" alt="Cover page of the standard investigation report"></a><h3>Standard investigation report</h3><p>%%STANDARD_WORDS%%. <a href="exports/%%FEATURED%%/report_standard.html">Read it</a></p></figure>
+    </div>
+  </section>
+
+  <section class="block" id="all">
+    <div class="section-head">
+      <span class="eyebrow">Three industries, one method</span>
+      <h2>Every case study, worked end to end</h2>
+      <p>Each is a complete fictional investigation taken from the first notification to the published reports, with the real screens at every stage and the documents the application produced at the end. The lanes, the tests and the reports are the same in each; what changes is the evidence.</p>
+    </div>
+    <div class="cases">
+%%CASE_CARDS%%
+    </div>
+  </section>
+
+%%FOOTER%%
+</main>
