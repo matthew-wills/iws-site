@@ -337,7 +337,7 @@ const sitePages = [
   ["methodology", "Methodology", "How IWS moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
   ["ai-security", "AI and security", "What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting."],
   ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite."],
-  ["download", "Download", "Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, licensing and the 30-day trial."],
+  ["download", "Download", "Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, the three AI access modes and the 30-day trial."],
 ];
 const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download" };
 const topPages = sitePages.map(([name, title, description]) => {
