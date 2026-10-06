@@ -81,7 +81,7 @@
     <div class="section-head">
       <span class="eyebrow">One investigation record</span>
       <h2>One file that holds the whole investigation, and a report that is a view of it</h2>
-      <p>Everything the investigation knows sits in one JSON file on the drive you choose. It is readable without the application, archivable when the work closes, and able to sit on a secure shared folder while it runs.</p>
+      <p>Everything the investigation knows sits in one JSON file on the drive you choose, archivable when the work closes.</p>
     </div>
     <div class="parts" aria-label="What the investigation file holds">
       <div class="part"><h3>Checklist</h3><p>What the investigation should cover, what is outstanding, and who the report goes to.</p></div>
@@ -102,11 +102,11 @@
       <figure><img class="shot zoomable" data-caption="The Record tab: findings derived from the tests, assembled under a report style's headings." src="%%SHOT_13%%" alt="The Record tab with the findings and the assembled report"><figcaption>Findings derived from the tests, and the report assembled from them.</figcaption></figure>
     </div>
     <div class="assists">
-      <div class="assist"><h3>Everything in the report traces to something recorded</h3><p>A finding is derived from the tests on an object, and the evidence behind it exports as a table. Nothing reaches the report that the file cannot account for.</p></div>
+      <div class="assist"><h3>Everything in the report traces to something recorded</h3><p>A finding is derived from the tests on an object, and the evidence behind it exports as a table. The report is built from information held in the investigation record, preserving the trail back to its source.</p></div>
       <div class="assist"><h3>The direction of the investigation in one image</h3><p>The map shows every line of enquiry and its state: proven, argued, closed, or not yet looked at.</p></div>
-      <div class="assist"><h3>Confidence stated, standard of proof chosen</h3><p>Every verdict carries a confidence on a fixed probability scale, and the standard a passed test must reach is set once for the investigation. The <a href="methodology.html#scale">methodology</a> explains both.</p></div>
+      <div class="assist"><h3>Confidence stated, standard of proof chosen</h3><p>Every verdict carries a confidence on the probability scale, and the standard a passed test must reach is set once for the investigation. The <a href="methodology.html#scale">methodology</a> explains both.</p></div>
       <div class="assist"><h3>Several reports from one record</h3><p>A preliminary update while the work runs, the full report and an executive brief, all from the same file.</p></div>
-      <div class="assist"><h3>Readable in ten years</h3><p>One JSON file. No account, no database, and nothing needed to read it back but a text editor.</p></div>
+      <div class="assist"><h3>Readable independently of IWS</h3><p>One JSON file. No account, no database, and nothing needed to read it back but a text editor.</p></div>
       <div class="assist"><h3>Shared folders, safely</h3><p>Two investigators with the same file open cannot silently overwrite each other: the save that would lose work is held for a decision.</p></div>
     </div>
   </section>
@@ -118,7 +118,7 @@
     </div>
     <div class="develop">
       <div class="prose">
-        <p>Evidence arrives when it arrives. A recorder download lands a week in, an interview changes what an earlier statement meant, a maintenance record turns up after the analysis looked settled. <strong>The investigation has to stay flexible as new information comes in</strong>, and that is what IWS is for.</p>
+        <p>Evidence arrives when it arrives. A recorder download lands a week in, an interview changes what an earlier statement meant, a maintenance record turns up after the analysis looked settled. <strong>The investigation has to stay flexible as new information comes in.</strong></p>
         <p>The work runs in rounds, and each round works on the same record:</p>
         <ol class="rounds">
           <li>New material is recorded once, with its source.</li>
@@ -131,7 +131,7 @@
       </div>
       <div class="card">
         <span class="eyebrow">Centralised</span>
-        <p style="margin-top: 8px; color: var(--ink-soft); font-size: 0.95rem;">One to-do list and one evidence store for the whole investigation. A to-do written on an object's form is the same list the Checklist tab shows, with a jump back to the object it came from, so what is outstanding is visible at any point. A capture pasted into an object is held once and appears in the Evidence tab grouped by what rests on it.</p>
+        <p style="margin-top: 8px; color: var(--ink-soft); font-size: 0.95rem;">One to-do list and one evidence store for the whole investigation. A to-do written on an object's form is the same list the Checklist tab shows, with a jump back to the object it came from, so what is outstanding is visible at any point.</p>
       </div>
     </div>
     <div class="shotrow">
@@ -187,7 +187,6 @@
         <li><strong>Your own Word templates.</strong> Reports are written to your template, with your cover and layout.</li>
         <li><strong>Your own checklist.</strong> The checklist template is plain text in Settings, so every new investigation starts from your version.</li>
         <li><strong>Your standard of proof.</strong> Set per investigation, and the form warns when a passed test falls short of it.</li>
-        <li><strong>Shared working.</strong> An investigation can sit on a shared folder, and a save that would overwrite another machine's change is held for a decision.</li>
         <li><strong>Local first.</strong> The file lives on the drive you choose. The application has no service of its own and sends no telemetry.</li>
       </ul>
       <figure><img class="shot zoomable" data-caption="Settings: the checklist template, editable as plain text." src="%%SHOT_14%%" alt="The Settings dialog open on the checklist template"><figcaption>The checklist template, edited as plain text.</figcaption></figure>
