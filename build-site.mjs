@@ -60,6 +60,7 @@ const meta = (r) =>
   r
     ? `${r.words.toLocaleString("en-AU")} words · ${r.runLog?.engine ?? "endpoint"} · ${r.runLog?.calls?.length ?? "?"} model calls · drafted ${new Date(r.runLog?.drafted_at ?? Date.now()).toLocaleDateString("en-AU")}`
     : "";
+const words = (r) => (r ? `${r.words.toLocaleString("en-AU")} words` : "");
 const copyInto = (from, to, keep) => {
   mkdirSync(to, { recursive: true });
   const files = readdirSync(from).filter((f) => statSync(join(from, f)).isFile() && keep.test(f));
@@ -263,18 +264,27 @@ const cards = studies
     ].join("\n"),
   )
   .join("\n");
-const featuredShots = featured.shotFiles.reduce(
-  (h, f) => h.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${featured.slug}/${f}`),
-  readFileSync(join(here, "index.template.html"), "utf8").replace("%%THEME%%", theme),
-);
-const index = featuredShots
-  .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
-  .replaceAll("%%FEATURED%%", featured.slug)
-  .replace("%%CASE_CARDS%%", () => cards)
-  .replace("%%STANDARD_META%%", meta(featured.reportData.standard))
-  .replace("%%PRELIMINARY_META%%", meta(featured.reportData.preliminary))
-  .replace("%%EXECUTIVE_META%%", meta(featured.reportData.executive));
+/** The home page and the product page are filled from the same featured
+ *  study: its screenshots, its slug, the case cards and its reports. */
+const fillFeatured = (templateName) =>
+  featured.shotFiles
+    .reduce(
+      (h, f) => h.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${featured.slug}/${f}`),
+      readFileSync(join(here, templateName), "utf8").replace("%%THEME%%", theme),
+    )
+    .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
+    .replaceAll("%%FEATURED%%", featured.slug)
+    .replace("%%CASE_CARDS%%", () => cards)
+    .replace("%%STANDARD_META%%", meta(featured.reportData.standard))
+    .replace("%%PRELIMINARY_META%%", meta(featured.reportData.preliminary))
+    .replace("%%EXECUTIVE_META%%", meta(featured.reportData.executive))
+    .replace("%%STANDARD_WORDS%%", words(featured.reportData.standard))
+    .replace("%%PRELIMINARY_WORDS%%", words(featured.reportData.preliminary))
+    .replace("%%EXECUTIVE_WORDS%%", words(featured.reportData.executive));
+const index = fillFeatured("index.template.html");
 write("index.html", index);
+const product = fillFeatured("product.template.html");
+write("product.html", document(`${BRAND} | Product`, product));
 
 // ------------------------------------------- changelog, guide, manifest
 
@@ -304,8 +314,8 @@ write("guide.html", document(`${BRAND} | User Guide`, guide));
 
 writeFileSync(join(here, "build-manifest.json"), `${JSON.stringify(built.sort(), null, 2)}\n`);
 
-const siteHoles = [...unfilled(index), ...unfilled(changelog), ...unfilled(guide)];
+const siteHoles = [...unfilled(index), ...unfilled(product), ...unfilled(changelog), ...unfilled(guide)];
 for (const line of summaries) console.log(line);
 console.log(
-  `site: index.html (featuring ${featured.slug}), changelog.html ${releases.length} releases, guide.html ${guide.length} chars, ${built.length} pages, unfilled: ${siteHoles.length ? siteHoles.join(",") : "none"}`,
+  `site: index.html and product.html (featuring ${featured.slug}), changelog.html ${releases.length} releases, guide.html ${guide.length} chars, ${built.length} pages, unfilled: ${siteHoles.length ? siteHoles.join(",") : "none"}`,
 );
