@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-10-06T05:24:06.870Z
+Generated: 2026-10-06T15:26:17.078Z
 
 ## Sources requested for this section that are empty
 
@@ -17,7 +17,7 @@ naming what is missing, and draft the rest from what IS here.
 
 ### Runway overrun onto the runway end safety area
 - Lane: Occurrence Events
-- Tests: Existence Pass - virtually certain / Influence Pass - virtually certain / Importance Not tested
+- Tests: Existence Pass - virtually certain / Influence Not tested / Importance Not tested
 - Finalised: yes
 - Evidence: Saltbush Air SB512, a 50-seat twin-turboprop registered VH-SBQ, departed the end of runway 09 at Tarlton Springs Aerodrome at approximately 21 kt at 07:30:51 UTC on 18/06/2026 and came to rest at 07:30:57, 62 m into the 90 m runway end safety area, upright and on the extended centreline, with the nose wheel in graded gravel. 44 passengers, 2 flight crew and 1 cabin crew were on board. Continuous tyre marks run from 1,160 m to the runway end and the nose wheel rut continues to the stopping point.
 - Significance: Substantial damage: three No. 2 propeller blades beyond limits, a shock-load inspection on the engine, distorted right main gear doors, both right main tyres deflated through the fuse plugs at 84% of certified brake energy, and punctures to the lower right fuselage. Nil serious injuries; one cabin crew member reported bruising during the disembarkation. Two kangaroos killed. The aerodrome closed for 4 hours 20 minutes. The aircraft stopped 28 m short of the end of the prepared safety area; beyond it the terrain is ungraded.
@@ -25,9 +25,10 @@ naming what is missing, and draft the rest from what IS here.
 - Why Notification SBA-OCC-2026-0417, raised 18/06/2026 08:14 UTC matters: The first record of the occurrence and the source of the agreed facts: place, time, runway, aircraft, persons on board, injuries and damage. Everything in the file is dated against it.
 - Attached extract (Occurrence notification SBA-OCC-2026-0417) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
-  SB512 was the last scheduled sector of the day, departing 40 minutes behind
-  schedule. The aerodrome was in darkness; the tower was open and closed at
-  18:00 local as rostered.
+  SB512 was the last scheduled sector of the day, departing on schedule. The
+  aerodrome was in darkness. Tarlton Springs has no control tower; the crew
+  made their own broadcasts on the common traffic advisory frequency (CTAF)
+  and had switched on the pilot-activated runway lighting before taxi.
   
   During the take-off roll on runway 09 the first officer saw two kangaroos
   moving onto the runway from the northern side, past the 1,100 m point. The
@@ -43,7 +44,9 @@ naming what is missing, and draft the rest from what IS here.
   The captain shut both engines down, the cabin crew member was instructed to
   hold, and passengers were disembarked by the forward airstair 4 minutes 8
   seconds after the aircraft stopped. No evacuation was commanded and no slides
-  were deployed. Aerodrome staff attended with a vehicle; there was no fire.
+  were deployed. At the captain's request on the CTAF, the aerodrome reporting
+  officer activated the aerodrome emergency plan, and aerodrome staff attended
+  with a vehicle; there was no fire.
   
   ## Immediate actions taken
   
@@ -128,30 +131,29 @@ naming what is missing, and draft the rest from what IS here.
 
 ## Causal chains
 
-- Documented wildlife plan required only above a size threshold the aerodrome does not meet -> Perimeter fence repair deferred for three budget cycles -> Two kangaroos entered the runway strip and moved onto the sealed surface -> Take-off rejected 6 kt above V1 -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Departure in the hour after last light, the peak of kangaroo movement -> Two kangaroos entered the runway strip and moved onto the sealed surface -> Take-off rejected 6 kt above V1 -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Documented wildlife plan required only above a size threshold the aerodrome does not meet -> Runway inspection required only at listed aerodromes, and the listing criterion is a strike -> No runway inspection requested before the first departure after last light -> Two kangaroos entered the runway strip and moved onto the sealed surface -> Take-off rejected 6 kt above V1 -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Evening service approved as a schedule change, route risk assessment not reopened -> Runway inspection required only at listed aerodromes, and the listing criterion is a strike -> No runway inspection requested before the first departure after last light -> Two kangaroos entered the runway strip and moved onto the sealed surface -> Take-off rejected 6 kt above V1 -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Rejected take-off training covers aircraft system failures below V1 only -> Take-off rejected 6 kt above V1 -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Runway edge lighting intensity reduced the crew's ability to detect the animals -> Take-off rejected 6 kt above V1 -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Documented wildlife plan required only above a size threshold the aerodrome does not meet -> Perimeter fence repair deferred for three budget cycles -> Two kangaroos entered the runway strip and moved onto the sealed surface -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Departure in the hour after last light, the peak of kangaroo movement -> Two kangaroos entered the runway strip and moved onto the sealed surface -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Documented wildlife plan required only above a size threshold the aerodrome does not meet -> Runway inspection required only at listed aerodromes, and the listing criterion is a strike -> No runway inspection requested before the first departure after last light -> Two kangaroos entered the runway strip and moved onto the sealed surface -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Evening service approved as a schedule change, route risk assessment not reopened -> Runway inspection required only at listed aerodromes, and the listing criterion is a strike -> No runway inspection requested before the first departure after last light -> Two kangaroos entered the runway strip and moved onto the sealed surface -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration achieved below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
-- Maximum braking and No. 1 reverse applied without delay -> Runway overrun onto the runway end safety area
+- Standard's threshold left the aerodrome with no documented wildlife plan -> Failed northern fence left unrepaired through three budget rounds -> Two kangaroos crossed the strip onto the sealed runway -> Take-off rejected 6 kt above V1 -> Runway overrun onto the runway end safety area
+- Departure in the logged kangaroo peak, 1 h before to 2 h after last light -> Two kangaroos crossed the strip onto the sealed runway -> Take-off rejected 6 kt above V1 -> Runway overrun onto the runway end safety area
+- Inspection after last light required only where a wildlife strike was reported in 24 months -> No runway inspection requested before departing after last light -> Two kangaroos crossed the strip onto the sealed runway -> Take-off rejected 6 kt above V1 -> Runway overrun onto the runway end safety area
+- No training or guidance for a runway obstruction during the take-off roll -> Take-off rejected 6 kt above V1 -> Runway overrun onto the runway end safety area
+- Evening service approved without reopening the daylight-only risk assessment -> Roll in darkness, 5 minutes after last light, with no moon -> Take-off rejected 6 kt above V1 -> Runway overrun onto the runway end safety area
+- Four northern edge lights above nominal intensity on the night -> Take-off rejected 6 kt above V1 -> Runway overrun onto the runway end safety area
+- Standard's threshold left the aerodrome with no documented wildlife plan -> Failed northern fence left unrepaired through three budget rounds -> Two kangaroos crossed the strip onto the sealed runway -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
+- Departure in the logged kangaroo peak, 1 h before to 2 h after last light -> Two kangaroos crossed the strip onto the sealed runway -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
+- Inspection after last light required only where a wildlife strike was reported in 24 months -> No runway inspection requested before departing after last light -> Two kangaroos crossed the strip onto the sealed runway -> No. 2 propeller and right main gear struck two kangaroos -> Deceleration below the scheduled accelerate-stop performance -> Runway overrun onto the runway end safety area
+- Maximum braking established within 2 seconds of the reject decision -> Runway overrun onto the runway end safety area
 
 ## Safety issues (organisational level)
 
-### Documented wildlife plan required only above a size threshold the aerodrome does not meet
+### Standard's threshold left the aerodrome with no documented wildlife plan
 - Lane: External Influences
 - Tests: Existence Pass - virtually certain / Influence Pass - likely / Importance Not tested
-- Note on Existence: The standard's text and the aerodrome's traffic figures are documentary and not in dispute.
-- Note on Influence: Argued. Accepted at 70% on the balance of the evidence: a documented plan brings an audit trail and an owner, and every other control in this occurrence failed for want of exactly those. Below the comfort of the other influence findings, and the report should say so rather than present it as settled.
+- Note on Existence: The standard's text, the aerodrome's traffic figures and the absence of any plan are documentary and not in dispute, and nothing in the record suggests a plan would have been held had the threshold not excused it.
+- Note on Influence: Argued. Accepted at 70% on the balance of the evidence: the deferrals were made with no hazard assessment in front of the council, which is the thing a plan would have put there, but the Against is real and a plan does not of itself fund a fence. Below the comfort of the other influence findings, and the report should say so rather than present it as settled.
 - Finalised: yes
-- Evidence: AS-139 10.4.2 requires a documented wildlife hazard management plan only where the aerodrome is used by aeroplanes above 27,000 kg MTOW or serves more than 350,000 passenger movements a year. Tarlton Springs' heaviest scheduled aeroplane is 22,900 kg and it handled 61,400 passenger movements in 2025, so neither limb applies. Under 10.4.3 its measures need not be documented at all. The aerodrome accordingly held no plan, no hazard assessment, no dispersal programme and no record of measures beyond the single pre-first-arrival inspection at Aerodrome Manual 6.3. Confirmed against the certified aerodrome register and the aerodrome operator's own compliance file; the aerodrome is not in breach.
-- Evidence for influence: The absence of a documented plan is the absence of the one mechanism that would have connected the aerodrome's own sighting log to the operators using the aerodrome, and the one that would have put the failed fence on a funded programme rather than an unfunded works register.
+- Evidence: AS-139 10.4.2 requires a documented wildlife hazard management plan only where the aerodrome is used by aeroplanes above 27,000 kg MTOW or serves more than 350,000 passenger movements a year. Tarlton Springs' heaviest scheduled aeroplane is 22,900 kg and it handled 61,400 passenger movements in 2025, so neither limb applies. Under 10.4.3 its measures need not be documented at all. The aerodrome accordingly held no plan, no hazard assessment, no dispersal programme and no record of measures beyond the single pre-first-arrival inspection at Aerodrome Manual 6.3 and a sighting log that nobody reviews. Confirmed against the certified aerodrome register and the aerodrome operator's own compliance file; the aerodrome is not in breach.
+- Evidence for influence: With no plan, nothing owned the aerodrome's wildlife hazard as a hazard. The failed northern fence sat in the works register as an ordinary maintenance item competing for council money, and was deferred three times with the entry 'defer, unfunded, review next cycle' and no hazard assessment behind it. A documented plan brings a hazard assessment, an owner and an audit against both; under one, the fence is a recorded wildlife control whose failure has to be answered for, not a deferrable works item.
 - Evidence against influence: Against: 10.4.1 still obliged the aerodrome operator to take reasonable measures, and a documented plan is not the only way to repair a fence or pass a sighting log to an airline. The council's deferrals were budget decisions, and there is no evidence a documented plan would have been funded any better. A plan is paper; the fence is money.
-- Investigator notes: The aerodrome is not in breach of anything. That is what makes this an External Influences object rather than a compliance finding: the standard's own threshold is what leaves an aerodrome of this size with an undocumented, unaudited and in practice unfunded wildlife programme.
+- Investigator notes: The aerodrome is not in breach of anything. That is what makes this an External Influences object rather than a compliance finding: the standard's own threshold is why an aerodrome of this size has no documented, audited wildlife programme. The proposition is the missing plan, because that is what both sides of the Influence argument are about. No arrow to the inspection listing: the operator's Appendix 8A criterion is the operator's own rule, and no aerodrome plan could have changed it.
 - Why Aerodrome Standard AS-139, section 10.4 matters: The external requirement, and its threshold. Tarlton Springs falls below both limbs of 10.4.2, so it was required to take reasonable measures but not to document a wildlife hazard management plan, and it was not in breach.
 - Attached extract (Aerodrome Standard AS-139 section 10.4, wildlife hazard management) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -198,17 +200,18 @@ naming what is missing, and draft the rest from what IS here.
   northern fence with the bottom two wires separated from the posts and a clear
   animal pad through it at the 1,050 m mark.
   ```
-- Led to: Perimeter fence repair deferred for three budget cycles; Runway inspection required only at listed aerodromes, and the listing criterion is a strike
+- Led to: Failed northern fence left unrepaired through three budget rounds
 
-### Perimeter fence repair deferred for three budget cycles
+### Failed northern fence left unrepaired through three budget rounds
 - Lane: Organisational Influences
-- Tests: Existence Pass - virtually certain / Influence Pass - very likely / Importance Not tested
-- Note on Existence: Documented in the operator's own register and confirmed on site.
-- Note on Influence: A fence in the condition found does not exclude kangaroos, and the animal pad through the breach is directly upstream of the strike position.
+- Tests: Existence Pass - virtually certain / Influence Pass - likely / Importance Not tested
+- Note on Existence: Documented in the aerodrome operator's own register and confirmed on site.
+- Note on Influence: Argued. Accepted at 80%: an intact fence closes the one route the physical evidence shows these animals used, and the register's own entry ties the failure to animals passing through. Held below the 90% recorded before the Against was stated, because whether the replacement fence would exclude kangaroos is not in the evidence either way.
 - Finalised: yes
-- Evidence: Works register item WR-221, raised 04/2023: four displaced panels and strained wire on the northern boundary between the 700 m and 1,300 m runway markers, with animals observed passing through, replacement estimated at $41,000. Deferred at the 2023, 2024 and 2025 budget rounds, each entry reading 'defer, unfunded, review next cycle'. WR-263 (02/2026) records the same section deteriorating further. The investigator's site inspection on 23/06/2026 found a continuous 140 m section with the bottom two wires separated from the posts and a clear animal pad through the fence at the 1,050 m mark, 110 m before the point at which the first carcass was recovered.
-- Significance: This is the physical route by which the animals reached the movement area. The pad through the fence at 1,050 m and the carcasses at 1,188 m and 1,221 m are 140 m apart on the same side of the runway.
-- Investigator notes: The deferrals are recorded in the aerodrome operator's own register in its own words, including 'animals observed passing through' in the original 2023 entry. Nothing here had to be reconstructed.
+- Evidence: Works register item WR-221, raised 04/2023: four displaced panels and strained wire on the northern boundary between the 700 m and 1,300 m runway markers, with animals observed passing through, replacement estimated at $41,000. Deferred at the 2023, 2024 and 2025 budget rounds, each entry reading 'defer, unfunded, review next cycle'. WR-263 (02/2026) records the same section deteriorating further. The investigator's site inspection on 23/06/2026 found a continuous 140 m section with the bottom two wires separated from the posts and a clear animal pad through the fence at the 1,050 m mark, 138 m before the point at which the first carcass was recovered.
+- Evidence for influence: The failed section is the physical route by which the animals reached the movement area. The pad through the fence at 1,050 m and the carcasses at 1,188 m and 1,221 m are on the same side of the runway, and the register has recorded animals passing through this section since the day the item was raised. Repaired in 2023, the 700 m to 1,300 m section would have been intact in 06/2026 and this route closed.
+- Evidence against influence: Against: WR-221 recommends replacement without stating a specification, and nothing in the record shows that the fence as replaced would exclude kangaroos, which can clear a stock fence. The pad shows these two came through the gap; it does not show that an intact fence would have stopped them, and the sighting log does not record where any of its 41 kangaroos came onto the aerodrome.
+- Investigator notes: The failure and the deferrals are in the aerodrome operator's own register in its own words, including 'animals observed passing through' in the original 2023 entry, and the site visit found the fence in that state. Nothing here had to be reconstructed. The one question the record cannot answer is argued against it: whether the fence as replaced would have kept kangaroos out at all.
 - Why Tarlton Springs Aerodrome wildlife sighting log, copied 23/06/2026 matters: The knowledge existed and never moved. 41 kangaroo entries, 38 of them around last light and eleven on the sealed surface, in a paper register that no operator has ever asked to see.
 - Attached extract (Tarlton Springs wildlife sighting log, 01/2025 to 06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -234,18 +237,19 @@ naming what is missing, and draft the rest from what IS here.
   animal pad through it at the 1,050 m mark.
   ```
 - Why Site inspection photograph SV-2026-0417-07, northern boundary at the 1,050 m runway marker, taken 23/06/2026 matters: The works register says the fence was failed and the deferral entries say it stayed failed; this is what that looks like on the ground, 138 m upstream of the first carcass and on the same side of the runway. It is the one piece of the record a reader needs to see rather than be told about, because the route from the paddock to the sealed surface is the whole of the organisational chain in one frame.
-- Attached image, captioned "The northern perimeter fence at the 1,050 m mark, photographed on the site visit: the fallen section and the animal pad through it" (file attachments/Perimeter_fence_repair_deferred_for_three_budget_cycles_1.jpg, written beside this collation; cite it as "attachments/Perimeter_fence_repair_deferred_for_three_budget_cycles_1.jpg" where relevant). You cannot see this image: rely only on the caption.
-- Led to: Two kangaroos entered the runway strip and moved onto the sealed surface
+- Attached image, captioned "The northern perimeter fence at the 1,050 m mark, photographed on the site visit: the fallen section and the animal pad through it" (file attachments/Failed_northern_fence_left_unrepaired_through_three_budget_rounds_1.jpg, written beside this collation; cite it as "attachments/Failed_northern_fence_left_unrepaired_through_three_budget_rounds_1.jpg" where relevant). You cannot see this image: rely only on the caption.
+- Led to: Two kangaroos crossed the strip onto the sealed runway
 
-### Evening service approved as a schedule change, route risk assessment not reopened
+### Evening service approved without reopening the daylight-only risk assessment
 - Lane: Organisational Influences
 - Tests: Existence Pass - virtually certain / Influence Pass - likely / Importance Not tested
-- Note on Existence: Virtually certain. The proposition tested is documentary and nothing contradicts it: CMR-2025-118 is a current controlled copy that records the assessment and the 'No' against route risk assessment review required, RRA-041 issue 3 is the current issue, and the document register holds no issue 4. Previously graded 95% to reserve something for the approver's absence; that was the wrong test. The approver has left the company and cannot be interviewed, so why the change was assessed that way is unexplained, and that uncertainty belongs to the Influence test and to what the report may say about intent, not to whether the approval and the non-review happened.
-- Note on Influence: A review of RRA-041 against a night operation would have reached the aerodrome's wildlife exposure and the Appendix 8A listing in the same pass. Not certain, because the review might have addressed lighting and fuel alone, which is what the restriction names, and because the approver cannot be asked what was in front of him.
+- Note on Existence: Virtually certain. The proposition tested is documentary and nothing contradicts it: CMR-2025-118 is a current controlled copy that records the assessment and the 'No' against route risk assessment review required, RRA-041 issue 3 is the current issue and carries the daylight restriction, and the document register holds no issue 4. The approver has left the company and cannot be interviewed, so why the change was assessed that way is unexplained, and that uncertainty belongs to the Influence test and to what the report may say about intent, not to whether the approval and the non-review happened.
+- Note on Influence: Argued. Accepted at 85%: the restriction is daylight only, and lifting it would have required a review to assess a night operation at an aerodrome with a single runway, no lighting redundancy and no alternate within 200 nm at night. The Against is the case where a review did that and approved the service anyway; it is possible, and it is the less likely of the two. Not certain, because the approver cannot be asked.
 - Finalised: yes
-- Evidence: RRA-041 issue 3 (11/2022) is the current route risk assessment for Tarlton Springs. It carries the operating restriction 'daylight operations only pending review of night lighting and diversion fuel policy'. CMR-2025-118 (approved by the Head of Flying Operations on 22/05/2025) introduced a scheduled evening rotation from 14/07/2025, the first company operation into Tarlton Springs after last light. It assessed the change as 'schedule change only', recorded 'no new hazard identified', and answered 'No' to route risk assessment review required. RRA-041 was not reopened and no issue 4 exists. The Safety Department's records show no involvement beyond receipt of the approved record.
-- Significance: The change put a company aircraft into an aerodrome after last light for the first time, in explicit contradiction of a live restriction, and did so through a process that asked whether the change was new rather than whether the assessment still held.
-- Investigator notes: The clearest single organisational finding in the investigation. The restriction that should have blocked this change was sitting in the operator's own current route risk assessment, and the change record does not mention it.
+- Evidence: RRA-041 issue 3 (11/2022) is the current route risk assessment for Tarlton Springs. It carries the operating restriction 'daylight operations only pending review of night lighting and diversion fuel policy'. CMR-2025-118 (approved by the Head of Flying Operations on 22/05/2025) introduced a scheduled evening rotation from 14/07/2025, the first company operation into Tarlton Springs after last light. It assessed the change as 'schedule change only', recorded 'no new hazard identified', and answered 'No' to route risk assessment review required. RRA-041 was not reopened and no issue 4 exists. The Safety Department's records show no involvement beyond receipt of the approved record. SB512 is scheduled off blocks at 17:20 local; on 18/06/2026 it left on schedule and began its roll at 17:30, after the end of civil twilight at 17:25.
+- Evidence for influence: The restriction, honoured, keeps every company departure from Tarlton Springs in daylight. The change put a company aircraft into the aerodrome after last light in explicit contradiction of it, through a process that asked whether the change was new rather than whether the assessment still held, and SB512 rolled in darkness on its schedule, not because of a delay.
+- Evidence against influence: Against: the restriction names night lighting and diversion fuel, not wildlife. A review that reopened RRA-041 might have addressed those two items and approved the evening service with lighting and fuel conditions, leaving the departure after last light exactly as it was. The approver has left the company and cannot be asked what was in front of him, so what a review would have concluded is inference.
+- Investigator notes: The clearest single organisational finding in the investigation. The restriction that should have stopped this change was sitting in the operator's own current route risk assessment, and the change record does not mention it. Its arrow goes to the darkness of the roll, because that is what the restriction, honoured, would have prevented; a change process cannot alter the fleet-wide Appendix 8A criterion.
 - Why Saltbush Air Operations Manual Part A section 8.14, revision 9, 04/2024 matters: The operator's own defence and the gap in it. The inspection requirement is real and would have worked; the only route onto the list that triggers it is a reported strike at that aerodrome, which makes the control conditional on the outcome it exists to prevent.
 - Attached extract (Operations Manual Part A 8.14 and Appendix 8A) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -294,8 +298,8 @@ naming what is missing, and draft the rest from what IS here.
   
   ## 6. Change Management Record CMR-2025-118, "Introduction of the Tarlton Springs evening service", 05/2025
   
-  > Scope of change: addition of one evening rotation, Sydney to Tarlton
-  > Springs to Sydney, six days per week, from 14/07/2025.
+  > Scope of change: addition of one evening rotation, Port Carrick to Tarlton
+  > Springs to Port Carrick, six days per week, from 14/07/2025.
   >
   > Assessment: schedule change only. Existing aerodrome, existing aircraft
   > type, existing crew qualifications, existing engineering support
@@ -311,13 +315,49 @@ naming what is missing, and draft the rest from what IS here.
   Department's records show no involvement in the change beyond receipt of the
   approved record.
   ```
-- Led to: Runway inspection required only at listed aerodromes, and the listing criterion is a strike
+- Why Crew records and duty record, 18/06/2026 matters: Establishes experience, currency and the shape of the duty: sector five of five, 11 hours in, on schedule, the evening rotation added that morning off a crew who reported unfit, and within the company's limits throughout. It also holds the roster pattern for the evening rotation over the eleven months it has run.
+- Attached extract (Flight crew and duty records, 18/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+  ```
+  **Pilot in command.** Total 8,410 hours, 2,140 on type, in command 3 years
+  1 month. Last cyclic simulator 11/03/2026, all items satisfactory. Last line
+  check 02/12/2025, satisfactory. No prior occurrence history. Duty and rest in
+  the 7 days before the occurrence within the company's limits with no
+  variations applied.
+  
+  **First officer.** Total 1,655 hours, 405 on type, 14 months with the
+  company. Last cyclic simulator 28/04/2026, all items satisfactory. Two prior
+  sectors into Tarlton Springs, both in daylight, on 09/01/2026 and 17/02/2026.
+  
+  **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors: Port Carrick to
+  Hensby, Hensby to Mardle Creek and Mardle Creek to Port Carrick as rostered, then SB511 Port Carrick to
+  Tarlton Springs and SB512 Tarlton Springs to Port Carrick, the evening rotation,
+  added on the morning of 18/06/2026 when a member of the rostered crew
+  reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a
+  duty planned to finish at 19:30 local (SB512 scheduled on blocks in Port Carrick at
+  19:15), giving a planned duty of 13 hours 00 minutes. The maximum permitted
+  duty for five sectors with this sign-on, under the company's approved fatigue
+  risk management system, is 13 hours 30 minutes. A ground delay in Port Carrick
+  during the third sector was recovered on the Tarlton Springs turnaround:
+  SB512 was scheduled off blocks at 17:20 local, the doors closed at 17:16, and
+  it departed on schedule.
+  
+  **Roster pattern, evening Tarlton Springs rotation, 14/07/2025 to
+  18/06/2026.** Extracted from the rostering system. The rotation operated on
+  289 days in the period. On every one of them it was rostered as the fourth
+  and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00,
+  planned at between 12 hours 45 minutes and 13 hours 15 minutes against the
+  13 hours 30 minute maximum for five sectors from those sign-on times. On six
+  of those days a member of the rostered crew reported unfit and the rotation
+  was reassigned to a crew already on duty, extending that crew's day from
+  three sectors to five; 18/06/2026 was the sixth.
+  ```
+- Led to: Roll in darkness, 5 minutes after last light, with no moon
 
-### Runway inspection required only at listed aerodromes, and the listing criterion is a strike
+### Inspection after last light required only where a wildlife strike was reported in 24 months
 - Lane: Risk Controls
 - Tests: Existence Pass - virtually certain / Influence Pass - very likely / Importance Not tested
 - Note on Existence: The manual text and the appendix listing are documentary.
-- Note on Influence: Had the requirement applied, an inspection would have been requested and a pass required before the roll, and the aerodrome's own staff disperse animals when they find them. The 10% allows that an inspection completed some minutes before departure does not guarantee a clear runway at the roll.
+- Note on Influence: Had the requirement applied at Tarlton Springs, an inspection would have been requested and a pass required before the roll, and the aerodrome's own staff disperse animals when they find them. The 10% allows that an inspection completed some minutes before departure does not guarantee a clear runway at the roll.
 - Finalised: yes
 - Evidence: Operations Manual Part A 8.14.2 requires the pilot in command to request a runway inspection before the first departure after last light at any aerodrome listed in Appendix 8A, and not to commence the roll until the result is passed. 8.14.3 requires nothing at other aerodromes. Appendix 8A lists an aerodrome where a wildlife strike involving a company aircraft has been reported there in the preceding 24 months. Nine aerodromes are listed; Tarlton Springs never has been. No provision anywhere in Part A asks a crew to report a sighting, and no provision admits an aerodrome to the list on any other evidence. The list was last reviewed on 03/03/2025, four months before the evening service began.
 - Significance: This is the operator's own defence against exactly this occurrence, and it was unarmed. Eleven sightings of kangaroos on the sealed surface at this aerodrome could not put it on the list, because they were not strikes and were not reported to the company.
@@ -367,18 +407,18 @@ naming what is missing, and draft the rest from what IS here.
   and the aerodrome reporting officer confirmed that no airline has ever asked
   for it.
   ```
-- Led to: No runway inspection requested before the first departure after last light
+- Led to: No runway inspection requested before departing after last light
 
-### Rejected take-off training covers aircraft system failures below V1 only
+### No training or guidance for a runway obstruction during the take-off roll
 - Lane: Risk Controls
 - Tests: Existence Pass - extremely likely / Influence Pass - likely / Importance Not tested
 - Note on Existence: Syllabus and manual are documentary; the 5% reflects that scenario records beyond five cycles were not available.
-- Note on Influence: Argued. Accepted at 75%: an unrehearsed decision made cold in two seconds is not the same decision as one made against a briefed and practised frame, and the report should carry both readings rather than assert the first.
+- Note on Influence: Argued. Accepted at 75%: an unrehearsed decision made cold in about a second is not the same decision as one made against a briefed and practised frame, and the report should carry both readings rather than assert the first.
 - Finalised: yes
-- Evidence: TRG-SYL-07 module 4's four scripted scenarios are engine failure at 90 kt, engine fire at 100 kt, configuration warning at 85 kt, and engine failure at V1 plus 5 kt continued. All four are aircraft system events and three are below V1. No crew has been presented with an external obstruction scenario in the five training cycles on file, covering 214 crew in the current cycle alone. Part B 4.6 matches: 4.6.3 lists reject items to V1, 4.6.4 states the take-off shall be continued at or above V1, and the section contains no guidance on an obstruction on the runway at any speed. Both the pilot in command and the first officer stated independently that every stop or go scenario they have been given has been an engine and has arrived below V1.
-- Evidence for influence: The captain had two seconds and nothing behind him. The decision he made was the first time he had considered the question at all, which is what the training system is supposed to prevent.
-- Evidence against influence: Against: the captain stated plainly that he knew the rule and departed from it deliberately, not because he was unaware of it. Training him on obstructions would not have changed what he knew; he did not reject because he was untrained, he rejected because he judged the alternative worse. On that reading the training gap is a finding about the fleet, not a cause of this reject.
-- Investigator notes: Both crew raised this unprompted, in almost the same words, and the syllabus bears them out. Worth being careful in the report that this explains the decision rather than excusing it.
+- Evidence: TRG-SYL-07 module 4's four scripted scenarios are engine failure at 90 kt, engine fire at 100 kt, configuration warning at 85 kt, and engine failure at V1 plus 5 kt continued. All four are aircraft system events; none presents an obstruction, an animal or any external hazard on the runway, at any speed. No crew has been presented with an external obstruction scenario in the five training cycles on file, covering 214 crew in the current cycle alone. Part B 4.6 matches: 4.6.3 lists the reject items to V1, 4.6.4 states the take-off shall be continued at or above V1, and the section contains no guidance on an obstruction seen on the runway at any speed and no amplification of 4.6.4 for a case in which continuing is itself hazardous. Both the pilot in command and the first officer stated independently that every stop or go scenario they have been given has been an engine, and that nobody has ever put something on the runway in front of them in training.
+- Evidence for influence: The captain had about a second and nothing behind him. With no scenario and no guidance, the decision he made was the first time he had considered the question at all, which is what training and procedure exist to prevent.
+- Evidence against influence: Against: the captain stated plainly that he knew the rule and departed from it deliberately, not because he was unaware of it. Training him on obstructions would not have changed what he knew; he did not reject because he was untrained, he rejected because he judged the alternative worse. On that reading the gap is a finding about the fleet, not a cause of this reject.
+- Investigator notes: Both crew raised this unprompted, in almost the same words, and the syllabus and the manual bear them out. One object for training and procedure, because both leave out the same thing and the crew's accounts do not separate them. Worth being careful in the report that this explains the decision rather than excusing it.
 - Why Saltbush Air Operations Manual Part B section 4.6, revision 14, 09/2025 matters: Sets what the captain's decision is measured against: continue at or above V1, with no guidance anywhere in the section on an obstruction on the runway at any speed.
 - Attached extract (Operations Manual Part B 4.6, rejected take-off) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -418,17 +458,144 @@ naming what is missing, and draft the rest from what IS here.
   ```
 - Led to: Take-off rejected 6 kt above V1
 
-### Cabin floor proximity emergency lighting partially unserviceable
+### Evening rotation rostered to close five-sector duties within 45 minutes of the limit
+- Lane: Organisational Influences
+- Tests: Existence Pass - virtually certain / Influence Fail - unlikely / Importance Pass - likely
+- Note on Existence: The roster extract, the duty record and the departure times are documentary.
+- Note on Influence: Failed on the evidence, not dismissed. The specific mechanisms the roster would have had to work through in this occurrence are each contradicted by recorded data.
+- Note on Importance: A standing exposure built into the roster rather than a one-day event; it is there on every operation of the rotation and sharpest each time a crew member reports unfit.
+- Finalised: yes
+- Evidence: The rostering system extract for 14/07/2025 to 18/06/2026 shows the evening rotation (SB511 Port Carrick to Tarlton Springs, SB512 Tarlton Springs to Port Carrick) operated on 289 days, each time rostered as the fourth and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00 and planned at between 12 hours 45 minutes and 13 hours 15 minutes, against the 13 hour 30 minute maximum for five sectors from those sign-on times. On six of those days a member of the rostered crew reported unfit and the rotation went to a crew already on duty, extending that crew's day from three sectors to five. 18/06/2026 was the sixth: sign-on 06:30, the take-off 11 hours in, a planned duty of 13 hours.
+- Evidence for influence: The roster puts the last sector of the longest duty in the pattern into an aerodrome with no alternate within 200 nm at night and limited engineering support (RRA-041), and when a crew member reports unfit it hands that sector to a crew whose day has just been extended. On 18/06/2026 that put a crew who described themselves as tired into a night departure 11 hours into their duty.
+- Evidence against influence: Against: the FDR gives 0.6 seconds from decision to power levers at flight idle and 2 seconds to maximum braking, at the fast end of the fleet's own distribution and well inside normal; there is no error of omission on the roll; and the one decision a long duty could plausibly have affected, not requesting a runway inspection, was never available to be affected, because no document prompted either crew member to consider it. The roster cannot be found to have caused the omission of a step nobody was asked to take, and whether the crew were fatigued at all is itself unsettled.
+- Importance: It failed Influence for this occurrence and remains a finding worth acting on. Every operation of the evening rotation in eleven months has closed a five-sector duty planned to within 45 minutes of the maximum, at an aerodrome RRA-041 records as having no alternate within 200 nm at night and limited engineering support. When a crew member reports unfit, the rotation goes to a crew already on duty, and that has extended a crew's day from three sectors to five on the morning of operation six times in the period. Nothing about that changes because it did not bite here.
+- Investigator notes: The standing condition behind the duty the crew were on. It exists on every day the rotation operates, which is why it is worded as the roster rather than as the day: Importance asks whether addressing it would reduce future risk, and the day itself cannot be addressed. No arrow, deliberately: Influence failed at 25%. The mechanisms the roster would have had to work through, fatigue among them, are each contradicted by the recorded data, so it did not contribute to the overrun; it is a finding about the roster.
+- Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
+- Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+  ```
+  | UTC | Event | IAS | Groundspeed | Torque 1 / 2 | Brake pressure | Notes |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | 07:30:02 | Power set, roll commences | 0 | 0 | 98.4% / 98.5% | 0 psi | Both power levers advanced together |
+  | 07:30:15 | 80 kt cross-check | 80 | 77 | 98.4% / 98.5% | 0 psi | No caution or warning active |
+  | 07:30:29 | V1 | 112 | 109 | 98.4% / 98.5% | 0 psi | Recorded aural "V1" on CVR |
+  | 07:30:31 | First officer's sighting call | 116 | 113 | 98.4% / 98.5% | 0 psi | No control input yet |
+  | 07:30:32 | Reject initiated | 118 | 115 | 98.4% / 98.5% | 0 psi | Both power levers to flight idle within 0.6 s |
+  | 07:30:33 | Impact | 114 | 111 | 12% / 9% | 2,180 psi | Lateral acceleration spike 0.31 g right; vertical spike 1.48 g |
+  | 07:30:34 | Maximum braking established | 109 | 106 | 6% / 6% | 2,940 psi | Anti-skid active on all four wheels |
+  | 07:30:36 | Reverse selected, No. 1 only | 98 | 95 | 4% / -- | 2,940 psi | No. 2 reverse not selected; No. 2 propeller RPM decaying |
+  | 07:30:44 | -- | 58 | 56 | 4% / -- | 2,940 psi | Mean deceleration 07:30:34 to 07:30:44 is 2.6 m/s2 |
+  | 07:30:51 | Aircraft departs the sealed surface | 21 | 20 | 4% / -- | 2,940 psi | Longitudinal deceleration falls to 1.9 m/s2 in gravel |
+  | 07:30:57 | Aircraft stops | 0 | 0 | 4% / -- | 2,940 psi | 62 m beyond the runway 09 end, on the extended centreline |
+  | 07:31:26 | Both engines shut down | 0 | 0 | -- / -- | 0 psi | Fuel levers to cut-off |
+  
+  ## What the data shows
+  
+  Both engines were at take-off torque, within 0.1% of each other, from power
+  set until the power levers were retarded at 07:30:32. No engine parameter
+  exceedance, caution or warning is recorded before that point. Recorded fuel
+  flow, ITT and propeller RPM on both engines are within normal scatter for the
+  take-off roll. There is no data supporting a power loss before the reject.
+  
+  The recorded wind at the aircraft during the roll gives a headwind component
+  of 4 to 6 kt throughout, consistent with the 07:00 UTC routine observation.
+  No tailwind component is recorded at any point.
+  
+  The reject was initiated 3 seconds after V1 and at 118 kt, six knots above it.
+  Power lever movement to flight idle took 0.6 seconds and maximum braking was
+  established 2 seconds after the decision. That response time is at the fast
+  end of the operator's own recorded fleet distribution for rejected take-offs
+  (fleet mean 3.2 seconds from decision to maximum braking).
+  
+  Reverse was selected on No. 1 only. No. 2 propeller RPM decays from 07:30:33,
+  consistent with the blade damage found on inspection, and the No. 2 reverse
+  interlock did not make. The scheduled accelerate-stop figures assume symmetric
+  reverse; the achieved mean deceleration of 2.6 m/s2 is approximately 15%
+  below the value used in the certified accelerate-stop data for this weight
+  and runway condition.
+  
+  Distance reconstruction from recorded groundspeed puts the aircraft 1,152 m
+  along runway 09 at the moment of the reject, leaving 695 m of sealed surface.
+  The stopping distance actually achieved from 118 kt was 757 m.
+  ```
+- Why RRA-041 issue 3 (11/2022) and CMR-2025-118 (approved 22/05/2025) matters: Read together these are the organisational finding. RRA-041 restricted Tarlton Springs to daylight operations; CMR-2025-118 introduced a scheduled sector after last light, assessed it as a schedule change only, and neither referenced nor reopened the restriction.
+- Attached extract (Route Risk Assessment RRA-041 and Change Management Record CMR-2025-118) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  > Hazards assessed: runway length and accelerate-stop margin; single runway
+  > with no lighting redundancy; no alternate within 200 nm at night; limited
+  > engineering support; heat and density altitude in summer.
+  >
+  > Operating restriction: daylight operations only pending review of night
+  > lighting and diversion fuel policy.
+  
+  Issue 3 is the current issue. No issue 4 exists.
+  
+  ## 6. Change Management Record CMR-2025-118, "Introduction of the Tarlton Springs evening service", 05/2025
+  
+  > Scope of change: addition of one evening rotation, Port Carrick to Tarlton
+  > Springs to Port Carrick, six days per week, from 14/07/2025.
+  >
+  > Assessment: schedule change only. Existing aerodrome, existing aircraft
+  > type, existing crew qualifications, existing engineering support
+  > arrangements. No new hazard identified.
+  >
+  > Route risk assessment review required: No.
+  >
+  > Approved: Head of Flying Operations, 22/05/2025.
+  
+  The change introduced the first scheduled operation into Tarlton Springs
+  after last light. The daylight-only restriction at RRA-041 issue 3 is not
+  referenced anywhere in CMR-2025-118, and RRA-041 was not reopened. The Safety
+  Department's records show no involvement in the change beyond receipt of the
+  approved record.
+  ```
+- Why Crew records and duty record, 18/06/2026 matters: Establishes experience, currency and the shape of the duty: sector five of five, 11 hours in, on schedule, the evening rotation added that morning off a crew who reported unfit, and within the company's limits throughout. It also holds the roster pattern for the evening rotation over the eleven months it has run.
+- Attached extract (Flight crew and duty records, 18/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+  ```
+  **Pilot in command.** Total 8,410 hours, 2,140 on type, in command 3 years
+  1 month. Last cyclic simulator 11/03/2026, all items satisfactory. Last line
+  check 02/12/2025, satisfactory. No prior occurrence history. Duty and rest in
+  the 7 days before the occurrence within the company's limits with no
+  variations applied.
+  
+  **First officer.** Total 1,655 hours, 405 on type, 14 months with the
+  company. Last cyclic simulator 28/04/2026, all items satisfactory. Two prior
+  sectors into Tarlton Springs, both in daylight, on 09/01/2026 and 17/02/2026.
+  
+  **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors: Port Carrick to
+  Hensby, Hensby to Mardle Creek and Mardle Creek to Port Carrick as rostered, then SB511 Port Carrick to
+  Tarlton Springs and SB512 Tarlton Springs to Port Carrick, the evening rotation,
+  added on the morning of 18/06/2026 when a member of the rostered crew
+  reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a
+  duty planned to finish at 19:30 local (SB512 scheduled on blocks in Port Carrick at
+  19:15), giving a planned duty of 13 hours 00 minutes. The maximum permitted
+  duty for five sectors with this sign-on, under the company's approved fatigue
+  risk management system, is 13 hours 30 minutes. A ground delay in Port Carrick
+  during the third sector was recovered on the Tarlton Springs turnaround:
+  SB512 was scheduled off blocks at 17:20 local, the doors closed at 17:16, and
+  it departed on schedule.
+  
+  **Roster pattern, evening Tarlton Springs rotation, 14/07/2025 to
+  18/06/2026.** Extracted from the rostering system. The rotation operated on
+  289 days in the period. On every one of them it was rostered as the fourth
+  and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00,
+  planned at between 12 hours 45 minutes and 13 hours 15 minutes against the
+  13 hours 30 minute maximum for five sectors from those sign-on times. On six
+  of those days a member of the rostered crew reported unfit and the rotation
+  was reassigned to a crew already on duty, extending that crew's day from
+  three sectors to five; 18/06/2026 was the sixth.
+  ```
+
+### Floor escape path lighting checked only every 24 months, not pre-flight
 - Lane: Risk Controls
 - Tests: Existence Pass - virtually certain / Influence Fail - unlikely / Importance Pass - very likely
-- Note on Existence: Found on a functional check and traced to a specific failed component.
-- Note on Influence: No evacuation was commanded, the cabin lights were on throughout, and the disembarkation took 4 minutes 8 seconds without incident. There is no path by which this affected the overrun or its outcome.
-- Note on Importance: A latent, undetectable defect in an escape-path defence, on a fleet-common part, with a monitoring interval that cannot catch it.
+- Note on Existence: The test's coverage and the programme interval are documentary, and the VH-SBQ defect was found on a functional check and traced to a specific failed component.
+- Note on Influence: No evacuation was commanded, the cabin lights were on throughout, and the disembarkation took 4 minutes 8 seconds without incident. There is no path by which the monitoring gap, or the defect it hid, affected the overrun or its outcome.
+- Note on Importance: A gap in the monitoring of an escape-path defence, which has already hidden one latent defect on this aircraft and can hide the same on any other of the type until its next functional test.
 - Finalised: no
-- Evidence: Raised by the first officer, who noticed sections of the aisle floor strip unlit while walking back through the cabin during the disembarkation. The functional check on 24/06/2026 found two of the six floor proximity escape path segments aft of row 16 on the left side dark on battery power with the system armed, traced to a failed common ballast. The pre-flight emergency lighting test on this type illuminates the ceiling lights and exit signs and neither illuminates nor monitors the floor segments, so the defect was undetectable by the crew or by a line engineer without a dedicated functional test. The last such test was 11 months before the occurrence, inside the 24-month programme interval.
-- Significance: A partially dark escape path is a defence that is not there when it is needed, and nothing available to the crew would have told them.
-- Importance: It did not influence this occurrence and it is still a finding. The disembarkation was unhurried, by the forward airstair, with the main cabin lights on. Change one thing - a fire indication, smoke, a night evacuation over the wing - and two dark segments in the aft cabin are the difference between an orderly exit and a blocked one. The gap that matters is the monitoring: a 24-month interval on a system the daily test cannot see means the fleet's true state is unknown, and the same ballast is fitted across the type.
-- Investigator notes: Left in draft deliberately. The fleet-wide question is out with engineering and the object should not be finalised until that answer is in, even though its own tests are settled. No arrow, deliberately: Influence failed at 10%. It did not contribute to the overrun or to its outcome, because no evacuation was commanded and the main cabin lights were on throughout; it is carried on Importance alone, as a finding about a defence that was not there.
+- Evidence: The pre-flight emergency lighting test on this type illuminates the ceiling emergency lights and the exit signs; it neither illuminates nor monitors the floor proximity escape path segments, whose only check is a dedicated functional test at the maintenance programme's 24-month interval. On VH-SBQ that gap held a live defect. Raised by the first officer, who noticed sections of the aisle floor strip unlit while walking back through the cabin during the disembarkation, the functional check on 24/06/2026 found two of the six floor proximity segments aft of row 16 on the left side dark on battery power with the system armed, traced to a failed common ballast. The last dedicated functional test had been 11 months before the occurrence, inside the interval, so the defect was undetectable by the crew or by a line engineer and could have stayed so for up to 13 more months.
+- Significance: Between functional tests the state of the escape path lighting on any aircraft of the type is unknown, and on VH-SBQ it was partly dark with nothing available to the crew to tell them.
+- Importance: It did not influence this occurrence and it is still a finding. The disembarkation was unhurried, by the forward airstair, with the main cabin lights on. Change one thing, such as a fire indication, smoke or a night evacuation over the wing, and two dark segments in the aft cabin are the difference between an orderly exit and a blocked one. The gap is the monitoring: a 24-month interval on a system the daily test cannot see means each aircraft's true state is unknown until its next functional test, and whether the same ballast part is fitted across the fleet is still with engineering.
+- Investigator notes: Left in draft deliberately. Whether the failed ballast part is common across the fleet, and how many aircraft are inside the interval now, is out with engineering, and the object should not be finalised until that answer is in, even though its own tests are settled. Worded as the standing gap rather than the two dark segments on VH-SBQ, because a found defect is repaired and Importance can only address what would otherwise remain. No arrow, deliberately: Influence failed at 10%. It did not contribute to the overrun or to its outcome, because no evacuation was commanded and the main cabin lights were on throughout; it is carried on Importance alone, as a finding about a defence whose state nobody can see.
 - Why Functional check record, VH-SBQ cabin emergency lighting, 24/06/2026 matters: A defect the investigation found rather than looked for, raised by the first officer's own observation. Two floor proximity segments dark on a failed common ballast, undetectable by any check the crew or a line engineer can run.
 - Attached extract (Cabin emergency lighting functional check, 24/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -451,72 +618,79 @@ naming what is missing, and draft the rest from what IS here.
 
 ## Safety factors (operational level)
 
-### Departure in the hour after last light, the peak of kangaroo movement
+### Roll in darkness, 5 minutes after last light, with no moon
 - Lane: Local Conditions
-- Tests: Existence Pass - extremely likely / Influence Pass - likely / Importance Not tested
-- Note on Existence: Astronomical data and the sighting log are documentary; the 95% reflects that the sighting log is a paper register whose completeness cannot be verified.
-- Note on Influence: The animals were not seen until they were on the lit surface, which is a direct consequence of the light condition, and the timing coincides with the recorded movement peak.
-- Finalised: yes
-- Evidence: The roll began at 17:30 local, 32 minutes after sunset and 5 minutes after the end of civil twilight, with moonrise not until 22:41 and the moon 14% illuminated. The aerodrome was in full darkness with no natural ambient light on the strip and no town lighting within sight. The investigator's site visit at the same time of day on 23/06/2026 confirmed that the unlit graded strip either side of the sealed surface is not visible from the centreline. The aerodrome's own sighting log records 38 of its 41 kangaroo entries between one hour before and two hours after last light.
-- Significance: The occurrence happened inside the two-hour window in which this aerodrome's own records show almost all of its wildlife movement, and in the light condition in which nothing off the sealed surface can be seen.
-- Investigator notes: The condition that connects the schedule change to the animals. On its own it is unremarkable; it is what makes the missing inspection matter.
-- Why MET-ARCH-SB512-180626, retrieved 19/06/2026 matters: Disposes of the weather as a factor and establishes the one environmental condition that matters: the roll began five minutes after the end of civil twilight with no moon, in the period the aerodrome's own log shows most wildlife movement.
-- Attached extract (Weather observations, forecast, and light and moon data) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
-  ```
-  METAR YTLS 180700Z 09006KT 9999 FEW040 08/M01 Q1024 RMK RF00.0/000.0
-  METAR YTLS 180630Z 09007KT 9999 FEW040 09/M01 Q1024 RMK RF00.0/000.0
-  METAR YTLS 180600Z 08008KT 9999 SCT040 11/M01 Q1023 RMK RF00.0/000.0
-  METAR YTLS 180800Z 09005KT 9999 FEW040 07/M02 Q1024 RMK RF00.0/000.0
-  
-  
-  ## Forecast held by the crew
-  
-  
-  TAF YTLS 180458Z 1806/1824
-  09008KT 9999 FEW040
-  FM181000 08006KT CAVOK
-  RMK T 11 08 06 05 Q 1023 1024 1024 1025
-  
-  
-  ## Light and moon
-  
-  
-  Tarlton Springs, 18/06/2026 (AEST, UTC+10)
-  Sunset                 16:58
-  End of civil twilight  17:25
-  Moonrise               22:41 (waning crescent, 14% illuminated)
-  ```
-- Why Tarlton Springs Aerodrome wildlife sighting log, copied 23/06/2026 matters: The knowledge existed and never moved. 41 kangaroo entries, 38 of them around last light and eleven on the sealed surface, in a paper register that no operator has ever asked to see.
-- Attached extract (Tarlton Springs wildlife sighting log, 01/2025 to 06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
-  ```
-  46 entries. 41 of the 46
-  record kangaroos on or adjacent to the movement area. 38 of those 41 are
-  timed between one hour before and two hours after last light. Eleven entries
-  record animals on the sealed surface of runway 09/27. The log is a paper
-  register held in the aerodrome office. It is not reported to any operator,
-  and the aerodrome reporting officer confirmed that no airline has ever asked
-  for it.
-  ```
-- Led to: Two kangaroos entered the runway strip and moved onto the sealed surface
-
-### No runway inspection requested before the first departure after last light
-- Lane: Individual Actions
 - Tests: Existence Pass - virtually certain / Influence Pass - likely / Importance Not tested
-- Note on Existence: Established by two independent recordings and the aerodrome's own log.
-- Note on Influence: An inspection would have covered the 1,050 m to 1,250 m section, where the fence pad and both carcasses were found, and aerodrome staff disperse animals when they find them. Discounted from certainty because an inspection some minutes before the roll cannot guarantee the runway stays clear.
+- Note on Existence: Astronomical data and the recorded time of the roll; not in dispute.
+- Note on Influence: Argued. Accepted at 75%: the site visit shows the strip cannot be seen from the centreline in this light, and the first officer's account is of animals arriving out of the dark, not of animals she was slow to see. Held below the other influence findings because the animals' time on the strip before the seal is not known.
 - Finalised: yes
-- Evidence: Neither the CVR nor the tower's recorded audio contains any request for a runway inspection, any offer of one, or any mention of wildlife at any point before departure. The aerodrome's daily inspection log for 18/06/2026 records one inspection, at 07:35 local before the first arrival, result 'movement area clear', with none afterwards and none requested. Aerodrome Manual 6.3 provides for inspections outside the scheduled time on the request of the reporting officer or a pilot in command, and the reporting officer confirmed one would have been carried out if asked. Both crew stated they did not consider it; the captain had expected Tarlton Springs to be on the Appendix 8A list and was surprised to find it was not.
-- Significance: The one action that would have put a vehicle on the runway in the 20 minutes before the roll was available, costs nothing, and was never on either crew member's mind because no document put it there.
-- Investigator notes: Careful with the wording of this one in the report. It is an omission with no owner: nothing asked either crew member to consider it, and the aerodrome would have done it if asked.
-- Why CVR-2026-0417, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on either channel.
-- Attached extract (Tower audio and CVR transcript, 07:29 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+- Evidence: The roll began at 17:30 local (07:30:02 UTC on the FDR), on schedule, 32 minutes after sunset and 5 minutes after the end of civil twilight, with moonrise not until 22:41 and the moon 14% illuminated. The aerodrome was in full darkness with no natural ambient light on the strip and no town lighting within sight; the only lighting was the runway edge lighting the crew had switched on through the pilot-activated lighting at 07:21:50. The investigator's site visit at the same time of day on 23/06/2026 confirmed that the unlit graded strip either side of the sealed surface is not visible from the centreline.
+- Evidence for influence: In this light the strip either side of the seal cannot be seen, so the first a crew can see of an animal crossing it is the animal on the lit surface. The first officer's words on the CVR after the stop were that they 'came out of the dark on the left of the strip', and she told the investigation that outside the lights it was black and they 'didn't appear, they arrived'. In daylight, two animals crossing the graded strip from the northern fence would have been in view before they reached the seal, earlier in the roll.
+- Evidence against influence: Against: the first officer did see them, at around 200 m, once they were on the seal, and how long they had been on the strip before that is unknown; animals that came onto the strip only seconds before reaching the seal would have been seen late in daylight too. The captain was heads-in on the engine page after V1, which is where the procedure puts him, so in daylight the sighting would still have rested on the pilot flying, whose attention belongs on the centreline.
+- Investigator notes: The light alone, which is recorded and so certain; the animal activity at that hour is its own object, because its evidence is a paper log and its arrow goes elsewhere. This arrow goes to the reject, because darkness bears on when the crew could see the animals. It is also where the change-management finding lands: on schedule, SB512 rolled after last light.
+- Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
+- Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
-  07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-  07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                  zero nine, cleared for take-off.
-  07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-  07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                  take-off.
+  | UTC | Event | IAS | Groundspeed | Torque 1 / 2 | Brake pressure | Notes |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | 07:30:02 | Power set, roll commences | 0 | 0 | 98.4% / 98.5% | 0 psi | Both power levers advanced together |
+  | 07:30:15 | 80 kt cross-check | 80 | 77 | 98.4% / 98.5% | 0 psi | No caution or warning active |
+  | 07:30:29 | V1 | 112 | 109 | 98.4% / 98.5% | 0 psi | Recorded aural "V1" on CVR |
+  | 07:30:31 | First officer's sighting call | 116 | 113 | 98.4% / 98.5% | 0 psi | No control input yet |
+  | 07:30:32 | Reject initiated | 118 | 115 | 98.4% / 98.5% | 0 psi | Both power levers to flight idle within 0.6 s |
+  | 07:30:33 | Impact | 114 | 111 | 12% / 9% | 2,180 psi | Lateral acceleration spike 0.31 g right; vertical spike 1.48 g |
+  | 07:30:34 | Maximum braking established | 109 | 106 | 6% / 6% | 2,940 psi | Anti-skid active on all four wheels |
+  | 07:30:36 | Reverse selected, No. 1 only | 98 | 95 | 4% / -- | 2,940 psi | No. 2 reverse not selected; No. 2 propeller RPM decaying |
+  | 07:30:44 | -- | 58 | 56 | 4% / -- | 2,940 psi | Mean deceleration 07:30:34 to 07:30:44 is 2.6 m/s2 |
+  | 07:30:51 | Aircraft departs the sealed surface | 21 | 20 | 4% / -- | 2,940 psi | Longitudinal deceleration falls to 1.9 m/s2 in gravel |
+  | 07:30:57 | Aircraft stops | 0 | 0 | 4% / -- | 2,940 psi | 62 m beyond the runway 09 end, on the extended centreline |
+  | 07:31:26 | Both engines shut down | 0 | 0 | -- / -- | 0 psi | Fuel levers to cut-off |
+  
+  ## What the data shows
+  
+  Both engines were at take-off torque, within 0.1% of each other, from power
+  set until the power levers were retarded at 07:30:32. No engine parameter
+  exceedance, caution or warning is recorded before that point. Recorded fuel
+  flow, ITT and propeller RPM on both engines are within normal scatter for the
+  take-off roll. There is no data supporting a power loss before the reject.
+  
+  The recorded wind at the aircraft during the roll gives a headwind component
+  of 4 to 6 kt throughout, consistent with the 07:00 UTC routine observation.
+  No tailwind component is recorded at any point.
+  
+  The reject was initiated 3 seconds after V1 and at 118 kt, six knots above it.
+  Power lever movement to flight idle took 0.6 seconds and maximum braking was
+  established 2 seconds after the decision. That response time is at the fast
+  end of the operator's own recorded fleet distribution for rejected take-offs
+  (fleet mean 3.2 seconds from decision to maximum braking).
+  
+  Reverse was selected on No. 1 only. No. 2 propeller RPM decays from 07:30:33,
+  consistent with the blade damage found on inspection, and the No. 2 reverse
+  interlock did not make. The scheduled accelerate-stop figures assume symmetric
+  reverse; the achieved mean deceleration of 2.6 m/s2 is approximately 15%
+  below the value used in the certified accelerate-stop data for this weight
+  and runway condition.
+  
+  Distance reconstruction from recorded groundspeed puts the aircraft 1,152 m
+  along runway 09 at the moment of the reject, leaving 695 m of sealed surface.
+  The stopping distance actually achieved from 118 kt was 757 m.
+  ```
+- Why CVR-2026-0417 and the Tarlton Springs CTAF recording, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. Tarlton Springs has no control tower, so the CTAF recording holds the crew's own broadcasts and the pilot-activated lighting being switched on, and nothing else from SB512 before the roll. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on the flight deck or on the CTAF.
+- Attached extract (CTAF recording and CVR transcript, 07:21 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+             second. Frequency response unit: "Tarlton Springs CTAF".]
+  07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+  07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                  Springs.
+  07:28:51  FO    AWIS is still zero nine zero at six.
+  07:29:04  PIC   Line up checks to the line. I'll make the call.
+  07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  lining up runway zero nine for departure to Port Carrick, Tarlton
+                  Springs.
+  07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                  aeroplane, your take-off.
   07:29:24  FO    My aeroplane, my take-off. Line up checks?
   07:29:27  PIC   Line up checks complete. Transponder's on.
   07:29:41  FO    OK. Setting power.
@@ -546,17 +720,181 @@ naming what is missing, and draft the rest from what IS here.
   07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                   remain seated. We have stopped on the aerodrome, there is no
                   fire, stand by.
-  07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                  advise your situation?
-  07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                  off the end of zero nine, we're stopped in the gravel. Forty
-                  four passengers, three crew, no injuries reported, no fire.
-                  We're going to get everyone off by the airstair. Request you
-                  activate the emergency plan and get a vehicle to us.
-  07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                  emergency plan, vehicle on the way. Confirm no assistance
-                  required for injuries?
-  07:32:19  PIC   Negative at this stage, we'll advise.
+  07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                  officer, we saw you go off the end. Are you able to advise
+                  your situation?
+  07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                  we've rejected, we've gone off the end of zero nine, we're
+                  stopped in the gravel. Forty four passengers, three crew, no
+                  injuries reported, no fire. We're going to get everyone off
+                  by the airstair. Request you activate the emergency plan and
+                  get a vehicle to us.
+  07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                  aerodrome emergency plan, vehicle on the way. Confirm no
+                  assistance required for injuries?
+  07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+  07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                  seven is obstructed by a disabled aircraft, the aerodrome is
+                  closed, Tarlton Springs reporting officer.
+  07:32:31  PIC   [To first officer] Did you see them coming, or did they just
+                  turn up?
+  07:32:35  FO    They came out of the dark on the left of the strip, crossed
+                  the centreline. I had them for - I don't know, two seconds.
+                  Maybe less. There was nothing to see and then there were two
+                  of them.
+  07:32:47  PIC   I never had them. I was heads-in on the engine page after V
+                  one.
+  07:33:02  PIC   Cabin, flight deck. We're going to disembark by the forward
+                  door onto the ground. It's dark and it's gravel out there, so
+                  nice and slow, no rush, no evacuation.
+  07:34:40  [Sound consistent with the forward airstair operating.]
+  ```
+- Why MET-ARCH-SB512-180626, retrieved 19/06/2026 matters: Disposes of the weather as a factor and establishes the one environmental condition that matters: the roll began five minutes after the end of civil twilight with no moon, in the period the aerodrome's own log shows most wildlife movement.
+- Attached extract (Weather observations, forecast, and light and moon data) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  METAR XTLS 180700Z AUTO 09006KT 9999 FEW040 08/M01 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180630Z AUTO 09007KT 9999 FEW040 09/M01 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180600Z AUTO 08008KT 9999 SCT040 11/M01 Q1023 RMK RF00.0/000.0
+  METAR XTLS 180800Z AUTO 09005KT 9999 FEW040 07/M02 Q1024 RMK RF00.0/000.0
+  
+  
+  ## Forecast held by the crew
+  
+  
+  TAF XTLS 180458Z 1806/1824
+  09008KT 9999 FEW040
+  FM181000 08006KT CAVOK
+  RMK T 11 08 06 05 Q 1023 1024 1024 1025
+  
+  
+  ## Light and moon
+  
+  
+  Tarlton Springs, 18/06/2026 (local time, UTC+10)
+  Sunset                 16:58
+  End of civil twilight  17:25
+  Moonrise               22:41 (waning crescent, 14% illuminated)
+  ```
+- Led to: Take-off rejected 6 kt above V1
+
+### Departure in the logged kangaroo peak, 1 h before to 2 h after last light
+- Lane: Local Conditions
+- Tests: Existence Pass - extremely likely / Influence Pass - likely / Importance Not tested
+- Note on Existence: The window and the time of the roll are documentary; the 95% reflects that the sighting log is a paper register whose completeness cannot be verified.
+- Note on Influence: The log puts almost all recorded kangaroo movement in this window and the occurrence inside it. Held at 80% because the log records sightings rather than presence, and aerodrome staff go off duty at 18:30, part way through the window, so the pattern may partly reflect when there was somebody there to see.
+- Finalised: yes
+- Evidence: The aerodrome's wildlife sighting log for 01/01/2025 to 18/06/2026 holds 46 entries, 41 of them kangaroos on or adjacent to the movement area. 38 of those 41 are timed between one hour before and two hours after last light, and eleven record animals on the sealed surface of runway 09/27. On 18/06/2026 last light was 17:25 local, so that window ran from 16:25 to 19:25; the roll began at 17:30. The captain's account matches the log: he has seen kangaroos on the strip at Tarlton Springs four or five times, always in the evening and never in daytime.
+- Significance: Kangaroos are on this aerodrome's movement area at this hour and seldom at others: 38 of the 41 entries fall in the window. Two animals crossing the runway at 17:30 is the pattern the aerodrome's own log describes, not a chance encounter, and a departure well outside the window would probably have met no animals on the runway.
+- Investigator notes: The other half of the old last-light object. Its evidence is the aerodrome's paper sighting log, which is why it alone carries the doubt about completeness. On the day the window ran from 16:25 to 19:25, so the scheduled departure was inside it whatever the timetable did.
+- Why MET-ARCH-SB512-180626, retrieved 19/06/2026 matters: Disposes of the weather as a factor and establishes the one environmental condition that matters: the roll began five minutes after the end of civil twilight with no moon, in the period the aerodrome's own log shows most wildlife movement.
+- Attached extract (Weather observations, forecast, and light and moon data) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  METAR XTLS 180700Z AUTO 09006KT 9999 FEW040 08/M01 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180630Z AUTO 09007KT 9999 FEW040 09/M01 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180600Z AUTO 08008KT 9999 SCT040 11/M01 Q1023 RMK RF00.0/000.0
+  METAR XTLS 180800Z AUTO 09005KT 9999 FEW040 07/M02 Q1024 RMK RF00.0/000.0
+  
+  
+  ## Forecast held by the crew
+  
+  
+  TAF XTLS 180458Z 1806/1824
+  09008KT 9999 FEW040
+  FM181000 08006KT CAVOK
+  RMK T 11 08 06 05 Q 1023 1024 1024 1025
+  
+  
+  ## Light and moon
+  
+  
+  Tarlton Springs, 18/06/2026 (local time, UTC+10)
+  Sunset                 16:58
+  End of civil twilight  17:25
+  Moonrise               22:41 (waning crescent, 14% illuminated)
+  ```
+- Why Tarlton Springs Aerodrome wildlife sighting log, copied 23/06/2026 matters: The knowledge existed and never moved. 41 kangaroo entries, 38 of them around last light and eleven on the sealed surface, in a paper register that no operator has ever asked to see.
+- Attached extract (Tarlton Springs wildlife sighting log, 01/2025 to 06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+  ```
+  46 entries. 41 of the 46
+  record kangaroos on or adjacent to the movement area. 38 of those 41 are
+  timed between one hour before and two hours after last light. Eleven entries
+  record animals on the sealed surface of runway 09/27. The log is a paper
+  register held in the aerodrome office. It is not reported to any operator,
+  and the aerodrome reporting officer confirmed that no airline has ever asked
+  for it.
+  ```
+- Led to: Two kangaroos crossed the strip onto the sealed runway
+
+### No runway inspection requested before departing after last light
+- Lane: Individual Actions
+- Tests: Existence Pass - virtually certain / Influence Pass - likely / Importance Not tested
+- Note on Existence: Established by two independent recordings, the crew's own accounts and the aerodrome's own log.
+- Note on Influence: An inspection would have covered the 1,050 m to 1,250 m section, where the fence pad and both carcasses were found, and aerodrome staff disperse animals when they find them. Discounted from certainty because an inspection some minutes before the roll cannot guarantee the runway stays clear.
+- Finalised: yes
+- Evidence: Neither the CVR nor the aerodrome's CTAF recording contains any request for a runway inspection, any offer of one, or any mention of wildlife at any point before departure, and the captain said wildlife was not discussed with anyone during the turnaround. The aerodrome's daily inspection log for 18/06/2026 records one inspection, at 07:35 local before the first arrival, result 'movement area clear', with none afterwards and none requested. Aerodrome Manual 6.3 provides for inspections outside the scheduled time on the request of the reporting officer or a pilot in command; the reporting officer was on duty at the terminal during the turnaround and confirmed one would have been carried out if asked. SB512 was the only departure after last light that day. Both crew stated they did not consider it; the captain had expected Tarlton Springs to be on the Appendix 8A list and was surprised to find it was not.
+- Significance: The one action that would have put a vehicle on the runway in the 20 minutes before the roll was available, costs nothing, and was never on either crew member's mind because no document put it there.
+- Investigator notes: Careful with the wording of this one in the report. It is an omission with no owner: nothing asked either crew member to consider it, and the aerodrome would have done it if asked.
+- Why CVR-2026-0417 and the Tarlton Springs CTAF recording, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. Tarlton Springs has no control tower, so the CTAF recording holds the crew's own broadcasts and the pilot-activated lighting being switched on, and nothing else from SB512 before the roll. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on the flight deck or on the CTAF.
+- Attached extract (CTAF recording and CVR transcript, 07:21 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+             second. Frequency response unit: "Tarlton Springs CTAF".]
+  07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+  07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                  Springs.
+  07:28:51  FO    AWIS is still zero nine zero at six.
+  07:29:04  PIC   Line up checks to the line. I'll make the call.
+  07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  lining up runway zero nine for departure to Port Carrick, Tarlton
+                  Springs.
+  07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                  aeroplane, your take-off.
+  07:29:24  FO    My aeroplane, my take-off. Line up checks?
+  07:29:27  PIC   Line up checks complete. Transponder's on.
+  07:29:41  FO    OK. Setting power.
+  07:30:02  FO    Power set.
+  07:30:04  PIC   Power set, both engines good.
+  07:30:15  PIC   Eighty knots.
+  07:30:16  FO    Checked.
+  07:30:29  PIC   V one.
+  07:30:31  FO    Roos - roos, roos, on the left, they're on the -
+  07:30:32  PIC   Stopping. I have control.
+  07:30:32  FO    You have control.
+  07:30:33  [Sound consistent with a heavy impact. Duration approximately 0.4
+             seconds. Airframe rumble follows.]
+  07:30:34  FO    (unintelligible) took one on the prop.
+  07:30:36  PIC   Reverse - number two's not coming. Max brakes, max brakes.
+  07:30:41  FO    Speed's coming down. Sixty ... fifty ...
+  07:30:47  PIC   We're not stopping on it.
+  07:30:49  FO    End's coming up.
+  07:30:51  [Sound of surface change. Increased low-frequency vibration.]
+  07:30:57  [Vibration ceases.]
+  07:30:59  PIC   OK. We're stopped. Everyone alright?
+  07:31:01  FO    Yeah. Yeah, good.
+  07:31:04  PIC   Right. Parking brake set. Engines - both to cut-off, no fire
+                  indications, nothing on the board. I'm not evacuating.
+  07:31:12  FO    Agreed, nothing showing.
+  07:31:26  [Sound consistent with both fuel levers being moved.]
+  07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
+                  remain seated. We have stopped on the aerodrome, there is no
+                  fire, stand by.
+  07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                  officer, we saw you go off the end. Are you able to advise
+                  your situation?
+  07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                  we've rejected, we've gone off the end of zero nine, we're
+                  stopped in the gravel. Forty four passengers, three crew, no
+                  injuries reported, no fire. We're going to get everyone off
+                  by the airstair. Request you activate the emergency plan and
+                  get a vehicle to us.
+  07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                  aerodrome emergency plan, vehicle on the way. Confirm no
+                  assistance required for injuries?
+  07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+  07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                  seven is obstructed by a disabled aircraft, the aerodrome is
+                  closed, Tarlton Springs reporting officer.
   07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                   turn up?
   07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -615,7 +953,7 @@ naming what is missing, and draft the rest from what IS here.
   and the aerodrome reporting officer confirmed that no airline has ever asked
   for it.
   ```
-- Led to: Two kangaroos entered the runway strip and moved onto the sealed surface
+- Led to: Two kangaroos crossed the strip onto the sealed runway
 
 ### Take-off rejected 6 kt above V1
 - Lane: Individual Actions
@@ -624,8 +962,8 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Influence: The margin between ASDR and ASDA was 67 m. Beginning the stop six knots and three seconds late consumes that margin and more, before the reverse asymmetry is counted.
 - Finalised: yes
 - Evidence: The FDR records V1 called at 112 kt at 07:30:29 and both power levers retarded to flight idle from 07:30:32 at 118 kt, three seconds and six knots past V1. Part B 4.6.4 states the take-off shall be continued at or above V1. The CVR records the whole decision in one exchange: the first officer's sighting call at 07:30:31, 'Stopping, I have control' at 07:30:32. The captain's own account, in interview and in his air safety report, is that he judged rotating into two large animals would leave him airborne at night with unassessable damage over country with no usable option, and that he took the risk whose end he could see. He states plainly that it was not by the book.
-- Significance: Rejecting at 118 kt rather than continuing is the decision that put the aircraft into a stop it did not have the runway for. The scheduled accelerate-stop distance of 1,780 m assumes the reject begins at or before V1.
-- Investigator notes: Do not let this one carry the report. It is a contributing factor and it is downstream of the training object and the animals being there at all.
+- Significance: Rejecting at 118 kt rather than continuing is the decision that put the aircraft into a stop it did not have the runway for. The scheduled accelerate-stop distance of 1,780 m assumes the reject begins at or before V1; begun at 1,152 m, the stop had 695 m of sealed surface left.
+- Investigator notes: Do not let this one carry the report. It is a contributing factor and it is downstream of the training object, the darkness and the animals being there at all. Its arrow goes straight to the overrun: a late reject does not lower the deceleration, it shortens the runway left for it.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
 - Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -673,15 +1011,22 @@ naming what is missing, and draft the rest from what IS here.
   along runway 09 at the moment of the reject, leaving 695 m of sealed surface.
   The stopping distance actually achieved from 118 kt was 757 m.
   ```
-- Why CVR-2026-0417, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on either channel.
-- Attached extract (Tower audio and CVR transcript, 07:29 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+- Why CVR-2026-0417 and the Tarlton Springs CTAF recording, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. Tarlton Springs has no control tower, so the CTAF recording holds the crew's own broadcasts and the pilot-activated lighting being switched on, and nothing else from SB512 before the roll. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on the flight deck or on the CTAF.
+- Attached extract (CTAF recording and CVR transcript, 07:21 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
-  07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-  07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                  zero nine, cleared for take-off.
-  07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-  07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                  take-off.
+  07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+             second. Frequency response unit: "Tarlton Springs CTAF".]
+  07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+  07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                  Springs.
+  07:28:51  FO    AWIS is still zero nine zero at six.
+  07:29:04  PIC   Line up checks to the line. I'll make the call.
+  07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  lining up runway zero nine for departure to Port Carrick, Tarlton
+                  Springs.
+  07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                  aeroplane, your take-off.
   07:29:24  FO    My aeroplane, my take-off. Line up checks?
   07:29:27  PIC   Line up checks complete. Transponder's on.
   07:29:41  FO    OK. Setting power.
@@ -711,17 +1056,22 @@ naming what is missing, and draft the rest from what IS here.
   07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                   remain seated. We have stopped on the aerodrome, there is no
                   fire, stand by.
-  07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                  advise your situation?
-  07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                  off the end of zero nine, we're stopped in the gravel. Forty
-                  four passengers, three crew, no injuries reported, no fire.
-                  We're going to get everyone off by the airstair. Request you
-                  activate the emergency plan and get a vehicle to us.
-  07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                  emergency plan, vehicle on the way. Confirm no assistance
-                  required for injuries?
-  07:32:19  PIC   Negative at this stage, we'll advise.
+  07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                  officer, we saw you go off the end. Are you able to advise
+                  your situation?
+  07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                  we've rejected, we've gone off the end of zero nine, we're
+                  stopped in the gravel. Forty four passengers, three crew, no
+                  injuries reported, no fire. We're going to get everyone off
+                  by the airstair. Request you activate the emergency plan and
+                  get a vehicle to us.
+  07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                  aerodrome emergency plan, vehicle on the way. Confirm no
+                  assistance required for injuries?
+  07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+  07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                  seven is obstructed by a disabled aircraft, the aerodrome is
+                  closed, Tarlton Springs reporting officer.
   07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                   turn up?
   07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -754,26 +1104,33 @@ naming what is missing, and draft the rest from what IS here.
   speed, and no amplification of 4.6.4 for a case in which continuing is itself
   hazardous.
   ```
-- Led to: Deceleration achieved below the scheduled accelerate-stop performance
+- Led to: Runway overrun onto the runway end safety area
 
-### Two kangaroos entered the runway strip and moved onto the sealed surface
+### Two kangaroos crossed the strip onto the sealed runway
 - Lane: Occurrence Events
 - Tests: Existence Pass - virtually certain / Influence Pass - extremely likely / Importance Not tested
-- Note on Existence: Virtually certain. Two carcasses on the sealed surface, the first officer's sighting call on the CVR, and the recorded impact at 07:30:33 each establish it on their own. Previously graded 90% to carry doubt about where the animals came through the fence, which is not what this proposition says: the object states that they entered the strip and reached the seal, and that is settled. The route is a separate question and it is carried where it belongs, in the deferred fence object's Influence test at 90%, which is the finding the entry point actually bears on.
+- Note on Existence: Virtually certain. Two carcasses on the sealed surface, the first officer's sighting call on the CVR, and the recorded impact at 07:30:33 each establish it on their own. Previously graded 90% to carry doubt about where the animals came through the fence, which is not what this proposition says: the object states that they entered the strip and reached the seal, and that is settled. The route is a separate question and it is carried where it belongs, in the fence object's Influence test.
 - Note on Influence: The reject and the strike both follow directly from the animals being on the surface.
 - Finalised: yes
 - Evidence: Two adult kangaroos were recovered from runway 09 at 1,188 m and 1,221 m from the threshold, on the northern half. The first officer saw them from the flight deck crossing from the northern side to the south, estimating a range of around 200 m at first sight, and called them at 07:30:31. The animal pad through the failed northern fence is at the 1,050 m mark, 138 m before the first carcass on the same side. Eleven entries in the aerodrome's sighting log record kangaroos on the sealed surface of runway 09/27, all around last light. No inspection had been carried out since 07:35 local that morning.
-- Significance: Nothing else on this map matters without this. It is also the only object on the map that a single $41,000 works item would have addressed directly.
+- Significance: Both the reject and the strike follow from this. The first officer's call at 07:30:31 is the only trigger for the reject on the CVR, and the impact at 07:30:33 is with these two animals.
 - Investigator notes: The event everything upstream is about. Note the carcass positions against the fence pad: the geometry does the arguing here, not the interviews.
-- Why CVR-2026-0417, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on either channel.
-- Attached extract (Tower audio and CVR transcript, 07:29 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+- Why CVR-2026-0417 and the Tarlton Springs CTAF recording, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. Tarlton Springs has no control tower, so the CTAF recording holds the crew's own broadcasts and the pilot-activated lighting being switched on, and nothing else from SB512 before the roll. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on the flight deck or on the CTAF.
+- Attached extract (CTAF recording and CVR transcript, 07:21 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
-  07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-  07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                  zero nine, cleared for take-off.
-  07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-  07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                  take-off.
+  07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+             second. Frequency response unit: "Tarlton Springs CTAF".]
+  07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+  07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                  Springs.
+  07:28:51  FO    AWIS is still zero nine zero at six.
+  07:29:04  PIC   Line up checks to the line. I'll make the call.
+  07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  lining up runway zero nine for departure to Port Carrick, Tarlton
+                  Springs.
+  07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                  aeroplane, your take-off.
   07:29:24  FO    My aeroplane, my take-off. Line up checks?
   07:29:27  PIC   Line up checks complete. Transponder's on.
   07:29:41  FO    OK. Setting power.
@@ -803,17 +1160,22 @@ naming what is missing, and draft the rest from what IS here.
   07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                   remain seated. We have stopped on the aerodrome, there is no
                   fire, stand by.
-  07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                  advise your situation?
-  07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                  off the end of zero nine, we're stopped in the gravel. Forty
-                  four passengers, three crew, no injuries reported, no fire.
-                  We're going to get everyone off by the airstair. Request you
-                  activate the emergency plan and get a vehicle to us.
-  07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                  emergency plan, vehicle on the way. Confirm no assistance
-                  required for injuries?
-  07:32:19  PIC   Negative at this stage, we'll advise.
+  07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                  officer, we saw you go off the end. Are you able to advise
+                  your situation?
+  07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                  we've rejected, we've gone off the end of zero nine, we're
+                  stopped in the gravel. Forty four passengers, three crew, no
+                  injuries reported, no fire. We're going to get everyone off
+                  by the airstair. Request you activate the emergency plan and
+                  get a vehicle to us.
+  07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                  aerodrome emergency plan, vehicle on the way. Confirm no
+                  assistance required for injuries?
+  07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+  07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                  seven is obstructed by a disabled aircraft, the aerodrome is
+                  closed, Tarlton Springs reporting officer.
   07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                   turn up?
   07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -951,17 +1313,17 @@ naming what is missing, and draft the rest from what IS here.
     1,160 m to the runway end. Nose wheel rut in the RESA to 62 m beyond the
     end, on the extended centreline.
   ```
-- Led to: Deceleration achieved below the scheduled accelerate-stop performance
+- Led to: Deceleration below the scheduled accelerate-stop performance
 
-### Deceleration achieved below the scheduled accelerate-stop performance
+### Deceleration below the scheduled accelerate-stop performance
 - Lane: Occurrence Events
 - Tests: Existence Pass - virtually certain / Influence Pass - virtually certain / Importance Not tested
 - Note on Existence: Recorded data and the distance reconstruction agree with the physical marks on the runway.
-- Note on Influence: The shortfall is the overrun, expressed as a performance quantity.
+- Note on Influence: At the certified deceleration from the same point, the reconstruction puts the stop at roughly 660 m, inside the 695 m of runway remaining; at the deceleration achieved it needed 757 m.
 - Finalised: yes
 - Evidence: Scheduled accelerate-stop distance required was 1,780 m against an ASDA of 1,847 m, a margin of 67 m, assuming the stop begins at or before V1 with symmetric reverse. Distance reconstruction from recorded groundspeed puts the aircraft 1,152 m along the runway at the reject, leaving 695 m of sealed surface, and the stopping distance actually achieved from 118 kt was 757 m. The mean deceleration from maximum braking to the runway end was 2.6 m/s2, approximately 15% below the value used in the certified data for this weight and condition, with reverse available on No. 1 only.
-- Significance: 62 m of overrun is the arithmetic of a stop begun 6 kt late with 15% less deceleration than the figures assume. Both contributions are needed to reach the end; neither alone does.
-- Investigator notes: The convergence point. Both chains arrive here, which is why the report's analysis should treat it as one mechanism rather than two separate findings.
+- Significance: With reverse on No. 1 only, the stop decelerated about 15% below the certified value. That is the strike's contribution to the overrun, separate from the late start of the stop, which reaches the critical event by its own arrow. Both contributions are needed to reach the end; neither alone does.
+- Investigator notes: One of two routes into the overrun. The strike reaches the critical event through this shortfall; the late reject reaches it directly, because a late reject shortens the runway left rather than lowering the deceleration. The analysis should treat them as one stop with two causes.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
 - Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1034,51 +1396,18 @@ naming what is missing, and draft the rest from what IS here.
 
 ## Other risk factors (failed Influence, passed Importance)
 
-### Cabin floor proximity emergency lighting partially unserviceable (safety issue)
-- Lane: Risk Controls
-- Tests: Existence Pass - virtually certain / Influence Fail - unlikely / Importance Pass - very likely
-- Note on Existence: Found on a functional check and traced to a specific failed component.
-- Note on Influence: No evacuation was commanded, the cabin lights were on throughout, and the disembarkation took 4 minutes 8 seconds without incident. There is no path by which this affected the overrun or its outcome.
-- Note on Importance: A latent, undetectable defect in an escape-path defence, on a fleet-common part, with a monitoring interval that cannot catch it.
-- Finalised: no
-- Evidence: Raised by the first officer, who noticed sections of the aisle floor strip unlit while walking back through the cabin during the disembarkation. The functional check on 24/06/2026 found two of the six floor proximity escape path segments aft of row 16 on the left side dark on battery power with the system armed, traced to a failed common ballast. The pre-flight emergency lighting test on this type illuminates the ceiling lights and exit signs and neither illuminates nor monitors the floor segments, so the defect was undetectable by the crew or by a line engineer without a dedicated functional test. The last such test was 11 months before the occurrence, inside the 24-month programme interval.
-- Significance: A partially dark escape path is a defence that is not there when it is needed, and nothing available to the crew would have told them.
-- Importance: It did not influence this occurrence and it is still a finding. The disembarkation was unhurried, by the forward airstair, with the main cabin lights on. Change one thing - a fire indication, smoke, a night evacuation over the wing - and two dark segments in the aft cabin are the difference between an orderly exit and a blocked one. The gap that matters is the monitoring: a 24-month interval on a system the daily test cannot see means the fleet's true state is unknown, and the same ballast is fitted across the type.
-- Investigator notes: Left in draft deliberately. The fleet-wide question is out with engineering and the object should not be finalised until that answer is in, even though its own tests are settled. No arrow, deliberately: Influence failed at 10%. It did not contribute to the overrun or to its outcome, because no evacuation was commanded and the main cabin lights were on throughout; it is carried on Importance alone, as a finding about a defence that was not there.
-- Why Functional check record, VH-SBQ cabin emergency lighting, 24/06/2026 matters: A defect the investigation found rather than looked for, raised by the first officer's own observation. Two floor proximity segments dark on a failed common ballast, undetectable by any check the crew or a line engineer can run.
-- Attached extract (Cabin emergency lighting functional check, 24/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
-  ```
-  Raised following the first officer's account. With the emergency lighting
-  system armed and the aircraft on battery power, two of the six floor
-  proximity escape path segments on the left side aft of row 16 did not
-  illuminate. The fault was traced to a failed ballast common to both segments.
-  
-  The pre-flight emergency lighting test on this type illuminates the ceiling
-  emergency lights and the exit signs; it does not illuminate or monitor the
-  floor proximity segments, so the defect was not detectable by any check
-  available to the crew or to a line engineer without a dedicated functional
-  test. The last dedicated functional test was 11 months before the occurrence,
-  within the maintenance programme's 24-month interval.
-  
-  The occurrence disembarkation was conducted with the main cabin lights on,
-  by the forward airstair, without urgency. Nothing about the defect affected
-  what happened on the night.
-  ```
-
-### Fifth sector, 11 hours into duty, 40 minutes behind schedule
-- Lane: Local Conditions
+### Evening rotation rostered to close five-sector duties within 45 minutes of the limit (safety issue)
+- Lane: Organisational Influences
 - Tests: Existence Pass - virtually certain / Influence Fail - unlikely / Importance Pass - likely
-- Note on Existence: Roster, duty record and departure times are documentary.
-- Note on Influence: Failed on the evidence, not dismissed. The specific mechanisms fatigue would have to work through in this occurrence are each contradicted by recorded data.
-- Note on Importance: A standing exposure built into the schedule rather than a one-day event; it will recur every time a crew member reports unfit.
+- Note on Existence: The roster extract, the duty record and the departure times are documentary.
+- Note on Influence: Failed on the evidence, not dismissed. The specific mechanisms the roster would have had to work through in this occurrence are each contradicted by recorded data.
+- Note on Importance: A standing exposure built into the roster rather than a one-day event; it is there on every operation of the rotation and sharpest each time a crew member reports unfit.
 - Finalised: yes
-- Evidence: Sign-on 06:30 local, five sectors, the fifth added that morning when the rostered crew reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a duty planned to finish at 18:35, giving 12 hours 05 against a limit of 12 hours 30 for five sectors from that sign-on. The aircraft departed 40 minutes behind schedule. Both crew described themselves in interview as tired but not struggling; the captain said he would have declined a further sector and that 'for the two seconds that mattered, I was there'.
-- Evidence for influence: A late fifth sector at the end of a long duty into an aerodrome with no alternate at night is a routine exposure on this schedule, not a one-off.
-
-11 hours into a five-sector day is squarely in the range where degraded decision making is expected, the schedule was late, and the crew were working to finish.
-- Evidence against influence: Against: the FDR gives 0.6 seconds from decision to power levers at flight idle and 2 seconds to maximum braking, at the fast end of the fleet's own distribution and well inside normal; there is no error of omission on the roll; and the one decision the schedule could plausibly have affected, not requesting a runway inspection, was never available to be affected, because no document prompted either crew member to consider it. Fatigue cannot be found to have caused the omission of a step nobody was asked to take.
-- Importance: It failed Influence for this occurrence and remains a finding worth acting on. The evening Tarlton Springs rotation routinely places the last sector inside the last hour of a 12-hour duty, at an aerodrome with no company engineering, no alternate within 200 nm at night, and no crewing resilience, so a single unfit crew member turns a four-sector day into a five-sector one on the morning of operation. Nothing about that changes because it did not bite here.
-- Investigator notes: The tempting object. It exists, it reads as a cause, and the evidence will not carry it for this occurrence. Keeping it as an other risk factor is the honest answer and it is still going in the report. No arrow, deliberately: Influence failed at 25%, so every mechanism fatigue would have had to work through is contradicted by the recorded data, and an arrow would assert a causal path this record does not have. It did not contribute to the overrun; it is a finding about the schedule.
+- Evidence: The rostering system extract for 14/07/2025 to 18/06/2026 shows the evening rotation (SB511 Port Carrick to Tarlton Springs, SB512 Tarlton Springs to Port Carrick) operated on 289 days, each time rostered as the fourth and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00 and planned at between 12 hours 45 minutes and 13 hours 15 minutes, against the 13 hour 30 minute maximum for five sectors from those sign-on times. On six of those days a member of the rostered crew reported unfit and the rotation went to a crew already on duty, extending that crew's day from three sectors to five. 18/06/2026 was the sixth: sign-on 06:30, the take-off 11 hours in, a planned duty of 13 hours.
+- Evidence for influence: The roster puts the last sector of the longest duty in the pattern into an aerodrome with no alternate within 200 nm at night and limited engineering support (RRA-041), and when a crew member reports unfit it hands that sector to a crew whose day has just been extended. On 18/06/2026 that put a crew who described themselves as tired into a night departure 11 hours into their duty.
+- Evidence against influence: Against: the FDR gives 0.6 seconds from decision to power levers at flight idle and 2 seconds to maximum braking, at the fast end of the fleet's own distribution and well inside normal; there is no error of omission on the roll; and the one decision a long duty could plausibly have affected, not requesting a runway inspection, was never available to be affected, because no document prompted either crew member to consider it. The roster cannot be found to have caused the omission of a step nobody was asked to take, and whether the crew were fatigued at all is itself unsettled.
+- Importance: It failed Influence for this occurrence and remains a finding worth acting on. Every operation of the evening rotation in eleven months has closed a five-sector duty planned to within 45 minutes of the maximum, at an aerodrome RRA-041 records as having no alternate within 200 nm at night and limited engineering support. When a crew member reports unfit, the rotation goes to a crew already on duty, and that has extended a crew's day from three sectors to five on the morning of operation six times in the period. Nothing about that changes because it did not bite here.
+- Investigator notes: The standing condition behind the duty the crew were on. It exists on every day the rotation operates, which is why it is worded as the roster rather than as the day: Importance asks whether addressing it would reduce future risk, and the day itself cannot be addressed. No arrow, deliberately: Influence failed at 25%. The mechanisms the roster would have had to work through, fatigue among them, are each contradicted by the recorded data, so it did not contribute to the overrun; it is a finding about the roster.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
 - Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1126,7 +1455,38 @@ naming what is missing, and draft the rest from what IS here.
   along runway 09 at the moment of the reject, leaving 695 m of sealed surface.
   The stopping distance actually achieved from 118 kt was 757 m.
   ```
-- Why Crew records and duty record, 18/06/2026 matters: Establishes experience, currency and the shape of the duty: sector five of five, 11 hours in, 40 minutes late, added that morning off a crew who reported unfit, and within the company's limits throughout.
+- Why RRA-041 issue 3 (11/2022) and CMR-2025-118 (approved 22/05/2025) matters: Read together these are the organisational finding. RRA-041 restricted Tarlton Springs to daylight operations; CMR-2025-118 introduced a scheduled sector after last light, assessed it as a schedule change only, and neither referenced nor reopened the restriction.
+- Attached extract (Route Risk Assessment RRA-041 and Change Management Record CMR-2025-118) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  > Hazards assessed: runway length and accelerate-stop margin; single runway
+  > with no lighting redundancy; no alternate within 200 nm at night; limited
+  > engineering support; heat and density altitude in summer.
+  >
+  > Operating restriction: daylight operations only pending review of night
+  > lighting and diversion fuel policy.
+  
+  Issue 3 is the current issue. No issue 4 exists.
+  
+  ## 6. Change Management Record CMR-2025-118, "Introduction of the Tarlton Springs evening service", 05/2025
+  
+  > Scope of change: addition of one evening rotation, Port Carrick to Tarlton
+  > Springs to Port Carrick, six days per week, from 14/07/2025.
+  >
+  > Assessment: schedule change only. Existing aerodrome, existing aircraft
+  > type, existing crew qualifications, existing engineering support
+  > arrangements. No new hazard identified.
+  >
+  > Route risk assessment review required: No.
+  >
+  > Approved: Head of Flying Operations, 22/05/2025.
+  
+  The change introduced the first scheduled operation into Tarlton Springs
+  after last light. The daylight-only restriction at RRA-041 issue 3 is not
+  referenced anywhere in CMR-2025-118, and RRA-041 was not reopened. The Safety
+  Department's records show no involvement in the change beyond receipt of the
+  approved record.
+  ```
+- Why Crew records and duty record, 18/06/2026 matters: Establishes experience, currency and the shape of the duty: sector five of five, 11 hours in, on schedule, the evening rotation added that morning off a crew who reported unfit, and within the company's limits throughout. It also holds the roster pattern for the evening rotation over the eleven months it has run.
 - Attached extract (Flight crew and duty records, 18/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
   **Pilot in command.** Total 8,410 hours, 2,140 on type, in command 3 years
@@ -1139,24 +1499,71 @@ naming what is missing, and draft the rest from what IS here.
   company. Last cyclic simulator 28/04/2026, all items satisfactory. Two prior
   sectors into Tarlton Springs, both in daylight, on 09/01/2026 and 17/02/2026.
   
-  **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors. The occurrence
-  occurred at 17:30 local, 11 hours 00 minutes into a duty planned to finish at
-  18:35 local, giving a 12 hour 05 minute duty. The maximum permitted duty for
-  five sectors with this sign-on is 12 hours 30 minutes. The fifth sector was
-  added on the morning of 18/06/2026 when the rostered crew reported unfit.
-  The schedule was 40 minutes late at Tarlton Springs departure.
+  **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors: Port Carrick to
+  Hensby, Hensby to Mardle Creek and Mardle Creek to Port Carrick as rostered, then SB511 Port Carrick to
+  Tarlton Springs and SB512 Tarlton Springs to Port Carrick, the evening rotation,
+  added on the morning of 18/06/2026 when a member of the rostered crew
+  reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a
+  duty planned to finish at 19:30 local (SB512 scheduled on blocks in Port Carrick at
+  19:15), giving a planned duty of 13 hours 00 minutes. The maximum permitted
+  duty for five sectors with this sign-on, under the company's approved fatigue
+  risk management system, is 13 hours 30 minutes. A ground delay in Port Carrick
+  during the third sector was recovered on the Tarlton Springs turnaround:
+  SB512 was scheduled off blocks at 17:20 local, the doors closed at 17:16, and
+  it departed on schedule.
+  
+  **Roster pattern, evening Tarlton Springs rotation, 14/07/2025 to
+  18/06/2026.** Extracted from the rostering system. The rotation operated on
+  289 days in the period. On every one of them it was rostered as the fourth
+  and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00,
+  planned at between 12 hours 45 minutes and 13 hours 15 minutes against the
+  13 hours 30 minute maximum for five sectors from those sign-on times. On six
+  of those days a member of the rostered crew reported unfit and the rotation
+  was reassigned to a crew already on duty, extending that crew's day from
+  three sectors to five; 18/06/2026 was the sixth.
+  ```
+
+### Floor escape path lighting checked only every 24 months, not pre-flight (safety issue)
+- Lane: Risk Controls
+- Tests: Existence Pass - virtually certain / Influence Fail - unlikely / Importance Pass - very likely
+- Note on Existence: The test's coverage and the programme interval are documentary, and the VH-SBQ defect was found on a functional check and traced to a specific failed component.
+- Note on Influence: No evacuation was commanded, the cabin lights were on throughout, and the disembarkation took 4 minutes 8 seconds without incident. There is no path by which the monitoring gap, or the defect it hid, affected the overrun or its outcome.
+- Note on Importance: A gap in the monitoring of an escape-path defence, which has already hidden one latent defect on this aircraft and can hide the same on any other of the type until its next functional test.
+- Finalised: no
+- Evidence: The pre-flight emergency lighting test on this type illuminates the ceiling emergency lights and the exit signs; it neither illuminates nor monitors the floor proximity escape path segments, whose only check is a dedicated functional test at the maintenance programme's 24-month interval. On VH-SBQ that gap held a live defect. Raised by the first officer, who noticed sections of the aisle floor strip unlit while walking back through the cabin during the disembarkation, the functional check on 24/06/2026 found two of the six floor proximity segments aft of row 16 on the left side dark on battery power with the system armed, traced to a failed common ballast. The last dedicated functional test had been 11 months before the occurrence, inside the interval, so the defect was undetectable by the crew or by a line engineer and could have stayed so for up to 13 more months.
+- Significance: Between functional tests the state of the escape path lighting on any aircraft of the type is unknown, and on VH-SBQ it was partly dark with nothing available to the crew to tell them.
+- Importance: It did not influence this occurrence and it is still a finding. The disembarkation was unhurried, by the forward airstair, with the main cabin lights on. Change one thing, such as a fire indication, smoke or a night evacuation over the wing, and two dark segments in the aft cabin are the difference between an orderly exit and a blocked one. The gap is the monitoring: a 24-month interval on a system the daily test cannot see means each aircraft's true state is unknown until its next functional test, and whether the same ballast part is fitted across the fleet is still with engineering.
+- Investigator notes: Left in draft deliberately. Whether the failed ballast part is common across the fleet, and how many aircraft are inside the interval now, is out with engineering, and the object should not be finalised until that answer is in, even though its own tests are settled. Worded as the standing gap rather than the two dark segments on VH-SBQ, because a found defect is repaired and Importance can only address what would otherwise remain. No arrow, deliberately: Influence failed at 10%. It did not contribute to the overrun or to its outcome, because no evacuation was commanded and the main cabin lights were on throughout; it is carried on Importance alone, as a finding about a defence whose state nobody can see.
+- Why Functional check record, VH-SBQ cabin emergency lighting, 24/06/2026 matters: A defect the investigation found rather than looked for, raised by the first officer's own observation. Two floor proximity segments dark on a failed common ballast, undetectable by any check the crew or a line engineer can run.
+- Attached extract (Cabin emergency lighting functional check, 24/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+  ```
+  Raised following the first officer's account. With the emergency lighting
+  system armed and the aircraft on battery power, two of the six floor
+  proximity escape path segments on the left side aft of row 16 did not
+  illuminate. The fault was traced to a failed ballast common to both segments.
+  
+  The pre-flight emergency lighting test on this type illuminates the ceiling
+  emergency lights and the exit signs; it does not illuminate or monitor the
+  floor proximity segments, so the defect was not detectable by any check
+  available to the crew or to a line engineer without a dedicated functional
+  test. The last dedicated functional test was 11 months before the occurrence,
+  within the maintenance programme's 24-month interval.
+  
+  The occurrence disembarkation was conducted with the main cabin lights on,
+  by the forward airstair, without urgency. Nothing about the defect affected
+  what happened on the night.
   ```
 
 ## Positive events
 
-### Maximum braking and No. 1 reverse applied without delay
+### Maximum braking established within 2 seconds of the reject decision
 - Lane: Individual Actions
 - Tests: Existence Pass - virtually certain / Influence Pass - very likely / Importance Not tested
 - Note on Existence: Recorded data throughout.
 - Note on Influence: Recorded as a decrease in risk. A stop begun at the fleet mean response would have carried the aircraft an estimated further 30 to 40 m, close to the far edge of the RESA.
 - Finalised: yes
 - Evidence: Power levers reached flight idle 0.6 seconds after the decision and maximum braking was established at 07:30:34, 2 seconds after it, against a recorded fleet mean of 3.2 seconds from decision to maximum braking. Anti-skid was active on all four wheels throughout and brake energy reached 84% of the certified maximum without a brake fire. Reverse was selected on No. 1 within 4 seconds; No. 2 was unavailable because its propeller had been destroyed in the strike. The first officer made the speed callouts and the runway-end call. The aircraft left the seal at 21 kt, stopped 62 m into a 90 m RESA, upright, on the extended centreline, and was disembarked without an evacuation.
-- Significance: The overrun was 62 m into a prepared surface at low speed rather than a departure from the RESA at speed. The margin between those two outcomes is the two seconds and the asymmetric braking technique.
+- Significance: The overrun was 62 m into a prepared surface at low speed rather than a departure from the RESA at speed. The margin between those two outcomes is the braking established in 2 seconds rather than the fleet's 3.2.
 - Investigator notes: Recorded as a positive event because it is one. The same investigation that finds the reject was outside procedure should say that what followed it was executed better than the fleet average.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
 - Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
@@ -1230,13 +1637,13 @@ naming what is missing, and draft the rest from what IS here.
 
 ## Excluded hypotheses (retain in report as ruled out)
 
-### Take-off commenced with a tailwind above limits
+### Tailwind component during the take-off roll and stop
 - Lane: Local Conditions
 - Tests: Existence Fail - very unlikely / Influence Not tested / Importance Not tested
-- Note on Existence: Two independent sources, the aerodrome observations and the recorded aircraft data, agree that the component was a headwind throughout.
+- Note on Existence: Two independent sources, the aerodrome's automatic observations and the recorded aircraft data, agree that the component was a headwind throughout.
 - Finalised: yes
-- Evidence: Hypothesis tested because a stop that runs 62 m past the end invites a question about the wind. It fails. The 06:30, 07:00 and 08:00 UTC observations give 090 at 7, 090 at 6 and 090 at 5 kt, a headwind component of 5 to 7 kt on runway 09. Recorded FDR wind during the roll gives a headwind component of 4 to 6 kt throughout, with no tailwind component at any point. The crew's performance entry used a 5 kt headwind, which matches. There is no evidence of a tailwind at any stage of the roll, from any source.
-- Investigator notes: Raised early because the overrun distance invited it. Disposed of in an afternoon and kept on the map so the report can say it was tested. No arrow, deliberately: Existence failed, so there is no event here to draw an arrow from. The wind did not contribute to the overrun because there was no tailwind at any point in the roll.
+- Evidence: Hypothesis tested because a stop that runs 62 m past the end invites a question about the wind. It fails. The automatic weather station's 06:30, 07:00 and 08:00 UTC observations give 090 at 7, 090 at 6 and 090 at 5 kt, a headwind component of 5 to 7 kt on runway 09. Recorded FDR wind during the roll gives a headwind component of 4 to 6 kt throughout, with no tailwind component at any point. The crew's performance entry used a 5 kt headwind, which matches. There is no evidence of a tailwind at any stage of the roll or the stop, from any source.
+- Investigator notes: Raised early because the overrun distance invited it. Disposed of in an afternoon and kept on the map so the report can say it was tested. No arrow, deliberately: Existence failed, so there is no condition here to draw an arrow from. The wind did not contribute to the overrun because there was no tailwind at any point in the roll or the stop.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
 - Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1287,16 +1694,16 @@ naming what is missing, and draft the rest from what IS here.
 - Why MET-ARCH-SB512-180626, retrieved 19/06/2026 matters: Disposes of the weather as a factor and establishes the one environmental condition that matters: the roll began five minutes after the end of civil twilight with no moon, in the period the aerodrome's own log shows most wildlife movement.
 - Attached extract (Weather observations, forecast, and light and moon data) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
-  METAR YTLS 180700Z 09006KT 9999 FEW040 08/M01 Q1024 RMK RF00.0/000.0
-  METAR YTLS 180630Z 09007KT 9999 FEW040 09/M01 Q1024 RMK RF00.0/000.0
-  METAR YTLS 180600Z 08008KT 9999 SCT040 11/M01 Q1023 RMK RF00.0/000.0
-  METAR YTLS 180800Z 09005KT 9999 FEW040 07/M02 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180700Z AUTO 09006KT 9999 FEW040 08/M01 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180630Z AUTO 09007KT 9999 FEW040 09/M01 Q1024 RMK RF00.0/000.0
+  METAR XTLS 180600Z AUTO 08008KT 9999 SCT040 11/M01 Q1023 RMK RF00.0/000.0
+  METAR XTLS 180800Z AUTO 09005KT 9999 FEW040 07/M02 Q1024 RMK RF00.0/000.0
   
   
   ## Forecast held by the crew
   
   
-  TAF YTLS 180458Z 1806/1824
+  TAF XTLS 180458Z 1806/1824
   09008KT 9999 FEW040
   FM181000 08006KT CAVOK
   RMK T 11 08 06 05 Q 1023 1024 1024 1025
@@ -1305,19 +1712,19 @@ naming what is missing, and draft the rest from what IS here.
   ## Light and moon
   
   
-  Tarlton Springs, 18/06/2026 (AEST, UTC+10)
+  Tarlton Springs, 18/06/2026 (local time, UTC+10)
   Sunset                 16:58
   End of civil twilight  17:25
   Moonrise               22:41 (waning crescent, 14% illuminated)
   ```
 
-### No. 2 engine power loss during the take-off roll
+### No. 2 engine power loss before the reject decision
 - Lane: Occurrence Events
 - Tests: Existence Fail - very unlikely / Influence Not tested / Importance Not tested
 - Note on Existence: Recorded parameters, recorded audio and the physical inspection agree. The No. 2 loss is a consequence of the strike, not a cause of the reject, and the times separate the two.
 - Finalised: yes
 - Evidence: Hypothesis tested because a reject at 118 kt is most commonly an engine event. It fails. The FDR records both engines at 98.4% and 98.5% torque, within 0.1% of each other, from power set at 07:30:02 until the power levers were retarded at 07:30:32, with fuel flow, ITT and propeller RPM on both engines inside normal scatter throughout. No caution, warning or exceedance is recorded at any point before the reject. The CVR contains no engine-related call: the captain's first words are 'Stopping, I have control' one second after the first officer's sighting call. The borescope of both engines found no pre-existing damage. The No. 2 propeller damage and the RPM decay both begin at 07:30:33, after the reject and at the moment of impact.
-- Investigator notes: The first hypothesis anyone offers for a high-speed reject, and the first one the data kills. Kept on the map because the report should show it was tested, not assumed away. No arrow, deliberately: Existence failed, so there is nothing to draw an arrow from. The No. 2 power loss did not contribute to the reject because it had not happened yet; it begins at impact, one second after the reject.
+- Investigator notes: The first hypothesis anyone offers for a high-speed reject, and the first one the data kills. Kept on the map because the report should show it was tested, not assumed away. No arrow, deliberately: Existence failed, so there is nothing to draw an arrow from. The No. 2 engine did lose power, but after the reject: the loss begins at impact, one second later, and belongs to the strike.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
 - Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1389,23 +1796,124 @@ naming what is missing, and draft the rest from what IS here.
 
 ## Unresolved matters (examined, testing inconclusive - no conclusion may be drawn, but each MUST be discussed in the report: what the evidence showed, the argument either way, and why it could not be settled)
 
-### Runway edge lighting intensity reduced the crew's ability to detect the animals
+### Flight crew fatigued at the time of the take-off
 - Lane: Local Conditions
 - Tests: Existence Inconclusive - about as likely as not / Influence Not tested / Importance Not tested
-- Note on Existence: Inconclusive at 45%, and left inconclusive rather than dropped or promoted. Keeping it below virtually certain is deliberate: the intensity reading is a settled fact and this object is not that fact, it is the claim built on top of it, and no evidence available reaches the claim. The photometry was taken seven days afterwards, nothing records what the lights were doing on the night, the two accounts of the lighting disagree, and no study links a 131% edge light to the detection of an object on the seal. The report owes the reader this reasoning rather than silence.
-- Finalised: no
-- Evidence for: For: the pilot in command recalled the lighting as 'brighter than I'd want', a corridor of light with everything outside it black, and said anything off the seal could not be seen coming. A photometric check seven days later, on 25/06/2026, put four northern edge lights between the 900 m and 1,200 m markers at 118% to 131% of nominal for stage 3, in the section the animals crossed, and the aerodrome's maintenance programme checks lamp serviceability without ever measuring intensity. The intensity deviation is settled; the step from that reading to a reduced ability to see an animal on the runway 09 surface is an inference, and the inference is what this object tests.
-- Evidence against: Against: the first officer, who actually saw the animals, described the lighting as normal and said she saw them completely clearly once they were on the sealed surface, at around 200 m. She also said plainly that with two daylight landings to compare against she is not well placed to judge whether it was unusual. The captain was heads-in on the engine page after V1, which is where the procedure puts him, so his non-detection has an explanation that does not require the lighting at all. No measurement exists of what the lights were doing on the night, only a check seven days later, and nothing establishes a link between a 131% edge light and detection of an object on the runway.
-- Investigator notes: Left in draft on purpose. Both accounts are honest and they do not agree, the one measurement shows a deviation but not an effect, and there is no way to close it with what is available. Say so in the report rather than picking a side.
-- Why CVR-2026-0417, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on either channel.
-- Attached extract (Tower audio and CVR transcript, 07:29 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+- Note on Existence: Inconclusive at 50%, and left there rather than dropped or promoted. 'Tired' after 11 hours is what both crew said, and it is not the same as fatigued to a degree that degrades performance; the recorded performance argues against that, and no other evidence reaches it. Settling it would need a detailed fatigue assessment, with sleep history and the duty pattern before 18/06, which was judged not required: even had Existence passed, Influence would fail, because every mechanism fatigue would have had to work through here is contradicted by recorded data, and the one decision it could plausibly have touched, not requesting an inspection, was never prompted by any document.
+- Finalised: yes
+- Evidence for: For: the take-off was 11 hours into the duty, on the fifth sector, at 17:30 local after a 06:30 sign-on, and the day had been extended that morning from three sectors to five when the crew picked up the evening rotation from a crew member who reported unfit. Both crew described themselves in interview as tired at that point, and the captain said that if he had been asked to fly another sector he would have said no.
+- Evidence against: Against: both crew described the tiredness as ordinary and not impairing. The captain said he was not struggling and that 'for the two seconds that mattered, I was there'; the first officer said it was a normal five-sector day, she was not fighting it, and she had had a proper break in Port Carrick in the middle of the duty. The duty was inside the company's limits, planned at 13 hours against a 13 hour 30 maximum, after two rest days for the captain and one for the first officer. The recorded performance shows none of the usual signs: the power levers reached flight idle 0.6 seconds after the decision and maximum braking was established at 2 seconds, at the fast end of the fleet's distribution, the callouts were made on time, and there is no error of omission anywhere on the roll.
+- Investigator notes: The tempting object. Both crew said they were tired and the duty reads like a cause. Existence is argued and left inconclusive: the evidence for fatigue is the crew's own word 'tired', the evidence against is their own account and the recorded performance, and nothing else reaches it. No arrow, deliberately: a factor whose Existence is not established points at nothing, so it stays on the map as tested and set aside. The duty's own risk is tested on the roster object in Organisational Influences.
+- Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
+- Attached extract (FDR and QAR readout, VH-SBQ, sector SB512) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
-  07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-  07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                  zero nine, cleared for take-off.
-  07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-  07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                  take-off.
+  | UTC | Event | IAS | Groundspeed | Torque 1 / 2 | Brake pressure | Notes |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | 07:30:02 | Power set, roll commences | 0 | 0 | 98.4% / 98.5% | 0 psi | Both power levers advanced together |
+  | 07:30:15 | 80 kt cross-check | 80 | 77 | 98.4% / 98.5% | 0 psi | No caution or warning active |
+  | 07:30:29 | V1 | 112 | 109 | 98.4% / 98.5% | 0 psi | Recorded aural "V1" on CVR |
+  | 07:30:31 | First officer's sighting call | 116 | 113 | 98.4% / 98.5% | 0 psi | No control input yet |
+  | 07:30:32 | Reject initiated | 118 | 115 | 98.4% / 98.5% | 0 psi | Both power levers to flight idle within 0.6 s |
+  | 07:30:33 | Impact | 114 | 111 | 12% / 9% | 2,180 psi | Lateral acceleration spike 0.31 g right; vertical spike 1.48 g |
+  | 07:30:34 | Maximum braking established | 109 | 106 | 6% / 6% | 2,940 psi | Anti-skid active on all four wheels |
+  | 07:30:36 | Reverse selected, No. 1 only | 98 | 95 | 4% / -- | 2,940 psi | No. 2 reverse not selected; No. 2 propeller RPM decaying |
+  | 07:30:44 | -- | 58 | 56 | 4% / -- | 2,940 psi | Mean deceleration 07:30:34 to 07:30:44 is 2.6 m/s2 |
+  | 07:30:51 | Aircraft departs the sealed surface | 21 | 20 | 4% / -- | 2,940 psi | Longitudinal deceleration falls to 1.9 m/s2 in gravel |
+  | 07:30:57 | Aircraft stops | 0 | 0 | 4% / -- | 2,940 psi | 62 m beyond the runway 09 end, on the extended centreline |
+  | 07:31:26 | Both engines shut down | 0 | 0 | -- / -- | 0 psi | Fuel levers to cut-off |
+  
+  ## What the data shows
+  
+  Both engines were at take-off torque, within 0.1% of each other, from power
+  set until the power levers were retarded at 07:30:32. No engine parameter
+  exceedance, caution or warning is recorded before that point. Recorded fuel
+  flow, ITT and propeller RPM on both engines are within normal scatter for the
+  take-off roll. There is no data supporting a power loss before the reject.
+  
+  The recorded wind at the aircraft during the roll gives a headwind component
+  of 4 to 6 kt throughout, consistent with the 07:00 UTC routine observation.
+  No tailwind component is recorded at any point.
+  
+  The reject was initiated 3 seconds after V1 and at 118 kt, six knots above it.
+  Power lever movement to flight idle took 0.6 seconds and maximum braking was
+  established 2 seconds after the decision. That response time is at the fast
+  end of the operator's own recorded fleet distribution for rejected take-offs
+  (fleet mean 3.2 seconds from decision to maximum braking).
+  
+  Reverse was selected on No. 1 only. No. 2 propeller RPM decays from 07:30:33,
+  consistent with the blade damage found on inspection, and the No. 2 reverse
+  interlock did not make. The scheduled accelerate-stop figures assume symmetric
+  reverse; the achieved mean deceleration of 2.6 m/s2 is approximately 15%
+  below the value used in the certified accelerate-stop data for this weight
+  and runway condition.
+  
+  Distance reconstruction from recorded groundspeed puts the aircraft 1,152 m
+  along runway 09 at the moment of the reject, leaving 695 m of sealed surface.
+  The stopping distance actually achieved from 118 kt was 757 m.
+  ```
+- Why Crew records and duty record, 18/06/2026 matters: Establishes experience, currency and the shape of the duty: sector five of five, 11 hours in, on schedule, the evening rotation added that morning off a crew who reported unfit, and within the company's limits throughout. It also holds the roster pattern for the evening rotation over the eleven months it has run.
+- Attached extract (Flight crew and duty records, 18/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
+  ```
+  **Pilot in command.** Total 8,410 hours, 2,140 on type, in command 3 years
+  1 month. Last cyclic simulator 11/03/2026, all items satisfactory. Last line
+  check 02/12/2025, satisfactory. No prior occurrence history. Duty and rest in
+  the 7 days before the occurrence within the company's limits with no
+  variations applied.
+  
+  **First officer.** Total 1,655 hours, 405 on type, 14 months with the
+  company. Last cyclic simulator 28/04/2026, all items satisfactory. Two prior
+  sectors into Tarlton Springs, both in daylight, on 09/01/2026 and 17/02/2026.
+  
+  **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors: Port Carrick to
+  Hensby, Hensby to Mardle Creek and Mardle Creek to Port Carrick as rostered, then SB511 Port Carrick to
+  Tarlton Springs and SB512 Tarlton Springs to Port Carrick, the evening rotation,
+  added on the morning of 18/06/2026 when a member of the rostered crew
+  reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a
+  duty planned to finish at 19:30 local (SB512 scheduled on blocks in Port Carrick at
+  19:15), giving a planned duty of 13 hours 00 minutes. The maximum permitted
+  duty for five sectors with this sign-on, under the company's approved fatigue
+  risk management system, is 13 hours 30 minutes. A ground delay in Port Carrick
+  during the third sector was recovered on the Tarlton Springs turnaround:
+  SB512 was scheduled off blocks at 17:20 local, the doors closed at 17:16, and
+  it departed on schedule.
+  
+  **Roster pattern, evening Tarlton Springs rotation, 14/07/2025 to
+  18/06/2026.** Extracted from the rostering system. The rotation operated on
+  289 days in the period. On every one of them it was rostered as the fourth
+  and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00,
+  planned at between 12 hours 45 minutes and 13 hours 15 minutes against the
+  13 hours 30 minute maximum for five sectors from those sign-on times. On six
+  of those days a member of the rostered crew reported unfit and the rotation
+  was reassigned to a crew already on duty, extending that crew's day from
+  three sectors to five; 18/06/2026 was the sixth.
+  ```
+
+### Four northern edge lights above nominal intensity on the night
+- Lane: Local Conditions
+- Tests: Existence Pass - likely / Influence Inconclusive - about as likely as not / Importance Not tested
+- Note on Existence: Likely rather than certain. The measurement was made seven days after the occurrence, not on the night, and lamp output can change; but the setting is fixed, nothing was done to the lighting in between, and nothing suggests the four lights were different on the night, so they are believed to have been at the measured intensity then, though nobody measured them at the time.
+- Note on Influence: Inconclusive at 45%, and left inconclusive rather than dropped or promoted. The intensity is the settled part; the claim that it delayed detection, and so the reject, is the unsettled part, and no evidence available reaches it. The accounts of the lighting disagree, the only witness to the animals saw them clearly on the seal, darkness alone explains why nothing off the seal was seen, and no study links a 131% edge light to the detection of an animal. The report owes the reader this reasoning rather than silence.
+- Finalised: no
+- Evidence: A photometric check on 25/06/2026, seven days after the occurrence, measured four northern edge lights between the 900 m and 1,200 m markers at 118% to 131% of nominal intensity for stage 3, in the section the animals crossed; the remainder were within tolerance. The runway lighting is pilot-activated: keyed from the CTAF, it runs for 30 minutes at the single intensity set at the aerodrome's lighting controller, which was found at stage 3, the setting recorded at commissioning. Crews cannot vary it. The works register and electrical log record no work on the lighting or its controller between 18/06/2026 and the check. The aerodrome's maintenance programme checks lamp serviceability but never measures intensity.
+- Evidence for influence: The four bright lights stand in the section the animals crossed. The captain recalled the lighting as 'brighter than I'd want', a corridor of light with everything outside it black, so that anything off the seal could not be seen coming, and said that with pilot-activated lighting there was nobody to ask to turn it down. Brighter edge lights deepen the contrast between the lit corridor and the dark strip beside it, which is where the animals came from.
+- Evidence against influence: Against: the first officer, who actually saw the animals, described the lighting as normal and said she saw them completely clearly once they were on the sealed surface, at around 200 m. She also said plainly that with two daylight landings to compare against she is not well placed to judge whether it was unusual. The captain was heads-in on the engine page after V1, which is where the procedure puts him, so his non-detection has an explanation that does not require the lighting at all. The strip either side of the seal cannot be seen from the centreline in darkness whatever the edge lights are doing, and nothing establishes that a 131% edge light, rather than the darkness itself, delayed the detection of anything on or beside the runway.
+- Investigator notes: Left in draft on purpose. Worded as the condition, so Existence tests the lights and Influence tests the claim built on them. The lights are pilot-activated at one fixed setting nobody changed that night, which is why the reading seven days later can stand for the night. Whether that intensity delayed detection is genuinely unsettled: the two accounts of the lighting disagree, and the one crew member who saw the animals saw them clearly. Say so in the report rather than picking a side.
+- Why CVR-2026-0417 and the Tarlton Springs CTAF recording, transcribed 25/06/2026, verified by a second investigator matters: What was actually said, in order. Tarlton Springs has no control tower, so the CTAF recording holds the crew's own broadcasts and the pilot-activated lighting being switched on, and nothing else from SB512 before the roll. It fixes the sighting call at one second before the reject, shows the reject decision was made and announced in a single exchange, and shows that wildlife was never mentioned before departure by anyone, on the flight deck or on the CTAF.
+- Attached extract (CTAF recording and CVR transcript, 07:21 to 07:34 UTC) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
+  ```
+  07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+             second. Frequency response unit: "Tarlton Springs CTAF".]
+  07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+  07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                  Springs.
+  07:28:51  FO    AWIS is still zero nine zero at six.
+  07:29:04  PIC   Line up checks to the line. I'll make the call.
+  07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                  lining up runway zero nine for departure to Port Carrick, Tarlton
+                  Springs.
+  07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                  aeroplane, your take-off.
   07:29:24  FO    My aeroplane, my take-off. Line up checks?
   07:29:27  PIC   Line up checks complete. Transponder's on.
   07:29:41  FO    OK. Setting power.
@@ -1435,17 +1943,22 @@ naming what is missing, and draft the rest from what IS here.
   07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                   remain seated. We have stopped on the aerodrome, there is no
                   fire, stand by.
-  07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                  advise your situation?
-  07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                  off the end of zero nine, we're stopped in the gravel. Forty
-                  four passengers, three crew, no injuries reported, no fire.
-                  We're going to get everyone off by the airstair. Request you
-                  activate the emergency plan and get a vehicle to us.
-  07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                  emergency plan, vehicle on the way. Confirm no assistance
-                  required for injuries?
-  07:32:19  PIC   Negative at this stage, we'll advise.
+  07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                  officer, we saw you go off the end. Are you able to advise
+                  your situation?
+  07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                  we've rejected, we've gone off the end of zero nine, we're
+                  stopped in the gravel. Forty four passengers, three crew, no
+                  injuries reported, no fire. We're going to get everyone off
+                  by the airstair. Request you activate the emergency plan and
+                  get a vehicle to us.
+  07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                  aerodrome emergency plan, vehicle on the way. Confirm no
+                  assistance required for injuries?
+  07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+  07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                  seven is obstructed by a disabled aircraft, the aerodrome is
+                  closed, Tarlton Springs reporting officer.
   07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                   turn up?
   07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -1459,15 +1972,21 @@ naming what is missing, and draft the rest from what IS here.
                   nice and slow, no rush, no evacuation.
   07:34:40  [Sound consistent with the forward airstair operating.]
   ```
-- Why Photometric check, Tarlton Springs runway 09/27 edge lighting, 25/06/2026 matters: The one measurement bearing on the glare hypothesis. Four northern edge lights between the 900 m and 1,200 m markers measured 118% to 131% of nominal for stage 3, in the section the animals crossed. It shows a deviation; it does not show an effect on detection.
+- Why Photometric check, Tarlton Springs runway 09/27 edge lighting, 25/06/2026 matters: The one measurement bearing on the glare hypothesis. Four northern edge lights between the 900 m and 1,200 m markers measured 118% to 131% of nominal for stage 3, in the section the animals crossed. The lighting is pilot-activated and runs at one fixed setting, found at stage 3, with no work on it recorded between the occurrence and the check, so the reading stands for the night. It shows a deviation; it does not show an effect on detection.
 - Attached extract (Runway 09/27 edge lighting photometric check, 25/06/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
   Carried out at the
-  investigator's request. Four runway 09/27 edge lights on the northern side
-  between the 900 m and 1,200 m markers measured between 118% and 131% of the
-  nominal intensity for stage 3. The remainder were within tolerance. The
-  aerodrome operator's own maintenance programme checks lamp serviceability but
-  does not measure intensity.
+  investigator's request. The runway lighting is pilot-activated: keyed from
+  the CTAF, it runs for 30 minutes at the single intensity set at the
+  aerodrome's lighting controller, which was found at stage 3, the highest of
+  the fittings' three stages and the setting recorded at commissioning. Crews
+  cannot vary it. Four runway 09/27 edge lights on the northern side between
+  the 900 m and 1,200 m markers measured between 118% and 131% of the nominal
+  intensity for stage 3. The remainder were within tolerance. The aerodrome's
+  works register and electrical log record no work on the runway lighting or
+  its controller between 18/06/2026 and the check. The aerodrome operator's
+  own maintenance programme checks lamp serviceability but does not measure
+  intensity.
   ```
 - Led to: Take-off rejected 6 kt above V1
 
@@ -1485,12 +2004,13 @@ naming what is missing, and draft the rest from what IS here.
     for it.
     ```
     Investigator note: Tarlton Springs wildlife sighting log, 01/2025 to 06/2026
-- 18/06/2026 07:16:00 [Aircraft] Doors closed, 40 minutes behind schedule - Fifth sector of the crew's duty, added that morning when the rostered crew reported unfit. 44 passengers, 2 flight crew, 1 cabin crew. [Source: Operator departure record and crew duty record]
+- 18/06/2026 07:16:00 [Aircraft] Doors closed, on schedule - Fifth sector of the crew's duty; the evening rotation was added to it that morning when a member of the rostered crew reported unfit. Scheduled off blocks 17:20 local. 44 passengers, 2 flight crew, 1 cabin crew. [Source: Operator departure record and crew duty record]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    SB512 was the last scheduled sector of the day, departing 40 minutes behind
-    schedule. The aerodrome was in darkness; the tower was open and closed at
-    18:00 local as rostered.
+    SB512 was the last scheduled sector of the day, departing on schedule. The
+    aerodrome was in darkness. Tarlton Springs has no control tower; the crew
+    made their own broadcasts on the common traffic advisory frequency (CTAF)
+    and had switched on the pilot-activated runway lighting before taxi.
     
     During the take-off roll on runway 09 the first officer saw two kangaroos
     moving onto the runway from the northern side, past the 1,100 m point. The
@@ -1506,7 +2026,9 @@ naming what is missing, and draft the rest from what IS here.
     The captain shut both engines down, the cabin crew member was instructed to
     hold, and passengers were disembarked by the forward airstair 4 minutes 8
     seconds after the aircraft stopped. No evacuation was commanded and no slides
-    were deployed. Aerodrome staff attended with a vehicle; there was no fire.
+    were deployed. At the captain's request on the CTAF, the aerodrome reporting
+    officer activated the aerodrome emergency plan, and aerodrome staff attended
+    with a vehicle; there was no fire.
     
     ## Immediate actions taken
     
@@ -1533,23 +2055,46 @@ naming what is missing, and draft the rest from what IS here.
     company. Last cyclic simulator 28/04/2026, all items satisfactory. Two prior
     sectors into Tarlton Springs, both in daylight, on 09/01/2026 and 17/02/2026.
     
-    **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors. The occurrence
-    occurred at 17:30 local, 11 hours 00 minutes into a duty planned to finish at
-    18:35 local, giving a 12 hour 05 minute duty. The maximum permitted duty for
-    five sectors with this sign-on is 12 hours 30 minutes. The fifth sector was
-    added on the morning of 18/06/2026 when the rostered crew reported unfit.
-    The schedule was 40 minutes late at Tarlton Springs departure.
+    **Duty record, 18/06/2026.** Sign-on 06:30 local. Five sectors: Port Carrick to
+    Hensby, Hensby to Mardle Creek and Mardle Creek to Port Carrick as rostered, then SB511 Port Carrick to
+    Tarlton Springs and SB512 Tarlton Springs to Port Carrick, the evening rotation,
+    added on the morning of 18/06/2026 when a member of the rostered crew
+    reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a
+    duty planned to finish at 19:30 local (SB512 scheduled on blocks in Port Carrick at
+    19:15), giving a planned duty of 13 hours 00 minutes. The maximum permitted
+    duty for five sectors with this sign-on, under the company's approved fatigue
+    risk management system, is 13 hours 30 minutes. A ground delay in Port Carrick
+    during the third sector was recovered on the Tarlton Springs turnaround:
+    SB512 was scheduled off blocks at 17:20 local, the doors closed at 17:16, and
+    it departed on schedule.
+    
+    **Roster pattern, evening Tarlton Springs rotation, 14/07/2025 to
+    18/06/2026.** Extracted from the rostering system. The rotation operated on
+    289 days in the period. On every one of them it was rostered as the fourth
+    and fifth sectors of a Port Carrick-based duty signing on between 06:00 and 07:00,
+    planned at between 12 hours 45 minutes and 13 hours 15 minutes against the
+    13 hours 30 minute maximum for five sectors from those sign-on times. On six
+    of those days a member of the rostered crew reported unfit and the rotation
+    was reassigned to a crew already on duty, extending that crew's day from
+    three sectors to five; 18/06/2026 was the sixth.
     ```
     Investigator note: Flight crew and duty records, 18/06/2026
-- 18/06/2026 07:29:10 [Tower] Take-off clearance issued for runway 09 - Wind passed as 090 at 6 kt. No runway inspection was offered by the tower or requested by the crew, and no wildlife transmission appears on the tower channel in the preceding 90 minutes. [Source: Tower recorded audio channel 1]
+- 18/06/2026 07:29:10 [Aircraft] Lining-up broadcast on the CTAF for runway 09 - Tarlton Springs has no control tower; the crew broadcast their own intentions. Wind from the AWIS 090 at 6 kt. Runway lighting switched on by the crew through the pilot-activated lighting at 07:21:50. No runway inspection was requested by the crew or offered by the aerodrome, and no wildlife transmission appears on the CTAF in the preceding 90 minutes. [Source: CTAF recording and CVR]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-    07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                    zero nine, cleared for take-off.
-    07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-    07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                    take-off.
+    07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+               second. Frequency response unit: "Tarlton Springs CTAF".]
+    07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+    07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                    Springs.
+    07:28:51  FO    AWIS is still zero nine zero at six.
+    07:29:04  PIC   Line up checks to the line. I'll make the call.
+    07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    lining up runway zero nine for departure to Port Carrick, Tarlton
+                    Springs.
+    07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                    aeroplane, your take-off.
     07:29:24  FO    My aeroplane, my take-off. Line up checks?
     07:29:27  PIC   Line up checks complete. Transponder's on.
     07:29:41  FO    OK. Setting power.
@@ -1579,17 +2124,22 @@ naming what is missing, and draft the rest from what IS here.
     07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                     remain seated. We have stopped on the aerodrome, there is no
                     fire, stand by.
-    07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                    advise your situation?
-    07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                    off the end of zero nine, we're stopped in the gravel. Forty
-                    four passengers, three crew, no injuries reported, no fire.
-                    We're going to get everyone off by the airstair. Request you
-                    activate the emergency plan and get a vehicle to us.
-    07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                    emergency plan, vehicle on the way. Confirm no assistance
-                    required for injuries?
-    07:32:19  PIC   Negative at this stage, we'll advise.
+    07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                    officer, we saw you go off the end. Are you able to advise
+                    your situation?
+    07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                    we've rejected, we've gone off the end of zero nine, we're
+                    stopped in the gravel. Forty four passengers, three crew, no
+                    injuries reported, no fire. We're going to get everyone off
+                    by the airstair. Request you activate the emergency plan and
+                    get a vehicle to us.
+    07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                    aerodrome emergency plan, vehicle on the way. Confirm no
+                    assistance required for injuries?
+    07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+    07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                    seven is obstructed by a disabled aircraft, the aerodrome is
+                    closed, Tarlton Springs reporting officer.
     07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                     turn up?
     07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -1603,7 +2153,7 @@ naming what is missing, and draft the rest from what IS here.
                     nice and slow, no rush, no evacuation.
     07:34:40  [Sound consistent with the forward airstair operating.]
     ```
-    Investigator note: Tower audio and CVR transcript, 07:29 to 07:34 UTC
+    Investigator note: CTAF recording and CVR transcript, 07:21 to 07:34 UTC
 - 18/06/2026 07:30:02 to 07:30:29 (27 s) [Aircraft] Take-off roll commenced - Power set, both engines at 98.4% and 98.5% torque. First officer pilot flying. [Source: FDR]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
@@ -1702,12 +2252,19 @@ naming what is missing, and draft the rest from what IS here.
     Investigator note: FDR and QAR readout, VH-SBQ, sector SB512
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-    07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                    zero nine, cleared for take-off.
-    07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-    07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                    take-off.
+    07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+               second. Frequency response unit: "Tarlton Springs CTAF".]
+    07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+    07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                    Springs.
+    07:28:51  FO    AWIS is still zero nine zero at six.
+    07:29:04  PIC   Line up checks to the line. I'll make the call.
+    07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    lining up runway zero nine for departure to Port Carrick, Tarlton
+                    Springs.
+    07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                    aeroplane, your take-off.
     07:29:24  FO    My aeroplane, my take-off. Line up checks?
     07:29:27  PIC   Line up checks complete. Transponder's on.
     07:29:41  FO    OK. Setting power.
@@ -1737,17 +2294,22 @@ naming what is missing, and draft the rest from what IS here.
     07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                     remain seated. We have stopped on the aerodrome, there is no
                     fire, stand by.
-    07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                    advise your situation?
-    07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                    off the end of zero nine, we're stopped in the gravel. Forty
-                    four passengers, three crew, no injuries reported, no fire.
-                    We're going to get everyone off by the airstair. Request you
-                    activate the emergency plan and get a vehicle to us.
-    07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                    emergency plan, vehicle on the way. Confirm no assistance
-                    required for injuries?
-    07:32:19  PIC   Negative at this stage, we'll advise.
+    07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                    officer, we saw you go off the end. Are you able to advise
+                    your situation?
+    07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                    we've rejected, we've gone off the end of zero nine, we're
+                    stopped in the gravel. Forty four passengers, three crew, no
+                    injuries reported, no fire. We're going to get everyone off
+                    by the airstair. Request you activate the emergency plan and
+                    get a vehicle to us.
+    07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                    aerodrome emergency plan, vehicle on the way. Confirm no
+                    assistance required for injuries?
+    07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+    07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                    seven is obstructed by a disabled aircraft, the aerodrome is
+                    closed, Tarlton Springs reporting officer.
     07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                     turn up?
     07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -1761,16 +2323,23 @@ naming what is missing, and draft the rest from what IS here.
                     nice and slow, no rush, no evacuation.
     07:34:40  [Sound consistent with the forward airstair operating.]
     ```
-    Investigator note: Tower audio and CVR transcript, 07:29 to 07:34 UTC
+    Investigator note: CTAF recording and CVR transcript, 07:21 to 07:34 UTC
 - 18/06/2026 07:30:31 [Aircraft] First officer sights two kangaroos on the runway - Called as 'Roos - roos, roos, on the left'. The animals were crossing from the northern side of the runway to the south. Estimated range at first sight around 200 m. [Source: CVR]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-    07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                    zero nine, cleared for take-off.
-    07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-    07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                    take-off.
+    07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+               second. Frequency response unit: "Tarlton Springs CTAF".]
+    07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+    07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                    Springs.
+    07:28:51  FO    AWIS is still zero nine zero at six.
+    07:29:04  PIC   Line up checks to the line. I'll make the call.
+    07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    lining up runway zero nine for departure to Port Carrick, Tarlton
+                    Springs.
+    07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                    aeroplane, your take-off.
     07:29:24  FO    My aeroplane, my take-off. Line up checks?
     07:29:27  PIC   Line up checks complete. Transponder's on.
     07:29:41  FO    OK. Setting power.
@@ -1800,17 +2369,22 @@ naming what is missing, and draft the rest from what IS here.
     07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                     remain seated. We have stopped on the aerodrome, there is no
                     fire, stand by.
-    07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                    advise your situation?
-    07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                    off the end of zero nine, we're stopped in the gravel. Forty
-                    four passengers, three crew, no injuries reported, no fire.
-                    We're going to get everyone off by the airstair. Request you
-                    activate the emergency plan and get a vehicle to us.
-    07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                    emergency plan, vehicle on the way. Confirm no assistance
-                    required for injuries?
-    07:32:19  PIC   Negative at this stage, we'll advise.
+    07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                    officer, we saw you go off the end. Are you able to advise
+                    your situation?
+    07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                    we've rejected, we've gone off the end of zero nine, we're
+                    stopped in the gravel. Forty four passengers, three crew, no
+                    injuries reported, no fire. We're going to get everyone off
+                    by the airstair. Request you activate the emergency plan and
+                    get a vehicle to us.
+    07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                    aerodrome emergency plan, vehicle on the way. Confirm no
+                    assistance required for injuries?
+    07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+    07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                    seven is obstructed by a disabled aircraft, the aerodrome is
+                    closed, Tarlton Springs reporting officer.
     07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                     turn up?
     07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -1824,7 +2398,7 @@ naming what is missing, and draft the rest from what IS here.
                     nice and slow, no rush, no evacuation.
     07:34:40  [Sound consistent with the forward airstair operating.]
     ```
-    Investigator note: Tower audio and CVR transcript, 07:29 to 07:34 UTC
+    Investigator note: CTAF recording and CVR transcript, 07:21 to 07:34 UTC
 - 18/06/2026 07:30:32 [Aircraft] Take-off rejected at 118 kt - 'Stopping. I have control.' Power levers to flight idle within 0.6 seconds, 6 kt and 3 seconds past V1, with 695 m of sealed runway remaining. [Source: FDR and CVR]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
@@ -1875,12 +2449,19 @@ naming what is missing, and draft the rest from what IS here.
     Investigator note: FDR and QAR readout, VH-SBQ, sector SB512
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-    07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                    zero nine, cleared for take-off.
-    07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-    07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                    take-off.
+    07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+               second. Frequency response unit: "Tarlton Springs CTAF".]
+    07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+    07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                    Springs.
+    07:28:51  FO    AWIS is still zero nine zero at six.
+    07:29:04  PIC   Line up checks to the line. I'll make the call.
+    07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    lining up runway zero nine for departure to Port Carrick, Tarlton
+                    Springs.
+    07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                    aeroplane, your take-off.
     07:29:24  FO    My aeroplane, my take-off. Line up checks?
     07:29:27  PIC   Line up checks complete. Transponder's on.
     07:29:41  FO    OK. Setting power.
@@ -1910,17 +2491,22 @@ naming what is missing, and draft the rest from what IS here.
     07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                     remain seated. We have stopped on the aerodrome, there is no
                     fire, stand by.
-    07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                    advise your situation?
-    07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                    off the end of zero nine, we're stopped in the gravel. Forty
-                    four passengers, three crew, no injuries reported, no fire.
-                    We're going to get everyone off by the airstair. Request you
-                    activate the emergency plan and get a vehicle to us.
-    07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                    emergency plan, vehicle on the way. Confirm no assistance
-                    required for injuries?
-    07:32:19  PIC   Negative at this stage, we'll advise.
+    07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                    officer, we saw you go off the end. Are you able to advise
+                    your situation?
+    07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                    we've rejected, we've gone off the end of zero nine, we're
+                    stopped in the gravel. Forty four passengers, three crew, no
+                    injuries reported, no fire. We're going to get everyone off
+                    by the airstair. Request you activate the emergency plan and
+                    get a vehicle to us.
+    07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                    aerodrome emergency plan, vehicle on the way. Confirm no
+                    assistance required for injuries?
+    07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+    07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                    seven is obstructed by a disabled aircraft, the aerodrome is
+                    closed, Tarlton Springs reporting officer.
     07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                     turn up?
     07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -1934,7 +2520,7 @@ naming what is missing, and draft the rest from what IS here.
                     nice and slow, no rush, no evacuation.
     07:34:40  [Sound consistent with the forward airstair operating.]
     ```
-    Investigator note: Tower audio and CVR transcript, 07:29 to 07:34 UTC
+    Investigator note: CTAF recording and CVR transcript, 07:21 to 07:34 UTC
 - 18/06/2026 07:30:33 [Aircraft] Aircraft strikes both animals - Lateral acceleration spike 0.31 g right, vertical 1.48 g. Three No. 2 propeller blades damaged beyond limits; No. 2 reverse unavailable for the remainder of the stop. [Source: FDR and post-occurrence inspection]
   - Supporting extract (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
     ```
@@ -2103,9 +2689,10 @@ naming what is missing, and draft the rest from what IS here.
 - 18/06/2026 07:30:57 [Aircraft] Aircraft comes to rest 62 m into the RESA - Upright, on the extended centreline, nose wheel in graded gravel, 28 m short of the end of the prepared safety area. No fire. [Source: FDR and runway survey]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    SB512 was the last scheduled sector of the day, departing 40 minutes behind
-    schedule. The aerodrome was in darkness; the tower was open and closed at
-    18:00 local as rostered.
+    SB512 was the last scheduled sector of the day, departing on schedule. The
+    aerodrome was in darkness. Tarlton Springs has no control tower; the crew
+    made their own broadcasts on the common traffic advisory frequency (CTAF)
+    and had switched on the pilot-activated runway lighting before taxi.
     
     During the take-off roll on runway 09 the first officer saw two kangaroos
     moving onto the runway from the northern side, past the 1,100 m point. The
@@ -2121,7 +2708,9 @@ naming what is missing, and draft the rest from what IS here.
     The captain shut both engines down, the cabin crew member was instructed to
     hold, and passengers were disembarked by the forward airstair 4 minutes 8
     seconds after the aircraft stopped. No evacuation was commanded and no slides
-    were deployed. Aerodrome staff attended with a vehicle; there was no fire.
+    were deployed. At the captain's request on the CTAF, the aerodrome reporting
+    officer activated the aerodrome emergency plan, and aerodrome staff attended
+    with a vehicle; there was no fire.
     
     ## Immediate actions taken
     
@@ -2204,15 +2793,22 @@ naming what is missing, and draft the rest from what IS here.
       end, on the extended centreline.
     ```
     Investigator note: Post-occurrence aircraft inspection and runway survey
-- 18/06/2026 07:32:10 [Tower] Aerodrome emergency plan activated - Activated by the tower at the pilot in command's request. Vehicle dispatched. No injuries reported at that stage and no assistance requested. [Source: Tower recorded audio and tower occurrence log]
+- 18/06/2026 07:32:10 [Aerodrome reporting officer] Aerodrome emergency plan activated - Activated by the aerodrome reporting officer at the pilot in command's request on the CTAF. Vehicle dispatched and the runway broadcast as obstructed, aerodrome closed. No injuries reported at that stage and no assistance requested. [Source: CTAF recording and aerodrome occurrence log]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-    07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                    zero nine, cleared for take-off.
-    07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-    07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                    take-off.
+    07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+               second. Frequency response unit: "Tarlton Springs CTAF".]
+    07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+    07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                    Springs.
+    07:28:51  FO    AWIS is still zero nine zero at six.
+    07:29:04  PIC   Line up checks to the line. I'll make the call.
+    07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    lining up runway zero nine for departure to Port Carrick, Tarlton
+                    Springs.
+    07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                    aeroplane, your take-off.
     07:29:24  FO    My aeroplane, my take-off. Line up checks?
     07:29:27  PIC   Line up checks complete. Transponder's on.
     07:29:41  FO    OK. Setting power.
@@ -2242,17 +2838,22 @@ naming what is missing, and draft the rest from what IS here.
     07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                     remain seated. We have stopped on the aerodrome, there is no
                     fire, stand by.
-    07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                    advise your situation?
-    07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                    off the end of zero nine, we're stopped in the gravel. Forty
-                    four passengers, three crew, no injuries reported, no fire.
-                    We're going to get everyone off by the airstair. Request you
-                    activate the emergency plan and get a vehicle to us.
-    07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                    emergency plan, vehicle on the way. Confirm no assistance
-                    required for injuries?
-    07:32:19  PIC   Negative at this stage, we'll advise.
+    07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                    officer, we saw you go off the end. Are you able to advise
+                    your situation?
+    07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                    we've rejected, we've gone off the end of zero nine, we're
+                    stopped in the gravel. Forty four passengers, three crew, no
+                    injuries reported, no fire. We're going to get everyone off
+                    by the airstair. Request you activate the emergency plan and
+                    get a vehicle to us.
+    07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                    aerodrome emergency plan, vehicle on the way. Confirm no
+                    assistance required for injuries?
+    07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+    07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                    seven is obstructed by a disabled aircraft, the aerodrome is
+                    closed, Tarlton Springs reporting officer.
     07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                     turn up?
     07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -2266,13 +2867,14 @@ naming what is missing, and draft the rest from what IS here.
                     nice and slow, no rush, no evacuation.
     07:34:40  [Sound consistent with the forward airstair operating.]
     ```
-    Investigator note: Tower audio and CVR transcript, 07:29 to 07:34 UTC
+    Investigator note: CTAF recording and CVR transcript, 07:21 to 07:34 UTC
 - 18/06/2026 07:34:40 to 07:38:48 (4 m 08 s) [Aircraft] Precautionary disembarkation by the forward airstair - No evacuation commanded and no slides deployed. Main cabin lights on throughout. Passengers clear 4 minutes 8 seconds after the aircraft stopped. [Source: CVR, cabin crew statement and operator report]
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    SB512 was the last scheduled sector of the day, departing 40 minutes behind
-    schedule. The aerodrome was in darkness; the tower was open and closed at
-    18:00 local as rostered.
+    SB512 was the last scheduled sector of the day, departing on schedule. The
+    aerodrome was in darkness. Tarlton Springs has no control tower; the crew
+    made their own broadcasts on the common traffic advisory frequency (CTAF)
+    and had switched on the pilot-activated runway lighting before taxi.
     
     During the take-off roll on runway 09 the first officer saw two kangaroos
     moving onto the runway from the northern side, past the 1,100 m point. The
@@ -2288,7 +2890,9 @@ naming what is missing, and draft the rest from what IS here.
     The captain shut both engines down, the cabin crew member was instructed to
     hold, and passengers were disembarked by the forward airstair 4 minutes 8
     seconds after the aircraft stopped. No evacuation was commanded and no slides
-    were deployed. Aerodrome staff attended with a vehicle; there was no fire.
+    were deployed. At the captain's request on the CTAF, the aerodrome reporting
+    officer activated the aerodrome emergency plan, and aerodrome staff attended
+    with a vehicle; there was no fire.
     
     ## Immediate actions taken
     
@@ -2305,12 +2909,19 @@ naming what is missing, and draft the rest from what IS here.
     Investigator note: Occurrence notification SBA-OCC-2026-0417
   - Supporting extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
     ```
-    07:29:04  PIC   Saltbush five one two, ready runway zero nine.
-    07:29:10  TWR   Saltbush five one two, wind zero nine zero at six, runway
-                    zero nine, cleared for take-off.
-    07:29:14  PIC   Cleared for take-off runway zero nine, Saltbush five one two.
-    07:29:22  PIC   Right, clearance is in, lights are on. Your aeroplane, your
-                    take-off.
+    07:21:50  [CTAF: three transmitter keyings from SB512, each about one
+               second. Frequency response unit: "Tarlton Springs CTAF".]
+    07:21:56  PIC   Lights are on. That's thirty minutes on the timer.
+    07:23:15  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    taxiing for runway zero nine, departing for Port Carrick, Tarlton
+                    Springs.
+    07:28:51  FO    AWIS is still zero nine zero at six.
+    07:29:04  PIC   Line up checks to the line. I'll make the call.
+    07:29:10  PIC   [CTAF] Tarlton Springs traffic, Saltbush five one two,
+                    lining up runway zero nine for departure to Port Carrick, Tarlton
+                    Springs.
+    07:29:22  PIC   Right, call's made, lights are on, nobody else about. Your
+                    aeroplane, your take-off.
     07:29:24  FO    My aeroplane, my take-off. Line up checks?
     07:29:27  PIC   Line up checks complete. Transponder's on.
     07:29:41  FO    OK. Setting power.
@@ -2340,17 +2951,22 @@ naming what is missing, and draft the rest from what IS here.
     07:31:34  PIC   Cabin, flight deck, this is the captain, remain seated,
                     remain seated. We have stopped on the aerodrome, there is no
                     fire, stand by.
-    07:31:48  TWR   Saltbush five one two, Tarlton Springs, are you able to
-                    advise your situation?
-    07:31:54  PIC   Tarlton, Saltbush five one two, we've rejected, we've gone
-                    off the end of zero nine, we're stopped in the gravel. Forty
-                    four passengers, three crew, no injuries reported, no fire.
-                    We're going to get everyone off by the airstair. Request you
-                    activate the emergency plan and get a vehicle to us.
-    07:32:10  TWR   Saltbush five one two, copied, activating the aerodrome
-                    emergency plan, vehicle on the way. Confirm no assistance
-                    required for injuries?
-    07:32:19  PIC   Negative at this stage, we'll advise.
+    07:31:48  ARO   [CTAF] Saltbush five one two, Tarlton Springs reporting
+                    officer, we saw you go off the end. Are you able to advise
+                    your situation?
+    07:31:54  PIC   [CTAF] Tarlton reporting officer, Saltbush five one two,
+                    we've rejected, we've gone off the end of zero nine, we're
+                    stopped in the gravel. Forty four passengers, three crew, no
+                    injuries reported, no fire. We're going to get everyone off
+                    by the airstair. Request you activate the emergency plan and
+                    get a vehicle to us.
+    07:32:10  ARO   [CTAF] Saltbush five one two, copied, activating the
+                    aerodrome emergency plan, vehicle on the way. Confirm no
+                    assistance required for injuries?
+    07:32:19  PIC   [CTAF] Negative at this stage, we'll advise.
+    07:32:24  ARO   [CTAF] All stations Tarlton Springs, runway zero nine two
+                    seven is obstructed by a disabled aircraft, the aerodrome is
+                    closed, Tarlton Springs reporting officer.
     07:32:31  PIC   [To first officer] Did you see them coming, or did they just
                     turn up?
     07:32:35  FO    They came out of the dark on the left of the strip, crossed
@@ -2364,7 +2980,7 @@ naming what is missing, and draft the rest from what IS here.
                     nice and slow, no rush, no evacuation.
     07:34:40  [Sound consistent with the forward airstair operating.]
     ```
-    Investigator note: Tower audio and CVR transcript, 07:29 to 07:34 UTC
+    Investigator note: CTAF recording and CVR transcript, 07:21 to 07:34 UTC
 
 ## Interviews
 
@@ -2372,7 +2988,7 @@ naming what is missing, and draft the rest from what IS here.
 
 Attendees: Lead: Lead investigator, Fleet Safety; Assisting: Second investigator; Interviewee: Pilot in command; Support person: Nominated support person (present, did not participate)
 
-Background: Role at the time of the occurrence: Captain, twin-turboprop fleet, pilot in command on the day; Time in the role: 3 years 1 month in command; Time with the organisation: 15 years 3 months (joined March 2011); Where normally based: Sydney; Experience on this type or equipment: 2,140 hours on type; Other ratings or qualifications held: One previous turboprop type, no jet ratings; Total experience in the industry: 8,410 hours total; Most recent training or check: Recurrent simulator check, February 2026; Duty and rest in the days before the occurrence: Fifth sector of a duty that began 05:10 local after a swap for a crew who reported unfit; two rest days before
+Background: Role at the time of the occurrence: Captain, twin-turboprop fleet, pilot in command on the day; Time in the role: 3 years 1 month in command; Time with the organisation: 15 years 3 months (joined March 2011); Where normally based: Port Carrick; Experience on this type or equipment: 2,140 hours on type; Other ratings or qualifications held: One previous turboprop type, no jet ratings; Total experience in the industry: 8,410 hours total; Most recent training or check: Recurrent simulator check, February 2026; Duty and rest in the days before the occurrence: Fifth sector of a duty that began 06:30 local, extended that morning from three sectors to five after a swap for a crew who reported unfit; two rest days before
 
 The investigator has NOT finalised this record yet. Treat it as a working draft - the transcript may still be part-corrected and the notes unfinished - and do not quote from it as though it were settled.
 
@@ -2384,7 +3000,7 @@ Pilot in command: Yeah, no problem.
 
 Lead investigator: Good. So what I'd like first is just for you to take me through the day in your own words. Start wherever you want to start and don't worry about what I might be after. I'll hold my questions to the end.
 
-Pilot in command: Sure. So it was a four-sector day that turned into five, because we picked up the Tarlton evening run when the other crew went sick. Sign on was oh six thirty local. Sydney, Dubbo, Sydney, then out to Tarlton and back. The Tarlton one is the long one. We were running late from about the second sector on. There was a ground delay in Sydney in the middle of the day and we never got it back. By the time we got into Tarlton we were about thirty five down. Turnaround's thirty minutes there, so. Nothing unusual on the ground. Fuelled, forty four on, bags on, we were pushing for the doors and we closed up about forty behind. It was dark. It's dark out there early in June. There's nothing around that aerodrome, no town lights, nothing. The FO was flying the sector. Normal brief, normal figures, flap ten, dry runway zero nine. We had a good headwind, five or six knots. Nothing about the performance was tight in my head at the time. Taxi, line up, cleared for take-off, she set power. Everything normal, both engines good, eighty knots. I called V one. And then - Then she just yelled. Roos, roos. And I looked up and there were two of them, big ones, already on the seal, coming across left to right. And I stopped. I said stopping, I have control, and I stopped. We hit at least one of them almost straight away. You felt it through the airframe, it was a proper thump, and something let go on the right. Max brakes. I went for reverse and number two wasn't there. Number one came in, number two was just dead. And I remember thinking, about halfway through, we're not stopping on this. I could see the end lights coming and I knew. We went off the end doing maybe twenty knots. It's gravel out there, it's graded, we just dug in and stopped. Nothing on the board, no fire, so I didn't evacuate. Shut the engines down, told the cabin to sit tight, talked to the tower. We got them off by the airstair a few minutes later. Nobody was hurt. That's it, really.
+Pilot in command: Sure. So it was a three-sector day that turned into five, because we picked up the Tarlton evening run when the other crew went sick. Sign on was oh six thirty local. Port Carrick, Hensby, Mardle Creek, back to Port Carrick, then out to Tarlton and back. The Tarlton one is the long one. We were running late from about the second sector on. There was a ground delay in Port Carrick in the middle of the day, but there's slack in the Tarlton turn and we got it back. By the time we got into Tarlton we were on time, near enough. Turnaround's thirty minutes there, so. Nothing unusual on the ground. Fuelled, forty four on, bags on, and we closed up right on time. It was dark. It's dark out there early in June. There's nothing around that aerodrome, no town lights, nothing. The FO was flying the sector. Normal brief, normal figures, flap ten, dry runway zero nine. We had a good headwind, five or six knots. Nothing about the performance was tight in my head at the time. Lights on, taxi, made our calls on the CTAF, lined up, she set power. Everything normal, both engines good, eighty knots. I called V one. And then - Then she just yelled. Roos, roos. And I looked up and there were two of them, big ones, already on the seal, coming across left to right. And I stopped. I said stopping, I have control, and I stopped. We hit at least one of them almost straight away. You felt it through the airframe, it was a proper thump, and something let go on the right. Max brakes. I went for reverse and number two wasn't there. Number one came in, number two was just dead. And I remember thinking, about halfway through, we're not stopping on this. I could see the end lights coming and I knew. We went off the end doing maybe twenty knots. It's gravel out there, it's graded, we just dug in and stopped. Nothing on the board, no fire, so I didn't evacuate. Shut the engines down, told the cabin to sit tight, got the reporting officer on the CTAF. We got them off by the airstair a few minutes later. Nobody was hurt. That's it, really.
 
 Lead investigator: That's good, thank you. Can I take you back to the turnaround at Tarlton.
 
@@ -2424,7 +3040,7 @@ Pilot in command: No. It's always an engine. Engine fire, engine failure, config
 
 Second investigator: The runway lighting that evening. How was it for you? Did it help or hinder?
 
-Pilot in command: It was bright. Honestly it was brighter than I'd want. You've got this corridor of lights and everything outside it is black, so anything off the seal you don't see coming. I couldn't tell you if that's why I never picked them up. I was heads-in on the engine page after V one, which is where I'm meant to be.
+Pilot in command: It was bright. Honestly it was brighter than I'd want, and it's pilot-activated out there, so there's nobody to ask to turn it down. You've got this corridor of lights and everything outside it is black, so anything off the seal you don't see coming. I couldn't tell you if that's why I never picked them up. I was heads-in on the engine page after V one, which is where I'm meant to be.
 
 Lead investigator: How were you feeling by that point in the day? Honestly.
 
@@ -2461,7 +3077,7 @@ Action for me: pull the Safety Department's 03/03/2025 review of Appendix 8A and
 
 Attendees: Lead: Lead investigator, Fleet Safety; Assisting: Second investigator; Interviewee: First officer; Support person: Nominated support person (present, did not participate)
 
-Background: Role at the time of the occurrence: First officer, twin-turboprop fleet; Time in the role: 14 months; Time with the organisation: 17 months (joined April 2025); Where normally based: Sydney; Experience on this type or equipment: 405 hours on type; Other ratings or qualifications held: None; Total experience in the industry: 1,655 hours total; Most recent training or check: Line check, May 2026; Duty and rest in the days before the occurrence: Same duty as the captain; one rest day before
+Background: Role at the time of the occurrence: First officer, twin-turboprop fleet; Time in the role: 14 months; Time with the organisation: 17 months (joined April 2025); Where normally based: Port Carrick; Experience on this type or equipment: 405 hours on type; Other ratings or qualifications held: None; Total experience in the industry: 1,655 hours total; Most recent training or check: Line check, May 2026; Duty and rest in the days before the occurrence: Same duty as the captain; one rest day before
 
 The investigator has NOT finalised this record yet. Treat it as a working draft - the transcript may still be part-corrected and the notes unfinished - and do not quote from it as though it were settled.
 
@@ -2473,7 +3089,7 @@ First officer: Yes, that's fine.
 
 Lead investigator: Same as we discussed. Tell me about the eighteenth in your own words, from wherever you'd like to start, and I'll save my questions.
 
-First officer: OK. It was a long day but it was a normal day, right up until it wasn't. Five sectors, we picked up the last one. I'd only been into Tarlton twice before and both of those were daylight. So that was my first one out there in the dark. I was flying the sector out and the captain was flying the one home. The brief was normal. We talked about the runway length because it's not long, and the figures, and the headwind, and that was it. Nothing about animals. I didn't think of it and he didn't raise it. I'd have followed his lead if he had. Power set, all normal. Eighty knots. And then somewhere just after V one I had two roos in the landing lights. They came in from the left. They were on the seal by the time I registered what I was looking at. I called them. I think I just said roos, roos. I don't remember what I said exactly. And he said stopping, I have control, and I gave him control, and then we hit one. It was loud. It was really loud, and there was a bang on the right that was different to the first one, and vibration. I was calling speeds. Sixty, fifty. And I could see the runway end lights and I remember saying end's coming up. We went off. It wasn't violent. It was like driving onto a dirt shoulder, just noisy. Then it was quiet and he did the shutdown and we got everyone off. That's what I've got.
+First officer: OK. It was a long day but it was a normal day, right up until it wasn't. Five sectors, we picked up the last two. I'd only been into Tarlton twice before and both of those were daylight. So that was my first one out there in the dark. The captain flew us out there and I was flying the sector home. The brief was normal. We talked about the runway length because it's not long, and the figures, and the headwind, and that was it. Nothing about animals. I didn't think of it and he didn't raise it. I'd have followed his lead if he had. Power set, all normal. Eighty knots. And then somewhere just after V one I had two roos in the landing lights. They came in from the left. They were on the seal by the time I registered what I was looking at. I called them. I think I just said roos, roos. I don't remember what I said exactly. And he said stopping, I have control, and I gave him control, and then we hit one. It was loud. It was really loud, and there was a bang on the right that was different to the first one, and vibration. I was calling speeds. Sixty, fifty. And I could see the runway end lights and I remember saying end's coming up. We went off. It wasn't violent. It was like driving onto a dirt shoulder, just noisy. Then it was quiet and he did the shutdown and we got everyone off. That's what I've got.
 
 Lead investigator: Thank you. Can I go back to the moment you saw them. How far out were they?
 
@@ -2509,7 +3125,7 @@ First officer: No, and that's the bit that's stayed with me. It turns out everyb
 
 Lead investigator: Nowhere meaning - can you be specific about what you looked at before the flight?
 
-First officer: The plan, the charts, the ERSA entry, the company aerodrome brief page for Tarlton. None of them say anything about animals. The company page has got a note about the runway width and the turning bay. That's it.
+First officer: The plan, the charts, the aerodrome directory entry, the company aerodrome brief page for Tarlton. None of them say anything about animals. The company page has got a note about the runway width and the turning bay. That's it.
 
 Second investigator: I want to ask about after you stopped. Talk me through the disembarkation, anything you noticed.
 
@@ -2521,7 +3137,7 @@ First officer: Yes, he'd armed them, and the ceiling ones were on. It was just t
 
 Lead investigator: How were you feeling at that point in the duty? It was sector five and you'd been on eleven hours.
 
-First officer: Tired, but that's a normal five-sector day for me. I wasn't fighting it. I'd had a proper break in Sydney in the middle.
+First officer: Tired, but that's a normal five-sector day for me. I wasn't fighting it. I'd had a proper break in Port Carrick in the middle.
 
 Lead investigator: Anything you'd want an investigation like this to look at?
 
@@ -2542,9 +3158,9 @@ Her closing question was the right one and I have adopted it as a line of enquir
 Additional questions:
 Asked how far out the animals were and how clearly she could see them. Answer at 00:01:52 to 00:02:22 of the transcript.
 Asked whether the runway lighting struck her as bright. Answer: no, normal, with her own qualification that she is not well placed to judge.
-Asked what she had looked at before the flight that might have mentioned wildlife. Answer: plan, charts, ERSA entry, company aerodrome brief page. None of them mention animals.
+Asked what she had looked at before the flight that might have mentioned wildlife. Answer: plan, charts, aerodrome directory entry, company aerodrome brief page. None of them mention animals.
 Asked about anything noticed during the disembarkation. Answer: unlit sections of the floor proximity strip aft, with the emergency lighting armed and the ceiling lights on.
-Asked about her duty state. Answer: tired, a normal five-sector day, proper break in Sydney mid-duty.
+Asked about her duty state. Answer: tired, a normal five-sector day, proper break in Port Carrick mid-duty.
 
 Interviewee recommendations:
 Her question: whether anyone at the company knew about the kangaroos at Tarlton Springs, and if the ground staff knew, where the information stopped.
@@ -2558,9 +3174,10 @@ First-person accounts written by the people involved, usually close to the event
 Submitted by: Pilot in command, SB512 | Submitted: 19/06/2026 02:40 UTC | Reference: ASR-2026-1184
 PROTECTED: submitted under a confidential or just-culture reporting scheme. Use it to understand what happened and attribute it by role where the report style calls for attribution, but do NOT quote it verbatim and do not reproduce identifying detail from it.
 
-SB512 Tarlton Springs to Sydney, 18 June. Fifth sector of the day, picked up
-off another crew, doors closed about forty minutes behind schedule. Aerodrome
-was in darkness, tower open, runway 09 dry, easterly around six knots. Flap
+SB512 Tarlton Springs to Port Carrick, 18 June. Fifth sector of the day, picked up
+off another crew, doors closed on schedule. Aerodrome
+was in darkness, no other traffic on the CTAF, runway 09 dry, easterly around
+six knots. Flap
 ten, V1 112, FO was pilot flying.
 
 The roll was completely normal. Both engines set, eighty knot check normal, I
@@ -2580,8 +3197,8 @@ area beyond the end.
 
 There were no fire indications and no abnormal indications on the panel, so I
 did not order an evacuation. I set the parking brake, shut both engines down,
-told the cabin to remain seated, and advised the tower and requested they
-activate the aerodrome emergency plan. We disembarked normally by the forward
+told the cabin to remain seated, and called the aerodrome reporting officer on
+the CTAF and asked for the aerodrome emergency plan to be activated. We disembarked normally by the forward
 airstair onto the ground a few minutes later. The passengers were calm. No
 injuries were reported to me at the time. I understand one of the cabin crew
 has since reported bruising.
@@ -2609,9 +3226,10 @@ to do with me.
 
 - Attached extract (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
-  SB512 was the last scheduled sector of the day, departing 40 minutes behind
-  schedule. The aerodrome was in darkness; the tower was open and closed at
-  18:00 local as rostered.
+  SB512 was the last scheduled sector of the day, departing on schedule. The
+  aerodrome was in darkness. Tarlton Springs has no control tower; the crew
+  made their own broadcasts on the common traffic advisory frequency (CTAF)
+  and had switched on the pilot-activated runway lighting before taxi.
   
   During the take-off roll on runway 09 the first officer saw two kangaroos
   moving onto the runway from the northern side, past the 1,100 m point. The
@@ -2627,7 +3245,9 @@ to do with me.
   The captain shut both engines down, the cabin crew member was instructed to
   hold, and passengers were disembarked by the forward airstair 4 minutes 8
   seconds after the aircraft stopped. No evacuation was commanded and no slides
-  were deployed. Aerodrome staff attended with a vehicle; there was no fire.
+  were deployed. At the captain's request on the CTAF, the aerodrome reporting
+  officer activated the aerodrome emergency plan, and aerodrome staff attended
+  with a vehicle; there was no fire.
   
   ## Immediate actions taken
   
