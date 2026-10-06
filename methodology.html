@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synoptic | Methodology</title>
+<meta name="description" content="How IWS moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a stated standard of proof and a fixed probability scale.">
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-tag { font-size: 0.68rem; font-weight: 500; color: var(--ink-faint); letter-spacing: 0.01em; }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+
+  [id] { scroll-margin-top: 76px; }
+
+  .page-head { padding-block: 44px 34px; display: flex; flex-direction: column; gap: 14px; max-width: 78ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+  .page-head .lede strong { color: var(--ink); font-weight: 600; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 68ch; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .two { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+
+  /* Diagrams hold no fixed colours: every fill, stroke and label reads one
+     of these tokens, and each token reads the theme's own. */
+  .loopfig, .chainfig {
+    --lp: var(--paper);
+    --ll: var(--line-strong);
+    --li: var(--ink);
+    --ls: var(--ink-soft);
+    --lf: var(--ink-faint);
+    --la: var(--accent);
+    --las: var(--accent-soft);
+    --lg: var(--proof);
+    --lgs: var(--proof-soft);
+  }
+  .loopfig svg, .chainfig svg { width: 100%; height: auto; display: block; }
+  /* The loop takes more than the text column: the arrows carry wording. */
+  .loopfig { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); margin-top: 26px; }
+  .loopfig figcaption { max-width: 86ch; margin-inline: auto; text-align: center; }
+  .chainfig { margin-top: 8px; }
+  .chain-notes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+  .chain-notes div { font-size: 0.9rem; color: var(--ink-soft); }
+  .chain-notes h3 { font-size: 0.95rem; color: var(--ink); margin-bottom: 3px; }
+
+  /* The map */
+  .lanes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.94rem; color: var(--ink-soft); }
+  .lanes li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: start; }
+  .lanes .tint { width: 14px; height: 14px; border-radius: 4px; margin-top: 4px; border: 1px solid var(--line-strong); }
+  .lanes strong { color: var(--ink); font-weight: 600; }
+  .shotrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+
+  /* The tests */
+  .tests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .test { display: flex; flex-direction: column; gap: 8px; }
+  .test .q { font-size: 1.05rem; font-weight: 650; color: var(--ink); }
+  .test p { color: var(--ink-soft); font-size: 0.95rem; }
+  .test .verdict { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
+  .derive { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.97rem; color: var(--ink-soft); }
+  .derive li { padding-left: 14px; border-left: 3px solid var(--line-strong); }
+  .derive li strong { color: var(--ink); font-weight: 600; }
+  .derive li.cf { border-left-color: #2f5ea8; }
+  .derive li.orf { border-left-color: #c2782a; }
+  .derive li.ex { border-left-color: var(--ink-faint); border-left-style: dashed; }
+  .derive li.open { border-left-color: var(--warn); }
+
+  /* The probability scale */
+  .scale { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 26px; align-items: start; margin-top: 24px; }
+  table.bands { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+  table.bands caption { text-align: left; font-weight: 650; color: var(--ink); padding-bottom: 8px; font-size: 1rem; }
+  table.bands th { text-align: left; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; padding: 0 0 6px; border-bottom: 1px solid var(--line-strong); }
+  table.bands td { padding: 6px 0; border-bottom: 1px solid var(--line); }
+  table.bands td:last-child { text-align: right; font-family: var(--font-mono); color: var(--ink-soft); white-space: nowrap; }
+  .wording h3 { font-size: 1rem; }
+  .wording dl { display: grid; grid-template-columns: max-content 1fr; gap: 7px 16px; margin: 12px 0 0; font-size: 0.92rem; }
+  .wording dt { color: var(--ink); font-weight: 600; }
+  .wording dd { margin: 0; color: var(--ink-soft); }
+
+  /* The tables */
+  .pack { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr); gap: 28px; align-items: center; }
+  .pack img { max-width: 300px; }
+  .pack ul.plain { margin-top: 12px; }
+  .pack .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+  .next { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding-block: 52px; }
+  .next p { color: var(--ink-soft); max-width: 60ch; }
+
+  @media (max-width: 960px) {
+    .two, .scale, .pack { grid-template-columns: 1fr; }
+    .tests, .shotrow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .chain-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .tests, .shotrow, .chain-notes { grid-template-columns: 1fr; }
+    .wording dl { grid-template-columns: 1fr; gap: 2px 0; }
+    .wording dd { margin-bottom: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Synoptic, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="methodology.html" aria-current="page">Methodology</a>
+      <a href="ai-security.html">AI and security</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="guide.html">Documentation</a>
+      <a href="download.html">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">Methodology</span>
+    <h1>Findings should be derived, not declared.</h1>
+    <p class="lede">IWS provides structure for moving from evidence, to hypotheses, to tested propositions, to findings, while preserving the reasoning in between.</p>
+    <p class="lede"><strong>One investigation record:</strong> the checklist, the evidence, the interviews, the timeline, the map, the tests and the report, in one file. The method works on that record from the first notification to the last finding.</p>
+  </section>
+
+  <section class="block" id="chain">
+    <div class="section-head">
+      <span class="eyebrow">From evidence to finding</span>
+      <h2>Five steps, and each one is kept</h2>
+      <p>A finding in IWS is the end of a chain the record holds in full. Each link can be read back later, by the investigator or by whoever reviews the work.</p>
+    </div>
+    <figure class="chainfig">
+      <svg viewBox="0 0 1160 120" role="img" aria-label="Evidence supports or contradicts a proposition. The proposition is tested for Existence, Influence and Importance. Each test carries a confidence measured against the standard of proof. The finding follows from the results.">
+        <defs>
+          <marker id="ca" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ll)"/></marker>
+        </defs>
+        <g font-family="Segoe UI Variable Text, Segoe UI, system-ui, sans-serif" fill="var(--li)" text-anchor="middle">
+          <rect x="4" y="20" width="196" height="80" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="102" y="54" font-size="16" font-weight="600">Evidence</text>
+          <text x="102" y="76" font-size="12" fill="var(--ls)">filed once, with its source</text>
+          <path d="M204 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
+          <rect x="240" y="20" width="196" height="80" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="338" y="54" font-size="16" font-weight="600">Proposition</text>
+          <text x="338" y="76" font-size="12" fill="var(--ls)">an object on the map</text>
+          <path d="M440 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
+          <rect x="476" y="20" width="196" height="80" rx="10" fill="var(--las)" stroke="var(--la)"/>
+          <text x="574" y="54" font-size="16" font-weight="600">Testing</text>
+          <text x="574" y="76" font-size="12" fill="var(--ls)">existence, influence, importance</text>
+          <path d="M676 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
+          <rect x="712" y="20" width="196" height="80" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="810" y="54" font-size="16" font-weight="600">Confidence</text>
+          <text x="810" y="76" font-size="12" fill="var(--ls)">against the standard of proof</text>
+          <path d="M912 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
+          <rect x="948" y="20" width="208" height="80" rx="10" fill="var(--lgs)" stroke="var(--lg)"/>
+          <text x="1052" y="54" font-size="16" font-weight="600">Finding</text>
+          <text x="1052" y="76" font-size="12" fill="var(--ls)">derived from the results</text>
+        </g>
+      </svg>
+    </figure>
+    <div class="chain-notes">
+      <div><h3>Evidence</h3>Each item recorded once, with its source, its significance and everything that rests on it.</div>
+      <div><h3>Proposition</h3>An event or condition that might have played a part, placed on the map whether it is expected to hold or to fail.</div>
+      <div><h3>Testing</h3>Three questions asked in order, with the evidence for and against each answer recorded.</div>
+      <div><h3>Confidence</h3>Every answer carries a probability, and a pass has to reach the investigation's standard of proof.</div>
+      <div><h3>Finding</h3>What the object becomes follows from its results, not from the investigator's view of it.</div>
+    </div>
+  </section>
+
+  <section class="block" id="loop">
+    <div class="section-head">
+      <span class="eyebrow">The investigation loop</span>
+      <h2>The work runs in rounds, on the same record all the way round</h2>
+    </div>
+    <div class="prose">
+      <p>You are notified, you decide an investigation is required, and the checklist starts with whatever is on hand. From there the work runs in rounds: what has come in is recorded, it is analysed, the gaps it exposes become requests for more information, the picture on the map is built out, the evidence behind each object is tested, and round it goes.</p>
+      <p>The report is drawn off the loop when the picture holds, rather than at the point in a sequence where a method says it is due. <strong>Nothing is thrown away when new information arrives</strong>: the record takes it, and the objects it bears on are tested again.</p>
+    </div>
+    <figure class="loopfig">
+      <svg viewBox="0 55 1240 475" role="img" aria-label="The investigation loop. Information and evidence come in and become the record. Analysis turns the record into an account of what it means and where the gaps are. Those gaps go back out as requests for more, which bring more information in. Building the picture turns the account into the map and timeline, testing the evidence settles each object, and round again returns to the record. When the picture is complete the loop is left for the report.">
+        <defs>
+          <marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 0L10 5L0 10z" fill="var(--ll)"/>
+          </marker>
+          <marker id="lb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 0L10 5L0 10z" fill="var(--la)"/>
+          </marker>
+        </defs>
+        <g font-family="Segoe UI Variable Text, Segoe UI, system-ui, sans-serif" fill="var(--li)">
+
+          <!-- what comes in, and the request that goes back out to it -->
+          <rect x="20" y="390" width="236" height="104" rx="10" fill="var(--lp)" stroke="var(--ll)" stroke-dasharray="5 4"/>
+          <text x="138" y="422" text-anchor="middle" font-size="15" font-weight="600">What comes in</text>
+          <text x="138" y="444" text-anchor="middle" font-size="12" fill="var(--ls)">notification, reports, data,</text>
+          <text x="138" y="462" text-anchor="middle" font-size="12" fill="var(--ls)">interviews, inspections</text>
+          <path d="M150 386C180 340 240 305 309 299" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+          <path d="M493 110C330 62 60 110 86 382" fill="none" stroke="var(--ll)" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#la)"/>
+
+          <!-- the four states the investigation passes through -->
+          <rect x="315" y="253" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="420" y="283" text-anchor="middle" font-size="16" font-weight="600">The record</text>
+          <text x="420" y="305" text-anchor="middle" font-size="12" fill="var(--ls)">filed once, with its source</text>
+
+          <rect x="495" y="73" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="600" y="103" text-anchor="middle" font-size="16" font-weight="600">What it means</text>
+          <text x="600" y="125" text-anchor="middle" font-size="12" fill="var(--ls)">the account so far, and its gaps</text>
+
+          <rect x="675" y="253" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="780" y="283" text-anchor="middle" font-size="16" font-weight="600">The picture</text>
+          <text x="780" y="305" text-anchor="middle" font-size="12" fill="var(--ls)">map, timeline, objects, links</text>
+
+          <rect x="495" y="433" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
+          <text x="600" y="463" text-anchor="middle" font-size="16" font-weight="600">Tested objects</text>
+          <text x="600" y="485" text-anchor="middle" font-size="12" fill="var(--ls)">existence, influence, importance</text>
+
+          <!-- round the loop, clockwise -->
+          <path d="M450 250C452 210 480 168 516 149" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+          <path d="M684 150C722 170 748 210 750 249" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+          <path d="M750 331C748 370 722 410 686 430" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+          <path d="M516 430C480 410 452 370 450 331" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
+
+          <text x="600" y="284" text-anchor="middle" font-size="12.5" fill="var(--lf)">the same record</text>
+          <text x="600" y="302" text-anchor="middle" font-size="12.5" fill="var(--lf)">all the way round</text>
+
+          <!-- the way out, once every object has been tested -->
+          <path d="M709 470H936" fill="none" stroke="var(--la)" stroke-width="2.2" marker-end="url(#lb)"/>
+          <rect x="950" y="428" width="260" height="84" rx="10" fill="var(--las)" stroke="var(--la)"/>
+          <text x="1080" y="459" text-anchor="middle" font-size="16" font-weight="600">The report</text>
+          <text x="1080" y="481" text-anchor="middle" font-size="12" fill="var(--ls)">assembled or drafted from</text>
+          <text x="1080" y="498" text-anchor="middle" font-size="12" fill="var(--ls)">that same record</text>
+
+          <!-- the words the arrows carry -->
+          <g font-size="13" font-weight="600" text-anchor="middle">
+            <rect x="110" y="317" width="200" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="210" y="334">information and evidence in</text>
+
+            <rect x="148" y="113" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="219" y="130">requests for more</text>
+
+            <rect x="430" y="179" width="82" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="471" y="196">analysis</text>
+
+            <rect x="660" y="179" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="731" y="196">build the picture</text>
+
+            <rect x="660" y="374" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="731" y="391">test the evidence</text>
+
+            <rect x="419" y="375" width="102" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
+            <text x="470" y="392">round again</text>
+
+            <rect x="720" y="457" width="206" height="26" rx="13" fill="var(--lp)" stroke="var(--la)"/>
+            <text x="823" y="474" fill="var(--la)">when the picture is complete</text>
+          </g>
+        </g>
+      </svg>
+      <figcaption>New information can enter at any point. Nothing is thrown away when it does: the record takes it, the analysis adjusts around it, and the loop runs again until the picture holds.</figcaption>
+    </figure>
+  </section>
+
+  <section class="block" id="map">
+    <div class="section-head">
+      <span class="eyebrow">The causal map</span>
+      <h2>Every line of enquiry on one page, in time and in organisational depth</h2>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <p>The causal map is an AcciMap-style diagram. Each object is an event or a condition that might have played a part, placed left to right in time and bottom to top in organisational depth, with the critical event at the bottom right where every chain arrives.</p>
+        <p>The critical event goes down first, because everything else on the map exists to explain it. Then every hypothesis goes up, including the competing ones and the ones the investigator expects to fail. Nothing is filtered at that stage: an excluded hypothesis, with the reason it failed, strengthens the record as much as one that holds.</p>
+        <p>Arrows are claims that one thing led to another. An arrow stays grey and dashed until the object it comes from has passed its tests, so the picture on the map is never more than the current state of the evidence.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">The lanes</span>
+        <ul class="lanes" style="margin-top: 10px">
+          <li><span class="tint" style="background: var(--lane-external)"></span><span><strong>External influences:</strong> standards, oversight and guidance from outside the organisation.</span></li>
+          <li><span class="tint" style="background: var(--lane-org)"></span><span><strong>Organisational influences:</strong> the organisation's own systems, such as hazard identification, change management and risk assessment.</span></li>
+          <li><span class="tint" style="background: var(--lane-controls)"></span><span><strong>Risk controls:</strong> the defences that should prevent or catch the occurrence.</span></li>
+          <li><span class="tint" style="background: var(--lane-local)"></span><span><strong>Local conditions:</strong> the conditions on the day, such as weather, workload and fatigue.</span></li>
+          <li><span class="tint" style="background: var(--lane-actions)"></span><span><strong>Individual actions:</strong> what people did.</span></li>
+          <li><span class="tint" style="background: var(--lane-events)"></span><span><strong>Occurrence events:</strong> the event sequence itself, converging on the critical event.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="shotrow">
+      <figure><img class="shot zoomable" data-caption="Stage one: the critical event placed on its own." src="shots/tarlton-springs-rto/06-map-stage-a.png" alt="The causal map with only the critical event placed"><figcaption>The critical event, placed first.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Stage two: every hypothesis in its lane, none of them tested, nothing filtered out." src="shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses across the lanes of the causal map"><figcaption>Every hypothesis up, tested or not.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="Stage three: half the map tested, the proven arrows drawn, the excluded hypotheses struck through." src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing"><figcaption>Cut down by testing, with the arrows following.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="tests">
+    <div class="section-head">
+      <span class="eyebrow">The three tests</span>
+      <h2>Nothing is a finding until it has passed its tests</h2>
+      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. Where the evidence cuts both ways, the test is argued: the evidence for and against is recorded separately and weighed into a confidence.</p>
+    </div>
+    <div class="tests">
+      <article class="test card">
+        <span class="eyebrow">Existence</span>
+        <p class="q">Did this event or condition actually exist?</p>
+        <p>If it did, the next question is asked. If it did not, the hypothesis is excluded: it stays on the map, struck through, with the reason recorded.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Inconclusive</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Influence</span>
+        <p class="q">Did it influence anything else, and if so in what way?</p>
+        <p>If it did, it is a contributing safety factor and its outgoing arrows become proven causal paths.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Argued</span></div>
+      </article>
+      <article class="test card">
+        <span class="eyebrow">Importance</span>
+        <p class="q">If it did not influence anything, is it still important enough to raise?</p>
+        <p>A factor that played no part in this occurrence may still be a risk worth addressing. If so, it is a finding in its own right, an other risk factor, and it carries no arrows.</p>
+        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span></div>
+      </article>
+    </div>
+    <div class="two" style="margin-top: 30px">
+      <div>
+        <h3 style="margin-bottom: 12px">How a finding is derived</h3>
+        <ul class="derive">
+          <li class="ex"><strong>Existence fails:</strong> an excluded hypothesis. It stays on the map, struck through, with the reason on the record.</li>
+          <li class="cf"><strong>Existence passes, Influence passes:</strong> a contributing safety factor, and its arrows become proven causal paths.</li>
+          <li class="orf"><strong>Existence passes, Influence fails, Importance passes:</strong> an other risk factor, raised as a finding with no arrows.</li>
+          <li class="open"><strong>A test left inconclusive:</strong> the line of enquiry stays open, its arrow stays grey, and the report has to say that it is open.</li>
+        </ul>
+      </div>
+      <figure><img class="shot zoomable" data-caption="An argued test: the evidence for and against, weighed into a confidence rather than a yes or no." src="shots/tarlton-springs-rto/10-object-form-argued.png" alt="An object's form showing evidence for and against influence"><figcaption>An argued Influence test, with the evidence for and against recorded side by side.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="proof">
+    <div class="section-head">
+      <span class="eyebrow">Standard of proof</span>
+      <h2>The bar a passed test has to clear is set once, for the whole investigation</h2>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <p>Before the tests are worth anything, the investigation has to say how sure it needs to be. IWS asks for that once, as the standard of proof, from the balance of probabilities at 50 per cent up to very likely at 90. The application's default is 66 per cent.</p>
+        <p>Every test then carries its confidence on the probability scale below, and the object's form warns when a pass falls short of the standard. A finding that only just clears the bar is reported with the confidence it actually has, rather than presented as settled.</p>
+      </div>
+      <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="shots/tarlton-springs-rto/17-settings-proof.png" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof, set in Settings.</figcaption></figure>
+    </div>
+    <figure style="margin-top: 26px; max-width: 900px"><img class="shot zoomable" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad." src="shots/tarlton-springs-rto/09-object-form.png" alt="An object's evidence form with verdicts and a confidence slider"><figcaption>An object's form: each verdict with its confidence and its evidence, and the investigator's reasoning beside them.</figcaption></figure>
+  </section>
+
+  <section class="block" id="scale">
+    <div class="section-head">
+      <span class="eyebrow">Probability and confidence</span>
+      <h2>Ten fixed bands, so confidence means the same thing in every investigation</h2>
+      <p>A confidence word in a report is only useful if every reader takes it the same way. IWS records every confidence and every finding as one of ten bands of a fixed probability scale, so two investigations can be compared, and a reviewer can see exactly how strongly each finding was held.</p>
+      <p>The prose does not have to repeat the same ten words. Each band accepts a short list of phrases that state that band and nothing else, and the checks read any of them back as the band it belongs to.</p>
+    </div>
+    <div class="scale">
+      <div>
+        <table class="bands">
+          <caption>The probability scale</caption>
+          <thead><tr><th scope="col">Term</th><th scope="col">Probability</th></tr></thead>
+          <tbody>
+            <tr><td>Virtually certain</td><td>100%</td></tr>
+            <tr><td>Extremely likely</td><td>95 to 99%</td></tr>
+            <tr><td>Very likely</td><td>90 to 94%</td></tr>
+            <tr><td>Likely</td><td>67 to 89%</td></tr>
+            <tr><td>More likely than not</td><td>51 to 66%</td></tr>
+            <tr><td>About as likely as not</td><td>33 to 50%</td></tr>
+            <tr><td>Unlikely</td><td>10 to 32%</td></tr>
+            <tr><td>Very unlikely</td><td>5 to 9%</td></tr>
+            <tr><td>Extremely unlikely</td><td>1 to 4%</td></tr>
+            <tr><td>Exceptionally unlikely</td><td>under 1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card wording">
+        <h3>How a band may be worded</h3>
+        <dl>
+          <dt>Virtually certain</dt><dd>stated plainly, with no hedge in front of it</dd>
+          <dt>Extremely likely</dt><dd>almost certainly, near certain</dd>
+          <dt>Very likely</dt><dd>highly likely, highly probable</dd>
+          <dt>Likely</dt><dd>probably, in all likelihood</dd>
+          <dt>More likely than not</dt><dd>on balance, on the balance of probabilities</dd>
+          <dt>About as likely as not</dt><dd>an even chance, the evidence is evenly balanced</dd>
+          <dt>Unlikely</dt><dd>probably not, improbable, doubtful</dd>
+          <dt>Extremely unlikely</dt><dd>almost certainly not, extremely improbable</dd>
+        </dl>
+        <p class="hint" style="margin-top: 12px">A Findings section is held to seven of the ten bands: narrower wording for the sentences that become the investigation's own conclusions. The wording lists can be edited in Settings.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="tables">
+    <div class="section-head">
+      <span class="eyebrow">Evidence and Argument Tables</span>
+      <h2>The trail from proposition to finding, written out</h2>
+      <p>The map is the picture. The tables are the working behind it, exported from the same record, one table per object, in the order the map reads.</p>
+    </div>
+    <div class="card pack">
+      <a href="exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="shot" src="exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Evidence and Argument Tables document: one table per object with each test, its confidence and the evidence"></a>
+      <div>
+        <span class="eyebrow">What each table holds</span>
+        <ul class="plain">
+          <li>The proposition: the object as it sits on the map.</li>
+          <li>Each test's result and confidence.</li>
+          <li>The evidence recorded for it, and against it where it was argued.</li>
+          <li>The investigator's own reasoning.</li>
+          <li>What the object became: the finding, or the reason it is not one.</li>
+        </ul>
+        <p class="hint" style="margin-top: 12px">None of it is typed twice. It is the same record the map draws from and the report is drafted from, so the tables preserve the evidence, tests and reasoning behind each finding and the investigation can be reviewed later, step by step.</p>
+        <div class="links"><a class="btn btn-primary" href="exports/tarlton-springs-rto/evidence_argument_tables.html">Read the Tarlton Springs tables</a><a class="btn" href="exports/tarlton-springs-rto/evidence_argument_tables.pdf" target="_blank" rel="noopener">PDF</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block next">
+    <h2>Where a model fits, and where it does not</h2>
+    <p>The method above is the investigator's. AI drafting is optional and works downstream of it, from the finished record.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="ai-security.html">AI and security</a>
+      <a class="btn" href="case-studies/tarlton-springs-rto.html">See the method on a worked case</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="legal">Investigation Workflow Suite is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
+  </footer>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
+  <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
+  <div class="lightbox__body"><img id="lb-img" src="" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+</div>
+<script>
+  (function () {
+    var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
+    function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
+    document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    lb.addEventListener("click", closeLb);
+    window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
+  })();
+</script>
+
+</body>
+</html>

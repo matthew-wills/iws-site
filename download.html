@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Synoptic | Causal and Contributory Factors Report, Tarlton Springs</title>
-<meta name="description" content="The causal and contributory factors style on the same template: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations.">
-
+<title>Synoptic | Download</title>
+<meta name="description" content="Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, licensing and the 30-day trial.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -115,76 +114,150 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
-  .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
-  .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
-  .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-  .pages { display: flex; flex-direction: column; gap: 18px; align-items: center; padding-block: 12px 32px; }
-  .page { width: 100%; max-width: 920px; }
-  .page img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 4px; }
-  .page figcaption { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 6px; }
+
+  [id] { scroll-margin-top: 76px; }
+
+  .page-head { padding-block: 44px 28px; display: flex; flex-direction: column; gap: 12px; max-width: 78ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  .download { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .dl-card { display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
+  .dl-card .ver { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+  .dl-card dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0; font-size: 0.93rem; }
+  .dl-card dt { color: var(--ink-faint); }
+  .dl-card dd { margin: 0; }
+  .dl-card dd small { display: block; color: var(--ink-soft); font-size: 0.85rem; }
+  .dl-side { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .dl-side h3 { color: var(--ink); font-size: 1.05rem; }
+  .privacy { padding: 14px 16px; background: var(--warn-soft); border-radius: 10px; color: var(--ink); font-size: 0.95rem; }
+
+  .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .tier { display: flex; flex-direction: column; gap: 10px; }
+  .tier.lead { border-color: #93c5fd; }
+  .tier h3 { font-size: 1.15rem; }
+  .tier .who { font-size: 0.92rem; color: var(--ink-soft); }
+  .tier ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; display: flex; flex-direction: column; gap: 5px; }
+  .pricing { margin-top: 16px; color: var(--ink-soft); max-width: 84ch; }
+  .org { margin-top: 16px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
+  .training { max-width: 72ch; color: var(--ink-soft); display: flex; flex-direction: column; gap: 10px; }
+
+  @media (max-width: 960px) {
+    .download { grid-template-columns: 1fr; }
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .tiers { grid-template-columns: 1fr; }
+    .dl-card dl { grid-template-columns: 1fr; gap: 2px 0; }
+    .dl-card dd { margin-bottom: 8px; }
+  }
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="../../index.html" aria-label="Synoptic, home">
+    <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
-      <a href="../../index.html">Home</a>
-      <a href="../../product.html">Product</a>
-      <a href="../../methodology.html">Methodology</a>
-      <a href="../../ai-security.html">AI and security</a>
-      <a href="../../case-studies.html" aria-current="page">Case studies</a>
-      <a href="../../guide.html">Documentation</a>
-      <a href="../../download.html">Download</a>
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="ai-security.html">AI and security</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="guide.html">Documentation</a>
+      <a href="download.html" aria-current="page">Download</a>
     </nav>
   </div>
 </header>
 
-<main class="wrap">
-  <div class="doc-head">
-    <span class="eyebrow">Published document, Tarlton Springs case study</span>
-    <h1>Causal and contributory factors report, as published</h1>
-    <p>The causal and contributory factors style on the same template: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations.</p>
-    <div class="doc-actions">
-      <a class="btn btn-primary" href="report_aaib.pdf" target="_blank" rel="noopener">Download the PDF</a>
-      <a class="btn" href="../../reports/tarlton-springs-rto/aaib.html#audit">The audit and checks</a>
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">Download</span>
+    <h1>Download Investigation Workflow Suite</h1>
+    <p class="lede">Windows 10 and 11 · 64-bit · No account required</p>
+  </section>
+
+  <section class="block" id="get" style="border-top: none; padding-top: 8px">
+    <div class="download">
+      <div class="dl-card card">
+        <span class="eyebrow">Current release</span>
+        <h2>0.12.0 for Windows, coming shortly</h2>
+        <p class="ver">The 0.12.0 release is being finalised. The download link appears here when it is out.</p>
+        <dl>
+          <dt>Installer</dt><dd>Investigation Workflow Suite_0.12.0_x64-setup.exe<small>Recommended for most users.</small></dd>
+          <dt>Portable</dt><dd>Investigation Workflow Suite_0.12.0_portable.exe<small>Runs IWS without installing it.</small></dd>
+          <dt>Checksums</dt><dd>SHA256SUMS.txt<small>The SHA256 hash of each file, to check a download before running it.</small></dd>
+          <dt>Requires</dt><dd>Windows 10 or 11, 64-bit</dd>
+        </dl>
+        <div class="hero-actions">
+          <a class="btn" href="changelog.html">What changed</a>
+          <a class="btn" href="guide.html">Read the user guide</a>
+        </div>
+      </div>
+      <div class="dl-side">
+        <h3>Before you install</h3>
+        <p>The first launch of a new build can trigger a Windows SmartScreen prompt. Choose More info, then Run anyway.</p>
+        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The application tells you what it will send before it sends it. The only thing the licence server ever sees is the email address you request a licence with.</p>
+      </div>
     </div>
-  </div>
-  <div class="pages">
-    <figure class="page"><img src="pages/report_aaib/p01.png" alt="Page 1 of 26" loading="eager"><figcaption>Page 1 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p02.png" alt="Page 2 of 26" loading="eager"><figcaption>Page 2 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p03.png" alt="Page 3 of 26" loading="lazy"><figcaption>Page 3 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p04.png" alt="Page 4 of 26" loading="lazy"><figcaption>Page 4 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p05.png" alt="Page 5 of 26" loading="lazy"><figcaption>Page 5 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p06.png" alt="Page 6 of 26" loading="lazy"><figcaption>Page 6 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p07.png" alt="Page 7 of 26" loading="lazy"><figcaption>Page 7 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p08.png" alt="Page 8 of 26" loading="lazy"><figcaption>Page 8 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p09.png" alt="Page 9 of 26" loading="lazy"><figcaption>Page 9 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p10.png" alt="Page 10 of 26" loading="lazy"><figcaption>Page 10 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p11.png" alt="Page 11 of 26" loading="lazy"><figcaption>Page 11 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p12.png" alt="Page 12 of 26" loading="lazy"><figcaption>Page 12 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p13.png" alt="Page 13 of 26" loading="lazy"><figcaption>Page 13 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p14.png" alt="Page 14 of 26" loading="lazy"><figcaption>Page 14 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p15.png" alt="Page 15 of 26" loading="lazy"><figcaption>Page 15 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p16.png" alt="Page 16 of 26" loading="lazy"><figcaption>Page 16 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p17.png" alt="Page 17 of 26" loading="lazy"><figcaption>Page 17 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p18.png" alt="Page 18 of 26" loading="lazy"><figcaption>Page 18 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p19.png" alt="Page 19 of 26" loading="lazy"><figcaption>Page 19 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p20.png" alt="Page 20 of 26" loading="lazy"><figcaption>Page 20 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p21.png" alt="Page 21 of 26" loading="lazy"><figcaption>Page 21 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p22.png" alt="Page 22 of 26" loading="lazy"><figcaption>Page 22 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p23.png" alt="Page 23 of 26" loading="lazy"><figcaption>Page 23 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p24.png" alt="Page 24 of 26" loading="lazy"><figcaption>Page 24 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p25.png" alt="Page 25 of 26" loading="lazy"><figcaption>Page 25 of 26</figcaption></figure>
-    <figure class="page"><img src="pages/report_aaib/p26.png" alt="Page 26 of 26" loading="lazy"><figcaption>Page 26 of 26</figcaption></figure>
-  </div>
+  </section>
+
+  <section class="block" id="licensing">
+    <div class="section-head">
+      <span class="eyebrow">Licensing</span>
+      <h2>Three tiers, set by how much model work your organisation wants</h2>
+      <p>The record, the map, the tests and the report assembly are the application in every tier. The tier sets how much model work sits on top of them, from none at all to a configured endpoint.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier card">
+        <h3>Standard</h3>
+        <p class="who">For an investigation with no model involved.</p>
+        <ul>
+          <li>Checklist, evidence, interviews, timeline, causal map</li>
+          <li>Evidence and Argument Tables, map and timeline exports</li>
+          <li>Reports assembled from the record, in any style</li>
+        </ul>
+      </article>
+      <article class="tier card lead">
+        <h3>Chat</h3>
+        <p class="who">Copy a prompt out to a chat tool you are entitled to use, and paste the reply back.</p>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>Section and whole-report prompts, built from the record</li>
+          <li>Pasted drafts land, are checked, and can be finalised</li>
+        </ul>
+      </article>
+      <article class="tier card">
+        <h3>Endpoint</h3>
+        <p class="who">A configured model: local, an organisation gateway, or a hosted API with your own key.</p>
+        <ul>
+          <li>Everything in Chat</li>
+          <li>Section and whole-report drafting and checks inside the application</li>
+          <li>Record checks on every draft</li>
+        </ul>
+      </article>
+    </div>
+    <p class="pricing">Licence pricing is being finalised. A 30-day trial licence is free, and an unlicensed copy runs as the Standard tier with an evaluation watermark.</p>
+    <p class="org">Organisations: a custom build carries your own framework, templates, report style and workflow, licensed to your investigators, with the application underneath unchanged.</p>
+    <p class="hint" style="margin-top: 14px">Where each mode sends data, and what stays on the machine, is set out on the <a href="ai-security.html#data">AI and security</a> page.</p>
+  </section>
+
+  <section class="block" id="training">
+    <div class="section-head">
+      <span class="eyebrow">Students and educators</span>
+      <h2>The training edition</h2>
+    </div>
+    <div class="training">
+      <p>The training edition carries public teaching material and an educational watermark on exports. It is the build to use for coursework.</p>
+    </div>
+  </section>
+
   <footer>
     <span class="legal">Investigation Workflow Suite is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
-    <span><a href="../../case-studies/tarlton-springs-rto.html#published">Back to the case study</a> · <a href="../../case-studies.html">All case studies</a> · <a href="../../changelog.html">Changelog</a></span>
+    <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>
 
