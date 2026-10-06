@@ -2,7 +2,7 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-10-06T04:10:44.611Z
+Generated: 2026-10-06T05:24:06.870Z
 
 ## Sources requested for this section that are empty
 
@@ -1074,7 +1074,9 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: Sign-on 06:30 local, five sectors, the fifth added that morning when the rostered crew reported unfit. The occurrence was at 17:30 local, 11 hours 00 minutes into a duty planned to finish at 18:35, giving 12 hours 05 against a limit of 12 hours 30 for five sectors from that sign-on. The aircraft departed 40 minutes behind schedule. Both crew described themselves in interview as tired but not struggling; the captain said he would have declined a further sector and that 'for the two seconds that mattered, I was there'.
 - Evidence for influence: A late fifth sector at the end of a long duty into an aerodrome with no alternate at night is a routine exposure on this schedule, not a one-off.
-- Evidence against influence: For influence: 11 hours into a five-sector day is squarely in the range where degraded decision making is expected, the schedule was late, and the crew were working to finish. Against: the FDR gives 0.6 seconds from decision to power levers at flight idle and 2 seconds to maximum braking, at the fast end of the fleet's own distribution and well inside normal; there is no error of omission on the roll; and the one decision the schedule could plausibly have affected, not requesting a runway inspection, was never available to be affected, because no document prompted either crew member to consider it. Fatigue cannot be found to have caused the omission of a step nobody was asked to take.
+
+11 hours into a five-sector day is squarely in the range where degraded decision making is expected, the schedule was late, and the crew were working to finish.
+- Evidence against influence: Against: the FDR gives 0.6 seconds from decision to power levers at flight idle and 2 seconds to maximum braking, at the fast end of the fleet's own distribution and well inside normal; there is no error of omission on the roll; and the one decision the schedule could plausibly have affected, not requesting a runway inspection, was never available to be affected, because no document prompted either crew member to consider it. Fatigue cannot be found to have caused the omission of a step nobody was asked to take.
 - Importance: It failed Influence for this occurrence and remains a finding worth acting on. The evening Tarlton Springs rotation routinely places the last sector inside the last hour of a 12-hour duty, at an aerodrome with no company engineering, no alternate within 200 nm at night, and no crewing resilience, so a single unfit crew member turns a four-sector day into a five-sector one on the morning of operation. Nothing about that changes because it did not bite here.
 - Investigator notes: The tempting object. It exists, it reads as a cause, and the evidence will not carry it for this occurrence. Keeping it as an other risk factor is the honest answer and it is still going in the report. No arrow, deliberately: Influence failed at 25%, so every mechanism fatigue would have had to work through is contradicted by the recorded data, and an arrow would assert a causal path this record does not have. It did not contribute to the overrun; it is a finding about the schedule.
 - Why Flight Data Section report FDA-2026-0417-R1, issued 24/06/2026 matters: The load-bearing physical evidence. It settles the speed at the reject, the six knots above V1, the symmetry of both engines up to that point, the absence of any tailwind, and the deceleration actually achieved against the scheduled figures.
@@ -2725,6 +2727,6 @@ to do with me.
 - [Yes] Does every finding state what it rests on, and avoid naming individuals where the systemic point does not need it?
 - [No] Does each safety action have an owner and a date, and is it recorded somewhere it will be followed up?
 - [No] Has the report gone to everyone on the distribution list and been filed with the investigation?
-- [No] Have the map, the E/I/I tables and the full export been filed as the working record behind the report?
+- [No] Have the map, the Evidence and Argument Tables and the full export been filed as the working record behind the report?
 - [No] Is the to-do list clear and the evidence register complete, with nothing left outstanding?
 - [No] Can the investigation be closed, and has the closing decision been logged?
