@@ -73,6 +73,13 @@ const NAV = [
   ["download.html", "Download", "download"],
 ];
 const MAKER = "Investigation Workflow Suite is made by Synoptic Safety Investigation Software.";
+/** Where every "Talk to us" and "Contact us" link on the site goes: one
+ *  address, set here once it is decided (plan-public-release.md, step 2).
+ *  Until then the links point at the Organisation card on the download
+ *  page and the build says so. */
+const CONTACT_EMAIL = "";
+const CONTACT_HREF = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : "download.html#organisation";
+if (!CONTACT_EMAIL) console.log("contact: no address set in build-site.mjs; Talk to us links point at download.html#organisation");
 const header = (prefix, current) =>
   [
     `<header class="top">`,
@@ -318,6 +325,7 @@ const fillFeatured = (templateName, current) =>
       (h, f) => h.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${featured.slug}/${f}`),
       chrome(readFileSync(join(here, templateName), "utf8"), "", current, [["#top", "Back to top"]]).replace("%%THEME%%", theme),
     )
+    .replaceAll("%%CONTACT%%", CONTACT_HREF)
     .replaceAll("%%FEATURED_TABLES%%", featuredTables)
     .replaceAll("%%FEATURED_KIND%%", esc([featured.sector, featured.occurrence].filter(Boolean).join(" · ")))
     .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
@@ -335,9 +343,9 @@ write("index.html", index);
 const sitePages = [
   ["product", "Product", "Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record."],
   ["methodology", "Methodology", "How IWS moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
-  ["ai-security", "AI and security", "What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting."],
+  ["ai-security", "AI and security", "What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI."],
   ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite."],
-  ["download", "Download", "Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, the three AI access modes and the 30-day trial."],
+  ["download", "Download", "Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, the Free, Professional and Organisation levels, and the 90-day Professional trial."],
 ];
 const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download" };
 const topPages = sitePages.map(([name, title, description]) => {

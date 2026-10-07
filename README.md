@@ -36,6 +36,9 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
       the rest - the featured study's slug, title, sector and occurrence
       type, the name of its Evidence and Argument Tables document, the case
       cards, and its reports' word counts.
+    - `%%CONTACT%%` - where "Talk to us" and "Contact us" go, set once as
+      `CONTACT_EMAIL` in `build-site.mjs` (until it is set, the download
+      page's Organisation card, and the build prints a note).
     - `%%GUIDE%%` - the rendered user guide; `%%RELEASES%%` - the
       changelog entries; `%%CONTENT%%` - one case study's page body.
 - `case-studies/<slug>/` - one folder per case study, holding `meta.json`
@@ -153,7 +156,8 @@ pages and its document viewers are all generated.
 
 ## Not yet
 
-Real download links (held until the 0.12.0 release), the trial request and
-contact form that comes with a later release, and the interactive causal map
+Real download links (held until the 0.12.0 release), the contact address
+(`CONTACT_EMAIL` in `build-site.mjs`) and a way to buy a Professional
+licence, and the interactive causal map
 explainer. See
 `docs/plan-public-release.md` in the application repository.

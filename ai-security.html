@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Synoptic | AI and security</title>
-<meta name="description" content="What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting.">
+<meta name="description" content="What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI.">
+
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -202,7 +203,7 @@ footer .legal { line-height: 1.6; }
     <span class="eyebrow">AI and security</span>
     <h1>An AI model cannot conduct the investigation, but it can help with drafting the report.</h1>
     <p class="lede">The investigator creates the investigation record, evaluates the evidence and establishes the findings. AI works downstream of that: it may draft the report from the record and check the draft against it. The investigator then reviews and finalises the result.</p>
-    <p class="optional"><strong>AI is optional.</strong> With AI access set to No AI, IWS assembles every report from the record and nothing is sent anywhere. The evidence, the tests and the findings are the investigator's in every setting.</p>
+    <p class="optional"><strong>AI is optional.</strong> With AI access set to No AI, nothing is sent anywhere, and Professional still assembles every report from the record. The evidence, the tests and the findings are the investigator's in every setting and at every licence level.</p>
   </section>
 
   <section class="block" id="pipeline">
@@ -299,11 +300,24 @@ footer .legal { line-height: 1.6; }
     </table>
   </section>
 
+  <section class="block" id="your-ai">
+    <div class="section-head">
+      <span class="eyebrow">Bring your own AI</span>
+      <h2>Your investigation data. Your AI. Your choice.</h2>
+      <p>IWS does not sell AI. AI-assisted drafting is part of Professional, and you or your organisation connect the AI it uses, from whichever provider suits: a chat tool you are entitled to use, a model on your own machine, an organisation gateway, or a hosted API with your own key. AI service and model costs are not part of an IWS licence.</p>
+    </div>
+    <div class="prose">
+      <p>The drafting works well because the investigation is already structured in IWS. The evidence, analysis, reasoning and findings are connected before a model sees them, so the model's job is to write up a record that already holds together.</p>
+      <p>Drafting and checking a complex investigation report is still demanding work for a model. In testing to date, smaller local and open models have generally not been consistent enough. Open models of about 70B parameters or larger, or a hosted model of comparable capability, are currently recommended. That guidance will move as models improve, and it is a recommendation rather than a requirement.</p>
+      <p>Don't have an approved AI environment? <a href="download.html#organisation">Contact us</a> to discuss deployment options.</p>
+    </div>
+  </section>
+
   <section class="block" id="data">
     <div class="section-head">
       <span class="eyebrow">Where does my data go?</span>
       <h2>One setting decides, and the organisation chooses it</h2>
-      <p>A setting called AI access decides how every Draft action in the application reaches a model. There are three modes, and only one of them makes the application send anything.</p>
+      <p>A setting called AI access decides how every Draft action in the application reaches a model. There are three modes, and only one of them makes the application send anything. Free has no drafting, so nothing goes to a model at all.</p>
     </div>
     <div class="modes">
       <article class="mode card">
@@ -332,7 +346,7 @@ footer .legal { line-height: 1.6; }
       <div class="prose">
         <p>An endpoint is a named profile for one model server: a base URL, a drafting model and a checking model, a protocol, an auth header and a key. The protocol is either the OpenAI-compatible shape, which is what LM Studio, Ollama and most corporate gateways expose, or the Anthropic Messages API.</p>
         <p>A key is stored on that machine alone. It never enters the investigation file, never reaches an export, and is stripped out of any error shown on screen.</p>
-        <p>A drafting run sends the collated record with people referred to by role throughout, because the role replaces the name when an interview or transcript is brought in rather than at the point of drafting. The application has no service of its own, phones nothing home, and sends no telemetry.</p>
+        <p>A drafting run sends the collated record with people referred to by role throughout, because the role replaces the name when an interview or transcript is brought in rather than at the point of drafting. The application sends no telemetry. Its only service of its own is licensing: starting the Professional trial sends the email address you give and an identifier for the computer to the licence server, and nothing about any investigation.</p>
         <p>Configuration detail, with what to ask your IT department for, is in the user guide: <a href="guide.html#manual-connecting-a-model">connecting a model</a>.</p>
       </div>
       <div style="display: flex; flex-direction: column; gap: 18px">

@@ -150,6 +150,12 @@ footer .legal { line-height: 1.6; }
   .cover .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
   .cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-block: 56px; }
   .cta p { color: var(--ink-soft); max-width: 60ch; }
+  .levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: min(100%, 820px); text-align: left; }
+  .levels a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; text-decoration: none; color: var(--ink-soft); font-size: 0.92rem; }
+  .levels a strong { color: var(--ink); font-weight: 600; font-size: 0.98rem; }
+  .levels a:hover { border-color: var(--line-strong); }
+  .levels a.lead { border-color: #93c5fd; }
+  @media (max-width: 700px) { .levels { grid-template-columns: 1fr; } }
   .org { margin-top: 18px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
   @media (max-width: 1100px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } .screens { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 960px) { .hero, .two, .two.even, .versus { grid-template-columns: 1fr; } .trust, .covers, .cases, .assists { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -303,7 +309,7 @@ footer .legal { line-height: 1.6; }
       <h1>A structured workflow for safety investigations.</h1>
       <p class="lede">Investigation Workflow Suite (IWS) keeps the evidence, reasoning, analysis and reporting connected throughout an investigation.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="download.html">Download</a>
+        <a class="btn btn-primary" href="download.html">Download Free</a>
         <a class="btn" href="case-studies/tarlton-springs-rto.html">See a worked case study</a>
       </div>
       <div class="pitch">
@@ -401,7 +407,8 @@ footer .legal { line-height: 1.6; }
       <h2>Optional AI-assisted drafting</h2>
       <p class="statement">A model can draft the report. It does not investigate.</p>
       <p>When enabled, AI drafts from the investigation record under strict grounding rules. A second pass checks the draft against the record before the investigator reviews, corrects and finalises it.</p>
-      <p>Use your existing AI chat workflow, a local model, or an approved organisational API. IWS does not require an AI service and sends nothing anywhere unless you choose to.</p>
+      <p>Drafting works well because the investigation is already structured in IWS: the evidence, analysis, reasoning and findings are connected before a model sees any of it.</p>
+      <p><strong>Your investigation data. Your AI. Your choice.</strong> AI-assisted drafting is part of Professional, and you connect the AI: your existing chat workflow, a local model, or an approved organisational API. IWS does not sell AI, and sends nothing anywhere unless you choose to.</p>
     </div>
     <div class="flow card">
       <div class="flow-record">
@@ -445,10 +452,15 @@ footer .legal { line-height: 1.6; }
   <section class="block cta" id="download">
     <h2>Ready to bring the investigation together?</h2>
     <p class="statement">Keep the evidence, reasoning and reporting connected.</p>
-    <p>Download IWS for Windows 10 or 11. No account required. It runs as the Standard tier without a licence, and a 30-day trial licence turns everything on.</p>
+    <p>Download IWS for Windows 10 or 11. No account required. It is free to conduct and structure an investigation, and includes 90 days of Professional to take it through to the finished report.</p>
+    <div class="levels">
+      <a class="card" href="download.html#free"><span class="eyebrow">Free</span><strong>Structure the investigation</strong><span>$0</span></a>
+      <a class="card lead" href="download.html#professional"><span class="eyebrow">Professional</span><strong>Complete the investigation</strong><span>A$249 a year per user</span></a>
+      <a class="card" href="download.html#organisation"><span class="eyebrow">Organisation</span><strong>Make IWS your investigation system</strong><span>Contact us</span></a>
+    </div>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="download.html">Download</a>
-      <a class="btn" href="case-studies/tarlton-springs-rto.html">See a worked case study</a>
+      <a class="btn btn-primary" href="download.html">Download Free</a>
+      <a class="btn" href="download.html#pricing">Compare the levels</a>
     </div>
   </section>
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Synoptic | Download</title>
-<meta name="description" content="Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, the three AI access modes and the 30-day trial.">
+<meta name="description" content="Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, the Free, Professional and Organisation levels, and the 90-day Professional trial.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -143,20 +143,26 @@ footer .legal { line-height: 1.6; }
 
   .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .tier { display: flex; flex-direction: column; gap: 10px; }
-  .tier.lead { border-color: #93c5fd; }
+  .tier.lead { border-color: #93c5fd; box-shadow: var(--shadow); }
   .tier h3 { font-size: 1.15rem; }
+  .tier .price { font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+  .tier .price small { display: block; font-size: 0.85rem; font-weight: 400; color: var(--ink-soft); }
   .tier .who { font-size: 0.92rem; color: var(--ink-soft); }
   .tier ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; display: flex; flex-direction: column; gap: 5px; }
-  .trial { margin-top: 16px; color: var(--ink-soft); max-width: 84ch; }
-  .org { margin-top: 16px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
+  .tier .includes { padding: 8px 12px; border-radius: 8px; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.92rem; font-weight: 600; }
+  .tier .note { font-size: 0.86rem; color: var(--ink-faint); }
+  .tier .btn { align-self: flex-start; margin-top: auto; }
+  .terms { margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
+  .terms h3 { font-size: 1rem; margin-bottom: 4px; }
+  .terms p { color: var(--ink-soft); font-size: 0.95rem; }
   .training { max-width: 72ch; color: var(--ink-soft); display: flex; flex-direction: column; gap: 10px; }
 
   @media (max-width: 960px) {
     .download { grid-template-columns: 1fr; }
-    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tiers { grid-template-columns: 1fr; max-width: 560px; }
   }
   @media (max-width: 560px) {
-    .tiers { grid-template-columns: 1fr; }
+    .terms { grid-template-columns: 1fr; }
     .dl-card dl { grid-template-columns: 1fr; gap: 2px 0; }
     .dl-card dd { margin-bottom: 8px; }
   }
@@ -187,6 +193,7 @@ footer .legal { line-height: 1.6; }
     <span class="eyebrow">Download</span>
     <h1>Download Investigation Workflow Suite</h1>
     <p class="lede">Windows 10 and 11 · 64-bit · No account required</p>
+    <p class="lede">Free to conduct and structure an investigation, with 90 days of Professional features included to take it through to the finished report.</p>
   </section>
 
   <section class="block" id="get" style="border-top: none; padding-top: 8px">
@@ -209,52 +216,74 @@ footer .legal { line-height: 1.6; }
       <div class="dl-side">
         <h3>Before you install</h3>
         <p>The first launch of a new build can trigger a Windows SmartScreen prompt. Choose More info, then Run anyway.</p>
-        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The endpoint settings and the drafting controls say where an action would send investigation text off the machine.</p>
+        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The endpoint settings and the drafting controls say where an action would send investigation text off the machine. Starting the Professional trial sends the email address you give and an identifier for the computer to the licence server, and nothing about any investigation.</p>
       </div>
     </div>
   </section>
 
-  <section class="block" id="licensing">
+  <section class="block" id="pricing">
     <div class="section-head">
-      <span class="eyebrow">AI access</span>
-      <h2>Three AI access modes, depending on how your organisation wants to use a model</h2>
-      <p>The record, the map, the tests and the report assembly are the application in every mode. The mode sets how much model work sits on top of them, from none at all to a configured endpoint. Standard runs with AI access set to No AI.</p>
+      <span class="eyebrow">Licensing</span>
+      <h2>One application, three levels</h2>
+      <p>Free covers conducting and structuring the investigation. Professional takes it through to the finished report. Organisation makes IWS fit the way your organisation investigates.</p>
     </div>
     <div class="tiers">
-      <article class="tier card">
-        <span class="eyebrow">No model required</span>
-        <h3>Standard</h3>
-        <p class="who">For an investigation with no model involved.</p>
+      <article class="tier card" id="free">
+        <span class="eyebrow">Free</span>
+        <h3>Structure the investigation</h3>
+        <p class="price">$0</p>
+        <p class="who">The core investigation workspace.</p>
         <ul>
-          <li>Checklist, evidence, interviews, timeline, causal map</li>
-          <li>Evidence and Argument Tables, map and timeline exports</li>
-          <li>Reports assembled from the record, in any style</li>
+          <li>Create, open, save and manage investigations</li>
+          <li>Evidence, interviews, timeline and the causal map: the core workflow</li>
+          <li>Evidence and Argument Tables, and their export</li>
+          <li>Standard checklists and analysis sections, customised to suit</li>
         </ul>
+        <p class="includes">Includes 90 days of Professional features</p>
+        <p class="note">Finished reports, AI-assisted drafting and custom templates are in Professional.</p>
+        <a class="btn" href="#get">Download Free</a>
       </article>
-      <article class="tier card lead">
-        <span class="eyebrow">Investigator-mediated AI</span>
-        <h3>Chat</h3>
-        <p class="who">Copy a prompt out to a chat tool you are entitled to use, and paste the reply back.</p>
+      <article class="tier card lead" id="professional">
+        <span class="eyebrow">Professional · recommended</span>
+        <h3>Complete the investigation</h3>
+        <p class="price">A$249 a year per user<small>Founding rate, kept for as long as the licence is renewed without a break.</small></p>
+        <p class="who">The complete investigation-to-report workflow.</p>
         <ul>
-          <li>Everything in Standard</li>
-          <li>Section and whole-report prompts, built from the record</li>
-          <li>Pasted drafts land, are checked, and can be finalised</li>
+          <li>Everything in Free</li>
+          <li>AI-assisted drafting and Chat AI</li>
+          <li>Finished report generation</li>
+          <li>Standard and custom report and briefing templates</li>
         </ul>
+        <p class="note">AI service and model costs are not included. You connect your own suitable AI; see <a href="ai-security.html#your-ai">bring your own AI</a>.</p>
+        <a class="btn btn-primary" href="#get">Start 90-day trial</a>
       </article>
-      <article class="tier card">
-        <span class="eyebrow">Integrated model access</span>
-        <h3>Endpoint</h3>
-        <p class="who">A configured model: local, an organisation gateway, or a hosted API with your own key.</p>
+      <article class="tier card" id="organisation">
+        <span class="eyebrow">Organisation</span>
+        <h3>Make IWS your investigation system</h3>
+        <p class="price">Contact us</p>
+        <p class="who">IWS adapted around your organisation's framework, rather than your investigators working around the software.</p>
         <ul>
-          <li>Everything in Chat</li>
-          <li>Section and whole-report drafting and checks inside the application</li>
-          <li>Record checks on every draft</li>
+          <li>Everything in Professional</li>
+          <li>Your framework, stages and terminology</li>
+          <li>Mandatory checklists and analysis structures</li>
+          <li>Human Factors frameworks and taxonomies, and risk or causal methods</li>
+          <li>Report structures, document and briefing templates, and branding</li>
         </ul>
+        <p class="note">Configured where practicable, scoped to your requirements.</p>
+        <a class="btn" href="download.html#organisation">Talk to us</a>
       </article>
     </div>
-    <p class="trial">An unlicensed copy runs as the Standard tier with an evaluation watermark; a 30-day trial licence turns everything on.</p>
-    <p class="org">Organisations: a custom build carries your own framework, templates, report style and workflow, licensed to your investigators, with the application underneath unchanged.</p>
-    <p class="hint" style="margin-top: 14px">Where each mode sends data, and what stays on the machine, is set out on the <a href="ai-security.html#data">AI and security</a> page.</p>
+    <div class="terms">
+      <div id="trial">
+        <h3>The 90-day trial</h3>
+        <p>A new installation can start 90 days of Professional from first run. Starting it needs the computer online once; offline, IWS works as Free and the trial can be started later. When the 90 days are up, IWS carries on as Free, and a Professional licence turns the features back on. To buy one, <a href="download.html#organisation">talk to us</a>.</p>
+      </div>
+      <div id="your-data">
+        <h3>Your investigations are never locked</h3>
+        <p>A licence decides which features are available, never whether you can open your own work. Every existing investigation opens and stays workable in Free, whatever licence it was started under.</p>
+      </div>
+    </div>
+    <p class="hint" style="margin-top: 18px">How AI connects, and where each AI access setting sends data, is set out on the <a href="ai-security.html#data">AI and security</a> page.</p>
   </section>
 
   <section class="block" id="training">
