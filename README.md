@@ -154,6 +154,10 @@ Here, `case-studies/<slug>/` holding two files:
 Then run the recipe above. The case card, the study's page, its report
 pages and its document viewers are all generated.
 
+## Configuring the contact address
+
+Set `CONTACT_EMAIL` near the top of `build-site.mjs` (one constant, one place), then rebuild. It is unset for now. While it is empty, every "Talk to us" link points at the Organisation card on the download page and the build prints a note. Use a shared business address, not a personal one.
+
 ## Not yet
 
 Real download links (held until the 0.12.0 release), the contact address

@@ -1,6 +1,11 @@
 /**
  * Assemble the site pages from the templates.
  *
+ * CONTACT ADDRESS: the one place to set it is the CONTACT_EMAIL constant
+ * below (search for it). It is deliberately unset ("TBD"); never use a
+ * personal address. While unset, "Talk to us" links go to the Organisation
+ * card on the download page.
+ *
  *   node build-site.mjs <appCaseStudiesDir>
  *
  * <appCaseStudiesDir> is the application repository's `case-studies`
