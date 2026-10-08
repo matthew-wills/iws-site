@@ -124,27 +124,101 @@ const copyInto = (from, to, keep) => {
  *  these files the same way for every case study, so the copy is shared;
  *  an unknown name falls back to the name itself. */
 const docCopy = {
-  report_standard: ["Standard Report", "Standard investigation report, as published", "The full report written to the application’s Word template and converted to PDF: cover, distribution list and the report as drafted, section by section from the record."],
-  report_preliminary: ["Preliminary Update", "Preliminary investigation update, as published", "The interim style on the same template: what has been established so far and what is still open, with no findings."],
-  report_executive: ["Executive Brief", "Executive brief, as published", "The short style on the same template: the occurrence, what was found and what is being done, in a few pages of plain language for the people who decide."],
-  report_atsb: ["Final Report", "Final report, as published", "Modelled on the structure of published safety investigation final reports, on the same template: summary, occurrence, context, safety analysis, findings, safety issues and actions."],
-  report_ntsb: ["Probable-Cause Report", "Probable-cause report, as published", "The probable-cause style on the same template: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations."],
-  report_aaib: ["Causal and Contributory Factors Report", "Causal and contributory factors report, as published", "The causal and contributory factors style on the same template: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations."],
+  report_standard: ["Final investigation report", "Final investigation report, as published", "The full report written to the application’s Word template and converted to PDF: cover, distribution list and the report as drafted, section by section from the record."],
+  report_preliminary: ["Preliminary investigation report", "Preliminary investigation report, as published", "The interim report on the same template: what has been established so far and what is still open, with no findings."],
+  report_executive: ["Executive briefing", "Executive briefing, as published", "The short report on the same template: the occurrence, what was found and what is being done, in a few pages of plain language for the people who decide."],
+  report_atsb: ["Final investigation report, ATSB-inspired layout", "Final investigation report, ATSB-inspired layout, as published", "The final report arranged to the structure of published ATSB final reports, on the same template: summary, occurrence, context, safety analysis, findings, safety issues and actions."],
+  report_ntsb: ["Final investigation report, NTSB-inspired layout", "Final investigation report, NTSB-inspired layout, as published", "The final report arranged to the structure of published NTSB reports, on the same template: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations."],
+  report_aaib: ["Final investigation report, AAIB-inspired layout", "Final investigation report, AAIB-inspired layout, as published", "The final report arranged to the structure of published AAIB reports, on the same template: synopsis, factual information, analysis, conclusions splitting causal from contributory factors, then safety action and recommendations."],
   eii_tables: ["Evidence and Argument Tables", "Evidence and Argument Tables, as published", "One table per object: each test’s result and confidence, the evidence recorded for and against it, and the investigator’s reasoning."],
   evidence_argument_tables: ["Evidence and Argument Tables", "Evidence and Argument Tables, as published", "One table per object: each test’s result and confidence, the evidence recorded for and against it, and the investigator’s reasoning."],
-  source_pack: ["Source Pack", "Investigation source pack", "Every source document this investigation worked from, in one file and in reading order: the safety report, the records and extracts, and the interview transcripts."],
+  source_pack: ["Source pack", "Investigation source pack", "Every source document this investigation worked from, in one file and in reading order: the safety report, the records and extracts, and the interview transcripts."],
 };
 /** The headings for a report style's page, keyed by the folder name the
- *  application's reports sit in. The atsb, ntsb and aaib keys are those
- *  folder names, which the application sets; the words a visitor reads are
- *  the purpose-based labels beside them. */
+ *  application's reports sit in. The labels match the covers the
+ *  application prints: the standard style is the final investigation
+ *  report, and the atsb, ntsb and aaib styles are the same final report
+ *  in another organisation's published layout. */
 const reportCopy = {
-  standard: ["Standard Report", "Standard investigation report", "The full report style: executive summary, event overview, analysis, findings summary and appendices, drafted section by section from the record."],
-  preliminary: ["Preliminary Update", "Preliminary investigation update", "The interim style: what happened, what has been established so far, the risk exposure and the open lines of enquiry. No findings."],
-  executive: ["Executive Brief", "Executive brief", "The occurrence, the findings and the actions on a few pages for the people who decide."],
-  atsb: ["Final Report", "Final report", "Modelled on the structure of published safety investigation final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions."],
-  ntsb: ["Probable-Cause Report", "Probable-cause report", "The probable-cause style: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations."],
-  aaib: ["Causal and Contributory Factors Report", "Causal and contributory factors report", "The causal and contributory factors style: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations."],
+  standard: ["Final investigation report", "Final investigation report", "The full report: executive summary, event overview, analysis, findings summary and appendices, drafted section by section from the record."],
+  preliminary: ["Preliminary investigation report", "Preliminary investigation report", "The interim report: what happened, what has been established so far, the risk exposure and the open lines of enquiry. No findings."],
+  executive: ["Executive briefing", "Executive briefing", "The occurrence, the findings and the actions on a few pages for the people who decide."],
+  atsb: ["Final investigation report, ATSB-inspired layout", "Final investigation report, ATSB-inspired layout", "The final report arranged to the structure of published ATSB final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions."],
+  ntsb: ["Final investigation report, NTSB-inspired layout", "Final investigation report, NTSB-inspired layout", "The final report arranged to the structure of published NTSB reports: factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations."],
+  aaib: ["Final investigation report, AAIB-inspired layout", "Final investigation report, AAIB-inspired layout", "The final report arranged to the structure of published AAIB reports: synopsis, factual information, analysis, conclusions splitting causal from contributory factors, then safety action and recommendations."],
+};
+
+/** One line of purpose for each output in a study page's outputs block
+ *  (%%OUTPUTS%%). Shared by every study; an entry in a study's meta.json
+ *  may carry its own "purpose" instead. */
+const outputPurpose = {
+  evidence_argument_tables: "The working behind every finding, one table per object in the order the map reads: each test’s result and confidence, the argument for and against, and the investigator’s reasoning.",
+  report_preliminary: "The interim report, issued while the work is still running: what is known, what is still being looked at and what has already been done. It carries no findings.",
+  report_standard: "The full internal report: an executive summary, the occurrence, the analysis lane by lane, the findings and the appendices a reviewer will ask for.",
+  report_executive: "A few pages in plain language for the people who decide: what happened, why it happened, what was found and what is being done about it.",
+};
+/** The final report in another organisation's published layout, for the
+ *  layouts table (%%LAYOUTS%%): the short name, and how it differs from
+ *  the standard final report, taken from each style's own Purpose line. */
+const layoutCopy = {
+  atsb: ["ATSB-inspired", "Written for a readership outside the organisation: an investigation summary first, the findings on the seven-term scale, then the safety issues with the action taken against each."],
+  ntsb: ["NTSB-inspired", "Factual information, analysis and conclusions, ending in a single probable cause statement with its contributing factors, then the recommendations."],
+  aaib: ["AAIB-inspired", "A synopsis first, and conclusions that split the causal factors from the contributory ones before the safety action and recommendations. Written in British English."],
+};
+const LAYOUTS_NOTE =
+  "These layouts follow the published report structure of the Australian Transport Safety Bureau, the US National Transportation Safety Board and the UK Air Accidents Investigation Branch. They are not produced, reviewed or endorsed by those organisations.";
+
+/** A study page's outputs block, from meta.json's "outputs": each entry
+ *  names a document and the page shown as its preview, so a preview is
+ *  always a page the application generated. Paths are relative to
+ *  case-studies/<slug>.html. */
+const outputsBlock = (study, pagesRoot, reports, notes) => {
+  const { slug } = study;
+  const items = (study.outputs ?? []).map((o) => {
+    const doc = o.doc;
+    const pageFiles = existsSync(join(pagesRoot, doc)) ? readdirSync(join(pagesRoot, doc)).filter((f) => /^p\d+\.png$/.test(f)).sort() : [];
+    const pageFile = `p${String(o.page).padStart(2, "0")}.png`;
+    if (!pageFiles.includes(pageFile)) notes.push(`outputs: ${doc} has no ${pageFile}`);
+    const label = (docCopy[doc] ?? [doc])[0];
+    const style = doc.startsWith("report_") ? doc.slice("report_".length) : null;
+    const read = style && reports[style] ? `<a class="btn btn-primary" href="../reports/${slug}/${style}.html">Read</a>` : "";
+    const view = `<a class="btn${read ? "" : " btn-primary"}" href="../exports/${slug}/${doc}.html">View pages</a>`;
+    const pdf = `<a class="btn" href="../exports/${slug}/${doc}.pdf" target="_blank" rel="noopener">PDF</a>`;
+    const shown = o.caption ? `page ${o.page} shown: ${esc(o.caption)}` : `page ${o.page} shown`;
+    return [
+      `      <article class="output">`,
+      `        <a class="output__page" href="../exports/${slug}/${doc}.html"><img src="../exports/${slug}/pages/${doc}/${pageFile}" alt="Page ${o.page} of the ${esc(label)}" loading="lazy"></a>`,
+      `        <div class="output__body">`,
+      `          <h3>${esc(label)}</h3>`,
+      `          <p>${esc(o.purpose ?? outputPurpose[doc] ?? "")}</p>`,
+      `          <p class="output__meta">${pageFiles.length} pages · ${shown}</p>`,
+      `          <div class="links">${read}${view}${pdf}</div>`,
+      `        </div>`,
+      `      </article>`,
+    ].join("\n");
+  });
+  return items.length ? `    <div class="outputs">\n${items.join("\n")}\n    </div>` : "";
+};
+/** The layouts table, from meta.json's "layouts" (the atsb, ntsb and aaib
+ *  report folders): the same final report in other published layouts. */
+const layoutsBlock = (study, reports) => {
+  const { slug } = study;
+  const rows = (study.layouts ?? [])
+    .filter((style) => reports[style])
+    .map((style) => {
+      const [name, line] = layoutCopy[style] ?? [style, ""];
+      return `        <tr><th scope="row">${esc(name)}</th><td>${esc(line)}</td><td class="layouts__links"><a href="../reports/${slug}/${style}.html">Read</a> · <a href="../exports/${slug}/report_${style}.pdf" target="_blank" rel="noopener">PDF</a></td></tr>`;
+    });
+  if (!rows.length) return "";
+  return [
+    `    <table class="layouts">`,
+    `      <thead><tr><th scope="col">Layout</th><th scope="col">How it differs</th><th scope="col">Open</th></tr></thead>`,
+    `      <tbody>`,
+    ...rows,
+    `      </tbody>`,
+    `    </table>`,
+    `    <p class="layouts__note">${esc(LAYOUTS_NOTE)}</p>`,
+  ].join("\n");
 };
 
 // ---------------------------------------------------------------- studies
@@ -282,7 +356,10 @@ for (const study of studies) {
   // with neither just drops the placeholder.
   const shell = readFileSync(join(here, "case-study.template.html"), "utf8");
   const versionNote = study.note ? `<p class="note">${esc(study.note)}</p>` : "";
-  const content = readFileSync(join(study.dir, "content.html"), "utf8").replace("%%VERSION_NOTE%%", () => versionNote);
+  const content = readFileSync(join(study.dir, "content.html"), "utf8")
+    .replace("%%VERSION_NOTE%%", () => versionNote)
+    .replace("%%OUTPUTS%%", () => outputsBlock(study, pagesRoot, reports, notes))
+    .replace("%%LAYOUTS%%", () => layoutsBlock(study, reports));
   const pageTitle = study.pageTitle ?? `Case study: ${study.title}`;
   const page = withShots(
     chrome(shell, "../", "cases", [["../case-studies.html", "All case studies"], ["../download.html", "Download"], ["#top", "Back to top"]])

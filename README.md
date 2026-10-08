@@ -142,11 +142,28 @@ Here, `case-studies/<slug>/` holding two files:
     - `documents` - the other published documents with page renders, each
       getting a viewer at `exports/<slug>/<doc>.html`. Usually
       `["source_pack", "evidence_argument_tables"]`. (a study not yet re-drafted may still carry the older `eii_tables`; the build handles either name)
+    - `outputs` - optional, for a page laid out in the five parts
+      (Tarlton Springs first). The documents shown under "What Synoptic
+      produced", in order, each as `{ "doc", "page", "caption" }`: the
+      document's name, the page of it shown as the preview (a real page
+      render, `exports/pages/<doc>/pNN.png`), and what that page shows. The
+      one line of purpose and the label come from `build-site.mjs`
+      (`outputPurpose`, `docCopy`), or from the entry's own `purpose`. Fills
+      `%%OUTPUTS%%` in `content.html`.
+    - `layouts` - optional, the report folders shown as the final report in
+      other published layouts, usually `["atsb", "ntsb", "aaib"]`. Fills
+      `%%LAYOUTS%%`, with the line saying they are not produced, reviewed
+      or endorsed by those organisations.
 - `content.html`, the page body for this study: everything between
   `<main>` and the footer, with no header, nav, lightbox or script of its
   own. Those come from the shared shell, along with all the CSS, so use
-  the same classes the existing study uses (`case-head`, `walk`, `step`,
-  `card pack`, `published`, and the rest). Write links relative to
+  the classes the existing studies use: the five-part layout of Tarlton
+  Springs (`jump`, `figrow`, `strip`, `settled`, `chain`, `crop`,
+  `outputs`, `support`), or the older stage layout Kanooka Heads and
+  Bindarra still carry (`walk`, `step`, `card pack`, `published`). A
+  `crop` shows part of a screenshot from its own CSS variables, in the
+  image's pixels: `--W` its width, `--x` and `--y` the crop's top left,
+  `--cw` and `--ch` its size. Write links relative to
   `case-studies/`, which is where the built page sits:
     - screenshots: `%%SHOT_NN%%`, which the build rewrites to
       `../shots/<slug>/NN-description.png`
