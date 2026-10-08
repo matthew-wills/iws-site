@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case study: Tarlton Springs | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to six published reports.">
+<meta name="description" content="A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to the Evidence and Argument Tables and the final investigation report.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -215,6 +215,93 @@ footer .legal { line-height: 1.6; }
   .published p { color: var(--ink-soft); font-size: 0.95rem; }
   .published .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
 
+  /* The five-part layout (Tarlton Springs first; the other studies still
+     use the stage layout above). An empty span carries an older stage's
+     id where it now sits inside a part, so old links still land. */
+  .anchor { display: block; height: 0; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 14px; }
+  .jump a { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; }
+  .jump a:hover { background: #f1f5f9; color: var(--ink); }
+  .sub-head { margin: 44px 0 18px; max-width: 72ch; display: flex; flex-direction: column; gap: 8px; }
+  .sub-head h3 { font-size: 1.3rem; }
+  .sub-head p { color: var(--ink-soft); }
+  .figrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .strip img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
+  .figrow .crop { box-shadow: var(--shadow); }
+  .figrow figcaption { margin-top: 10px; }
+  .figrow figcaption strong, .strip figcaption strong { display: block; color: var(--ink); font-weight: 600; }
+  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 980px; }
+  .strip img { box-shadow: none; }
+  .settled { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; padding: 0; list-style: none; }
+  .settled li { padding-block: 11px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.95rem; }
+  .settled li strong { color: var(--ink); font-weight: 600; }
+  .settled + p { margin-top: 14px; color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* One object, followed from the map to its form to its table */
+  .chain { list-style: none; margin: 0; padding: 22px; display: grid; grid-template-columns: minmax(0, 0.93fr) minmax(0, 0.71fr); gap: 22px 26px; background: var(--paper); border: 1px solid var(--line); border-left: 4px solid #c2782a; border-radius: 14px; }
+  .chain__step { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .chain__step--map { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 22px; align-items: center; }
+  .chain__label { display: flex; align-items: center; gap: 10px; font-weight: 650; }
+  .chain__no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: #c2782a; color: #fff; font-size: 0.9rem; font-weight: 700; }
+  .chain__label .then { color: var(--ink-faint); font-weight: 400; font-size: 0.9rem; }
+  .chain p { color: var(--ink-soft); font-size: 0.95rem; }
+  .chain .page { display: block; width: 100%; border: 1px solid var(--line-strong); border-radius: 4px; box-shadow: var(--shadow); background: #fff; }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+  .crop__ring { position: absolute; border: 3px solid #c2782a; border-radius: 12px; box-shadow: 0 0 0 4px rgba(194, 120, 42, 0.18); pointer-events: none; }
+  .chain-after { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .chain-after p { color: var(--ink-soft); font-size: 0.97rem; }
+
+  /* What it established */
+  details.key { margin-top: 18px; }
+  details.key summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+  details.key .legend { margin-top: 14px; }
+
+  /* What Synoptic produced: a few large previews, then the layouts */
+  .outputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .output { display: flex; flex-direction: column; gap: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .output__page { display: block; position: relative; aspect-ratio: 5 / 4; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 4px; background: #fff; }
+  .output__page img { display: block; width: 100%; height: auto; }
+  .output__page::after { content: ""; position: absolute; inset: auto 0 0 0; height: 56px; background: linear-gradient(rgba(255, 255, 255, 0), #fff); }
+  .output__body { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .output__body p { color: var(--ink-soft); font-size: 0.95rem; }
+  .output__body .output__meta { color: var(--ink-faint); font-size: 0.86rem; }
+  .output .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+  .layouts { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .layouts th, .layouts td { text-align: left; vertical-align: top; padding: 12px 16px; border-top: 1px solid var(--line); }
+  .layouts thead th { border-top: 0; color: var(--ink-faint); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .layouts tbody th { font-weight: 600; white-space: nowrap; }
+  .layouts td { color: var(--ink-soft); }
+  .layouts__links { white-space: nowrap; }
+  .layouts__note { margin-top: 10px; font-size: 0.88rem; color: var(--ink-soft); max-width: 90ch; }
+
+  /* Examine the record */
+  .support { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .support .card { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; align-items: start; }
+  .support .card img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 4px; }
+  .support .card.wide-thumb { display: flex; flex-direction: column; }
+  .support p { color: var(--ink-soft); font-size: 0.95rem; margin-top: 6px; }
+  .support .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .next { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+
+  @media (max-width: 960px) {
+    .figrow { grid-template-columns: 1fr 1fr; }
+    .chain__step--map { grid-template-columns: 1fr; }
+    .chain-after, .support { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .figrow, .strip, .settled, .outputs { grid-template-columns: 1fr; }
+    .chain { padding: 14px; grid-template-columns: 1fr; }
+    .support .card { grid-template-columns: 1fr; }
+    .support .card img { max-width: 220px; }
+    .layouts, .layouts tbody, .layouts tr, .layouts th, .layouts td { display: block; }
+    .layouts thead { display: none; }
+    .layouts tbody th { white-space: normal; padding-bottom: 2px; border-top: 0; }
+    .layouts td { border-top: 0; padding-block: 2px; }
+    .layouts tr { border-top: 1px solid var(--line); padding-block: 8px; }
+    .layouts tr:first-child { border-top: 0; }
+  }
+
   @media (max-width: 960px) {
     .walk { grid-template-columns: 1fr; }
     .walk__media { display: none; }
@@ -251,35 +338,29 @@ footer .legal { line-height: 1.6; }
 
 <main class="wrap" id="top">
   <div class="case-head">
-    <span class="eyebrow">Case study, worked end to end</span>
-    <h1>One investigation, from the first notification to the published report</h1>
-    <p>Tarlton Springs is a rejected take-off and runway overrun at a regional aerodrome at night. What follows is that investigation in the order it happened: what came in, what the investigator did with it, and what the application recorded at each step. Every picture is a real screen from that file. Click one to see it at full size.</p>
-    <p>The source documents the investigation worked from are published with it, so the analysis can be read back against the same material the investigator had.</p>
-    <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the aircraft, the people and every record. The documents at the end are published exactly as the application produced them, faults and all.</p>
-    <nav class="contents" aria-label="The stages">
-      <a href="#occurrence">1. The occurrence</a>
-      <a href="#first">2. What came in first</a>
-      <a href="#sources">3. The evidence pack</a>
-      <a href="#interviews">4. Interviews</a>
-      <a href="#timeline">5. The timeline</a>
-      <a href="#map">6. Building the map</a>
-      <a href="#tests">7. Testing a factor</a>
-      <a href="#finished">8. The finished map</a>
-      <a href="#tables">9. The Evidence and Argument Tables</a>
-      <a href="#drafting">10. Drafting and audit</a>
-      <a href="#published">11. The reports</a>
+    <span class="eyebrow">Aviation case study</span>
+    <h1>Tarlton Springs: a rejected take-off and runway overrun</h1>
+    <p>A regional turboprop rejects its take-off above V1 at night after two kangaroos cross the runway, strikes them, and leaves the end of the runway. This page follows the investigation from the first notification to the documents it produced: the evidence it gathered, the map it tested, what it established, and what Synoptic generated from that one record.</p>
+    <p class="note">Everything in this case study is fictional: the operator, the aerodrome, the aircraft, the people and every record. The screenshots are real screens from the investigation file, and the documents are published exactly as the application produced them, faults and all.</p>
+    <nav class="jump" aria-label="The five parts">
+      <a href="#what"><span class="stage-no">1</span>What happened</a>
+      <a href="#how"><span class="stage-no">2</span>How it was investigated</a>
+      <a href="#found"><span class="stage-no">3</span>What it established</a>
+      <a href="#produced"><span class="stage-no">4</span>What Synoptic produced</a>
+      <a href="#examine"><span class="stage-no">5</span>Examine the record</a>
     </nav>
   </div>
 
-  <section class="block" id="occurrence">
+  <section class="block" id="what">
+    <span class="anchor" id="occurrence"></span>
     <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">1</span> The occurrence as first notified</span>
+      <span class="eyebrow"><span class="stage-no">1</span> What happened</span>
       <h2>A rejected take-off at night, and an aircraft off the end of the runway</h2>
-      <p>This is what was known on the evening of 18/06/2026 and the morning after, before anybody had read a recorder or opened a manual. It is the brief the investigation started from.</p>
+      <p>This is what was known on the evening of 18/06/2026 and the morning after, before anybody had read a recorder or opened a manual.</p>
     </div>
     <div class="brief">
       <div class="prose">
-        <p class="lead">SB512 was the last scheduled sector of the day out of Tarlton Springs, a certified regional aerodrome in the remote far west, about 380 nm inland of the operator's home base at Port Carrick. The crew had picked the evening rotation up that morning from a crew who reported unfit, and they left on schedule. The aerodrome was in full darkness, with no town lights anywhere around it. Tarlton Springs has no control tower: crews make their own broadcasts on the common traffic advisory frequency (CTAF) and switch the runway lights on themselves through the pilot-activated lighting.</p>
+        <p class="lead">SB512 was the last scheduled sector of the day out of Tarlton Springs, a certified regional aerodrome in the remote far west, about 380 nm inland of the operator's home base at Port Carrick. The crew had picked the evening rotation up that morning from a crew who reported unfit, and they left on schedule. The aerodrome was in full darkness, with no town lights anywhere around it. It has no control tower: crews make their own broadcasts on the common traffic advisory frequency (CTAF) and switch the runway lights on themselves through the pilot-activated lighting.</p>
         <p>The take-off roll on runway 09 was normal to V1. Two seconds after the V1 call the first officer saw two large kangaroos already on the sealed surface ahead, crossing from the northern side, and the captain rejected the take-off at 118 kt. About a second later the aircraft struck both animals. The No. 2 propeller was damaged and its reverse did not respond for the rest of the stop. The aircraft left the end of runway 09 at about 21 kt and came to rest 62 m into the 90 m runway end safety area.</p>
         <p>There was no fire and no evacuation. The 44 passengers walked off by the forward airstair a few minutes later. One cabin crew member later reported bruising, and the aircraft was substantially damaged.</p>
         <p>The captain's own report, submitted the next morning under the company's just culture scheme, put two things on the record before anyone asked. He had stopped above V1, and everything he had ever been trained on for a stop or go decision had been an engine problem below V1. And the kangaroos at Tarlton Springs were no surprise to anyone who went there.</p>
@@ -300,262 +381,107 @@ footer .legal { line-height: 1.6; }
     </div>
   </section>
 
-  <section class="block block--wide" id="first">
+  <section class="block" id="how">
+    <span class="anchor" id="first"></span>
     <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">2</span> What came in first</span>
-      <h2>The first material, filed before anyone had a theory</h2>
-      <p>In the days after the occurrence the notification, the captain's report and the first records arrive. They go into the file as they are, and the checklist starts the work that follows from them.</p>
+      <span class="eyebrow"><span class="stage-no">2</span> How it was investigated</span>
+      <h2>The evidence first, then every hypothesis on the map, each one tested</h2>
+      <p>Nine source documents, two interviews and a timeline went into the one record. The recorders came off the aircraft the same day, so the flight data settled the speeds before anyone argued about them. Both flight crew were interviewed once the records were in hand, so the questions could be about what the records did not say.</p>
     </div>
-    <div class="walk">
-      <div class="walk__steps">
-        <div class="walk__stage">
-          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-events)"></span><h3>The first material</h3></div>
-          <article class="step" data-shot="s03" data-caption="The captain's air safety report: the submission details, the just culture flag, and the account exactly as it was written.">
-            <h4>Take the safety report in as it was written</h4>
-            <p>ASR-2026-1184 was submitted by the pilot in command at 02:40 UTC the next morning. It goes in as written, with the submitter recorded by role, the time, and the reference in the reporting system. No name goes into the file.</p>
-            <p>One tick says the report came in under the company's just culture scheme. From then on report drafting is told the account may inform the investigation and must not be quoted into a distributed document, and the audit, the application's model check against the record, looks for any place it was.</p>
-            <p class="records"><span>What the app recorded</span>The account verbatim, its reference and time, the submitter's role, and the protection it was given.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/03-safety-report.png" alt="A safety report with its submission details and the report text">
-          </article>
-          <article class="step" data-shot="s01" data-caption="The Evidence tab's Captured material sub-tab, grouped by where each item is used.">
-            <h4>File the first evidence items</h4>
-            <p>The notification, the flight data readout, the CTAF and CVR extract and the weather go into Captured material, each with a caption, its significance, a category and a reference. The recorders came off the aircraft the same day, so the readout arrived early and settled the speeds before anyone argued about them.</p>
-            <p>Each item is linked to whatever rests on it. When a source later turns out to be unreliable, what has to be revisited is already listed.</p>
-            <p class="records"><span>What the app recorded</span>The material itself inside the investigation file, why each item matters, and every object, interview or finding that depends on it.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/01-evidence-register.png" alt="The Captured material sub-tab grouped by where each item is used">
-          </article>
-          <article class="step" data-shot="s04" data-caption="The Checklist tab: the investigation's running checklist, the to-do list, and the distribution list.">
-            <h4>Open the checklist, and raise the first to-dos</h4>
-            <p>File &gt; New investigation creates a folder with the investigation file inside it. The first checklist section covers notification, triage and the terms of reference, and the list runs on through evidence gathering, interviews, analysis and reporting. Each item is answered yes, no or not applicable, and the tab shows how much is still open.</p>
-            <p>The first to-dos came straight off it: interview both flight crew, get the aerodrome operator's works register and sighting log, get the operations manual wildlife section, get the crew's training records. A job raised inside an object's form lands on the same list with a link back to that object, so there is one list to read and one list to hand to a colleague.</p>
-            <p class="records"><span>What the app recorded</span>The occurrence title, every checklist answer, each to-do with its source, and the distribution list the report will go to.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/04-checklist-todos.png" alt="The checklist with answered items, the to-do list and the distribution list">
-          </article>
+    <div class="figrow">
+      <figure>
+        <div class="crop" style="--W: 3840; --x: 0; --y: 780; --cw: 1920; --ch: 1200"><img class="zoomable" src="../shots/tarlton-springs-rto/01-evidence-register.png" alt="The Captured material sub-tab of the Evidence tab, grouped by the object each item bears on" data-caption="The Evidence tab's Captured material, grouped by where each item is used." loading="lazy"></div>
+        <figcaption><strong>The evidence register</strong>Each item filed once, with why it matters, and linked to every object that rests on it. If a source turns out to be unreliable, what has to be revisited is already listed.</figcaption>
+      </figure>
+      <figure>
+        <span class="anchor" id="interviews"></span>
+        <div class="crop" style="--W: 3840; --x: 900; --y: 330; --cw: 2500; --ch: 1562"><img class="zoomable" src="../shots/tarlton-springs-rto/02-interviews.png" alt="The pilot in command's interview: the record header, the transcript with speakers mapped to roles, and the investigator's notes" data-caption="An interview: the record header, the Teams transcript with speakers mapped to roles, and the investigator's notes." loading="lazy"></div>
+        <figcaption><strong>The two accounts</strong>The captain and the first officer, both over Teams, both transcripts imported as downloaded. Every speaker is mapped to a role, and only the role reaches the record or any drafting model.</figcaption>
+      </figure>
+      <figure>
+        <span class="anchor" id="timeline"></span>
+        <div class="crop" style="--W: 3840; --x: 0; --y: 200; --cw: 2400; --ch: 1500"><img class="zoomable" src="../shots/tarlton-springs-rto/05-timeline.png" alt="The timeline tab, with every event and its source" data-caption="The timeline: every event with its source and its time basis, and the critical event marked." loading="lazy"></div>
+        <figcaption><strong>The timeline</strong>From the crew signing on to the passengers on the ground, each event with its source and time basis. The CTAF recorder's clock agreed with the cockpit voice recorder's to within a second, and that is recorded too.</figcaption>
+      </figure>
+    </div>
+
+    <span class="anchor" id="sources"></span>
+    <div class="sub-head">
+      <h3>What each source settled</h3>
+    </div>
+    <ul class="settled">
+      <li><strong>Occurrence notification.</strong> The first account: the damage, the injuries, the risk rating and the actions taken that night. It opened the file and seeded the first timeline events.</li>
+      <li><strong>Flight data summary.</strong> V1 at 112 kt, the reject at 118 kt, the strike a second later, and a deceleration short of the scheduled accelerate-stop performance. Both engines were making power right up to the reject, which closed the engine failure hypothesis.</li>
+      <li><strong>CTAF recording and CVR extract.</strong> The crew's broadcasts and the words in the cockpit across the roll, the reject and the stop. It is the evidence behind the reject decision, and behind the fact that no runway inspection was ever asked for.</li>
+      <li><strong>Weather, light and moon.</strong> The roll was five minutes after the end of civil twilight, with no moon. Every source gives a headwind, which excluded the tailwind hypothesis.</li>
+      <li><strong>Air safety report, pilot in command.</strong> The origin of two lines of enquiry, the training gap behind the reject and the aerodrome's wildlife history. It is protected, so it informs the investigation without being quoted into anything distributed.</li>
+      <li><strong>Operator procedures and policy extracts.</strong> The aerodrome standard, the aerodrome manual, the operations manual's wildlife and rejected take-off sections, the route risk assessment and the change record. The external, organisational and risk control lanes rest on these.</li>
+      <li><strong>Maintenance, training and aerodrome records.</strong> The deferred fence, the training gap and the 41 recorded sightings come from here, with the crew's duty records and the evening rotation's roster pattern.</li>
+      <li><strong>The two interview transcripts.</strong> The captain's account turned the training question from a complaint into a factor that could be tested. The first officer was pilot flying and saw the animals, so her account is the evidence on detection and on what the runway lighting looked like from the seat.</li>
+    </ul>
+    <p>All nine documents are in the <a href="#examine">source pack</a>, so the analysis can be read back against the same material the investigator had.</p>
+
+    <span class="anchor" id="map"></span>
+    <div class="sub-head">
+      <h3>The map, at three points in the work</h3>
+      <p>The critical event went down first. Nineteen hypotheses went up around it, two of them there to be disproved: a No. 2 engine power loss before the reject decision, and a tailwind during the roll and stop. Then they were tested as the evidence arrived.</p>
+    </div>
+    <div class="strip">
+      <figure>
+        <img class="zoomable" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="The map with only the critical event placed" data-caption="Stage one: the critical event alone, placed bottom right." loading="lazy">
+        <figcaption><strong>The critical event alone</strong>The runway overrun onto the runway end safety area, bottom right.</figcaption>
+      </figure>
+      <figure>
+        <img class="zoomable" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses scattered across the lanes" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested, nothing filtered out." loading="lazy">
+        <figcaption><strong>Every hypothesis up</strong>Nineteen in their lanes, none tested, nothing filtered out.</figcaption>
+      </figure>
+      <figure>
+        <img class="zoomable" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing" data-caption="Stage three: half the map tested, five arrows drawn, and both excluded hypotheses struck through." loading="lazy">
+        <figcaption><strong>Half tested</strong>Nine objects tested and five arrows drawn. Both hypotheses raised to be disproved failed Existence and are struck through.</figcaption>
+      </figure>
+    </div>
+
+    <span class="anchor" id="tests"></span>
+    <div class="sub-head">
+      <h3>One object, from the map to its table</h3>
+      <p><em>Floor escape path lighting checked only every 24 months, not pre-flight</em> is the only object on this map that needed all three tests: it existed, it did not influence the overrun, and it is still important enough to raise. Here it is in the three places it lives.</p>
+    </div>
+    <ol class="chain">
+      <li class="chain__step chain__step--map">
+        <div class="crop" style="--W: 3840; --x: 2080; --y: 620; --cw: 1760; --ch: 990">
+          <img class="zoomable" src="../shots/tarlton-springs-rto/18-map-object-selected.png" alt="The finished map with the floor escape path lighting object selected, in orange, in the Risk Controls lane" data-caption="The finished map with Floor escape path lighting checked only every 24 months, not pre-flight, selected in the Risk Controls lane.">
+          <span class="crop__ring" style="left: 58.9%; top: 32.5%; width: 24.5%; height: 20.3%"></span>
         </div>
-      </div>
-      <div class="walk__media">
-        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
-          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
-          <img id="s01" src="../shots/tarlton-springs-rto/01-evidence-register.png" alt="">
-          <img id="s03" src="../shots/tarlton-springs-rto/03-safety-report.png" alt="">
-          <img id="s04" src="../shots/tarlton-springs-rto/04-checklist-todos.png" alt="">
+        <div>
+          <p class="chain__label"><span class="chain__no">1</span>On the map</p>
+          <p>Selected on the finished map, in the Risk Controls lane. It is orange, an other risk factor, and it carries no arrows, because it played no part in the overrun. Its corner dot is amber: the investigator left it open while engineering finds out whether the failed part is common across the fleet.</p>
         </div>
-        <p class="walk__caption"></p>
-      </div>
+      </li>
+      <li class="chain__step">
+        <p class="chain__label"><span class="chain__no">2</span>Its assessment form</p>
+        <div class="crop" style="--W: 3840; --x: 192; --y: 150; --cw: 2238; --ch: 2410">
+          <img class="zoomable" src="../shots/tarlton-springs-rto/19-object-form-importance.png" alt="The object's form: Existence passed at 100 per cent, Influence failed at 10 per cent, Importance passed at 90 per cent" data-caption="The object's form, Evidence tab: Existence passed at 100 per cent, Influence failed at 10 per cent, Importance passed at 90 per cent, with the investigator's notepad and the supporting material beside them.">
+        </div>
+        <p>Existence passed at 100 per cent: the test's coverage and the programme interval are documentary, and the defect on VH-SBQ was found on a functional check and traced to a failed component. Influence failed at 10 per cent. Importance passed at 90 per cent.</p>
+      </li>
+      <li class="chain__step">
+        <p class="chain__label"><span class="chain__no">3</span>Its table</p>
+        <a href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="page" src="../exports/tarlton-springs-rto/pages/evidence_argument_tables/p11.png" alt="Page 11 of the Evidence and Argument Tables: the floor escape path lighting object, with Existence, Influence and Importance each set out" loading="lazy"></a>
+        <p>Page 11 of the Evidence and Argument Tables: the same three tests, each with its argument for, its argument against and its reasoning, generated from the form. Nothing is typed twice.</p>
+      </li>
+    </ol>
+    <div class="chain-after">
+      <p>The pre-flight lighting test on this type covers the ceiling emergency lights and the exit signs, not the floor proximity escape path segments, which are checked only at the maintenance programme's 24-month functional test. On VH-SBQ that gap held a live defect. A functional check on 24/06/2026 found two of the six floor segments aft of row 16 on the left side dark on battery power, traced to a failed common ballast. The last dedicated test had been 11 months before the occurrence, so the defect could have stayed undetected for up to 13 more months.</p>
+      <p>It did not influence this occurrence: no evacuation was commanded, the cabin lights were on throughout, and the disembarkation took 4 minutes 8 seconds without incident. It is still a finding. Change one thing, such as a fire indication, smoke or a night evacuation over the wing, and two dark segments in the aft cabin are the difference between an orderly exit and a blocked one.</p>
     </div>
   </section>
 
-  <section class="block" id="sources">
+  <section class="block block--wide" id="found">
+    <span class="anchor" id="finished"></span>
     <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">3</span> The evidence pack</span>
-      <h2>Nine documents, and what each one settled</h2>
-      <p>By the end of the gathering phase the investigation held nine source documents. They are published here as one pack, so everything below can be read against the same material the investigator had.</p>
-    </div>
-    <div class="sources">
-      <div class="source">
-        <h4>Occurrence notification</h4>
-        <p>The first account: what happened, the damage, the injuries, the risk rating and the actions taken that night. It opened the file and seeded the first timeline events.</p>
-      </div>
-      <div class="source">
-        <h4>Flight data summary</h4>
-        <p>The recorder readout. It fixed V1 at 112 kt and the reject at 118 kt, timed the strike a second later, and showed the deceleration achieved falling short of the scheduled accelerate-stop performance. It also closed the engine failure hypothesis: both engines were making power right up to the reject.</p>
-      </div>
-      <div class="source">
-        <h4>CTAF recording and CVR extract</h4>
-        <p>The crew's own broadcasts on the CTAF, the words in the cockpit across the roll, the reject and the stop, and the call to the aerodrome reporting officer afterwards. It is the evidence behind the reject decision, and behind the fact that no runway inspection was ever asked for.</p>
-      </div>
-      <div class="source">
-        <h4>Weather, light and moon</h4>
-        <p>The observations and forecast, the end of civil twilight and the state of the moon. It established the roll five minutes after the end of civil twilight with no moon, and it excluded the tailwind hypothesis: every source gives a headwind.</p>
-      </div>
-      <div class="source">
-        <h4>Air safety report, pilot in command</h4>
-        <p>The captain's own account, submitted under the just culture scheme. It is the origin of two lines of enquiry, the training gap behind the reject and the aerodrome's wildlife history, and it is protected, so it informs the investigation without being quoted into anything distributed.</p>
-      </div>
-      <div class="source">
-        <h4>Operator procedures and policy extracts</h4>
-        <p>The aerodrome standard, the aerodrome manual, the operations manual wildlife and rejected take-off sections, the route risk assessment and the change record. Everything in the external, organisational and risk control lanes rests on these.</p>
-      </div>
-      <div class="source">
-        <h4>Maintenance, training and aerodrome records</h4>
-        <p>The aircraft history and the post-occurrence inspection, the crew's duty and training records, the evening rotation's roster pattern, the recurrent training syllabus, and the aerodrome operator's works register and sighting log. The deferred fence, the training gap and the 41 recorded sightings come from here.</p>
-      </div>
-      <div class="source">
-        <h4>Interview transcript, pilot in command</h4>
-        <p>The captain's account in his own words, taken once the records were in hand. It is what turned the training question from a complaint into a factor that could be tested.</p>
-      </div>
-      <div class="source">
-        <h4>Interview transcript, first officer</h4>
-        <p>The first officer was the pilot flying and the one who saw the animals. Her account is the evidence on detection, and on what the runway lighting looked like from the seat.</p>
-      </div>
-    </div>
-    <div class="card pack">
-      <a href="../exports/tarlton-springs-rto/source_pack.html"><img class="shot" src="../exports/tarlton-springs-rto/source_pack.png" alt="Cover page of the investigation source pack"></a>
-      <div>
-        <span class="eyebrow">Read along</span>
-        <h3>The source pack, 24 pages</h3>
-        <p>All nine documents in one file, in reading order, with the two interview transcripts at the back. It is compiled from the same source material the investigation was built from, and written through the application's own Word export, so it looks like everything else the app publishes.</p>
-        <p>Read it first and the analysis below is an argument you can check, rather than a conclusion you have to take on trust.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/source_pack.html">Read the pack</a><a class="btn" href="../exports/tarlton-springs-rto/source_pack.pdf" target="_blank" rel="noopener">PDF</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block block--wide" id="interviews">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">4</span> Interviews, and <span class="stage-no">5</span> the timeline</span>
-      <h2>The two accounts, and the sequence they have to fit</h2>
-      <p>Both flight crew were interviewed once the records were in hand, so the questions could be about what the records did not say. The sequence of events is then built from everything at once.</p>
-    </div>
-    <div class="walk">
-      <div class="walk__steps">
-        <div class="walk__stage">
-          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-actions)"></span><h3>The interviews</h3></div>
-          <article class="step" data-shot="s02" data-caption="An interview: the record header, the Teams transcript with speakers mapped to roles, and the investigator's notes.">
-            <h4>Import the transcripts, and settle the accounts</h4>
-            <p>Two interviews, each on its own sub-tab: the pilot in command and the first officer. Both were conducted over Teams and both transcripts came in as the .vtt download, imported straight into the record. A .docx download, or a pasted transcript, import the same way.</p>
-            <p>De-identification is built into the import. Every speaker in a transcript is mapped to a role, and it is the role, never the name, that reaches the record, the collated export or any drafting model. On this file the speakers are the lead investigator, the second investigator, the pilot in command and the first officer, and that is all anyone downstream ever sees.</p>
-            <p>The investigator corrects what the transcription got wrong, writes notes beside it, and finalises. From then on the account is settled: the transcript and the notes lock to read-only, and drafting treats the account as evidence rather than as a draft.</p>
-            <p class="records"><span>What the app recorded</span>The corrected transcript, the role for every speaker, the investigator's notes beside it, and whether the account has been finalised.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/02-interviews.png" alt="An interview with its transcript, the speaker to role mapping, and notes">
-          </article>
-        </div>
-        <div class="walk__stage" id="timeline">
-          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-local)"></span><h3>The timeline</h3></div>
-          <article class="step" data-shot="s05" data-caption="The timeline: every event with its source and its time basis, and the critical event marked.">
-            <h4>Build the sequence, and say what each time rests on</h4>
-            <p>The timeline runs from the crew signing on that morning through to the passengers standing on the ground, and it mixes sources: the recorder gives the roll to the second, the CTAF recording gives the crew's broadcasts and the call to the aerodrome reporting officer, the duty records give the shape of the day, and the aerodrome's own log gives the closure.</p>
-            <p>Each event carries its source and its time basis, so the sequence can be defended when two records disagree about when something happened. Here they did not: the CTAF recorder's clock agreed with the cockpit voice recorder's to within a second, and that is recorded too.</p>
-            <p class="records"><span>What the app recorded</span>The ordered events, the evidence behind each one, the time basis it rests on, and which event is the critical one.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/05-timeline.png" alt="The timeline tab">
-          </article>
-        </div>
-      </div>
-      <div class="walk__media">
-        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
-          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
-          <img id="s02" class="tall" src="../shots/tarlton-springs-rto/02-interviews.png" alt="">
-          <img id="s05" src="../shots/tarlton-springs-rto/05-timeline.png" alt="">
-        </div>
-        <p class="walk__caption"></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block block--wide" id="map">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">6</span> Building the map</span>
-      <h2>The analysis, built one stage at a time</h2>
-      <p>The map is the analysis. It starts with the occurrence itself, fills with everything that might have played a part, and is then cut down by testing rather than by opinion. These are three real states of this investigation's own file.</p>
-    </div>
-    <div class="walk">
-      <div class="walk__steps">
-        <div class="walk__stage">
-          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-org)"></span><h3>Three states of the same map</h3></div>
-          <article class="step" data-shot="s06" data-caption="Stage one: the critical event alone, placed bottom right.">
-            <h4>Place the critical event, and nothing else</h4>
-            <p>One object goes down first: <strong>Runway overrun onto the runway end safety area</strong>, in the Occurrence Events lane at the bottom right, with what happened and the proof of its significance recorded against it.</p>
-            <p>Everything else on the map exists to explain this one object. Putting it down first is what stops the analysis drifting into everything that was ever wrong with the operation.</p>
-            <p class="records"><span>What the app recorded</span>The critical event as an object, in its lane, at its point in time.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="The map with only the critical event placed">
-          </article>
-          <article class="step" data-shot="s07" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested, nothing filtered out.">
-            <h4>Put every hypothesis up, including the ones you expect to fail</h4>
-            <p>Nineteen more objects go up, scattered roughly where they belong in lane and in time. The occurrence sequence: two kangaroos crossed the strip onto the sealed runway, the No. 2 propeller and right main gear struck two kangaroos, the deceleration fell below the scheduled accelerate-stop performance. The crew's actions: no runway inspection requested before departing after last light, the take-off rejected 6 kt above V1, maximum braking established within 2 seconds of the reject decision.</p>
-            <p>The conditions the crew worked in: the roll in darkness, 5 minutes after last light with no moon, the departure inside the aerodrome's logged kangaroo peak, four northern edge lights above nominal intensity, and a crew who might have been fatigued on the fifth sector, 11 hours into their duty. Above them the controls and the organisation: the inspection after last light required only where a wildlife strike was reported in the previous 24 months, no training or guidance for a runway obstruction during the take-off roll, floor escape path lighting checked only every 24 months and not pre-flight, the failed northern fence left unrepaired through three budget rounds, the evening service approved without reopening the daylight-only risk assessment, the evening rotation rostered to close five-sector duties within 45 minutes of the limit, and the standard's size threshold that left the aerodrome with no documented wildlife plan.</p>
-            <p>Two of them are up there to be disproved: <strong>No. 2 engine power loss before the reject decision</strong> and <strong>Tailwind component during the take-off roll and stop</strong>. Nothing is filtered at this point. The method works by testing, not by intuition, and a hypothesis that is later excluded still strengthens the record.</p>
-            <p class="records"><span>What the app recorded</span>Each hypothesis as an untested object, drawn with a dashed white border until someone has tested it.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses scattered across the lanes">
-          </article>
-          <article class="step" data-shot="s08" data-caption="Stage three: half the map tested, five arrows drawn, and both excluded hypotheses struck through.">
-            <h4>Test as the evidence arrives, and let the arrows follow</h4>
-            <p>Nine objects have been tested here. The occurrence sequence is joined up, animals to strike to deceleration shortfall to the overrun, and the wildlife chain has started to form above it, from the standard's size threshold through the failed fence to the animals. The inspection criterion has passed its tests too, but its arrow waits on the inspection nobody requested, which is still untested. Both hypotheses raised to be disproved have failed Existence and are struck through on the map, with the reason on the record.</p>
-            <p>An investigation does not arrive in order. A transcript changes what a factor means, a record closes a line of enquiry, a new hypothesis turns up in week three. Objects are moved, tested, connected and reconnected as that happens, and the map is never more than the current state of the evidence.</p>
-            <p>Every arrow is a claim that one thing led to another. It stays grey and dashed until the object it comes from has passed its tests, and turns green when it has, so the picture builds itself as the work is done.</p>
-            <p class="records"><span>What the app recorded</span>Every object and every connection, with the state of each test behind them.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing">
-          </article>
-        </div>
-      </div>
-      <div class="walk__media">
-        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
-          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
-          <img id="s06" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="">
-          <img id="s07" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="">
-          <img id="s08" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="">
-        </div>
-        <p class="walk__caption"></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="tests">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">7</span> Testing a factor</span>
-      <h2>Nothing is a finding until it has passed its tests</h2>
-      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. The test results determine how the object is classified, while the investigator remains responsible for the judgements behind those results.</p>
-    </div>
-    <div class="tests">
-      <article class="test card">
-        <span class="eyebrow">Existence</span>
-        <p class="q">Did this event or condition actually exist?</p>
-        <p>If it did, the border turns solid and the next question is asked. If it did not, the hypothesis is excluded: it stays on the map, struck through, with the reason recorded.</p>
-        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Inconclusive</span></div>
-      </article>
-      <article class="test card">
-        <span class="eyebrow">Influence</span>
-        <p class="q">Did it influence anything else, and if so in what way?</p>
-        <p>If it did, it is a contributing safety factor and its outgoing arrows become proven causal paths. Where the evidence cuts both ways, the test is argued with evidence for and against.</p>
-        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Argued</span></div>
-      </article>
-      <article class="test card">
-        <span class="eyebrow">Importance</span>
-        <p class="q">If it did not influence anything, is it still important enough to raise in the report?</p>
-        <p>A factor that played no part in this occurrence may still be a risk worth addressing. If so, it is a finding in its own right, an other risk factor, and it carries no arrows.</p>
-        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="block block--wide">
-    <div class="walk">
-      <div class="walk__steps">
-        <div class="walk__stage">
-          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-controls)"></span><h3>The three questions, on one object</h3></div>
-          <article class="step" data-shot="s09" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad.">
-            <h4>Ask them of the operator's own defence</h4>
-            <p>The object is <strong>Inspection after last light required only where a wildlife strike was reported in 24 months</strong>. Part A 8.14.2 requires the pilot in command to request a runway inspection before the first departure after last light at any aerodrome in Appendix 8A, and 8.14.3 requires nothing at all anywhere else. An aerodrome is listed only where a wildlife strike involving a company aircraft has been reported there in the preceding 24 months. Tarlton Springs never has been on it.</p>
-            <p>Did it exist? Yes, at 100 per cent: the manual text and the appendix listing are documentary. Did it influence the occurrence? Yes, at 90 per cent. Had the requirement applied, an inspection would have been requested and a pass required before the roll, and the aerodrome's own staff disperse animals when they find them. The missing 10 per cent allows that an inspection finished some minutes before departure does not guarantee a clear runway at the roll.</p>
-            <p>The corner dot says how far the object's own investigation has got: amber while it is still being worked, green when the investigator has finished with it. Eighteen of the twenty objects on this map are green, and two were deliberately left amber.</p>
-            <p class="records"><span>What the app recorded</span>Each verdict with its confidence and its evidence, the investigator's reasoning, and the standard of proof the investigation set. The form warns when a pass falls short of it.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/09-object-form.png" alt="An object's evidence form with verdicts and a confidence slider">
-          </article>
-          <article class="step" data-shot="s10" data-caption="An argued test: the evidence for and against, weighed into a confidence rather than a yes or no.">
-            <h4>Argue the one the evidence cuts both ways on</h4>
-            <p>The object at the top of the same chain is <strong>Standard's threshold left the aerodrome with no documented wildlife plan</strong>. The aerodrome is not in breach of anything, which is the point of putting it in the External Influences lane: its heaviest scheduled aeroplane and its passenger numbers both fall under the standard's limbs, so it needs no documented plan, and it held none.</p>
-            <p>For: with no plan, nothing owned the aerodrome's wildlife hazard as a hazard. The failed fence sat in the works register as an ordinary maintenance item competing for council money, deferred three times with no hazard assessment behind it. Under a documented plan it is a recorded wildlife control whose failure has to be answered for. Against: the aerodrome operator was still obliged to take reasonable measures, a plan is not the only way to repair a fence or pass a sighting log to an airline, and the deferrals were budget decisions. A plan is paper; the fence is money.</p>
-            <p>Influence was accepted at 70 per cent, argued. The investigation's standard of proof is the application's default of 70 per cent, so this meets it exactly and no more, and it is the weakest of the influence findings on the map. The report carries that as its confidence word rather than presenting the finding as settled.</p>
-            <p class="records"><span>What the app recorded</span>Both sides of the argument as separate evidence, the confidence the investigator settled on after weighing them, and the reasoning for that number.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/10-object-form-argued.png" alt="An object's form showing evidence for and against influence">
-          </article>
-        </div>
-      </div>
-      <div class="walk__media">
-        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
-          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
-          <img id="s09" src="../shots/tarlton-springs-rto/09-object-form.png" alt="">
-          <img id="s10" src="../shots/tarlton-springs-rto/10-object-form-argued.png" alt="">
-        </div>
-        <p class="walk__caption"></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block block--wide" id="finished">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">8</span> The finished map</span>
-      <h2>The whole investigation in one image</h2>
-      <p>Twenty objects and fifteen arrows. Left to right is time, bottom to top is organisational depth, and the critical event sits at the bottom right where every chain arrives.</p>
+      <span class="eyebrow"><span class="stage-no">3</span> What it established</span>
+      <h2>Twelve contributing safety factors, in converging chains</h2>
+      <p>Twenty objects and fifteen arrows: twelve contributing safety factors, two other risk factors, two excluded hypotheses and one positive event, with one factor whose Influence is unsettled and one object left open on Existence.</p>
     </div>
     <figure>
       <img class="shot zoomable" src="../shots/tarlton-springs-rto/11-map-final.png" alt="The finished map, fitted to the window" data-caption="The finished map: twelve contributing safety factors in converging chains, two other risk factors, two excluded hypotheses, one positive event, one safety factor whose Influence is unsettled, and one object left open on Existence.">
@@ -564,135 +490,125 @@ footer .legal { line-height: 1.6; }
     <div class="map-notes">
       <div class="card">
         <h3>What the map says</h3>
-        <p>The chains converge on the animals on the runway and on the reject above V1. The wildlife chain runs from the standard's threshold through the failed fence to the animals, joined by the inspection criterion through the inspection nobody requested, and by the logged kangaroo peak. A change-management chain runs from the evening service's approval to the roll in darkness, and the darkness and the missing obstruction training both lead to the reject. The overrun is then reached by two routes: the strike through the deceleration shortfall, and the late reject directly, because a late reject shortens the runway left rather than lowering the deceleration. A green arrow also runs from the positive event, maximum braking established within 2 seconds of the reject decision, because that changed the outcome as well.</p>
-        <p>The two orange objects carry no arrows at all. They failed Influence, so there is no proven causal path to draw and an arrow would be a claim the evidence does not support. They stay on the map because they are findings in their own right. The fatigue object carries none either: its Existence was argued and left inconclusive at 50 per cent, so there is nothing established to draw an arrow from, and it stays on the map as tested and set aside.</p>
+        <p>The chains converge on the animals on the runway and on the reject above V1. The wildlife chain runs from the standard's threshold through the failed fence to the animals, joined by the inspection criterion through the inspection nobody requested, and by the logged kangaroo peak. Tarlton Springs was never on the list of aerodromes where an inspection after last light is required, because no company aircraft had reported a wildlife strike there in the preceding 24 months. A change-management chain runs from the evening service's approval to the roll in darkness, and the darkness and the missing obstruction training both lead to the reject.</p>
+        <p>The overrun is reached by two routes: the strike through the deceleration shortfall, and the late reject directly, because a late reject shortens the runway left rather than lowering the deceleration. A green arrow also runs from the positive event, maximum braking within 2 seconds of the reject decision, because that changed the outcome as well. The two orange objects, the evening rotation's roster and the escape path lighting, carry no arrows: they failed Influence, and they stay on the map because they are findings in their own right.</p>
       </div>
       <div class="card">
-        <h3>The one unproven arrow</h3>
-        <p>One arrow is grey and dashed: the claim that four northern edge lights above nominal intensity delayed the crew's detection of the animals, and so the reject. A photometric check seven days later measured them at 118 to 131 per cent of nominal in the section the animals crossed. The lighting is pilot-activated at one fixed setting that nobody changed in between, so Existence passed at 80 per cent. The captain described a corridor of light with everything outside it black; the first officer, who saw the animals, called the lighting normal and saw them clearly once they were on the seal. That shows a deviation. It does not show an effect on detection.</p>
-        <p>Influence was argued and left inconclusive at 45 per cent, so the arrow cannot be drawn as proven. The application draws it grey and dashed rather than dropping it, because an open line of enquiry is part of the record and the report has to say that it is open.</p>
+        <h3>What stays open</h3>
+        <p>One arrow is grey and dashed: the claim that four northern edge lights above nominal intensity delayed the crew's detection of the animals, and so the reject. A photometric check seven days later measured them at 118 to 131 per cent of nominal in the section the animals crossed, at a fixed pilot-activated setting nobody had changed, so Existence passed at 80 per cent. The captain described a corridor of light with everything outside it black. The first officer, who saw the animals, called the lighting normal and saw them clearly once they were on the seal. That shows a deviation. It does not show an effect on detection, so Influence was argued and left inconclusive at 45 per cent, and the report has to say the question is open.</p>
+        <p>Crew fatigue carries no arrow either. Its Existence was argued and left inconclusive at 50 per cent, so there is nothing established to draw an arrow from, and it stays on the map as tested and set aside.</p>
       </div>
     </div>
-    <div class="legend" aria-label="What the shapes and colours mean">
-      <ul>
-        <li><span class="swatch"></span><span><strong>Blue, solid border:</strong> a contributing safety factor. It existed and it influenced the occurrence.</span></li>
-        <li><span class="swatch other"></span><span><strong>Orange:</strong> an other risk factor. It existed, it did not influence this occurrence, and it is still worth raising.</span></li>
-        <li><span class="swatch excluded"></span><span><strong>Struck through, dashed:</strong> an excluded hypothesis. It did not exist, and the reason is on the record.</span></li>
-        <li><span class="swatch positive"></span><span><strong>Green, rounded:</strong> a positive event, something that reduced the risk or limited the outcome.</span></li>
-        <li><span class="swatch critical"></span><span><strong>Red, rounded:</strong> the critical event, the occurrence itself.</span></li>
-        <li><span class="swatch untested"></span><span><strong>White, dashed:</strong> not yet tested, or a test left inconclusive.</span></li>
-        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#15803d" stroke-width="2.2"/><path d="M24 6l7 5-7 5z" fill="#15803d"/></svg><span><strong>Green arrow:</strong> a proven causal path. The object it comes from has passed Influence.</span></li>
-        <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/><path d="M24 6l7 5-7 5z" fill="#94a3b8"/></svg><span><strong>Grey dashed arrow:</strong> a causal path still under testing.</span></li>
-        <li><span class="dot green" style="margin-top:6px"></span><span><strong>Green dot:</strong> the object's investigation is complete and its evidence finalised.</span></li>
-        <li><span class="dot amber" style="margin-top:6px"></span><span><strong>Amber dot:</strong> still being investigated.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="block" id="tables">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">9</span> The Evidence and Argument Tables</span>
-      <h2>The working behind every finding, written out</h2>
-      <p>The map is the picture. The tables are the working behind it, exported from the same record, one table per object, in the order the map reads.</p>
-    </div>
-    <div class="card pack">
-      <a href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="shot" src="../exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Evidence and Argument Tables document: one table per object with each test, its confidence and the evidence"></a>
-      <div>
-        <span class="eyebrow">The working</span>
-        <h3>One table per object</h3>
-        <p>Each test's result and confidence, the evidence recorded for it and against it where it was argued, the proof of significance, and the investigator's own reasoning. None of it is typed twice: it is the same record the map draws from and the same record the report is drafted from.</p>
-        <p>The tables preserve the evidence, tests and reasoning behind each finding, so the investigation can be reviewed later: a finding in the report can be followed back, step by step, to the evidence that produced it.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/evidence_argument_tables.html">Read the tables</a><a class="btn" href="../exports/tarlton-springs-rto/evidence_argument_tables.pdf" target="_blank" rel="noopener">PDF</a><a class="btn" href="../exports/tarlton-springs-rto/collation.md">The collated export</a></div>
+    <details class="key">
+      <summary>What the colours and shapes mean</summary>
+      <div class="legend">
+        <ul>
+          <li><span class="swatch"></span><span>Blue with a solid border is a contributing safety factor: it existed and it influenced the occurrence.</span></li>
+          <li><span class="swatch other"></span><span>Orange is an other risk factor: it existed, it did not influence this occurrence, and it is still worth raising.</span></li>
+          <li><span class="swatch excluded"></span><span>Struck through and dashed is an excluded hypothesis, with the reason on the record.</span></li>
+          <li><span class="swatch positive"></span><span>Green and rounded is a positive event, something that limited the outcome.</span></li>
+          <li><span class="swatch critical"></span><span>Red and rounded is the critical event, the occurrence itself.</span></li>
+          <li><span class="swatch untested"></span><span>White and dashed is not yet tested, or a test left inconclusive.</span></li>
+          <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#15803d" stroke-width="2.2"/><path d="M24 6l7 5-7 5z" fill="#15803d"/></svg><span>A green arrow is a proven causal path.</span></li>
+          <li><svg class="arrow" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 11h26" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/><path d="M24 6l7 5-7 5z" fill="#94a3b8"/></svg><span>A grey dashed arrow is a causal path still under testing.</span></li>
+          <li><span class="dot green" style="margin-top:6px"></span><span>A green dot means the object's investigation is complete; amber means it is still being worked.</span></li>
+        </ul>
       </div>
-    </div>
+      <p class="hint" style="margin-top: 12px">The method behind the map and its tests is on the <a href="../methodology.html#tests">Methodology</a> page.</p>
+    </details>
   </section>
 
-  <section class="block block--wide" id="drafting">
+  <section class="block" id="produced">
+    <span class="anchor" id="published"></span>
     <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">10</span> Drafting, audit and repair</span>
-      <h2>The report is written from the record, then argued with</h2>
-      <p>Drafting is not the end of the work. Every draft is audited against the record that produced it, and what the audit finds is acted on before anything is finalised.</p>
+      <span class="eyebrow"><span class="stage-no">4</span> What Synoptic produced</span>
+      <h2>Four documents from the one record</h2>
+      <p>Each is generated from the same tested objects and the same evidence, on the application's Word template and converted to PDF. Each report is published with the audit (the model's check against the record) and the mechanical record check beside it: open one with Read and choose Grounding audit or Record check.</p>
     </div>
-    <div class="walk">
-      <div class="walk__steps">
-        <div class="walk__stage">
-          <div class="walk__stage-head"><span class="walk__tint" style="background: var(--lane-external)"></span><h3>The pipeline</h3></div>
-          <article class="step" data-shot="s12" data-caption="The Draft report tab: a style, a section at a time, or the whole report in one run.">
-            <h4>Draft</h4>
-            <p>A style is chosen and its sections are drafted from one collated copy of the whole record: an outline pass, a call per section, then a cohesion edit across the lot. The model drafts from the investigation record under instructions not to go beyond what the tests support, with the findings, the categories and the confidence words taken from that record. The checks that follow compare the draft back against the record before the investigator reviews it. Each section is corrected and finalised by hand, and nothing regenerates over a finalised one. This investigation was drafted through a model reached from the investigator's own machine; the endpoint is a setting, so the same pipeline runs against a local model, a hosted API with your own key, or an organisation's gateway. With AI access off the tab says so and the report is assembled from the record instead. The drafts published here were produced by a Claude-based pipeline run through the suite's own sealed command-line transport, standing in for the kind of private cloud endpoint an organisation would use.</p>
-            <p class="records"><span>What the app recorded</span>Each section with the model and the version of the record that produced it, so a draft goes visibly stale when the record moves on.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/12-draft-report.png" alt="The Draft report tab with its sections and the whole-report run">
-          </article>
-          <article class="step" data-shot="s13" data-caption="The Record tab: findings derived from the tests, the record assembled under a report style's headings.">
-            <h4>Audit, repair, then finalise</h4>
-            <p>The audit, a second model pass, then reads the finished draft back against the whole record and gives a verdict on the claims it identifies, naming what it could not find and what it found contradicted. It is the application's own model check rather than an independent review, and like any model output it can miss things. A mechanical check with no model in it runs beside it, comparing each factor's category and confidence word in the text against its recorded test, and the report's findings against the derived classification. The repair pass takes only what those two flagged: it sends the section carrying a flagged item, with the record and the cited excerpt, under one rule, change what is flagged and nothing else, then re-audits the reply and keeps it only if the re-audit is clean or strictly better. Nothing lands on its own. A repaired section is shown beside the text it would replace and landed by hand, and it carries "repaired against the audit" in its provenance. The audit and the check are published with the reports below, because what the audit caught is the reason a draft is never final until an investigator has read it.</p>
-            <p class="records"><span>What the app recorded</span>The audit and the record check beside the draft, the review notes the model made about the record itself, which section each repair touched, and the investigator's decision to finalise.</p>
-            <img class="inline" src="../shots/tarlton-springs-rto/13-report.png" alt="The Record tab with the assembled report">
-          </article>
+    <span class="anchor" id="tables"></span>
+    <div class="outputs">
+      <article class="output">
+        <a class="output__page" href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img src="../exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="Page 5 of the Evidence and Argument Tables" loading="lazy"></a>
+        <div class="output__body">
+          <h3>Evidence and Argument Tables</h3>
+          <p>The working behind every finding, one table per object in the order the map reads: each test’s result and confidence, the argument for and against, and the investigator’s reasoning.</p>
+          <p class="output__meta">24 pages · page 5 shown: the standard's threshold, its Influence argued for and against and accepted at 70 per cent</p>
+          <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/evidence_argument_tables.html">View pages</a><a class="btn" href="../exports/tarlton-springs-rto/evidence_argument_tables.pdf" target="_blank" rel="noopener">PDF</a></div>
+        </div>
+      </article>
+      <article class="output">
+        <a class="output__page" href="../exports/tarlton-springs-rto/report_preliminary.html"><img src="../exports/tarlton-springs-rto/pages/report_preliminary/p04.png" alt="Page 4 of the Preliminary investigation report" loading="lazy"></a>
+        <div class="output__body">
+          <h3>Preliminary investigation report</h3>
+          <p>The interim report, issued while the work is still running: what is known, what is still being looked at and what has already been done. It carries no findings.</p>
+          <p class="output__meta">7 pages · page 4 shown: what was known while the work was still running</p>
+          <div class="links"><a class="btn btn-primary" href="../reports/tarlton-springs-rto/preliminary.html">Read</a><a class="btn" href="../exports/tarlton-springs-rto/report_preliminary.html">View pages</a><a class="btn" href="../exports/tarlton-springs-rto/report_preliminary.pdf" target="_blank" rel="noopener">PDF</a></div>
+        </div>
+      </article>
+      <article class="output">
+        <a class="output__page" href="../exports/tarlton-springs-rto/report_standard.html"><img src="../exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="Page 8 of the Final investigation report" loading="lazy"></a>
+        <div class="output__body">
+          <h3>Final investigation report</h3>
+          <p>The full internal report: an executive summary, the occurrence, the analysis lane by lane, the findings and the appendices a reviewer will ask for.</p>
+          <p class="output__meta">25 pages · page 8 shown: the start of the analysis, and the decision to reject above V1</p>
+          <div class="links"><a class="btn btn-primary" href="../reports/tarlton-springs-rto/standard.html">Read</a><a class="btn" href="../exports/tarlton-springs-rto/report_standard.html">View pages</a><a class="btn" href="../exports/tarlton-springs-rto/report_standard.pdf" target="_blank" rel="noopener">PDF</a></div>
+        </div>
+      </article>
+      <article class="output">
+        <a class="output__page" href="../exports/tarlton-springs-rto/report_executive.html"><img src="../exports/tarlton-springs-rto/pages/report_executive/p05.png" alt="Page 5 of the Executive briefing" loading="lazy"></a>
+        <div class="output__body">
+          <h3>Executive briefing</h3>
+          <p>A few pages in plain language for the people who decide: what happened, why it happened, what was found and what is being done about it.</p>
+          <p class="output__meta">8 pages · page 5 shown: the findings, in the briefing's own words</p>
+          <div class="links"><a class="btn btn-primary" href="../reports/tarlton-springs-rto/executive.html">Read</a><a class="btn" href="../exports/tarlton-springs-rto/report_executive.html">View pages</a><a class="btn" href="../exports/tarlton-springs-rto/report_executive.pdf" target="_blank" rel="noopener">PDF</a></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="sub-head">
+      <h3>The final report in other layouts</h3>
+      <p>The same investigation and the same findings, arranged to the structure of three published report series.</p>
+    </div>
+    <table class="layouts">
+      <thead><tr><th scope="col">Layout</th><th scope="col">How it differs</th><th scope="col">Open</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">ATSB-inspired</th><td>Written for a readership outside the organisation: an investigation summary first, the findings on the seven-term scale, then the safety issues with the action taken against each.</td><td class="layouts__links"><a href="../reports/tarlton-springs-rto/atsb.html">Read</a> · <a href="../exports/tarlton-springs-rto/report_atsb.pdf" target="_blank" rel="noopener">PDF</a></td></tr>
+        <tr><th scope="row">NTSB-inspired</th><td>Factual information, analysis and conclusions, ending in a single probable cause statement with its contributing factors, then the recommendations.</td><td class="layouts__links"><a href="../reports/tarlton-springs-rto/ntsb.html">Read</a> · <a href="../exports/tarlton-springs-rto/report_ntsb.pdf" target="_blank" rel="noopener">PDF</a></td></tr>
+        <tr><th scope="row">AAIB-inspired</th><td>A synopsis first, and conclusions that split the causal factors from the contributory ones before the safety action and recommendations. Written in British English.</td><td class="layouts__links"><a href="../reports/tarlton-springs-rto/aaib.html">Read</a> · <a href="../exports/tarlton-springs-rto/report_aaib.pdf" target="_blank" rel="noopener">PDF</a></td></tr>
+      </tbody>
+    </table>
+    <p class="layouts__note">These layouts follow the published report structure of the Australian Transport Safety Bureau, the US National Transportation Safety Board and the UK Air Accidents Investigation Branch. They are not produced, reviewed or endorsed by those organisations.</p>
+  </section>
+
+  <section class="block" id="examine">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">5</span> Examine the record</span>
+      <h2>Read the analysis back against the material</h2>
+    </div>
+    <div class="support">
+      <div class="card">
+        <a href="../exports/tarlton-springs-rto/source_pack.html"><img src="../exports/tarlton-springs-rto/source_pack.png" alt="Cover page of the investigation source pack" loading="lazy"></a>
+        <div>
+          <h3>Source pack</h3>
+          <p>The nine source documents the investigation worked from, in reading order, with the two interview transcripts at the back. It is supporting material, not an output of the investigation. Read it first and the analysis above is an argument you can check.</p>
+          <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/source_pack.html">View pages</a><a class="btn" href="../exports/tarlton-springs-rto/source_pack.pdf" target="_blank" rel="noopener">PDF</a></div>
         </div>
       </div>
-      <div class="walk__media">
-        <div class="walk__frame" role="button" tabindex="0" aria-label="Show this screenshot at full size">
-          <button class="walk__enlarge" type="button" tabindex="-1" aria-hidden="true">Enlarge</button>
-          <img id="s12" src="../shots/tarlton-springs-rto/12-draft-report.png" alt="">
-          <img id="s13" src="../shots/tarlton-springs-rto/13-report.png" alt="">
+      <div class="card wide-thumb">
+        <img class="zoomable" src="../shots/tarlton-springs-rto/13-report.png" alt="The Record tab with the assembled report and its record checks" data-caption="The Record tab: findings derived from the tests, the record assembled under a report style's headings." loading="lazy">
+        <div>
+          <span class="anchor" id="drafting"></span>
+          <h3>How the reports were drafted</h3>
+          <p>Each report was drafted section by section from the record, then audited against it. What the audit flagged went to a repair pass, and a repaired section was landed by hand, never on its own. These drafts came from a Claude-based pipeline run through the suite's own sealed command-line transport, standing in for the private endpoint an organisation would use. With AI access off, the report is assembled from the record instead.</p>
+          <div class="links"><a class="btn" href="../ai-security.html">AI and security</a><a class="btn" href="../exports/tarlton-springs-rto/collation.md">The collated export</a></div>
         </div>
-        <p class="walk__caption"></p>
       </div>
     </div>
-  </section>
-
-  <section class="block" id="published">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">11</span> The published reports</span>
-      <h2>Six reports from the one record</h2>
-      <p>The same investigation written six ways, on the application's Word template and converted to PDF. Three are the application's general styles; the other three follow the shapes of published safety investigation reports (a final report, a probable-cause report and a causal and contributory factors report), so an investigator can see the same record under the structure their own organisation expects. Each is published exactly as it landed, with the audit (the model's check against the record) and the mechanical record check beside it.</p>
+    <div class="next">
+      <a class="btn btn-primary" href="../download.html">Download</a>
+      <a class="btn" href="kanooka-heads-grounding.html">Kanooka Heads, maritime</a>
+      <a class="btn" href="bindarra-haul-road-collision.html">Bindarra, mining</a>
     </div>
-    <div class="published">
-      <article class="card">
-        <span class="eyebrow">Example</span>
-        <a href="../exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="../exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the standard investigation report"></a>
-        <h3>Standard investigation report</h3>
-        <p>The full report: executive summary, event overview, analysis, findings summary and appendices, drafted section by section from the record.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/report_standard.html">Read the report</a><a class="btn" href="../reports/tarlton-springs-rto/standard.html#audit">The audit and checks</a></div>
-      </article>
-      <article class="card">
-        <span class="eyebrow">Example</span>
-        <a href="../exports/tarlton-springs-rto/report_preliminary.html"><img class="shot" src="../exports/tarlton-springs-rto/report_preliminary.png" alt="Cover page of the preliminary investigation update"></a>
-        <h3>Preliminary update</h3>
-        <p>The interim style, issued while the work was still running: what has been established so far, the risk exposure and the open lines of enquiry, with no findings.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/report_preliminary.html">Read the update</a><a class="btn" href="../reports/tarlton-springs-rto/preliminary.html#audit">The audit and checks</a></div>
-      </article>
-      <article class="card">
-        <span class="eyebrow">Example</span>
-        <a href="../exports/tarlton-springs-rto/report_executive.html"><img class="shot" src="../exports/tarlton-springs-rto/report_executive.png" alt="Cover page of the executive brief"></a>
-        <h3>Executive brief</h3>
-        <p>The same record cut to a few pages of plain language: the occurrence, the findings and the actions, for the people who decide.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/report_executive.html">Read the brief</a><a class="btn" href="../reports/tarlton-springs-rto/executive.html#audit">The audit and checks</a></div>
-      </article>
-      <article class="card">
-        <span class="eyebrow">Example</span>
-        <a href="../exports/tarlton-springs-rto/report_atsb.html"><img class="shot" src="../exports/tarlton-springs-rto/report_atsb.png" alt="Cover page of the final report"></a>
-        <h3>Final report</h3>
-        <p>Modelled on the structure of published safety investigation final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/report_atsb.html">Read the report</a><a class="btn" href="../reports/tarlton-springs-rto/atsb.html#audit">The audit and checks</a></div>
-      </article>
-      <article class="card">
-        <span class="eyebrow">Example</span>
-        <a href="../exports/tarlton-springs-rto/report_ntsb.html"><img class="shot" src="../exports/tarlton-springs-rto/report_ntsb.png" alt="Cover page of the probable cause report"></a>
-        <h3>Probable cause report</h3>
-        <p>Factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/report_ntsb.html">Read the report</a><a class="btn" href="../reports/tarlton-springs-rto/ntsb.html#audit">The audit and checks</a></div>
-      </article>
-      <article class="card">
-        <span class="eyebrow">Example</span>
-        <a href="../exports/tarlton-springs-rto/report_aaib.html"><img class="shot" src="../exports/tarlton-springs-rto/report_aaib.png" alt="Cover page of the causal and contributory factors report"></a>
-        <h3>Causal and contributory factors report</h3>
-        <p>Written in British English, as the style sets: synopsis, factual information, analysis, conclusions carrying the findings and splitting causal from contributory factors, then safety action and recommendations.</p>
-        <div class="links"><a class="btn btn-primary" href="../exports/tarlton-springs-rto/report_aaib.html">Read the report</a><a class="btn" href="../reports/tarlton-springs-rto/aaib.html#audit">The audit and checks</a></div>
-      </article>
-    </div>
-    <p class="hint" style="margin-top: 20px; max-width: 78ch">Beside the reports, the same record exports the <a href="../exports/tarlton-springs-rto/evidence_argument_tables.html">Evidence and Argument Tables</a> behind every finding, the map and the timeline as images, and a <a href="../exports/tarlton-springs-rto/collation.md">collated copy</a> of the whole investigation, all written into the investigation's own folder. The investigation file itself can be archived by an organisation and read back without the application, because the underlying file is human-readable JSON.</p>
   </section>
 
 
