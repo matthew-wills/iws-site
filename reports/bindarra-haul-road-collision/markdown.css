@@ -1,6 +1,14 @@
 /* Rendered preview of a drafted report section. Sized to read like a
    report page rather than a web page: generous line height, restrained
    headings, and a measure that does not run the full window width. */
+/* The fictional-case label on the website's copy of a report (#162). */
+.fictional-label {
+  margin: 0.5em 0;
+  font-size: 0.8em;
+  text-align: center;
+  color: #7dc3d2; /* the light teal of docxHouse TEAL_LIGHT */
+}
+
 .md {
   max-width: 78ch;
   font-size: 15px;
@@ -252,4 +260,15 @@
 .md__figure-ref {
   color: #0563c1;
   text-decoration: underline;
+}
+
+.md__fence {
+  margin: 4px 0 12px 20px;
+  padding: 8px 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  font-size: 0.92em;
+  background: rgba(127, 127, 127, 0.1);
+  border-left: 2px solid rgba(127, 127, 127, 0.5);
 }
