@@ -12,9 +12,11 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
     - `index.template.html` - the home page.
     - `product.template.html`, `methodology.template.html`,
       `ai-security.template.html`, `case-studies.template.html`,
-      `download.template.html` - the other top-level pages, one job each:
-      what the product is, how the method derives findings, what AI does
-      and where data goes, the worked case studies, and how to get it.
+      `download.template.html`, `getting-started.template.html` - the other
+      top-level pages, one job each: what the product is, how the method
+      derives findings, what AI does and where data goes, the worked case
+      studies, how to get it, and the first investigation step by step
+      (linked from the home and download pages rather than the nav).
     - `case-study.template.html` - the shell around one study's page.
     - `report.template.html`, `document.template.html` - a drafted
       report's page and a published document's page-by-page viewer.
@@ -60,7 +62,8 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
   published documents (PDF, cover renders, page renders, the collated
   export), copied in by the build.
 - `index.html`, `product.html`, `methodology.html`, `ai-security.html`,
-  `case-studies.html`, `download.html`, `case-studies/<slug>.html`,
+  `case-studies.html`, `download.html`, `getting-started.html`,
+  `case-studies/<slug>.html`,
   `changelog.html`, `guide.html`, `reports/<slug>/*.html`,
   `exports/<slug>/*.html` - the built pages,
   committed so the repo can be served as it stands (GitHub Pages,

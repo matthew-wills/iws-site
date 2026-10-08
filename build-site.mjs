@@ -30,9 +30,10 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-/** The maker's wordmark, prefixed onto every page title except the home
- *  page's, which stays product-led. */
-const BRAND = "Synoptic";
+/** The product's name, suffixed onto every page title except the home
+ *  page's, which is the name alone. The company (Synoptic) is the maker,
+ *  named in the header wordmark and the footer, never as the product. */
+const BRAND = "Investigation Workflow Suite (IWS)";
 const appCaseStudies = process.argv[2];
 if (!appCaseStudies) {
   console.error("usage: node build-site.mjs <appCaseStudiesDir>");
@@ -77,7 +78,7 @@ const NAV = [
   ["guide.html", "Documentation", "docs"],
   ["download.html", "Download", "download"],
 ];
-const MAKER = "Investigation Workflow Suite is made by Synoptic Safety Investigation Software.";
+const MAKER = "Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.";
 /** Where every "Talk to us" and "Contact us" link on the site goes: one
  *  address, set here once it is decided (plan-public-release.md, step 2).
  *  Until then the links point at the Organisation card on the download
@@ -237,7 +238,7 @@ for (const study of studies) {
       .replace("%%CHECK%%", r.recordCheck || '<p class="hint">No record check was recorded for this run.</p>')
       .replace("%%NOTES%%", r.reviewNotes || '<p class="hint">No review notes.</p>');
     pageHoles.push(...unfilled(html));
-    write(join("reports", slug, `${style}.html`), document(`${BRAND} | ${title}, ${study.title}`, html, blurb));
+    write(join("reports", slug, `${style}.html`), document(`${title}, ${study.title} | ${BRAND}`, html, blurb));
   }
 
   // A page-by-page viewer for each published document, from the page
@@ -272,7 +273,7 @@ for (const study of studies) {
       .replace("%%EXTRA%%", extra)
       .replace("%%PAGES%%", figures);
     pageHoles.push(...unfilled(html));
-    write(join("exports", slug, `${name}.html`), document(`${BRAND} | ${title}, ${study.title}`, html, blurb));
+    write(join("exports", slug, `${name}.html`), document(`${title}, ${study.title} | ${BRAND}`, html, blurb));
   }
 
   // The study's own page: the shared shell plus this study's fragment. A
@@ -289,7 +290,7 @@ for (const study of studies) {
     "../",
   );
   const holes = [...new Set([...unfilled(page), ...pageHoles])];
-  write(join("case-studies", `${slug}.html`), document(`${BRAND} | ${pageTitle}`, page, study.blurb));
+  write(join("case-studies", `${slug}.html`), document(`${pageTitle} | ${BRAND}`, page, study.blurb));
   study.reportsBuilt = declaredReports.filter((s) => reports[s]);
   study.docsBuilt = docs;
   study.reportData = reports;
@@ -347,15 +348,16 @@ write("index.html", index);
 /** The other top-level pages: template, nav key, title and description. */
 const sitePages = [
   ["product", "Product", "Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record."],
-  ["methodology", "Methodology", "How IWS moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
-  ["ai-security", "AI and security", "What AI drafting does in IWS, how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI."],
-  ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite."],
-  ["download", "Download", "Download Investigation Workflow Suite for Windows 10 and 11: installer and portable builds, the Free, Professional and Organisation levels, and the 90-day Professional trial."],
+  ["methodology", "Methodology", "How Investigation Workflow Suite (IWS) moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
+  ["ai-security", "AI and security", "What AI drafting does in Investigation Workflow Suite (IWS), how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI."],
+  ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite (IWS)."],
+  ["download", "Download", "Download Investigation Workflow Suite (IWS) for Windows 10 and 11: the Free, Professional and Organisation levels, the 90-day Professional trial, and how to buy and activate a licence."],
+  ["getting-started", "Getting started", "The first investigation in Investigation Workflow Suite (IWS), step by step, from a new investigation folder to the first report."],
 ];
-const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download" };
+const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download", "getting-started": null };
 const topPages = sitePages.map(([name, title, description]) => {
   const html = fillFeatured(`${name}.template.html`, navKey[name]);
-  write(`${name}.html`, document(`${BRAND} | ${title}`, html, description));
+  write(`${name}.html`, document(`${title} | ${BRAND}`, html, description));
   return html;
 });
 
@@ -379,11 +381,11 @@ const releaseHtml = releases
   )
   .join("\n");
 const changelog = chrome(readFileSync(join(here, "changelog.template.html"), "utf8"), "", null, [["download.html", "Download"]]).replace("%%THEME%%", theme).replace("%%RELEASES%%", releaseHtml);
-write("changelog.html", document(`${BRAND} | Changelog`, changelog, "What changed in Investigation Workflow Suite, release by release."));
+write("changelog.html", document(`Changelog | ${BRAND}`, changelog, "What changed in Investigation Workflow Suite (IWS), release by release."));
 
 const fragment = readFileSync(join(here, "guide-fragment.html"), "utf8");
 const guide = chrome(readFileSync(join(here, "guide.template.html"), "utf8"), "", "docs", [["#top", "Back to top"]]).replace("%%THEME%%", theme).replace("%%GUIDE%%", () => fragment);
-write("guide.html", document(`${BRAND} | Documentation`, guide, "The Investigation Workflow Suite user guide, the same guide the application ships under Help."));
+write("guide.html", document(`Documentation | ${BRAND}`, guide, "The Investigation Workflow Suite (IWS) user guide, the same guide the application ships under Help."));
 
 writeFileSync(join(here, "build-manifest.json"), `${JSON.stringify(built.sort(), null, 2)}\n`);
 
