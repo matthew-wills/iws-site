@@ -311,7 +311,7 @@ const cards = studies
   .map((s) =>
     [
       `      <article class="case card">`,
-      `        <a href="case-studies/${s.slug}.html"><img class="shot" src="shots/${s.slug}/${s.cover}" alt="${esc(s.title)}: the finished causal map"></a>`,
+      `        <a href="case-studies/${s.slug}.html"><img class="photo" src="case-studies/${s.slug}/${s.photo}" alt="${esc(s.photoAlt ?? "")}" width="1200" height="800" loading="lazy" decoding="async"></a>`,
       `        <span class="eyebrow">${esc(s.sector)}${s.occurrence ? ` · ${esc(s.occurrence)}` : ""}</span>`,
       `        <h3>${esc(s.title)}</h3>`,
       `        <p>${esc(s.blurb)}</p>`,

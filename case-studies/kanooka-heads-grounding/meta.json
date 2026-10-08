@@ -5,7 +5,8 @@
   "sector": "Maritime",
   "occurrence": "Passenger ferry grounding",
   "blurb": "A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to six published reports.",
-  "cover": "11-map-final.png",
+  "photo": "card.jpg",
+  "photoAlt": "A catamaran passenger ferry underway on calm water in late-afternoon light",
   "order": 2,
   "reports": [
     "standard",

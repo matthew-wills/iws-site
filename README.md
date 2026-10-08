@@ -128,8 +128,10 @@ Here, `case-studies/<slug>/` holding two files:
       sector, for example "Passenger ferry grounding".
     - `blurb` - one sentence for the case card, also the study page's
       meta description.
-    - `cover` - the file name of the shot used on that card, from the
-      study's own `shots/` folder.
+    - `photo` - the card's photograph, a file in this folder (1200x800,
+      3:2). Its source and licence go in `CREDITS.md`.
+    - `photoAlt` - the photograph's alt text: what the scene shows, never
+      the occurrence.
     - `order` - optional number, lowest first. The lowest-ordered study is
       the one the home page and the Case studies page feature.
       Defaults to 99, then slug order.
