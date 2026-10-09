@@ -71,8 +71,28 @@ const document = (title, body, description) => {
   // The template opens with its <style>; the head closes after it and the
   // body opens, so the markup that follows lands where it should.
   const bodyOpen = `</style>\n</head>\n<body>${PREVIEW ? `\n${PREVIEW_BAR}` : ""}`;
-  return `${head}${withoutTitle.replace("</style>", () => bodyOpen)}\n</body>\n</html>\n`;
+  const page = PREVIEW ? withoutTitle : launchPlaceholders(withoutTitle);
+  return `${head}${page.replace("</style>", () => bodyOpen)}\n</body>\n</html>\n`;
 };
+/** A launch placeholder is a control or a line whose destination is not
+ *  decided yet (class launch-placeholder in a template). The preview shows
+ *  it as it will be at launch, ringed in amber; a production build shows a
+ *  control as a muted, disabled one with a neutral "Available at launch"
+ *  note (one note for a run of controls one after another), and a text
+ *  placeholder as a neutral "details at launch" line. At launch, the class
+ *  comes off and the control gets its href. */
+const LP_BUTTON = /<a class="([^"]*?)\s*launch-placeholder" aria-disabled="true">([^<]*)<\/a>/;
+const LP_RUN = new RegExp(`(?:[ \\t]*${LP_BUTTON.source}\\r?\\n)+`, "g");
+const launchPlaceholders = (html) =>
+  html
+    .replace(LP_RUN, (run) => {
+      const indent = run.match(/^[ \t]*/)[0];
+      const controls = [...run.matchAll(new RegExp(LP_BUTTON.source, "g"))].map(
+        ([, cls, label]) => `${indent}  <a class="${cls.replace(/\bbtn-primary\b/, "").replace(/\s+/g, " ").trim()} launch-off" aria-disabled="true">${label}</a>`,
+      );
+      return [`${indent}<div class="launch-slot">`, ...controls, `${indent}  <span class="launch-note">Available at launch</span>`, `${indent}</div>`, ""].join("\n");
+    })
+    .replace(/<p class="launch-placeholder lp-text">([^<]*?)\.?<\/p>/g, (_, what) => `<p class="launch-later">${what}: details at launch.</p>`);
 const unfilled = (html) => html.match(/%%[A-Z_0-9]+%%/g) ?? [];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -90,6 +110,11 @@ const NAV = [
   ["documentation.html", "Documentation", "docs"],
   ["download.html", "Download", "download"],
 ];
+/** On a phone the nav folds behind a Menu button (theme.css, max-width
+ *  700px). The script only switches the folding on, so without script the
+ *  nav stays the sideways-scrolling row; on a desktop the button is never
+ *  shown and the nav is untouched. */
+const NAV_SCRIPT = `  <script>(function () { var top = document.currentScript.parentElement, btn = top.querySelector(".nav-toggle"); top.classList.add("js-nav"); function set(open) { top.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", String(open)); } btn.addEventListener("click", function () { set(!top.classList.contains("nav-open")); }); document.addEventListener("keydown", function (e) { if (e.key === "Escape" && top.classList.contains("nav-open")) { set(false); btn.focus(); } }); })();</script>`;
 const MAKER = `${BRAND} is made by ${COMPANY} ${DESCRIPTOR}.`;
 /** Where every "Talk to us" and "Contact us" link on the site goes: one
  *  address, set here once it is decided (plan-public-release.md, step 2).
@@ -106,10 +131,12 @@ const header = (prefix, current) =>
     `      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`,
     `      <span class="brand-text">${COMPANY}<span class="brand-tag">${DESCRIPTOR}</span></span>`,
     `    </a>`,
-    `    <nav class="nav" aria-label="Site">`,
+    `    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Menu</button>`,
+    `    <nav class="nav" id="site-nav" aria-label="Site">`,
     ...NAV.map(([href, label, key]) => `      <a href="${prefix}${href}"${key === current ? ' aria-current="page"' : ""}>${label}</a>`),
     `    </nav>`,
     `  </div>`,
+    NAV_SCRIPT,
     `</header>`,
   ].join("\n");
 const footer = (prefix, links = []) =>

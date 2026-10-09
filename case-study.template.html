@@ -131,7 +131,7 @@
   .chain__label .then { color: var(--ink-faint); font-weight: 400; font-size: 0.9rem; }
   .chain p { color: var(--ink-soft); font-size: 0.95rem; }
   .chain .page { display: block; width: 100%; border: 1px solid var(--line-strong); border-radius: 4px; box-shadow: var(--shadow); background: #fff; }
-  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); cursor: zoom-in; }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; outline: 1px solid var(--line); outline-offset: -1px; background: var(--paper); cursor: zoom-in; }
   .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
   .crop__ring { position: absolute; border: 3px solid #c2782a; border-radius: 12px; box-shadow: 0 0 0 4px rgba(194, 120, 42, 0.18); pointer-events: none; }
   .crop__ring--soft { border-width: 2px; border-color: rgba(194, 120, 42, 0.7); box-shadow: 0 0 0 3px rgba(194, 120, 42, 0.1); }

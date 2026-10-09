@@ -17,6 +17,14 @@
   .launch-placeholder { position: relative; cursor: not-allowed; outline: 2px dashed #f59e0b; outline-offset: 3px; }
   .launch-placeholder::after { content: "Launch placeholder"; position: absolute; top: -11px; right: -6px; padding: 1px 6px; border-radius: 999px; background: var(--warn-soft); border: 1px solid #fcd34d; color: #92400e; font-size: 0.66rem; font-weight: 700; font-style: normal; letter-spacing: 0.03em; line-height: 1.4; white-space: nowrap; }
   .lp-text { padding: 10px 10px 6px; border-radius: 6px; color: var(--ink-faint) !important; font-style: italic; margin-top: 6px; }
+  /* The same placeholders in a production build (build-site.mjs rewrites
+     them): a muted, disabled control and a neutral note, no amber. */
+  .launch-slot { display: flex; flex-direction: column; gap: 6px; align-self: flex-start; }
+  .tier-foot .launch-slot { align-self: stretch; text-align: center; }
+  .launch-slot .btn { justify-content: center; }
+  .launch-off, .launch-off:hover { background: #f1f5f9; border-color: var(--line); color: var(--ink-faint); cursor: not-allowed; }
+  .launch-note, .launch-later { font-size: 0.84rem; color: var(--ink-faint); }
+  .launch-later { margin-top: 6px; font-style: italic; }
   .founding { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.03em; vertical-align: middle; }
 
   .download { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
