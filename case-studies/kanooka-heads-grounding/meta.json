@@ -4,20 +4,17 @@
   "pageTitle": "Case study: Kanooka Heads",
   "sector": "Maritime",
   "occurrence": "Passenger ferry grounding",
-  "blurb": "A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to six published reports.",
+  "blurb": "A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to the Evidence and Argument Tables and the final investigation report.",
   "photo": "card.jpg",
   "photoAlt": "A catamaran passenger ferry underway on calm water in late-afternoon light",
   "order": 2,
-  "reports": [
-    "standard",
-    "preliminary",
-    "executive",
-    "atsb",
-    "ntsb",
-    "aaib"
+  "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
+  "documents": ["source_pack", "evidence_argument_tables"],
+  "outputs": [
+    { "doc": "evidence_argument_tables", "page": 16, "caption": "the chart plotter freeze, its Existence on three independent records and its Influence passed at 95 per cent" },
+    { "doc": "report_preliminary", "page": 5, "caption": "the open lines of enquiry, starting with the plotter freeze and its unapplied firmware update" },
+    { "doc": "report_standard", "page": 7, "caption": "the start of the analysis, and the heading change from the second the plotter froze" },
+    { "doc": "report_executive", "page": 4, "caption": "why the ferry grounded, in the briefing's own words" }
   ],
-  "documents": [
-    "source_pack",
-    "evidence_argument_tables"
-  ]
+  "layouts": ["atsb", "ntsb", "aaib"]
 }
