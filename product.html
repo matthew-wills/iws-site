@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record.">
+<meta name="robots" content="noindex, nofollow">
+<title>Product | Synoptic</title>
+<meta name="description" content="What Synoptic does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what Free and Professional each include.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -123,70 +124,101 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
 
   [id] { scroll-margin-top: 76px; }
-
-  /* Page head: the product named, one line on what it is, one screen */
-  .page-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 44px; align-items: center; padding-block: 44px 40px; }
-  .page-head .copy { display: flex; flex-direction: column; gap: 16px; }
-  .page-head .lede { font-size: 1.08rem; color: var(--ink-soft); max-width: 54ch; }
-  .page-head .lede strong { color: var(--ink); font-weight: 600; }
+  .anchor { display: block; height: 0; }
+  .page-head { padding-block: 44px 26px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 66ch; }
-  .prose strong { color: var(--ink); font-weight: 600; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px; }
+  .jump a { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; }
+  .jump a:hover { background: #f1f5f9; color: var(--ink); }
+  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
+  .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
 
-  /* The parts of the record */
-  .parts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-  .part { padding: 12px 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
-  .part h3 { font-size: 0.95rem; margin-bottom: 3px; }
-  .part p { font-size: 0.88rem; color: var(--ink-soft); }
-  .shotrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
-  .assists { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 28px; margin-top: 28px; }
-  .assist { display: flex; flex-direction: column; gap: 4px; padding-block: 14px; border-top: 1px solid var(--line); }
-  .assist h3 { font-size: 1rem; }
-  .assist p { color: var(--ink-soft); font-size: 0.95rem; }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+  .page { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); }
 
-  /* How it develops: the words beside the card, the map's states beneath */
-  .develop { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-  .rounds { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 0.97rem; }
+  .figrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .figrow figcaption { margin-top: 10px; }
+  .figrow figcaption strong { display: block; color: var(--ink); font-weight: 600; }
+  .lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 22px; margin: 18px 0 0; padding: 0; list-style: none; }
+  .lanes li { display: flex; gap: 10px; align-items: center; font-size: 0.94rem; color: var(--ink-soft); }
+  .lanes .tint { flex: none; width: 26px; height: 14px; border-radius: 4px; border: 1px solid var(--line-strong); }
 
-  /* What comes out */
-  .styles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-  .styles-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .group-label { display: block; margin: 26px 0 10px; }
-  .section-head + .group-label { margin-top: 0; }
-  .style { padding: 14px 16px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
-  .style h3 { font-size: 0.98rem; }
-  .style p { font-size: 0.9rem; color: var(--ink-soft); }
-  .outputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 28px; }
-  .output { display: flex; flex-direction: column; gap: 8px; }
-  .output img { max-width: 300px; }
-  .output p { color: var(--ink-soft); font-size: 0.95rem; }
+  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 34px; align-items: center; }
+  .row.flip { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr); }
+  .row.flip > :first-child { order: 2; }
+  .row .text { display: flex; flex-direction: column; gap: 12px; }
+  .facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .facts li { padding-left: 16px; border-left: 3px solid var(--accent-soft); color: var(--ink-soft); }
+  .facts li strong { color: var(--ink); font-weight: 600; }
 
-  /* Built for organisations */
-  .org { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: start; }
-  .org ul.plain { font-size: 0.98rem; gap: 10px; }
+  .docs4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  .doc { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; }
+  .doc h3 { font-size: 1.02rem; margin-top: 6px; color: var(--accent-deep); }
+  .doc:hover h3 { text-decoration: underline; }
+  .doc p { color: var(--ink-soft); font-size: 0.92rem; }
+  .layouts-line { margin-top: 22px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink-soft); font-size: 0.95rem; }
 
-  .next { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding-block: 52px; }
-  .next p { color: var(--ink-soft); max-width: 60ch; }
+  .levels { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 0.95rem; }
+  .levels th, .levels td { padding: 10px 14px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .levels thead th { border-top: 0; font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
+  .levels tbody th { font-weight: 400; color: var(--ink); }
+  .levels td { text-align: center; width: 13%; }
+  .levels td.y { color: var(--proof); font-weight: 600; }
+  .levels td.n { color: var(--ink-faint); }
+  .levels th.c { text-align: center; }
+  .levels-notes { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 0.95rem; max-width: 80ch; }
 
-  @media (max-width: 1100px) { .parts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .next { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .next p { color: var(--ink-soft); max-width: 64ch; }
+
   @media (max-width: 960px) {
-    .page-head, .develop, .org { grid-template-columns: 1fr; }
-    .styles, .assists, .shotrow, .outputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figrow, .lanes { grid-template-columns: 1fr 1fr; }
+    .row, .row.flip { grid-template-columns: 1fr; gap: 18px; }
+    .row.flip > :first-child { order: 0; }
+    .docs4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 560px) {
-    .styles, .parts, .assists, .shotrow, .outputs { grid-template-columns: 1fr; }
+    .figrow, .lanes { grid-template-columns: 1fr; }
+    .docs4 { gap: 14px; }
+    .page-head { padding-block: 28px 18px; }
+    section.block { padding-block: 38px; }
+    .levels th, .levels td { padding: 8px 6px; font-size: 0.88rem; }
+    .levels thead th { font-size: 0.66rem; letter-spacing: 0.02em; }
   }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="index.html">Home</a>
@@ -202,173 +234,134 @@ footer .legal { line-height: 1.6; }
 
 <main class="wrap" id="top">
   <section class="page-head">
-    <div class="copy">
-      <span class="eyebrow">The product</span>
-      <h1>Investigation Workflow Suite (IWS)</h1>
-      <p class="lede">One connected workspace for the investigation, from first notification to final report.</p>
-      <p class="lede"><strong>One investigation record:</strong> the checklist, the evidence, the interviews, the timeline, the map, the tests and the report, in one file. IWS is safety investigation software for Windows, and everything below lives in that record.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="download.html">Download</a>
-        <a class="btn" href="methodology.html">How the method works</a>
+    <span class="anchor" id="record"></span>
+    <span class="eyebrow">Product</span>
+    <h1>What Synoptic does, stage by stage</h1>
+    <p class="lede">Synoptic holds the whole investigation in one record: the checklist, the evidence, the interviews, the timeline, the AcciMap, the tests and the reports, in a single file on the drive you choose. Each stage below works on that same record.</p>
+    <nav class="jump" aria-label="On this page">
+      <a href="#evidence"><span class="stage-no">1</span>Evidence</a>
+      <a href="#analysis"><span class="stage-no">2</span>Analysis</a>
+      <a href="#assessment"><span class="stage-no">3</span>Assessment</a>
+      <a href="#reporting"><span class="stage-no">4</span>Reporting</a>
+      <a href="#around">Around the investigation</a>
+      <a href="#levels">Free and Professional</a>
+    </nav>
+  </section>
+
+  <section class="block" id="evidence">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">1</span>Evidence</span>
+      <h2>Capture each item once, and link it to everything it supports</h2>
+      <p>Paste a screenshot or text, or drop in a file. Each item records where it came from and which objects on the AcciMap rest on it, so if a source proves unreliable, what needs revisiting is already listed.</p>
+    </div>
+    <div class="figrow">
+      <figure><div class="crop" style="--W: 3840; --x: 30; --y: 900; --cw: 1240; --ch: 775"><img class="zoomable" src="shots/tarlton-springs-rto/01-evidence-register.png" alt="The Evidence tab's captured material, grouped by object" data-caption="The evidence register: every capture, grouped by the object it bears on." loading="lazy"></div><figcaption><strong>The evidence register</strong>Every capture, grouped by the object it bears on.</figcaption></figure>
+      <figure><div class="crop" style="--W: 3840; --x: 950; --y: 2585; --cw: 1300; --ch: 812"><img class="zoomable" src="shots/tarlton-springs-rto/02-interviews.png" alt="An interview with its imported Teams transcript and speakers mapped to roles" data-caption="Interviews: a Teams transcript imported, each speaker mapped to a role." loading="lazy"></div><figcaption><strong>Interviews</strong>Import a Teams transcript and map each speaker to a role. The role replaces the name in the record.</figcaption></figure>
+      <figure><div class="crop" style="--W: 3840; --x: 1170; --y: 470; --cw: 1520; --ch: 950"><img class="zoomable" src="shots/tarlton-springs-rto/05-timeline.png" alt="The timeline, each event with its source and time basis" data-caption="The timeline: each event with its source and time basis." loading="lazy"></div><figcaption><strong>The timeline</strong>Each event with its source and time basis, and the critical event marked.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="analysis">
+    <span class="anchor" id="develops"></span>
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">2</span>Analysis</span>
+      <h2>Every line of enquiry on the AcciMap</h2>
+      <p>Start with the critical event, then add every event and condition that might have played a part, including the hypotheses you expect to fail. Objects sit in time from left to right and in organisational depth from bottom to top, across six lanes.</p>
+    </div>
+    <figure class="block--wide"><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="shots/tarlton-springs-rto/07-map-stage-b.png" alt="Every hypothesis placed across the six lanes of the AcciMap, none of them tested yet" data-caption="Every hypothesis in its lane, none of them tested yet." loading="lazy"></div><figcaption>The Tarlton Springs AcciMap before testing: every hypothesis in its lane, each arrow grey and dashed until its source passes.</figcaption></figure>
+    <ul class="lanes" aria-label="The six lanes">
+      <li><span class="tint" style="background: var(--lane-external)"></span>External Influences</li>
+      <li><span class="tint" style="background: var(--lane-org)"></span>Organisational Influences</li>
+      <li><span class="tint" style="background: var(--lane-controls)"></span>Risk Controls</li>
+      <li><span class="tint" style="background: var(--lane-local)"></span>Local Conditions</li>
+      <li><span class="tint" style="background: var(--lane-actions)"></span>Individual Actions</li>
+      <li><span class="tint" style="background: var(--lane-events)"></span>Occurrence Events</li>
+    </ul>
+  </section>
+
+  <section class="block" id="assessment">
+    <div class="row">
+      <div class="text">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px"><span class="stage-no">3</span>Assessment</span>
+        <h2>Test each object against the evidence</h2>
+        <ul class="facts">
+          <li><strong>Three tests.</strong> Did it exist, did it influence the occurrence, and if not, is it still important enough to raise?</li>
+          <li><strong>Argued where it needs to be.</strong> Where the evidence cuts both ways, record the argument for, the argument against and your reasoning.</li>
+          <li><strong>Stated confidence.</strong> Each result carries a term from a ten-term probability scale, and a pass below the standard of proof is flagged. The standard is 70 per cent by default, chosen in Settings from 50 to 95 per cent.</li>
+          <li><strong>Derived findings.</strong> The results decide how each object is classified. An arrow turns solid green only once its source has passed.</li>
+        </ul>
+        <p><a href="methodology.html">The method in full</a></p>
       </div>
+      <figure><div class="crop" style="--W: 3840; --x: 200; --y: 170; --cw: 2240; --ch: 2400"><img class="zoomable" src="shots/tarlton-springs-rto/19-object-form-importance.png" alt="An object's form with Existence, Influence and Importance, each with its evidence, result and confidence" data-caption="An object's form: Existence, Influence and Importance, each with its evidence, result and confidence." loading="lazy"></div></figure>
     </div>
-    <figure>
-      <img class="shot zoomable" src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="The causal map part way through the Tarlton Springs investigation, with some objects tested and arrows appearing" data-caption="The causal map part way through the Tarlton Springs case study: half the objects tested, the proven arrows drawn, the excluded hypotheses struck through.">
-      <figcaption>The causal map part way through an investigation, with every line of enquiry linked to its evidence.</figcaption>
-    </figure>
   </section>
 
-  <section class="block" id="tables">
+  <section class="block" id="reporting">
+    <span class="anchor" id="outputs"></span>
+    <span class="anchor" id="tables"></span>
     <div class="section-head">
-      <span class="eyebrow">Evidence and Argument Tables</span>
-      <h2>The reasoning behind every finding, set out where a reviewer can read it</h2>
+      <span class="eyebrow"><span class="stage-no">4</span>Reporting</span>
+      <h2>Four documents from the one record</h2>
+      <p>The Evidence and Argument Tables export at every level. With Professional, the Record tab assembles the record under a report's headings and every report is written to Word, on your own template if you have one. AI drafting is optional: the Draft report tab drafts each section from the record and checks it against the record before you finalise it.</p>
     </div>
-    <div class="develop">
-      <div class="prose">
-        <p>Every factor on the map is tested three times: did it exist, did it influence the outcome, and did it matter. For each test the investigator records the argument for, the argument against and the reasoning, all judged against the factor exactly as it is worded. The result and its confidence are stated on the <a href="methodology.html#scale">probability scale</a>.</p>
-        <p>The Evidence and Argument Tables gather that into one table per factor. <strong>A reviewer, a regulator or a court can follow how each conclusion was reached</strong>, and every argument stays connected to the evidence it rests on.</p>
-        <p>The tables are part of <a href="download.html#free">Free</a> and export as a document. <a href="exports/tarlton-springs-rto/evidence_argument_tables.html">Read the Tarlton Springs tables</a>.</p>
+    <div class="docs4">
+      <a class="doc" href="exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="page" src="exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="Page 5 of the Tarlton Springs Evidence and Argument Tables" loading="lazy"><h3>Evidence and Argument Tables</h3><p>Each object's tests, with the argument for, the argument against and the reasoning.</p></a>
+      <a class="doc" href="exports/tarlton-springs-rto/report_preliminary.html"><img class="page" src="exports/tarlton-springs-rto/pages/report_preliminary/p04.png" alt="Page 4 of the Tarlton Springs preliminary investigation report" loading="lazy"><h3>Preliminary investigation report</h3><p>What is known while the investigation runs. No findings.</p></a>
+      <a class="doc" href="exports/tarlton-springs-rto/report_standard.html"><img class="page" src="exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="Page 8 of the Tarlton Springs final investigation report" loading="lazy"><h3>Final investigation report</h3><p>The full report: summary, occurrence, analysis, findings and appendices.</p></a>
+      <a class="doc" href="exports/tarlton-springs-rto/report_executive.html"><img class="page" src="exports/tarlton-springs-rto/pages/report_executive/p05.png" alt="Page 5 of the Tarlton Springs executive briefing" loading="lazy"><h3>Executive briefing</h3><p>The occurrence, the findings and the actions in a few pages.</p></a>
+    </div>
+    <p class="layouts-line">The final report also comes in ATSB-, NTSB- and AAIB-inspired layouts, each following that body's published report structure. They are not produced, reviewed or endorsed by those organisations. <a href="case-studies/tarlton-springs-rto.html#produced">Read them in Tarlton Springs</a>.</p>
+  </section>
+
+  <section class="block" id="around">
+    <div class="row flip">
+      <div class="text">
+        <h2>Around the investigation</h2>
+        <ul class="facts">
+          <li><strong>Dashboard.</strong> The checklist, one to-do list fed from the checklist and from objects on the map, and the distribution list that prints at the foot of every report.</li>
+          <li><strong>Log.</strong> Your running sheet, plus entries the application adds when a decision is made: a checklist answer, a test result, a finalised interview, a draft or an export.</li>
+          <li><strong>One file.</strong> No account and no database. The investigation file is JSON, readable without the application.</li>
+          <li><strong>Shared-folder protection.</strong> A save that would overwrite a change made on another machine is held for you to decide.</li>
+        </ul>
       </div>
-      <figure>
-        <a href="exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="shot" src="exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Tarlton Springs Evidence and Argument Tables: one factor's tests, each with its arguments for and against, its reasoning, result and confidence"></a>
-        <figcaption>A page of the published Tarlton Springs tables.</figcaption>
-      </figure>
+      <figure><div class="crop" style="--W: 3840; --x: 540; --y: 220; --cw: 2760; --ch: 1500"><img class="zoomable" src="shots/tarlton-springs-rto/04-checklist-todos.png" alt="The Dashboard: the checklist, the to-do list and the distribution list" data-caption="The Dashboard for Tarlton Springs." loading="lazy"></div><figcaption>The Dashboard for Tarlton Springs.</figcaption></figure>
     </div>
   </section>
 
-  <section class="block" id="record">
+  <section class="block" id="levels">
+    <span class="anchor" id="organisations"></span>
     <div class="section-head">
-      <span class="eyebrow">One investigation record</span>
-      <h2>One file that holds the whole investigation, and a report that is a view of it</h2>
-      <p>The investigation is held in one portable file on the drive you choose. It can be archived with the investigation and read independently of IWS. The underlying file is human-readable JSON.</p>
+      <h2>Free and Professional</h2>
+      <p>One application. A licence decides which features are available, never whether you can open your own work.</p>
     </div>
-    <div class="parts" aria-label="What the investigation file holds">
-      <div class="part"><h3>Checklist</h3><p>What the investigation should cover, what is outstanding, and who the report goes to.</p></div>
-      <div class="part"><h3>Evidence</h3><p>Every capture filed once, with what rests on it, and people identified by role.</p></div>
-      <div class="part"><h3>Interviews</h3><p>Each account written up and finalised, so the analysis works from a settled version.</p></div>
-      <div class="part"><h3>Timeline</h3><p>The sequence of events, each with its source and its time basis.</p></div>
-      <div class="part"><h3>Causal map</h3><p>Every hypothesis as an object on organisational lanes, tested and connected.</p></div>
-      <div class="part"><h3>Findings</h3><p>Derived from the tests rather than asserted, each carrying its confidence.</p></div>
-      <div class="part"><h3>Log</h3><p>The investigation's own decisions, written as the work moves rather than afterwards.</p></div>
-      <div class="part"><h3>Reports</h3><p>Assembled or drafted from all of the above, in whichever style is required.</p></div>
-    </div>
-    <div class="shotrow">
-      <figure><img class="shot zoomable" data-caption="The evidence register: every capture filed once, grouped by what rests on it." src="shots/tarlton-springs-rto/01-evidence-register.png" alt="The evidence register, listing each item with its source and what uses it"><figcaption>Evidence filed once, with what rests on it.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="An interview: the transcript with every speaker mapped to a role, and the investigator's notes beside it." src="shots/tarlton-springs-rto/02-interviews.png" alt="An interview with its transcript, the speaker to role mapping, and notes"><figcaption>Interviews, with every speaker recorded by role.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="The timeline: each event with its source and time basis." src="shots/tarlton-springs-rto/05-timeline.png" alt="The timeline tab, each event with its time basis and source"><figcaption>The timeline, each event carrying its source.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="The Dashboard tab: the running checklist, the to-do list and the distribution list." src="shots/tarlton-springs-rto/04-checklist-todos.png" alt="The Dashboard tab with the checklist, the to-do list and the distribution list"><figcaption>The Dashboard: the checklist and one to-do list for the whole investigation.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="An object's form: the hypothesis, its evidence and its three tests." src="shots/tarlton-springs-rto/09-object-form.png" alt="An object form on the map, showing the hypothesis, its evidence and its Existence, Influence and Importance tests"><figcaption>An object with its evidence and its three tests.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="The Record tab: findings derived from the tests, assembled under a report style's headings." src="shots/tarlton-springs-rto/13-report.png" alt="The Record tab with the findings and the assembled report"><figcaption>Findings derived from the tests, and the report assembled from them.</figcaption></figure>
-    </div>
-    <div class="assists">
-      <div class="assist"><h3>Everything in the report traces to something recorded</h3><p>A finding is derived from the tests on an object, and the evidence behind it exports as a table. The report is built from information held in the investigation record, preserving the trail back to its source.</p></div>
-      <div class="assist"><h3>The direction of the investigation in one image</h3><p>The map shows every line of enquiry and its state: proven, argued, closed, or not yet looked at.</p></div>
-      <div class="assist"><h3>Confidence stated, standard of proof chosen</h3><p>Every verdict carries a confidence on the probability scale, and the standard a passed test must reach is set once for the investigation. The <a href="methodology.html#scale">methodology</a> explains both.</p></div>
-      <div class="assist"><h3>Several reports from one record</h3><p>A preliminary investigation report while the work runs and the final investigation report at the end, both from the same file.</p></div>
-      <div class="assist"><h3>Readable independently of IWS</h3><p>One portable file, with no account and no database behind it. The file is human-readable JSON, so a text editor is enough to read it back.</p></div>
-      <div class="assist"><h3>Shared-folder conflict protection</h3><p>A save that would overwrite a change made on another machine is held for a decision. A lock file beside the open file warns the other investigator, and every resolution is whole-file: keep theirs, save yours as a copy, or save yours over theirs.</p></div>
-    </div>
-  </section>
-
-  <section class="block" id="develops">
-    <div class="section-head">
-      <span class="eyebrow">How the investigation develops</span>
-      <h2>Collecting and examining evidence is not a straight line, so the workflow does not pretend it is</h2>
-    </div>
-    <div class="develop">
-      <div class="prose">
-        <p>Evidence arrives when it arrives. A recorder download lands a week in, an interview changes what an earlier statement meant, a maintenance record turns up after the analysis looked settled. <strong>The investigation has to stay flexible as new information comes in.</strong></p>
-        <p>The work runs in rounds, and each round works on the same record:</p>
-        <ol class="rounds">
-          <li>New material is recorded once, with its source.</li>
-          <li>It is linked to the events, conditions and hypotheses it bears on.</li>
-          <li>The emerging picture on the map is tested against it.</li>
-          <li>The gaps it exposes become requests for more information.</li>
-          <li>When more comes in, the objects it touches are retested and the analysis moves with it.</li>
-        </ol>
-        <p>The report is drawn off when the picture holds, and it stays a view of the record. Change the record and the drafts built on the old version are marked out of date.</p>
-      </div>
-      <div class="card">
-        <span class="eyebrow">Centralised</span>
-        <p style="margin-top: 8px; color: var(--ink-soft); font-size: 0.95rem;">One to-do list and one evidence store for the whole investigation. A to-do written on an object's form is the same list the Checklist tab shows, with a jump back to the object it came from, so what is outstanding is visible at any point.</p>
-      </div>
-    </div>
-    <div class="shotrow">
-      <figure><img class="shot zoomable" data-caption="Stage one: the critical event placed on its own." src="shots/tarlton-springs-rto/06-map-stage-a.png" alt="The causal map with only the critical event placed"><figcaption>The critical event goes down first.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="Stage two: every hypothesis in its lane, none of them tested yet." src="shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses across the lanes of the causal map"><figcaption>Every hypothesis goes up, including the ones expected to fail.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="Stage three: half the map tested, the proven arrows drawn, the excluded hypotheses struck through." src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing"><figcaption>Testing cuts it down, and the arrows follow the evidence.</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="block" id="outputs">
-    <div class="section-head">
-      <span class="eyebrow">What comes out</span>
-      <h2>Several reports, and the working behind them, from the one record</h2>
-      <p>A report style is a set of headings with guidance for each, and the record is assembled or drafted under them. Every report is written to a Word template, with your organisation's layout where a custom template has been supplied. Finished reports and custom templates are part of <a href="download.html#professional">Professional</a>; the Evidence and Argument Tables, the map images and the collated record export in Free as well.</p>
-    </div>
-    <span class="eyebrow group-label">Operational reporting</span>
-    <div class="styles styles-three">
-      <div class="style"><h3>Preliminary investigation report</h3><p>Issued while the investigation runs: what has been established, the risk exposure, the open lines of enquiry. No findings.</p></div>
-      <div class="style"><h3>Final investigation report</h3><p>The full report: executive summary, event overview, analysis, findings summary and appendices.</p></div>
-      <div class="style"><h3>Executive briefing</h3><p>The occurrence, the findings and the actions on a few pages for the people who decide.</p></div>
-    </div>
-    <span class="eyebrow group-label">The final report in other layouts</span>
-    <div class="styles">
-      <div class="style"><h3>ATSB-inspired layout</h3><p>The final report arranged to the structure of published ATSB final reports: summary, occurrence, context, safety analysis, findings, safety issues and actions.</p></div>
-      <div class="style"><h3>NTSB-inspired layout</h3><p>Factual information, analysis, conclusions carrying the findings, the probable cause and the contributing factors, then recommendations.</p></div>
-      <div class="style"><h3>AAIB-inspired layout</h3><p>Synopsis, factual information, analysis, conclusions splitting causal from contributory factors, then safety action and recommendations.</p></div>
-      <div class="style"><h3>Your organisation's own</h3><p>A style written to your report template, with your headings, cover and findings tables, configured at the <a href="download.html#organisation">Organisation</a> level.</p></div>
-    </div>
-    <p class="hint" style="margin-top: 12px; font-size: 0.9rem">These layouts follow the published report structure of the Australian Transport Safety Bureau, the US National Transportation Safety Board and the UK Air Accidents Investigation Branch. They are not produced, reviewed or endorsed by those organisations.</p>
-    <span class="eyebrow group-label">Investigation record</span>
-    <div class="outputs">
-      <figure class="output">
-        <a href="exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="shot" src="exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Evidence and Argument Tables: one table per object with each test, its confidence and the evidence"></a>
-        <h3>Evidence and Argument Tables</h3>
-        <p>One table per object: each test, its confidence, the evidence for and against, and the reasoning. <a href="exports/tarlton-springs-rto/evidence_argument_tables.html">Read the tables</a>.</p>
-      </figure>
-      <figure class="output">
-        <img class="shot zoomable" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished causal map for the Tarlton Springs case study" data-caption="The finished causal map, exported as an image.">
-        <h3>The map, the timeline and the record</h3>
-        <p>The causal map and the timeline as images, a <a href="exports/tarlton-springs-rto/collation.md">collated copy</a> of the whole investigation, and the investigation file itself, readable without the application.</p>
-      </figure>
-      <figure class="output">
-        <a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the Tarlton Springs final investigation report"></a>
-        <h3>The reports drawn from it</h3>
-        <p>Each style, written to the Word template. <a href="exports/tarlton-springs-rto/report_standard.html">Read the Tarlton Springs report</a>.</p>
-      </figure>
-    </div>
-  </section>
-
-  <section class="block" id="organisations">
-    <div class="section-head">
-      <span class="eyebrow">Built for organisations</span>
-      <h2>The reasoning stays with the organisation</h2>
-      <p>When an investigation closes, the evidence, the tests, the reasoning and the reports stay together in one file the organisation holds. The next investigator, reviewer or safety manager can read the working for themselves.</p>
-    </div>
-    <div class="org">
-      <ul class="plain">
-        <li><strong>Your own framework.</strong> At the <a href="download.html#organisation">Organisation</a> level, IWS is configured around your framework, terminology, checklists, Human Factors taxonomy, report structures and templates where practicable, with the application underneath unchanged.</li>
-        <li><strong>Your own Word templates.</strong> In Professional, reports are written to your template, with your cover and layout.</li>
-        <li><strong>Your own checklist.</strong> The checklist template is plain text in Settings, so every new investigation starts from your version.</li>
-        <li><strong>Your standard of proof.</strong> Set per investigation, and the form warns when a passed test falls short of it.</li>
-        <li><strong>Local first.</strong> The file lives on the drive you choose. The application sends no telemetry, and its only service of its own is licensing, which never sees an investigation.</li>
-      </ul>
-      <figure><img class="shot zoomable" data-caption="Settings: the checklist template, editable as plain text." src="shots/tarlton-springs-rto/14-settings-checklist.png" alt="The Settings dialog open on the checklist template"><figcaption>The checklist template, edited as plain text.</figcaption></figure>
+    <table class="levels">
+      <thead><tr><th scope="col">Feature</th><th scope="col" class="c">Free</th><th scope="col" class="c">Professional</th><th scope="col" class="c">Organisation</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">The whole investigation record: checklist, evidence, interviews, timeline, AcciMap and tests, log and to-dos</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><th scope="row">Evidence and Argument Tables in Word, AcciMap and timeline images, the collated record and the source pack</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><th scope="row">Finished reports in Word, and the executive briefing slides</th><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><th scope="row">Your own Word template for every document</th><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><th scope="row">AI drafting through a chat tool or a model endpoint you connect</th><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><th scope="row">Your organisation's framework, terminology and reporting, as an organisation pack</th><td class="n">No</td><td class="n">No</td><td class="y">Yes</td></tr>
+      </tbody>
+    </table>
+    <div class="levels-notes">
+      <p>Anything drafted under Professional stays in the investigation file, readable and editable, if the licence lapses. The AI is your own: Professional allows drafting, it does not supply a model.</p>
+      <p>Professional trials are coming. <a href="download.html#pricing">Levels and licences</a></p>
     </div>
   </section>
 
   <section class="block next">
-    <h2>How the reasoning works</h2>
-    <p>Evidence, propositions, the three tests, the standard of proof and the probability scale: how IWS turns an investigation's evidence into findings it can defend.</p>
+    <h2>See it on a full investigation</h2>
+    <p>Each case study follows one investigation from notification to the published documents.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="methodology.html">Explore the methodology</a>
-      <a class="btn" href="case-studies.html">See the case studies</a>
+      <a class="btn btn-primary" href="case-studies.html">See the case studies</a>
+      <a class="btn" href="download.html">Download</a>
     </div>
   </section>
 
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>

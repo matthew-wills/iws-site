@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI and security | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="What AI drafting does in Investigation Workflow Suite (IWS), how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI.">
+<meta name="robots" content="noindex, nofollow">
+<title>AI and security | Synoptic</title>
+<meta name="description" content="What optional AI drafting does in Synoptic, how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -123,6 +124,25 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -178,12 +198,14 @@ footer .legal { line-height: 1.6; }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="index.html">Home</a>
@@ -294,7 +316,7 @@ footer .legal { line-height: 1.6; }
         <tr><td><span class="x">3</span>A factor the investigator excluded written back in as contributing.</td><td>The mechanical check compares each factor's category and the findings with the classification derived from the tests.</td></tr>
         <tr><td><span class="x">4</span>Recommendations the investigation never made.</td><td>The grounding rules instruct the model to include only the recommendations the record carries, and the mechanical check flags a safety issue drafted with a recommendation the record does not hold.</td></tr>
         <tr><td><span class="x">5</span>A protected report quoted as if it were an ordinary statement, or people named where a role would do.</td><td>A protected report is marked in the record, and the model is instructed to let it inform the draft without quoting it. Roles replace names when an interview or transcript comes into the record, before any drafting.</td></tr>
-        <tr><td><span class="x">6</span>No record of which model, or which version of the evidence, produced the text.</td><td>Each draft records its model and record version, and goes visibly out of date when the record moves on.</td></tr>
+        <tr><td><span class="x">6</span>No record of which model, or which version of the evidence, produced the text.</td><td>Each draft records a fingerprint of the record it was drafted from, and goes visibly out of date when the record moves on. A draft made through an endpoint also records the model that wrote it.</td></tr>
       </tbody>
     </table>
   </section>
@@ -345,7 +367,7 @@ footer .legal { line-height: 1.6; }
       <div class="prose">
         <p>An endpoint is a named profile for one model server: a base URL, a drafting model and a checking model, a protocol, an auth header and a key. The protocol is either the OpenAI-compatible shape, which is what LM Studio, Ollama and most corporate gateways expose, or the Anthropic Messages API.</p>
         <p>A key is stored on that machine alone. It never enters the investigation file, never reaches an export, and is stripped out of any error shown on screen.</p>
-        <p>A drafting run sends the collated record with people referred to by role throughout, because the role replaces the name when an interview or transcript is brought in rather than at the point of drafting. The application sends no telemetry. Its only service of its own is licensing: trial activation sends your name, email address, the requested edition and a randomly generated installation identifier. The installation identifier is generated by IWS and is not a hardware serial number or hardware fingerprint. Nothing about any investigation is sent.</p>
+        <p>A drafting run sends the collated record with people referred to by role throughout, because the role replaces the name when an interview or transcript is brought in rather than at the point of drafting. The application sends no telemetry. Its only service of its own will be licensing, for Professional trials, which are not open yet: a trial request will send your name, email address, the edition and a randomly generated installation identifier, which is not a hardware serial number or hardware fingerprint. Nothing about any investigation is sent.</p>
         <p>Configuration detail, with what to ask your IT department for, is in the user guide: <a href="guide.html#manual-connecting-a-model">connecting a model</a>.</p>
       </div>
       <div style="display: flex; flex-direction: column; gap: 18px">
@@ -361,7 +383,7 @@ footer .legal { line-height: 1.6; }
         <span class="eyebrow">The analysis stays live</span>
         <p style="margin-top: 8px">A late recorder download, a second interview, a maintenance record that turns up in week three: the new information goes into the record, the objects it bears on are retested, and the analysis adjusts around it. A new report is then drafted from the adjusted record in one pass. Nothing starts again from a blank page, and the drafts built on the old record are marked out of date rather than quietly left standing.</p>
       </div>
-      <figure><img class="shot zoomable" data-caption="The Draft tab: a section drafted from the record, with the check against the record beside it." src="shots/tarlton-springs-rto/12-draft-report.png" alt="The Draft tab showing a drafted report section alongside the check of it against the record"><figcaption>The Draft tab: each section drafted from the record, with the check against the record beside it.</figcaption></figure>
+      <figure><img class="shot zoomable" data-caption="The Draft report tab in a Free copy with AI access off: the chosen style's sections listed, none drafted yet." src="shots/tarlton-springs-rto/12-draft-report.png" alt="The Draft report tab with AI access off, listing the five sections of the chosen report style, none drafted"><figcaption>The Draft report tab, here in a Free copy with AI access off: the style's sections listed, none drafted yet. For drafted reports with the audit and record check beside them, see <a href="reports/tarlton-springs-rto/standard.html#audit">the Tarlton Springs final report</a>.</figcaption></figure>
     </div>
   </section>
 
@@ -375,7 +397,7 @@ footer .legal { line-height: 1.6; }
   </section>
 
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>

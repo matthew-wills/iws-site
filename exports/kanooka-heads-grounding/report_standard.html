@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Final investigation report, Kanooka Heads | Investigation Workflow Suite (IWS)</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Final investigation report, Kanooka Heads | Synoptic</title>
 <meta name="description" content="The full report written to the application’s Word template and converted to PDF: cover, distribution list and the report as drafted, section by section from the record.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
@@ -123,6 +124,25 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
   .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
   .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
   .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
@@ -133,12 +153,14 @@ footer .legal { line-height: 1.6; }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../../index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="../../index.html">Home</a>
@@ -190,7 +212,7 @@ footer .legal { line-height: 1.6; }
     <figure class="page"><img src="pages/report_standard/p25.png" alt="Page 25 of 25" loading="lazy"><figcaption>Page 25 of 25</figcaption></figure>
   </div>
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="../../case-studies/kanooka-heads-grounding.html#published">Back to the case study</a> · <a href="../../case-studies.html">All case studies</a> · <a href="../../changelog.html">Changelog</a></span>
   </footer>
 </main>

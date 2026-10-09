@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting started | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="The first investigation in Investigation Workflow Suite (IWS), step by step, from a new investigation folder to the first report.">
+<meta name="robots" content="noindex, nofollow">
+<title>Getting started | Synoptic</title>
+<meta name="description" content="The first investigation in Synoptic, step by step, from a new investigation folder to the first report.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -123,6 +124,25 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -140,12 +160,14 @@ footer .legal { line-height: 1.6; }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="index.html">Home</a>
@@ -169,9 +191,9 @@ footer .legal { line-height: 1.6; }
   <section class="block" id="steps" style="border-top: none; padding-top: 8px">
     <div class="first">
       <ol class="first-steps">
-        <li><strong>Install and open IWS.</strong> On first run, start the 90-day Professional trial or carry on as Free.</li>
+        <li><strong>Install and open Synoptic.</strong> It runs as Free with no licence, with no time limit. A Professional licence is pasted in Settings &gt; General &gt; Licence.</li>
         <li><strong>Create the investigation</strong> with File, New investigation, named for the occurrence. IWS makes a folder holding the investigation file.</li>
-        <li><strong>Work the checklist:</strong> answer the triage questions, log the decision to investigate and set the standard of proof.</li>
+        <li><strong>Work the checklist:</strong> answer the triage questions, and log the decision to investigate. Check the standard of proof in Settings (70 per cent by default).</li>
         <li><strong>File the evidence</strong> as it arrives, each item once with its source, and build the timeline from it.</li>
         <li><strong>Record the interviews</strong> and finalise each account once it is settled.</li>
         <li><strong>Build the map:</strong> place the critical event, then a factor for every event or condition that might have played a part.</li>
@@ -190,7 +212,7 @@ footer .legal { line-height: 1.6; }
   </section>
 
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>

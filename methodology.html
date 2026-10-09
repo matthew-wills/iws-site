@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Methodology | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="How Investigation Workflow Suite (IWS) moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale.">
+<meta name="robots" content="noindex, nofollow">
+<title>Methodology | Synoptic</title>
+<meta name="description" content="How Synoptic moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set in Settings and a ten-term probability scale.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -123,6 +124,25 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -206,12 +226,14 @@ footer .legal { line-height: 1.6; }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="index.html">Home</a>
@@ -271,7 +293,7 @@ footer .legal { line-height: 1.6; }
       <div><h3>Evidence</h3>Each item recorded once, with its source, its significance and everything that rests on it.</div>
       <div><h3>Proposition</h3>An event or condition that might have played a part, placed on the map whether it is expected to hold or to fail.</div>
       <div><h3>Testing</h3>Three questions asked in order, with the evidence for and against each answer recorded.</div>
-      <div><h3>Confidence</h3>Every answer carries a probability, and a pass has to reach the investigation's standard of proof.</div>
+      <div><h3>Confidence</h3>Every answer carries a probability, and a pass has to reach the standard of proof set in Settings.</div>
       <div><h3>Finding</h3>The test results determine how the object is classified, while the investigator remains responsible for the judgements behind those results.</div>
     </div>
   </section>
@@ -440,11 +462,11 @@ footer .legal { line-height: 1.6; }
   <section class="block" id="proof">
     <div class="section-head">
       <span class="eyebrow">Standard of proof</span>
-      <h2>The bar a passed test has to clear is set once, for the whole investigation</h2>
+      <h2>The bar a passed test has to clear</h2>
     </div>
     <div class="two">
       <div class="prose">
-        <p>Before the tests are worth anything, the investigation has to say how sure it needs to be. In the methodology IWS implements, that is the standard of proof: one threshold, selected for the investigation and applied to every test in it. IWS offers values from the balance of probabilities at 50 per cent up to very likely at 90, with 66 per cent as its default. They are settings of the method, chosen for each investigation, rather than a figure set by any outside authority.</p>
+        <p>Before the tests are worth anything, the investigation has to say how sure it needs to be. In the methodology Synoptic implements, that is the standard of proof: one threshold, chosen in Settings on each computer and applied to every test. Synoptic offers 50 per cent (the balance of probabilities) to 95 per cent in steps of five, with 70 per cent as the default, the standard transport safety investigators commonly work to. It is a setting of the method, chosen by the investigator or the organisation, rather than a figure set by any outside authority.</p>
         <p>Every test then carries its confidence on the probability scale below, and the object's form warns when a pass falls short of the standard. A finding that only just clears the bar is reported with the confidence it actually has, rather than presented as settled.</p>
       </div>
       <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="shots/tarlton-springs-rto/17-settings-proof.png" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof, set in Settings.</figcaption></figure>
@@ -517,7 +539,7 @@ footer .legal { line-height: 1.6; }
   </section>
 
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>

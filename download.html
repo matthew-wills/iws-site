@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Download | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="Download Investigation Workflow Suite (IWS) for Windows 10 and 11: the Free, Professional and Organisation levels, the 90-day Professional trial, and how to buy and activate a licence.">
+<meta name="robots" content="noindex, nofollow">
+<title>Download | Synoptic</title>
+<meta name="description" content="Download Synoptic for Windows 10 and 11: the Free, Professional and Organisation levels, and how to buy and activate a licence.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -123,6 +124,25 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -171,12 +191,14 @@ footer .legal { line-height: 1.6; }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="index.html">Home</a>
@@ -195,7 +217,7 @@ footer .legal { line-height: 1.6; }
     <span class="eyebrow">Download</span>
     <h1>Download Investigation Workflow Suite (IWS)</h1>
     <p class="lede">Windows 10 and 11 · 64-bit · No account required</p>
-    <p class="lede">Free to conduct and structure an investigation, with 90 days of Professional features included to take it through to the finished report.</p>
+    <p class="lede">Free to conduct and structure an investigation, with no time limit. Professional takes it through to the finished report.</p>
   </section>
 
   <section class="block" id="get" style="border-top: none; padding-top: 8px">
@@ -206,7 +228,6 @@ footer .legal { line-height: 1.6; }
         <p class="ver">The 0.12.0 release is being finalised. The download link appears here when it is out.</p>
         <dl>
           <dt>Installer</dt><dd>Investigation Workflow Suite_0.12.0_x64-setup.exe<small>Recommended for most users.</small></dd>
-          <dt>Portable</dt><dd>Investigation Workflow Suite_0.12.0_portable.exe<small>Runs IWS without installing it.</small></dd>
           <dt>Checksums</dt><dd>SHA256SUMS.txt<small>The SHA256 hash of each file, to check a download before running it.</small></dd>
           <dt>Requires</dt><dd>Windows 10 or 11, 64-bit</dd>
         </dl>
@@ -219,7 +240,7 @@ footer .legal { line-height: 1.6; }
       <div class="dl-side">
         <h3>Before you install</h3>
         <p>The first launch of a new build can trigger a Windows SmartScreen prompt. Choose More info, then Run anyway.</p>
-        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The endpoint settings and the drafting controls say where an action would send investigation text off the machine. Starting the Professional trial: trial activation sends your name, email address, the requested edition and a randomly generated installation identifier. The installation identifier is generated by IWS and is not a hardware serial number or hardware fingerprint. Nothing about any investigation is sent.</p>
+        <p class="privacy">IWS sends nothing about an investigation anywhere unless AI access is set to Endpoint, and then only to the server you configured. The endpoint settings and the drafting controls say where an action would send investigation text off the machine. When Professional trials open, a trial request will send your name, email address, the edition and a randomly generated installation identifier, which is not a hardware serial number or hardware fingerprint. Nothing about any investigation is sent.</p>
       </div>
     </div>
   </section>
@@ -238,12 +259,11 @@ footer .legal { line-height: 1.6; }
         <p class="who">The complete investigation workspace, with no watermark and no time limit.</p>
         <ul>
           <li>The AcciMap, with its six lanes, and every factor tested for Existence, Influence and Importance</li>
-          <li>Evidence and Argument Tables: Argument For, Argument Against and Reasoning, exported to Word and PDF</li>
+          <li>Evidence and Argument Tables: Argument For, Argument Against and Reasoning, exported to Word</li>
           <li>Investigations and their folders, the checklist and dashboard, evidence capture, interviews and transcripts, the timeline, finalising and the log</li>
           <li>Exports of the AcciMap image, the timeline image, the collated record and the source pack</li>
         </ul>
         <p class="note">Professional adds: AI-assisted drafting, finished reports and custom templates.</p>
-        <p class="includes">Includes 90 days of Professional features</p>
         <a class="btn" href="#get">Download Free</a>
       </article>
       <article class="tier card lead" id="professional">
@@ -258,7 +278,7 @@ footer .legal { line-height: 1.6; }
           <li>Standard and custom report and briefing templates</li>
         </ul>
         <p class="note">AI service and model costs are not included. You connect your own suitable AI; see <a href="ai-security.html#your-ai">bring your own AI</a>.</p>
-        <a class="btn btn-primary" href="#get">Start 90-day trial</a>
+        <p class="includes">Professional trials are coming.</p>
       </article>
       <article class="tier card" id="organisation">
         <span class="eyebrow">Organisation</span>
@@ -267,10 +287,9 @@ footer .legal { line-height: 1.6; }
         <p class="who">IWS adapted around your organisation's framework, rather than your investigators working around the software.</p>
         <ul>
           <li>Everything in Professional</li>
-          <li>Your framework, stages and terminology</li>
-          <li>Mandatory checklists and analysis structures</li>
-          <li>Human Factors frameworks and taxonomies, and risk or causal methods</li>
-          <li>Report structures, document and briefing templates, and branding</li>
+          <li>Your organisation's framework, terminology and reporting, built in as an organisation pack</li>
+          <li>Its own map lanes and default templates</li>
+          <li>Where needed, a findings map built on your own taxonomy</li>
         </ul>
         <p class="note">Configured where practicable, scoped to your requirements.</p>
         <a class="btn" href="download.html#organisation">Talk to us</a>
@@ -279,11 +298,11 @@ footer .legal { line-height: 1.6; }
     <h3 class="faq-head" id="questions">The trial and buying, in plain terms</h3>
     <div class="terms">
       <div id="trial">
-        <h3>What does the 90-day trial include, and how does it start?</h3>
-        <p>Everything in Professional, for 90 days. IWS asks on first run whether to start it, and starting it needs the computer online once. Offline, IWS works as Free and the trial can be started later.</p>
+        <h3>Is there a trial?</h3>
+        <p>Professional trials are coming, and will include everything in Professional for a limited time. Until then, Free has no time limit.</p>
       </div>
       <div id="trial-ends">
-        <h3>What happens when it ends?</h3>
+        <h3>What happens when a licence ends?</h3>
         <p>IWS carries on as Free. Every investigation stays open and editable. Professional-only actions, such as drafting and report export, pause until a licence is active. Nothing is deleted.</p>
       </div>
       <div id="your-data">
@@ -308,12 +327,12 @@ footer .legal { line-height: 1.6; }
       <h2>The training edition</h2>
     </div>
     <div class="training">
-      <p>The training edition carries public teaching material and an educational watermark on exports. It is the build to use for coursework.</p>
+      <p>The training edition is a separate build for coursework. It uses the map name, lanes and report style taught in transport safety investigation coursework, in place of the AcciMap and its lanes.</p>
     </div>
   </section>
 
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>

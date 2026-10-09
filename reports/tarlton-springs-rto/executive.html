@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Executive briefing, Tarlton Springs | Investigation Workflow Suite (IWS)</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Executive briefing, Tarlton Springs | Synoptic</title>
 <meta name="description" content="The occurrence, the findings and the actions on a few pages for the people who decide.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
@@ -122,6 +123,25 @@ footer a { color: var(--ink-soft); }
   .nav a { white-space: nowrap; flex: none; }
 }
 footer .legal { line-height: 1.6; }
+
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
 
 /* Rendered preview of a drafted report section. Sized to read like a
    report page rather than a web page: generous line height, restrained
@@ -414,12 +434,14 @@ footer .legal { line-height: 1.6; }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../../index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="../../index.html">Home</a>
@@ -452,7 +474,7 @@ footer .legal { line-height: 1.6; }
   <section class="panel" id="check"><h2 class="panel-title">Mechanical record check</h2><p class="hint" style="margin-bottom:12px">No model involved: each factor's category and confidence word in the text compared with its recorded test, the findings compared with the derived classification, and the section lengths against their targets.</p><div class="md"><p><span># Mechanical record check</span></p><p><span>- {&quot;section&quot;:&quot;Why it happened&quot;,&quot;severity&quot;:&quot;warning&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The paragraph carries the outline&#x27;s \&quot;(Safety issue)\&quot; tag rather than saying so in prose (5 occurrences).&quot;} - {&quot;section&quot;:&quot;What is being done&quot;,&quot;severity&quot;:&quot;info&quot;,&quot;code&quot;:&quot;notation-leak&quot;,&quot;message&quot;:&quot;The text carries the outline&#x27;s \&quot;</span><mark class="md__marker">[NOT ESTABLISHED: ...]</mark><span>\&quot; notation rather than saying so in prose (6 occurrences).&quot;}</span></p></div></section>
   <section class="panel" id="notes"><h2 class="panel-title">Review notes</h2><p class="hint" style="margin-bottom:12px">Observations the model made about the record itself while drafting, kept apart from the prose for the investigator to resolve.</p><div class="md"><p><span>- [What happened] - Timeline, precautionary disembarkation: the entry says passengers were &quot;clear 4 minutes 8 seconds after the aircraft stopped&quot;. However, the aircraft stopped at 07:30:57 and the disembarkation ran from 07:34:40 to 07:38:48. The 4 minutes 8 seconds matches the length of the disembarkation itself, not the time since the stop, which would be about 7 minutes 51 seconds. - Causal chains: the chain &quot;Four northern edge lights above nominal intensity on the night -&gt; Take-off rejected 6 kt above V1&quot; places this factor upstream of the reject. The factor is stated to have failed the Influence test, so this link is inconsistent with its category. - Causal chains: &quot;Maximum braking established within 2 seconds of the reject decision -&gt; Runway overrun&quot; presents a prompt braking response (faster than the 3.2-second fleet mean) as leading to the overrun. The direction or nature of this link should be checked. - Timeline, daily movement area inspection: the supporting extract&#x27;s note reads &quot;Tarlton Springs wildlife sighting log, 01/2025 to 06/2026&quot;, which does not match the cited source (the aerodrome daily inspection log). - Timeline, take-off rejected: the CVR call &quot;Stopping. I have control.&quot; is not attributed to a crew member. Whether the captain took control at that point is not established. - Timeline, lining up: the AWIS wind was 090 at 6 kt, while V1 was calculated with a 5 kt headwind component. This may reflect standard wind factoring, but it is not explained. - [Why it happened] - Positive event &quot;Maximum braking established within 2 seconds of the reject decision&quot;: this is recorded as &quot;Led to: Runway overrun onto the runway end safety area&quot;. That link reads as though the braking contributed to the overrun. The investigator may wish to confirm the intended direction of the effect, for example that the braking limited how far the aircraft travelled. This draft omits the positive event for that reason. - &quot;Floor escape path lighting checked only every 24 months, not pre-flight&quot; and &quot;Four northern edge lights above nominal intensity on the night&quot; are both recorded as not finalised. Neither is used causally in this section, but their status may affect later sections. - [What we found] - Excluded hypotheses and positive event: the outline gives no likelihood terms for &quot;Tailwind component during the take-off roll and stop&quot;, &quot;No. 2 engine power loss before the reject decision&quot; or &quot;Maximum braking established within 2 seconds of the reject decision&quot;. Under the opening sentence, stating them without a term would present them as established fact. I carried the recorded terms instead: Existence Fail very unlikely for the two excluded hypotheses, and Existence virtually certain with Influence very likely for the positive event. Please confirm. - Unresolved matters omitted: &quot;Flight crew fatigued at the time of the take-off&quot; and &quot;Four northern edge lights above nominal intensity on the night&quot; were both tested inconclusive, and the record says they must be discussed in the report. The outline for this section does not include them, so I have not added them. They need a home here or in another section. - &quot;Four northern edge lights above nominal intensity on the night&quot;: the causal chains list this as leading to &quot;Take-off rejected 6 kt above V1&quot;, but its Influence test is inconclusive and the object is not finalised. That link should not stand as a causal edge. - &quot;Floor escape path lighting checked only every 24 months, not pre-flight&quot; and the edge lights object are both marked &quot;Finalised: no&quot;. The floor lighting finding is still waiting on engineering&#x27;s answer on whether the failed ballast is common across the fleet. The checklist also records that not every object has been tested and finalised. - Narrowed terms: the record grades the Influence of &quot;Two kangaroos crossed the strip onto the sealed runway&quot; and &quot;Take-off rejected 6 kt above V1&quot; as extremely likely. This section shows them as very likely, as the outline gives. The approved &quot;Why it happened&quot; section uses &quot;extremely likely&quot; for both, so the wording differs between the two sections. - The pilot in command&#x27;s interview background gives the most recent recurrent simulator check as February 2026. The crew records give the last cyclic simulator as 11/03/2026. - Timeline entry for the daily movement area inspection (17/06/2026 21:35 UTC): its supporting extract is the wildlife sighting log, not the aerodrome daily inspection log the entry cites as its source. - [What is being done] - Approved &quot;What we found&quot;, the kangaroo peak bullet: it states Existence as &quot;very likely&quot;. The record grades it &quot;Pass - extremely likely&quot;. - Approved &quot;What we found&quot;, the training or guidance bullet: it states Existence as &quot;very likely&quot;. The record grades it &quot;Pass - extremely likely&quot;. - Approved &quot;What we found&quot;, the bullet on two kangaroos crossing the strip: it states influence as &quot;very likely&quot;. The record grades it &quot;Pass - extremely likely&quot;. - Approved &quot;What we found&quot;, the bullet on the take-off rejected 6 kt above V1: it states influence as &quot;very likely&quot;. The record grades it &quot;Pass - extremely likely&quot;. This also conflicts with the approved &quot;Why it happened&quot;, which says &quot;extremely likely&quot;. - Approved &quot;What we found&quot;, the kangaroo peak bullet: it states influence as &quot;likely&quot;. The note on Influence for that factor records 80%, but the test label itself reads &quot;Pass - likely&quot;, so the bullet is consistent with the label. - Approved &quot;What happened&quot;: it states &quot;No wildlife was reported on the CTAF in the preceding 90 minutes&quot; and &quot;The doors closed on schedule at 07:16 UTC&quot;. Neither fact appears in the collation text. They may come from the CTAF and CVR extract, which is not reproduced here. Please verify both.</span></p><ul><li><span>Investigation log, 19/06/2026: it records the suspension of the evening Tarlton Springs service but not whether the suspension is still in place. The status statements in this section depend on that.</span></li></ul></div></section>
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="../../case-studies/tarlton-springs-rto.html#published">Back to the case study</a> · <a href="../../case-studies.html">All case studies</a> · <a href="../../changelog.html">Changelog</a></span>
   </footer>
 </main>

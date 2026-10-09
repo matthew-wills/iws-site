@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Case studies | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite (IWS).">
+<meta name="robots" content="noindex, nofollow">
+<title>Case studies | Synoptic</title>
+<meta name="description" content="Three fictional safety investigations in aviation, maritime and mining, carried out in Synoptic from first notification to the published documents.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -123,54 +124,64 @@ footer a { color: var(--ink-soft); }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
 
   [id] { scroll-margin-top: 76px; }
 
-  .page-head { padding-block: 44px 30px; display: flex; flex-direction: column; gap: 14px; max-width: 78ch; }
+  .page-head { padding-block: 44px 28px; display: flex; flex-direction: column; gap: 14px; max-width: 78ch; }
   .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
-  .note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); max-width: 80ch; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .note { padding: 10px 14px; background: var(--warn-soft); border-radius: 10px; font-size: 0.92rem; color: var(--ink); max-width: 80ch; }
+  .anchor { display: block; height: 0; }
 
-  /* The featured study, stage by stage */
-  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 36px; align-items: start; }
-  .feature .prose { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); font-size: 1.02rem; }
-  .trail { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: stage; }
-  .trail li { display: flex; flex-direction: column; gap: 6px; counter-increment: stage; }
-  .trail a.thumb { display: block; }
-  .trail img { box-shadow: none; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
-  .trail h3 { font-size: 1rem; display: flex; gap: 8px; align-items: center; }
-  .trail h3::before { content: counter(stage); display: inline-flex; align-items: center; justify-content: center; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.78rem; font-weight: 700; }
-  .trail p { color: var(--ink-soft); font-size: 0.92rem; }
-  .docs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
-  .docs figure { display: flex; flex-direction: column; gap: 8px; }
-  .docs img { max-width: 220px; }
-  .docs p { color: var(--ink-soft); font-size: 0.92rem; }
+  /* Every published document, studies by documents */
+  .doctable { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 0.94rem; }
+  .doctable th, .doctable td { text-align: left; padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  .doctable thead th { border-top: 0; color: var(--ink-faint); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .doctable tbody th { font-weight: 600; white-space: nowrap; }
+  .doctable td small { color: var(--ink-faint); }
+  .fineprint { margin-top: 10px; font-size: 0.86rem; color: var(--ink-soft); max-width: 90ch; }
 
-  /* The case cards */
-  .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-  .case { display: flex; flex-direction: column; gap: 10px; }
-  .case .photo { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
-  .case h3 { font-size: 1.1rem; }
-  .case p { color: var(--ink-soft); font-size: 0.95rem; }
-  .case .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
-
-  @media (max-width: 960px) {
-    .feature { grid-template-columns: 1fr; }
-    .trail, .docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 860px) {
+    .doctable, .doctable tbody, .doctable tr, .doctable th, .doctable td { display: block; }
+    .doctable thead { display: none; }
+    .doctable tr { padding: 10px 14px; border-top: 1px solid var(--line); }
+    .doctable tr:first-child { border-top: 0; }
+    .doctable th, .doctable td { border: 0; padding: 3px 0; }
+    .doctable td::before { content: attr(data-l) ": "; color: var(--ink-faint); }
   }
   @media (max-width: 560px) {
-    .trail, .docs, .cases { grid-template-columns: 1fr; }
+    .page-head { padding-block: 28px 18px; }
+    section.block { padding-block: 38px; }
   }
 </style>
 </head>
 <body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
     <nav class="nav" aria-label="Site">
       <a href="index.html">Home</a>
@@ -186,81 +197,64 @@ footer .legal { line-height: 1.6; }
 
 <main class="wrap" id="top">
   <section class="page-head">
-    <span class="eyebrow">Worked case studies</span>
-    <h1>See a complete investigation</h1>
-    <p class="lede">Fictional occurrences worked from first notification to final report in Investigation Workflow Suite (IWS), the actual application.</p>
-    <p class="note">Every case study here is fictional: the organisations, the places, the people and every record. None of them describes a real occurrence. The documents are published exactly as the application produced them, faults and all.</p>
+    <span class="eyebrow">Case studies</span>
+    <h1>Three investigations, from first notification to final report</h1>
+    <p class="lede">Each case study is a complete investigation carried out in Synoptic: the evidence, the AcciMap, the tests behind every finding and the documents the investigation produced. Choose one to follow.</p>
+    <p class="note">All three are fictional: the organisations, places, people and records are invented. The screenshots are real screens from the application, and the documents are published as it produced them.</p>
   </section>
 
-  <!-- The featured study (the lowest "order" in its meta.json, Tarlton Springs today). The words and the stage anchors below describe that study; rewrite them if another study is featured. -->
-  <section class="block" id="featured">
-    <div class="feature">
-      <div>
-        <div class="section-head">
-          <span class="eyebrow">Aviation · Rejected take-off and runway overrun</span>
-          <h2>Tarlton Springs</h2>
-        </div>
-        <div class="prose">
-          <p>A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome at night, worked through screen by screen. The source documents the investigation started from are published with it, so the analysis can be read back against the same material the investigator had.</p>
-          <p>Follow it stage by stage and check, at each one, that what the report says can be traced to something the record holds.</p>
-        </div>
-        <div class="hero-actions" style="margin-top: 18px">
-          <a class="btn btn-primary" href="case-studies/tarlton-springs-rto.html">Walk through the whole investigation</a>
-        </div>
-      </div>
-      <figure><a href="case-studies/tarlton-springs-rto.html#finished"><img class="shot" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished causal map for the Tarlton Springs case study"></a><figcaption>The finished causal map: every line of enquiry, how it was tested, and what the evidence supports.</figcaption></figure>
-    </div>
-    <ol class="trail" aria-label="The stages of the Tarlton Springs investigation">
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#occurrence"><img class="shot" src="shots/tarlton-springs-rto/03-safety-report.png" alt="The captain's safety report as filed in the investigation"></a><h3>Occurrence</h3><p>What was known that night, and the captain's own report as it was written.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#sources"><img class="shot" src="shots/tarlton-springs-rto/01-evidence-register.png" alt="The evidence register"></a><h3>Evidence</h3><p>Nine source documents, each filed once, and what each one settled.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#timeline"><img class="shot" src="shots/tarlton-springs-rto/05-timeline.png" alt="The timeline tab"></a><h3>Timeline</h3><p>The sequence, with the source and time basis behind every event.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#map"><img class="shot" src="shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses across the lanes of the causal map"></a><h3>Lines of enquiry</h3><p>Every hypothesis on the map, including two put up to be disproved.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#tests"><img class="shot" src="shots/tarlton-springs-rto/09-object-form.png" alt="An object's form with its three tests"></a><h3>Testing</h3><p>Existence, Influence and Importance asked of each object, one of them argued.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#finished"><img class="shot" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished causal map"></a><h3>Findings</h3><p>The finished map, and the one line of enquiry deliberately left open.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#tables"><img class="shot" src="exports/tarlton-springs-rto/evidence_argument_tables_p2.png" alt="A page of the Evidence and Argument Tables"></a><h3>The working</h3><p>The Evidence and Argument Tables behind every finding.</p></li>
-      <li><a class="thumb" href="case-studies/tarlton-springs-rto.html#published"><img class="shot" src="shots/tarlton-springs-rto/13-report.png" alt="The Record tab with the assembled report"></a><h3>Reporting</h3><p>Four outputs from the one record, and the final report in three other layouts, each report with its checks beside it.</p></li>
-    </ol>
-    <div class="docs">
-      <figure><a href="exports/tarlton-springs-rto/source_pack.html"><img class="shot" src="exports/tarlton-springs-rto/source_pack.png" alt="Cover page of the investigation source pack"></a><h3>Source pack</h3><p>Every document the investigation worked from. <a href="exports/tarlton-springs-rto/source_pack.html">Read it</a></p></figure>
-      <figure><a href="exports/tarlton-springs-rto/report_preliminary.html"><img class="shot" src="exports/tarlton-springs-rto/report_preliminary.png" alt="Cover page of the preliminary investigation report"></a><h3>Preliminary investigation report</h3><p>1,308 words. <a href="exports/tarlton-springs-rto/report_preliminary.html">Read it</a></p></figure>
-      <figure><a href="exports/tarlton-springs-rto/report_executive.html"><img class="shot" src="exports/tarlton-springs-rto/report_executive.png" alt="Cover page of the executive briefing"></a><h3>Executive briefing</h3><p>1,792 words. <a href="exports/tarlton-springs-rto/report_executive.html">Read it</a></p></figure>
-      <figure><a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover page of the final investigation report"></a><h3>Final investigation report</h3><p>10,814 words. <a href="exports/tarlton-springs-rto/report_standard.html">Read it</a></p></figure>
-    </div>
-  </section>
+  <span class="anchor" id="featured"></span>
+  <div class="studies" id="all">
+      <a class="study" href="case-studies/tarlton-springs-rto.html">
+        <img src="case-studies/tarlton-springs-rto/card.jpg" alt="A white regional turboprop airliner parked on an airport apron at sunset" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Aviation</span>
+          <h2 class="study__title">Tarlton Springs</h2>
+          <span class="study__kind">Rejected take-off and runway overrun</span>
+          <span class="study__line">A regional turboprop rejects its take-off above V1 at night as two kangaroos cross the runway, strikes them and leaves the end of the runway.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="study" href="case-studies/kanooka-heads-grounding.html">
+        <img src="case-studies/kanooka-heads-grounding/card.jpg" alt="A catamaran passenger ferry underway on calm water in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Maritime</span>
+          <h2 class="study__title">Kanooka Heads</h2>
+          <span class="study__kind">Passenger ferry grounding</span>
+          <span class="study__line">A passenger ferry leaves a dredged channel in darkness and grounds with 38 people aboard.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="study" href="case-studies/bindarra-haul-road-collision.html">
+        <img src="case-studies/bindarra-haul-road-collision/card.jpg" alt="Haul trucks on a haul road in an open-cut mine in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Mining</span>
+          <h2 class="study__title">Bindarra</h2>
+          <span class="study__kind">Haul truck and light vehicle collision</span>
+          <span class="study__line">A haul truck and a light vehicle meet at a new intersection on a night shift, months after a hazard report nobody acted on.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+  </div>
 
-  <section class="block" id="all">
+  <section class="block" id="documents" style="margin-top: 52px">
     <div class="section-head">
-      <span class="eyebrow">Three industries, one method</span>
-      <h2>Every case study, worked end to end</h2>
-      <p>Each is a complete fictional investigation taken from the first notification to the published reports, with the real screens at every stage and the documents the application produced at the end. The lanes, the tests and the reports are the same in each; what changes is the evidence.</p>
+      <h2>Every published document</h2>
+      <p>Each study follows the same five parts: what happened, how it was investigated, what it established, what Synoptic produced and the record itself. To judge the output first, go straight to the documents.</p>
     </div>
-    <div class="cases">
-      <article class="case card">
-        <a href="case-studies/tarlton-springs-rto.html"><img class="photo" src="case-studies/tarlton-springs-rto/card.jpg" alt="A white regional turboprop airliner parked on an airport apron at sunset" width="1200" height="800" loading="lazy" decoding="async"></a>
-        <span class="eyebrow">Aviation · Rejected take-off and runway overrun</span>
-        <h3>Tarlton Springs</h3>
-        <p>A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to the Evidence and Argument Tables and the final investigation report.</p>
-        <div class="links"><a class="btn btn-primary" href="case-studies/tarlton-springs-rto.html">Walk through it</a></div>
-      </article>
-      <article class="case card">
-        <a href="case-studies/kanooka-heads-grounding.html"><img class="photo" src="case-studies/kanooka-heads-grounding/card.jpg" alt="A catamaran passenger ferry underway on calm water in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async"></a>
-        <span class="eyebrow">Maritime · Passenger ferry grounding</span>
-        <h3>Kanooka Heads</h3>
-        <p>A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to the Evidence and Argument Tables and the final investigation report.</p>
-        <div class="links"><a class="btn btn-primary" href="case-studies/kanooka-heads-grounding.html">Walk through it</a></div>
-      </article>
-      <article class="case card">
-        <a href="case-studies/bindarra-haul-road-collision.html"><img class="photo" src="case-studies/bindarra-haul-road-collision/card.jpg" alt="Haul trucks on a haul road in an open-cut mine in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async"></a>
-        <span class="eyebrow">Mining · Haul truck and light vehicle collision</span>
-        <h3>Bindarra</h3>
-        <p>A haul truck and a light vehicle meeting at a new intersection on a night shift, worked from the hazard report nobody acted on through to the Evidence and Argument Tables and the final investigation report.</p>
-        <div class="links"><a class="btn btn-primary" href="case-studies/bindarra-haul-road-collision.html">Walk through it</a></div>
-      </article>
-    </div>
+    <table class="doctable">
+      <thead><tr><th scope="col">Case study</th><th scope="col">Evidence and Argument Tables</th><th scope="col">Preliminary investigation report</th><th scope="col">Final investigation report</th><th scope="col">Executive briefing</th><th scope="col">Source pack</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><a href="case-studies/tarlton-springs-rto.html">Tarlton Springs</a></th><td data-l="Evidence and Argument Tables"><a href="exports/tarlton-springs-rto/evidence_argument_tables.html">View</a></td><td data-l="Preliminary investigation report"><a href="exports/tarlton-springs-rto/report_preliminary.html">View</a></td><td data-l="Final investigation report"><a href="exports/tarlton-springs-rto/report_standard.html">View</a> <small>· also <a href="reports/tarlton-springs-rto/atsb.html">ATSB-</a>, <a href="reports/tarlton-springs-rto/ntsb.html">NTSB-</a> and <a href="reports/tarlton-springs-rto/aaib.html">AAIB-inspired</a></small></td><td data-l="Executive briefing"><a href="exports/tarlton-springs-rto/report_executive.html">View</a></td><td data-l="Source pack"><a href="exports/tarlton-springs-rto/source_pack.html">View</a></td></tr>
+        <tr><th scope="row"><a href="case-studies/kanooka-heads-grounding.html">Kanooka Heads</a></th><td data-l="Evidence and Argument Tables"><a href="exports/kanooka-heads-grounding/evidence_argument_tables.html">View</a></td><td data-l="Preliminary investigation report"><a href="exports/kanooka-heads-grounding/report_preliminary.html">View</a></td><td data-l="Final investigation report"><a href="exports/kanooka-heads-grounding/report_standard.html">View</a> <small>· also <a href="reports/kanooka-heads-grounding/atsb.html">ATSB-</a>, <a href="reports/kanooka-heads-grounding/ntsb.html">NTSB-</a> and <a href="reports/kanooka-heads-grounding/aaib.html">AAIB-inspired</a></small></td><td data-l="Executive briefing"><a href="exports/kanooka-heads-grounding/report_executive.html">View</a></td><td data-l="Source pack"><a href="exports/kanooka-heads-grounding/source_pack.html">View</a></td></tr>
+        <tr><th scope="row"><a href="case-studies/bindarra-haul-road-collision.html">Bindarra</a></th><td data-l="Evidence and Argument Tables"><a href="exports/bindarra-haul-road-collision/evidence_argument_tables.html">View</a></td><td data-l="Preliminary investigation report"><a href="exports/bindarra-haul-road-collision/report_preliminary.html">View</a></td><td data-l="Final investigation report"><a href="exports/bindarra-haul-road-collision/report_standard.html">View</a> <small>· also <a href="reports/bindarra-haul-road-collision/atsb.html">ATSB-</a>, <a href="reports/bindarra-haul-road-collision/ntsb.html">NTSB-</a> and <a href="reports/bindarra-haul-road-collision/aaib.html">AAIB-inspired</a></small></td><td data-l="Executive briefing"><a href="exports/bindarra-haul-road-collision/report_executive.html">View</a></td><td data-l="Source pack"><a href="exports/bindarra-haul-road-collision/source_pack.html">View</a></td></tr>
+      </tbody>
+    </table>
+    <p class="fineprint">These layouts follow the published report structure of the Australian Transport Safety Bureau, the US National Transportation Safety Board and the UK Air Accidents Investigation Branch. They are not produced, reviewed or endorsed by those organisations.</p>
   </section>
 
   <footer>
-    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span class="legal">Synoptic, safety investigation software for Windows.<br>© 2026 Synoptic Safety Investigation Software</span>
     <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
   </footer>
 </main>
