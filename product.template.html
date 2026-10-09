@@ -178,13 +178,13 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
-  <div class="lightbox__body"><img id="lb-img" src="" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+  <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
 </div>
 <script>
   (function () {
     var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
     function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
-    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
     Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
     document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
     lbImg.addEventListener("click", function (e) { e.stopPropagation(); });

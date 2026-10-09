@@ -224,7 +224,7 @@
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
   <div class="lightbox__body">
-    <img id="lb-img" src="" alt="">
+    <img id="lb-img" alt="">
     <p class="lightbox__caption" id="lb-caption"></p>
   </div>
 </div>
@@ -238,7 +238,7 @@
       lbImg.src = src; lbCaption.textContent = text || "";
       lb.classList.add("is-open"); document.body.classList.add("has-lightbox");
     }
-    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
 
     // Each walkthrough drives its own sticky frame: the step nearest the
     // middle of the window is the active one, and its screenshot is shown.
