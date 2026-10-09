@@ -318,7 +318,7 @@ footer .legal { line-height: 1.6; }
         <ul class="facts">
           <li>The investigation is one .sfm file of plain, unencrypted JSON, with pasted images and captured files held inside it. Its folder can also hold <code>evidence/</code>, <code>exports/</code> and, if you turn it on, <code>attachments/</code>. Protect them as you would any sensitive document, including on a shared or synced folder.</li>
           <li>Opening a captured file writes a plain copy of it to the investigation's <code>evidence/</code> folder, or to the system's temporary folder when the investigation has not yet been saved to disk.</li>
-          <li>Endpoint settings and any API key are kept, unencrypted, in the app's local settings for that Windows user. A key is never written into the .sfm, an export or a run log, and is removed from error messages.</li>
+          <li>Endpoint settings and any API key are kept in plain text in the app's local settings for that Windows user, not in the Windows credential store. A key is never written into the .sfm, an export or a run log, and IWS attempts to remove it from error messages shown on screen.</li>
           <li>No telemetry, analytics or crash reporting. With AI access at No AI, nothing about the investigation leaves the computer.</li>
           <li>Licence requests are separate from AI drafting; what a trial request sends is set out on the <a href="download.html#trial">Download page</a>.</li>
         </ul>
@@ -328,7 +328,7 @@ footer .legal { line-height: 1.6; }
         <ul class="facts">
           <li>At Chat or Endpoint, the collated record behind the draft: one object, a section or the whole investigation, with its tests, reasoning, timeline, finalised interviews, evidence text and safety reports. Attached files are named, not sent.</li>
           <li>A protected safety report's text goes with an instruction not to quote it.</li>
-          <li>Interview speakers and participants appear by role, mapped by the investigator. A name typed anywhere else in the record, or spoken in a transcript, is sent as written.</li>
+          <li>Transcript speakers appear by role, mapped by the investigator when the transcript is imported. Any other name, including the interview attendee details, a name typed anywhere else in the record or one spoken in a transcript, is sent as written.</li>
           <li>Testing an endpoint or refreshing its model list sends no investigation content.</li>
         </ul>
       </div>
