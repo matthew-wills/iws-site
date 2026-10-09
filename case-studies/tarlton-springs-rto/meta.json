@@ -4,10 +4,17 @@
   "pageTitle": "Case study: Tarlton Springs",
   "sector": "Aviation",
   "occurrence": "Rejected take-off and runway overrun",
-  "blurb": "A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to six published reports.",
+  "blurb": "A rejected take-off above V1 and a runway overrun at an unlit regional aerodrome, worked from the first notification through to the Evidence and Argument Tables and the final investigation report.",
   "photo": "card.jpg",
   "photoAlt": "A white regional turboprop airliner parked on an airport apron at sunset",
   "order": 1,
   "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
-  "documents": ["source_pack", "evidence_argument_tables"]
+  "documents": ["source_pack", "evidence_argument_tables"],
+  "outputs": [
+    { "doc": "evidence_argument_tables", "page": 5, "caption": "the standard's threshold, its Influence argued for and against and accepted at 70 per cent" },
+    { "doc": "report_preliminary", "page": 4, "caption": "what was known while the work was still running" },
+    { "doc": "report_standard", "page": 8, "caption": "the start of the analysis, and the decision to reject above V1" },
+    { "doc": "report_executive", "page": 5, "caption": "the findings, in the briefing's own words" }
+  ],
+  "layouts": ["atsb", "ntsb", "aaib"]
 }
