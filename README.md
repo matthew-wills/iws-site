@@ -37,14 +37,11 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
       one place.
     - `%%SHOT_NN%%` - a screenshot path (on the top-level pages, the
       featured study's).
-    - `%%CASE_CARDS%%`, `%%HOME_CASE_CARDS%%`, `%%DOC_TABLE%%` - the study
-      cards (Case studies page and home page) and the table of every
-      published document, all generated from the studies' meta.json.
-    - `%%FEATURED%%`, `%%FEATURED_TITLE%%`, `%%FEATURED_KIND%%`,
-      `%%FEATURED_TABLES%%`, `%%CASE_CARDS%%`, `%%STANDARD_WORDS%%` and
-      the rest - the featured study's slug, title, sector and occurrence
-      type, the name of its Evidence and Argument Tables document, the case
-      cards, and its reports' word counts.
+    - `%%CASE_CARDS%%`, `%%HOME_CASE_CARDS%%` - the study cards (Case
+      studies page and home page), generated from the studies' meta.json.
+    - `%%FEATURED%%`, `%%FEATURED_TITLE%%`, `%%FEATURED_TABLES%%` - the
+      featured study's slug, title and the name of its Evidence and
+      Argument Tables document.
     - `%%CONTACT%%` - where "Talk to us" and "Contact us" go, set once as
       `CONTACT_EMAIL` in `build-site.mjs` (until it is set, the download
       page's Organisation card, and the build prints a note).

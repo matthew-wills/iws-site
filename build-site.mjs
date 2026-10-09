@@ -124,7 +124,6 @@ const meta = (r) =>
   r
     ? `${r.words.toLocaleString("en-AU")} words · ${r.runLog?.engine ?? "endpoint"} · ${r.runLog?.calls?.length ?? "?"} model calls · drafted ${new Date(r.runLog?.drafted_at ?? Date.now()).toLocaleDateString("en-AU")}`
     : "";
-const words = (r) => (r ? `${r.words.toLocaleString("en-AU")} words` : "");
 const copyInto = (from, to, keep) => {
   mkdirSync(to, { recursive: true });
   const files = readdirSync(from).filter((f) => statSync(join(from, f)).isFile() && keep.test(f));
@@ -443,7 +442,7 @@ const homeCards = studies.map((s) => studyCard(s, "", "h3")).join("\n");
  *  name its exports carry (a study not yet re-drafted has the older one). */
 const featuredTables = (featured.docsBuilt ?? []).find((d) => d === "evidence_argument_tables" || d === "eii_tables") ?? "evidence_argument_tables";
 /** The top-level pages are filled from the same featured study: its
- *  screenshots, its slug, the case cards and its reports. */
+ *  screenshots, its slug and the case cards. */
 const fillFeatured = (templateName, current) =>
   featured.shotFiles
     .reduce(
@@ -452,17 +451,10 @@ const fillFeatured = (templateName, current) =>
     )
     .replaceAll("%%CONTACT%%", CONTACT_HREF)
     .replaceAll("%%FEATURED_TABLES%%", featuredTables)
-    .replaceAll("%%FEATURED_KIND%%", esc([featured.sector, featured.occurrence].filter(Boolean).join(" · ")))
     .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
     .replaceAll("%%FEATURED%%", featured.slug)
     .replace("%%CASE_CARDS%%", () => cards)
-    .replace("%%HOME_CASE_CARDS%%", () => homeCards)
-    .replace("%%STANDARD_META%%", meta(featured.reportData.standard))
-    .replace("%%PRELIMINARY_META%%", meta(featured.reportData.preliminary))
-    .replace("%%EXECUTIVE_META%%", meta(featured.reportData.executive))
-    .replace("%%STANDARD_WORDS%%", words(featured.reportData.standard))
-    .replace("%%PRELIMINARY_WORDS%%", words(featured.reportData.preliminary))
-    .replace("%%EXECUTIVE_WORDS%%", words(featured.reportData.executive));
+    .replace("%%HOME_CASE_CARDS%%", () => homeCards);
 const index = fillFeatured("index.template.html", "home");
 write(
   "index.html",
