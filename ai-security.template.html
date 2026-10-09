@@ -3,55 +3,60 @@
 %%THEME%%
 
   [id] { scroll-margin-top: 76px; }
-
-  .page-head { padding-block: 44px 34px; display: flex; flex-direction: column; gap: 14px; max-width: 78ch; }
+  .page-head { padding-block: 44px 26px; display: flex; flex-direction: column; gap: 14px; max-width: 80ch; }
   .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
-  .page-head .lede strong { color: var(--ink); font-weight: 600; }
+  .principle { font-size: 1.3rem; font-weight: 600; color: var(--accent-deep); }
+  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
+  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
+  .anchor { display: block; height: 0; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.02rem; color: var(--ink-soft); max-width: 68ch; }
-  .prose strong { color: var(--ink); font-weight: 600; }
-  .optional { padding: 14px 18px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--accent); color: var(--ink); max-width: 78ch; font-size: 0.98rem; }
-
-  /* The pipeline */
-  .pipeline svg { width: 100%; height: auto; display: block; }
-  .stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-  .stage { padding: 12px 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
-  .stage h3 { font-size: 0.95rem; margin-bottom: 4px; }
-  .stage p { font-size: 0.88rem; color: var(--ink-soft); }
-
-  /* Risks against controls */
-  .risks { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-top: 8px; }
-  .risks th { text-align: left; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; padding: 0 12px 8px 0; border-bottom: 1px solid var(--line-strong); }
-  .risks td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
-  .risks td:first-child { color: var(--ink); width: 44%; }
-  .risks .x { display: inline-flex; width: 18px; height: 18px; border-radius: 50%; background: var(--risk-soft); color: var(--risk); font-size: 0.72rem; font-weight: 700; align-items: center; justify-content: center; margin-right: 8px; vertical-align: 1px; }
-
-  /* The three modes */
-  .modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  section.block { padding-block: 44px; }
+  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
+  .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+  .row { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.75fr); gap: 34px; align-items: center; margin-top: 30px; }
+  .row .text { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .row figcaption { margin-top: 10px; font-size: 0.93rem; }
+  .facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .facts li { padding-left: 14px; border-left: 3px solid var(--accent-soft); color: var(--ink-soft); font-size: 0.95rem; }
+  .facts code { font-size: 0.86em; }
+  .modes { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.1fr) minmax(0, 1.2fr); gap: 14px; align-items: stretch; }
   .mode { display: flex; flex-direction: column; gap: 8px; }
-  .mode h3 { font-size: 1.1rem; }
+  .mode-tag { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+  .lic { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; text-transform: none; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--ground); color: var(--ink); }
+  .lic--pro { background: var(--accent-soft); border-color: #93c5fd; color: var(--accent-deep); }
+  .mode h3 { font-size: 1.08rem; }
   .mode p { color: var(--ink-soft); font-size: 0.95rem; }
+  .mode .small { font-size: 0.9rem; margin-top: auto; }
   .mode.lead { border-color: #93c5fd; }
-  .mode ul.plain { font-size: 0.92rem; }
-  .policy { margin-top: 18px; padding: 14px 18px; background: var(--warn-soft); border-radius: 10px; color: var(--ink); max-width: 84ch; font-size: 0.97rem; }
-  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 28px; }
-  .live { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 24px; align-items: center; }
-  .live p { color: var(--ink-soft); font-size: 0.98rem; }
-
-  .next { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding-block: 52px; }
-  .next p { color: var(--ink-soft); max-width: 62ch; }
-
+  .steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 0.93rem; }
+  .risks { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .risks th { text-align: left; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; padding: 0 14px 10px; border-bottom: 1px solid var(--line-strong); }
+  .risks td { padding: 13px 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+  .risks tbody tr:nth-child(even) td { background: var(--paper); }
+  .risks td:first-child { color: var(--ink); width: 28%; }
+  .risks td:last-child { width: 30%; }
+  .parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+  .part h3 { font-size: 1.05rem; margin-bottom: 12px; }
+  .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 34px; max-width: 980px; }
+  .more { margin-top: 18px; }
+  .next { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .next p { color: var(--ink-soft); max-width: 64ch; }
   @media (max-width: 960px) {
-    .two, .live { grid-template-columns: 1fr; }
-    .stages, .modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .row, .modes, .parts { grid-template-columns: 1fr; gap: 18px; }
+    .cols { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .page-head { padding-block: 28px 18px; }
   }
   @media (max-width: 560px) {
-    .stages, .modes { grid-template-columns: 1fr; }
-    .risks td:first-child { width: auto; }
-    .risks tr { display: grid; }
     .risks thead { display: none; }
-    .risks td { border-bottom: none; padding-bottom: 2px; }
-    .risks tr td:last-child { border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    .risks tr { display: grid; padding-block: 8px; border-bottom: 1px solid var(--line); }
+    .risks td, .risks td:first-child, .risks td:last-child { width: auto; border-bottom: none; padding: 2px 0; background: none; }
+    .risks tbody tr:nth-child(even) td { background: none; }
+    .risks td:last-child { font-style: italic; }
   }
 </style>
 
@@ -61,175 +66,140 @@
   <section class="page-head">
     <span class="eyebrow">AI and security</span>
     <h1>An AI model cannot conduct the investigation, but it can help with drafting the report.</h1>
-    <p class="lede">The investigator creates the investigation record, evaluates the evidence and establishes the findings. AI works downstream of that: in Investigation Workflow Suite (IWS) it may draft the report from the record and check the draft against it. The investigator then reviews and finalises the result.</p>
-    <p class="optional"><strong>AI is optional.</strong> With AI access set to No AI, nothing is sent anywhere, and Professional still assembles every report from the record. The evidence, the tests and the findings are the investigator's in every setting and at every licence level.</p>
+    <p class="principle">When the analysis is strong, the drafting becomes straightforward.</p>
+    <p class="lede">The hard analytical work happens during the investigation: testing each factor against the evidence and recording the reasoning. IWS keeps the evidence, the assessments and the reasoning together, so optional AI drafting works from a record that is already established. The investigator stays responsible for reviewing and approving the report.</p>
+    <nav class="onpage" aria-label="On this page"><a href="#drafting">Drafting</a><a href="#limits">Limitations</a><a href="#data">Data and security</a><a href="#models">Choosing a model</a></nav>
   </section>
 
-  <section class="block" id="pipeline">
+  <section class="block" id="drafting">
     <div class="section-head">
-      <span class="eyebrow">What AI does</span>
-      <h2>Drafting from the record, checked against the record, finalised by the investigator</h2>
+      <span class="eyebrow"><span class="stage-no">1</span>Drafting</span>
+      <h2>How a draft is made, and what checks it</h2>
+      <p>One setting, AI access, decides how every Draft action reaches a model. Free is limited to No AI. Professional, and a Professional trial, also allow Chat and Endpoint.</p>
     </div>
-    <div class="prose" style="margin-bottom: 26px">
-      <p>The model receives the investigation record, with roles in place of names, and drafts each section under grounding instructions. A second model pass, which the application calls the audit, checks the draft against the record and flags claims it cannot support. It is a semantic check, and like any model output it can miss things. A separate mechanical check then compares factor classifications and confidence language against the underlying tests. It has no model in it, so the same draft always gets the same result.</p>
-      <p>The investigator reviews the draft, the flagged issues and the underlying record before correcting and finalising the report. The report that gets published is the investigator's, not the model's.</p>
-    </div>
-    <div class="pipeline">
-      <svg viewBox="0 0 1160 200" role="img" aria-label="The drafting pipeline: the record is collated, sections are drafted under grounding rules with approved sections as context, the whole is smoothed for cohesion, then checked against the record and mechanically checked, and finalised by the investigator">
-        <defs>
-          <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
-        </defs>
-        <g font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#0f172a">
-          <g>
-            <rect x="4" y="30" width="176" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
-            <text x="92" y="60" text-anchor="middle" font-weight="600">The record</text>
-            <text x="92" y="82" text-anchor="middle" font-size="11.5" fill="#475569">tests and confidences</text>
-            <text x="92" y="98" text-anchor="middle" font-size="11.5" fill="#475569">timeline, interviews</text>
-            <text x="92" y="114" text-anchor="middle" font-size="11.5" fill="#475569">evidence and significance</text>
-          </g>
-          <path d="M182 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
-          <g>
-            <rect x="206" y="30" width="176" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
-            <text x="294" y="60" text-anchor="middle" font-weight="600">Collation</text>
-            <text x="294" y="82" text-anchor="middle" font-size="11.5" fill="#475569">the whole record, structured</text>
-            <text x="294" y="98" text-anchor="middle" font-size="11.5" fill="#475569">roles, never names</text>
-            <text x="294" y="114" text-anchor="middle" font-size="11.5" fill="#475569">only the terms that appear</text>
-          </g>
-          <path d="M384 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
-          <g>
-            <rect x="408" y="30" width="176" height="100" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
-            <text x="496" y="60" text-anchor="middle" font-weight="600">Draft</text>
-            <text x="496" y="82" text-anchor="middle" font-size="11.5" fill="#475569">grounding rules on every prompt</text>
-            <text x="496" y="98" text-anchor="middle" font-size="11.5" fill="#475569">approved sections as context</text>
-            <text x="496" y="114" text-anchor="middle" font-size="11.5" fill="#475569">review notes kept apart</text>
-          </g>
-          <path d="M586 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
-          <g>
-            <rect x="610" y="30" width="150" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
-            <text x="685" y="60" text-anchor="middle" font-weight="600">Polish</text>
-            <text x="685" y="82" text-anchor="middle" font-size="11.5" fill="#475569">one voice throughout</text>
-            <text x="685" y="98" text-anchor="middle" font-size="11.5" fill="#475569">asked to add nothing</text>
-            <text x="685" y="114" text-anchor="middle" font-size="11.5" fill="#475569">and reweigh nothing</text>
-          </g>
-          <path d="M762 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
-          <g>
-            <rect x="786" y="30" width="196" height="100" rx="10" fill="#f0fdf4" stroke="#86efac"/>
-            <text x="884" y="60" text-anchor="middle" font-weight="600">Check against the record</text>
-            <text x="884" y="82" text-anchor="middle" font-size="11.5" fill="#475569">model: claims vs the record</text>
-            <text x="884" y="98" text-anchor="middle" font-size="11.5" fill="#475569">mechanical: categories and</text>
-            <text x="884" y="114" text-anchor="middle" font-size="11.5" fill="#475569">confidence words vs the tests</text>
-          </g>
-          <path d="M984 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
-          <g>
-            <rect x="1008" y="30" width="148" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
-            <text x="1082" y="60" text-anchor="middle" font-weight="600">Investigator review</text>
-            <text x="1082" y="82" text-anchor="middle" font-size="11.5" fill="#475569">reads against the record</text>
-            <text x="1082" y="98" text-anchor="middle" font-size="11.5" fill="#475569">corrects</text>
-            <text x="1082" y="114" text-anchor="middle" font-size="11.5" fill="#475569">finalises the report</text>
-          </g>
-          <path d="M1082 132v34H92v-2" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
-          <text x="580" y="186" text-anchor="middle" font-size="12" fill="#94a3b8">A change to the record marks every draft built from it as out of date</text>
-        </g>
-      </svg>
-      <div class="stages">
-        <div class="stage"><h3>The whole record, never a fragment</h3><p>Every object with its tests and confidences, the timeline, the finalised interviews and the evidence, with roles in place of names.</p></div>
-        <div class="stage"><h3>Grounding rules on every prompt</h3><p>Each prompt instructs the model to use only information in the investigation record, to add no figures or recommendations the record does not carry, and to use the confidence word the test actually produced.</p></div>
-        <div class="stage"><h3>Two kinds of check</h3><p>The model check is a semantic pass that flags claims it cannot support from the record, for investigator review. The mechanical check is deterministic: each factor's category and confidence word in the draft against the test that produced it.</p></div>
-        <div class="stage"><h3>Provenance and staleness</h3><p>Every draft records the model and the version of the record it came from, and is marked out of date when the record changes.</p></div>
+    <div class="modes">
+      <div class="card mode">
+        <p class="mode-tag">No AI <span class="lic">Free</span></p>
+        <h3>You write it</h3>
+        <p>You write each paragraph against the record, and the report is the record assembled under your report style's headings. No model is involved and nothing is sent.</p>
+      </div>
+      <div class="card mode">
+        <p class="mode-tag">Chat <span class="lic lic--pro">Professional</span></p>
+        <h3>Copy out, paste back</h3>
+        <ol class="steps">
+          <li>Copy prompt: the record, the grounding rules and an instruction to audit and correct its own draft before replying.</li>
+          <li>Paste it into a chat tool your organisation has approved for investigation material.</li>
+          <li>Paste the reply back. It lands as written, marked &ldquo;Pasted from chat&rdquo;, with no automatic check.</li>
+          <li>Read it against the record, and run Check the record on the Draft report tab.</li>
+        </ol>
+        <p class="small">IWS makes no network call. There is no model audit, repair or polish at this tier.</p>
+      </div>
+      <div class="card mode lead">
+        <p class="mode-tag">Endpoint <span class="lic lic--pro">Professional</span></p>
+        <h3>A connected model service</h3>
+        <ol class="steps">
+          <li>Draft a paragraph, a section, or the whole report. IWS sends the prompt to the model you configured.</li>
+          <li>Automatically: mechanical checks on a drafted factor paragraph; the audit, within a whole-report run; polish, only if you tick it in Settings.</li>
+          <li>On demand: Audit against the record, a second model checking each claim; Repair, which resends only the flagged sections; Polish, offered only after the record check and a fresh audit show nothing moved.</li>
+          <li>Every repair or polish is shown beside the text it would replace before it lands.</li>
+        </ol>
       </div>
     </div>
+    <div class="row">
+      <div class="text">
+        <p>Whichever way it was made, a draft carries where it came from (&ldquo;Drafted by&rdquo; and the model, or &ldquo;Pasted from chat&rdquo;) and is marked out of date when the record under it changes.</p>
+        <p>Check the record has no model in it, so the same text always gets the same result. It is available at every AI access setting once something is drafted.</p>
+      </div>
+      <figure><div class="crop" style="--W: 2200; --x: 505; --y: 622; --cw: 1660; --ch: 662"><img class="zoomable" src="%%SHOT_15%%" alt="Settings, AI access: the Chat and Endpoint options, each saying what is sent and what is checked" data-caption="Settings, AI access: the Chat and Endpoint options, each saying what is sent and what is checked" loading="lazy"></div><figcaption>Settings, AI access. Each option says what leaves the computer and what is checked.</figcaption></figure>
+    </div>
   </section>
 
-  <section class="block" id="control">
+  <section class="block" id="limits">
     <div class="section-head">
-      <span class="eyebrow">Why control matters</span>
-      <h2>A model left to itself can write a plausible report rather than a true one</h2>
-      <p>It may fill a gap from general knowledge, round "likely" up to "virtually certain", or write a factor that failed its Influence test back in as contributing. None of that shows in the prose, which is the difficulty: the errors read like the truths. Each control in the pipeline is there for one of them.</p>
+      <span class="eyebrow"><span class="stage-no">2</span>Limitations</span>
+      <h2>A model can write a plausible report that is wrong</h2>
+      <p>The errors read like the truths, so each known failure has a control. None of the controls proves a draft accurate.</p>
     </div>
     <table class="risks">
-      <thead><tr><th scope="col">What can go wrong</th><th scope="col">The control in IWS</th></tr></thead>
+      <thead><tr><th>What can go wrong</th><th>The control in IWS</th><th>Its limit</th></tr></thead>
       <tbody>
-        <tr><td><span class="x">1</span>Wording that the evidence does not support, in the same confident voice as the rest.</td><td>Grounding rules instruct the model to use only information in the investigation record. A second model pass checks claims against the record and flags material it cannot support for investigator review.</td></tr>
-        <tr><td><span class="x">2</span>Confidence language drifting: "very likely" becomes "virtually certain".</td><td>The mechanical check compares every confidence word with the test that produced it.</td></tr>
-        <tr><td><span class="x">3</span>A factor the investigator excluded written back in as contributing.</td><td>The mechanical check compares each factor's category and the findings with the classification derived from the tests.</td></tr>
-        <tr><td><span class="x">4</span>Recommendations the investigation never made.</td><td>The grounding rules instruct the model to include only the recommendations the record carries, and the mechanical check flags a safety issue drafted with a recommendation the record does not hold.</td></tr>
-        <tr><td><span class="x">5</span>A protected report quoted as if it were an ordinary statement, or people named where a role would do.</td><td>A protected report is marked in the record, and the model is instructed to let it inform the draft without quoting it. Roles replace names when an interview or transcript comes into the record, before any drafting.</td></tr>
-        <tr><td><span class="x">6</span>No record of which model, or which version of the evidence, produced the text.</td><td>Each draft records a fingerprint of the record it was drafted from, and goes visibly out of date when the record moves on. A draft made through an endpoint also records the model that wrote it.</td></tr>
+        <tr><td>A gap filled from general knowledge</td><td>Grounding rules on every prompt; at Endpoint, the audit flags unsupported claims</td><td>The audit is a model and can miss things. Chat has only the self-audit instruction.</td></tr>
+        <tr><td>&ldquo;Likely&rdquo; rounded up to &ldquo;virtually certain&rdquo;</td><td>Check the record compares each confidence word with the test that produced it</td><td>Run by hand for chat pastes and drafted sections</td></tr>
+        <tr><td>An excluded factor written back in as contributing</td><td>Check the record compares categories and findings with the tests</td><td>As above</td></tr>
+        <tr><td>A recommendation the investigation never made</td><td>A grounding rule, and a check for recommending language on a safety issue the record has none for</td><td>The check matches wording, so unusual phrasing can pass</td></tr>
+        <tr><td>A protected report quoted</td><td>An instruction in the prompt not to quote it</td><td>Not checked, and the text is still sent</td></tr>
+        <tr><td>No record of where the text came from</td><td>Provenance on every draft, and an out-of-date mark when the record moves on</td><td>Shows the origin, not whether the text is right</td></tr>
       </tbody>
     </table>
   </section>
 
-  <section class="block" id="your-ai">
-    <div class="section-head">
-      <span class="eyebrow">Bring your own AI</span>
-      <h2>Your investigation data. Your AI. Your choice.</h2>
-      <p>IWS does not sell AI. AI-assisted drafting is part of Professional, and you or your organisation connect the AI it uses, from whichever provider suits: a chat tool you are entitled to use, a model on your own machine, an organisation gateway, or a hosted API with your own key. AI service and model costs are not part of an IWS licence.</p>
-    </div>
-    <div class="prose">
-      <p>The drafting works well because the investigation is already structured in IWS. The evidence, analysis, reasoning and findings are connected before a model sees them, so the model's job is to write up a record that already holds together.</p>
-      <p>Drafting and checking a complex investigation report is still demanding work for a model. In testing to date, smaller local and open models have generally not been consistent enough. Open models of about 70B parameters or larger, or a hosted model of comparable capability, are currently recommended. That guidance will move as models improve, and it is a recommendation rather than a requirement.</p>
-      <p>Don't have an approved AI environment? <a href="%%CONTACT%%">Contact us</a> to discuss deployment options.</p>
-    </div>
-  </section>
-
   <section class="block" id="data">
     <div class="section-head">
-      <span class="eyebrow">Where does my data go?</span>
-      <h2>One setting decides, and the organisation chooses it</h2>
-      <p>A setting called AI access decides how every Draft action in the application reaches a model. There are three modes, and only one of them makes the application send anything. Free has no drafting, so nothing goes to a model at all.</p>
+      <span class="eyebrow"><span class="stage-no">3</span>Data and security</span>
+      <h2>Where investigation data is kept, and where it can go</h2>
+      <p>IWS keeps investigation records in storage you control. It does not encrypt or automatically anonymise investigation material, so sensitive records should be protected using your organisation's approved storage and access controls.</p>
     </div>
-    <div class="modes">
-      <article class="mode card">
-        <span class="eyebrow">No AI</span>
-        <h3>Nothing is sent anywhere</h3>
-        <p>No model is involved. Reports are assembled from the record, and nothing about the investigation leaves the machine.</p>
-      </article>
-      <article class="mode card">
-        <span class="eyebrow">Chat</span>
-        <h3>A prompt you copy out yourself</h3>
-        <p>The application builds the prompt and copies it for you to paste into a chat tool you are entitled to use, then takes the reply back. It makes no network call of its own.</p>
-      </article>
-      <article class="mode card lead">
-        <span class="eyebrow">Endpoint</span>
-        <h3>A model server you configure</h3>
-        <p>The application sends the prompt itself, to the server you have set up and nowhere else:</p>
-        <ul class="plain">
-          <li>a local model on the investigator's own machine, such as LM Studio or Ollama, where processing stays on that machine</li>
-          <li>an organisation's own gateway or private model deployment</li>
-          <li>a hosted API with a key you hold</li>
+    <div class="parts">
+      <div class="part">
+        <h3>What IWS stores locally</h3>
+        <ul class="facts">
+          <li>The investigation is one .sfm file of plain, unencrypted JSON, with pasted images and captured files held inside it. Its folder can also hold <code>evidence/</code>, <code>exports/</code> and, if you turn it on, <code>attachments/</code>. Protect them as you would any sensitive document, including on a shared or synced folder.</li>
+          <li>Opening a captured file writes a plain copy of it to the investigation's <code>evidence/</code> folder, or to the system's temporary folder when the investigation has not yet been saved to disk.</li>
+          <li>Endpoint settings and any API key are kept, unencrypted, in the app's local settings for that Windows user. A key is never written into the .sfm, an export or a run log, and is removed from error messages.</li>
+          <li>No telemetry, analytics or crash reporting. With AI access at No AI, nothing about the investigation leaves the computer.</li>
+          <li>Licence requests are separate from AI drafting; what a trial request sends is set out on the <a href="download.html#get">Download page</a>.</li>
         </ul>
-      </article>
+      </div>
+      <div class="part">
+        <h3>What may be sent to an AI provider</h3>
+        <ul class="facts">
+          <li>At Chat or Endpoint, the collated record behind the draft: one object, a section or the whole investigation, with its tests, reasoning, timeline, finalised interviews, evidence text and safety reports. Attached files are named, not sent.</li>
+          <li>A protected safety report's text goes with an instruction not to quote it.</li>
+          <li>Interview speakers and participants appear by role, mapped by the investigator. A name typed anywhere else in the record, or spoken in a transcript, is sent as written.</li>
+          <li>Testing an endpoint or refreshing its model list sends no investigation content.</li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>What depends on the provider and your organisation</h3>
+        <ul class="facts">
+          <li>Retention, training on your data, logging, staff access and where data is processed are set by the provider's terms. IWS cannot control or verify them.</li>
+          <li>A model on your own computer keeps processing there. A hosted API or gateway receives the content over the internet.</li>
+          <li>AI access is set per computer. An organisation can cap it through an edition pack or enforce it through IT policy; IWS has no central lock.</li>
+          <li>Consumer chat accounts usually sit outside an organisation's data agreements. Use a tool approved for investigation material.</li>
+        </ul>
+      </div>
     </div>
-    <p class="policy">Consumer AI services should only be used where permitted by your organisation's information-security and data-handling policies. For sensitive investigation material, IWS supports local models and organisation-controlled endpoints so the organisation can determine where its information is processed.</p>
-    <div class="two">
-      <div class="prose">
-        <p>An endpoint is a named profile for one model server: a base URL, a drafting model and a checking model, a protocol, an auth header and a key. The protocol is either the OpenAI-compatible shape, which is what LM Studio, Ollama and most corporate gateways expose, or the Anthropic Messages API.</p>
-        <p>A key is stored on that machine alone. It never enters the investigation file, never reaches an export, and is stripped out of any error shown on screen.</p>
-        <p>A drafting run sends the collated record with people referred to by role throughout, because the role replaces the name when an interview or transcript is brought in rather than at the point of drafting. The application sends no telemetry. Its only service of its own will be licensing, for Professional trials, which are not open yet: a trial request will send your name, email address, the edition and a randomly generated installation identifier, which is not a hardware serial number or hardware fingerprint. Nothing about any investigation is sent.</p>
+    <div class="row">
+      <div class="text">
         <p>Configuration detail, with what to ask your IT department for, is in the user guide: <a href="guide.html#manual-connecting-a-model">connecting a model</a>.</p>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 18px">
-        <figure><img class="shot zoomable" data-caption="Settings: AI access, the choice between no model, a copied prompt, and a configured endpoint." src="%%SHOT_15%%" alt="The Settings dialog open on AI access"><figcaption>AI access: none, a copied prompt, or a configured endpoint, with what each means spelled out.</figcaption></figure>
-        <figure><img class="shot zoomable" data-caption="Settings: the endpoint profiles, one for each model server." src="%%SHOT_16%%" alt="The Settings dialog open on the endpoint profiles"><figcaption>Endpoint profiles. A key stays on the machine it was entered on.</figcaption></figure>
-      </div>
+      <figure><div class="crop" style="--W: 2200; --x: 505; --y: 318; --cw: 1660; --ch: 420"><img class="zoomable" src="%%SHOT_16%%" alt="Settings, Models: the warning shown for any model that sends to the internet, above a model set up on this computer" data-caption="Settings, Models: the warning shown for any model that sends to the internet, above a model set up on this computer" loading="lazy"></div><figcaption>Settings, Models. The warning for a hosted model sits above every endpoint.</figcaption></figure>
     </div>
   </section>
 
-  <section class="block" id="live">
-    <div class="live">
-      <div class="card">
-        <span class="eyebrow">The analysis stays live</span>
-        <p style="margin-top: 8px">A late recorder download, a second interview, a maintenance record that turns up in week three: the new information goes into the record, the objects it bears on are retested, and the analysis adjusts around it. A new report is then drafted from the adjusted record in one pass. Nothing starts again from a blank page, and the drafts built on the old record are marked out of date rather than quietly left standing.</p>
-      </div>
-      <figure><img class="shot zoomable" data-caption="The Draft report tab in a Free copy with AI access off: the chosen style's sections listed, none drafted yet." src="%%SHOT_12%%" alt="The Draft report tab with AI access off, listing the five sections of the chosen report style, none drafted"><figcaption>The Draft report tab, here in a Free copy with AI access off: the style's sections listed, none drafted yet. For drafted reports with the audit and record check beside them, see <a href="reports/%%FEATURED%%/standard.html#audit">the %%FEATURED_TITLE%% final report</a>.</figcaption></figure>
+  <section class="block" id="models">
+    <span class="anchor" id="your-ai"></span>
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">4</span>Choosing a model</span>
+      <h2>Test a model before relying on it</h2>
+      <p>Drafting and checking a complete report is demanding work, and models vary a great deal. IWS does not sell AI: you connect your own, and its costs are not part of an IWS licence. Before using a model on a live investigation:</p>
     </div>
+    <ul class="facts cols">
+      <li>Draft a finished or fictional investigation, such as one of the case studies, and compare the result against its record.</li>
+      <li>Run Check the record and, at Endpoint, the audit, and read what they flag.</li>
+      <li>Check the confidence words, excluded factors and recommendations by hand.</li>
+      <li>Make sure the model's context holds the whole record without truncating it.</li>
+      <li>Test again when the model, its settings or your report style change.</li>
+    </ul>
+    <p class="hint more">No approved AI environment? <a href="%%CONTACT%%">Contact us</a> to discuss deployment options.</p>
   </section>
 
   <section class="block next">
-    <h2>The investigator decides, and the organisation controls</h2>
-    <p>The judgement stays with the investigator: every verdict, every confidence and every finding. Where the material goes stays with the organisation: no model at all, a model on the investigator's own machine, or an endpoint it approves.</p>
+    <h2>The investigator decides what the report says</h2>
+    <p>See the method a draft is written from, or a drafted report with the audit and record check beside it.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="case-studies.html">See drafted reports and their checks</a>
+      <a class="btn btn-primary" href="reports/%%FEATURED%%/standard.html#audit">See a drafted report and its checks</a>
+      <a class="btn" href="methodology.html">Methodology</a>
       <a class="btn" href="download.html">Download</a>
     </div>
   </section>
@@ -239,13 +209,13 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
-  <div class="lightbox__body"><img id="lb-img" src="" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+  <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
 </div>
 <script>
   (function () {
     var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
     function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
-    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
     Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
     document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
     lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
