@@ -226,14 +226,18 @@ footer .legal { line-height: 1.6; }
   .sub-head h3 { font-size: 1.3rem; }
   .sub-head p { color: var(--ink-soft); }
   .figrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .strip img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
   .figrow .crop { box-shadow: var(--shadow); }
   .figrow figcaption { margin-top: 10px; }
-  .figrow figcaption strong, .strip figcaption strong { display: block; color: var(--ink); font-weight: 600; }
-  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .strip img { box-shadow: none; }
-  .strip .crop img { border: 0; border-radius: 0; }
-  .strip figcaption { margin-top: 8px; }
+  .figrow figcaption strong { display: block; color: var(--ink); font-weight: 600; }
+  /* The map at three points: two small stages leading to the larger tested map */
+  .prog { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 28px; align-items: start; }
+  .prog figure { margin: 0; }
+  .prog .crop { box-shadow: var(--shadow); }
+  .prog__side { display: flex; flex-direction: column; gap: 22px; }
+  .prog__first .crop { width: 72%; }
+  .prog__cap { display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; color: var(--ink-soft); font-size: 0.93rem; }
+  .prog__cap strong { color: var(--ink); font-weight: 600; }
+  .prog__no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.8rem; font-weight: 700; }
   .settled { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; padding: 0; list-style: none; }
   .settled li { padding-block: 11px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.95rem; }
   .settled li strong { color: var(--ink); font-weight: 600; }
@@ -290,10 +294,10 @@ footer .legal { line-height: 1.6; }
   @media (max-width: 960px) {
     .figrow { grid-template-columns: 1fr 1fr; }
     .chain__step--map { grid-template-columns: 1fr; }
-    .chain-after, .support, .outputs { grid-template-columns: 1fr; }
+    .chain-after, .support, .outputs, .prog { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
-    .figrow, .strip, .settled, .outputs { grid-template-columns: 1fr; }
+    .figrow, .settled, .outputs { grid-template-columns: 1fr; }
     .chain { padding: 14px; grid-template-columns: 1fr; }
     .support .card { grid-template-columns: 1fr; }
     .support .card img { max-width: 220px; }
@@ -427,20 +431,22 @@ footer .legal { line-height: 1.6; }
     <span class="anchor" id="map"></span>
     <div class="sub-head">
       <h3>The map, at three points in the work</h3>
-      <p>The critical event went down first. Nineteen hypotheses went up around it, two of them there to be disproved: a No. 2 engine power loss before the reject decision, and a tailwind during the roll and stop. Then they were tested as the evidence arrived.</p>
+      <p>The investigator began with the critical event, worked backwards to identify nineteen possible events and conditions, then tested each against the available evidence. Two hypotheses — an earlier No. 2 engine power loss and a tailwind during the take-off roll — were subsequently excluded.</p>
     </div>
-    <div class="strip block--wide">
+    <div class="prog block--wide">
+      <div class="prog__side">
+        <figure class="prog__first">
+          <div class="crop" style="--W: 3840; --x: 1420; --y: 1560; --cw: 1080; --ch: 560"><img class="zoomable" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="The AcciMap with only the critical event placed, in the Occurrence Events lane" data-caption="Stage one: the critical event alone." loading="lazy"></div>
+          <p class="prog__cap"><span class="prog__no">1</span><span><strong>Start with the critical event.</strong> The runway overrun is placed on the AcciMap as the starting point.</span></p>
+        </figure>
+        <figure>
+          <div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="Nineteen untested hypotheses spread across the lanes" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested." loading="lazy"></div>
+          <p class="prog__cap"><span class="prog__no">2</span><span><strong>Develop the hypotheses.</strong> Nineteen possible events and conditions are added, working backwards from the occurrence.</span></p>
+        </figure>
+      </div>
       <figure>
-        <div class="crop" style="--W: 3840; --x: 200; --y: 300; --cw: 3500; --ch: 1780"><img class="zoomable" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="The map with only the critical event placed" data-caption="Stage one: the critical event alone, placed bottom right." loading="lazy"></div>
-        <figcaption><strong>The critical event alone</strong>The runway overrun onto the runway end safety area, bottom right.</figcaption>
-      </figure>
-      <figure>
-        <div class="crop" style="--W: 3840; --x: 200; --y: 300; --cw: 3500; --ch: 1780"><img class="zoomable" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses scattered across the lanes" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested, nothing filtered out." loading="lazy"></div>
-        <figcaption><strong>Every hypothesis up</strong>Nineteen in their lanes, none tested, nothing filtered out.</figcaption>
-      </figure>
-      <figure>
-        <div class="crop" style="--W: 3840; --x: 200; --y: 300; --cw: 3500; --ch: 1780"><img class="zoomable" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing" data-caption="Stage three: half the map tested, five arrows drawn, and both excluded hypotheses struck through." loading="lazy"></div>
-        <figcaption><strong>Half tested</strong>Nine objects tested and five arrows drawn. Both hypotheses raised to be disproved failed Existence and are struck through.</figcaption>
+        <div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, five arrows drawn and two hypotheses struck through" data-caption="Stage three: half the map tested, five arrows drawn, and both excluded hypotheses struck through." loading="lazy"></div>
+        <p class="prog__cap"><span class="prog__no">3</span><span><strong>Test against the evidence.</strong> Objects are assessed, unsupported hypotheses are excluded, and causal connections begin to emerge.</span></p>
       </figure>
     </div>
 

@@ -158,7 +158,7 @@ Here, `case-studies/<slug>/` holding two files:
   `<main>` and the footer, with no header, nav, lightbox or script of its
   own. Those come from the shared shell, along with all the CSS, so use
   the classes the existing studies use: the five-part layout of Tarlton
-  Springs (`jump`, `figrow`, `strip`, `settled`, `chain`, `crop`,
+  Springs (`jump`, `figrow`, `prog`, `settled`, `chain`, `crop`,
   `outputs`, `support`), or the older stage layout Kanooka Heads and
   Bindarra still carry (`walk`, `step`, `card pack`, `published`). A
   `crop` shows part of a screenshot from its own CSS variables, in the

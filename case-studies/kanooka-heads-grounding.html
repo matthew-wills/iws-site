@@ -226,14 +226,18 @@ footer .legal { line-height: 1.6; }
   .sub-head h3 { font-size: 1.3rem; }
   .sub-head p { color: var(--ink-soft); }
   .figrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .strip img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
   .figrow .crop { box-shadow: var(--shadow); }
   .figrow figcaption { margin-top: 10px; }
-  .figrow figcaption strong, .strip figcaption strong { display: block; color: var(--ink); font-weight: 600; }
-  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .strip img { box-shadow: none; }
-  .strip .crop img { border: 0; border-radius: 0; }
-  .strip figcaption { margin-top: 8px; }
+  .figrow figcaption strong { display: block; color: var(--ink); font-weight: 600; }
+  /* The map at three points: two small stages leading to the larger tested map */
+  .prog { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 28px; align-items: start; }
+  .prog figure { margin: 0; }
+  .prog .crop { box-shadow: var(--shadow); }
+  .prog__side { display: flex; flex-direction: column; gap: 22px; }
+  .prog__first .crop { width: 72%; }
+  .prog__cap { display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; color: var(--ink-soft); font-size: 0.93rem; }
+  .prog__cap strong { color: var(--ink); font-weight: 600; }
+  .prog__no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.8rem; font-weight: 700; }
   .settled { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; padding: 0; list-style: none; }
   .settled li { padding-block: 11px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.95rem; }
   .settled li strong { color: var(--ink); font-weight: 600; }
@@ -290,10 +294,10 @@ footer .legal { line-height: 1.6; }
   @media (max-width: 960px) {
     .figrow { grid-template-columns: 1fr 1fr; }
     .chain__step--map { grid-template-columns: 1fr; }
-    .chain-after, .support, .outputs { grid-template-columns: 1fr; }
+    .chain-after, .support, .outputs, .prog { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
-    .figrow, .strip, .settled, .outputs { grid-template-columns: 1fr; }
+    .figrow, .settled, .outputs { grid-template-columns: 1fr; }
     .chain { padding: 14px; grid-template-columns: 1fr; }
     .support .card { grid-template-columns: 1fr; }
     .support .card img { max-width: 220px; }
