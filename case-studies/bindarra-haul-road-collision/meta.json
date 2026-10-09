@@ -4,20 +4,17 @@
   "pageTitle": "Case study: Bindarra Gold Mine",
   "sector": "Mining",
   "occurrence": "Haul truck and light vehicle collision",
-  "blurb": "A haul truck and a light vehicle meeting at a new intersection on a night shift, from the hazard report nobody acted on to six published reports.",
+  "blurb": "A haul truck and a light vehicle meeting at a new intersection on a night shift, worked from the hazard report nobody acted on through to the Evidence and Argument Tables and the final investigation report.",
   "photo": "card.jpg",
   "photoAlt": "Haul trucks on a haul road in an open-cut mine in late-afternoon light",
   "order": 3,
-  "reports": [
-    "standard",
-    "preliminary",
-    "executive",
-    "atsb",
-    "ntsb",
-    "aaib"
+  "reports": ["standard", "preliminary", "executive", "atsb", "ntsb", "aaib"],
+  "documents": ["source_pack", "evidence_argument_tables"],
+  "outputs": [
+    { "doc": "evidence_argument_tables", "page": 14, "caption": "the 41 m sight line, surveyed to both drivers' eye heights, with its Influence passed at 90 per cent" },
+    { "doc": "report_preliminary", "page": 5, "caption": "the open lines of enquiry, starting with how the spur was opened under a works order" },
+    { "doc": "report_standard", "page": 5, "caption": "the start of the analysis: two vehicles at the intersection, neither aware of the other" },
+    { "doc": "report_executive", "page": 5, "caption": "the findings, in the briefing's own words" }
   ],
-  "documents": [
-    "source_pack",
-    "evidence_argument_tables"
-  ]
+  "layouts": ["atsb", "ntsb", "aaib"]
 }
