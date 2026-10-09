@@ -1,4 +1,4 @@
-<title>Case studies | Synoptic</title>
+<title>Case studies | Investigation Workflow Suite (IWS)</title>
 <style>
 %%THEME%%
 
@@ -9,21 +9,16 @@
   .note { padding: 10px 14px; background: var(--warn-soft); border-radius: 10px; font-size: 0.92rem; color: var(--ink); max-width: 80ch; }
   .anchor { display: block; height: 0; }
 
-  /* Every published document, studies by documents */
-  .doctable { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 0.94rem; }
-  .doctable th, .doctable td { text-align: left; padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
-  .doctable thead th { border-top: 0; color: var(--ink-faint); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
-  .doctable tbody th { font-weight: 600; white-space: nowrap; }
-  .doctable td small { color: var(--ink-faint); }
-  .fineprint { margin-top: 10px; font-size: 0.86rem; color: var(--ink-soft); max-width: 90ch; }
+  /* What each case study contains: five parts in one compact row */
+  .contains { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .contains h2 { font-size: 1.25rem; }
+  .contains ol { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; counter-reset: part; }
+  .contains li { counter-increment: part; display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 3px solid var(--line-strong); color: var(--ink-soft); font-size: 0.92rem; }
+  .contains li strong { color: var(--ink); font-weight: 600; }
+  .contains li strong::before { content: counter(part) ". "; color: var(--accent); }
 
   @media (max-width: 860px) {
-    .doctable, .doctable tbody, .doctable tr, .doctable th, .doctable td { display: block; }
-    .doctable thead { display: none; }
-    .doctable tr { padding: 10px 14px; border-top: 1px solid var(--line); }
-    .doctable tr:first-child { border-top: 0; }
-    .doctable th, .doctable td { border: 0; padding: 3px 0; }
-    .doctable td::before { content: attr(data-l) ": "; color: var(--ink-faint); }
+    .contains ol { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .page-head { padding-block: 28px 18px; }
@@ -37,8 +32,8 @@
   <section class="page-head">
     <span class="eyebrow">Case studies</span>
     <h1>Three investigations, from first notification to final report</h1>
-    <p class="lede">Each case study is a complete investigation carried out in Synoptic: the evidence, the AcciMap, the tests behind every finding and the documents the investigation produced. Choose one to follow.</p>
-    <p class="note">All three are fictional: the organisations, places, people and records are invented. The screenshots are real screens from the application, and the documents are published as it produced them.</p>
+    <p class="lede">Three fictional investigations, each carried out in full in Investigation Workflow Suite (IWS). They show how IWS connects the evidence, the AcciMap analysis, the assessment of each factor and the reporting. Choose one to explore.</p>
+    <p class="note">The organisations, places, people and records are invented. The screenshots are real screens from IWS, and the documents are published as IWS produced them.</p>
   </section>
 
   <span class="anchor" id="featured"></span>
@@ -46,12 +41,15 @@
 %%CASE_CARDS%%
   </div>
 
-  <section class="block" id="documents" style="margin-top: 52px">
-    <div class="section-head">
-      <h2>Every published document</h2>
-      <p>Each study follows the same five parts: what happened, how it was investigated, what it established, what Synoptic produced and the record itself. To judge the output first, go straight to the documents.</p>
-    </div>
-%%DOC_TABLE%%
+  <section class="contains" aria-labelledby="contains-head">
+    <h2 id="contains-head">What each case study contains</h2>
+    <ol>
+      <li><strong>What happened</strong>The occurrence as it was first notified.</li>
+      <li><strong>How it was investigated</strong>The evidence, the interviews, the timeline and the AcciMap as it was tested.</li>
+      <li><strong>What it established</strong>The finished AcciMap, the findings and what was left open.</li>
+      <li><strong>What IWS produced</strong>The Evidence and Argument Tables and the reports, page by page.</li>
+      <li><strong>Examine the record</strong>The source pack, to check the analysis against the material.</li>
+    </ol>
   </section>
 
 %%FOOTER%%

@@ -30,12 +30,13 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-/** The customer-facing product name, suffixed onto every page title.
- *  Synoptic is the product, "Safety Investigation Software" its
- *  descriptor; "Investigation Workflow Suite (IWS)" survives only where it
- *  is genuinely internal (the installer's file name, the .sfm format). */
-const BRAND = "Synoptic";
+/** Synoptic is the company and the site's visual brand (the header's mark
+ *  and name, with its descriptor). Investigation Workflow Suite (IWS) is
+ *  the application: the name suffixed onto every page title and used
+ *  wherever the copy means the software. */
+const COMPANY = "Synoptic";
 const DESCRIPTOR = "Safety Investigation Software";
+const BRAND = "Investigation Workflow Suite (IWS)";
 /** IWS_PREVIEW=1 builds the development preview: every page gets a
  *  noindex meta and a slim "Development preview" bar above the header.
  *  Without it the output is exactly the production site. */
@@ -89,7 +90,7 @@ const NAV = [
   ["guide.html", "Documentation", "docs"],
   ["download.html", "Download", "download"],
 ];
-const MAKER = `Synoptic, ${DESCRIPTOR.toLowerCase()} for Windows.`;
+const MAKER = `${BRAND} is made by ${COMPANY} ${DESCRIPTOR}.`;
 /** Where every "Talk to us" and "Contact us" link on the site goes: one
  *  address, set here once it is decided (plan-public-release.md, step 2).
  *  Until then the links point at the Organisation card on the download
@@ -101,9 +102,9 @@ const header = (prefix, current) =>
   [
     `<header class="top">`,
     `  <div class="wrap">`,
-    `    <a class="brand" href="${prefix}index.html" aria-label="Synoptic, home">`,
+    `    <a class="brand" href="${prefix}index.html" aria-label="${COMPANY}, home">`,
     `      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`,
-    `      <span class="brand-text">${BRAND}<span class="brand-tag">${DESCRIPTOR}</span></span>`,
+    `      <span class="brand-text">${COMPANY}<span class="brand-tag">${DESCRIPTOR}</span></span>`,
     `    </a>`,
     `    <nav class="nav" aria-label="Site">`,
     ...NAV.map(([href, label, key]) => `      <a href="${prefix}${href}"${key === current ? ' aria-current="page"' : ""}>${label}</a>`),
@@ -114,7 +115,7 @@ const header = (prefix, current) =>
 const footer = (prefix, links = []) =>
   [
     `  <footer>`,
-    `    <span class="legal">${MAKER}<br>© 2026 Synoptic Safety Investigation Software</span>`,
+    `    <span class="legal">${MAKER}<br>© 2026 ${COMPANY} ${DESCRIPTOR}</span>`,
     `    <span>${[...links, [`${prefix}changelog.html`, "Changelog"]].map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ")}</span>`,
     `  </footer>`,
   ].join("\n");
@@ -438,46 +439,6 @@ if (!featured) {
 /** The case cards on the Case studies page (h2) and the home page (h3). */
 const cards = studies.map((s) => studyCard(s, "", "h2")).join("\n");
 const homeCards = studies.map((s) => studyCard(s, "", "h3")).join("\n");
-/** Every published document, one row per study, linking to the viewers
- *  the build wrote (and the alternative layouts' report pages). */
-const DOC_COLUMNS = [
-  ["evidence_argument_tables", "Evidence and Argument Tables"],
-  ["report_preliminary", "Preliminary investigation report"],
-  ["report_standard", "Final investigation report"],
-  ["report_executive", "Executive briefing"],
-  ["source_pack", "Source pack"],
-];
-const docTable = (() => {
-  const rows = studies.map((s) => {
-    const built = s.docsBuilt ?? [];
-    const cells = DOC_COLUMNS.map(([doc, label]) => {
-      const name = doc === "evidence_argument_tables" && !built.includes(doc) && built.includes("eii_tables") ? "eii_tables" : doc;
-      const view = built.includes(name) ? `<a href="exports/${s.slug}/${name}.html">View</a>` : `<span class="hint">Not published</span>`;
-      const layouts =
-        doc === "report_standard"
-          ? (s.layouts ?? [])
-              .filter((style) => (s.reportsBuilt ?? []).includes(style))
-              .map((style, i, all) => {
-                const short = (layoutCopy[style] ?? [style])[0].replace("-inspired", "");
-                return `<a href="reports/${s.slug}/${style}.html">${esc(i === all.length - 1 ? `${short}-inspired` : `${short}-`)}</a>`;
-              })
-          : [];
-      const listed = layouts.length > 1 ? `${layouts.slice(0, -1).join(", ")} and ${layouts.at(-1)}` : layouts.join("");
-      const extra = layouts.length ? ` <small>· also ${listed}</small>` : "";
-      return `<td data-l="${esc(label)}">${view}${extra}</td>`;
-    });
-    return `        <tr><th scope="row"><a href="case-studies/${s.slug}.html">${esc(s.title)}</a></th>${cells.join("")}</tr>`;
-  });
-  return [
-    `    <table class="doctable">`,
-    `      <thead><tr><th scope="col">Case study</th>${DOC_COLUMNS.map(([, label]) => `<th scope="col">${esc(label)}</th>`).join("")}</tr></thead>`,
-    `      <tbody>`,
-    ...rows,
-    `      </tbody>`,
-    `    </table>`,
-    `    <p class="fineprint">${esc(LAYOUTS_NOTE)}</p>`,
-  ].join("\n");
-})();
 /** The featured study's Evidence and Argument Tables, under whichever
  *  name its exports carry (a study not yet re-drafted has the older one). */
 const featuredTables = (featured.docsBuilt ?? []).find((d) => d === "evidence_argument_tables" || d === "eii_tables") ?? "evidence_argument_tables";
@@ -496,7 +457,6 @@ const fillFeatured = (templateName, current) =>
     .replaceAll("%%FEATURED%%", featured.slug)
     .replace("%%CASE_CARDS%%", () => cards)
     .replace("%%HOME_CASE_CARDS%%", () => homeCards)
-    .replace("%%DOC_TABLE%%", () => docTable)
     .replace("%%STANDARD_META%%", meta(featured.reportData.standard))
     .replace("%%PRELIMINARY_META%%", meta(featured.reportData.preliminary))
     .replace("%%EXECUTIVE_META%%", meta(featured.reportData.executive))
@@ -507,9 +467,9 @@ const index = fillFeatured("index.template.html", "home");
 write(
   "index.html",
   document(
-    `${BRAND} | ${DESCRIPTOR}`,
+    `${BRAND} | ${COMPANY} ${DESCRIPTOR}`,
     index,
-    `${BRAND} is safety investigation software for Windows. It takes an investigation from the evidence through the AcciMap analysis and the assessment of each factor to the report, in one connected investigation record.`,
+    `${BRAND} is safety investigation software for Windows from ${COMPANY}. It takes an investigation from the evidence through the AcciMap analysis and the assessment of each factor to the report, in one connected investigation record.`,
   ),
 );
 /** The other top-level pages: template, nav key, title and description. */
