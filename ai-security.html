@@ -211,7 +211,7 @@ footer .legal { line-height: 1.6; }
       <h2>Drafting from the record, checked against the record, finalised by the investigator</h2>
     </div>
     <div class="prose" style="margin-bottom: 26px">
-      <p>The model receives the investigation record, with roles in place of names, and drafts each section under grounding instructions. A second model pass, which the application calls the audit, checks the draft against the record and flags claims it cannot support. It is a semantic check, and like any model output it can miss things. A separate mechanical check then compares factor classifications and confidence language against the underlying tests. It has no model in it, so the same draft always gets the same result.</p>
+      <p>The model receives the investigation record as the investigator wrote it, and drafts each section under grounding instructions. A second model pass, which the application calls the audit, checks the draft against the record and flags claims it cannot support. It is a semantic check, and like any model output it can miss things. A separate mechanical check then compares factor classifications and confidence language against the underlying tests. It has no model in it, so the same draft always gets the same result.</p>
       <p>The investigator reviews the draft, the flagged issues and the underlying record before correcting and finalising the report. The report that gets published is the investigator's, not the model's.</p>
     </div>
     <div class="pipeline">
@@ -232,7 +232,7 @@ footer .legal { line-height: 1.6; }
             <rect x="206" y="30" width="176" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
             <text x="294" y="60" text-anchor="middle" font-weight="600">Collation</text>
             <text x="294" y="82" text-anchor="middle" font-size="11.5" fill="#475569">the whole record, structured</text>
-            <text x="294" y="98" text-anchor="middle" font-size="11.5" fill="#475569">roles, never names</text>
+            <text x="294" y="98" text-anchor="middle" font-size="11.5" fill="#475569">speakers as roles</text>
             <text x="294" y="114" text-anchor="middle" font-size="11.5" fill="#475569">only the terms that appear</text>
           </g>
           <path d="M384 80h20" stroke="#94a3b8" stroke-width="2" marker-end="url(#pa)"/>
@@ -272,7 +272,7 @@ footer .legal { line-height: 1.6; }
         </g>
       </svg>
       <div class="stages">
-        <div class="stage"><h3>The whole record, never a fragment</h3><p>Every object with its tests and confidences, the timeline, the finalised interviews and the evidence, with roles in place of names.</p></div>
+        <div class="stage"><h3>The whole record, never a fragment</h3><p>Every object with its tests and confidences, the timeline, the finalised interviews and the evidence. Names in the record are sent as written.</p></div>
         <div class="stage"><h3>Grounding rules on every prompt</h3><p>Each prompt instructs the model to use only information in the investigation record, to add no figures or recommendations the record does not carry, and to use the confidence word the test actually produced.</p></div>
         <div class="stage"><h3>Two kinds of check</h3><p>The model check is a semantic pass that flags claims it cannot support from the record, for investigator review. The mechanical check is deterministic: each factor's category and confidence word in the draft against the test that produced it.</p></div>
         <div class="stage"><h3>Provenance and staleness</h3><p>Every draft records the model and the version of the record it came from, and is marked out of date when the record changes.</p></div>
@@ -293,7 +293,7 @@ footer .legal { line-height: 1.6; }
         <tr><td><span class="x">2</span>Confidence language drifting: "very likely" becomes "virtually certain".</td><td>The mechanical check compares every confidence word with the test that produced it.</td></tr>
         <tr><td><span class="x">3</span>A factor the investigator excluded written back in as contributing.</td><td>The mechanical check compares each factor's category and the findings with the classification derived from the tests.</td></tr>
         <tr><td><span class="x">4</span>Recommendations the investigation never made.</td><td>The grounding rules instruct the model to include only the recommendations the record carries, and the mechanical check flags a safety issue drafted with a recommendation the record does not hold.</td></tr>
-        <tr><td><span class="x">5</span>A protected report quoted as if it were an ordinary statement, or people named where a role would do.</td><td>A protected report is marked in the record, and the model is instructed to let it inform the draft without quoting it. Roles replace names when an interview or transcript comes into the record, before any drafting.</td></tr>
+        <tr><td><span class="x">5</span>A protected report quoted as if it were an ordinary statement, or people named where a role would do.</td><td>A protected report is marked in the record, and the model is instructed to let it inform the draft without quoting it. When a transcript is imported, the investigator maps each speaker to a role. Names entered elsewhere in the investigation, including interview attendee details, are sent as written. Investigators should remove or replace identifying information before drafting if it must not be shared with the selected AI provider.</td></tr>
         <tr><td><span class="x">6</span>No record of which model, or which version of the evidence, produced the text.</td><td>Each draft records its model and record version, and goes visibly out of date when the record moves on.</td></tr>
       </tbody>
     </table>
@@ -315,8 +315,8 @@ footer .legal { line-height: 1.6; }
   <section class="block" id="data">
     <div class="section-head">
       <span class="eyebrow">Where does my data go?</span>
-      <h2>One setting decides, and the organisation chooses it</h2>
-      <p>A setting called AI access decides how every Draft action in the application reaches a model. There are three modes, and only one of them makes the application send anything. Free has no drafting, so nothing goes to a model at all.</p>
+      <h2>One setting decides, set on each machine</h2>
+      <p>A setting called AI access decides how every Draft action in the application reaches a model. It is set on each machine, up to what the licence allows. There are three modes, and only one of them makes the application send anything. Free has no drafting, so nothing goes to a model at all.</p>
     </div>
     <div class="modes">
       <article class="mode card">
@@ -344,8 +344,8 @@ footer .legal { line-height: 1.6; }
     <div class="two">
       <div class="prose">
         <p>An endpoint is a named profile for one model server: a base URL, a drafting model and a checking model, a protocol, an auth header and a key. The protocol is either the OpenAI-compatible shape, which is what LM Studio, Ollama and most corporate gateways expose, or the Anthropic Messages API.</p>
-        <p>A key is stored on that machine alone. It never enters the investigation file, never reaches an export, and is stripped out of any error shown on screen.</p>
-        <p>A drafting run sends the collated record with people referred to by role throughout, because the role replaces the name when an interview or transcript is brought in rather than at the point of drafting. The application sends no telemetry. Its only service of its own is licensing: trial activation sends your name, email address, the requested edition and a randomly generated installation identifier. The installation identifier is generated by IWS and is not a hardware serial number or hardware fingerprint. Nothing about any investigation is sent.</p>
+        <p>A key is stored on that machine alone, in plain text in the application's own settings storage, not in the operating system's credential store. It never enters the investigation file or an export, and the application attempts to redact the configured key from error messages displayed on screen.</p>
+        <p>A drafting run sends the collated record as it stands. IWS does not anonymise it: transcript speakers are mapped to roles at import, but a name typed anywhere else in the record is sent as written. What happens to it next (retention, logging, use for training, where it is processed) is set by the provider's terms, not by IWS. The investigation file and its exports folder are ordinary unencrypted files, so protect them with the machine's own disk encryption and access controls. IWS does not transmit investigation content for telemetry or licensing. When AI drafting uses a connected service, investigation material is sent to the configured AI provider.</p>
         <p>Configuration detail, with what to ask your IT department for, is in the user guide: <a href="guide.html#manual-connecting-a-model">connecting a model</a>.</p>
       </div>
       <div style="display: flex; flex-direction: column; gap: 18px">
