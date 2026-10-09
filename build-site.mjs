@@ -30,10 +30,21 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-/** The product's name, suffixed onto every page title except the home
- *  page's, which is the name alone. The company (Synoptic) is the maker,
- *  named in the header wordmark and the footer, never as the product. */
-const BRAND = "Investigation Workflow Suite (IWS)";
+/** The customer-facing product name, suffixed onto every page title.
+ *  Synoptic is the product, "Safety Investigation Software" its
+ *  descriptor; "Investigation Workflow Suite (IWS)" survives only where it
+ *  is genuinely internal (the installer's file name, the .sfm format). */
+const BRAND = "Synoptic";
+const DESCRIPTOR = "Safety Investigation Software";
+/** IWS_PREVIEW=1 builds the development preview: every page gets a
+ *  noindex meta and a slim "Development preview" bar above the header.
+ *  Without it the output is exactly the production site. */
+const PREVIEW = process.env.IWS_PREVIEW === "1";
+const PREVIEW_HEAD = `<meta name="robots" content="noindex, nofollow">\n`;
+const PREVIEW_BAR = [
+  `<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>`,
+  `<div class="preview-bar" role="note">Development preview. Not the live site.</div>`,
+].join("\n");
 const appCaseStudies = process.argv[2];
 if (!appCaseStudies) {
   console.error("usage: node build-site.mjs <appCaseStudiesDir>");
@@ -55,10 +66,11 @@ const write = (rel, html) => {
 const document = (title, body, description) => {
   const withoutTitle = body.replace(/<title>[^<]*<\/title>\r?\n?/, "");
   const desc = description ? `<meta name="description" content="${esc(description)}">\n` : "";
-  const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>${title}</title>\n${desc}`;
+  const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n${PREVIEW ? PREVIEW_HEAD : ""}<title>${title}</title>\n${desc}`;
   // The template opens with its <style>; the head closes after it and the
   // body opens, so the markup that follows lands where it should.
-  return `${head}${withoutTitle.replace("</style>", "</style>\n</head>\n<body>")}\n</body>\n</html>\n`;
+  const bodyOpen = `</style>\n</head>\n<body>${PREVIEW ? `\n${PREVIEW_BAR}` : ""}`;
+  return `${head}${withoutTitle.replace("</style>", () => bodyOpen)}\n</body>\n</html>\n`;
 };
 const unfilled = (html) => html.match(/%%[A-Z_0-9]+%%/g) ?? [];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -77,7 +89,7 @@ const NAV = [
   ["guide.html", "Documentation", "docs"],
   ["download.html", "Download", "download"],
 ];
-const MAKER = "Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.";
+const MAKER = `Synoptic, ${DESCRIPTOR.toLowerCase()} for Windows.`;
 /** Where every "Talk to us" and "Contact us" link on the site goes: one
  *  address, set here once it is decided (plan-public-release.md, step 2).
  *  Until then the links point at the Organisation card on the download
@@ -91,7 +103,7 @@ const header = (prefix, current) =>
     `  <div class="wrap">`,
     `    <a class="brand" href="${prefix}index.html" aria-label="Synoptic, home">`,
     `      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`,
-    `      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>`,
+    `      <span class="brand-text">${BRAND}<span class="brand-tag">${DESCRIPTOR}</span></span>`,
     `    </a>`,
     `    <nav class="nav" aria-label="Site">`,
     ...NAV.map(([href, label, key]) => `      <a href="${prefix}${href}"${key === current ? ' aria-current="page"' : ""}>${label}</a>`),
@@ -249,6 +261,40 @@ for (const slug of studyDirs) {
 }
 studies.sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.slug.localeCompare(b.slug));
 
+/** One study as a card, the whole card a link: photo, industry, name,
+ *  occurrence type, one line and "Open the case study". `prefix` is the
+ *  path from the page to the site root; `heading` the card's heading
+ *  level. The one line is meta.json's `cardLine`, else its `blurb`. */
+const studyCard = (s, prefix, heading = "h2") =>
+  [
+    `      <a class="study" href="${prefix}case-studies/${s.slug}.html">`,
+    `        <img src="${prefix}case-studies/${s.slug}/${s.photo}" alt="${esc(s.photoAlt ?? "")}" width="1200" height="800" loading="lazy" decoding="async">`,
+    `        <span class="study__body">`,
+    `          <span class="study__sector">${esc(s.sector)}</span>`,
+    `          <${heading} class="study__title">${esc(s.title)}</${heading}>`,
+    s.occurrence ? `          <span class="study__kind">${esc(s.occurrence)}</span>` : "",
+    `          <span class="study__line">${esc(s.cardLine ?? s.blurb)}</span>`,
+    `          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>`,
+    `        </span>`,
+    `      </a>`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+/** The other studies, at the foot of each study's page, so a reader can go
+ *  straight on to the next one. Generated here, never written per study. */
+const otherStudies = (study) => {
+  const others = studies.filter((s) => s.slug !== study.slug);
+  if (!others.length) return "";
+  return [
+    `  <section class="block others" id="other-studies">`,
+    `    <div class="section-head"><h2>Other case studies</h2></div>`,
+    `    <div class="studies studies--small">`,
+    others.map((s) => studyCard(s, "../", "h3")).join("\n"),
+    `    </div>`,
+    `  </section>`,
+  ].join("\n");
+};
+
 const summaries = [];
 for (const study of studies) {
   const { slug, appDir } = study;
@@ -365,7 +411,10 @@ for (const study of studies) {
   const pageTitle = study.pageTitle ?? `Case study: ${study.title}`;
   const page = withShots(
     chrome(shell, "../", "cases", [["../case-studies.html", "All case studies"], ["../download.html", "Download"], ["#top", "Back to top"]])
-      .replace("%%THEME%%", theme).replace("%%TITLE%%", esc(pageTitle)).replace("%%CONTENT%%", () => content),
+      .replace("%%THEME%%", theme)
+      .replace("%%TITLE%%", esc(pageTitle))
+      .replace("%%CONTENT%%", () => content)
+      .replace("%%OTHER_STUDIES%%", () => otherStudies(study)),
     "../",
   );
   const holes = [...new Set([...unfilled(page), ...pageHoles])];
@@ -386,19 +435,49 @@ if (!featured) {
   console.error("no case study could be built; nothing to feature on the home page");
   process.exit(1);
 }
-const cards = studies
-  .map((s) =>
-    [
-      `      <article class="case card">`,
-      `        <a href="case-studies/${s.slug}.html"><img class="photo" src="case-studies/${s.slug}/${s.photo}" alt="${esc(s.photoAlt ?? "")}" width="1200" height="800" loading="lazy" decoding="async"></a>`,
-      `        <span class="eyebrow">${esc(s.sector)}${s.occurrence ? ` · ${esc(s.occurrence)}` : ""}</span>`,
-      `        <h3>${esc(s.title)}</h3>`,
-      `        <p>${esc(s.blurb)}</p>`,
-      `        <div class="links"><a class="btn btn-primary" href="case-studies/${s.slug}.html">Walk through it</a></div>`,
-      `      </article>`,
-    ].join("\n"),
-  )
-  .join("\n");
+/** The case cards on the Case studies page (h2) and the home page (h3). */
+const cards = studies.map((s) => studyCard(s, "", "h2")).join("\n");
+const homeCards = studies.map((s) => studyCard(s, "", "h3")).join("\n");
+/** Every published document, one row per study, linking to the viewers
+ *  the build wrote (and the alternative layouts' report pages). */
+const DOC_COLUMNS = [
+  ["evidence_argument_tables", "Evidence and Argument Tables"],
+  ["report_preliminary", "Preliminary investigation report"],
+  ["report_standard", "Final investigation report"],
+  ["report_executive", "Executive briefing"],
+  ["source_pack", "Source pack"],
+];
+const docTable = (() => {
+  const rows = studies.map((s) => {
+    const built = s.docsBuilt ?? [];
+    const cells = DOC_COLUMNS.map(([doc, label]) => {
+      const name = doc === "evidence_argument_tables" && !built.includes(doc) && built.includes("eii_tables") ? "eii_tables" : doc;
+      const view = built.includes(name) ? `<a href="exports/${s.slug}/${name}.html">View</a>` : `<span class="hint">Not published</span>`;
+      const layouts =
+        doc === "report_standard"
+          ? (s.layouts ?? [])
+              .filter((style) => (s.reportsBuilt ?? []).includes(style))
+              .map((style, i, all) => {
+                const short = (layoutCopy[style] ?? [style])[0].replace("-inspired", "");
+                return `<a href="reports/${s.slug}/${style}.html">${esc(i === all.length - 1 ? `${short}-inspired` : `${short}-`)}</a>`;
+              })
+          : [];
+      const listed = layouts.length > 1 ? `${layouts.slice(0, -1).join(", ")} and ${layouts.at(-1)}` : layouts.join("");
+      const extra = layouts.length ? ` <small>· also ${listed}</small>` : "";
+      return `<td data-l="${esc(label)}">${view}${extra}</td>`;
+    });
+    return `        <tr><th scope="row"><a href="case-studies/${s.slug}.html">${esc(s.title)}</a></th>${cells.join("")}</tr>`;
+  });
+  return [
+    `    <table class="doctable">`,
+    `      <thead><tr><th scope="col">Case study</th>${DOC_COLUMNS.map(([, label]) => `<th scope="col">${esc(label)}</th>`).join("")}</tr></thead>`,
+    `      <tbody>`,
+    ...rows,
+    `      </tbody>`,
+    `    </table>`,
+    `    <p class="fineprint">${esc(LAYOUTS_NOTE)}</p>`,
+  ].join("\n");
+})();
 /** The featured study's Evidence and Argument Tables, under whichever
  *  name its exports carry (a study not yet re-drafted has the older one). */
 const featuredTables = (featured.docsBuilt ?? []).find((d) => d === "evidence_argument_tables" || d === "eii_tables") ?? "evidence_argument_tables";
@@ -416,6 +495,8 @@ const fillFeatured = (templateName, current) =>
     .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
     .replaceAll("%%FEATURED%%", featured.slug)
     .replace("%%CASE_CARDS%%", () => cards)
+    .replace("%%HOME_CASE_CARDS%%", () => homeCards)
+    .replace("%%DOC_TABLE%%", () => docTable)
     .replace("%%STANDARD_META%%", meta(featured.reportData.standard))
     .replace("%%PRELIMINARY_META%%", meta(featured.reportData.preliminary))
     .replace("%%EXECUTIVE_META%%", meta(featured.reportData.executive))
@@ -423,15 +504,22 @@ const fillFeatured = (templateName, current) =>
     .replace("%%PRELIMINARY_WORDS%%", words(featured.reportData.preliminary))
     .replace("%%EXECUTIVE_WORDS%%", words(featured.reportData.executive));
 const index = fillFeatured("index.template.html", "home");
-write("index.html", document(index.match(/<title>([^<]*)<\/title>/)[1], index));
+write(
+  "index.html",
+  document(
+    `${BRAND} | ${DESCRIPTOR}`,
+    index,
+    `${BRAND} is safety investigation software for Windows. It takes an investigation from the evidence through the AcciMap analysis and the assessment of each factor to the report, in one connected investigation record.`,
+  ),
+);
 /** The other top-level pages: template, nav key, title and description. */
 const sitePages = [
-  ["product", "Product", "Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record."],
-  ["methodology", "Methodology", "How Investigation Workflow Suite (IWS) moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
-  ["ai-security", "AI and security", "What AI drafting does in Investigation Workflow Suite (IWS), how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI."],
-  ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite (IWS)."],
-  ["download", "Download", "Download Investigation Workflow Suite (IWS) for Windows 10 and 11: the Free, Professional and Organisation levels, the 90-day Professional trial, and how to buy and activate a licence."],
-  ["getting-started", "Getting started", "The first investigation in Investigation Workflow Suite (IWS), step by step, from a new investigation folder to the first report."],
+  ["product", "Product", `What ${BRAND} does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what Free and Professional each include.`],
+  ["methodology", "Methodology", `How ${BRAND} moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set in Settings and a ten-term probability scale.`],
+  ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.`],
+  ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
+  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how to buy and activate a licence.`],
+  ["getting-started", "Getting started", `The first investigation in ${BRAND}, step by step, from a new investigation folder to the first report.`],
 ];
 const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download", "getting-started": null };
 const topPages = sitePages.map(([name, title, description]) => {
@@ -460,11 +548,11 @@ const releaseHtml = releases
   )
   .join("\n");
 const changelog = chrome(readFileSync(join(here, "changelog.template.html"), "utf8"), "", null, [["download.html", "Download"]]).replace("%%THEME%%", theme).replace("%%RELEASES%%", releaseHtml);
-write("changelog.html", document(`Changelog | ${BRAND}`, changelog, "What changed in Investigation Workflow Suite (IWS), release by release."));
+write("changelog.html", document(`Changelog | ${BRAND}`, changelog, `What changed in ${BRAND}, release by release.`));
 
 const fragment = readFileSync(join(here, "guide-fragment.html"), "utf8");
 const guide = chrome(readFileSync(join(here, "guide.template.html"), "utf8"), "", "docs", [["#top", "Back to top"]]).replace("%%THEME%%", theme).replace("%%GUIDE%%", () => fragment);
-write("guide.html", document(`Documentation | ${BRAND}`, guide, "The Investigation Workflow Suite (IWS) user guide, the same guide the application ships under Help."));
+write("guide.html", document(`Documentation | ${BRAND}`, guide, `The ${BRAND} user guide, the same guide the application ships under Help.`));
 
 writeFileSync(join(here, "build-manifest.json"), `${JSON.stringify(built.sort(), null, 2)}\n`);
 
