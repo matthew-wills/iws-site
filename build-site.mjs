@@ -49,12 +49,11 @@ const write = (rel, html) => {
   built.push(rel.split("\\").join("/"));
 };
 
-/** Every page except index.html is a complete document: index.html is
- *  wrapped by the host it is published through, but the other pages are
- *  served as they are and render in quirks mode without a doctype,
- *  charset and viewport of their own. */
+/** Every page is written as a complete document: GitHub Pages serves
+ *  each file as it is, so a page without a doctype, charset and viewport
+ *  of its own renders in quirks mode and at desktop width on a phone. */
 const document = (title, body, description) => {
-  const withoutTitle = body.replace(/<title>[^<]*<\/title>\n?/, "");
+  const withoutTitle = body.replace(/<title>[^<]*<\/title>\r?\n?/, "");
   const desc = description ? `<meta name="description" content="${esc(description)}">\n` : "";
   const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>${title}</title>\n${desc}`;
   // The template opens with its <style>; the head closes after it and the
@@ -424,7 +423,7 @@ const fillFeatured = (templateName, current) =>
     .replace("%%PRELIMINARY_WORDS%%", words(featured.reportData.preliminary))
     .replace("%%EXECUTIVE_WORDS%%", words(featured.reportData.executive));
 const index = fillFeatured("index.template.html", "home");
-write("index.html", index);
+write("index.html", document(index.match(/<title>([^<]*)<\/title>/)[1], index));
 /** The other top-level pages: template, nav key, title and description. */
 const sitePages = [
   ["product", "Product", "Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record."],
