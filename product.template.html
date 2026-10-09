@@ -7,64 +7,58 @@
   .page-head { padding-block: 44px 26px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
   .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .jump { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px; }
-  .jump a { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; }
-  .jump a:hover { background: #f1f5f9; color: var(--ink); }
   .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
   .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
 
   .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
   .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
-  .page { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); }
-
-  .figrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .figrow figcaption { margin-top: 10px; }
-  .figrow figcaption strong { display: block; color: var(--ink); font-weight: 600; }
-  .lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 22px; margin: 18px 0 0; padding: 0; list-style: none; }
-  .lanes li { display: flex; gap: 10px; align-items: center; font-size: 0.94rem; color: var(--ink-soft); }
-  .lanes .tint { flex: none; width: 26px; height: 14px; border-radius: 4px; border: 1px solid var(--line-strong); }
 
   .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 34px; align-items: center; }
-  .row.flip { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr); }
-  .row.flip > :first-child { order: 2; }
   .row .text { display: flex; flex-direction: column; gap: 12px; }
   .facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
   .facts li { padding-left: 16px; border-left: 3px solid var(--accent-soft); color: var(--ink-soft); }
   .facts li strong { color: var(--ink); font-weight: 600; }
 
-  .docs4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
-  .doc { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; }
-  .doc h3 { font-size: 1.02rem; margin-top: 6px; color: var(--accent-deep); }
-  .doc:hover h3 { text-decoration: underline; }
-  .doc p { color: var(--ink-soft); font-size: 0.92rem; }
-  .layouts-line { margin-top: 22px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink-soft); font-size: 0.95rem; }
+  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
+  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
 
-  .levels { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 0.95rem; }
-  .levels th, .levels td { padding: 10px 14px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
-  .levels thead th { border-top: 0; font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
-  .levels tbody th { font-weight: 400; color: var(--ink); }
-  .levels td { text-align: center; width: 13%; }
-  .levels td.y { color: var(--proof); font-weight: 600; }
-  .levels td.n { color: var(--ink-faint); }
-  .levels th.c { text-align: center; }
-  .levels-notes { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 0.95rem; max-width: 80ch; }
+  .ev-main { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 34px; align-items: center; }
+  .ev-main .text, .rep .text { display: flex; flex-direction: column; gap: 12px; }
+  .ev-main h3, .ev-iv h3 { font-size: 1.08rem; }
+  .ev-main p, .ev-iv p { color: var(--ink-soft); }
+  .ev-pair { display: flex; flex-direction: column; gap: 22px; }
+  .ev-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+  .ev-iv { margin-top: 44px; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); }
+  .ev-tl { margin-top: 40px; }
+  .ev-tl figcaption { margin: 10px auto 0; max-width: 1160px; color: var(--ink-soft); font-size: 0.93rem; }
+  .ev-tl figcaption strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
+  .more { margin-top: 14px; }
+
+  .rep { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: start; }
+  .rep .text > p { color: var(--ink-soft); }
+  .rep .facts li { font-size: 0.97rem; }
+  .rep figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.93rem; }
+  .crop--page { background: #fff; }
+
+  .around { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 34px; }
+  .around li { padding-left: 16px; border-left: 3px solid var(--accent-soft); }
+  .around h3 { font-size: 1rem; }
+  .around p { color: var(--ink-soft); font-size: 0.96rem; margin-top: 4px; }
+  .levels-line { padding-block: 0 8px; }
+  .levels-line p { color: var(--ink-soft); max-width: 80ch; padding: 14px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
 
   .next { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
   .next p { color: var(--ink-soft); max-width: 64ch; }
 
   @media (max-width: 960px) {
-    .figrow, .lanes { grid-template-columns: 1fr 1fr; }
-    .row, .row.flip { grid-template-columns: 1fr; gap: 18px; }
-    .row.flip > :first-child { order: 0; }
-    .docs4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .row { grid-template-columns: 1fr; gap: 18px; }
+    .ev-main, .ev-iv, .rep { grid-template-columns: 1fr; gap: 18px; }
+    .around { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
-    .figrow, .lanes { grid-template-columns: 1fr; }
-    .docs4 { gap: 14px; }
     .page-head { padding-block: 28px 18px; }
     section.block { padding-block: 38px; }
-    .levels th, .levels td { padding: 8px 6px; font-size: 0.88rem; }
-    .levels thead th { font-size: 0.66rem; letter-spacing: 0.02em; }
   }
 </style>
 
@@ -75,15 +69,8 @@
     <span class="anchor" id="record"></span>
     <span class="eyebrow">Product</span>
     <h1>What IWS does, stage by stage</h1>
-    <p class="lede">IWS holds the whole investigation in one record: the checklist, the evidence, the interviews, the timeline, the AcciMap, the tests and the reports, in a single file on the drive you choose. Each stage below works on that same record.</p>
-    <nav class="jump" aria-label="On this page">
-      <a href="#evidence"><span class="stage-no">1</span>Evidence</a>
-      <a href="#analysis"><span class="stage-no">2</span>Analysis</a>
-      <a href="#assessment"><span class="stage-no">3</span>Assessment</a>
-      <a href="#reporting"><span class="stage-no">4</span>Reporting</a>
-      <a href="#around">Around the investigation</a>
-      <a href="#levels">Free and Professional</a>
-    </nav>
+    <p class="lede">IWS holds the whole investigation in one record: the checklist, the evidence, the interviews, the timeline, the AcciMap, the tests and the reports, in a single investigation file, with an optional attachments folder beside it, on the drive you choose. Each stage below works on that same record.</p>
+    <nav class="onpage" aria-label="On this page"><a href="#evidence">Evidence</a><a href="#analysis">Analysis</a><a href="#assessment">Assessment</a><a href="#reporting">Reporting</a><a href="#around">Around the investigation</a></nav>
   </section>
 
   <section class="block" id="evidence">
@@ -92,11 +79,26 @@
       <h2>Capture each item once, and link it to everything it supports</h2>
       <p>Paste a screenshot or text, or drop in a file. Each item records where it came from and which objects on the AcciMap rest on it, so if a source proves unreliable, what needs revisiting is already listed.</p>
     </div>
-    <div class="figrow">
-      <figure><div class="crop" style="--W: 3840; --x: 30; --y: 900; --cw: 1240; --ch: 775"><img class="zoomable" src="%%SHOT_01%%" alt="The Evidence tab's captured material, grouped by object" data-caption="The evidence register: every capture, grouped by the object it bears on." loading="lazy"></div><figcaption><strong>The evidence register</strong>Every capture, grouped by the object it bears on.</figcaption></figure>
-      <figure><div class="crop" style="--W: 3840; --x: 950; --y: 2585; --cw: 1300; --ch: 812"><img class="zoomable" src="%%SHOT_02%%" alt="An interview with its imported Teams transcript and speakers mapped to roles" data-caption="Interviews: a Teams transcript imported, each speaker mapped to a role." loading="lazy"></div><figcaption><strong>Interviews</strong>Import a Teams transcript and map each speaker to a role. The role replaces the name in the record.</figcaption></figure>
-      <figure><div class="crop" style="--W: 3840; --x: 1170; --y: 470; --cw: 1520; --ch: 950"><img class="zoomable" src="%%SHOT_05%%" alt="The timeline, each event with its source and time basis" data-caption="The timeline: each event with its source and time basis." loading="lazy"></div><figcaption><strong>The timeline</strong>Each event with its source and time basis, and the critical event marked.</figcaption></figure>
+    <div class="ev-main">
+      <div class="ev-pair">
+        <figure><p class="ev-label">The evidence extract</p><div class="crop" style="--W: 1440; --x: 4; --y: 4; --cw: 1432; --ch: 516"><img class="zoomable" src="%%SHOT_21%%" alt="The wildlife sighting log as captured: the evidence item form with its text extract" data-caption="The wildlife sighting log as captured: the evidence item form with its text extract" loading="lazy"></div></figure>
+        <figure><p class="ev-label">Used by: the objects and events it supports</p><div class="crop" style="--W: 1440; --x: 4; --y: 1615; --cw: 1432; --ch: 375"><img class="zoomable" src="%%SHOT_21%%" alt="The same item form, further down: Used by, listing six AcciMap objects and one timeline event" data-caption="The same item form, further down: Used by, listing six AcciMap objects and one timeline event" loading="lazy"></div></figure>
+      </div>
+      <div class="text">
+        <h3>One item, everything it supports</h3>
+        <p>The %%FEATURED_TITLE%% wildlife sighting log was captured once. Its form lists the six AcciMap objects and the timeline event that rest on it, and each line opens that object.</p>
+        <p>From an object's own form, link an item already in the register and it joins the list. The item is never copied, so a correction made once is made everywhere.</p>
+        <p>Each item also carries a caption, why it matters, a category, a reference and a short summary for the report.</p>
+      </div>
     </div>
+    <div class="row ev-iv">
+      <div class="text">
+        <h3>Interviews</h3>
+        <p>Import a Teams transcript and give each speaker a role. Names stay with the transcript; the record and the report see only the roles.</p>
+      </div>
+      <figure><div class="crop" style="--W: 1280; --x: 54; --y: 160; --cw: 1176; --ch: 870"><img class="zoomable" src="%%SHOT_22%%" alt="An imported interview transcript, each speaker given a role" data-caption="An imported interview transcript, each speaker given a role" loading="lazy"></div></figure>
+    </div>
+    <figure class="block--wide ev-tl"><div class="crop" style="--W: 4096; --x: 102; --y: 113; --cw: 3888; --ch: 533"><img class="zoomable" src="%%SHOT_23%%" alt="The whole %%FEATURED_TITLE%% timeline: thirteen events, each with its time and the evidence it rests on" data-caption="The whole %%FEATURED_TITLE%% timeline: thirteen events, each with its time and the evidence it rests on" loading="lazy"></div><figcaption><strong>The timeline</strong>Thirteen events from the previous evening's runway inspection to the disembarkation, each with its time, its source and the number of evidence items it rests on.</figcaption></figure>
   </section>
 
   <section class="block" id="analysis">
@@ -106,15 +108,8 @@
       <h2>Every line of enquiry on the AcciMap</h2>
       <p>Start with the critical event, then add every event and condition that might have played a part, including the hypotheses you expect to fail. Objects sit in time from left to right and in organisational depth from bottom to top, across six lanes.</p>
     </div>
-    <figure class="block--wide"><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="%%SHOT_07%%" alt="Every hypothesis placed across the six lanes of the AcciMap, none of them tested yet" data-caption="Every hypothesis in its lane, none of them tested yet." loading="lazy"></div><figcaption>The %%FEATURED_TITLE%% AcciMap before testing: every hypothesis in its lane, each arrow grey and dashed until its source passes.</figcaption></figure>
-    <ul class="lanes" aria-label="The six lanes">
-      <li><span class="tint" style="background: var(--lane-external)"></span>External Influences</li>
-      <li><span class="tint" style="background: var(--lane-org)"></span>Organisational Influences</li>
-      <li><span class="tint" style="background: var(--lane-controls)"></span>Risk Controls</li>
-      <li><span class="tint" style="background: var(--lane-local)"></span>Local Conditions</li>
-      <li><span class="tint" style="background: var(--lane-actions)"></span>Individual Actions</li>
-      <li><span class="tint" style="background: var(--lane-events)"></span>Occurrence Events</li>
-    </ul>
+    <figure class="block--wide"><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="%%SHOT_07%%" alt="Every hypothesis placed across the six lanes of the AcciMap, none of them tested yet" data-caption="Every hypothesis in its lane, none of them tested yet." loading="lazy"></div><figcaption>The %%FEATURED_TITLE%% AcciMap before testing: every hypothesis in its lane, each arrow grey and dashed until its source passes Existence and Influence.</figcaption></figure>
+    <p class="more"><a href="methodology.html#map">How the lanes and levels work, on the Methodology page</a></p>
   </section>
 
   <section class="block" id="assessment">
@@ -123,12 +118,13 @@
         <span class="eyebrow" style="display: flex; align-items: center; gap: 8px"><span class="stage-no">3</span>Assessment</span>
         <h2>Test each object against the evidence</h2>
         <ul class="facts">
-          <li><strong>Three tests.</strong> Did it exist, did it influence the occurrence, and if not, is it still important enough to raise?</li>
-          <li><strong>Argued where it needs to be.</strong> Where the evidence cuts both ways, record the argument for, the argument against and your reasoning.</li>
-          <li><strong>Stated confidence.</strong> Each result carries a term from a ten-term probability scale, and a pass below the standard of proof is flagged. The standard is 70 per cent by default, chosen in Settings from 50 to 95 per cent.</li>
-          <li><strong>Derived findings.</strong> The results decide how each object is classified. An arrow turns solid green only once its source has passed.</li>
+          <li><strong>Existence, for every object.</strong> Did this event or condition actually exist or occur? A fail excludes the hypothesis, which stays on the map, struck through.</li>
+          <li><strong>Influence, once it exists.</strong> Did it influence this occurrence? A pass makes an increased-risk object a contributing factor and turns its outgoing arrows solid.</li>
+          <li><strong>Importance, only where Influence fails.</strong> Is it still important enough to address? A pass makes it a finding in its own right. Failing both excludes it.</li>
+          <li><strong>A probability and its term.</strong> For each result you record how likely it is, and IWS states it as a term from a ten-term scale: 70 per cent reads as &ldquo;likely&rdquo;. Where the evidence cuts both ways, record the argument for, the argument against and your reasoning.</li>
+          <li><strong>The standard of proof sets the verdict.</strong> At or above it a test reads Pass; otherwise, at or below its mirror it reads Fail, and in between Inconclusive. It is 70 per cent unless you change it in Settings, from 50 to 95 per cent.</li>
         </ul>
-        <p><a href="methodology.html">The method in full</a></p>
+        <p><a href="methodology.html#tests">The tests and the standard of proof in full</a></p>
       </div>
       <figure><div class="crop" style="--W: 3840; --x: 200; --y: 170; --cw: 2240; --ch: 2400"><img class="zoomable" src="%%SHOT_19%%" alt="An object's form with Existence, Influence and Importance, each with its evidence, result and confidence" data-caption="An object's form: Existence, Influence and Importance, each with its evidence, result and confidence." loading="lazy"></div></figure>
     </div>
@@ -137,56 +133,35 @@
   <section class="block" id="reporting">
     <span class="anchor" id="outputs"></span>
     <span class="anchor" id="tables"></span>
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">4</span>Reporting</span>
-      <h2>Four documents from the one record</h2>
-      <p>The Evidence and Argument Tables export at every level. With Professional, the Record tab assembles the record under a report's headings and every report is written to Word, on your own template if you have one. AI drafting is optional: the Draft report tab drafts each section from the record and checks it against the record before you finalise it.</p>
+    <div class="row rep">
+      <div class="text">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px"><span class="stage-no">4</span>Reporting</span>
+        <h2>The tables and reports come from the same record</h2>
+        <p>The Evidence and Argument Tables are generated directly from the assessments recorded against AcciMap objects. Investigation reports and executive briefings draw on the same record, keeping the evidence, reasoning and reporting connected.</p>
+        <ul class="facts">
+          <li>The final report also comes in ATSB-, NTSB- and AAIB-inspired layouts, each following that body's published report structure. They are not produced, reviewed or endorsed by those organisations.</li>
+          <li>With Professional, reports are written to Word, on your own Word template if you have one.</li>
+          <li>AI drafting is optional, also with Professional. A draft is written from the record, and you decide what stays. <a href="ai-security.html">How AI drafting works and where data goes</a></li>
+        </ul>
+        <p><a href="case-studies.html">Read all four documents in the case studies</a></p>
+      </div>
+      <figure><div class="crop crop--page" style="--W: 1550; --x: 160; --y: 175; --cw: 1240; --ch: 1435"><img class="zoomable" src="exports/%%FEATURED%%/pages/%%FEATURED_TABLES%%/p11.png" alt="The same object, Floor escape path lighting, in the Evidence and Argument Tables" data-caption="The same object, Floor escape path lighting, in the Evidence and Argument Tables" loading="lazy"></div><figcaption>The object assessed above, as the Evidence and Argument Tables print it.</figcaption></figure>
     </div>
-    <div class="docs4">
-      <a class="doc" href="exports/%%FEATURED%%/%%FEATURED_TABLES%%.html"><img class="page" src="exports/%%FEATURED%%/pages/%%FEATURED_TABLES%%/p05.png" alt="Page 5 of the %%FEATURED_TITLE%% Evidence and Argument Tables" loading="lazy"><h3>Evidence and Argument Tables</h3><p>Each object's tests, with the argument for, the argument against and the reasoning.</p></a>
-      <a class="doc" href="exports/%%FEATURED%%/report_preliminary.html"><img class="page" src="exports/%%FEATURED%%/pages/report_preliminary/p04.png" alt="Page 4 of the %%FEATURED_TITLE%% preliminary investigation report" loading="lazy"><h3>Preliminary investigation report</h3><p>What is known while the investigation runs. No findings.</p></a>
-      <a class="doc" href="exports/%%FEATURED%%/report_standard.html"><img class="page" src="exports/%%FEATURED%%/pages/report_standard/p08.png" alt="Page 8 of the %%FEATURED_TITLE%% final investigation report" loading="lazy"><h3>Final investigation report</h3><p>The full report: summary, occurrence, analysis, findings and appendices.</p></a>
-      <a class="doc" href="exports/%%FEATURED%%/report_executive.html"><img class="page" src="exports/%%FEATURED%%/pages/report_executive/p05.png" alt="Page 5 of the %%FEATURED_TITLE%% executive briefing" loading="lazy"><h3>Executive briefing</h3><p>The occurrence, the findings and the actions in a few pages.</p></a>
-    </div>
-    <p class="layouts-line">The final report also comes in ATSB-, NTSB- and AAIB-inspired layouts, each following that body's published report structure. They are not produced, reviewed or endorsed by those organisations. <a href="case-studies/%%FEATURED%%.html#produced">Read them in %%FEATURED_TITLE%%</a>.</p>
   </section>
 
   <section class="block" id="around">
-    <div class="row flip">
-      <div class="text">
-        <h2>Around the investigation</h2>
-        <ul class="facts">
-          <li><strong>Dashboard.</strong> The checklist, one to-do list fed from the checklist and from objects on the map, and the distribution list that prints at the foot of every report.</li>
-          <li><strong>Log.</strong> Your running sheet, plus entries the application adds when a decision is made: a checklist answer, a test result, a finalised interview, a draft or an export.</li>
-          <li><strong>One file.</strong> No account and no database. The investigation file is JSON, readable without the application.</li>
-          <li><strong>Shared-folder protection.</strong> A save that would overwrite a change made on another machine is held for you to decide.</li>
-        </ul>
-      </div>
-      <figure><div class="crop" style="--W: 3840; --x: 540; --y: 220; --cw: 2760; --ch: 1500"><img class="zoomable" src="%%SHOT_04%%" alt="The Dashboard: the checklist, the to-do list and the distribution list" data-caption="The Dashboard for %%FEATURED_TITLE%%." loading="lazy"></div><figcaption>The Dashboard for %%FEATURED_TITLE%%.</figcaption></figure>
-    </div>
+    <h2>Around the investigation</h2>
+    <ul class="around">
+      <li><h3>Dashboard</h3><p>The checklist, one to-do list fed from the checklist and from objects on the map, and the distribution list that prints at the foot of every report.</p></li>
+      <li><h3>Log</h3><p>Your running sheet, plus entries the application adds when a decision is made: a checklist answer, a test result, a finalised interview, a draft or an export.</p></li>
+      <li><h3>One portable file</h3><p>No account and no database. The investigation is one .sfm file in plain JSON, with pasted images and captured files held inside it as text, so it can be read without IWS. The one exception is opt-in: a setting that keeps large dropped files in an attachments folder beside it.</p></li>
+      <li><h3>Shared-folder protection</h3><p>Before each save, IWS checks whether the file has changed on disk since it was last opened or saved here. If it has, the save is held and you choose: reload theirs, save yours as a copy, or overwrite. Nothing is merged. While the file is open, a lock file beside it tells anyone else who opens it that it is in use.</p></li>
+    </ul>
   </section>
 
-  <section class="block" id="levels">
+  <section class="block levels-line" id="levels">
     <span class="anchor" id="organisations"></span>
-    <div class="section-head">
-      <h2>Free and Professional</h2>
-      <p>One application. A licence decides which features are available, never whether you can open your own work.</p>
-    </div>
-    <table class="levels">
-      <thead><tr><th scope="col">Feature</th><th scope="col" class="c">Free</th><th scope="col" class="c">Professional</th><th scope="col" class="c">Organisation</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">The whole investigation record: checklist, evidence, interviews, timeline, AcciMap and tests, log and to-dos</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><th scope="row">Evidence and Argument Tables in Word, AcciMap and timeline images, the collated record and the source pack</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><th scope="row">Finished reports in Word, and the executive briefing slides</th><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><th scope="row">Your own Word template for every document</th><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><th scope="row">AI drafting through a chat tool or a model endpoint you connect</th><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><th scope="row">Your organisation's framework, terminology and reporting, as an organisation pack</th><td class="n">No</td><td class="n">No</td><td class="y">Yes</td></tr>
-      </tbody>
-    </table>
-    <div class="levels-notes">
-      <p>Anything drafted under Professional stays in the investigation file, readable and editable, if the licence lapses. The AI is your own: Professional allows drafting, it does not supply a model.</p>
-      <p>Professional trials are coming. <a href="download.html#pricing">Levels and licences</a></p>
-    </div>
+    <p>IWS is one application at every level, and a licence decides which features are available, never whether you can open your own work. <a href="download.html#pricing">Compare Free, Professional and Organisation</a></p>
   </section>
 
   <section class="block next">
