@@ -159,7 +159,7 @@ footer .legal { line-height: 1.6; }
   .launch-placeholder { position: relative; cursor: not-allowed; outline: 2px dashed #f59e0b; outline-offset: 3px; }
   .launch-placeholder::after { content: "Launch placeholder"; position: absolute; top: -11px; right: -6px; padding: 1px 6px; border-radius: 999px; background: var(--warn-soft); border: 1px solid #fcd34d; color: #92400e; font-size: 0.66rem; font-weight: 700; font-style: normal; letter-spacing: 0.03em; line-height: 1.4; white-space: nowrap; }
   .lp-text { padding: 10px 10px 6px; border-radius: 6px; color: var(--ink-faint) !important; font-style: italic; margin-top: 6px; }
-  .provisional { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 999px; background: var(--warn-soft); border: 1px dashed #f59e0b; color: #92400e; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.03em; vertical-align: middle; }
+  .founding { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.03em; vertical-align: middle; }
 
   .download { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
   .dl-card { display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
@@ -247,8 +247,9 @@ footer .legal { line-height: 1.6; }
   <section class="block" id="get" style="border-top: none; padding-top: 8px">
     <div class="download">
       <div class="dl-card card">
-        <span class="eyebrow">Current release</span>
+        <span class="eyebrow">Planned release</span>
         <h2>IWS 0.12.0 for Windows</h2>
+        <p class="dl-fine">Not yet released. These are the details of the planned public release.</p>
         <dl>
           <dt>Installer</dt><dd>Investigation Workflow Suite_0.12.0_x64-setup.exe<small>Installs for your Windows user account, with no administrator rights needed.</small></dd>
           <dt>Requires</dt><dd>Windows 10 or 11, 64-bit<small>IWS runs on Microsoft Edge WebView2. If a Windows 10 machine does not have it, the installer may download it.</small></dd>
@@ -309,7 +310,7 @@ footer .legal { line-height: 1.6; }
         <div class="tier-body">
           <div class="tier-top"><span class="eyebrow">Professional</span><span class="pill rec">Recommended</span></div>
           <h3>Complete the investigation</h3>
-          <p class="price"><span class="amount">A$249</span><span class="per">/year</span><span class="provisional">Provisional</span><small>Introductory founding price. Early Professional customers may be eligible to retain founding pricing on future renewals.</small></p>
+          <p class="price"><span class="amount">A$249</span><span class="per">/year</span><span class="founding">Founding price</span><small>IWS is actively being developed. Founding customers keep the A$249 annual rate for as long as their subscription stays continuously active. The rate is for the Professional level; it does not cover other products or separately offered services.</small></p>
           <p class="who">The complete investigation-to-report workflow.</p>
           <ul class="facts">
             <li>Everything in Free</li>
@@ -368,7 +369,8 @@ footer .legal { line-height: 1.6; }
       </div>
       <div class="card" id="buy">
         <h3>How do I buy Professional?</h3>
-        <p>A$249 a year per user, the introductory founding price. <span class="provisional">Provisional</span></p>
+        <p>A$249 a year per user, the founding price. <span class="founding">Founding price</span></p>
+        <p>IWS is actively being developed, and founding customers keep the A$249 annual rate while their subscription remains continuously active. The founding rate applies to Professional, not to other products or separately offered services.</p>
         <p>You receive a licence key, and paste it into IWS as below.</p>
         <p class="launch-placeholder lp-text">How to pay, and who to contact.</p>
       </div>
