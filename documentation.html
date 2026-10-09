@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Documentation | Investigation Workflow Suite (IWS)</title>
+<meta name="description" content="How to learn Investigation Workflow Suite (IWS): the Getting started walkthrough of a first investigation, and the User Guide to every tab, form and setting.">
+<style>
+/* The application's own look, carried onto the site: Segoe UI, a cool
+   off-white ground, slate text, the blue the app uses for every primary
+   action, hairline slate borders, white cards, and the lane tints. */
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --ground: #f8fafc;
+  --paper: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-deep: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-ink: #ffffff;
+  --proof: #15803d;
+  --proof-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --risk: #b91c1c;
+  --risk-soft: #fee2e2;
+  --lane-external: #dbeafe;
+  --lane-org: #dbeafe;
+  --lane-controls: #fdebd3;
+  --lane-local: #e8e4f6;
+  --lane-actions: #fbf4cf;
+  --lane-events: #fbe0e4;
+  --shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 0 48px;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 650; }
+h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+/* A section whose screenshots need the room: breaks out of the 1160px
+   column to 1500px on a wide screen, so the application is shown at
+   about half its real size instead of a third. */
+.block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.hint { color: var(--ink-soft); }
+
+/* Header, like the app's own header bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.top .wrap { display: flex; align-items: center; gap: 22px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 1.02rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 26px; height: 26px; color: var(--accent); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-tag { font-size: 0.68rem; font-weight: 500; color: var(--ink-faint); letter-spacing: 0.01em; }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.93rem; padding: 6px 10px; border-radius: 7px; }
+.nav a:hover, .nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
+
+/* Buttons, exactly the app's two kinds */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.btn:hover { background: #f1f5f9; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Cards and sections */
+section.block { padding-block: 52px; border-top: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+.section-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.04rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.pill { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.pill.pass { background: var(--proof-soft); border-color: #86efac; color: var(--proof); }
+.pill.fail { background: var(--risk-soft); border-color: #fca5a5; color: var(--risk); }
+.pill.open { background: var(--warn-soft); border-color: #fcd34d; color: var(--warn); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 2px #fff; }
+.dot.green { background: #22c55e; }
+.dot.amber { background: #f59e0b; }
+.shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--paper); }
+.zoomable { cursor: zoom-in; }
+figure { margin: 0; }
+figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); }
+ul.plain li strong { color: var(--ink); font-weight: 600; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(15, 23, 42, 0.88); cursor: zoom-out; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); cursor: default; }
+.lightbox__body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; }
+.lightbox__caption { margin: 0; color: #e2e8f0; font-size: 0.95rem; text-align: center; max-width: 90ch; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.3); }
+body.has-lightbox { overflow: hidden; }
+
+footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+footer a { color: var(--ink-soft); }
+
+/* On a phone the seven nav items scroll sideways in one row under the
+   wordmark, so the sticky header stays one line of links tall. */
+@media (max-width: 700px) {
+  .top .wrap { gap: 4px 12px; padding-block: 6px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav a { white-space: nowrap; flex: none; }
+}
+footer .legal { line-height: 1.6; }
+
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
+
+
+  [id] { scroll-margin-top: 76px; }
+  .page-head { padding-block: 44px 30px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+
+  /* A crop of a larger screenshot, positioned from the full image's size. An inset outline rather than a border keeps the crop maths exact. */
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); background: var(--paper); }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+
+  .doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding-bottom: 44px; }
+  .door { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+  .door:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+  .door:hover .door__go { text-decoration: underline; }
+  .door .crop { border-bottom: 1px solid var(--line); }
+  .door__body { display: flex; flex-direction: column; gap: 8px; padding: 20px 24px 24px; flex: 1; }
+  .door__kicker { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+  .door h2 { font-size: 1.5rem; }
+  .door p { color: var(--ink-soft); }
+  .door .door__who { color: var(--ink); font-size: 0.95rem; }
+  .door__go { margin-top: auto; padding-top: 8px; font-weight: 600; color: var(--accent); }
+  .also { border-top: 1px solid var(--line); padding-block: 26px 8px; }
+  .also h2.eyebrow { font-size: 0.78rem; margin-bottom: 12px; }
+  .also ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 28px; }
+  .also li { display: flex; flex-direction: column; gap: 2px; padding-left: 14px; border-left: 3px solid var(--accent-soft); }
+  .also a { font-weight: 600; text-decoration: none; }
+  .also a:hover { text-decoration: underline; }
+  .also span { color: var(--ink-soft); font-size: 0.93rem; }
+  @media (max-width: 860px) {
+    .doors, .also ul { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .page-head { padding-block: 28px 20px; }
+    .door__body { padding: 16px 18px 20px; }
+  }
+</style>
+</head>
+<body>
+<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>
+<div class="preview-bar" role="note">Development preview. Not the live site.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Synoptic, home">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="ai-security.html">AI and security</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="documentation.html" aria-current="page">Documentation</a>
+      <a href="download.html">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">Documentation</span>
+    <h1>Learn IWS by doing one, then look things up as you go.</h1>
+    <p class="lede">Two places to start, both written for the application as it ships. The User Guide is the same guide you get under Help in the app.</p>
+  </section>
+
+  <section class="doors" aria-label="Documentation">
+    <a class="door" href="getting-started.html">
+      <div class="crop" style="--W: 1828; --x: 0; --y: 40; --cw: 1828; --ch: 820"><img src="guide-images/first-test-argument.png" alt="An Existence test argued: evidence for and against, the probability and Pass" loading="lazy"></div>
+      <div class="door__body">
+        <span class="door__kicker">Getting started &middot; 20 to 30 minutes</span>
+        <h2>Your first investigation</h2>
+        <p>An illustrated walkthrough on a small fictional occurrence, from the start screen to the Evidence and Argument Tables. Every step works at Free.</p>
+        <p class="door__who">For anyone opening IWS for the first time.</p>
+        <span class="door__go">Start the walkthrough</span>
+      </div>
+    </a>
+    <a class="door" href="guide.html">
+      <div class="crop" style="--W: 3200; --x: 0; --y: 0; --cw: 2400; --ch: 1077"><img src="guide-images/record.png" alt="The application's tabs, Dashboard to Draft report, with the Record tab open" loading="lazy"></div>
+      <div class="door__body">
+        <span class="door__kicker">User Guide &middot; reference</span>
+        <h2>Every tab, form and setting</h2>
+        <p>Organised by where things are in the app, each section linkable: the canvas and objects, evidence, the timeline, the Record, exporting, settings and licences.</p>
+        <p class="door__who">For investigators already working in IWS who need to find or check something.</p>
+        <span class="door__go">Open the User Guide</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="also" aria-label="Also useful">
+    <h2 class="eyebrow">Also useful</h2>
+    <ul>
+      <li><a href="methodology.html">Methodology</a><span>Why the three tests run in the order they do, and how results become findings.</span></li>
+      <li><a href="case-studies.html">Case studies</a><span>Three fictional investigations worked from notification to final report.</span></li>
+      <li><a href="changelog.html">Changelog</a><span>What changed in each release.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
+    <span><a href="#top">Back to top</a> · <a href="changelog.html">Changelog</a></span>
+  </footer>
+</main>
+
+</body>
+</html>

@@ -13,13 +13,13 @@
       "Probability wording: the likelihood bands and their accepted phrases adjustable in Settings; the object form shows what a slider position reads as.",
       "A Findings list says when a finding stated without a likelihood term was established as fact.",
       "Record before Draft report in the tab order; the Draft report page in three bands.",
-      "The user guide illustrated throughout, with every control explained.",
+      "The User Guide illustrated throughout, with every control explained.",
       "The maker named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
     ],
     "fixes": [
       "Record checks read only the sentence that restates a factor's own claim, leave excluded hypotheses and other risk factors unconnected by design, and read a numbered Findings list item by item.",
       "The command-line export carries figures like the app's own export, and a figure's caption reads as its own sentence.",
-      "User guide passages that named old tabs or described behaviour the app no longer has are corrected."
+      "User Guide passages that named old tabs or described behaviour the app no longer has are corrected."
     ]
   },
   {

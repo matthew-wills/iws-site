@@ -87,7 +87,7 @@ const NAV = [
   ["methodology.html", "Methodology", "methodology"],
   ["ai-security.html", "AI and security", "ai"],
   ["case-studies.html", "Case studies", "cases"],
-  ["guide.html", "Documentation", "docs"],
+  ["documentation.html", "Documentation", "docs"],
   ["download.html", "Download", "download"],
 ];
 const MAKER = `${BRAND} is made by ${COMPANY} ${DESCRIPTOR}.`;
@@ -471,11 +471,101 @@ const sitePages = [
   ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.`],
   ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
   ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how to buy and activate a licence.`],
-  ["getting-started", "Getting started", `The first investigation in ${BRAND}, step by step, from a new investigation folder to the first report.`],
+  ["documentation", "Documentation", `How to learn ${BRAND}: the Getting started walkthrough of a first investigation, and the User Guide to every tab, form and setting.`],
+  ["getting-started", "Getting started", `Your first investigation in ${BRAND}, step by step on a small fictional occurrence, from the start screen to the Evidence and Argument Tables.`],
 ];
-const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download", "getting-started": null };
+const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download", documentation: "docs", "getting-started": "docs" };
+
+// ------------------------------------------- the Getting started walkthrough
+/** The walkthrough's words are the application's own
+ *  (src/help/guide/gettingStarted.ts), written here as data by its
+ *  scripts/render-getting-started.tsx --json; this lays them out. A
+ *  reference in the data is a topic id, resolved to a page here. */
+const gs = JSON.parse(readFileSync(join(here, "getting-started.json"), "utf8"));
+const GS_PARTS = { "gs:before": "#before", "gs:steps": "#steps", "gs:have": "#have", "gs:next": "#next" };
+const GS_SITE = { "site:download": "download.html", "site:levels": "download.html", "site:methodology": "methodology.html", "site:case-study": "case-studies.html" };
+const gsHref = (ref) => {
+  if (ref in GS_PARTS) return GS_PARTS[ref];
+  if (ref.startsWith("guide:")) return `guide.html#manual-${ref.slice(6)}`;
+  if (ref in GS_SITE) return GS_SITE[ref];
+  throw new Error(`getting-started.json: no page for reference ${ref}`);
+};
+const gsRun = (run) => {
+  if (typeof run === "string") return esc(run);
+  if ("kbd" in run) return `<kbd>${esc(run.kbd)}</kbd>`;
+  if ("code" in run) return `<code>${esc(run.code)}</code>`;
+  if ("enter" in run) return `<em class="enter">${esc(run.enter)}</em>`;
+  return `<a href="${gsHref(run.ref)}">${esc(run.text)}</a>`;
+};
+const gsPara = (para) => para.map(gsRun).join("");
+const gsParas = (paras, indent = "          ") => paras.map((p) => `${indent}<p>${gsPara(p)}</p>`).join("\n");
+const NUMBER_WORDS = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"];
+/** A step whose widest picture would be cramped in a half column lays
+ *  its text out above the pictures instead of beside them. */
+const WIDE_FIGURE = 700;
+const gsStep = (step, total) => {
+  const wide = step.figures.some((f) => f.displayWidth >= WIDE_FIGURE);
+  const [place, ...path] = step.where;
+  const where = [esc(place) + (path.length ? ":" : ""), path.map((w) => `<b>${esc(w)}</b>`).join(" &rarr; ")].filter(Boolean).join(" ");
+  const figures = step.figures
+    .map(
+      (f) =>
+        `<figure style="max-width: ${f.displayWidth}px"><img class="shot zoomable" src="guide-images/${esc(f.file)}" alt="${esc(f.alt)}" data-caption="${esc(f.caption)}" width="${f.displayWidth}" loading="lazy"><figcaption>${esc(f.caption)}</figcaption></figure>`,
+    )
+    .join("");
+  return [
+    `    <li class="step${wide ? " step--wide" : ""}" id="step-${esc(step.id)}">`,
+    `      <div class="step__text">`,
+    `        <div class="step__main">`,
+    `        <p class="step__of">Step ${step.number} of ${total}</p>`,
+    `        <div class="step__head"><span class="stage-no">${step.number}</span><h3>${esc(step.title)}</h3></div>`,
+    `        <p class="step__where">${where}</p>`,
+    gsParas(step.body, "        "),
+    `        </div>`,
+    `        <div class="see"><span class="see__label">You should now see</span>${step.see.map((p) => `<p>${gsPara(p)}</p>`).join("")}</div>`,
+    `      </div>`,
+    `      <div class="step__figs">${figures}</div>`,
+    `    </li>`,
+  ].join("\n");
+};
+const gsCase = (c) =>
+  [
+    `      <div class="case">`,
+    `        <div class="case__head"><span class="pill">${esc(c.label)}</span><h3>${esc(c.title)}</h3></div>`,
+    `        <p class="case__lede">${esc(c.summary)} Copy each piece below as you need it.</p>`,
+    `        <div class="case__items">${c.pieces.map((p) => `<div class="case__item"><h4>${esc(p.caption)}</h4><p>${esc(p.text)}</p></div>`).join("")}</div>`,
+    `      </div>`,
+  ].join("\n");
+const gsList = (paras) => `<ul class="plain">${paras.map((p) => `<li>${gsPara(p)}</li>`).join("")}</ul>`;
+const gsHoles = {
+  GS_TITLE: esc(gs.title),
+  GS_LEDE: gsPara(gs.lede),
+  GS_BEFORE_TITLE: esc(gs.before.title),
+  GS_HAVE_TITLE: esc(gs.have.title),
+  GS_NEXT_TITLE: esc(gs.next.title),
+  GS_INSTALL: gsParas(gs.before.install),
+  GS_PROOF: gsParas(gs.before.standardOfProof),
+  // The data opens this paragraph with the question the template already
+  // carries as the item's heading.
+  GS_LOOK: gsParas(gs.before.lookFirst.map((p) => (typeof p[0] === "string" ? [p[0].replace(/^Rather look first\?\s*/, ""), ...p.slice(1)] : p))),
+  GS_CASE: gsCase(gs.before.occurrence),
+  GS_STEP_COUNT_WORD: NUMBER_WORDS[gs.steps.length] ?? String(gs.steps.length),
+  GS_STEP_INDEX: gs.steps.map((s) => `      <li><a href="#step-${esc(s.id)}">${esc(s.title)}</a></li>`).join("\n"),
+  GS_STEPS: gs.steps.map((s) => gsStep(s, gs.steps.length)).join("\n"),
+  GS_HAVE: [
+    `    <div class="have">`,
+    `      <div class="have__col"><h3><span class="pill">Free</span> Yours now</h3>${gsList(gs.have.free)}</div>`,
+    `      <div class="have__col"><h3><span class="pill">Professional</span> When you need more</h3>${gsList(gs.have.professional)}</div>`,
+    `    </div>`,
+    gs.have.note.map((p) => `    <p class="hint have-note">${gsPara(p)}</p>`).join("\n"),
+  ].join("\n"),
+  GS_NEXT: `    <ul class="next">\n${gs.next.items.map((i) => `      <li><a href="${gsHref(i.ref)}">${esc(i.label)}</a><span>${esc(i.blurb)}</span></li>`).join("\n")}\n    </ul>`,
+};
+const fillGettingStarted = (html) => Object.entries(gsHoles).reduce((h, [hole, value]) => h.replaceAll(`%%${hole}%%`, () => value), html);
+
 const topPages = sitePages.map(([name, title, description]) => {
-  const html = fillFeatured(`${name}.template.html`, navKey[name]);
+  const filled = fillFeatured(`${name}.template.html`, navKey[name]);
+  const html = name === "getting-started" ? fillGettingStarted(filled) : filled;
   write(`${name}.html`, document(`${title} | ${BRAND}`, html, description));
   return html;
 });
@@ -504,7 +594,7 @@ write("changelog.html", document(`Changelog | ${BRAND}`, changelog, `What change
 
 const fragment = readFileSync(join(here, "guide-fragment.html"), "utf8");
 const guide = chrome(readFileSync(join(here, "guide.template.html"), "utf8"), "", "docs", [["#top", "Back to top"]]).replace("%%THEME%%", theme).replace("%%GUIDE%%", () => fragment);
-write("guide.html", document(`Documentation | ${BRAND}`, guide, `The ${BRAND} user guide, the same guide the application ships under Help.`));
+write("guide.html", document(`User Guide | ${BRAND}`, guide, `The ${BRAND} User Guide to every tab, form and setting, the same User Guide the application ships under Help.`));
 
 writeFileSync(join(here, "build-manifest.json"), `${JSON.stringify(built.sort(), null, 2)}\n`);
 

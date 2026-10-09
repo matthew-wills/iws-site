@@ -13,20 +13,23 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
     - `index.template.html` - the home page.
     - `product.template.html`, `methodology.template.html`,
       `ai-security.template.html`, `case-studies.template.html`,
-      `download.template.html`, `getting-started.template.html` - the other
-      top-level pages, one job each: what the product is, how the method
-      derives findings, what AI does and where data goes, the worked case
-      studies, how to get it, and the first investigation step by step
-      (linked from the home and download pages rather than the nav).
+      `download.template.html`, `documentation.template.html`,
+      `getting-started.template.html` - the other top-level pages, one job
+      each: what the product is, how the method derives findings, what AI
+      does and where data goes, the worked case studies, how to get it,
+      the Documentation landing page (the nav's Documentation item, with
+      Getting started and the User Guide under it), and the first
+      investigation step by step. The getting-started template's
+      `%%GS_*%%` holes are filled from `getting-started.json`.
     - `case-study.template.html` - the shell around one study's page: a
       link back to all case studies above the study's content, and the
       "Other case studies" cards (`%%OTHER_STUDIES%%`) below it, both
       generated from the studies' meta.json.
     - `report.template.html`, `document.template.html` - a drafted
       report's page and a published document's page-by-page viewer.
-    - `guide.template.html` - the shell around the user guide
-      (Documentation): its table of contents, deep links and the previous
-      and next section links.
+    - `guide.template.html` - the page heading around the User Guide; the
+      contents column, its filter and the script that runs them come in
+      with the fragment.
     - `changelog.template.html` - the changelog, linked from the footer.
 - The holes a template can carry:
     - `%%THEME%%` - the theme.
@@ -45,7 +48,7 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
     - `%%CONTACT%%` - where "Talk to us" and "Contact us" go, set once as
       `CONTACT_EMAIL` in `build-site.mjs` (until it is set, the download
       page's Organisation card, and the build prints a note).
-    - `%%GUIDE%%` - the rendered user guide; `%%RELEASES%%` - the
+    - `%%GUIDE%%` - the rendered User Guide; `%%RELEASES%%` - the
       changelog entries; `%%CONTENT%%` - one case study's page body.
 - `case-studies/<slug>/` - one folder per case study, holding `meta.json`
   and `content.html`. This is the only place a case study is described.
@@ -61,7 +64,16 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
   built pages against the disk. Reads `build-manifest.json`, so pages left
   behind by an older layout are ignored.
 - `build-manifest.json` - the pages the last build wrote (generated).
-- `guide-fragment.html` - the in-app user guide rendered to HTML (generated).
+- `guide-fragment.html` - the in-app User Guide rendered to HTML (generated).
+- `getting-started.json` - the Getting started walkthrough as data, the
+  same words the app's Help shows (generated). `build-site.mjs` lays it
+  out and resolves its topic references (`guide:<id>` to
+  `guide.html#manual-<id>`). The HTML fragment the same command writes
+  beside it is not used and is ignored by git.
+- `guide-images/` - the screenshots the User Guide and the walkthrough
+  show, copied in by the two render commands below (generated). Each
+  render copies only what it references; a file nothing references any
+  more is deleted by hand.
 - `reports/<slug>/*.json` - a case study's drafted reports, audits and
   checks rendered to HTML (generated), with the app's `markdown.css`.
 - `shots/<slug>/`, `exports/<slug>/` - a case study's screenshots and
@@ -84,13 +96,15 @@ In the application repository, once per case study slug (here
 `tarlton-springs-rto`):
 
     npx vite-node scripts/render-user-guide.tsx ../iws-site/guide-fragment.html
+    npx vite-node scripts/render-getting-started.tsx ../iws-site/getting-started-fragment.html --json ../iws-site/getting-started.json
     npx vite-node scripts/render-case-reports.tsx tarlton-springs-rto ../iws-site/reports/tarlton-springs-rto
     npx vite-node scripts/export-case-study-docs.tsx tarlton-springs-rto
     npx vite-node scripts/case-study-source-pack.tsx tarlton-springs-rto
     powershell -NoProfile -ExecutionPolicy Bypass -File scripts/docx-to-pdf.ps1 case-studies/tarlton-springs-rto/exports
     node scripts/case-study-shots.mjs case-studies/tarlton-springs-rto/shots/stages case-studies/tarlton-springs-rto/shots
 
-The user guide line is the whole site's, not a study's; run it once.
+The User Guide and Getting started lines are the whole site's, not a
+study's; run them once.
 
 Then here, once for the whole site:
 

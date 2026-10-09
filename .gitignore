@@ -1,1 +1,3 @@
 review/
+# Written beside getting-started.json by the app's render-getting-started.tsx; the build lays the page out from the JSON instead.
+getting-started-fragment.html

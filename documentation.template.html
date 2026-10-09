@@ -1,0 +1,82 @@
+<title>Documentation | Investigation Workflow Suite (IWS)</title>
+<style>
+%%THEME%%
+
+  [id] { scroll-margin-top: 76px; }
+  .page-head { padding-block: 44px 30px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+
+  /* A crop of a larger screenshot, positioned from the full image's size. An inset outline rather than a border keeps the crop maths exact. */
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); background: var(--paper); }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+
+  .doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding-bottom: 44px; }
+  .door { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+  .door:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+  .door:hover .door__go { text-decoration: underline; }
+  .door .crop { border-bottom: 1px solid var(--line); }
+  .door__body { display: flex; flex-direction: column; gap: 8px; padding: 20px 24px 24px; flex: 1; }
+  .door__kicker { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+  .door h2 { font-size: 1.5rem; }
+  .door p { color: var(--ink-soft); }
+  .door .door__who { color: var(--ink); font-size: 0.95rem; }
+  .door__go { margin-top: auto; padding-top: 8px; font-weight: 600; color: var(--accent); }
+  .also { border-top: 1px solid var(--line); padding-block: 26px 8px; }
+  .also h2.eyebrow { font-size: 0.78rem; margin-bottom: 12px; }
+  .also ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 28px; }
+  .also li { display: flex; flex-direction: column; gap: 2px; padding-left: 14px; border-left: 3px solid var(--accent-soft); }
+  .also a { font-weight: 600; text-decoration: none; }
+  .also a:hover { text-decoration: underline; }
+  .also span { color: var(--ink-soft); font-size: 0.93rem; }
+  @media (max-width: 860px) {
+    .doors, .also ul { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .page-head { padding-block: 28px 20px; }
+    .door__body { padding: 16px 18px 20px; }
+  }
+</style>
+
+%%HEADER%%
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">Documentation</span>
+    <h1>Learn IWS by doing one, then look things up as you go.</h1>
+    <p class="lede">Two places to start, both written for the application as it ships. The User Guide is the same guide you get under Help in the app.</p>
+  </section>
+
+  <section class="doors" aria-label="Documentation">
+    <a class="door" href="getting-started.html">
+      <div class="crop" style="--W: 1828; --x: 0; --y: 40; --cw: 1828; --ch: 820"><img src="guide-images/first-test-argument.png" alt="An Existence test argued: evidence for and against, the probability and Pass" loading="lazy"></div>
+      <div class="door__body">
+        <span class="door__kicker">Getting started &middot; 20 to 30 minutes</span>
+        <h2>Your first investigation</h2>
+        <p>An illustrated walkthrough on a small fictional occurrence, from the start screen to the Evidence and Argument Tables. Every step works at Free.</p>
+        <p class="door__who">For anyone opening IWS for the first time.</p>
+        <span class="door__go">Start the walkthrough</span>
+      </div>
+    </a>
+    <a class="door" href="guide.html">
+      <div class="crop" style="--W: 3200; --x: 0; --y: 0; --cw: 2400; --ch: 1077"><img src="guide-images/record.png" alt="The application's tabs, Dashboard to Draft report, with the Record tab open" loading="lazy"></div>
+      <div class="door__body">
+        <span class="door__kicker">User Guide &middot; reference</span>
+        <h2>Every tab, form and setting</h2>
+        <p>Organised by where things are in the app, each section linkable: the canvas and objects, evidence, the timeline, the Record, exporting, settings and licences.</p>
+        <p class="door__who">For investigators already working in IWS who need to find or check something.</p>
+        <span class="door__go">Open the User Guide</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="also" aria-label="Also useful">
+    <h2 class="eyebrow">Also useful</h2>
+    <ul>
+      <li><a href="methodology.html">Methodology</a><span>Why the three tests run in the order they do, and how results become findings.</span></li>
+      <li><a href="case-studies.html">Case studies</a><span>Three fictional investigations worked from notification to final report.</span></li>
+      <li><a href="changelog.html">Changelog</a><span>What changed in each release.</span></li>
+    </ul>
+  </section>
+
+%%FOOTER%%
+</main>

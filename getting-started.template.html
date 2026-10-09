@@ -4,17 +4,82 @@
 
   [id] { scroll-margin-top: 76px; }
 
-  .page-head { padding-block: 44px 28px; display: flex; flex-direction: column; gap: 12px; max-width: 72ch; }
+  .page-head { padding-block: 44px 26px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
   .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
+  .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
+  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
+  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
 
-  .first { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-  .first-steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; color: var(--ink-soft); font-size: 1rem; max-width: 66ch; }
-  .first-steps strong { color: var(--ink); font-weight: 600; }
-  .first-side { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
-  .first-side h3 { color: var(--ink); font-size: 1.05rem; }
+  /* A crop of a larger screenshot, positioned from the full image's size. An inset outline rather than a border keeps the crop maths exact. */
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; outline: 1px solid var(--line); outline-offset: -1px; background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
 
-  @media (max-width: 960px) { .first { grid-template-columns: 1fr; } }
+  kbd { font-family: var(--font-mono); font-size: 0.85em; padding: 1px 6px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 5px; background: var(--paper); }
+  code { font-family: var(--font-mono); font-size: 0.9em; }
+  .enter { color: var(--ink); font-style: normal; font-weight: 550; }
+  .block p + p { margin-top: 10px; }
+  .before { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+  .before__list { display: flex; flex-direction: column; gap: 22px; }
+  .before__item h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .before__item p { color: var(--ink-soft); }
+  .f-inline { margin-top: 12px; max-width: 555px; }
+  .case { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
+  .case__head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .case__head h3 { font-size: 1.12rem; }
+  .case__lede { color: var(--ink-soft); margin-top: 8px; }
+  .case__items { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .case__item { border-left: 3px solid var(--lane-events); background: var(--ground); border-radius: 0 8px 8px 0; padding: 10px 14px; }
+  .case__item h4 { font-size: 0.86rem; font-weight: 650; }
+  .case__item p { font-size: 0.93rem; color: var(--ink); margin-top: 2px; }
+
+  .step-index { margin: 0 0 8px; padding-left: 22px; columns: 2; column-gap: 40px; color: var(--ink-soft); font-size: 0.95rem; }
+  .step-index li { margin-bottom: 4px; break-inside: avoid; }
+  .step-index a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .step-index a:hover { color: var(--accent-deep); }
+  .steps { list-style: none; margin: 0; padding: 0; }
+  .step { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr); gap: 36px; align-items: start; padding-block: 34px; border-top: 1px dashed var(--line); }
+  .step:first-child { border-top: 0; }
+  .step__of { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+  .step__head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .step__head h3 { font-size: 1.2rem; }
+  .step__where { font-size: 0.9rem; color: var(--ink-soft); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; margin-bottom: 12px; }
+  .step__where b { color: var(--ink); font-weight: 600; }
+  .step__main > p { color: var(--ink-soft); }
+  .step__main > p.step__where { color: var(--ink-soft); }
+  .step__main p + p { margin-top: 10px; }
+  .see { margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: var(--proof-soft); border: 1px solid #bbf7d0; }
+  .see__label { display: block; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--proof); margin-bottom: 2px; }
+  .see p { color: var(--ink); font-size: 0.95rem; }
+  .step__figs { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .step__figs figure { width: 100%; }
+  .step__figs .shot { margin-inline: auto; }
+  .step--wide { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .step--wide .step__text { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 40px; align-items: start; }
+  .step--wide .see { margin-top: 42px; }
+  .step--wide .step__figs { gap: 26px; }
+
+  .have { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .have__col { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; }
+  .have__col h3 { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
+  .have-note { margin-top: 16px; }
+  .next { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 30px; }
+  .next li { display: flex; flex-direction: column; gap: 3px; padding-left: 14px; border-left: 3px solid var(--accent-soft); }
+  .next a { font-weight: 600; text-decoration: none; }
+  .next a:hover { text-decoration: underline; }
+  .next span { color: var(--ink-soft); font-size: 0.94rem; }
+  @media (max-width: 960px) {
+    .before, .step, .have, .step--wide .step__text { grid-template-columns: 1fr; gap: 18px; }
+    .step--wide .see { margin-top: 16px; }
+    .next { grid-template-columns: 1fr; }
+    .step-index { columns: 1; }
+  }
+  @media (max-width: 560px) {
+    .page-head { padding-block: 28px 18px; }
+    section.block { padding-block: 38px; }
+    .case { padding: 18px 16px; }
+  }
 </style>
 
 %%HEADER%%
@@ -22,32 +87,81 @@
 <main class="wrap" id="top">
   <section class="page-head">
     <span class="eyebrow">Getting started</span>
-    <h1>Your first investigation</h1>
-    <p class="lede">Investigation Workflow Suite (IWS) is laid out the way an investigation runs. These are the steps for a first one; the user guide covers each in full.</p>
+    <h1>%%GS_TITLE%%</h1>
+    <p class="lede">%%GS_LEDE%%</p>
+    <nav class="onpage" aria-label="On this page"><a href="#before">%%GS_BEFORE_TITLE%%</a><a href="#steps">The steps</a><a href="#have">%%GS_HAVE_TITLE%%</a><a href="#next">%%GS_NEXT_TITLE%%</a></nav>
   </section>
 
-  <section class="block" id="steps" style="border-top: none; padding-top: 8px">
-    <div class="first">
-      <ol class="first-steps">
-        <li><strong>Install and open IWS.</strong> It runs as Free with no licence, with no time limit. A Professional licence is pasted in Settings &gt; General &gt; Licence.</li>
-        <li><strong>Create the investigation</strong> with File, New investigation, named for the occurrence. IWS makes a folder holding the investigation file.</li>
-        <li><strong>Work the checklist:</strong> answer the triage questions, and log the decision to investigate. Check the standard of proof in Settings (70 per cent by default).</li>
-        <li><strong>File the evidence</strong> as it arrives, each item once with its source, and build the timeline from it.</li>
-        <li><strong>Record the interviews</strong> and finalise each account once it is settled.</li>
-        <li><strong>Build the map:</strong> place the critical event, then a factor for every event or condition that might have played a part.</li>
-        <li><strong>Test each factor</strong> for Existence, Influence and Importance, with the confidence behind each result, and connect the causal chains.</li>
-        <li><strong>Export</strong> the Evidence and Argument Tables, and draw off the report in the style required.</li>
-      </ol>
-      <div class="first-side">
-        <h3>Learn from a finished one</h3>
-        <p>The start screen opens a worked example investigation, and the <a href="case-studies.html">case studies</a> show complete investigations from first notification to final report.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="guide.html#manual-first-investigation">The first investigation, in the guide</a>
-          <a class="btn" href="download.html">Download</a>
+  <section class="block" id="before">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">1</span>%%GS_BEFORE_TITLE%%</span>
+      <h2>Install the app, read the occurrence, check the standard of proof</h2>
+    </div>
+    <div class="before">
+      <div class="before__list">
+        <div class="before__item">
+          <h3>Install</h3>
+%%GS_INSTALL%%
+        </div>
+        <div class="before__item">
+          <h3>The standard of proof</h3>
+%%GS_PROOF%%
+          <figure class="f-inline"><div class="crop" style="--W: 2200; --x: 500; --y: 115; --cw: 1110; --ch: 265"><img class="zoomable" src="guide-images/settings-standard-of-proof.png" alt="Settings, Standard of proof: Required confidence for a finding, 70 per cent" data-caption="Settings, Standard of proof: Required confidence for a finding, 70 per cent" loading="lazy"></div></figure>
+        </div>
+        <div class="before__item">
+          <h3>Rather look first?</h3>
+%%GS_LOOK%%
         </div>
       </div>
+%%GS_CASE%%
     </div>
+  </section>
+
+  <section class="block" id="steps">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">2</span>The steps</span>
+      <h2>%%GS_STEP_COUNT_WORD%% steps, each with the control, a picture and what you should see</h2>
+    </div>
+    <ol class="step-index">
+%%GS_STEP_INDEX%%
+    </ol>
+    <ol class="steps">
+%%GS_STEPS%%
+    </ol>
+  </section>
+
+  <section class="block" id="have">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">3</span>%%GS_HAVE_TITLE%%</span>
+      <h2>A tested, evidenced factor, and the document that shows the working</h2>
+    </div>
+%%GS_HAVE%%
+  </section>
+
+  <section class="block" id="next">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">4</span>%%GS_NEXT_TITLE%%</span>
+      <h2>Take the same steps across a whole investigation</h2>
+    </div>
+%%GS_NEXT%%
   </section>
 
 %%FOOTER%%
 </main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
+  <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
+  <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+</div>
+<script>
+  (function () {
+    var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
+    function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
+    Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
+    document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    lb.addEventListener("click", closeLb);
+    window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
+  })();
+</script>
