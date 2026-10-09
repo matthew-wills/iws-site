@@ -51,7 +51,9 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
   and `content.html`. This is the only place a case study is described.
 - `changelog.json` - one entry per release (`version`, `date`, `features`,
   `fixes`), user-facing items only. The changelog page is built from it, so
-  a release is recorded here and nowhere else.
+  a release is recorded here and nowhere else. An entry for a release not
+  yet out carries `"planned": true` in place of `date` and reads "Planned,
+  not yet released"; at release, swap it for the date.
 - `build-site.mjs` - assembles every page and copies the screenshots and
   published documents in. Takes the application repository's `case-studies`
   folder as its argument.

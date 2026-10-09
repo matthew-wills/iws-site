@@ -491,7 +491,7 @@ const releaseHtml = releases
   .map((r) =>
     [
       `    <div class="release">`,
-      `      <div><span class="v">${r.version}</span><span class="d">${r.date}</span></div>`,
+      `      <div><span class="v">${r.version}</span><span class="d">${r.planned ? "Planned, not yet released" : r.date}</span></div>`,
       `      <div class="parts">`,
       [changeList("Added", r.features), changeList("Fixed", r.fixes)].filter(Boolean).join("\n"),
       `      </div>`,
