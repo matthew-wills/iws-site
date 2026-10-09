@@ -149,51 +149,61 @@ footer .legal { line-height: 1.6; }
   .hero h1 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
   .hero .lede { font-size: 1.12rem; color: var(--ink-soft); }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .hero-map { margin-top: 26px; }
-  .hero-map figcaption { max-width: 1160px; margin-inline: auto; }
-  .diffs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; padding-block: 30px 44px; }
-  .diffs h2 { font-size: 1.02rem; margin-bottom: 4px; }
-  .diffs p { color: var(--ink-soft); font-size: 0.95rem; }
-  .section-head .lead-line { font-size: clamp(1.08rem, 1.7vw, 1.25rem); color: var(--ink); font-weight: 500; max-width: 62ch; line-height: 1.4; }
-
-  /* The problem: the usual way against one record */
-  .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-  .compare > div { padding: 18px 20px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper); }
-  .compare > div.ours { border-color: #93c5fd; }
-  .compare ul { margin: 8px 0 0; padding-left: 20px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 5px; }
-
-  /* The four stages, a row each, the picture cropped to what it shows */
-  .rows { display: flex; flex-direction: column; gap: 46px; }
-  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 34px; align-items: center; }
-  .row.flip { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr); }
-  .row.flip > :first-child { order: 2; }
-  .row .text { display: flex; flex-direction: column; gap: 10px; }
-  .row .text p { color: var(--ink-soft); }
-  .stage-head { display: flex; align-items: center; gap: 10px; }
-  .stage-head h3 { font-size: 1.3rem; }
-  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.86rem; font-weight: 700; }
   .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
   .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
-  .page { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); }
-  .pagepair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .pagepair a { text-decoration: none; }
-  .pagepair span { display: block; font-size: 0.82rem; color: var(--ink-soft); margin-top: 6px; }
-  .more { margin-top: 30px; }
 
-  /* AI, in a few lines */
-  .ai { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 34px; align-items: start; }
-  .ai ol { margin: 0; padding-left: 22px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 8px; }
-  .ai ol strong { color: var(--ink); font-weight: 600; }
+  /* The AcciMap, introduced, then shown wide */
+  .map-intro { margin-top: 48px; max-width: 70ch; display: flex; flex-direction: column; gap: 8px; }
+  .map-intro h2 { font-size: 1.35rem; }
+  .map-intro p, .why p { color: var(--ink-soft); }
+  .hero-map { margin-top: 22px; }
+  .hero-map figcaption { max-width: 1160px; margin: 14px auto 0; }
+  .hero-map figcaption span { display: block; max-width: 92ch; font-size: 0.97rem; line-height: 1.55; color: #334155; }
+  .why { margin-top: 40px; display: flex; flex-direction: column; gap: 10px; }
+  .why > * { max-width: 76ch; }
+  .why p { font-size: 1.05rem; }
+
+  /* The four stages: one frame each, all the same shape */
+  .stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  .stages figure { margin: 0; }
+  .stages .crop { aspect-ratio: 4 / 3; }
+  .stages h3 { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 1.05rem; }
+  .stages h3 span { display: inline-flex; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.8rem; align-items: center; justify-content: center; }
+  .stages p { color: var(--ink-soft); font-size: 0.93rem; margin-top: 4px; }
+  .crop--page { background: #fff; }
+  .more { margin-top: 20px; }
+
+  /* What the investigation produces: four pages, one width */
+  .outs { --g: 22px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--g); }
+  .outs__group { display: flex; flex-direction: column; }
+  .outs__group > .doc, .outs__group > .docs { margin-top: auto; }
+  .outs__group h3 { font-size: 1.05rem; }
+  .outs__group > p { color: var(--ink-soft); font-size: 0.93rem; margin: 4px 0 16px; }
+  .outs__group--reports { position: relative; grid-column: span 3; }
+  .outs__group--reports::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--g) / -2); border-left: 1px solid var(--line); }
+  .docs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); }
+  .doc { display: block; text-decoration: none; color: var(--ink); }
+  .doc img { display: block; width: 100%; height: auto; aspect-ratio: 1550 / 2192; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); transition: transform 0.15s ease; }
+  .doc:hover img { transform: translateY(-2px); }
+  .doc span { display: block; margin-top: 10px; font-size: 0.88rem; font-weight: 600; }
+  .doc:hover span { color: var(--accent); }
+  .ai-note { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .ai-note p { color: var(--ink-soft); font-size: 0.95rem; max-width: 90ch; }
 
   @media (max-width: 960px) {
-    .diffs, .compare, .ai { grid-template-columns: 1fr; gap: 16px; }
-    .row, .row.flip { grid-template-columns: 1fr; gap: 16px; }
-    .row.flip > :first-child { order: 0; }
+    .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 30px; }
+    .outs { grid-template-columns: 1fr; row-gap: 30px; }
+    .outs__group--reports { grid-column: auto; }
+    .outs__group--reports::before { display: none; }
+    .outs__group > .doc { width: calc((100% - 2 * var(--g)) / 3); }
   }
   @media (max-width: 560px) {
     .hero { padding-block: 30px 4px; }
     section.block { padding-block: 38px; }
-    .rows { gap: 36px; }
+    .map-intro { margin-top: 34px; }
+    .outs { --g: 14px; }
+    .docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .outs__group > .doc { width: calc((100% - var(--g)) / 2); }
   }
 </style>
 </head>
@@ -229,83 +239,51 @@ footer .legal { line-height: 1.6; }
       <a class="btn" href="case-studies.html">See the case studies</a>
     </div>
   </section>
+
+  <section class="map-intro">
+    <h2>Every investigation is built on an AcciMap</h2>
+    <p>The occurrence sits at the bottom. Above it, in lanes from the people involved up to the regulator, go the events and conditions that might have led to it. Each one is tested against the evidence, and the map shows the result.</p>
+  </section>
   <figure class="hero-map block--wide">
     <div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished AcciMap for the Tarlton Springs case study: every object across six lanes, converging on the runway overrun" data-caption="The finished AcciMap from the Tarlton Springs case study."></div>
-    <figcaption>The finished AcciMap from the Tarlton Springs case study. Blue objects contributed, orange ones are other risk factors, and struck-through hypotheses were tested and excluded. Select it to see it full size.</figcaption>
+    <figcaption><span>Tarlton Springs, a fictional rejected take-off and runway overrun, at the end of the investigation. Blue objects contributed to the overrun and orange ones increased risk without contributing. The two struck-through objects are hypotheses that were tested and excluded. An arrow appears only between objects that have passed their tests. Select the map to see it full size.</span></figcaption>
   </figure>
-  <div class="diffs">
-    <div><h2>One investigation record</h2><p>The checklist, evidence, interviews, timeline, AcciMap, tests and reports, in one file on your own drive.</p></div>
-    <div><h2>Findings you can trace</h2><p>Every finding keeps the evidence, the tests and the reasoning behind it, and exports as the Evidence and Argument Tables.</p></div>
-    <div><h2>Local by default</h2><p>No account and no upload. Nothing about an investigation leaves the machine unless you connect an AI model.</p></div>
-  </div>
 
-  <section class="block" id="problem">
-    <div class="section-head">
-      <h2>Investigation work is fragmented. The reasoning shouldn't be.</h2>
-      <p class="lead-line">The evidence usually survives an investigation. The reasoning that links it to the findings often does not.</p>
-    </div>
-    <div class="compare">
-      <div><span class="eyebrow">The typical workflow</span>
-        <ul><li>Notes in Word or OneNote, evidence in folders</li><li>Timelines in spreadsheets, diagrams in PowerPoint or Visio</li><li>The finished report in the SMS database</li><li>The reasoning in the investigator's head</li></ul></div>
-      <div class="ours"><span class="eyebrow">With IWS</span>
-        <ul><li>One record for the whole investigation</li><li>Each finding traces back to its tests and evidence</li><li>New evidence updates the analysis, not a pile of documents</li><li>A reviewer can check the working in the file</li></ul></div>
-    </div>
+  <section class="block why">
+    <h2>One record, from the first evidence to the final report</h2>
+    <p>Evidence, hypotheses and assessments remain connected throughout the investigation. As events and conditions are tested, the supporting reasoning is recorded against each AcciMap object and carried directly into the Evidence and Argument Tables.</p>
   </section>
 
   <section class="block" id="how">
-    <div class="section-head">
-      <h2>From evidence to report</h2>
-      <p class="lead-line">Four stages on one record. New evidence can arrive at any point, and the analysis moves with it.</p>
-    </div>
-    <div class="rows">
-      <div class="row">
-        <div class="text">
-          <div class="stage-head"><span class="stage-no">1</span><h3>Evidence</h3></div>
-          <p>Capture each item once, whether a document, photograph, recording or interview transcript, and link it to every object it bears on. Interview speakers are mapped to roles, so names stay out of the record.</p>
-        </div>
-        <figure><div class="crop" style="--W: 3840; --x: 30; --y: 900; --cw: 1240; --ch: 775"><img class="zoomable" src="shots/tarlton-springs-rto/01-evidence-register.png" alt="The Evidence tab, each captured item grouped under the object it bears on" data-caption="The Evidence tab: each item filed once, grouped by the object that rests on it." loading="lazy"></div><figcaption>The Evidence tab: each item filed once, grouped by the object that rests on it.</figcaption></figure>
-      </div>
-      <div class="row flip">
-        <div class="text">
-          <div class="stage-head"><span class="stage-no">2</span><h3>Analysis</h3></div>
-          <p>Put every event and condition that might have played a part on the AcciMap, including the hypotheses you expect to fail. An excluded hypothesis stays on the map, struck through. An arrow stays grey and dashed until the object it comes from has passed its tests.</p>
-        </div>
-        <figure><div class="crop" style="--W: 3840; --x: 0; --y: 1180; --cw: 2000; --ch: 930"><img class="zoomable" src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="The lower lanes of the AcciMap part way through testing: two excluded hypotheses struck through and the first arrows drawn" data-caption="Part way through testing: two hypotheses excluded and struck through, the first proven arrows drawn." loading="lazy"></div><figcaption>Part way through testing: two hypotheses excluded and struck through, the first proven arrows drawn.</figcaption></figure>
-      </div>
-      <div class="row">
-        <div class="text">
-          <div class="stage-head"><span class="stage-no">3</span><h3>Assessment</h3></div>
-          <p>Test each object for Existence, Influence and Importance. Record the argument for, the argument against and your reasoning, with a confidence on a ten-term probability scale. The results decide how the object is classified; the judgements behind them stay yours.</p>
-        </div>
-        <figure><div class="crop" style="--W: 3840; --x: 200; --y: 170; --cw: 2240; --ch: 1640"><img class="zoomable" src="shots/tarlton-springs-rto/19-object-form-importance.png" alt="An object's form: Existence passed at 100 per cent and Influence failed at 10 per cent, each with its evidence and reasoning" data-caption="An object's form: each test with its evidence, result and confidence." loading="lazy"></div><figcaption>An object's form: each test with its evidence, result and confidence.</figcaption></figure>
-      </div>
-      <div class="row flip">
-        <div class="text">
-          <div class="stage-head"><span class="stage-no">4</span><h3>Reporting</h3></div>
-          <p>Export the Evidence and Argument Tables, then build the reports from the same record: a preliminary report, the final investigation report and an executive briefing, written to Word with Professional. Write them yourself under each report's headings, or use optional AI drafting and check the draft against the record.</p>
-        </div>
-        <div class="pagepair">
-          <a href="exports/tarlton-springs-rto/evidence_argument_tables.html"><img class="page" src="exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="Page 5 of the Tarlton Springs Evidence and Argument Tables" loading="lazy"><span>Evidence and Argument Tables, page 5</span></a>
-          <a href="exports/tarlton-springs-rto/report_standard.html"><img class="page" src="exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="Page 8 of the Tarlton Springs final investigation report" loading="lazy"><span>Final investigation report, page 8</span></a>
-        </div>
-      </div>
-    </div>
-    <p class="more"><a href="product.html">Each stage in detail, and what Free and Professional include</a></p>
+    <div class="section-head"><h2>Four stages, one record</h2></div>
+    <ol class="stages">
+      <li><figure><div class="crop" style="--W: 1600; --x: 40; --y: 530; --cw: 1520; --ch: 1140"><img class="zoomable" src="shots/tarlton-springs-rto/20-evidence-overview.png" alt="The Evidence tab: the category counts above every captured item in one grid, from the occurrence notification and flight data to manuals and a photograph" data-caption="The Evidence tab: everything the investigation holds, in one register." loading="lazy"></div></figure><h3><span>1</span>Evidence</h3><p>Organise documents, interviews, records and other material in one investigation.</p></li>
+      <li><figure><div class="crop" style="--W: 3840; --x: 720; --y: 290; --cw: 1560; --ch: 1170"><img class="zoomable" src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="The AcciMap part way through testing: hypotheses in their lanes, the first that passed their tests shaded and joined by arrows" data-caption="Part way through testing: hypotheses in their lanes, the first proven arrows drawn." loading="lazy"></div></figure><h3><span>2</span>Analysis</h3><p>Develop and connect hypotheses on the AcciMap as the investigation progresses.</p></li>
+      <li><figure><div class="crop" style="--W: 3840; --x: 200; --y: 170; --cw: 1520; --ch: 1140"><img class="zoomable" src="shots/tarlton-springs-rto/19-object-form-importance.png" alt="An object's form: the Existence test with its evidence, result and confidence" data-caption="An object's form: each test with its evidence, result and confidence." loading="lazy"></div></figure><h3><span>3</span>Assessment</h3><p>Test each event or condition against the evidence and record the reasoning.</p></li>
+      <li><figure><div class="crop crop--page" style="--W: 1550; --x: 80; --y: 180; --cw: 1392; --ch: 1044"><img class="zoomable" src="exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="The analysis section of the Tarlton Springs final investigation report" data-caption="A page of the final investigation report." loading="lazy"></div></figure><h3><span>4</span>Reporting</h3><p>Generate Evidence and Argument Tables and investigation reports from the same record.</p></li>
+    </ol>
+    <p class="more"><a href="product.html">Each stage in detail on the Product page &rarr;</a></p>
   </section>
 
-  <section class="block" id="ai">
-    <div class="ai">
-      <div class="section-head" style="margin-bottom: 0">
-        <h2>Optional AI drafting</h2>
-        <p class="lead-line">AI can draft the report from the record. It does not investigate.</p>
-        <p><a href="ai-security.html">How drafts are checked, and where data goes</a></p>
+  <section class="block" id="outputs">
+    <div class="section-head"><h2>What the investigation produces</h2></div>
+    <div class="outs">
+      <div class="outs__group">
+        <h3>The working</h3>
+        <p>The Evidence and Argument Tables: each object's tests, arguments and reasoning, for whoever reviews the findings.</p>
+        <a class="doc" href="exports/tarlton-springs-rto/evidence_argument_tables.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="A page of the Evidence and Argument Tables: one object's Existence and Influence tests, each with its arguments and reasoning" loading="lazy"><span>Evidence and Argument Tables</span></a>
       </div>
-      <ol>
-        <li><strong>Draft.</strong> A model drafts each section from the record, instructed to use nothing else.</li>
-        <li><strong>Check.</strong> A second model pass flags claims the record does not support, and a mechanical check compares every classification and confidence word with its test.</li>
-        <li><strong>Decide.</strong> You correct and finalise. The report is yours.</li>
-      </ol>
+      <div class="outs__group outs__group--reports">
+        <h3>The reports</h3>
+        <p>Written for the people who need the result, at each point in the investigation.</p>
+        <div class="docs">
+          <a class="doc" href="exports/tarlton-springs-rto/report_preliminary.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/report_preliminary/p05.png" alt="A page of the preliminary investigation report: what the investigation is looking at, with a site photograph" loading="lazy"><span>Preliminary investigation report</span></a>
+          <a class="doc" href="exports/tarlton-springs-rto/report_standard.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/report_standard/p22.png" alt="A page of the final investigation report: the appendix table summarising each factor's tests" loading="lazy"><span>Final investigation report</span></a>
+          <a class="doc" href="exports/tarlton-springs-rto/report_executive.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/report_executive/p05.png" alt="A page of the executive briefing: the findings, grouped as contributing safety factors, other factors and other findings" loading="lazy"><span>Executive briefing</span></a>
+        </div>
+      </div>
     </div>
+    <div class="ai-note"><p>Write each report yourself under its headings, or use optional AI-assisted drafting with a Professional licence. Every draft is checked against the record, and you decide what stays. <a href="ai-security.html">How AI drafting works and where data goes &rarr;</a></p></div>
   </section>
 
   <section class="block" id="cases">
