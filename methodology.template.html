@@ -3,83 +3,121 @@
 %%THEME%%
 
   [id] { scroll-margin-top: 76px; }
-
-  .page-head { padding-block: 44px 34px; display: flex; flex-direction: column; gap: 14px; max-width: 78ch; }
+  .anchor { display: block; height: 0; }
+  .page-head { padding-block: 44px 26px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
   .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
-  .page-head .lede strong { color: var(--ink); font-weight: 600; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 68ch; }
-  .prose strong { color: var(--ink); font-weight: 600; }
-  .two { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
+  .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
+  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
+  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
 
-  /* Diagrams hold no fixed colours: every fill, stroke and label reads one
-     of these tokens, and each token reads the theme's own. */
-  .loopfig, .chainfig {
-    --lp: var(--paper);
-    --ll: var(--line-strong);
-    --li: var(--ink);
-    --ls: var(--ink-soft);
-    --lf: var(--ink-faint);
-    --la: var(--accent);
-    --las: var(--accent-soft);
-    --lg: var(--proof);
-    --lgs: var(--proof-soft);
-  }
-  .loopfig svg, .chainfig svg { width: 100%; height: auto; display: block; }
-  /* The loop takes more than the text column: the arrows carry wording. */
-  .loopfig { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); margin-top: 26px; }
-  .loopfig figcaption { max-width: 86ch; margin-inline: auto; text-align: center; }
-  .chainfig { margin-top: 8px; }
-  .chain-notes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
-  .chain-notes div { font-size: 0.9rem; color: var(--ink-soft); }
-  .chain-notes h3 { font-size: 0.95rem; color: var(--ink); margin-bottom: 3px; }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+  .crop--page { background: #fff; }
 
-  /* The map */
-  .lanes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.94rem; color: var(--ink-soft); }
+  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 34px; align-items: center; }
+  .row .text { display: flex; flex-direction: column; gap: 12px; }
+  .facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .facts li { padding-left: 16px; border-left: 3px solid var(--accent-soft); color: var(--ink-soft); }
+  .facts li strong { color: var(--ink); font-weight: 600; }
+  .prose { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .prose h3 { font-size: 1.08rem; color: var(--ink); }
+  .sub-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+
+  /* 1 The method: the flow, with its loop back from testing to hypotheses */
+  .flow { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr 26px 1fr 26px 1fr; align-items: stretch; margin-top: 4px; }
+  .flow__step { display: flex; flex-direction: column; gap: 4px; padding: 14px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--paper); text-align: center; }
+  .flow__step b { font-weight: 650; font-size: 1rem; color: var(--ink); }
+  .flow__step span { font-size: 0.86rem; color: var(--ink-soft); line-height: 1.4; }
+  .flow__step--key { border-color: var(--accent); background: var(--accent-soft); }
+  .flow__step--end { border-color: var(--proof); }
+  .flow__arrow { position: relative; }
+  .flow__arrow::before { content: ""; position: absolute; left: 4px; right: 8px; top: 50%; border-top: 2px solid var(--line-strong); }
+  .flow__arrow::after { content: ""; position: absolute; right: 3px; top: calc(50% - 5px); border: 5px solid transparent; border-left: 7px solid var(--line-strong); border-right: 0; }
+  .flow__loop { grid-column: 3 / 6; grid-row: 2; position: relative; height: 30px; margin: 0 25% 26px; border: 2px dashed var(--accent); border-top: 0; border-radius: 0 0 12px 12px; }
+  .flow__loop::before { content: ""; position: absolute; left: -7px; top: -2px; border: 6px solid transparent; border-bottom: 8px solid var(--accent); border-top: 0; transform: translateY(-6px); }
+  .flow__loop span { position: absolute; left: 50%; top: calc(100% + 6px); transform: translateX(-50%); padding: 0 8px; font-size: 0.84rem; color: var(--accent-deep); white-space: nowrap; }
+  .method-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin-top: 34px; color: var(--ink-soft); }
+
+  /* 2 The AcciMap */
+  .map-text { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 34px; align-items: start; }
+  .lanes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.93rem; color: var(--ink-soft); }
   .lanes li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: start; }
   .lanes .tint { width: 14px; height: 14px; border-radius: 4px; margin-top: 4px; border: 1px solid var(--line-strong); }
-  .lanes strong { color: var(--ink); font-weight: 600; }
-  .shotrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+  .lanes strong { color: var(--ink); font-weight: 600; margin-right: 4px; }
+  .map-fig { margin-top: 28px; }
+  .map-fig figcaption { margin: 10px auto 0; max-width: 1160px; color: var(--ink-soft); font-size: 0.93rem; }
 
-  /* The tests */
-  .tests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .test { display: flex; flex-direction: column; gap: 8px; }
-  .test .q { font-size: 1.05rem; font-weight: 650; color: var(--ink); }
-  .test p { color: var(--ink-soft); font-size: 0.95rem; }
-  .test .verdict { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
-  .derive { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.97rem; color: var(--ink-soft); }
-  .derive li { padding-left: 14px; border-left: 3px solid var(--line-strong); }
-  .derive li strong { color: var(--ink); font-weight: 600; }
-  .derive li.cf { border-left-color: #2f5ea8; }
-  .derive li.orf { border-left-color: #c2782a; }
-  .derive li.ex { border-left-color: var(--ink-faint); border-left-style: dashed; }
-  .derive li.open { border-left-color: var(--warn); }
+  /* 3 The three tests */
+  .tests3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .t3 { padding: 16px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); display: flex; flex-direction: column; gap: 6px; }
+  .t3__name { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); }
+  .t3__q { font-size: 1.04rem; font-weight: 650; color: var(--ink); }
+  .t3 p:last-child { color: var(--ink-soft); font-size: 0.94rem; }
+  .ce-note { margin-top: 16px; color: var(--ink-soft); max-width: 92ch; font-size: 0.95rem; }
+  .tests-row { margin-top: 30px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  .tests-row figcaption, .rep figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.93rem; }
 
-  /* The probability scale */
-  .scale { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 26px; align-items: start; margin-top: 24px; }
-  table.bands { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
-  table.bands caption { text-align: left; font-weight: 650; color: var(--ink); padding-bottom: 8px; font-size: 1rem; }
-  table.bands th { text-align: left; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; padding: 0 0 6px; border-bottom: 1px solid var(--line-strong); }
-  table.bands td { padding: 6px 0; border-bottom: 1px solid var(--line); }
-  table.bands td:last-child { text-align: right; font-family: var(--font-mono); color: var(--ink-soft); white-space: nowrap; }
-  .wording h3 { font-size: 1rem; }
+  /* 4 Classification: one row group per outcome, a thin tint down its left edge */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+  table.cls { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .cls thead th { white-space: nowrap; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-faint); padding: 8px 12px; }
+  .cls thead tr:last-child th { border-bottom: 1px solid var(--line-strong); padding-top: 0; }
+  .cls__groups th { color: var(--ink-soft); font-size: 0.74rem; padding-bottom: 2px; }
+  .cls__groups th:nth-child(n+3) { border-left: 1px solid var(--line); }
+  .cls thead tr:last-child th:nth-child(n+6) { border-left: 1px solid var(--line); }
+  .cls td { padding: 5px 10px; color: var(--ink-soft); vertical-align: top; white-space: nowrap; }
+  .cls td.cls__class { color: var(--ink); font-weight: 600; border-left: 1px solid var(--line); }
+  .cls td.cls__rep { border-left: 1px solid var(--line); }
+  .cls tbody { border-top: 1px solid var(--line); }
+  .cls th.g__label { text-align: left; vertical-align: top; font-size: 0.86rem; font-weight: 650; color: var(--ink); padding: 5px 10px; border-left: 3px solid var(--g); width: 11em; }
+  .g--cf { --g: var(--proof); }
+  .g--orf { --g: var(--warn); }
+  .g--pos { --g: #0d9488; }
+  .g--neu { --g: var(--line-strong); }
+  .g--ex { --g: var(--risk); }
+  .g--open { --g: var(--accent); }
+  .cls-note { margin-top: 12px; color: var(--ink-faint); font-size: 0.88rem; max-width: 100ch; }
 
-  /* The tables */
-  .pack { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr); gap: 28px; align-items: center; }
-  .pack img { max-width: 300px; }
-  .pack ul.plain { margin-top: 12px; }
-  .pack .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+  /* 5 Probability and the standard of proof */
+  .proof-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  .steps-fig { margin-top: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 26px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .chip--p { background: var(--proof-soft); color: var(--proof); }
+  .chip--i { background: #eef0f3; color: var(--ink-soft); }
+  .chip--f { background: var(--risk-soft); color: var(--risk); }
+  .chips-key { margin-top: 8px; font-size: 0.85rem; color: var(--ink-faint); display: flex; align-items: center; gap: 6px; }
+  .chips-key .chip { min-width: 14px; height: 14px; margin-left: 8px; }
+  .chips-key .chip:first-child { margin-left: 0; }
+  table.pscale { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: var(--paper); }
+  .pscale caption { text-align: left; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; }
+  .pscale th { text-align: left; font-size: 0.8rem; color: var(--ink-faint); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--line-strong); }
+  .pscale td { padding: 5px 14px; border-bottom: 1px solid var(--line); color: var(--ink); }
+  .pscale td:last-child { font-variant-numeric: tabular-nums; color: var(--ink-soft); text-align: right; }
+  .pscale tr.b-hi td { background: #f1f6fd; }
+  .pscale tr.b-mid td { background: #f6f7f9; }
+  .pscale tr.b-lo td { background: #fdf5f0; }
 
-  .next { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding-block: 52px; }
-  .next p { color: var(--ink-soft); max-width: 60ch; }
+  /* 6 Reporting */
+  .rep { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: start; }
+  .rep .text > p { color: var(--ink-soft); }
+  .rep .hero-actions { gap: 18px; }
+
+  .next { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .next p { color: var(--ink-soft); max-width: 64ch; }
 
   @media (max-width: 960px) {
-    .two, .scale, .pack { grid-template-columns: 1fr; }
-    .tests, .shotrow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .chain-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow { grid-template-columns: 1fr; row-gap: 22px; }
+    .flow__arrow, .flow__loop { display: none; }
+    .flow__step--key::after { content: "New evidence can send the work back to the hypotheses."; display: block; margin-top: 6px; font-size: 0.84rem; color: var(--accent-deep); }
+    .row, .method-notes, .map-text, .tests3, .proof-grid, .tests-row, .rep { grid-template-columns: 1fr; gap: 18px; }
   }
   @media (max-width: 560px) {
-    .tests, .shotrow, .chain-notes { grid-template-columns: 1fr; }
+    .page-head { padding-block: 28px 18px; }
+    section.block { padding-block: 38px; }
   }
 </style>
 
@@ -89,281 +127,179 @@
   <section class="page-head">
     <span class="eyebrow">Methodology</span>
     <h1>Findings should be derived, not declared.</h1>
-    <p class="lede">Investigation Workflow Suite (IWS) provides structure for moving from evidence, to hypotheses, to tested propositions, to findings, while preserving the reasoning in between.</p>
-    <p class="lede"><strong>One investigation record:</strong> the checklist, the evidence, the interviews, the timeline, the map, the tests and the report, in one file. The method works on that record from the first notification to the last finding.</p>
+    <p class="lede">An investigation in IWS starts from the critical event and works backwards. Every event or condition that might explain it goes on the AcciMap as a hypothesis, each is tested against the evidence, and the results classify it. The findings follow from those classifications, and the record keeps the evidence and reasoning behind each step, so anyone reviewing the work can see how a finding was reached.</p>
+    <nav class="onpage" aria-label="On this page"><a href="#method">The method</a><a href="#map">The AcciMap</a><a href="#tests">The three tests</a><a href="#classification">Classification</a><a href="#proof">Probability and proof</a><a href="#tables">Reporting</a></nav>
   </section>
 
-  <section class="block" id="chain">
+  <section class="block" id="method">
+    <span class="anchor" id="chain"></span>
     <div class="section-head">
-      <span class="eyebrow">From evidence to finding</span>
-      <h2>Five steps, and each one is kept</h2>
-      <p>A finding in IWS is the end of a chain the record holds in full. Each link can be read back later, by the investigator or by whoever reviews the work.</p>
+      <span class="eyebrow"><span class="stage-no">1</span>The method</span>
+      <h2>From the critical event to the findings</h2>
     </div>
-    <figure class="chainfig">
-      <svg viewBox="0 0 1160 120" role="img" aria-label="Evidence supports or contradicts a proposition. The proposition is tested for Existence, Influence and Importance. Each test carries a confidence measured against the standard of proof. The finding follows from the results.">
-        <defs>
-          <marker id="ca" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ll)"/></marker>
-        </defs>
-        <g font-family="Segoe UI Variable Text, Segoe UI, system-ui, sans-serif" fill="var(--li)" text-anchor="middle">
-          <rect x="4" y="20" width="196" height="80" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="102" y="54" font-size="16" font-weight="600">Evidence</text>
-          <text x="102" y="76" font-size="12" fill="var(--ls)">filed once, with its source</text>
-          <path d="M204 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
-          <rect x="240" y="20" width="196" height="80" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="338" y="54" font-size="16" font-weight="600">Proposition</text>
-          <text x="338" y="76" font-size="12" fill="var(--ls)">an object on the map</text>
-          <path d="M440 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
-          <rect x="476" y="20" width="196" height="80" rx="10" fill="var(--las)" stroke="var(--la)"/>
-          <text x="574" y="54" font-size="16" font-weight="600">Testing</text>
-          <text x="574" y="76" font-size="12" fill="var(--ls)">existence, influence, importance</text>
-          <path d="M676 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
-          <rect x="712" y="20" width="196" height="80" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="810" y="54" font-size="16" font-weight="600">Confidence</text>
-          <text x="810" y="76" font-size="12" fill="var(--ls)">against the standard of proof</text>
-          <path d="M912 60h28" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#ca)"/>
-          <rect x="948" y="20" width="208" height="80" rx="10" fill="var(--lgs)" stroke="var(--lg)"/>
-          <text x="1052" y="54" font-size="16" font-weight="600">Finding</text>
-          <text x="1052" y="76" font-size="12" fill="var(--ls)">derived from the results</text>
-        </g>
-      </svg>
-    </figure>
-    <div class="chain-notes">
-      <div><h3>Evidence</h3>Each item recorded once, with its source, its significance and everything that rests on it.</div>
-      <div><h3>Proposition</h3>An event or condition that might have played a part, placed on the map whether it is expected to hold or to fail.</div>
-      <div><h3>Testing</h3>Three questions asked in order, with the evidence for and against each answer recorded.</div>
-      <div><h3>Confidence</h3>Every answer carries a probability, and a pass has to reach the standard of proof set in Settings.</div>
-      <div><h3>Finding</h3>The test results determine how the object is classified, while the investigator remains responsible for the judgements behind those results.</div>
+    <div class="flow" role="img" aria-label="Critical event, then hypotheses, then evidence and testing, then classification, then findings, with a loop from evidence and testing back to hypotheses">
+      <div class="flow__step"><b>Critical event</b><span>the occurrence everything else explains</span></div>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <div class="flow__step"><b>Hypotheses</b><span>every event or condition that might have played a part</span></div>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <div class="flow__step flow__step--key"><b>Evidence and testing</b><span>Existence, Influence, Importance, each with a probability</span></div>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <div class="flow__step"><b>Classification</b><span>from the test results and the object's risk direction</span></div>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <div class="flow__step flow__step--end"><b>Findings</b><span>drawn from the classifications that carry one</span></div>
+      <div class="flow__loop" aria-hidden="true"><span>new evidence: revise a hypothesis, or add one</span></div>
     </div>
-  </section>
-
-  <section class="block" id="loop">
-    <div class="section-head">
-      <span class="eyebrow">The investigation loop</span>
-      <h2>The work runs in rounds, on the same record all the way round</h2>
+    <div class="method-notes">
+      <p>The work is not one pass from left to right. Evidence that settles one test can also point to a hypothesis nobody had considered, or show that one on the map is worded wrongly. The investigator adds or revises it and tests again, and the classifications follow the latest results.</p>
+      <p>Not every classified object becomes a finding. An event or condition with no bearing on risk, and an object whose tests are not yet settled, stay out of the report's Findings section. <a href="#classification">What each classification becomes</a></p>
     </div>
-    <div class="prose">
-      <p>You are notified, you decide an investigation is required, and the checklist starts with whatever is on hand. From there the work runs in rounds: what has come in is recorded, it is analysed, the gaps it exposes become requests for more information, the picture on the map is built out, the evidence behind each object is tested, and round it goes.</p>
-      <p><strong>Investigation is iterative rather than linear.</strong> New information can enter at any point: the record absorbs it, the analysis adjusts around it, and the propositions it bears on are tested again. The report is drawn from the record when the picture holds, rather than because the investigation has reached the end of a prescribed sequence.</p>
-    </div>
-    <figure class="loopfig">
-      <svg viewBox="0 55 1240 475" role="img" aria-label="The investigation loop. Information and evidence come in and become the record. Analysis turns the record into an account of what it means and where the gaps are. Those gaps go back out as requests for more, which bring more information in. Building the picture turns the account into the map and timeline, testing the evidence settles each object, and round again returns to the record. When the picture is complete the loop is left for the report.">
-        <defs>
-          <marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0 0L10 5L0 10z" fill="var(--ll)"/>
-          </marker>
-          <marker id="lb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0 0L10 5L0 10z" fill="var(--la)"/>
-          </marker>
-        </defs>
-        <g font-family="Segoe UI Variable Text, Segoe UI, system-ui, sans-serif" fill="var(--li)">
-
-          <!-- what comes in, and the request that goes back out to it -->
-          <rect x="20" y="390" width="236" height="104" rx="10" fill="var(--lp)" stroke="var(--ll)" stroke-dasharray="5 4"/>
-          <text x="138" y="422" text-anchor="middle" font-size="15" font-weight="600">What comes in</text>
-          <text x="138" y="444" text-anchor="middle" font-size="12" fill="var(--ls)">notification, reports, data,</text>
-          <text x="138" y="462" text-anchor="middle" font-size="12" fill="var(--ls)">interviews, inspections</text>
-          <path d="M150 386C180 340 240 305 309 299" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
-          <path d="M493 110C330 62 60 110 86 382" fill="none" stroke="var(--ll)" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#la)"/>
-
-          <!-- the four states the investigation passes through -->
-          <rect x="315" y="253" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="420" y="283" text-anchor="middle" font-size="16" font-weight="600">The record</text>
-          <text x="420" y="305" text-anchor="middle" font-size="12" fill="var(--ls)">filed once, with its source</text>
-
-          <rect x="495" y="73" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="600" y="103" text-anchor="middle" font-size="16" font-weight="600">What it means</text>
-          <text x="600" y="125" text-anchor="middle" font-size="12" fill="var(--ls)">the account so far, and its gaps</text>
-
-          <rect x="675" y="253" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="780" y="283" text-anchor="middle" font-size="16" font-weight="600">The picture</text>
-          <text x="780" y="305" text-anchor="middle" font-size="12" fill="var(--ls)">map, timeline, objects, links</text>
-
-          <rect x="495" y="433" width="210" height="74" rx="10" fill="var(--lp)" stroke="var(--ll)"/>
-          <text x="600" y="463" text-anchor="middle" font-size="16" font-weight="600">Tested objects</text>
-          <text x="600" y="485" text-anchor="middle" font-size="12" fill="var(--ls)">existence, influence, importance</text>
-
-          <!-- round the loop, clockwise -->
-          <path d="M450 250C452 210 480 168 516 149" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
-          <path d="M684 150C722 170 748 210 750 249" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
-          <path d="M750 331C748 370 722 410 686 430" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
-          <path d="M516 430C480 410 452 370 450 331" fill="none" stroke="var(--ll)" stroke-width="2.2" marker-end="url(#la)"/>
-
-          <text x="600" y="284" text-anchor="middle" font-size="12.5" fill="var(--lf)">the same record</text>
-          <text x="600" y="302" text-anchor="middle" font-size="12.5" fill="var(--lf)">all the way round</text>
-
-          <!-- the way out, once every object has been tested -->
-          <path d="M709 470H936" fill="none" stroke="var(--la)" stroke-width="2.2" marker-end="url(#lb)"/>
-          <rect x="950" y="428" width="260" height="84" rx="10" fill="var(--las)" stroke="var(--la)"/>
-          <text x="1080" y="459" text-anchor="middle" font-size="16" font-weight="600">The report</text>
-          <text x="1080" y="481" text-anchor="middle" font-size="12" fill="var(--ls)">assembled or drafted from</text>
-          <text x="1080" y="498" text-anchor="middle" font-size="12" fill="var(--ls)">that same record</text>
-
-          <!-- the words the arrows carry -->
-          <g font-size="13" font-weight="600" text-anchor="middle">
-            <rect x="110" y="317" width="200" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
-            <text x="210" y="334">information and evidence in</text>
-
-            <rect x="148" y="113" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
-            <text x="219" y="130">requests for more</text>
-
-            <rect x="430" y="179" width="82" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
-            <text x="471" y="196">analysis</text>
-
-            <rect x="660" y="179" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
-            <text x="731" y="196">build the picture</text>
-
-            <rect x="660" y="374" width="142" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
-            <text x="731" y="391">test the evidence</text>
-
-            <rect x="419" y="375" width="102" height="26" rx="13" fill="var(--lp)" stroke="var(--ll)"/>
-            <text x="470" y="392">round again</text>
-
-            <rect x="720" y="457" width="206" height="26" rx="13" fill="var(--lp)" stroke="var(--la)"/>
-            <text x="823" y="474" fill="var(--la)">when the picture is complete</text>
-          </g>
-        </g>
-      </svg>
-      <figcaption>The investigation loop: round on the same record until the picture holds, then out to the report.</figcaption>
-    </figure>
   </section>
 
   <section class="block" id="map">
     <div class="section-head">
-      <span class="eyebrow">The causal map</span>
-      <h2>Every line of enquiry on one page, in time and in organisational depth</h2>
+      <span class="eyebrow"><span class="stage-no">2</span>The AcciMap</span>
+      <h2>Start at the critical event and work backwards</h2>
     </div>
-    <div class="two">
+    <div class="map-text">
       <div class="prose">
-        <p>The causal map is an AcciMap-style diagram. Each object is an event or a condition that might have played a part, placed left to right in time and bottom to top in organisational depth, with the critical event at the bottom right where every chain arrives.</p>
-        <p>The critical event goes down first, because everything else on the map exists to explain it. Then every hypothesis goes up, including the competing ones and the ones the investigator expects to fail. Nothing is filtered at that stage: an excluded hypothesis, with the reason it failed, strengthens the record as much as one that holds.</p>
-        <p>Arrows are claims that one thing led to another. An arrow stays grey and dashed until the object it comes from has passed its tests, so the picture on the map is never more than the current state of the evidence.</p>
+        <p>The critical event goes on the AcciMap first, in Occurrence Events, conventionally at the bottom right. The investigation then works backwards from it: what happened just before, what conditions were present, which risk controls should have caught it, and what in the organisation and beyond shaped those controls. Objects run left to right in time.</p>
+        <p>Every hypothesis goes on at this stage, including the ones expected to fail. An excluded hypothesis stays on the map, struck through, as part of the record.</p>
+        <p>An arrow is a claim that one thing led to another. It stays grey and dashed until the object it comes from has passed both Existence and Influence, then turns solid.</p>
       </div>
-      <div class="card">
-        <span class="eyebrow">The lanes</span>
-        <ul class="lanes" style="margin-top: 10px">
-          <li><span class="tint" style="background: var(--lane-external)"></span><span><strong>External influences:</strong> standards, oversight and guidance from outside the organisation.</span></li>
-          <li><span class="tint" style="background: var(--lane-org)"></span><span><strong>Organisational influences:</strong> the organisation's own systems, such as hazard identification, change management and risk assessment.</span></li>
-          <li><span class="tint" style="background: var(--lane-controls)"></span><span><strong>Risk controls:</strong> the defences that should prevent or catch the occurrence.</span></li>
-          <li><span class="tint" style="background: var(--lane-local)"></span><span><strong>Local conditions:</strong> the conditions on the day, such as weather, workload and fatigue.</span></li>
-          <li><span class="tint" style="background: var(--lane-actions)"></span><span><strong>Individual actions:</strong> what people did.</span></li>
-          <li><span class="tint" style="background: var(--lane-events)"></span><span><strong>Occurrence events:</strong> the event sequence itself, converging on the critical event.</span></li>
+      <div>
+        <p class="sub-label">The six lanes, top to bottom</p>
+        <ul class="lanes">
+          <li><span class="tint" style="background: #E8F1FB"></span><span><strong>External Influences</strong> regulators, sector standards, oversight and guidance</span></li>
+          <li><span class="tint" style="background: #DDEAF8"></span><span><strong>Organisational Influences</strong> the organisation's own systems, such as hazard recognition and management of change</span></li>
+          <li><span class="tint" style="background: #FDEEDC"></span><span><strong>Risk Controls</strong> the defences that should prevent or catch the occurrence</span></li>
+          <li><span class="tint" style="background: #ECE8FA"></span><span><strong>Local Conditions</strong> the conditions on the day: weather, workload, fatigue, knowledge and experience</span></li>
+          <li><span class="tint" style="background: #FAF3D1"></span><span><strong>Individual Actions</strong> what people did</span></li>
+          <li><span class="tint" style="background: #FBE5E8"></span><span><strong>Occurrence Events</strong> the event sequence itself, converging on the critical event</span></li>
         </ul>
       </div>
     </div>
-    <div class="shotrow">
-      <figure><img class="shot zoomable" data-caption="Stage one: the critical event placed on its own." src="%%SHOT_06%%" alt="The causal map with only the critical event placed"><figcaption>The critical event, placed first.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="Stage two: every hypothesis in its lane, none of them tested, nothing filtered out." src="%%SHOT_07%%" alt="Untested hypotheses across the lanes of the causal map"><figcaption>Every hypothesis up, tested or not.</figcaption></figure>
-      <figure><img class="shot zoomable" data-caption="Stage three: half the map tested, the proven arrows drawn, the excluded hypotheses struck through." src="%%SHOT_08%%" alt="Half the objects tested, with arrows appearing"><figcaption>Cut down by testing, with the arrows following.</figcaption></figure>
-    </div>
+    <figure class="block--wide map-fig"><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="%%SHOT_08%%" alt="The %%FEATURED_TITLE%% AcciMap part way through testing: two hypotheses excluded and struck through, the first proven arrows drawn back from the runway overrun" data-caption="The %%FEATURED_TITLE%% AcciMap part way through testing: two hypotheses excluded and struck through, the first proven arrows drawn back from the runway overrun" loading="lazy"></div><figcaption>%%FEATURED_TITLE%%, part way through testing: the runway overrun at the bottom right, two hypotheses excluded and struck through, and solid arrows only where an object has passed Existence and Influence. <a href="case-studies/%%FEATURED%%.html#map">The AcciMap at three points in the work, in the case study</a></figcaption></figure>
   </section>
 
   <section class="block" id="tests">
     <div class="section-head">
-      <span class="eyebrow">The three tests</span>
-      <h2>Nothing is a finding until it has passed its tests</h2>
-      <p>Three questions are asked of every object on the map, in order, and a confidence is recorded for each answer. Where the evidence cuts both ways, the test is argued: the evidence for and against is recorded separately and weighed into a confidence.</p>
+      <span class="eyebrow"><span class="stage-no">3</span>The three tests</span>
+      <h2>Each object is asked up to three questions, in order</h2>
     </div>
-    <div class="tests">
-      <article class="test card">
-        <span class="eyebrow">Existence</span>
-        <p class="q">Did this event or condition actually exist?</p>
-        <p>If it did, the next question is asked. If it did not, the hypothesis is excluded: it stays on the map, struck through, with the reason recorded.</p>
-        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Inconclusive</span></div>
-      </article>
-      <article class="test card">
-        <span class="eyebrow">Influence</span>
-        <p class="q">Did it influence anything else, and if so in what way?</p>
-        <p>If it did, it is a contributing safety factor and its outgoing arrows become proven causal paths.</p>
-        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span><span class="pill open">Argued</span></div>
-      </article>
-      <article class="test card">
-        <span class="eyebrow">Importance</span>
-        <p class="q">If it did not influence anything, is it still important enough to raise?</p>
-        <p>A factor that played no part in this occurrence may still be a risk worth addressing. If so, it is a finding in its own right, an other risk factor, and it carries no arrows.</p>
-        <div class="verdict"><span class="pill pass">Pass</span><span class="pill fail">Fail</span></div>
-      </article>
+    <div class="tests3">
+      <div class="t3"><p class="t3__name">Existence</p><p class="t3__q">&ldquo;Did this event or condition actually exist or occur?&rdquo;</p><p>Asked first. A fail excludes the hypothesis.</p></div>
+      <div class="t3"><p class="t3__name">Influence</p><p class="t3__q">&ldquo;Did it influence this occurrence?&rdquo;</p><p>Asked only once Existence passes. Had it not existed, would the occurrence probably not have happened, or been less severe?</p></div>
+      <div class="t3"><p class="t3__name">Importance</p><p class="t3__q">&ldquo;Is it important enough to address anyway?&rdquo;</p><p>Asked only where Influence fails. Would addressing it reduce the likelihood or severity of a future occurrence?</p></div>
     </div>
-    <div class="two" style="margin-top: 30px">
-      <div>
-        <h3 style="margin-bottom: 12px">How a finding is derived</h3>
-        <ul class="derive">
-          <li class="ex"><strong>Existence fails:</strong> an excluded hypothesis. It stays on the map, struck through, with the reason on the record.</li>
-          <li class="cf"><strong>Existence passes, Influence passes:</strong> a contributing safety factor, and its arrows become proven causal paths.</li>
-          <li class="orf"><strong>Existence passes, Influence fails, Importance passes:</strong> an other risk factor, raised as a finding with no arrows.</li>
-          <li class="open"><strong>A test left inconclusive:</strong> the line of enquiry stays open, its arrow stays grey, and the report has to say that it is open.</li>
+    <p class="ce-note">The critical event is the given starting point. It keeps its classification whatever is recorded, and its arrows do not wait on an Existence pass. In place of Influence it records the proof of its significance, unless it leads on to a later occurrence, when the form asks &ldquo;Did it lead to the subsequent occurrence?&rdquo; It has no Importance test.</p>
+    <div class="row tests-row">
+      <div class="text">
+        <ul class="facts">
+          <li><strong>Conclusive or argued, on any test.</strong> Where the evidence is not in dispute, one summary is enough. Where it cuts both ways, the test is argued: the evidence for and against are recorded side by side, and the probability reflects the weighing.</li>
+          <li><strong>The probability sets the result.</strong> The investigator records how probable the proposition is, and IWS reads it against the standard of proof: Pass, Fail or Inconclusive. <a href="#proof">How the boundaries work</a></li>
+          <li><strong>Not tested is not the same as not settled.</strong> A test can be left Untested, or marked Insufficient evidence where it was examined and the evidence supports no probability, which reads as Inconclusive.</li>
+          <li><strong>A note on each result</strong> says why it went the way it did, and the investigator's notepad holds the wider reasoning.</li>
         </ul>
       </div>
-      <figure><img class="shot zoomable" data-caption="An argued test: the evidence for and against, weighed into a confidence rather than a yes or no." src="%%SHOT_10%%" alt="An object's form showing evidence for and against influence"><figcaption>An argued Influence test, with the evidence for and against recorded side by side.</figcaption></figure>
+      <figure><div class="crop" style="--W: 3840; --x: 220; --y: 840; --cw: 2180; --ch: 1090"><img class="zoomable" src="%%SHOT_10%%" alt="An argued Influence test: evidence for and against side by side, the probability at 70 per cent, likely, and the result Pass" data-caption="An argued Influence test: evidence for and against side by side, the probability at 70 per cent, likely, and the result Pass" loading="lazy"></div><figcaption>An argued Influence test from %%FEATURED_TITLE%%: 70 per cent, &ldquo;likely&rdquo;, passes the standard of 70.</figcaption></figure>
     </div>
+  </section>
+
+  <section class="block" id="classification">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">4</span>Classification</span>
+      <h2>The results and the risk direction decide what an object is</h2>
+      <p>When an object is placed, the investigator says which way the hypothesis bears on risk: increased risk, decreased risk or neutral. Only an increased-risk object can become a contributing safety factor or an other risk factor; a pass on its own does not make one. The classification is what the object is on the AcciMap; whether the report lists it as a finding is a separate step that follows from it.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="cls">
+        <thead>
+          <tr class="cls__groups"><th></th><th colspan="4">The test results</th><th>On the AcciMap</th><th>In the report</th></tr>
+          <tr><th>Outcome</th><th>Existence</th><th>Risk direction</th><th>Influence</th><th>Importance</th><th>Classification</th><th>In the Findings section?</th></tr>
+        </thead>
+        <tbody class="g g--cf">
+          <tr><th scope="rowgroup" rowspan="1" class="g__label">Contributing safety factors</th><td>Pass</td><td>Increased risk</td><td>Pass</td><td>&ndash;</td><td class="cls__class">Contributing Safety Factor</td><td class="cls__rep">Yes: Contributing safety factors</td></tr>
+        </tbody>
+        <tbody class="g g--orf">
+          <tr><th scope="rowgroup" rowspan="1" class="g__label">Other risk factors</th><td>Pass</td><td>Increased risk</td><td>Fail</td><td>Pass</td><td class="cls__class">Other Risk Factor</td><td class="cls__rep">Yes: Other factors that increased risk</td></tr>
+        </tbody>
+        <tbody class="g g--pos">
+          <tr><th scope="rowgroup" rowspan="1" class="g__label">Positive events</th><td>Pass</td><td>Decreased risk</td><td>Any</td><td>Any</td><td class="cls__class">Positive Event</td><td class="cls__rep">Yes: Other findings, reduced risk</td></tr>
+        </tbody>
+        <tbody class="g g--neu">
+          <tr><th scope="rowgroup" rowspan="1" class="g__label">Established events and conditions</th><td>Pass</td><td>Neutral</td><td>Any</td><td>Any</td><td class="cls__class">Event/Condition</td><td class="cls__rep">No</td></tr>
+        </tbody>
+        <tbody class="g g--ex">
+          <tr><th scope="rowgroup" rowspan="2" class="g__label">Excluded hypotheses</th><td>Fail</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Excluded Hypothesis</td><td class="cls__rep">Yes: Other findings, ruled out</td></tr>
+          <tr><td>Pass</td><td>Increased risk</td><td>Fail</td><td>Fail</td><td class="cls__class">Excluded Hypothesis</td><td class="cls__rep">Yes: Other findings, ruled out</td></tr>
+        </tbody>
+        <tbody class="g g--open">
+          <tr><th scope="rowgroup" rowspan="4" class="g__label">Unresolved or inconclusive</th><td>Untested</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Hypothesis (untested)</td><td class="cls__rep">No</td></tr>
+          <tr><td>Inconclusive</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Open hypothesis</td><td class="cls__rep">No</td></tr>
+          <tr><td>Pass</td><td>Increased risk</td><td>Not yet settled</td><td>&ndash;</td><td class="cls__class">Safety Factor (testing in progress)</td><td class="cls__rep">No*</td></tr>
+          <tr><td>Pass</td><td>Increased risk</td><td>Fail</td><td>Not yet settled</td><td class="cls__class">Safety Factor (testing in progress)</td><td class="cls__rep">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cls-note">The critical event is always classified as the critical event. Findings headings are the built-in wording and can be renamed per report style or in Settings. *An increased-risk object in Risk Controls or a lane above it whose Influence test was examined and left inconclusive is listed under Other findings as unresolved.</p>
   </section>
 
   <section class="block" id="proof">
+    <span class="anchor" id="scale"></span>
     <div class="section-head">
-      <span class="eyebrow">Standard of proof</span>
-      <h2>The bar a passed test has to clear</h2>
+      <span class="eyebrow"><span class="stage-no">5</span>Probability and the standard of proof</span>
+      <h2>How probable, and how probable is enough</h2>
+      <p>Two separate things meet in every result: the probability the investigator assigns to the proposition, and the standard of proof IWS reads it against.</p>
     </div>
-    <div class="two">
+    <div class="proof-grid">
       <div class="prose">
-        <p>Before the tests are worth anything, the investigation has to say how sure it needs to be. In the methodology IWS implements, that is the standard of proof: one threshold, chosen in Settings on each computer and applied to every test. IWS offers 50 per cent (the balance of probabilities) to 95 per cent in steps of five, with 70 per cent as the default, the standard transport safety investigators commonly work to. It is a setting of the method, chosen by the investigator or the organisation, rather than a figure set by any outside authority.</p>
-        <p>Every test then carries its confidence on the probability scale below, and the object's form warns when a pass falls short of the standard. A finding that only just clears the bar is reported with the confidence it actually has, rather than presented as settled.</p>
+        <h3>How IWS interprets the selected probability</h3>
+        <p>The standard of proof is 70 per cent unless it is changed in Settings, from 50 to 95 per cent in steps of 5. It is set per computer and applies to every test.</p>
+        <ul class="facts">
+          <li><strong>Pass</strong> at or above the standard.</li>
+          <li><strong>Fail</strong> at or below 100 minus the standard: 30 per cent or less at the default.</li>
+          <li><strong>Inconclusive</strong> in between. At a standard of 50 the two meet, and 50 itself passes.</li>
+        </ul>
+        <div class="steps-fig">
+          <p class="sub-label">The slider's twelve positions, read at the default standard of proof of 70 per cent</p>
+          <div class="chips"><span class="chip chip--f">5</span><span class="chip chip--f">10</span><span class="chip chip--f">20</span><span class="chip chip--f">30</span><span class="chip chip--i">40</span><span class="chip chip--i">50</span><span class="chip chip--i">60</span><span class="chip chip--p">70</span><span class="chip chip--p">80</span><span class="chip chip--p">90</span><span class="chip chip--p">95</span><span class="chip chip--p">100</span></div>
+          <p class="chips-key"><span class="chip chip--f"></span>Fail <span class="chip chip--i"></span>Inconclusive <span class="chip chip--p"></span>Pass</p>
+        </div>
       </div>
-      <figure><img class="shot zoomable" data-caption="Settings: the standard of proof, chosen from the balance of probabilities upwards." src="%%SHOT_17%%" alt="The Settings dialog open on the standard of proof"><figcaption>The standard of proof, set in Settings.</figcaption></figure>
-    </div>
-    <figure style="margin-top: 26px; max-width: 900px"><img class="shot zoomable" data-caption="An object's form: the evidence, the verdict on each test, the confidence, and the investigator's notepad." src="%%SHOT_09%%" alt="An object's evidence form with verdicts and a confidence slider"><figcaption>An object's form: each verdict with its confidence and its evidence, and the investigator's reasoning beside them.</figcaption></figure>
-  </section>
-
-  <section class="block" id="scale">
-    <div class="section-head">
-      <span class="eyebrow">Probability and confidence</span>
-      <h2>Ten fixed terms, so confidence means the same thing in every investigation</h2>
-      <p>A confidence word in a report is only useful if every reader takes it the same way. IWS records every confidence and every finding as one of the ten terms of its probability scale, so two investigations can be compared, and a reviewer can see exactly how strongly each finding was held. The percentages below are the application's defaults; an organisation working to different boundaries can set its own in Settings.</p>
-    </div>
-    <div class="scale">
-      <div>
-        <table class="bands">
+      <div class="prose">
+        <h3>How investigators express their confidence</h3>
+        <p>Each probability is stated as one of ten fixed terms, so the same word means the same thing in every investigation. An organisation can move the boundaries, and approve other wording for a term, such as &ldquo;probably&rdquo; for likely, in Settings. A Findings section is held to seven of the ten, since extremely likely, more likely than not and exceptionally unlikely are too easily read as their neighbours.</p>
+        <table class="pscale">
           <caption>The probability scale, at its default boundaries</caption>
-          <thead><tr><th scope="col">Term</th><th scope="col">Probability</th></tr></thead>
+          <thead><tr><th>Term</th><th>Probability</th></tr></thead>
           <tbody>
-            <tr><td>Virtually certain</td><td>100%</td></tr>
-            <tr><td>Extremely likely</td><td>95 to 99%</td></tr>
-            <tr><td>Very likely</td><td>90 to 94%</td></tr>
-            <tr><td>Likely</td><td>67 to 89%</td></tr>
-            <tr><td>More likely than not</td><td>51 to 66%</td></tr>
-            <tr><td>About as likely as not</td><td>33 to 50%</td></tr>
-            <tr><td>Unlikely</td><td>10 to 32%</td></tr>
-            <tr><td>Very unlikely</td><td>5 to 9%</td></tr>
-            <tr><td>Extremely unlikely</td><td>1 to 4%</td></tr>
-            <tr><td>Exceptionally unlikely</td><td>under 1%</td></tr>
+            <tr class="b-hi"><td>Virtually certain</td><td>100%</td></tr>
+            <tr class="b-hi"><td>Extremely likely</td><td>95 to 99%</td></tr>
+            <tr class="b-hi"><td>Very likely</td><td>90 to 94%</td></tr>
+            <tr class="b-hi"><td>Likely</td><td>67 to 89%</td></tr>
+            <tr class="b-hi"><td>More likely than not</td><td>51 to 66%</td></tr>
+            <tr class="b-mid"><td>About as likely as not</td><td>33 to 50%</td></tr>
+            <tr class="b-lo"><td>Unlikely</td><td>10 to 32%</td></tr>
+            <tr class="b-lo"><td>Very unlikely</td><td>5 to 9%</td></tr>
+            <tr class="b-lo"><td>Extremely unlikely</td><td>1 to 4%</td></tr>
+            <tr class="b-lo"><td>Exceptionally unlikely</td><td>under 1%</td></tr>
           </tbody>
         </table>
-      </div>
-      <div class="card wording">
-        <h3>How a band may be worded</h3>
-        <p style="margin-top: 10px; color: var(--ink-soft); font-size: 0.95rem;">The prose does not have to repeat the same ten words. Each band can recognise equivalent approved wording, such as "probably" for likely, while preserving the underlying probability classification: a phrase belongs to one band only, and the checks read it back as that band. A Findings section is held to seven of the ten bands. Organisation-specific wording can be configured in Settings, and the <a href="guide.html#manual-templates">user guide</a> describes how.</p>
       </div>
     </div>
   </section>
 
   <section class="block" id="tables">
-    <div class="section-head">
-      <span class="eyebrow">Evidence and Argument Tables</span>
-      <h2>The trail from proposition to finding, written out</h2>
-      <p>The map is the picture. The tables are the working behind it, exported from the same record, one table per object, in the order the map reads.</p>
-    </div>
-    <div class="card pack">
-      <a href="exports/%%FEATURED%%/%%FEATURED_TABLES%%.html"><img class="shot" src="exports/%%FEATURED%%/%%FEATURED_TABLES%%_p2.png" alt="A page of the Evidence and Argument Tables document: one table per object with each test, its confidence and the evidence"></a>
-      <div>
-        <span class="eyebrow">What each table holds</span>
-        <ul class="plain">
-          <li>The proposition: the object as it sits on the map.</li>
-          <li>Each test's result and confidence.</li>
-          <li>The evidence recorded for it, and against it where it was argued.</li>
-          <li>The investigator's own reasoning.</li>
-          <li>What the object became: the finding, or the reason it is not one.</li>
-        </ul>
-        <p class="hint" style="margin-top: 12px">None of it is typed twice. It is the same record the map draws from and the report is drafted from, so the tables preserve the evidence, tests and reasoning behind each finding and the investigation can be reviewed later, step by step.</p>
-        <div class="links"><a class="btn btn-primary" href="exports/%%FEATURED%%/%%FEATURED_TABLES%%.html">Read the %%FEATURED_TITLE%% tables</a><a class="btn" href="exports/%%FEATURED%%/%%FEATURED_TABLES%%.pdf" target="_blank" rel="noopener">PDF</a></div>
+    <span class="anchor" id="reporting"></span>
+    <div class="row rep">
+      <div class="text">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px"><span class="stage-no">6</span>Reporting</span>
+        <h2>The working behind each finding, written out</h2>
+        <p>The Evidence and Argument Tables are generated directly from the assessments recorded against AcciMap objects. After the AcciMap itself, each object has its own table, grouped under its lane in the order the map puts them: each test's result and probability, the argument for and against, and the reasoning that says which side carried.</p>
+        <p>Nothing is typed twice, and the tables come with every licence level, Free included. The reports draw on the same record, with their Findings sections built from the classifications above.</p>
+        <p class="hero-actions"><a href="exports/%%FEATURED%%/%%FEATURED_TABLES%%.html">Read the %%FEATURED_TITLE%% tables</a> <a href="case-studies/%%FEATURED%%.html">The full %%FEATURED_TITLE%% case study</a></p>
       </div>
+      <figure><div class="crop crop--page" style="--W: 1550; --x: 160; --y: 175; --cw: 1240; --ch: 1060"><img class="zoomable" src="exports/%%FEATURED%%/pages/%%FEATURED_TABLES%%/p11.png" alt="Floor escape path lighting in the %%FEATURED_TITLE%% Evidence and Argument Tables" data-caption="Floor escape path lighting in the %%FEATURED_TITLE%% Evidence and Argument Tables" loading="lazy"></div><figcaption>Floor escape path lighting, the object assessed on the Product page, as the tables print it.</figcaption></figure>
     </div>
   </section>
 
@@ -381,13 +317,13 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
-  <div class="lightbox__body"><img id="lb-img" src="" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+  <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
 </div>
 <script>
   (function () {
     var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
     function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
-    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
     Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
     document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
     lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
