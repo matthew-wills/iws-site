@@ -187,7 +187,10 @@ const outputsBlock = (study, pagesRoot, reports, notes) => {
     const shown = o.caption ? `page ${o.page} shown: ${esc(o.caption)}` : `page ${o.page} shown`;
     return [
       `      <article class="output">`,
-      `        <a class="output__page" href="../exports/${slug}/${doc}.html"><img src="../exports/${slug}/pages/${doc}/${pageFile}" alt="Page ${o.page} of the ${esc(label)}" loading="lazy"></a>`,
+      `        <div class="output__pages">`,
+      `          <a href="../exports/${slug}/${doc}.html"><img src="../exports/${slug}/pages/${doc}/p01.png" alt="The cover of the ${esc(label)}" loading="lazy"><span>Cover</span></a>`,
+      `          <a href="../exports/${slug}/${doc}.html"><img src="../exports/${slug}/pages/${doc}/${pageFile}" alt="Page ${o.page} of the ${esc(label)}" loading="lazy"><span>Page ${o.page}</span></a>`,
+      `        </div>`,
       `        <div class="output__body">`,
       `          <h3>${esc(label)}</h3>`,
       `          <p>${esc(o.purpose ?? outputPurpose[doc] ?? "")}</p>`,
@@ -197,7 +200,7 @@ const outputsBlock = (study, pagesRoot, reports, notes) => {
       `      </article>`,
     ].join("\n");
   });
-  return items.length ? `    <div class="outputs">\n${items.join("\n")}\n    </div>` : "";
+  return items.length ? `    <div class="outputs block--wide">\n${items.join("\n")}\n    </div>` : "";
 };
 /** The layouts table, from meta.json's "layouts" (the atsb, ntsb and aaib
  *  report folders): the same final report in other published layouts. */

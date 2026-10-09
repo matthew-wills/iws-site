@@ -108,8 +108,10 @@
   .figrow .crop { box-shadow: var(--shadow); }
   .figrow figcaption { margin-top: 10px; }
   .figrow figcaption strong, .strip figcaption strong { display: block; color: var(--ink); font-weight: 600; }
-  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 980px; }
+  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .strip img { box-shadow: none; }
+  .strip .crop img { border: 0; border-radius: 0; }
+  .strip figcaption { margin-top: 8px; }
   .settled { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; padding: 0; list-style: none; }
   .settled li { padding-block: 11px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.95rem; }
   .settled li strong { color: var(--ink); font-weight: 600; }
@@ -137,10 +139,11 @@
 
   /* What Synoptic produced: a few large previews, then the layouts */
   .outputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .output { display: flex; flex-direction: column; gap: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
-  .output__page { display: block; position: relative; aspect-ratio: 5 / 4; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 4px; background: #fff; }
-  .output__page img { display: block; width: 100%; height: auto; }
-  .output__page::after { content: ""; position: absolute; inset: auto 0 0 0; height: 56px; background: linear-gradient(rgba(255, 255, 255, 0), #fff); }
+  .output { display: flex; flex-direction: column; gap: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .output__pages { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 14px; align-items: start; }
+  .output__pages a { display: block; text-decoration: none; }
+  .output__pages img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); }
+  .output__pages span { display: block; margin-top: 6px; font-size: 0.8rem; color: var(--ink-faint); }
   .output__body { display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .output__body p { color: var(--ink-soft); font-size: 0.95rem; }
   .output__body .output__meta { color: var(--ink-faint); font-size: 0.86rem; }
@@ -165,7 +168,7 @@
   @media (max-width: 960px) {
     .figrow { grid-template-columns: 1fr 1fr; }
     .chain__step--map { grid-template-columns: 1fr; }
-    .chain-after, .support { grid-template-columns: 1fr; }
+    .chain-after, .support, .outputs { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
     .figrow, .strip, .settled, .outputs { grid-template-columns: 1fr; }

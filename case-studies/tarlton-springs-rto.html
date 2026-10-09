@@ -230,8 +230,10 @@ footer .legal { line-height: 1.6; }
   .figrow .crop { box-shadow: var(--shadow); }
   .figrow figcaption { margin-top: 10px; }
   .figrow figcaption strong, .strip figcaption strong { display: block; color: var(--ink); font-weight: 600; }
-  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 980px; }
+  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .strip img { box-shadow: none; }
+  .strip .crop img { border: 0; border-radius: 0; }
+  .strip figcaption { margin-top: 8px; }
   .settled { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; padding: 0; list-style: none; }
   .settled li { padding-block: 11px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.95rem; }
   .settled li strong { color: var(--ink); font-weight: 600; }
@@ -259,10 +261,11 @@ footer .legal { line-height: 1.6; }
 
   /* What Synoptic produced: a few large previews, then the layouts */
   .outputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .output { display: flex; flex-direction: column; gap: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
-  .output__page { display: block; position: relative; aspect-ratio: 5 / 4; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 4px; background: #fff; }
-  .output__page img { display: block; width: 100%; height: auto; }
-  .output__page::after { content: ""; position: absolute; inset: auto 0 0 0; height: 56px; background: linear-gradient(rgba(255, 255, 255, 0), #fff); }
+  .output { display: flex; flex-direction: column; gap: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .output__pages { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 14px; align-items: start; }
+  .output__pages a { display: block; text-decoration: none; }
+  .output__pages img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); }
+  .output__pages span { display: block; margin-top: 6px; font-size: 0.8rem; color: var(--ink-faint); }
   .output__body { display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .output__body p { color: var(--ink-soft); font-size: 0.95rem; }
   .output__body .output__meta { color: var(--ink-faint); font-size: 0.86rem; }
@@ -287,7 +290,7 @@ footer .legal { line-height: 1.6; }
   @media (max-width: 960px) {
     .figrow { grid-template-columns: 1fr 1fr; }
     .chain__step--map { grid-template-columns: 1fr; }
-    .chain-after, .support { grid-template-columns: 1fr; }
+    .chain-after, .support, .outputs { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
     .figrow, .strip, .settled, .outputs { grid-template-columns: 1fr; }
@@ -390,17 +393,17 @@ footer .legal { line-height: 1.6; }
     </div>
     <div class="figrow">
       <figure>
-        <div class="crop" style="--W: 3840; --x: 0; --y: 780; --cw: 1920; --ch: 1200"><img class="zoomable" src="../shots/tarlton-springs-rto/01-evidence-register.png" alt="The Captured material sub-tab of the Evidence tab, grouped by the object each item bears on" data-caption="The Evidence tab's Captured material, grouped by where each item is used." loading="lazy"></div>
+        <div class="crop" style="--W: 3840; --x: 30; --y: 900; --cw: 1240; --ch: 775"><img class="zoomable" src="../shots/tarlton-springs-rto/01-evidence-register.png" alt="The Captured material sub-tab of the Evidence tab, grouped by the object each item bears on" data-caption="The Evidence tab's Captured material, grouped by where each item is used." loading="lazy"></div>
         <figcaption><strong>The evidence register</strong>Each item filed once, with why it matters, and linked to every object that rests on it. If a source turns out to be unreliable, what has to be revisited is already listed.</figcaption>
       </figure>
       <figure>
         <span class="anchor" id="interviews"></span>
-        <div class="crop" style="--W: 3840; --x: 900; --y: 330; --cw: 2500; --ch: 1562"><img class="zoomable" src="../shots/tarlton-springs-rto/02-interviews.png" alt="The pilot in command's interview: the record header, the transcript with speakers mapped to roles, and the investigator's notes" data-caption="An interview: the record header, the Teams transcript with speakers mapped to roles, and the investigator's notes." loading="lazy"></div>
+        <div class="crop" style="--W: 3840; --x: 950; --y: 2585; --cw: 1300; --ch: 812"><img class="zoomable" src="../shots/tarlton-springs-rto/02-interviews.png" alt="The pilot in command's interview: the imported transcript, with each speaker mapped to a role" data-caption="The pilot in command's interview: the record header, the Teams transcript with speakers mapped to roles, and the background fields." loading="lazy"></div>
         <figcaption><strong>The two accounts</strong>The captain and the first officer, both over Teams, both transcripts imported as downloaded. Every speaker is mapped to a role, and only the role reaches the record or any drafting model.</figcaption>
       </figure>
       <figure>
         <span class="anchor" id="timeline"></span>
-        <div class="crop" style="--W: 3840; --x: 0; --y: 200; --cw: 2400; --ch: 1500"><img class="zoomable" src="../shots/tarlton-springs-rto/05-timeline.png" alt="The timeline tab, with every event and its source" data-caption="The timeline: every event with its source and its time basis, and the critical event marked." loading="lazy"></div>
+        <div class="crop" style="--W: 3840; --x: 1170; --y: 470; --cw: 1520; --ch: 950"><img class="zoomable" src="../shots/tarlton-springs-rto/05-timeline.png" alt="The timeline tab, with every event and its source" data-caption="The timeline: every event with its source and its time basis, and the critical event marked." loading="lazy"></div>
         <figcaption><strong>The timeline</strong>From the crew signing on to the passengers on the ground, each event with its source and time basis. The CTAF recorder's clock agreed with the cockpit voice recorder's to within a second, and that is recorded too.</figcaption>
       </figure>
     </div>
@@ -426,17 +429,17 @@ footer .legal { line-height: 1.6; }
       <h3>The map, at three points in the work</h3>
       <p>The critical event went down first. Nineteen hypotheses went up around it, two of them there to be disproved: a No. 2 engine power loss before the reject decision, and a tailwind during the roll and stop. Then they were tested as the evidence arrived.</p>
     </div>
-    <div class="strip">
+    <div class="strip block--wide">
       <figure>
-        <img class="zoomable" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="The map with only the critical event placed" data-caption="Stage one: the critical event alone, placed bottom right." loading="lazy">
+        <div class="crop" style="--W: 3840; --x: 200; --y: 300; --cw: 3500; --ch: 1780"><img class="zoomable" src="../shots/tarlton-springs-rto/06-map-stage-a.png" alt="The map with only the critical event placed" data-caption="Stage one: the critical event alone, placed bottom right." loading="lazy"></div>
         <figcaption><strong>The critical event alone</strong>The runway overrun onto the runway end safety area, bottom right.</figcaption>
       </figure>
       <figure>
-        <img class="zoomable" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses scattered across the lanes" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested, nothing filtered out." loading="lazy">
+        <div class="crop" style="--W: 3840; --x: 200; --y: 300; --cw: 3500; --ch: 1780"><img class="zoomable" src="../shots/tarlton-springs-rto/07-map-stage-b.png" alt="Untested hypotheses scattered across the lanes" data-caption="Stage two: nineteen hypotheses in their lanes, none of them tested, nothing filtered out." loading="lazy"></div>
         <figcaption><strong>Every hypothesis up</strong>Nineteen in their lanes, none tested, nothing filtered out.</figcaption>
       </figure>
       <figure>
-        <img class="zoomable" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing" data-caption="Stage three: half the map tested, five arrows drawn, and both excluded hypotheses struck through." loading="lazy">
+        <div class="crop" style="--W: 3840; --x: 200; --y: 300; --cw: 3500; --ch: 1780"><img class="zoomable" src="../shots/tarlton-springs-rto/08-map-stage-c.png" alt="Half the objects tested, with arrows appearing" data-caption="Stage three: half the map tested, five arrows drawn, and both excluded hypotheses struck through." loading="lazy"></div>
         <figcaption><strong>Half tested</strong>Nine objects tested and five arrows drawn. Both hypotheses raised to be disproved failed Existence and are struck through.</figcaption>
       </figure>
     </div>
@@ -444,6 +447,7 @@ footer .legal { line-height: 1.6; }
     <span class="anchor" id="tests"></span>
     <div class="sub-head">
       <h3>One object, from the map to its table</h3>
+      <p>Each AcciMap object carries its own evidence and assessment. As the investigator tests an event or condition, the reasoning is recorded against that object and carried directly into the Evidence and Argument Tables.</p>
       <p><em>Floor escape path lighting checked only every 24 months, not pre-flight</em> is the only object on this map that needed all three tests: it existed, it did not influence the overrun, and it is still important enough to raise. Here it is in the three places it lives.</p>
     </div>
     <ol class="chain">
@@ -523,12 +527,15 @@ footer .legal { line-height: 1.6; }
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">4</span> What Synoptic produced</span>
       <h2>Four documents from the one record</h2>
-      <p>Each is generated from the same tested objects and the same evidence, on the application's Word template and converted to PDF. Each report is published with the audit (the model's check against the record) and the mechanical record check beside it: open one with Read and choose Grounding audit or Record check.</p>
+      <p>Each document draws on the same investigation record, keeping the evidence, analysis and reporting connected and making inconsistencies easier to identify. Each is built on the application's Word template and converted to PDF. Each report is published with the audit (the model's check against the record) and the mechanical record check beside it: open one with Read and choose Grounding audit or Record check.</p>
     </div>
     <span class="anchor" id="tables"></span>
-    <div class="outputs">
+    <div class="outputs block--wide">
       <article class="output">
-        <a class="output__page" href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img src="../exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="Page 5 of the Evidence and Argument Tables" loading="lazy"></a>
+        <div class="output__pages">
+          <a href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img src="../exports/tarlton-springs-rto/pages/evidence_argument_tables/p01.png" alt="The cover of the Evidence and Argument Tables" loading="lazy"><span>Cover</span></a>
+          <a href="../exports/tarlton-springs-rto/evidence_argument_tables.html"><img src="../exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="Page 5 of the Evidence and Argument Tables" loading="lazy"><span>Page 5</span></a>
+        </div>
         <div class="output__body">
           <h3>Evidence and Argument Tables</h3>
           <p>The working behind every finding, one table per object in the order the map reads: each test’s result and confidence, the argument for and against, and the investigator’s reasoning.</p>
@@ -537,7 +544,10 @@ footer .legal { line-height: 1.6; }
         </div>
       </article>
       <article class="output">
-        <a class="output__page" href="../exports/tarlton-springs-rto/report_preliminary.html"><img src="../exports/tarlton-springs-rto/pages/report_preliminary/p04.png" alt="Page 4 of the Preliminary investigation report" loading="lazy"></a>
+        <div class="output__pages">
+          <a href="../exports/tarlton-springs-rto/report_preliminary.html"><img src="../exports/tarlton-springs-rto/pages/report_preliminary/p01.png" alt="The cover of the Preliminary investigation report" loading="lazy"><span>Cover</span></a>
+          <a href="../exports/tarlton-springs-rto/report_preliminary.html"><img src="../exports/tarlton-springs-rto/pages/report_preliminary/p04.png" alt="Page 4 of the Preliminary investigation report" loading="lazy"><span>Page 4</span></a>
+        </div>
         <div class="output__body">
           <h3>Preliminary investigation report</h3>
           <p>The interim report, issued while the work is still running: what is known, what is still being looked at and what has already been done. It carries no findings.</p>
@@ -546,7 +556,10 @@ footer .legal { line-height: 1.6; }
         </div>
       </article>
       <article class="output">
-        <a class="output__page" href="../exports/tarlton-springs-rto/report_standard.html"><img src="../exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="Page 8 of the Final investigation report" loading="lazy"></a>
+        <div class="output__pages">
+          <a href="../exports/tarlton-springs-rto/report_standard.html"><img src="../exports/tarlton-springs-rto/pages/report_standard/p01.png" alt="The cover of the Final investigation report" loading="lazy"><span>Cover</span></a>
+          <a href="../exports/tarlton-springs-rto/report_standard.html"><img src="../exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="Page 8 of the Final investigation report" loading="lazy"><span>Page 8</span></a>
+        </div>
         <div class="output__body">
           <h3>Final investigation report</h3>
           <p>The full internal report: an executive summary, the occurrence, the analysis lane by lane, the findings and the appendices a reviewer will ask for.</p>
@@ -555,7 +568,10 @@ footer .legal { line-height: 1.6; }
         </div>
       </article>
       <article class="output">
-        <a class="output__page" href="../exports/tarlton-springs-rto/report_executive.html"><img src="../exports/tarlton-springs-rto/pages/report_executive/p05.png" alt="Page 5 of the Executive briefing" loading="lazy"></a>
+        <div class="output__pages">
+          <a href="../exports/tarlton-springs-rto/report_executive.html"><img src="../exports/tarlton-springs-rto/pages/report_executive/p01.png" alt="The cover of the Executive briefing" loading="lazy"><span>Cover</span></a>
+          <a href="../exports/tarlton-springs-rto/report_executive.html"><img src="../exports/tarlton-springs-rto/pages/report_executive/p05.png" alt="Page 5 of the Executive briefing" loading="lazy"><span>Page 5</span></a>
+        </div>
         <div class="output__body">
           <h3>Executive briefing</h3>
           <p>A few pages in plain language for the people who decide: what happened, why it happened, what was found and what is being done about it.</p>
