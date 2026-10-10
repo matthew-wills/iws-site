@@ -13,6 +13,7 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
     - `index.template.html` - the home page.
     - `product.template.html`, `methodology.template.html`,
       `ai-security.template.html`, `case-studies.template.html`,
+      `organisations.template.html`,
       `download.template.html`, `documentation.template.html`,
       `getting-started.template.html` - the other top-level pages, one job
       each: what the product is, how the method derives findings, what AI
@@ -80,7 +81,8 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
   published documents (PDF, cover renders, page renders, the collated
   export), copied in by the build.
 - `index.html`, `product.html`, `methodology.html`, `ai-security.html`,
-  `case-studies.html`, `download.html`, `getting-started.html`,
+  `case-studies.html`, `organisations.html`, `download.html`,
+  `getting-started.html`,
   `case-studies/<slug>.html`,
   `changelog.html`, `guide.html`, `reports/<slug>/*.html`,
   `exports/<slug>/*.html` - the built pages,

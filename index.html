@@ -213,6 +213,15 @@ footer .legal { line-height: 1.6; }
     .docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .outs__group > .doc { width: calc((100% - var(--g)) / 2); }
   }
+  /* For organisations */
+  #organisations .org-lede { max-width: 76ch; color: var(--ink-soft); font-size: 1.05rem; margin-top: -8px; }
+  .org4 { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .org4 li { padding: 16px 18px; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 10px; background: var(--paper); }
+  .org4 h3 { font-size: 1.02rem; }
+  .org4 p { color: var(--ink-soft); font-size: 0.93rem; margin-top: 6px; }
+  .org-thread { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-soft); max-width: 92ch; }
+  @media (max-width: 960px) { .org4 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .org4 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -230,6 +239,7 @@ footer .legal { line-height: 1.6; }
       <a href="methodology.html">Methodology</a>
       <a href="ai-security.html">AI and security</a>
       <a href="case-studies.html">Case studies</a>
+      <a href="organisations.html">For organisations</a>
       <a href="documentation.html">Documentation</a>
       <a href="download.html">Download</a>
     </nav>
@@ -292,6 +302,21 @@ footer .legal { line-height: 1.6; }
       </div>
     </div>
     <div class="ai-note"><p>Write each report yourself under its headings, or use optional AI-assisted drafting with a Professional licence. Every draft is checked against the record, and you decide what stays. <a href="ai-security.html">How AI drafting works and where data goes &rarr;</a></p></div>
+  </section>
+
+  <section class="block" id="organisations">
+    <div class="section-head">
+      <span class="eyebrow">For organisations</span>
+      <h2>A consistent process, with the judgement left to the investigator</h2>
+    </div>
+    <p class="org-lede">Every investigation follows the same method and builds the same kind of record, whoever conducts it. What the evidence shows remains the investigator's professional judgement, and the reasoning behind each conclusion stays in the record where a reviewer can follow it.</p>
+    <ul class="org4">
+      <li><h3>Consistency</h3><p>Each investigator develops hypotheses on the AcciMap and tests every one for Existence, Influence and Importance against the evidence.</p></li>
+      <li><h3>Traceability</h3><p>A finding stays connected to its tests, arguments and evidence, so it can be followed back to what supports it.</p></li>
+      <li><h3>Less administration</h3><p>Documents are generated from the record, leaving more time for gathering evidence and analysing it.</p></li>
+      <li><h3>Reasoning preserved</h3><p>The argument for each test is kept where it was made, so it survives review and a change of hands.</p></li>
+    </ul>
+    <p class="org-thread">The report should emerge from the investigation, rather than becoming the workspace in which the investigation is conducted. <a href="organisations.html">IWS for organisations &rarr;</a></p>
   </section>
 
   <section class="block" id="cases">
