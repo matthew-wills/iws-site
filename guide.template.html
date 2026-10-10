@@ -1,28 +1,12 @@
-<title>Documentation</title>
+<title>User Guide</title>
 <style>
 %%THEME%%
-  .guide-head { padding-block: 40px 18px; display: flex; flex-direction: column; gap: 8px; }
-  .guide-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
-    /* The app's own guide styles follow (src/help/help.css); the shell
-     around them is the site's. The in-app guide scrolls inside a dialog,
-     so its own height limits are lifted here and the table of contents
-     becomes a sticky column beside the text. */
-  .guide-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; align-items: start; }
-  .guide-body .manual { display: contents; }
-  .guide-body .manual__toc { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - 100px); overflow-y: auto; }
-  .guide-body .manual__toc button { text-align: left; font-family: inherit; font-size: 0.93rem; color: var(--ink-soft); background: transparent; border: none; padding: 5px 8px; border-radius: 6px; cursor: pointer; }
-  .guide-body .manual__toc button:hover { background: var(--paper); color: var(--ink); }
-  .guide-body .manual__toc button.is-current { background: var(--accent-soft); color: var(--accent-deep); font-weight: 600; }
-  .guide-pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-  .guide-pager a { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); text-decoration: none; font-size: 0.93rem; }
-  .guide-pager a:hover { background: #f1f5f9; }
-  .guide-pager a[hidden] { display: none; }
-  .guide-body .manual__content { max-height: none; overflow: visible; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 28px 32px; }
-  .guide-body .manual__content section { scroll-margin-top: 80px; }
-  @media (max-width: 860px) {
-    .guide-body { grid-template-columns: 1fr; }
-    .guide-body .manual__toc { position: static; max-height: none; flex-direction: row; flex-wrap: wrap; }
-  }
+  .guide-head { padding-block: 40px 22px; display: flex; flex-direction: column; gap: 10px; }
+  .guide-head p { color: var(--ink-soft); max-width: 72ch; font-size: 1.04rem; }
+  @media (max-width: 560px) { .guide-head { padding-block: 28px 16px; } }
+  /* The guide fragment (guide-fragment.html, rendered by the
+     application's scripts/render-user-guide.tsx) brings its own styles,
+     its contents column and filter, and the script that runs them. */
 </style>
 
 %%HEADER%%
@@ -30,65 +14,9 @@
 <main class="wrap" id="top">
   <div class="guide-head">
     <span class="eyebrow">Documentation</span>
-    <h1>The user guide, as the app ships it</h1>
-    <p>This is the same guide you will find under Help inside the application, rendered from the same source, so it matches the version you download. The ideas behind the method are on the <a href="methodology.html">Methodology</a> page; this guide is about operating the software.</p>
+    <h1>User Guide</h1>
+    <p>A reference to every tab, form and setting in Investigation Workflow Suite (IWS), organised the way the app is, and the same User Guide the app opens under Help. New to IWS? Start with <a href="getting-started.html">Getting started</a>. The method itself is on the <a href="methodology.html">Methodology</a> page.</p>
   </div>
-  <div class="guide-body">
 %%GUIDE%%
-  </div>
-  <nav class="guide-pager" aria-label="Guide sections">
-    <a id="guide-prev" href="#top" hidden>Previous section</a>
-    <a id="guide-next" href="#top" hidden>Next section</a>
-  </nav>
 %%FOOTER%%
 </main>
-
-<script>
-  // The in-app table of contents scrolls the guide's own panel; here the
-  // page scrolls, so each button scrolls to its section on the page and
-  // puts the section's id in the address bar, so a section can be linked.
-  // The button for the section in view is marked, and the previous and
-  // next links follow it.
-  (function () {
-    var buttons = Array.prototype.slice.call(document.querySelectorAll(".manual__toc button"));
-    var heads = Array.prototype.slice.call(document.querySelectorAll(".manual__content section h3"));
-    var sectionFor = function (b) {
-      var label = b.textContent.trim();
-      var h = heads.find(function (x) { return x.textContent.trim() === label; });
-      return h ? h.closest("section") || h : null;
-    };
-    var pairs = buttons.map(function (b) { return { button: b, section: sectionFor(b) }; }).filter(function (p) { return p.section; });
-    var prev = document.getElementById("guide-prev"), next = document.getElementById("guide-next");
-    function go(p) {
-      p.section.scrollIntoView({ behavior: "smooth", block: "start" });
-      if (p.section.id) history.replaceState(null, "", "#" + p.section.id);
-      mark(p);
-    }
-    function mark(p) {
-      var i = pairs.indexOf(p);
-      pairs.forEach(function (o) { o.button.classList.toggle("is-current", o === p); });
-      var before = pairs[i - 1], after = pairs[i + 1];
-      prev.hidden = !before; next.hidden = !after;
-      if (before) { prev.textContent = "Previous: " + before.button.textContent.trim(); prev.href = "#" + (before.section.id || "top"); }
-      if (after) { next.textContent = "Next: " + after.button.textContent.trim(); next.href = "#" + (after.section.id || "top"); }
-    }
-    pairs.forEach(function (p) { p.button.addEventListener("click", function () { go(p); }); });
-    [prev, next].forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        var p = pairs.find(function (o) { return "#" + o.section.id === a.getAttribute("href"); });
-        if (p) { e.preventDefault(); go(p); }
-      });
-    });
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          var p = pairs.find(function (o) { return o.section === e.target; });
-          if (p) mark(p);
-        });
-      }, { rootMargin: "-20% 0px -70% 0px" });
-      pairs.forEach(function (p) { io.observe(p.section); });
-    }
-    if (pairs.length) mark(pairs[0]);
-  })();
-</script>

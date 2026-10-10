@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case study: Kanooka Heads | Investigation Workflow Suite (IWS)</title>
 <meta name="description" content="A passenger ferry left a dredged channel in darkness and grounded with 38 people aboard, worked from the master's own report through to the Evidence and Argument Tables and the final investigation report.">
-
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -115,14 +114,42 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
-/* On a phone the seven nav items scroll sideways in one row under the
-   wordmark, so the sticky header stays one line of links tall. */
+/* On a phone the nav folds behind a Menu button beside the wordmark and
+   opens as a two-column panel under it (the header's script adds .js-nav).
+   Without script, the items scroll sideways in one row, with a thin
+   scrollbar and a fade at the right edge so the row reads as scrollable. */
+.nav-toggle { display: none; }
 @media (max-width: 700px) {
   .top .wrap { gap: 4px 12px; padding-block: 6px; }
-  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
   .nav a { white-space: nowrap; flex: none; }
+  .js-nav .wrap { flex-wrap: wrap; }
+  .js-nav .nav-toggle { display: inline-flex; align-items: center; gap: 7px; margin-left: auto; padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--paper); color: var(--ink); font: 600 0.93rem/1 var(--font, inherit); cursor: pointer; }
+  .js-nav .nav-toggle svg { width: 18px; height: 18px; }
+  .js-nav .nav { display: none; -webkit-mask-image: none; mask-image: none; }
+  .js-nav.nav-open .nav { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; overflow: visible; padding: 4px 0 10px; }
+  .js-nav.nav-open .nav a { padding: 10px; }
 }
 footer .legal { line-height: 1.6; }
+
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
 
 
   [id] { scroll-margin-top: 76px; }
@@ -254,7 +281,7 @@ footer .legal { line-height: 1.6; }
   .chain__label .then { color: var(--ink-faint); font-weight: 400; font-size: 0.9rem; }
   .chain p { color: var(--ink-soft); font-size: 0.95rem; }
   .chain .page { display: block; width: 100%; border: 1px solid var(--line-strong); border-radius: 4px; box-shadow: var(--shadow); background: #fff; }
-  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; border: 1px solid var(--line); background: var(--paper); cursor: zoom-in; }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; outline: 1px solid var(--line); outline-offset: -1px; background: var(--paper); cursor: zoom-in; }
   .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
   .crop__ring { position: absolute; border: 3px solid #c2782a; border-radius: 12px; box-shadow: 0 0 0 4px rgba(194, 120, 42, 0.18); pointer-events: none; }
   .crop__ring--soft { border-width: 2px; border-color: rgba(194, 120, 42, 0.7); box-shadow: 0 0 0 3px rgba(194, 120, 42, 0.1); }
@@ -266,7 +293,7 @@ footer .legal { line-height: 1.6; }
   details.key summary { cursor: pointer; color: var(--accent); font-weight: 600; }
   details.key .legend { margin-top: 14px; }
 
-  /* What Synoptic produced: a few large previews, then the layouts */
+  /* What IWS produced: a few large previews, then the layouts */
   .outputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
   .output { display: flex; flex-direction: column; gap: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
   .output__pages { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 14px; align-items: start; }
@@ -293,6 +320,13 @@ footer .legal { line-height: 1.6; }
   .support p { color: var(--ink-soft); font-size: 0.95rem; margin-top: 6px; }
   .support .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
   .next { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+
+  /* The way back to the list, and the other studies at the foot (both
+     from the shell and build-site.mjs, never from a study's content) */
+  .crumb { padding-top: 18px; font-size: 0.92rem; }
+  .crumb a { color: var(--ink-soft); text-decoration: none; }
+  .crumb a:hover { color: var(--accent); text-decoration: underline; }
+  .crumb + .case-head { padding-top: 16px; }
 
   @media (max-width: 960px) {
     .figrow { grid-template-columns: 1fr 1fr; }
@@ -332,31 +366,34 @@ footer .legal { line-height: 1.6; }
   <div class="wrap">
     <a class="brand" href="../index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
-    <nav class="nav" aria-label="Site">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Site">
       <a href="../index.html">Home</a>
       <a href="../product.html">Product</a>
       <a href="../methodology.html">Methodology</a>
       <a href="../ai-security.html">AI and security</a>
       <a href="../case-studies.html" aria-current="page">Case studies</a>
-      <a href="../guide.html">Documentation</a>
+      <a href="../documentation.html">Documentation</a>
       <a href="../download.html">Download</a>
     </nav>
   </div>
+  <script>(function () { var top = document.currentScript.parentElement, btn = top.querySelector(".nav-toggle"); top.classList.add("js-nav"); function set(open) { top.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", String(open)); } btn.addEventListener("click", function () { set(!top.classList.contains("nav-open")); }); document.addEventListener("keydown", function (e) { if (e.key === "Escape" && top.classList.contains("nav-open")) { set(false); btn.focus(); } }); })();</script>
 </header>
 
 <main class="wrap" id="top">
+<p class="crumb"><a href="../case-studies.html">← All case studies</a></p>
   <div class="case-head">
     <span class="eyebrow">Maritime case study</span>
     <h1>Kanooka Heads: a passenger ferry grounding at night</h1>
-    <p>A passenger ferry's chart plotter freezes in a dredged channel in full darkness. The vessel eases out of the channel while the master looks for a beacon he cannot see, and grounds on a sandbank with 38 people aboard. This page follows the investigation from the master's own report to the documents it produced: the evidence it gathered, the map it tested, what it established, and what Synoptic generated from that one record.</p>
+    <p>A passenger ferry's chart plotter freezes in a dredged channel in full darkness. The vessel eases out of the channel while the master looks for a beacon he cannot see, and grounds on a sandbank with 38 people aboard. This page follows the investigation from the master's own report to the documents it produced: the evidence it gathered, the map it tested, what it established, and what IWS generated from that one record.</p>
     <p class="note">Everything in this case study is fictional: the operator, the port, the vessel, the waterway, the people and every record. The screenshots are real screens from the investigation file, and the documents are published exactly as the application produced them, faults and all.</p>
     <nav class="jump" aria-label="The five parts">
       <a href="#what"><span class="stage-no">1</span>What happened</a>
       <a href="#how"><span class="stage-no">2</span>How it was investigated</a>
       <a href="#found"><span class="stage-no">3</span>What it established</a>
-      <a href="#produced"><span class="stage-no">4</span>What Synoptic produced</a>
+      <a href="#produced"><span class="stage-no">4</span>What IWS produced</a>
       <a href="#examine"><span class="stage-no">5</span>Examine the record</a>
     </nav>
   </div>
@@ -545,7 +582,7 @@ footer .legal { line-height: 1.6; }
   <section class="block" id="produced">
     <span class="anchor" id="published"></span>
     <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">4</span> What Synoptic produced</span>
+      <span class="eyebrow"><span class="stage-no">4</span> What IWS produced</span>
       <h2>Four documents from the one record</h2>
       <p>Each document draws on the same investigation record, keeping the evidence, analysis and reporting connected and making inconsistencies easier to identify. Each is built on the application's Word template and converted to PDF. Each report is published with the audit (the model's check against the record) and the mechanical record check beside it: open one with Read and choose Grounding audit or Record check.</p>
     </div>
@@ -642,11 +679,35 @@ footer .legal { line-height: 1.6; }
     </div>
     <div class="next">
       <a class="btn btn-primary" href="../download.html">Download</a>
-      <a class="btn" href="tarlton-springs-rto.html">Tarlton Springs, aviation</a>
-      <a class="btn" href="bindarra-haul-road-collision.html">Bindarra, mining</a>
     </div>
   </section>
 
+
+  <section class="block others" id="other-studies">
+    <div class="section-head"><h2>Other case studies</h2></div>
+    <div class="studies studies--small">
+      <a class="study" href="../case-studies/tarlton-springs-rto.html">
+        <img src="../case-studies/tarlton-springs-rto/card.jpg" alt="A white regional turboprop airliner parked on an airport apron at sunset" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Aviation</span>
+          <h3 class="study__title">Tarlton Springs</h3>
+          <span class="study__kind">Rejected take-off and runway overrun</span>
+          <span class="study__line">A regional turboprop rejects its take-off above V1 at night as two kangaroos cross the runway, strikes them and leaves the end of the runway.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="study" href="../case-studies/bindarra-haul-road-collision.html">
+        <img src="../case-studies/bindarra-haul-road-collision/card.jpg" alt="Haul trucks on a haul road in an open-cut mine in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Mining</span>
+          <h3 class="study__title">Bindarra</h3>
+          <span class="study__kind">Haul truck and light vehicle collision</span>
+          <span class="study__line">A haul truck and a light vehicle meet at a new intersection on a night shift, months after a hazard report nobody acted on.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+    </div>
+  </section>
 
   <footer>
     <span class="legal">Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.<br>© 2026 Synoptic Safety Investigation Software</span>
@@ -657,7 +718,7 @@ footer .legal { line-height: 1.6; }
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
   <div class="lightbox__body">
-    <img id="lb-img" src="" alt="">
+    <img id="lb-img" alt="">
     <p class="lightbox__caption" id="lb-caption"></p>
   </div>
 </div>
@@ -671,7 +732,7 @@ footer .legal { line-height: 1.6; }
       lbImg.src = src; lbCaption.textContent = text || "";
       lb.classList.add("is-open"); document.body.classList.add("has-lightbox");
     }
-    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
 
     // Each walkthrough drives its own sticky frame: the step nearest the
     // middle of the window is the active one, and its screenshot is shown.

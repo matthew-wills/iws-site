@@ -1,7 +1,7 @@
 [
   {
     "version": "0.12.0",
-    "date": "2026-10-03",
+    "planned": true,
     "features": [
       "Dashboard: completeness tiles above the checklist and the to-do list, each with a jump to the work.",
       "Jump to the map: a to-do's origin, an evidence item's use or a record check takes you to the object, highlighted.",
@@ -13,18 +13,18 @@
       "Probability wording: the likelihood bands and their accepted phrases adjustable in Settings; the object form shows what a slider position reads as.",
       "A Findings list says when a finding stated without a likelihood term was established as fact.",
       "Record before Draft report in the tab order; the Draft report page in three bands.",
-      "The user guide illustrated throughout, with every control explained.",
+      "The User Guide illustrated throughout, with every control explained.",
       "The maker named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
     ],
     "fixes": [
       "Record checks read only the sentence that restates a factor's own claim, leave excluded hypotheses and other risk factors unconnected by design, and read a numbered Findings list item by item.",
       "The command-line export carries figures like the app's own export, and a figure's caption reads as its own sentence.",
-      "User guide passages that named old tabs or described behaviour the app no longer has are corrected."
+      "User Guide passages that named old tabs or described behaviour the app no longer has are corrected."
     ]
   },
   {
     "version": "0.11.0",
-    "date": "2026-09-30",
+    "date": "30 September 2026",
     "features": [
       "Six report styles: standard, three-page preliminary update, executive brief, and three final-report styles modelled on published investigation reports.",
       "Repair against the audit: flagged sections sent back with the record excerpts, re-audited, and landed one at a time.",
@@ -33,7 +33,7 @@
       "Interview note windows and a Finalise that renders the record as one document; Teams transcripts import from docx or vtt.",
       "The investigation log records the app's own actions with a timestamp.",
       "Reports carry a contents page, section page breaks and an activity appendix.",
-      "Signed licences with a 30-day trial; an unlicensed copy runs as the Standard tier with a watermark."
+      "Signed licences with a 30-day trial; an unlicensed copy runs as the then-Standard tier with a watermark."
     ],
     "fixes": [
       "The record check reads findings through their subheadings and compares like with like.",

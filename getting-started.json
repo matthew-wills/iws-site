@@ -1,0 +1,641 @@
+{
+  "title": "Your first investigation",
+  "lede": [
+    "One pass through the application on a small fictional occurrence, from the start screen to the Evidence and Argument Tables in Word. It takes 20 to 30 minutes, and every step works at the Free level, with no licence."
+  ],
+  "before": {
+    "id": "gs:before",
+    "title": "Before you start",
+    "install": [
+      [
+        "The app runs on Windows 10 or 11. The per-user installer needs no administrator rights and no account; the exe is unsigned for now, so Windows may show a SmartScreen warning (More info, then Run anyway). ",
+        {
+          "ref": "guide:install",
+          "text": "Installing"
+        },
+        ", in the User Guide, covers the other ways to run it."
+      ]
+    ],
+    "occurrence": {
+      "label": "Fictional",
+      "title": "Dock 2 forklift contact, Redgum Street depot",
+      "summary": "A reversing forklift ran over a delivery driver's foot. That morning's pre-start check had recorded its reversing beeper as not working, and the forklift stayed in service. The depot, its people and its records are invented for this walkthrough.",
+      "pieces": [
+        {
+          "caption": "Incident notification DEP-0412",
+          "text": "Tuesday 14/04/2026, 07:40 local time (21:40 UTC on 13/04/2026), Dock 2, Redgum Street depot. Forklift FL-3, reversing out of trailer bay 2, ran over the left foot of a delivery driver walking behind it. Bruising only; first aid on site; driver back at work the next day."
+        },
+        {
+          "caption": "FL-3 pre-start check, 14/04/2026",
+          "text": "06:52 local. Horn: OK. Lights: OK. Brakes: OK. Reversing beeper: NOT WORKING, reported to shift supervisor. Signed: forklift operator, day shift."
+        },
+        {
+          "caption": "Delivery driver's written account",
+          "text": "I was walking back to my truck along the dock, behind the forklift. I did not hear any beeping. The first I knew, it was reversing onto my foot. The dock was busy and the roller door was going."
+        }
+      ]
+    },
+    "standardOfProof": [
+      [
+        "Every test is read against your standard of proof. It is 70 per cent unless you change it, at Settings > Analysis > Standard of proof, anywhere from 50 to 95. Leave it at 70 for this walkthrough."
+      ]
+    ],
+    "lookFirst": [
+      [
+        "Rather look first? The start screen's \"or explore the worked example investigation\" opens a finished investigation you can click through."
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "id": "create",
+      "title": "Create the investigation and save it",
+      "where": [
+        "Start screen",
+        "New investigation…",
+        "Investigation name",
+        "Choose location and create"
+      ],
+      "body": [
+        [
+          "The app opens on a start screen with nothing loaded. Press New investigation…, type ",
+          {
+            "enter": "Dock 2 forklift contact"
+          },
+          " as the Investigation name and press Choose location and create, then pick the folder it should live in. Later on, the same command is under File, New investigation…."
+        ],
+        [
+          "Save with ",
+          {
+            "kbd": "Ctrl+S"
+          },
+          ". Once the file has a home, autosave also writes it every five minutes."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-new-investigation",
+          "src": "guide-images/gs-new-investigation.png",
+          "file": "gs-new-investigation.png",
+          "alt": "The New investigation dialog with Dock 2 forklift contact typed into Investigation name, and beneath it the folder the app will create: a folder of that name holding the .sfm file and an exports folder.",
+          "caption": "The dialog shows the folder it will create before you choose where it goes.",
+          "displayWidth": 480
+        }
+      ],
+      "see": [
+        [
+          "A folder named Dock 2 forklift contact, holding ",
+          {
+            "code": "Dock 2 forklift contact.sfm"
+          },
+          " and an empty ",
+          {
+            "code": "exports"
+          },
+          " folder. The tabs Dashboard, Log, Evidence, Timeline, AcciMap, Record and Draft report run across the top of the window, and the investigation's name sits at the right of the header."
+        ]
+      ],
+      "number": 1
+    },
+    {
+      "id": "checklist",
+      "title": "Answer the checklist",
+      "where": [
+        "Dashboard tab",
+        "Checklist"
+      ],
+      "body": [
+        [
+          "The Checklist is the investigation's question flow, seeded from the template in Settings > Templates. Answer each question Yes, No or N/A, and click an answer again to clear it. For this walkthrough the first section, Notification and triage, is enough: answer Yes to the first two questions, No to the next three (nothing about this invented case has to be reported, there are no earlier reports and no legal advice is needed) and Yes to the last, the decision to investigate."
+        ],
+        [
+          "Some questions carry guidance notes, including an evidence-gathering list. On a real occurrence read it on day one, because CCTV, recorded data and rosters are overwritten on their own schedule, not yours. Click a section's title to tuck it away once it is done."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-checklist",
+          "src": "guide-images/gs-checklist.png",
+          "file": "gs-checklist.png",
+          "alt": "The Notification and triage section of the Checklist with all six questions answered: Yes, Yes, No, No, No and Yes. Its count reads 6/6.",
+          "caption": "Notification and triage, answered.",
+          "displayWidth": 884
+        },
+        {
+          "id": "gs-log-checklist",
+          "src": "guide-images/gs-log-checklist.png",
+          "file": "gs-log-checklist.png",
+          "alt": "The Log tab listing six automatic entries, one per checklist answer, each naming the question and the answer given.",
+          "caption": "The Log has already recorded every answer.",
+          "displayWidth": 1070
+        }
+      ],
+      "see": [
+        [
+          "Notification and triage counting 6/6. Open the Log tab: every answer is already there as an entry, so the decision to investigate is logged without a separate step."
+        ]
+      ],
+      "number": 2
+    },
+    {
+      "id": "capture",
+      "title": "Capture the evidence",
+      "where": [
+        "Evidence tab",
+        "Captured material",
+        "Add to the evidence register"
+      ],
+      "body": [
+        [
+          "Click the box headed Add to the evidence register and paste (",
+          {
+            "kbd": "Ctrl+V"
+          },
+          ") the text of the first piece of evidence from ",
+          {
+            "ref": "gs:before",
+            "text": "Before you start"
+          },
+          ". A file dragged from Explorer and dropped on the box works the same way, a PDF or a photograph included. The capture appears as a tile below the box. Paste the other two pieces the same way."
+        ],
+        [
+          "Click a tile to open its form. Give it a Caption (the name you will know it by when you link it), its Significance (why it matters) and a Category, set This text is to Verbatim, since you pasted the words as written, then Save. Use the three headings in the case as the captions (",
+          {
+            "enter": "Incident notification DEP-0412"
+          },
+          ", ",
+          {
+            "enter": "FL-3 pre-start check, 14/04/2026"
+          },
+          " and ",
+          {
+            "enter": "Delivery driver's written account"
+          },
+          ") and file them under ",
+          {
+            "enter": "Correspondence"
+          },
+          ", ",
+          {
+            "enter": "Document Extracts"
+          },
+          " and ",
+          {
+            "enter": "Correspondence"
+          },
+          ". Write the Significance in your own words; a line is enough."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-evidence-item",
+          "src": "guide-images/gs-evidence-item.png",
+          "file": "gs-evidence-item.png",
+          "alt": "The evidence item form for the pre-start check: the pasted text at the top, then Caption reading FL-3 pre-start check, 14/04/2026, Significance, Category reading Document Extracts, and Reference.",
+          "caption": "The item form. Caption, Significance and Category are all you need now.",
+          "displayWidth": 940
+        },
+        {
+          "id": "gs-capture",
+          "src": "guide-images/gs-capture.png",
+          "file": "gs-capture.png",
+          "alt": "Captured material with the category filter above (All 3, Correspondence 2, Document Extracts 1), the Add to the evidence register box, and three tiles under Not yet linked to anything, each headed by its caption.",
+          "caption": "Three captures, each under its caption, not yet linked to anything.",
+          "displayWidth": 1072
+        }
+      ],
+      "see": [
+        [
+          "Three tiles in the register under Not yet linked to anything, each headed by its caption, and the category filter above them counting what is there."
+        ]
+      ],
+      "number": 3
+    },
+    {
+      "id": "timeline",
+      "title": "Put the occurrence on the timeline",
+      "where": [
+        "Timeline tab",
+        "+ Event",
+        "Event, Date, Time (UTC)",
+        "Done"
+      ],
+      "body": [
+        [
+          "Press + Event. The card opens with New event and today's date filled in; replace them. Write the Event in one short sentence, ",
+          {
+            "enter": "FL-3 reverses onto delivery driver's foot at Dock 2"
+          },
+          ", then its Date and Time. The timeline is kept in UTC, so use the UTC time from the notification: ",
+          {
+            "enter": "13/04/2026"
+          },
+          " and ",
+          {
+            "enter": "21:40"
+          },
+          ". Leave the rest of the card for now and press Done."
+        ],
+        [
+          "Building the sequence before the map is the method's order: a factor is easier to judge once you know when it sat."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-timeline-event",
+          "src": "guide-images/gs-timeline-event.png",
+          "file": "gs-timeline-event.png",
+          "alt": "The Timeline event card with the Event line reading FL-3 reverses onto delivery driver's foot at Dock 2, Date 13/04/2026, Time (UTC) 21:40:00 known to the minute, and the effective time beneath.",
+          "caption": "Only the Event and its time are needed to start.",
+          "displayWidth": 760
+        }
+      ],
+      "see": [
+        [
+          "The event on the timeline and as a row in the table beneath it. The line under the Timeline heading reads 1 event on 13/04/2026."
+        ]
+      ],
+      "number": 4
+    },
+    {
+      "id": "critical-event",
+      "title": "Place the critical event",
+      "where": [
+        "AcciMap tab",
+        "+ Critical event",
+        "click in Occurrence Events",
+        "double-click it"
+      ],
+      "body": [
+        [
+          "The critical event is the occurrence everything else on the map explains. Press + Critical event in the toolbar and click in the bottom lane, Occurrence Events, towards the right. The tool goes back to Select once the object is down, so double-click it to open its form, and replace New Critical Event in the Title with ",
+          {
+            "enter": "Forklift FL-3 ran over the delivery driver's foot"
+          },
+          "."
+        ],
+        [
+          "Its Existence is established through evidence like any other object's. Under Record the evidence - test Existence, leave the box on Conclusive and write what the evidence shows: ",
+          {
+            "enter": "The incident notification records FL-3 reversing out of trailer bay 2 and running over the driver's left foot at 07:40 local. The driver's account describes the same."
+          },
+          " Move the slider to 100 per cent and, in the line beneath it, say why: ",
+          {
+            "enter": "The depot's own report, made the same morning, and the driver's account agree."
+          }
+        ],
+        [
+          "A second step, Prove the significance, opens once Existence passes. Write why the occurrence matters: ",
+          {
+            "enter": "A pedestrian was struck by a moving forklift. The injury was bruising, but the same contact could have crushed the foot."
+          },
+          " Then Save."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-critical-event",
+          "src": "guide-images/gs-critical-event.png",
+          "file": "gs-critical-event.png",
+          "alt": "The critical event's form, headed Critical Event: the Title, the Existence evidence, the slider at 100 per cent reading virtually certain with a Pass, the note beneath, and Proof of significance filled in.",
+          "caption": "The critical event's Existence, recorded from the evidence like any other object's.",
+          "displayWidth": 990
+        }
+      ],
+      "see": [
+        [
+          "A rounded object in the Occurrence Events lane carrying your title, its form headed Critical Event, and Pass beside the Existence question."
+        ]
+      ],
+      "number": 5
+    },
+    {
+      "id": "factor",
+      "title": "Add a factor and say which way it bears on risk",
+      "where": [
+        "+ Object",
+        "click in Local Conditions",
+        "double-click it",
+        "Title",
+        "Hypothesising an event or condition that"
+      ],
+      "body": [
+        [
+          "Press + Object and click in Local Conditions, to the left of the critical event. Double-click the new object to open its form."
+        ],
+        [
+          "Write the Title as an event or a condition, something evidence can show to be true or false: ",
+          {
+            "enter": "FL-3 in service with its reversing beeper not working"
+          },
+          ". \"Forklift safety\" or \"communication issue\" cannot be tested."
+        ],
+        [
+          "Then choose under Hypothesising an event or condition that. Increased risk is right here. Decreased risk is for something that helped, such as a defence that worked, and Neutral for context that bears on risk neither way. This choice, with the test results, decides what the object is classified as."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-factor",
+          "src": "guide-images/gs-factor.png",
+          "file": "gs-factor.png",
+          "alt": "The top of the object form: the Title reading FL-3 in service with its reversing beeper not working, and Hypothesising an event or condition that with Increased risk selected.",
+          "caption": "Title and risk direction at the top of the object form.",
+          "displayWidth": 990
+        }
+      ],
+      "see": [
+        [
+          "The object in Local Conditions with its title, and its form showing Increased risk selected."
+        ]
+      ],
+      "number": 6
+    },
+    {
+      "id": "test",
+      "title": "Test it: Existence, then Influence, then Importance only if needed",
+      "where": [
+        "Object form",
+        "Record the evidence - test Existence",
+        "Conclusive or Argument",
+        "the slider"
+      ],
+      "body": [
+        [
+          "The form asks up to three questions, each appearing only when the one before it calls for it."
+        ],
+        [
+          "Existence first: did this event or condition actually exist or occur? The pre-start check says so in writing. Leave it Conclusive and write what the evidence shows: ",
+          {
+            "enter": "The pre-start check at 06:52 records the reversing beeper as not working, reported to the shift supervisor. The notification has FL-3 working at Dock 2 at 07:40."
+          },
+          " Set the slider to 100 per cent and note why: ",
+          {
+            "enter": "The operator's own record, made that morning."
+          }
+        ],
+        [
+          "Influence follows a Pass: did it influence this occurrence? Here the evidence cuts both ways, so choose Argument beside Test Influence and the box splits in two. Under Evidence for influence: ",
+          {
+            "enter": "The driver heard no beeping, and was walking behind a forklift that was reversing."
+          },
+          " Under Evidence against influence: ",
+          {
+            "enter": "The dock was busy and the roller door was running, so a working beeper might not have been heard."
+          },
+          " Set the slider to 90 per cent, which reads as very likely, and say in the line beneath why one side carried it: ",
+          {
+            "enter": "A working beeper would very likely have warned him; the noise does not outweigh his account."
+          }
+        ],
+        [
+          "A Pass on Influence makes an increased-risk object a contributing factor, and testing is done. Had Influence failed, the last question, Importance, would appear: is it important enough to address anyway? Where the evidence is not there yet, press Insufficient evidence rather than guessing."
+        ],
+        [
+          "At or above your standard of proof a test reads Pass; at or below its mirror (30 per cent at the default 70) it reads Fail; in between, Inconclusive. The exported tables print the two argument boxes as Argument For and Argument Against and the line under the slider as Reasoning, so write all three for a reader who has only the tables."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-test",
+          "src": "guide-images/gs-test.png",
+          "file": "gs-test.png",
+          "alt": "The two tests on the factor's form. Existence in Conclusive mode with its summary, the slider at 100 per cent and a Pass. Influence in Argument mode with Evidence for influence and Evidence against influence side by side, the slider at 90 per cent reading very likely, and a Pass.",
+          "caption": "Existence and Influence both passed. The line under each slider is what the tables print as Reasoning.",
+          "displayWidth": 613
+        }
+      ],
+      "see": [
+        [
+          "Pass beside each question, and the heading of the form naming the classification: Contributing Safety Factor."
+        ]
+      ],
+      "number": 7
+    },
+    {
+      "id": "link",
+      "title": "Link the evidence to it",
+      "where": [
+        "Object form",
+        "Supporting material",
+        "Link existing evidence…"
+      ],
+      "body": [
+        [
+          "The right-hand column of the form ends with Supporting material. Press Link existing evidence… (it reads Close while the list is open) and pick FL-3 pre-start check, 14/04/2026 by its caption. The list closes after each pick, so press Link existing evidence… again for Delivery driver's written account. Pasting or dropping straight into this panel also works, and captures and links in one step. Save."
+        ],
+        [
+          "Then open the critical event and link Incident notification DEP-0412 to it the same way, so its Existence rests on the item it cites."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-link-evidence",
+          "src": "guide-images/gs-link-evidence.png",
+          "file": "gs-link-evidence.png",
+          "alt": "The Supporting material panel of the factor's form: the capture box, the pre-start check linked as a tile, then the list Link existing evidence opens, offering Delivery driver's written account and Incident notification DEP-0412 by caption and category, with Close above it.",
+          "caption": "Link existing evidence… lists what is not already linked.",
+          "displayWidth": 335
+        }
+      ],
+      "see": [
+        [
+          "Both items as tiles under Supporting material. Each item's own form on the Evidence tab now lists this object under Used by."
+        ]
+      ],
+      "number": 8
+    },
+    {
+      "id": "arrow",
+      "title": "Draw the causal arrow",
+      "where": [
+        "AcciMap",
+        "hover the factor",
+        "drag from a port on its edge",
+        "drop on the critical event"
+      ],
+      "body": [
+        [
+          "Hover the factor, drag from one of the small ports on its edge and drop on the critical event. Every arrow is a claim that one thing led to another: if you cannot say in one sentence how the source led to the target, the arrow is not ready to draw."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-arrow",
+          "src": "guide-images/gs-arrow.png",
+          "file": "gs-arrow.png",
+          "alt": "The AcciMap with the factor FL-3 in service with its reversing beeper not working in Local Conditions and a solid green arrow running down to the critical event Forklift FL-3 ran over the delivery driver's foot in Occurrence Events. Each object has an amber dot in its corner.",
+          "caption": "Solid green: the arrow's source has passed Influence.",
+          "displayWidth": 1049
+        }
+      ],
+      "see": [
+        [
+          "An arrow from the factor to the critical event, solid green because the factor has passed Influence. An arrow from an object whose Influence is still open stays grey and dashed."
+        ]
+      ],
+      "number": 9
+    },
+    {
+      "id": "finalise",
+      "title": "Finalise it",
+      "where": [
+        "Object form",
+        "tick Finalised",
+        "Save"
+      ],
+      "body": [
+        [
+          "When the tests and the evidence are settled, tick Finalised at the foot of the form and press Save. Do the same for the critical event. If new evidence arrives later, untick it and work the tests again."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-finalised",
+          "src": "guide-images/gs-finalised.png",
+          "file": "gs-finalised.png",
+          "alt": "The same two objects and arrow, with the dot in each object's corner now green.",
+          "caption": "Finalised: the corner dots turn from amber to green.",
+          "displayWidth": 1049
+        }
+      ],
+      "see": [
+        [
+          "The small dot in each object's corner turns from amber to green, and the Objects tile on the Dashboard reads 2 / 2."
+        ]
+      ],
+      "number": 10
+    },
+    {
+      "id": "export",
+      "title": "Export the Evidence and Argument Tables",
+      "where": [
+        "Header",
+        "Export",
+        "Word documents",
+        "Evidence and Argument Tables (.docx)",
+        "Export selected"
+      ],
+      "body": [
+        [
+          "Because this occurrence is invented, first open the Record tab and make sure Fictional case, beside Style, is ticked, so every export carries the fictional-case label."
+        ],
+        [
+          "Press Export in the header, tick Evidence and Argument Tables (.docx) under Word documents and press Export selected. At Free the reports stay in the list, greyed out and marked Available with Professional.; the tables, the images and the report-drafting collation are all yours. A timestamped snapshot of the ",
+          {
+            "code": ".sfm"
+          },
+          " is always included. Ticks are remembered for the next export."
+        ]
+      ],
+      "figures": [
+        {
+          "id": "gs-export-dialog",
+          "src": "guide-images/gs-export-dialog.png",
+          "file": "gs-export-dialog.png",
+          "alt": "The Export dialog at Free: Evidence and Argument Tables (.docx) ticked under Word documents, the investigation report and summary greyed out with Available with Professional., and the Markdown and image options below.",
+          "caption": "Tick the tables and press Export selected.",
+          "displayWidth": 520
+        },
+        {
+          "id": "gs-export-notice",
+          "src": "guide-images/gs-export-notice.png",
+          "file": "gs-export-notice.png",
+          "alt": "The export notice: Saved 2 files, naming the Evidence and Argument Tables .docx and the project snapshot .sfm, and the exports folder they went into.",
+          "caption": "The notice names what was saved and where. In the desktop app it also carries Open file and Show in folder.",
+          "displayWidth": 466
+        }
+      ],
+      "see": [
+        [
+          "A notice at the bottom right naming what was saved and where. In the desktop app, Open file opens the tables in Word and Show in folder opens the export folder. The files sit in a timestamped folder inside the investigation's ",
+          {
+            "code": "exports"
+          },
+          " folder, and the notice stays until you dismiss it with its cross."
+        ]
+      ],
+      "number": 11
+    }
+  ],
+  "have": {
+    "id": "gs:have",
+    "title": "What you'll have",
+    "free": [
+      [
+        "The investigation folder, with the ",
+        {
+          "code": ".sfm"
+        },
+        " file and its exports"
+      ],
+      [
+        "The Evidence and Argument Tables in Word, also available as Markdown"
+      ],
+      [
+        "The AcciMap and timeline images, the report-drafting collation and a snapshot of the file, from the same Export dialog"
+      ],
+      [
+        "A Log of every checklist answer, test result and export"
+      ]
+    ],
+    "professional": [
+      [
+        "Investigation reports and summaries in a chosen report style, written to Word"
+      ],
+      [
+        "AI drafting of a paragraph, a section or the whole report from the record, which is optional (",
+        {
+          "ref": "guide:draft",
+          "text": "Draft report and AI drafting"
+        },
+        ")"
+      ]
+    ],
+    "note": [
+      [
+        {
+          "ref": "guide:licence",
+          "text": "Licence and levels"
+        },
+        " compares Free, Professional and Organisation, and explains the free 90-day Professional trial."
+      ]
+    ]
+  },
+  "next": {
+    "id": "gs:next",
+    "title": "Where next",
+    "items": [
+      {
+        "ref": "guide:accimap",
+        "label": "Building the map",
+        "blurb": "More factors, the lanes, causal chains, and the review before anything is called a finding."
+      },
+      {
+        "ref": "guide:evidence",
+        "label": "The Evidence tab",
+        "blurb": "Captions, sources and keeping the record clean."
+      },
+      {
+        "ref": "guide:evidence-interviews",
+        "label": "Interviews",
+        "blurb": "Recording an interview and finalising the account, under Evidence in the User Guide."
+      },
+      {
+        "ref": "guide:record",
+        "label": "From record to report",
+        "blurb": "How the record becomes a report, one finalised paragraph per object."
+      },
+      {
+        "ref": "site:methodology",
+        "label": "Methodology",
+        "blurb": "Why the tests are conditional, and how results and risk direction classify an object."
+      },
+      {
+        "ref": "site:case-study",
+        "label": "The Tarlton Springs case study",
+        "blurb": "The worked example in the app, from notification to final report."
+      }
+    ]
+  }
+}

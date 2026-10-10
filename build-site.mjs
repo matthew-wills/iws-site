@@ -30,10 +30,22 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-/** The product's name, suffixed onto every page title except the home
- *  page's, which is the name alone. The company (Synoptic) is the maker,
- *  named in the header wordmark and the footer, never as the product. */
+/** Synoptic is the company and the site's visual brand (the header's mark
+ *  and name, with its descriptor). Investigation Workflow Suite (IWS) is
+ *  the application: the name suffixed onto every page title and used
+ *  wherever the copy means the software. */
+const COMPANY = "Synoptic";
+const DESCRIPTOR = "Safety Investigation Software";
 const BRAND = "Investigation Workflow Suite (IWS)";
+/** IWS_PREVIEW=1 builds the development preview: every page gets a
+ *  noindex meta and a slim "Development preview" bar above the header.
+ *  Without it the output is exactly the production site. */
+const PREVIEW = process.env.IWS_PREVIEW === "1";
+const PREVIEW_HEAD = `<meta name="robots" content="noindex, nofollow">\n`;
+const PREVIEW_BAR = [
+  `<style>.preview-bar{margin-inline:-20px;padding:5px 20px;background:var(--warn-soft,#fef3c7);color:var(--ink,#0f172a);border-bottom:1px solid #fcd34d;font:600 0.8rem/1.4 var(--font,system-ui,sans-serif);text-align:center}</style>`,
+  `<div class="preview-bar" role="note">Development preview. Not the live site.</div>`,
+].join("\n");
 const appCaseStudies = process.argv[2];
 if (!appCaseStudies) {
   console.error("usage: node build-site.mjs <appCaseStudiesDir>");
@@ -55,11 +67,32 @@ const write = (rel, html) => {
 const document = (title, body, description) => {
   const withoutTitle = body.replace(/<title>[^<]*<\/title>\r?\n?/, "");
   const desc = description ? `<meta name="description" content="${esc(description)}">\n` : "";
-  const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>${title}</title>\n${desc}`;
+  const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n${PREVIEW ? PREVIEW_HEAD : ""}<title>${title}</title>\n${desc}`;
   // The template opens with its <style>; the head closes after it and the
   // body opens, so the markup that follows lands where it should.
-  return `${head}${withoutTitle.replace("</style>", "</style>\n</head>\n<body>")}\n</body>\n</html>\n`;
+  const bodyOpen = `</style>\n</head>\n<body>${PREVIEW ? `\n${PREVIEW_BAR}` : ""}`;
+  const page = PREVIEW ? withoutTitle : launchPlaceholders(withoutTitle);
+  return `${head}${page.replace("</style>", () => bodyOpen)}\n</body>\n</html>\n`;
 };
+/** A launch placeholder is a control or a line whose destination is not
+ *  decided yet (class launch-placeholder in a template). The preview shows
+ *  it as it will be at launch, ringed in amber; a production build shows a
+ *  control as a muted, disabled one with a neutral "Available at launch"
+ *  note (one note for a run of controls one after another), and a text
+ *  placeholder as a neutral "details at launch" line. At launch, the class
+ *  comes off and the control gets its href. */
+const LP_BUTTON = /<a class="([^"]*?)\s*launch-placeholder" aria-disabled="true">([^<]*)<\/a>/;
+const LP_RUN = new RegExp(`(?:[ \\t]*${LP_BUTTON.source}\\r?\\n)+`, "g");
+const launchPlaceholders = (html) =>
+  html
+    .replace(LP_RUN, (run) => {
+      const indent = run.match(/^[ \t]*/)[0];
+      const controls = [...run.matchAll(new RegExp(LP_BUTTON.source, "g"))].map(
+        ([, cls, label]) => `${indent}  <a class="${cls.replace(/\bbtn-primary\b/, "").replace(/\s+/g, " ").trim()} launch-off" aria-disabled="true">${label}</a>`,
+      );
+      return [`${indent}<div class="launch-slot">`, ...controls, `${indent}  <span class="launch-note">Available at launch</span>`, `${indent}</div>`, ""].join("\n");
+    })
+    .replace(/<p class="launch-placeholder lp-text">([^<]*?)\.?<\/p>/g, (_, what) => `<p class="launch-later">${what}: details at launch.</p>`);
 const unfilled = (html) => html.match(/%%[A-Z_0-9]+%%/g) ?? [];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -74,10 +107,15 @@ const NAV = [
   ["methodology.html", "Methodology", "methodology"],
   ["ai-security.html", "AI and security", "ai"],
   ["case-studies.html", "Case studies", "cases"],
-  ["guide.html", "Documentation", "docs"],
+  ["documentation.html", "Documentation", "docs"],
   ["download.html", "Download", "download"],
 ];
-const MAKER = "Investigation Workflow Suite (IWS) is made by Synoptic Safety Investigation Software.";
+/** On a phone the nav folds behind a Menu button (theme.css, max-width
+ *  700px). The script only switches the folding on, so without script the
+ *  nav stays the sideways-scrolling row; on a desktop the button is never
+ *  shown and the nav is untouched. */
+const NAV_SCRIPT = `  <script>(function () { var top = document.currentScript.parentElement, btn = top.querySelector(".nav-toggle"); top.classList.add("js-nav"); function set(open) { top.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", String(open)); } btn.addEventListener("click", function () { set(!top.classList.contains("nav-open")); }); document.addEventListener("keydown", function (e) { if (e.key === "Escape" && top.classList.contains("nav-open")) { set(false); btn.focus(); } }); })();</script>`;
+const MAKER = `${BRAND} is made by ${COMPANY} ${DESCRIPTOR}.`;
 /** Where every "Talk to us" and "Contact us" link on the site goes: one
  *  address, set here once it is decided (plan-public-release.md, step 2).
  *  Until then the links point at the Organisation card on the download
@@ -89,20 +127,22 @@ const header = (prefix, current) =>
   [
     `<header class="top">`,
     `  <div class="wrap">`,
-    `    <a class="brand" href="${prefix}index.html" aria-label="Synoptic, home">`,
+    `    <a class="brand" href="${prefix}index.html" aria-label="${COMPANY}, home">`,
     `      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`,
-    `      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>`,
+    `      <span class="brand-text">${COMPANY}<span class="brand-tag">${DESCRIPTOR}</span></span>`,
     `    </a>`,
-    `    <nav class="nav" aria-label="Site">`,
+    `    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Menu</button>`,
+    `    <nav class="nav" id="site-nav" aria-label="Site">`,
     ...NAV.map(([href, label, key]) => `      <a href="${prefix}${href}"${key === current ? ' aria-current="page"' : ""}>${label}</a>`),
     `    </nav>`,
     `  </div>`,
+    NAV_SCRIPT,
     `</header>`,
   ].join("\n");
 const footer = (prefix, links = []) =>
   [
     `  <footer>`,
-    `    <span class="legal">${MAKER}<br>© 2026 Synoptic Safety Investigation Software</span>`,
+    `    <span class="legal">${MAKER}<br>© 2026 ${COMPANY} ${DESCRIPTOR}</span>`,
     `    <span>${[...links, [`${prefix}changelog.html`, "Changelog"]].map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ")}</span>`,
     `  </footer>`,
   ].join("\n");
@@ -111,7 +151,6 @@ const meta = (r) =>
   r
     ? `${r.words.toLocaleString("en-AU")} words · ${r.runLog?.engine ?? "endpoint"} · ${r.runLog?.calls?.length ?? "?"} model calls · drafted ${new Date(r.runLog?.drafted_at ?? Date.now()).toLocaleDateString("en-AU")}`
     : "";
-const words = (r) => (r ? `${r.words.toLocaleString("en-AU")} words` : "");
 const copyInto = (from, to, keep) => {
   mkdirSync(to, { recursive: true });
   const files = readdirSync(from).filter((f) => statSync(join(from, f)).isFile() && keep.test(f));
@@ -249,6 +288,40 @@ for (const slug of studyDirs) {
 }
 studies.sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.slug.localeCompare(b.slug));
 
+/** One study as a card, the whole card a link: photo, industry, name,
+ *  occurrence type, one line and "Open the case study". `prefix` is the
+ *  path from the page to the site root; `heading` the card's heading
+ *  level. The one line is meta.json's `cardLine`, else its `blurb`. */
+const studyCard = (s, prefix, heading = "h2") =>
+  [
+    `      <a class="study" href="${prefix}case-studies/${s.slug}.html">`,
+    `        <img src="${prefix}case-studies/${s.slug}/${s.photo}" alt="${esc(s.photoAlt ?? "")}" width="1200" height="800" loading="lazy" decoding="async">`,
+    `        <span class="study__body">`,
+    `          <span class="study__sector">${esc(s.sector)}</span>`,
+    `          <${heading} class="study__title">${esc(s.title)}</${heading}>`,
+    s.occurrence ? `          <span class="study__kind">${esc(s.occurrence)}</span>` : "",
+    `          <span class="study__line">${esc(s.cardLine ?? s.blurb)}</span>`,
+    `          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>`,
+    `        </span>`,
+    `      </a>`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+/** The other studies, at the foot of each study's page, so a reader can go
+ *  straight on to the next one. Generated here, never written per study. */
+const otherStudies = (study) => {
+  const others = studies.filter((s) => s.slug !== study.slug);
+  if (!others.length) return "";
+  return [
+    `  <section class="block others" id="other-studies">`,
+    `    <div class="section-head"><h2>Other case studies</h2></div>`,
+    `    <div class="studies studies--small">`,
+    others.map((s) => studyCard(s, "../", "h3")).join("\n"),
+    `    </div>`,
+    `  </section>`,
+  ].join("\n");
+};
+
 const summaries = [];
 for (const study of studies) {
   const { slug, appDir } = study;
@@ -365,7 +438,10 @@ for (const study of studies) {
   const pageTitle = study.pageTitle ?? `Case study: ${study.title}`;
   const page = withShots(
     chrome(shell, "../", "cases", [["../case-studies.html", "All case studies"], ["../download.html", "Download"], ["#top", "Back to top"]])
-      .replace("%%THEME%%", theme).replace("%%TITLE%%", esc(pageTitle)).replace("%%CONTENT%%", () => content),
+      .replace("%%THEME%%", theme)
+      .replace("%%TITLE%%", esc(pageTitle))
+      .replace("%%CONTENT%%", () => content)
+      .replace("%%OTHER_STUDIES%%", () => otherStudies(study)),
     "../",
   );
   const holes = [...new Set([...unfilled(page), ...pageHoles])];
@@ -386,24 +462,14 @@ if (!featured) {
   console.error("no case study could be built; nothing to feature on the home page");
   process.exit(1);
 }
-const cards = studies
-  .map((s) =>
-    [
-      `      <article class="case card">`,
-      `        <a href="case-studies/${s.slug}.html"><img class="photo" src="case-studies/${s.slug}/${s.photo}" alt="${esc(s.photoAlt ?? "")}" width="1200" height="800" loading="lazy" decoding="async"></a>`,
-      `        <span class="eyebrow">${esc(s.sector)}${s.occurrence ? ` · ${esc(s.occurrence)}` : ""}</span>`,
-      `        <h3>${esc(s.title)}</h3>`,
-      `        <p>${esc(s.blurb)}</p>`,
-      `        <div class="links"><a class="btn btn-primary" href="case-studies/${s.slug}.html">Walk through it</a></div>`,
-      `      </article>`,
-    ].join("\n"),
-  )
-  .join("\n");
+/** The case cards on the Case studies page (h2) and the home page (h3). */
+const cards = studies.map((s) => studyCard(s, "", "h2")).join("\n");
+const homeCards = studies.map((s) => studyCard(s, "", "h3")).join("\n");
 /** The featured study's Evidence and Argument Tables, under whichever
  *  name its exports carry (a study not yet re-drafted has the older one). */
 const featuredTables = (featured.docsBuilt ?? []).find((d) => d === "evidence_argument_tables" || d === "eii_tables") ?? "evidence_argument_tables";
 /** The top-level pages are filled from the same featured study: its
- *  screenshots, its slug, the case cards and its reports. */
+ *  screenshots, its slug and the case cards. */
 const fillFeatured = (templateName, current) =>
   featured.shotFiles
     .reduce(
@@ -412,30 +478,121 @@ const fillFeatured = (templateName, current) =>
     )
     .replaceAll("%%CONTACT%%", CONTACT_HREF)
     .replaceAll("%%FEATURED_TABLES%%", featuredTables)
-    .replaceAll("%%FEATURED_KIND%%", esc([featured.sector, featured.occurrence].filter(Boolean).join(" · ")))
     .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
     .replaceAll("%%FEATURED%%", featured.slug)
     .replace("%%CASE_CARDS%%", () => cards)
-    .replace("%%STANDARD_META%%", meta(featured.reportData.standard))
-    .replace("%%PRELIMINARY_META%%", meta(featured.reportData.preliminary))
-    .replace("%%EXECUTIVE_META%%", meta(featured.reportData.executive))
-    .replace("%%STANDARD_WORDS%%", words(featured.reportData.standard))
-    .replace("%%PRELIMINARY_WORDS%%", words(featured.reportData.preliminary))
-    .replace("%%EXECUTIVE_WORDS%%", words(featured.reportData.executive));
+    .replace("%%HOME_CASE_CARDS%%", () => homeCards);
 const index = fillFeatured("index.template.html", "home");
-write("index.html", document(index.match(/<title>([^<]*)<\/title>/)[1], index));
+write(
+  "index.html",
+  document(
+    `${BRAND} | ${COMPANY} ${DESCRIPTOR}`,
+    index,
+    `${BRAND} is safety investigation software for Windows from ${COMPANY}. It takes an investigation from the evidence through the AcciMap analysis and the assessment of each factor to the report, in one connected investigation record.`,
+  ),
+);
 /** The other top-level pages: template, nav key, title and description. */
 const sitePages = [
-  ["product", "Product", "Investigation Workflow Suite (IWS) keeps the checklist, evidence, interviews, timeline, causal map, tests, findings and reports in one connected investigation record."],
-  ["methodology", "Methodology", "How Investigation Workflow Suite (IWS) moves from evidence to tested propositions to findings, with the Existence, Influence and Importance tests, a standard of proof set for each investigation and a ten-term probability scale."],
-  ["ai-security", "AI and security", "What AI drafting does in Investigation Workflow Suite (IWS), how drafts are checked against the investigation record, and where investigation data goes under each AI access setting, and how to bring your own AI."],
-  ["case-studies", "Case studies", "Fictional safety investigations in aviation, maritime and mining, worked from first notification to final report in Investigation Workflow Suite (IWS)."],
-  ["download", "Download", "Download Investigation Workflow Suite (IWS) for Windows 10 and 11: the Free, Professional and Organisation levels, the 90-day Professional trial, and how to buy and activate a licence."],
-  ["getting-started", "Getting started", "The first investigation in Investigation Workflow Suite (IWS), step by step, from a new investigation folder to the first report."],
+  ["product", "Product", `What ${BRAND} does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what Free and Professional each include.`],
+  ["methodology", "Methodology", `An investigation in ${BRAND} starts from the critical event, tests each hypothesis on the AcciMap against the evidence, and derives the findings from the results.`],
+  ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.`],
+  ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
+  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how to buy and activate a licence.`],
+  ["documentation", "Documentation", `How to learn ${BRAND}: the Getting started walkthrough of a first investigation, and the User Guide to every tab, form and setting.`],
+  ["getting-started", "Getting started", `Your first investigation in ${BRAND}, step by step on a small fictional occurrence, from the start screen to the Evidence and Argument Tables.`],
 ];
-const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download", "getting-started": null };
+const navKey = { product: "product", methodology: "methodology", "ai-security": "ai", "case-studies": "cases", download: "download", documentation: "docs", "getting-started": "docs" };
+
+// ------------------------------------------- the Getting started walkthrough
+/** The walkthrough's words are the application's own
+ *  (src/help/guide/gettingStarted.ts), written here as data by its
+ *  scripts/render-getting-started.tsx --json; this lays them out. A
+ *  reference in the data is a topic id, resolved to a page here. */
+const gs = JSON.parse(readFileSync(join(here, "getting-started.json"), "utf8"));
+const GS_PARTS = { "gs:before": "#before", "gs:steps": "#steps", "gs:have": "#have", "gs:next": "#next" };
+const GS_SITE = { "site:download": "download.html", "site:levels": "download.html", "site:methodology": "methodology.html", "site:case-study": "case-studies.html" };
+const gsHref = (ref) => {
+  if (ref in GS_PARTS) return GS_PARTS[ref];
+  if (ref.startsWith("guide:")) return `guide.html#manual-${ref.slice(6)}`;
+  if (ref in GS_SITE) return GS_SITE[ref];
+  throw new Error(`getting-started.json: no page for reference ${ref}`);
+};
+const gsRun = (run) => {
+  if (typeof run === "string") return esc(run);
+  if ("kbd" in run) return `<kbd>${esc(run.kbd)}</kbd>`;
+  if ("code" in run) return `<code>${esc(run.code)}</code>`;
+  if ("enter" in run) return `<em class="enter">${esc(run.enter)}</em>`;
+  return `<a href="${gsHref(run.ref)}">${esc(run.text)}</a>`;
+};
+const gsPara = (para) => para.map(gsRun).join("");
+const gsParas = (paras, indent = "          ") => paras.map((p) => `${indent}<p>${gsPara(p)}</p>`).join("\n");
+const NUMBER_WORDS = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"];
+/** A step whose widest picture would be cramped in a half column lays
+ *  its text out above the pictures instead of beside them. */
+const WIDE_FIGURE = 700;
+const gsStep = (step, total) => {
+  const wide = step.figures.some((f) => f.displayWidth >= WIDE_FIGURE);
+  const [place, ...path] = step.where;
+  const where = [esc(place) + (path.length ? ":" : ""), path.map((w) => `<b>${esc(w)}</b>`).join(" &rarr; ")].filter(Boolean).join(" ");
+  const figures = step.figures
+    .map(
+      (f) =>
+        `<figure style="max-width: ${f.displayWidth}px"><img class="shot zoomable" src="guide-images/${esc(f.file)}" alt="${esc(f.alt)}" data-caption="${esc(f.caption)}" width="${f.displayWidth}" loading="lazy"><figcaption>${esc(f.caption)}</figcaption></figure>`,
+    )
+    .join("");
+  return [
+    `    <li class="step${wide ? " step--wide" : ""}" id="step-${esc(step.id)}">`,
+    `      <div class="step__text">`,
+    `        <div class="step__main">`,
+    `        <p class="step__of">Step ${step.number} of ${total}</p>`,
+    `        <div class="step__head"><span class="stage-no">${step.number}</span><h3>${esc(step.title)}</h3></div>`,
+    `        <p class="step__where">${where}</p>`,
+    gsParas(step.body, "        "),
+    `        </div>`,
+    `        <div class="see"><span class="see__label">You should now see</span>${step.see.map((p) => `<p>${gsPara(p)}</p>`).join("")}</div>`,
+    `      </div>`,
+    `      <div class="step__figs">${figures}</div>`,
+    `    </li>`,
+  ].join("\n");
+};
+const gsCase = (c) =>
+  [
+    `      <div class="case">`,
+    `        <div class="case__head"><span class="pill">${esc(c.label)}</span><h3>${esc(c.title)}</h3></div>`,
+    `        <p class="case__lede">${esc(c.summary)} Copy each piece below as you need it.</p>`,
+    `        <div class="case__items">${c.pieces.map((p) => `<div class="case__item"><h4>${esc(p.caption)}</h4><p>${esc(p.text)}</p></div>`).join("")}</div>`,
+    `      </div>`,
+  ].join("\n");
+const gsList = (paras) => `<ul class="plain">${paras.map((p) => `<li>${gsPara(p)}</li>`).join("")}</ul>`;
+const gsHoles = {
+  GS_TITLE: esc(gs.title),
+  GS_LEDE: gsPara(gs.lede),
+  GS_BEFORE_TITLE: esc(gs.before.title),
+  GS_HAVE_TITLE: esc(gs.have.title),
+  GS_NEXT_TITLE: esc(gs.next.title),
+  GS_INSTALL: gsParas(gs.before.install),
+  GS_PROOF: gsParas(gs.before.standardOfProof),
+  // The data opens this paragraph with the question the template already
+  // carries as the item's heading.
+  GS_LOOK: gsParas(gs.before.lookFirst.map((p) => (typeof p[0] === "string" ? [p[0].replace(/^Rather look first\?\s*/, ""), ...p.slice(1)] : p))),
+  GS_CASE: gsCase(gs.before.occurrence),
+  GS_STEP_COUNT_WORD: NUMBER_WORDS[gs.steps.length] ?? String(gs.steps.length),
+  GS_STEP_INDEX: gs.steps.map((s) => `      <li><a href="#step-${esc(s.id)}">${esc(s.title)}</a></li>`).join("\n"),
+  GS_STEPS: gs.steps.map((s) => gsStep(s, gs.steps.length)).join("\n"),
+  GS_HAVE: [
+    `    <div class="have">`,
+    `      <div class="have__col"><h3><span class="pill">Free</span> Yours now</h3>${gsList(gs.have.free)}</div>`,
+    `      <div class="have__col"><h3><span class="pill">Professional</span> When you need more</h3>${gsList(gs.have.professional)}</div>`,
+    `    </div>`,
+    gs.have.note.map((p) => `    <p class="hint have-note">${gsPara(p)}</p>`).join("\n"),
+  ].join("\n"),
+  GS_NEXT: `    <ul class="next">\n${gs.next.items.map((i) => `      <li><a href="${gsHref(i.ref)}">${esc(i.label)}</a><span>${esc(i.blurb)}</span></li>`).join("\n")}\n    </ul>`,
+};
+const fillGettingStarted = (html) => Object.entries(gsHoles).reduce((h, [hole, value]) => h.replaceAll(`%%${hole}%%`, () => value), html);
+
 const topPages = sitePages.map(([name, title, description]) => {
-  const html = fillFeatured(`${name}.template.html`, navKey[name]);
+  const filled = fillFeatured(`${name}.template.html`, navKey[name]);
+  const html = name === "getting-started" ? fillGettingStarted(filled) : filled;
   write(`${name}.html`, document(`${title} | ${BRAND}`, html, description));
   return html;
 });
@@ -451,7 +608,7 @@ const releaseHtml = releases
   .map((r) =>
     [
       `    <div class="release">`,
-      `      <div><span class="v">${r.version}</span><span class="d">${r.date}</span></div>`,
+      `      <div><span class="v">${r.version}</span><span class="d">${r.planned ? "Planned, not yet released" : r.date}</span></div>`,
       `      <div class="parts">`,
       [changeList("Added", r.features), changeList("Fixed", r.fixes)].filter(Boolean).join("\n"),
       `      </div>`,
@@ -460,11 +617,11 @@ const releaseHtml = releases
   )
   .join("\n");
 const changelog = chrome(readFileSync(join(here, "changelog.template.html"), "utf8"), "", null, [["download.html", "Download"]]).replace("%%THEME%%", theme).replace("%%RELEASES%%", releaseHtml);
-write("changelog.html", document(`Changelog | ${BRAND}`, changelog, "What changed in Investigation Workflow Suite (IWS), release by release."));
+write("changelog.html", document(`Changelog | ${BRAND}`, changelog, `What changed in ${BRAND}, release by release.`));
 
 const fragment = readFileSync(join(here, "guide-fragment.html"), "utf8");
 const guide = chrome(readFileSync(join(here, "guide.template.html"), "utf8"), "", "docs", [["#top", "Back to top"]]).replace("%%THEME%%", theme).replace("%%GUIDE%%", () => fragment);
-write("guide.html", document(`Documentation | ${BRAND}`, guide, "The Investigation Workflow Suite (IWS) user guide, the same guide the application ships under Help."));
+write("guide.html", document(`User Guide | ${BRAND}`, guide, `The ${BRAND} User Guide to every tab, form and setting, the same User Guide the application ships under Help.`));
 
 writeFileSync(join(here, "build-manifest.json"), `${JSON.stringify(built.sort(), null, 2)}\n`);
 

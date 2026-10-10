@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="Investigation Workflow Suite (IWS) is safety investigation software from Synoptic Safety Investigation Software. It keeps the evidence, the analysis, the findings and the report connected in one investigation record.">
+<title>Investigation Workflow Suite (IWS) | Synoptic Safety Investigation Software</title>
+<meta name="description" content="Investigation Workflow Suite (IWS) is safety investigation software for Windows from Synoptic. It takes an investigation from the evidence through the AcciMap analysis and the assessment of each factor to the report, in one connected investigation record.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -114,178 +114,104 @@ body.has-lightbox { overflow: hidden; }
 footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; color: var(--ink-faint); font-size: 0.9rem; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
 footer a { color: var(--ink-soft); }
 
-/* On a phone the seven nav items scroll sideways in one row under the
-   wordmark, so the sticky header stays one line of links tall. */
+/* On a phone the nav folds behind a Menu button beside the wordmark and
+   opens as a two-column panel under it (the header's script adds .js-nav).
+   Without script, the items scroll sideways in one row, with a thin
+   scrollbar and a fade at the right edge so the row reads as scrollable. */
+.nav-toggle { display: none; }
 @media (max-width: 700px) {
   .top .wrap { gap: 4px 12px; padding-block: 6px; }
-  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
   .nav a { white-space: nowrap; flex: none; }
+  .js-nav .wrap { flex-wrap: wrap; }
+  .js-nav .nav-toggle { display: inline-flex; align-items: center; gap: 7px; margin-left: auto; padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--paper); color: var(--ink); font: 600 0.93rem/1 var(--font, inherit); cursor: pointer; }
+  .js-nav .nav-toggle svg { width: 18px; height: 18px; }
+  .js-nav .nav { display: none; -webkit-mask-image: none; mask-image: none; }
+  .js-nav.nav-open .nav { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; overflow: visible; padding: 4px 0 10px; }
+  .js-nav.nav-open .nav a { padding: 10px; }
 }
 footer .legal { line-height: 1.6; }
 
+/* A case study as a card, the whole card a link (built from meta.json by
+   build-site.mjs): on the Case studies page, the home page and the foot
+   of every study's page. */
+.studies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.study { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 150ms, box-shadow 150ms; }
+.study:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+.study:hover .study__go { text-decoration: underline; }
+.study img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.study__body { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 20px; flex: 1; }
+.study__sector { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep); }
+.study__title { font-size: 1.35rem; }
+.study__kind { color: var(--ink); font-weight: 500; }
+.study__line { color: var(--ink-soft); font-size: 0.96rem; }
+.study__go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); }
+.studies--small .study__title { font-size: 1.12rem; }
+.studies--small .study__line { display: none; }
+@media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
+@media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
 
-  /* Mockup additions. Tokens and components are the live site's own theme.css above. */
-  html, body { background: var(--ground); }
+
   [id] { scroll-margin-top: 76px; }
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 44px; align-items: center; padding-block: 44px 40px; }
-  .hero-copy { display: flex; flex-direction: column; gap: 18px; }
-  .hero-copy h1 { font-size: clamp(1.7rem, 2.9vw, 2.45rem); }
-  .hero-copy .lede { font-size: 1.08rem; color: var(--ink-soft); max-width: 52ch; }
+  .hero { padding-block: 48px 8px; display: flex; flex-direction: column; gap: 18px; max-width: 74ch; }
+  .hero h1 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
+  .hero .lede { font-size: 1.12rem; color: var(--ink-soft); }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .hero-shot { display: flex; flex-direction: column; gap: 10px; }
-  .hero-shot figcaption { font-size: 0.86rem; }
-  .pitch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .pitch div { padding: 11px 13px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
-  .pitch h2 { font-size: 0.92rem; font-weight: 650; letter-spacing: 0; margin-bottom: 2px; }
-  .pitch p { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.45; }
-  .prose { display: flex; flex-direction: column; gap: 14px; font-size: 1.04rem; color: var(--ink-soft); max-width: 62ch; }
-  .prose strong { color: var(--ink); font-weight: 600; }
-  .two { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 36px; align-items: start; }
-  .two.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
-  .trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-  .trust .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
-  .trust .card p { color: var(--ink-soft); font-size: 0.95rem; }
-  .stylerow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .stylerow span { padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--paper); font-size: 0.9rem; color: var(--ink); }
-  .covers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
-  .cover { display: flex; flex-direction: column; gap: 10px; }
-  .cover img { max-width: 320px; }
-  .cover .meta { font-size: 0.85rem; color: var(--ink-faint); font-family: var(--font-mono); }
-  .cover p { color: var(--ink-soft); font-size: 0.95rem; }
-  .cover .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
-  .cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-block: 56px; }
-  .cta p { color: var(--ink-soft); max-width: 60ch; }
-  .levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: min(100%, 820px); text-align: left; }
-  .levels a { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; text-decoration: none; color: var(--ink-soft); font-size: 0.92rem; }
-  .levels a strong { color: var(--ink); font-weight: 600; font-size: 0.98rem; }
-  .levels a:hover { border-color: var(--line-strong); }
-  .levels a.lead { border-color: #93c5fd; }
-  @media (max-width: 700px) { .levels { grid-template-columns: 1fr; } }
-  .org { margin-top: 18px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); max-width: 84ch; font-size: 0.95rem; }
-  @media (max-width: 1100px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } .screens { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 960px) { .hero, .two, .two.even, .versus { grid-template-columns: 1fr; } .trust, .covers, .cases, .assists { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .pitch, .steps, .screens, .trust, .covers, .cases, .assists { grid-template-columns: 1fr; } }
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; outline: 1px solid var(--line); outline-offset: -1px; background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
 
-  .section-head { gap: 6px; }
-  .section-head .statement { font-size: clamp(1.15rem, 1.9vw, 1.45rem); color: var(--ink); font-weight: 500; max-width: 60ch; text-wrap: balance; line-height: 1.3; }
-  .section-head .statement + p { margin-top: 6px; }
-  .cta .statement { font-size: clamp(1.15rem, 1.9vw, 1.45rem); color: var(--ink); font-weight: 500; max-width: 60ch; text-wrap: balance; }
+  /* The AcciMap, introduced, then shown wide */
+  .map-intro { margin-top: 48px; max-width: 70ch; display: flex; flex-direction: column; gap: 8px; }
+  .map-intro h2 { font-size: 1.35rem; }
+  .map-intro p, .why p { color: var(--ink-soft); }
+  .hero-map { margin-top: 22px; }
+  .hero-map figcaption { max-width: 1160px; margin: 14px auto 0; }
+  .hero-map figcaption span { display: block; max-width: 92ch; font-size: 0.97rem; line-height: 1.55; color: #334155; }
+  .why { margin-top: 40px; display: flex; flex-direction: column; gap: 10px; }
+  .why > * { max-width: 76ch; }
+  .why p { font-size: 1.05rem; }
 
-  /* Problem: the list beside the two workflow cards */
-  .versus.one-col { grid-template-columns: 1fr; gap: 12px; }
-  .two .snags .x { background: var(--risk-soft); color: var(--risk); }
-  /* How it works: zig-zag rows, picture large on one side */
-  .zigs { display: flex; flex-direction: column; gap: 40px; }
-  .zig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 32px; align-items: center; }
-  .zig.flip .zig-text { order: 2; }
-  .zig-text { display: flex; flex-direction: column; gap: 8px; }
-  .zig-text .n { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 0.04em; }
-  .zig-text h3 { font-size: 1.3rem; }
-  .zig-text p { color: var(--ink-soft); font-size: 1rem; max-width: 42ch; }
-  .zig figure { min-width: 0; }
-  /* AI: the pipeline with the record and the report as pictures */
-  .pipe { display: grid; grid-template-columns: minmax(0, 1.5fr) auto minmax(0, 1fr) auto minmax(0, 1.15fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 0.9fr); gap: 8px; align-items: center; margin-top: 22px; }
-  .pipe-node { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; align-self: stretch; display: flex; flex-direction: column; gap: 6px; }
-  .pipe-node h4 { font-size: 0.95rem; }
-  .pipe-node p { font-size: 0.86rem; color: var(--ink-soft); }
-  .pipe-node.hi { background: var(--proof-soft); border-color: #86efac; }
-  .pipe-arrow { color: var(--ink-faint); font-size: 1.3rem; text-align: center; }
-  .thumbs { display: flex; flex-direction: column; gap: 8px; }
-  .thumbs figure img { border-radius: 6px; box-shadow: none; }
-  .thumbs figcaption, .pipe-final figcaption { font-size: 0.78rem; margin-top: 3px; }
-  .pipe-final img { border-radius: 6px; box-shadow: none; }
-  @media (max-width: 1100px) {
-    .pipe { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
-  }
+  /* The four stages: one frame each, all the same shape */
+  .stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  .stages figure { margin: 0; }
+  .stages .crop { aspect-ratio: 4 / 3; }
+  .stages h3 { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 1.05rem; }
+  .stages h3 span { display: inline-flex; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.8rem; align-items: center; justify-content: center; }
+  .stages p { color: var(--ink-soft); font-size: 0.93rem; margin-top: 4px; }
+  .crop--page { background: #fff; }
+  .more { margin-top: 20px; }
+
+  /* What the investigation produces: four pages, one width */
+  .outs { --g: 22px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--g); }
+  .outs__group { display: flex; flex-direction: column; }
+  .outs__group > .doc, .outs__group > .docs { margin-top: auto; }
+  .outs__group h3 { font-size: 1.05rem; }
+  .outs__group > p { color: var(--ink-soft); font-size: 0.93rem; margin: 4px 0 16px; }
+  .outs__group--reports { position: relative; grid-column: span 3; }
+  .outs__group--reports::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--g) / -2); border-left: 1px solid var(--line); }
+  .docs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); }
+  .doc { display: block; text-decoration: none; color: var(--ink); }
+  .doc img { display: block; width: 100%; height: auto; aspect-ratio: 1550 / 2192; border: 1px solid var(--line-strong); border-radius: 3px; background: #fff; box-shadow: var(--shadow); transition: transform 0.15s ease; }
+  .doc:hover img { transform: translateY(-2px); }
+  .doc span { display: block; margin-top: 10px; font-size: 0.88rem; font-weight: 600; }
+  .doc:hover span { color: var(--accent); }
+  .ai-note { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .ai-note p { color: var(--ink-soft); font-size: 0.95rem; max-width: 90ch; }
+
   @media (max-width: 960px) {
-    .zig, .zig.flip { grid-template-columns: 1fr; }
-    .zig.flip .zig-text { order: 0; }
-    .pipe { grid-template-columns: 1fr; }
-    .pipe-arrow { display: block; transform: rotate(90deg); }
-  }
-
-  /* Fix: a flipped zig row keeps the wide column for the picture */
-  /* Problem: one row of three compact cards */
-  .problem3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-  .card.compact { padding: 14px 16px; }
-  .card.compact.lead { border-color: #93c5fd; }
-  .card.compact ul, .card.compact ol { margin: 8px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.9rem; display: flex; flex-direction: column; gap: 4px; }
-  .card.compact ol li::marker { color: var(--risk); font-weight: 600; }
-  /* AI: the record, a stepper, the report */
-  .flow { display: grid; grid-template-columns: minmax(0, 1.05fr) 40px minmax(0, 2.7fr) 40px minmax(0, 0.75fr); gap: 14px; align-items: center; margin-top: 22px; padding: 22px 24px; }
-  .flow-record, .flow-final { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-  .flow-thumbs { display: flex; flex-direction: column; gap: 10px; }
-  .flow-thumbs figure { display: flex; flex-direction: column; gap: 3px; }
-  .flow-thumbs img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); }
-  .flow-thumbs figcaption, .flow-final figcaption { font-size: 0.78rem; margin-top: 0; }
-  .flow-final img { border-radius: 6px; box-shadow: none; max-width: 200px; }
-  .flow-arrow { width: 40px; height: 24px; color: var(--ink-faint); }
-  .stepper { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; position: relative; }
-  .stepper::before { content: ""; position: absolute; top: 15px; left: 12.5%; right: 12.5%; height: 2px; background: var(--line-strong); }
-  .stepper li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; min-width: 0; }
-  .stepper li > div { display: flex; flex-direction: column; gap: 4px; align-items: center; }
-  .stepper li.hi h4 { color: var(--proof); }
-  .dotn { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; position: relative; z-index: 1; box-shadow: 0 0 0 4px var(--paper); }
-  .stepper li.hi .dotn { background: var(--proof); }
-  .stepper h4 { font-size: 0.95rem; }
-  .stepper p { font-size: 0.86rem; color: var(--ink-soft); max-width: 24ch; }
-  @media (max-width: 1100px) {
-    .flow { grid-template-columns: 1fr; overflow: hidden; }
-    .flow-arrow { transform: rotate(90deg); margin-inline: auto; }
-    .flow-thumbs { flex-direction: row; }
-    .flow-thumbs figure { flex: 1; min-width: 0; }
-    .flow-final { align-items: center; }
-  }
-  @media (max-width: 960px) {
-    .problem3 { grid-template-columns: 1fr; }
-    .zig.flip { grid-template-columns: 1fr; }
+    .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 30px; }
+    .outs { grid-template-columns: 1fr; row-gap: 30px; }
+    .outs__group--reports { grid-column: auto; }
+    .outs__group--reports::before { display: none; }
+    .outs__group > .doc { width: calc((100% - 2 * var(--g)) / 3); }
   }
   @media (max-width: 560px) {
-    .stepper { grid-template-columns: 1fr; gap: 18px; }
-    .stepper::before { display: none; }
-    .stepper li { flex-direction: row; text-align: left; align-items: flex-start; }
-    .stepper li > div { align-items: flex-start; }
-    .stepper li .dotn { flex: none; }
-    .stepper li h4 { display: inline; }
-    .flow-thumbs { flex-direction: column; }
-  }
-
-  /* How it works: a step list beside one screen */
-  /* AI flow: one map in, three reports out */
-  .flow { grid-template-columns: minmax(0, 1.2fr) 40px minmax(0, 2.5fr) 40px minmax(0, 1.1fr); }
-  .flow-record figure { display: flex; flex-direction: column; gap: 6px; }
-  .flow-record img { box-shadow: none; }
-  .flow-record figcaption { font-size: 0.8rem; margin-top: 0; }
-  .flow-outs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .flow-outs figure { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  .flow-outs img { box-shadow: none; border-radius: 4px; }
-  .flow-outs figcaption { font-size: 0.74rem; margin-top: 0; line-height: 1.3; }
-  @media (max-width: 960px) {
-    .walk { grid-template-columns: 1fr; }
-    .flow-outs { max-width: 420px; }
-  }
-
-  /* How it works, third form: a step bar, the screen, the step's words beneath */
-  .walk2 { display: flex; flex-direction: column; gap: 22px; }
-  .stepbar { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; position: relative; max-width: 760px; margin-inline: auto; width: 100%; }
-  .stepbar::before { content: ""; position: absolute; top: 17px; left: 12.5%; right: 12.5%; height: 2px; background: var(--line-strong); }
-  .stepbar .walk-step { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 6px; background: transparent; border: none; box-shadow: none; cursor: pointer; text-align: center; color: var(--ink-soft); font-size: 0.95rem; }
-  .stepbar .walk-step .n { width: 34px; height: 34px; border-radius: 50%; background: var(--paper); border: 2px solid var(--line-strong); color: var(--ink-soft); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; position: relative; z-index: 1; transition: background 120ms, border-color 120ms, color 120ms; }
-  .stepbar .walk-step:hover .n { border-color: var(--accent); color: var(--accent); }
-  .stepbar .walk-step.is-active { color: var(--ink); }
-  .stepbar .walk-step.is-active .n { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  .stepbar .walk-step.is-active .walk-label { font-weight: 650; }
-  .stepbar .walk-step:focus-visible { outline: none; }
-  .stepbar .walk-step:focus-visible .n { outline: 2px solid #93c5fd; outline-offset: 3px; }
-  .walk2 .walk-shot { max-width: 1040px; margin-inline: auto; width: 100%; }
-  .walk-texts { max-width: 60ch; margin-inline: auto; text-align: center; }
-  .walk-text { display: flex; flex-direction: column; gap: 6px; }
-  .walk-text h3 { font-size: 1.3rem; }
-  .walk-text p { color: var(--ink-soft); font-size: 1.02rem; }
-
-  @media (max-width: 560px) {
-    .stepbar .walk-label { font-size: 0.8rem; }
-    .stepbar .walk-step { padding: 0 2px; }
+    .hero { padding-block: 30px 4px; }
+    section.block { padding-block: 38px; }
+    .map-intro { margin-top: 34px; }
+    .outs { --g: 14px; }
+    .docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .outs__group > .doc { width: calc((100% - var(--g)) / 2); }
   }
 </style>
 </head>
@@ -295,181 +221,116 @@ footer .legal { line-height: 1.6; }
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Synoptic, home">
       <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="5" y="7" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.85"/><rect x="15" y="16" width="8" height="5" rx="1.5" fill="currentColor"/><path d="M13 9.5h3.5v9H15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="brand-text">Synoptic<span class="brand-tag">Safety investigation software</span></span>
+      <span class="brand-text">Synoptic<span class="brand-tag">Safety Investigation Software</span></span>
     </a>
-    <nav class="nav" aria-label="Site">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Site">
       <a href="index.html" aria-current="page">Home</a>
       <a href="product.html">Product</a>
       <a href="methodology.html">Methodology</a>
       <a href="ai-security.html">AI and security</a>
       <a href="case-studies.html">Case studies</a>
-      <a href="guide.html">Documentation</a>
+      <a href="documentation.html">Documentation</a>
       <a href="download.html">Download</a>
     </nav>
   </div>
+  <script>(function () { var top = document.currentScript.parentElement, btn = top.querySelector(".nav-toggle"); top.classList.add("js-nav"); function set(open) { top.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", String(open)); } btn.addEventListener("click", function () { set(!top.classList.contains("nav-open")); }); document.addEventListener("keydown", function (e) { if (e.key === "Escape" && top.classList.contains("nav-open")) { set(false); btn.focus(); } }); })();</script>
 </header>
 
 <main class="wrap" id="top">
   <section class="hero">
-    <div class="hero-copy">
-      <span class="eyebrow">Purpose-built safety investigation software</span>
-      <h1>A structured workflow for safety investigations.</h1>
-      <p class="lede">Investigation Workflow Suite (IWS) keeps the evidence, reasoning, analysis and reporting connected throughout an investigation.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="download.html">Download Free</a>
-        <a class="btn" href="case-studies/tarlton-springs-rto.html">See a worked case study</a>
-      </div>
-      <div class="pitch">
-        <div><h2>One investigation record</h2><p>Evidence, interviews, timelines, analysis and reporting, all connected in a single investigation file.</p></div>
-        <div><h2>Evidence-backed findings</h2><p>Every finding retains the tests, reasoning and evidence behind it.</p></div>
-        <div><h2>Local by default</h2><p>Sensitive investigation data stays on the local machine. No account or upload required.</p></div>
-      </div>
+    <span class="eyebrow">Safety investigation software for Windows</span>
+    <h1>A structured workflow for safety investigations.</h1>
+    <p class="lede">Investigation Workflow Suite (IWS) takes an investigation from the evidence through the analysis and assessment to the report, in one connected record. You develop the hypotheses and test them against the evidence. IWS keeps the reasoning with every finding and produces the documents.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="download.html">Download</a>
+      <a class="btn" href="case-studies.html">See the case studies</a>
     </div>
-    <figure class="hero-shot">
-      <img class="shot zoomable" data-caption="The finished causal map for the Tarlton Springs case study." src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished causal map for the Tarlton Springs case study">
-      <figcaption>Turn a complex investigation into one clear picture, showing every line of enquiry, how it was tested, what the evidence supports and what led to the outcome.</figcaption>
-    </figure>
   </section>
 
-  <section class="block" id="problem">
-    <div class="section-head">
-      <h2>Investigation work is fragmented. The reasoning shouldn't be.</h2>
-      <p class="statement">Investigations are often assembled across documents, folders, spreadsheets, diagrams and SMS records. The evidence may be retained, but the reasoning connecting it to the findings often isn't.</p>
-    </div>
-    <div class="problem3">
-      <div class="card compact">
-        <span class="eyebrow">What gets lost</span>
-        <ol>
-          <li>Evidence collected twice, or missed</li>
-          <li>Findings disconnected from their evidence</li>
-          <li>New information creates rework</li>
-          <li>Reviewers can't see how conclusions were reached</li>
-          <li>Investigation knowledge leaves with the investigator</li>
-        </ol>
-      </div>
-      <div class="card compact">
-        <span class="eyebrow">The typical workflow</span>
-        <ul>
-          <li>Notes in Word or OneNote</li>
-          <li>Evidence stored in multiple folders</li>
-          <li>Timelines built in spreadsheets</li>
-          <li>Diagrams created in PowerPoint or Visio</li>
-          <li>Safety reports stored in SMS databases</li>
-          <li>Reasoning held in the investigator's head</li>
-        </ul>
-      </div>
-      <div class="card compact lead">
-        <span class="eyebrow">With IWS</span>
-        <ul>
-          <li>One record for the entire investigation</li>
-          <li>Evidence, interviews, timelines and analysis stay connected</li>
-          <li>Every finding traces back to its evidence and tests</li>
-          <li>New evidence updates the investigation, not a collection of documents</li>
-          <li>The investigation remains reviewable years later</li>
-          <li>The reasoning stays with the organisation</li>
-        </ul>
-      </div>
-    </div>
+  <section class="map-intro">
+    <h2>Every investigation is built on an AcciMap</h2>
+    <p>The occurrence sits at the bottom. Above it, in lanes from the people involved up to the regulator, go the events and conditions that might have led to it. Each one is tested against the evidence, and the map shows the result.</p>
+  </section>
+  <figure class="hero-map block--wide">
+    <div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished AcciMap for the Tarlton Springs case study: every object across six lanes, converging on the runway overrun" data-caption="The finished AcciMap from the Tarlton Springs case study."></div>
+    <figcaption><span>Tarlton Springs, a fictional rejected take-off and runway overrun, at the end of the investigation. Blue objects contributed to the overrun and orange ones increased risk without contributing. The two struck-through objects are hypotheses that were tested and excluded. An arrow appears only between objects that have passed their tests. Select the map to see it full size.</span></figcaption>
+  </figure>
+
+  <section class="block why">
+    <h2>One record, from the first evidence to the final report</h2>
+    <p>Evidence, hypotheses and assessments remain connected throughout the investigation. As events and conditions are tested, the supporting reasoning is recorded against each AcciMap object and carried directly into the Evidence and Argument Tables.</p>
   </section>
 
   <section class="block" id="how">
-    <div class="section-head">
-      <h2>How IWS works</h2>
-      <p class="statement">From evidence to report. One connected record.</p>
-    </div>
-    <div class="walk2">
-      <div class="stepbar" aria-label="The four steps">
-        <div class="walk-step is-active" role="button" tabindex="0" aria-selected="true" id="walk-1" data-src="shots/tarlton-springs-rto/01-evidence-register.png" data-caption="Collect: the evidence register, every item filed once with its source and what rests on it."><span class="n">1</span><span class="walk-label">Collect</span></div>
-        <div class="walk-step" role="button" tabindex="0" aria-selected="false" id="walk-2" data-src="shots/tarlton-springs-rto/08-map-stage-c.png" data-caption="Build: the causal map taking shape, every line of enquiry linked to its evidence."><span class="n">2</span><span class="walk-label">Build</span></div>
-        <div class="walk-step" role="button" tabindex="0" aria-selected="false" id="walk-3" data-src="shots/tarlton-springs-rto/11-map-final.png" data-caption="Analyse: the finished causal map, every line of enquiry tested and resolved."><span class="n">3</span><span class="walk-label">Analyse</span></div>
-        <div class="walk-step" role="button" tabindex="0" aria-selected="false" id="walk-4" data-src="shots/tarlton-springs-rto/13-report.png" data-caption="Report: drafted or assembled from the record, in the style required."><span class="n">4</span><span class="walk-label">Report</span></div>
-      </div>
-      <figure class="walk-shot">
-        <img class="shot zoomable" id="walk-img" data-caption="Collect: the evidence register, every item filed once with its source and what rests on it." src="shots/tarlton-springs-rto/01-evidence-register.png" alt="The screen for the selected step">
-      </figure>
-      <div class="walk-texts">
-        <div class="walk-text" data-step="1"><h3>Collect the evidence.</h3><p>Record each item once, with its source, and connect it to the events, hypotheses and findings that rely on it.</p></div>
-        <div class="walk-text" data-step="2" hidden><h3>Develop the timeline and the causal map.</h3><p>Lay out the events in sequence and put every line of enquiry on the map, each linked directly to its evidence.</p></div>
-        <div class="walk-text" data-step="3" hidden><h3>Complete the analysis until the map is finalised.</h3><p>Test each proposition against the evidence and retain the reasoning. The map is finished when every line of enquiry has been resolved.</p></div>
-        <div class="walk-text" data-step="4" hidden><h3>Draft the report.</h3><p>Assemble or draft the report from the same evidence, analysis and findings used throughout the investigation.</p></div>
-      </div>
-    </div>
+    <div class="section-head"><h2>Four stages, one record</h2></div>
+    <ol class="stages">
+      <li><figure><div class="crop" style="--W: 1600; --x: 40; --y: 530; --cw: 1520; --ch: 1140"><img class="zoomable" src="shots/tarlton-springs-rto/20-evidence-overview.png" alt="The Evidence tab: the category counts above every captured item in one grid, from the occurrence notification and flight data to manuals and a photograph" data-caption="The Evidence tab: everything the investigation holds, in one register." loading="lazy"></div></figure><h3><span>1</span>Evidence</h3><p>Organise documents, interviews, records and other material in one investigation.</p></li>
+      <li><figure><div class="crop" style="--W: 3840; --x: 720; --y: 290; --cw: 1560; --ch: 1170"><img class="zoomable" src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="The AcciMap part way through testing: hypotheses in their lanes, the first that passed their tests shaded and joined by arrows" data-caption="Part way through testing: hypotheses in their lanes, the first proven arrows drawn." loading="lazy"></div></figure><h3><span>2</span>Analysis</h3><p>Develop and connect hypotheses on the AcciMap as the investigation progresses.</p></li>
+      <li><figure><div class="crop" style="--W: 3840; --x: 200; --y: 170; --cw: 1520; --ch: 1140"><img class="zoomable" src="shots/tarlton-springs-rto/19-object-form-importance.png" alt="An object's form: the Existence test with its evidence, result and confidence" data-caption="An object's form: each test with its evidence, result and confidence." loading="lazy"></div></figure><h3><span>3</span>Assessment</h3><p>Test each event or condition against the evidence and record the reasoning.</p></li>
+      <li><figure><div class="crop crop--page" style="--W: 1550; --x: 80; --y: 180; --cw: 1392; --ch: 1044"><img class="zoomable" src="exports/tarlton-springs-rto/pages/report_standard/p08.png" alt="The analysis section of the Tarlton Springs final investigation report" data-caption="A page of the final investigation report." loading="lazy"></div></figure><h3><span>4</span>Reporting</h3><p>Generate Evidence and Argument Tables and investigation reports from the same record.</p></li>
+    </ol>
+    <p class="more"><a href="product.html">Each stage in detail on the Product page &rarr;</a></p>
   </section>
 
-  <section class="block" id="trust">
-    <div class="section-head">
-      <h2>Built to stand up to review</h2>
-      <p class="statement">The conclusion isn't a black box.</p>
-      <p>The evidence, tests and reasoning behind every finding remain part of the investigation record.</p>
-    </div>
-    <div class="trust">
-      <div class="card"><h3>Every finding has a trail</h3><p>Trace a finding back through the tests and reasoning to the evidence that supports it. The <a href="product.html#tables">Evidence and Argument Tables</a> set out the arguments for and against each factor, in Free and as an exported document.</p></div>
-      <div class="card"><h3>The investigator stays in control</h3><p>IWS structures the analysis. It doesn't make the judgement. Every verdict, confidence assessment and final conclusion remains yours.</p></div>
-      <div class="card"><h3>The file stays yours</h3><p>One readable file on your own drive, readable without IWS and ready to archive when the investigation closes.</p></div>
-    </div>
-  </section>
-
-  <section class="block" id="ai">
-    <div class="section-head">
-      <h2>Optional AI-assisted drafting</h2>
-      <p class="statement">A model can draft the report. It does not investigate.</p>
-      <p>When enabled, AI drafts from the investigation record under strict grounding rules. A second pass checks the draft against the record before the investigator reviews, corrects and finalises it.</p>
-      <p>Drafting works well because the investigation is already structured in IWS: the evidence, analysis, reasoning and findings are connected before a model sees any of it.</p>
-      <p><strong>Your investigation data. Your AI. Your choice.</strong> AI-assisted drafting is part of Professional, and you connect the AI: your existing chat workflow, a local model, or an approved organisational API. IWS does not sell AI, and sends nothing anywhere unless you choose to.</p>
-    </div>
-    <div class="flow card">
-      <div class="flow-record">
-        <span class="eyebrow">The record</span>
-        <figure><img class="shot" src="shots/tarlton-springs-rto/11-map-final.png" alt="The finished causal map"><figcaption>The causal map, with its tests, evidence, timeline and interviews behind it.</figcaption></figure>
+  <section class="block" id="outputs">
+    <div class="section-head"><h2>What the investigation produces</h2></div>
+    <div class="outs">
+      <div class="outs__group">
+        <h3>The working</h3>
+        <p>The Evidence and Argument Tables: each object's tests, arguments and reasoning, for whoever reviews the findings.</p>
+        <a class="doc" href="exports/tarlton-springs-rto/evidence_argument_tables.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/evidence_argument_tables/p05.png" alt="A page of the Evidence and Argument Tables: one object's Existence and Influence tests, each with its arguments and reasoning" loading="lazy"><span>Evidence and Argument Tables</span></a>
       </div>
-      <svg class="flow-arrow" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 12h30M24 4l10 8-10 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <ol class="stepper">
-        <li><span class="dotn">1</span><div><h4>Draft</h4><p>Drafted from the investigation record under grounding rules.</p></div></li>
-        <li class="hi"><span class="dotn">2</span><div><h4>Check against the record</h4><p>Claims and confidence language are checked against the underlying analysis.</p></div></li>
-        <li><span class="dotn">3</span><div><h4>Polish</h4><p>Language and consistency only, under instructions to add no new findings.</p></div></li>
-        <li><span class="dotn">4</span><div><h4>Investigator assessment</h4><p>Review, correct and finalise. The investigator owns the conclusion.</p></div></li>
-      </ol>
-      <svg class="flow-arrow" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 12h30M24 4l10 8-10 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="flow-final">
-        <span class="eyebrow">The reports</span>
-        <div class="flow-outs">
-          <figure><img class="shot" src="exports/tarlton-springs-rto/report_preliminary.png" alt="Preliminary investigation report cover"><figcaption>Preliminary investigation report</figcaption></figure>
-          <figure><img class="shot" src="exports/tarlton-springs-rto/report_executive.png" alt="Executive briefing cover"><figcaption>Executive briefing</figcaption></figure>
-          <figure><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Final investigation report cover"><figcaption>Final investigation report</figcaption></figure>
+      <div class="outs__group outs__group--reports">
+        <h3>The reports</h3>
+        <p>Written for the people who need the result, at each point in the investigation.</p>
+        <div class="docs">
+          <a class="doc" href="exports/tarlton-springs-rto/report_preliminary.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/report_preliminary/p05.png" alt="A page of the preliminary investigation report: what the investigation is looking at, with a site photograph" loading="lazy"><span>Preliminary investigation report</span></a>
+          <a class="doc" href="exports/tarlton-springs-rto/report_standard.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/report_standard/p22.png" alt="A page of the final investigation report: the appendix table summarising each factor's tests" loading="lazy"><span>Final investigation report</span></a>
+          <a class="doc" href="exports/tarlton-springs-rto/report_executive.pdf" target="_blank" rel="noopener" title="Open the PDF in a new tab"><img src="exports/tarlton-springs-rto/pages/report_executive/p05.png" alt="A page of the executive briefing: the findings, grouped as contributing safety factors, other factors and other findings" loading="lazy"><span>Executive briefing</span></a>
         </div>
-        <p class="hint" style="font-size: 0.8rem">Yours, not the model's.</p>
       </div>
     </div>
-    <p class="hint" style="margin-top: 16px"><a href="ai-security.html">How the pipeline works, and where your data goes</a></p>
+    <div class="ai-note"><p>Write each report yourself under its headings, or use optional AI-assisted drafting with a Professional licence. Every draft is checked against the record, and you decide what stays. <a href="ai-security.html">How AI drafting works and where data goes &rarr;</a></p></div>
   </section>
 
-  <section class="block" id="proof">
+  <section class="block" id="cases">
     <div class="section-head">
-      <h2>See the finished work</h2>
-      <p class="statement">One investigation. Three different outputs.</p>
-      <p>Same evidence. Same analysis. Same findings. Different reporting purpose. Tarlton Springs is a complete fictional investigation built in IWS, and each report below was produced from its one investigation record for a different audience.</p>
+      <h2>Three worked case studies</h2>
+      <p>Complete fictional investigations in aviation, maritime and mining, with every document they produced.</p>
     </div>
-    <div class="covers">
-      <article class="cover card"><a href="exports/tarlton-springs-rto/report_preliminary.html"><img class="shot" src="exports/tarlton-springs-rto/report_preliminary.png" alt="Cover of the preliminary investigation report"></a><h3>Preliminary investigation report</h3><span class="meta">1,308 words · Early stakeholder update</span><div class="links"><a class="btn" href="exports/tarlton-springs-rto/report_preliminary.html">Read it</a></div></article>
-      <article class="cover card"><a href="exports/tarlton-springs-rto/report_executive.html"><img class="shot" src="exports/tarlton-springs-rto/report_executive.png" alt="Cover of the executive briefing"></a><h3>Executive briefing</h3><span class="meta">1,792 words · Concise decision-maker briefing</span><div class="links"><a class="btn" href="exports/tarlton-springs-rto/report_executive.html">Read it</a></div></article>
-      <article class="cover card"><a href="exports/tarlton-springs-rto/report_standard.html"><img class="shot" src="exports/tarlton-springs-rto/report_standard.png" alt="Cover of the final investigation report"></a><h3>Final investigation report</h3><span class="meta">10,814 words · Full investigation record</span><div class="links"><a class="btn" href="exports/tarlton-springs-rto/report_standard.html">Read it</a></div></article>
+    <div class="studies studies--small">
+      <a class="study" href="case-studies/tarlton-springs-rto.html">
+        <img src="case-studies/tarlton-springs-rto/card.jpg" alt="A white regional turboprop airliner parked on an airport apron at sunset" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Aviation</span>
+          <h3 class="study__title">Tarlton Springs</h3>
+          <span class="study__kind">Rejected take-off and runway overrun</span>
+          <span class="study__line">A regional turboprop rejects its take-off above V1 at night as two kangaroos cross the runway, strikes them and leaves the end of the runway.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="study" href="case-studies/kanooka-heads-grounding.html">
+        <img src="case-studies/kanooka-heads-grounding/card.jpg" alt="A catamaran passenger ferry underway on calm water in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Maritime</span>
+          <h3 class="study__title">Kanooka Heads</h3>
+          <span class="study__kind">Passenger ferry grounding</span>
+          <span class="study__line">A passenger ferry leaves a dredged channel in darkness and grounds with 38 people aboard.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="study" href="case-studies/bindarra-haul-road-collision.html">
+        <img src="case-studies/bindarra-haul-road-collision/card.jpg" alt="Haul trucks on a haul road in an open-cut mine in late-afternoon light" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="study__body">
+          <span class="study__sector">Mining</span>
+          <h3 class="study__title">Bindarra</h3>
+          <span class="study__kind">Haul truck and light vehicle collision</span>
+          <span class="study__line">A haul truck and a light vehicle meet at a new intersection on a night shift, months after a hazard report nobody acted on.</span>
+          <span class="study__go">Open the case study <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
     </div>
-  </section>
-
-  <section class="block cta" id="download">
-    <h2>Ready to bring the investigation together?</h2>
-    <p class="statement">Keep the evidence, reasoning and reporting connected.</p>
-    <p>Download IWS for Windows 10 or 11. No account required. Free is the complete investigation workspace, AcciMap and Evidence and Argument Tables included, with no time limit. Professional adds AI-assisted drafting and finished reports, and 90 days of it come with every new installation.</p>
-    <div class="levels">
-      <a class="card" href="download.html#free"><span class="eyebrow">Free</span><strong>Structure the investigation</strong><span>$0</span></a>
-      <a class="card lead" href="download.html#professional"><span class="eyebrow">Professional</span><strong>Complete the investigation</strong><span>A$249 a year per user</span></a>
-      <a class="card" href="download.html#organisation"><span class="eyebrow">Organisation</span><strong>Make IWS your investigation system</strong><span>Contact us</span></a>
-    </div>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="download.html">Download Free</a>
-      <a class="btn" href="download.html#pricing">Compare the levels</a>
-    </div>
-    <p class="hint">New to IWS? <a href="getting-started.html">Getting started</a> walks through the first investigation.</p>
   </section>
 
   <footer>
@@ -480,33 +341,18 @@ footer .legal { line-height: 1.6; }
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
-  <div class="lightbox__body"><img id="lb-img" src="" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+  <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
 </div>
 <script>
   (function () {
     var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
     function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
-    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.src = ""; }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
     Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
     document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
     lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
     lb.addEventListener("click", closeLb);
     window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
-
-    var img = document.getElementById("walk-img");
-    var steps = Array.prototype.slice.call(document.querySelectorAll(".walk-step"));
-    var texts = Array.prototype.slice.call(document.querySelectorAll(".walk-text"));
-    function show(b) {
-     
-      var i = steps.indexOf(b);
-      steps.forEach(function (o, k) { o.classList.toggle("is-active", k === i); o.setAttribute("aria-selected", k === i ? "true" : "false"); });
-      texts.forEach(function (t, k) { t.hidden = k !== i; });
-      img.src = b.dataset.src; img.dataset.caption = b.dataset.caption;
-    }
-    steps.forEach(function (b) {
-      b.addEventListener("click", function () { show(b); });
-      b.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(b); } });
-    });
   })();
 </script>
 
