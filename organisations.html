@@ -200,6 +200,17 @@ footer .legal { line-height: 1.6; }
     .page-head { padding-block: 28px 18px; }
     section.block { padding-block: 38px; }
   }
+  /* Finalisation dots, drawn as the canvas draws them */
+  .od { position: relative; display: block; width: 64px; height: 30px; border: 1.5px solid #334155; background: #fff; border-radius: 3px; flex: none; }
+  .od::after { content: ""; position: absolute; top: 5px; right: 5px; width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9); background: var(--dot); }
+  .od--open { --dot: #F59E0B; }
+  .od--done { --dot: #22C55E; }
+  .dots { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 0.93rem; color: var(--ink-soft); }
+  .dots li { display: flex; align-items: center; gap: 12px; }
+  .dots b { color: var(--ink); font-weight: 600; }
+  .progress { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 34px; align-items: center; margin-top: 40px; padding-top: 34px; border-top: 1px solid var(--line); }
+  .progress .dots { margin: 2px 0 4px; }
+  @media (max-width: 860px) { .progress { grid-template-columns: 1fr; gap: 20px; } }
 </style>
 </head>
 <body>
@@ -273,6 +284,20 @@ footer .legal { line-height: 1.6; }
         </div>
         <p class="role">IWS does not replace investigative judgement or independent review. Its role is to make the evidence, reasoning and uncertainty behind each assessment visible.</p>
       </div>
+    </div>
+
+    <div class="progress">
+      <div class="prose">
+        <h3>Investigation progress at a glance</h3>
+        <ul class="dots" aria-label="Finalisation dots">
+          <li><span class="od od--open" aria-hidden="true"></span><span><b>Amber:</b> not yet finalised</span></li>
+          <li><span class="od od--done" aria-hidden="true"></span><span><b>Green:</b> finalised by the investigator</span></li>
+        </ul>
+        <p>Each object on the AcciMap displays its finalisation status. Safety managers and reviewers can quickly identify where work remains, then open individual objects to examine the evidence, assessments and reasoning behind them.</p>
+        <p>This is particularly useful during an investigation handover. An incoming investigator can see which areas need further attention while retaining the reasoning behind work already completed.</p>
+        <p>Finalisation is recorded by the investigator, independently of the assessment outcome. The Dashboard also provides a count of finalised objects, offering a simple overview of progress without maintaining a separate tracking document.</p>
+      </div>
+      <figure><div class="crop" style="--W: 3840; --x: 1620; --y: 1230; --cw: 2100; --ch: 860"><img class="zoomable" src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="The lower half of the Tarlton Springs AcciMap part way through: the occurrence sequence finalised with green dots, the conditions and actions above it still amber" data-caption="The lower half of the Tarlton Springs AcciMap part way through: the occurrence sequence finalised with green dots, the conditions and actions above it still amber." loading="lazy"></div><figcaption>Tarlton Springs part way through. The occurrence sequence along the bottom is finalised; the conditions and actions above it are still open.</figcaption></figure>
     </div>
   </section>
 
