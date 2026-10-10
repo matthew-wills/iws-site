@@ -92,14 +92,20 @@
   .chips-key { margin-top: 8px; font-size: 0.85rem; color: var(--ink-faint); display: flex; align-items: center; gap: 6px; }
   .chips-key .chip { min-width: 14px; height: 14px; margin-left: 8px; }
   .chips-key .chip:first-child { margin-left: 0; }
-  table.pscale { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: var(--paper); }
+  table.pscale { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.95rem; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
   .pscale caption { text-align: left; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; }
-  .pscale th { text-align: left; font-size: 0.8rem; color: var(--ink-faint); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--line-strong); }
-  .pscale td { padding: 5px 14px; border-bottom: 1px solid var(--line); color: var(--ink); }
-  .pscale td:last-child { font-variant-numeric: tabular-nums; color: var(--ink-soft); text-align: right; }
-  .pscale tr.b-hi td { background: #f1f6fd; }
+  .pscale th { text-align: left; font-size: 0.8rem; color: var(--ink-faint); font-weight: 600; padding: 10px 16px; border-bottom: 1px solid var(--line-strong); background: var(--paper); }
+  .pscale td { padding: 9px 16px; border-bottom: 1px solid var(--line); color: var(--ink); line-height: 1.35; }
+  .pscale tbody tr:last-child td { border-bottom: 0; }
+  .pscale th:last-child, .pscale td:last-child { width: 38%; }
+  .pscale td:last-child { font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+  .pscale tr.b-hi td { background: #f4f8fd; }
   .pscale tr.b-mid td { background: #f6f7f9; }
-  .pscale tr.b-lo td { background: #fdf5f0; }
+  .pscale tr.b-lo td { background: #fdf6f2; }
+  .pscale tr.b-hi + tr.b-mid td, .pscale tr.b-mid + tr.b-lo td { border-top: 1px solid var(--line-strong); }
+  .fold-mark { margin-left: 3px; color: var(--accent-deep); font-weight: 700; }
+  .pscale-note { font-size: 0.9rem; }
+  .proof-note { margin-top: 14px; padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; color: var(--ink); font-size: 0.93rem; }
 
   /* 6 Reporting */
   .rep { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: start; }
@@ -248,8 +254,8 @@
     <span class="anchor" id="scale"></span>
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">5</span>Probability and the standard of proof</span>
-      <h2>How probable, and how probable is enough</h2>
-      <p>Two separate things meet in every result: the probability the investigator assigns to the proposition, and the standard of proof IWS reads it against.</p>
+      <h2>How probability shapes the analysis</h2>
+      <p>The investigator assigns a probability to each test's proposition. IWS interprets that probability against the selected standard of proof to give the test's result, and the test results contribute to how each object is classified.</p>
     </div>
     <div class="proof-grid">
       <div class="prose">
@@ -264,27 +270,29 @@
           <p class="sub-label">The slider's twelve positions, read at the default standard of proof of 70 per cent</p>
           <div class="chips"><span class="chip chip--f">5</span><span class="chip chip--f">10</span><span class="chip chip--f">20</span><span class="chip chip--f">30</span><span class="chip chip--i">40</span><span class="chip chip--i">50</span><span class="chip chip--i">60</span><span class="chip chip--p">70</span><span class="chip chip--p">80</span><span class="chip chip--p">90</span><span class="chip chip--p">95</span><span class="chip chip--p">100</span></div>
           <p class="chips-key"><span class="chip chip--f"></span>Fail <span class="chip chip--i"></span>Inconclusive <span class="chip chip--p"></span>Pass</p>
+          <p class="proof-note">The standard of proof determines how an assessment is classified; it does not determine whether the investigator's assessment is sound.</p>
         </div>
       </div>
       <div class="prose">
-        <h3>How investigators express their confidence</h3>
-        <p>Each probability is stated as one of ten fixed terms, so the same word means the same thing in every investigation. An organisation can move the boundaries, and approve other wording for a term, such as &ldquo;probably&rdquo; for likely, in Settings. A Findings section is held to seven of the ten, since extremely likely, more likely than not and exceptionally unlikely are too easily read as their neighbours.</p>
+        <h3>Expressing probability consistently</h3>
+        <p>IWS provides ten defined probability terms, so the same word means the same thing in every investigation. The boundaries, and other approved wording for a term, such as &ldquo;probably&rdquo; for likely, can be set in Settings.</p>
         <table class="pscale">
           <caption>The probability scale, at its default boundaries</caption>
           <thead><tr><th>Term</th><th>Probability</th></tr></thead>
           <tbody>
             <tr class="b-hi"><td>Virtually certain</td><td>100%</td></tr>
-            <tr class="b-hi"><td>Extremely likely</td><td>95 to 99%</td></tr>
+            <tr class="b-hi"><td>Extremely likely<span class="fold-mark" title="Not used in a Findings section">*</span></td><td>95 to 99%</td></tr>
             <tr class="b-hi"><td>Very likely</td><td>90 to 94%</td></tr>
             <tr class="b-hi"><td>Likely</td><td>67 to 89%</td></tr>
-            <tr class="b-hi"><td>More likely than not</td><td>51 to 66%</td></tr>
+            <tr class="b-hi"><td>More likely than not<span class="fold-mark" title="Not used in a Findings section">*</span></td><td>51 to 66%</td></tr>
             <tr class="b-mid"><td>About as likely as not</td><td>33 to 50%</td></tr>
             <tr class="b-lo"><td>Unlikely</td><td>10 to 32%</td></tr>
             <tr class="b-lo"><td>Very unlikely</td><td>5 to 9%</td></tr>
             <tr class="b-lo"><td>Extremely unlikely</td><td>1 to 4%</td></tr>
-            <tr class="b-lo"><td>Exceptionally unlikely</td><td>under 1%</td></tr>
+            <tr class="b-lo"><td>Exceptionally unlikely<span class="fold-mark" title="Not used in a Findings section">*</span></td><td>under 1%</td></tr>
           </tbody>
         </table>
+        <p class="pscale-note">A report's Findings section uses seven of the ten terms, to reduce ambiguity. The three marked <span class="fold-mark" aria-hidden="true">*</span> are stated as their neighbour there: extremely likely as very likely, more likely than not as likely, and exceptionally unlikely as extremely unlikely.</p>
       </div>
     </div>
   </section>
