@@ -60,6 +60,41 @@
     .page-head { padding-block: 28px 18px; }
     section.block { padding-block: 38px; }
   }
+  /* 2 Analysis: the demonstration and the key */
+  .lede2 { max-width: 80ch; color: var(--ink-soft); font-size: 1.05rem; }
+  .demo { margin-top: 8px; }
+  .demo__frame { position: relative; border-radius: 12px; overflow: hidden; outline: 1px solid var(--line); outline-offset: -1px; box-shadow: var(--shadow); background: #fff; aspect-ratio: 16 / 9; }
+  .demo__frame video { display: block; width: 100%; height: 100%; background: #fff; }
+  .demo__play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 12px; padding: 14px 22px; border: 0; border-radius: 999px; background: rgba(15, 23, 42, 0.82); color: #fff; font: inherit; font-weight: 650; font-size: 1.02rem; cursor: pointer; white-space: nowrap; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25); }
+  .demo__play:hover, .demo__play:focus-visible { background: rgba(15, 23, 42, 0.92); }
+  .demo__play small { font-weight: 500; opacity: 0.8; font-size: 0.85rem; }
+  .demo__tri { width: 0; height: 0; border-left: 14px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+  .demo.is-playing .demo__play { display: none; }
+  .demo figcaption { margin: 10px auto 0; max-width: 1160px; color: var(--ink-soft); font-size: 0.93rem; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 40px; margin-top: 34px; align-items: start; }
+  .two h3 { font-size: 1.12rem; margin-bottom: 12px; }
+  .kp { color: var(--ink-soft); margin-bottom: 12px; }
+  .key { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.93rem; color: var(--ink-soft); }
+  .key li { display: grid; grid-template-columns: 118px 1fr; gap: 12px; align-items: center; }
+  .key b { color: var(--ink); font-weight: 600; }
+  .sw { display: flex; align-items: center; justify-content: center; height: 30px; font-size: 0.74rem; color: #0f172a; border: 1.5px solid #334155; background: #fff; }
+  .sw--open { border-style: dashed; }
+  .sw--csf { background: #BFDBFE; }
+  .sw--orf { background: #FED7AA; }
+  .sw--pos { background: #BBF7D0; border-radius: 999px; }
+  .sw--ex { background: #F8FAFC; border: 1.5px dashed #94A3B8; border-radius: 999px; color: #64748B; text-decoration: line-through; }
+  .sw--ce { background: #FECACA; border: 2.5px solid #DC2626; border-radius: 999px; }
+  .arr { position: relative; display: block; height: 2px; width: 108px; background: #16A34A; }
+  .arr::after { content: ""; position: absolute; right: -8px; top: -5px; border-left: 9px solid #16A34A; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+  .fine { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.88rem; color: var(--ink-soft); }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 30px; }
+  .pair figcaption { margin-top: 8px; font-size: 0.9rem; color: var(--ink-soft); }
+  .pair figcaption b { color: var(--ink); }
+  @media (max-width: 860px) {
+    .two, .pair { grid-template-columns: 1fr; }
+    .demo__play { padding: 8px 14px; font-size: 0.85rem; gap: 8px; }
+    .demo__tri { border-left-width: 10px; border-top-width: 6px; border-bottom-width: 6px; }
+  }
 </style>
 
 %%HEADER%%
@@ -105,11 +140,55 @@
     <span class="anchor" id="develops"></span>
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">2</span>Analysis</span>
-      <h2>Every line of enquiry on the AcciMap</h2>
-      <p>Start with the critical event, then add every event and condition that might have played a part, including the hypotheses you expect to fail. Objects sit in time from left to right and in organisational depth from bottom to top, across six lanes.</p>
+      <h2>An AcciMap that evolves with your investigation</h2>
+      <p class="lede2">A flexible canvas that puts the investigator in control. Move objects, resize lanes and arrange connections as the analysis develops, without rigid layouts. Start with the critical event, then add every event and condition that might have played a part, including the hypotheses you expect to fail. As hypotheses are tested, the map shows where the analysis stands.</p>
     </div>
-    <figure class="block--wide"><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="%%SHOT_07%%" alt="Every hypothesis placed across the six lanes of the AcciMap, none of them tested yet" data-caption="Every hypothesis in its lane, none of them tested yet." loading="lazy"></div><figcaption>The %%FEATURED_TITLE%% AcciMap before testing: every hypothesis in its lane, each arrow grey and dashed until its source passes Existence and Influence.</figcaption></figure>
-    <p class="more"><a href="methodology.html#map">How the lanes and levels work, on the Methodology page</a></p>
+
+    <figure class="demo block--wide">
+      <div class="demo__frame">
+        <video id="demo-video" controls muted playsinline preload="none" poster="media/accimap-demo-poster.jpg" width="1280" height="720" aria-label="A recording of IWS in use on the %%FEATURED_TITLE%% AcciMap">
+          <source src="media/accimap-demo.webm" type="video/webm">
+          <track kind="captions" src="media/accimap-demo.vtt" srclang="en" label="English" default>
+        </video>
+        <button class="demo__play" type="button" id="demo-play" aria-label="Play the demonstration"><span class="demo__tri" aria-hidden="true"></span>Watch IWS in use <small>40 s, no sound</small></button>
+      </div>
+      <figcaption>The %%FEATURED_TITLE%% case study in IWS, recorded from the application: navigating the map, moving and resizing an object, resizing a lane, adding a hypothesis with its arrow, and recording its assessment. The new object is added for the demonstration; the case study's own results are unchanged.</figcaption>
+    </figure>
+
+    <div class="two">
+      <div class="col">
+        <h3>You decide the layout</h3>
+        <ul class="facts">
+          <li>Place, move and resize objects wherever the analysis needs them. Dragging an object into another lane changes its level.</li>
+          <li>Drag a lane's lower edge to give it more or less room. The lanes below move with it, and so do the objects below that edge.</li>
+          <li>Draw an arrow by dragging from one object to another.</li>
+          <li>Pan by dragging or scrolling, zoom with Ctrl and the wheel or the zoom control, fit the whole map to the window, and use the minimap on a larger investigation.</li>
+          <li>Select several objects at once, duplicate, nudge with the arrow keys, and undo or redo. Snap to a grid when you want it.</li>
+          <li>From the evidence register, the log, the to-do list or the report, jump straight to the object on the map.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>The map reflects the assessments</h3>
+        <p class="kp">Each object's look follows the results recorded in its form, so the map shows what has been tested, what passed and what was excluded.</p>
+        <ul class="key" aria-label="Key to the AcciMap">
+          <li><span class="sw sw--open">Hypothesis</span><span><b>Dashed border:</b> Existence not yet passed. Untested, inconclusive or short of evidence.</span></li>
+          <li><span class="sw sw--sf">Safety factor</span><span><b>Solid border:</b> Existence passed, Influence still to settle.</span></li>
+          <li><span class="sw sw--csf">Contributing</span><span><b>Blue:</b> passed Existence and Influence.</span></li>
+          <li><span class="sw sw--orf">Other factor</span><span><b>Orange:</b> increased risk without influencing this occurrence.</span></li>
+          <li><span class="sw sw--pos">Reduced risk</span><span><b>Pale green:</b> marked by the investigator as reducing risk.</span></li>
+          <li><span class="sw sw--ex">Excluded</span><span><b>Struck through:</b> excluded, and kept on the map.</span></li>
+          <li><span class="sw sw--ce">Critical event</span><span><b>Red:</b> the critical event.</span></li>
+          <li><span class="arr" aria-hidden="true"></span><span><b>Solid green arrow:</b> the object it leaves has passed Existence and Influence. Grey and dashed until then.</span></li>
+        </ul>
+        <p class="fine">A colour or a solid arrow records the investigator's assessment against the chosen standard of proof. It is not proof of a cause, and a green arrow says nothing on its own about the object it points to. The small corner dot shows whether the investigator has marked the object finalised.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <figure><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="%%SHOT_07%%" alt="The %%FEATURED_TITLE%% AcciMap before testing: every hypothesis dashed, every arrow grey" data-caption="The %%FEATURED_TITLE%% AcciMap before testing: every hypothesis dashed, every arrow grey." loading="lazy"></div><figcaption><b>Before testing.</b> Every hypothesis dashed, every arrow grey.</figcaption></figure>
+      <figure><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="%%SHOT_11%%" alt="The finished %%FEATURED_TITLE%% AcciMap: contributing factors blue, other factors orange, two hypotheses excluded" data-caption="The finished %%FEATURED_TITLE%% AcciMap: contributing factors blue, other factors orange, two hypotheses excluded." loading="lazy"></div><figcaption><b>At the end.</b> Contributing factors blue, other factors orange, two hypotheses excluded.</figcaption></figure>
+    </div>
+    <p class="more"><a href="methodology.html#map">How the lanes and the tests work, on the Methodology page</a></p>
   </section>
 
   <section class="block" id="assessment">
@@ -119,7 +198,7 @@
         <h2>Test each object against the evidence</h2>
         <ul class="facts">
           <li><strong>Existence, for every object.</strong> Did this event or condition actually exist or occur? A fail excludes the hypothesis, which stays on the map, struck through.</li>
-          <li><strong>Influence, once it exists.</strong> Did it influence this occurrence? A pass makes an increased-risk object a contributing factor and turns its outgoing arrows solid.</li>
+          <li><strong>Influence, once it exists.</strong> Did it influence this occurrence? A pass makes an increased-risk object a contributing factor.</li>
           <li><strong>Importance, only where Influence fails.</strong> Is it still important enough to address? A pass makes it a finding in its own right. Failing both excludes it.</li>
           <li><strong>A probability and its term.</strong> For each result you record how likely it is, and IWS states it as a term from a ten-term scale: 70 per cent reads as &ldquo;likely&rdquo;. Where the evidence cuts both ways, record the argument for, the argument against and your reasoning.</li>
           <li><strong>The standard of proof sets the verdict.</strong> At or above it a test reads Pass; otherwise, at or below its mirror it reads Fail, and in between Inconclusive. It is 70 per cent unless you change it in Settings, from 50 to 95 per cent.</li>
@@ -180,6 +259,23 @@
   <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
   <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
 </div>
+<script>
+  (function () {
+    var fig = document.querySelector(".demo"), video = document.getElementById("demo-video"), play = document.getElementById("demo-play");
+    if (!fig || !video || !play) return;
+    video.controls = false;
+    play.addEventListener("click", function () {
+      fig.classList.add("is-playing");
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { fig.classList.remove("is-playing"); });
+      if (window.matchMedia("(max-width: 700px)").matches) {
+        if (video.requestFullscreen) video.requestFullscreen().catch(function () {});
+        else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+      }
+    });
+    video.addEventListener("play", function () { fig.classList.add("is-playing"); video.controls = true; });
+  })();
+</script>
 <script>
   (function () {
     var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
