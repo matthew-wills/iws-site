@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Product | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="What Investigation Workflow Suite (IWS) does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what Free and Professional each include.">
+<title>For organisations | Investigation Workflow Suite (IWS)</title>
+<meta name="description" content="How Investigation Workflow Suite (IWS) helps an organisation establish a more consistent investigative process: traceable findings, reasoning kept with the investigation record, and editions adapted to the organisation's own investigation framework.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -160,52 +160,39 @@ footer .legal { line-height: 1.6; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
   .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
+  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
+  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
 
   .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; outline: 1px solid var(--line); outline-offset: -1px; background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
   .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+  .crop--page { background: #fff; }
 
   .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 34px; align-items: center; }
   .row .text { display: flex; flex-direction: column; gap: 12px; }
   .facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
   .facts li { padding-left: 16px; border-left: 3px solid var(--accent-soft); color: var(--ink-soft); }
   .facts li strong { color: var(--ink); font-weight: 600; }
+  .prose { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .prose h3 { font-size: 1.08rem; color: var(--ink); }
+  .sub-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
 
-  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
-  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
-  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
+  .row--flip { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  #report .row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  figure figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.9rem; }
+  .ben { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .ben .card { border-top: 3px solid var(--accent); display: flex; flex-direction: column; gap: 8px; }
+  .ben h3 { font-size: 1.08rem; }
+  .ben p { color: var(--ink-soft); }
+  .role { margin-top: 4px; padding: 14px 18px; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: var(--accent-soft); color: var(--ink); }
+  .ed { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 34px; align-items: start; }
+  .ed-price { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.93rem; }
+  .next { display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
+  .next p { color: var(--ink-soft); }
 
-  .ev-main { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 34px; align-items: center; }
-  .ev-main .text, .rep .text { display: flex; flex-direction: column; gap: 12px; }
-  .ev-main h3, .ev-iv h3 { font-size: 1.08rem; }
-  .ev-main p, .ev-iv p { color: var(--ink-soft); }
-  .ev-pair { display: flex; flex-direction: column; gap: 22px; }
-  .ev-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
-  .ev-iv { margin-top: 44px; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); }
-  .ev-tl { margin-top: 40px; }
-  .ev-tl figcaption { margin: 10px auto 0; max-width: 1160px; color: var(--ink-soft); font-size: 0.93rem; }
-  .ev-tl figcaption strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
-  .more { margin-top: 14px; }
-
-  .rep { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: start; }
-  .rep .text > p { color: var(--ink-soft); }
-  .rep .facts li { font-size: 0.97rem; }
-  .rep figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.93rem; }
-  .crop--page { background: #fff; }
-
-  .around { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 34px; }
-  .around li { padding-left: 16px; border-left: 3px solid var(--accent-soft); }
-  .around h3 { font-size: 1rem; }
-  .around p { color: var(--ink-soft); font-size: 0.96rem; margin-top: 4px; }
-  .levels-line { padding-block: 0 8px; }
-  .levels-line p { color: var(--ink-soft); max-width: 80ch; padding: 14px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
-
-  .next { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-  .next p { color: var(--ink-soft); max-width: 64ch; }
-
-  @media (max-width: 960px) {
-    .row { grid-template-columns: 1fr; gap: 18px; }
-    .ev-main, .ev-iv, .rep { grid-template-columns: 1fr; gap: 18px; }
-    .around { grid-template-columns: 1fr; }
+  @media (max-width: 860px) {
+    .row, .row--flip, #report .row, .ben, .ed { grid-template-columns: 1fr; }
+    .row--flip figure { order: 2; }
   }
   @media (max-width: 560px) {
     .page-head { padding-block: 28px 18px; }
@@ -226,11 +213,11 @@ footer .legal { line-height: 1.6; }
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Menu</button>
     <nav class="nav" id="site-nav" aria-label="Site">
       <a href="index.html">Home</a>
-      <a href="product.html" aria-current="page">Product</a>
+      <a href="product.html">Product</a>
       <a href="methodology.html">Methodology</a>
       <a href="ai-security.html">AI and security</a>
       <a href="case-studies.html">Case studies</a>
-      <a href="organisations.html">For organisations</a>
+      <a href="organisations.html" aria-current="page">For organisations</a>
       <a href="documentation.html">Documentation</a>
       <a href="download.html">Download</a>
     </nav>
@@ -240,110 +227,85 @@ footer .legal { line-height: 1.6; }
 
 <main class="wrap" id="top">
   <section class="page-head">
-    <span class="anchor" id="record"></span>
-    <span class="eyebrow">Product</span>
-    <h1>What IWS does, stage by stage</h1>
-    <p class="lede">IWS holds the whole investigation in one record: the checklist, the evidence, the interviews, the timeline, the AcciMap, the tests and the reports, in a single investigation file, with an optional attachments folder beside it, on the drive you choose. Each stage below works on that same record.</p>
-    <nav class="onpage" aria-label="On this page"><a href="#evidence">Evidence</a><a href="#analysis">Analysis</a><a href="#assessment">Assessment</a><a href="#reporting">Reporting</a><a href="#around">Around the investigation</a></nav>
+    <span class="eyebrow">For organisations</span>
+    <h1>A more consistent approach to investigations, without compromising professional judgement.</h1>
+    <p class="lede">For safety managers, investigation managers and the organisations they work for. IWS gives every investigation the same structure and the same kind of record, whoever conducts it. The investigator still decides what the evidence shows. IWS keeps that reasoning connected to the evidence and the findings, so it can be reviewed.</p>
+    <nav class="onpage" aria-label="On this page"><a href="#report">Investigation before reporting</a><a href="#benefits">What it gives an organisation</a><a href="#gaps">Gaps and uncertainty</a><a href="#editions">Organisation editions</a></nav>
   </section>
 
-  <section class="block" id="evidence">
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">1</span>Evidence</span>
-      <h2>Capture each item once, and link it to everything it supports</h2>
-      <p>Paste a screenshot or text, or drop in a file. Each item records where it came from and which objects on the AcciMap rest on it, so if a source proves unreliable, what needs revisiting is already listed.</p>
-    </div>
-    <div class="ev-main">
-      <div class="ev-pair">
-        <figure><p class="ev-label">The evidence extract</p><div class="crop" style="--W: 1440; --x: 4; --y: 4; --cw: 1432; --ch: 516"><img class="zoomable" src="shots/tarlton-springs-rto/21-evidence-used-by.png" alt="The wildlife sighting log as captured: the evidence item form with its text extract" data-caption="The wildlife sighting log as captured: the evidence item form with its text extract" loading="lazy"></div></figure>
-        <figure><p class="ev-label">Used by: the objects and events it supports</p><div class="crop" style="--W: 1440; --x: 4; --y: 1615; --cw: 1432; --ch: 375"><img class="zoomable" src="shots/tarlton-springs-rto/21-evidence-used-by.png" alt="The same item form, further down: Used by, listing six AcciMap objects and one timeline event" data-caption="The same item form, further down: Used by, listing six AcciMap objects and one timeline event" loading="lazy"></div></figure>
-      </div>
-      <div class="text">
-        <h3>One item, everything it supports</h3>
-        <p>The Tarlton Springs wildlife sighting log was captured once. Its form lists the six AcciMap objects and the timeline event that rest on it, and each line opens that object.</p>
-        <p>From an object's own form, link an item already in the register and it joins the list. The item is never copied, so a correction made once is made everywhere.</p>
-        <p>Each item also carries a caption, why it matters, a category, a reference and a short summary for the report.</p>
-      </div>
-    </div>
-    <div class="row ev-iv">
-      <div class="text">
-        <h3>Interviews</h3>
-        <p>Import a Teams transcript and give each speaker a role. Names stay with the transcript; the record and the report see only the roles.</p>
-      </div>
-      <figure><div class="crop" style="--W: 1280; --x: 54; --y: 160; --cw: 1176; --ch: 870"><img class="zoomable" src="shots/tarlton-springs-rto/22-interview-speakers.png" alt="An imported interview transcript, each speaker given a role" data-caption="An imported interview transcript, each speaker given a role" loading="lazy"></div></figure>
-    </div>
-    <figure class="block--wide ev-tl"><div class="crop" style="--W: 4096; --x: 102; --y: 113; --cw: 3888; --ch: 533"><img class="zoomable" src="shots/tarlton-springs-rto/23-timeline-whole.png" alt="The whole Tarlton Springs timeline: thirteen events, each with its time and the evidence it rests on" data-caption="The whole Tarlton Springs timeline: thirteen events, each with its time and the evidence it rests on" loading="lazy"></div><figcaption><strong>The timeline</strong>Thirteen events from the previous evening's runway inspection to the disembarkation, each with its time, its source and the number of evidence items it rests on.</figcaption></figure>
-  </section>
-
-  <section class="block" id="analysis">
-    <span class="anchor" id="develops"></span>
-    <div class="section-head">
-      <span class="eyebrow"><span class="stage-no">2</span>Analysis</span>
-      <h2>Every line of enquiry on the AcciMap</h2>
-      <p>Start with the critical event, then add every event and condition that might have played a part, including the hypotheses you expect to fail. Objects sit in time from left to right and in organisational depth from bottom to top, across six lanes.</p>
-    </div>
-    <figure class="block--wide"><div class="crop" style="--W: 3840; --x: 0; --y: 280; --cw: 3720; --ch: 1830"><img class="zoomable" src="shots/tarlton-springs-rto/07-map-stage-b.png" alt="Every hypothesis placed across the six lanes of the AcciMap, none of them tested yet" data-caption="Every hypothesis in its lane, none of them tested yet." loading="lazy"></div><figcaption>The Tarlton Springs AcciMap before testing: every hypothesis in its lane, each arrow grey and dashed until its source passes Existence and Influence.</figcaption></figure>
-    <p class="more"><a href="methodology.html#map">How the lanes and levels work, on the Methodology page</a></p>
-  </section>
-
-  <section class="block" id="assessment">
+  <section class="block" id="report">
     <div class="row">
       <div class="text">
-        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px"><span class="stage-no">3</span>Assessment</span>
-        <h2>Test each object against the evidence</h2>
-        <ul class="facts">
-          <li><strong>Existence, for every object.</strong> Did this event or condition actually exist or occur? A fail excludes the hypothesis, which stays on the map, struck through.</li>
-          <li><strong>Influence, once it exists.</strong> Did it influence this occurrence? A pass makes an increased-risk object a contributing factor and turns its outgoing arrows solid.</li>
-          <li><strong>Importance, only where Influence fails.</strong> Is it still important enough to address? A pass makes it a finding in its own right. Failing both excludes it.</li>
-          <li><strong>A probability and its term.</strong> For each result you record how likely it is, and IWS states it as a term from a ten-term scale: 70 per cent reads as &ldquo;likely&rdquo;. Where the evidence cuts both ways, record the argument for, the argument against and your reasoning.</li>
-          <li><strong>The standard of proof sets the verdict.</strong> At or above it a test reads Pass; otherwise, at or below its mirror it reads Fail, and in between Inconclusive. It is 70 per cent unless you change it in Settings, from 50 to 95 per cent.</li>
-        </ul>
-        <p><a href="methodology.html#tests">The tests and the standard of proof in full</a></p>
+        <span class="eyebrow"><span class="stage-no">1</span>Investigation before reporting</span>
+        <h2>The report should emerge from the investigation</h2>
+        <div class="prose">
+          <p>In many organisations the report is where the investigation happens. Evidence is summarised into a Word document as it arrives, hypotheses are argued in draft paragraphs, and the reasoning that connects the evidence to a finding ends up spread across versions, emails and the investigator's memory. A reviewer sees the conclusion, but has to reconstruct how it was reached.</p>
+          <p>IWS keeps that work in the investigation record instead. Evidence is captured once and linked to the events and conditions it bears on. Each hypothesis is tested, and its argument is written down where the test is made. The report is drafted from the record once the analysis is done, so it states what the analysis supports.</p>
+        </div>
       </div>
-      <figure><div class="crop" style="--W: 3840; --x: 200; --y: 170; --cw: 2240; --ch: 2400"><img class="zoomable" src="shots/tarlton-springs-rto/19-object-form-importance.png" alt="An object's form with Existence, Influence and Importance, each with its evidence, result and confidence" data-caption="An object's form: Existence, Influence and Importance, each with its evidence, result and confidence." loading="lazy"></div></figure>
+      <figure><div class="crop" style="--W: 3840; --x: 220; --y: 840; --cw: 2180; --ch: 1090"><img class="zoomable" src="shots/tarlton-springs-rto/10-object-form-argued.png" alt="An argued Influence test from the Tarlton Springs case study: evidence for and against side by side, the probability and the result, recorded against the object" data-caption="An argued Influence test from the Tarlton Springs case study: evidence for and against side by side, the probability and the result, recorded against the object" loading="lazy"></div><figcaption>An Influence test from the Tarlton Springs case study, argued in the record: evidence for and against, the probability and the result.</figcaption></figure>
     </div>
   </section>
 
-  <section class="block" id="reporting">
-    <span class="anchor" id="outputs"></span>
-    <span class="anchor" id="tables"></span>
-    <div class="row rep">
+  <section class="block" id="benefits">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">2</span>What it gives an organisation</span>
+      <h2>Four benefits for the people who manage investigations</h2>
+    </div>
+    <div class="ben">
+      <article class="card"><h3>Consistency of process</h3><p>Every investigation uses the same method. Hypotheses are placed on the AcciMap and tested for Existence, then Influence, then Importance where it applies, with a result and a probability recorded for each test. Investigators of differing experience work through the same questions, giving managers a common standard to review against.</p></article>
+      <article class="card"><h3>Transparency and traceability</h3><p>A finding stays connected to its tests, the arguments for and against, and the evidence behind them. The Evidence and Argument Tables set this out object by object, so a reviewer can trace each finding to its support, or see where that support is thin.</p></article>
+      <article class="card"><h3>Less administration, more investigation</h3><p>Evidence is captured once and used wherever it applies. The Evidence and Argument Tables and the reports are generated from the record rather than assembled by hand, so investigators spend less time on documents and more on gathering evidence and analysing it.</p></article>
+      <article class="card"><h3>Reasoning kept with the record</h3><p>The record keeps why each hypothesis was accepted, excluded or left open, with a dated log of the decisions made along the way. If a finding is questioned months later, or the investigation changes hands, the reasoning is still there to read.</p></article>
+    </div>
+  </section>
+
+  <section class="block" id="gaps">
+    <div class="row row--flip">
+      <figure><div class="crop" style="--W: 3840; --x: 720; --y: 290; --cw: 1560; --ch: 1170"><img class="zoomable" src="shots/tarlton-springs-rto/08-map-stage-c.png" alt="The Tarlton Springs AcciMap part way through testing: the objects that have passed their tests shaded and joined by arrows, the rest still open as hypotheses" data-caption="The Tarlton Springs AcciMap part way through testing: the objects that have passed their tests shaded and joined by arrows, the rest still open as hypotheses" loading="lazy"></div><figcaption>Tarlton Springs part way through: objects that have passed their tests are shaded and joined by arrows, and the rest are still open as hypotheses.</figcaption></figure>
       <div class="text">
-        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px"><span class="stage-no">4</span>Reporting</span>
-        <h2>The tables and reports come from the same record</h2>
-        <p>The Evidence and Argument Tables are generated directly from the assessments recorded against AcciMap objects. Investigation reports and executive briefings draw on the same record, keeping the evidence, reasoning and reporting connected.</p>
-        <ul class="facts">
-          <li>The final report also comes in ATSB-, NTSB- and AAIB-inspired layouts, each following that body's published report structure. They are not produced, reviewed or endorsed by those organisations.</li>
-          <li>With Professional, reports are written to Word, on your own Word template if you have one.</li>
-          <li>AI drafting is optional, also with Professional. A draft is written from the record, and you decide what stays. <a href="ai-security.html">How AI drafting works and where data goes</a></li>
-        </ul>
-        <p><a href="case-studies.html">Read all four documents in the case studies</a></p>
+        <span class="eyebrow"><span class="stage-no">3</span>Gaps and uncertainty</span>
+        <h2>The structure makes gaps easier to see</h2>
+        <div class="prose">
+          <p>A structured workflow can't make up for evidence that wasn't gathered, and IWS doesn't decide what caused an occurrence. What it does is make the state of the analysis plain. An untested hypothesis stays a hypothesis on the map. A test the evidence can't settle is recorded as inconclusive. An arrow appears only between objects that have passed their tests, and each result carries the probability the investigator assigned, so a weakly supported finding reads as one.</p>
+        </div>
+        <p class="role">Synoptic does not replace investigative judgement or independent review. Its role is to make the evidence, reasoning and uncertainty behind each assessment visible.</p>
       </div>
-      <figure><div class="crop crop--page" style="--W: 1550; --x: 160; --y: 175; --cw: 1240; --ch: 1435"><img class="zoomable" src="exports/tarlton-springs-rto/pages/evidence_argument_tables/p11.png" alt="The same object, Floor escape path lighting, in the Evidence and Argument Tables" data-caption="The same object, Floor escape path lighting, in the Evidence and Argument Tables" loading="lazy"></div><figcaption>The object assessed above, as the Evidence and Argument Tables print it.</figcaption></figure>
     </div>
   </section>
 
-  <section class="block" id="around">
-    <h2>Around the investigation</h2>
-    <ul class="around">
-      <li><h3>Dashboard</h3><p>The checklist, one to-do list fed from the checklist and from objects on the map, and the distribution list that prints at the foot of every report.</p></li>
-      <li><h3>Log</h3><p>Your running sheet, plus entries the application adds when a decision is made: a checklist answer, a test result, a finalised interview, a draft or an export.</p></li>
-      <li><h3>One portable file</h3><p>No account and no database. The investigation is one .sfm file in plain JSON, with pasted images and captured files held inside it as text, so it can be read without IWS. The one exception is opt-in: a setting that keeps large dropped files in an attachments folder beside it.</p></li>
-      <li><h3>Shared-folder protection</h3><p>Before each save, IWS checks whether the file has changed on disk since it was last opened or saved here. If it has, the save is held and you choose: reload theirs, save yours as a copy, or overwrite. Nothing is merged. While the file is open, a lock file beside it tells anyone else who opens it that it is in use.</p></li>
-    </ul>
+  <section class="block" id="editions">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">4</span>Organisation editions</span>
+      <h2>Adapted to your organisation's investigation framework</h2>
+    </div>
+    <div class="ed">
+      <div class="prose">
+        <p>Where an organisation has its own investigation framework, IWS can be supplied as that organisation's own build, with its framework, terminology and reporting built in as an organisation pack. Each edition is scoped with the organisation, and what it contains depends on what the organisation uses.</p>
+        <p>Organisation editions retain Synoptic's desktop-based approach, with investigation files stored and managed within your organisation's existing systems.</p>
+        <p><a href="download.html#organisation">The Organisation level alongside Free and Professional &rarr;</a></p>
+      </div>
+      <div class="card">
+        <p class="sub-label">An organisation pack can set</p>
+        <ul class="facts">
+          <li>The AcciMap's lanes and the example prompts in each</li>
+          <li>The evidence categories offered when filing evidence</li>
+          <li>The starting list of reasons for the Influence test</li>
+          <li>Default templates and the report styles offered</li>
+          <li>The strongest AI access its investigators can choose</li>
+          <li>Where needed, a findings map built on the organisation's own taxonomy</li>
+        </ul>
+        <p class="ed-price">Pricing by arrangement, scoped to your requirements.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="block levels-line" id="levels">
-    <span class="anchor" id="organisations"></span>
-    <p>IWS is one application at every level, and a licence decides which features are available, never whether you can open your own work. <a href="download.html#pricing">Compare Free, Professional and Organisation</a></p>
-  </section>
-
-  <section class="block next">
-    <h2>See it on a full investigation</h2>
-    <p>Each case study follows one investigation from notification to the published documents.</p>
+  <section class="block next" id="next">
+    <h2>See the approach in practice</h2>
+    <p>Follow a complete investigation from first notification to the published documents in one of the three case studies, or read how findings are derived on the Methodology page.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="case-studies.html">See the case studies</a>
-      <a class="btn" href="download.html">Download</a>
+      <a class="btn" href="methodology.html">Read the methodology</a>
     </div>
   </section>
 

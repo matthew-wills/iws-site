@@ -1,0 +1,156 @@
+<title>For organisations | Investigation Workflow Suite (IWS)</title>
+<style>
+%%THEME%%
+
+  [id] { scroll-margin-top: 76px; }
+  .anchor { display: block; height: 0; }
+  .page-head { padding-block: 44px 26px; display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
+  .page-head .lede { font-size: 1.1rem; color: var(--ink-soft); }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stage-no { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); font-size: 0.82rem; font-weight: 700; }
+  .section-head .eyebrow { display: flex; align-items: center; gap: 8px; }
+  .onpage { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 4px; font-size: 0.93rem; }
+  .onpage a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .onpage a:hover { color: var(--accent-deep); border-bottom-color: currentColor; }
+
+  .crop { position: relative; overflow: hidden; aspect-ratio: var(--cw) / var(--ch); border-radius: 10px; outline: 1px solid var(--line); outline-offset: -1px; background: var(--paper); box-shadow: var(--shadow); cursor: zoom-in; }
+  .crop img { position: absolute; max-width: none; height: auto; width: calc(var(--W) / var(--cw) * 100%); left: calc(var(--x) / var(--cw) * -100%); top: calc(var(--y) / var(--ch) * -100%); }
+  .crop--page { background: #fff; }
+
+  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 34px; align-items: center; }
+  .row .text { display: flex; flex-direction: column; gap: 12px; }
+  .facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .facts li { padding-left: 16px; border-left: 3px solid var(--accent-soft); color: var(--ink-soft); }
+  .facts li strong { color: var(--ink); font-weight: 600; }
+  .prose { display: flex; flex-direction: column; gap: 12px; color: var(--ink-soft); }
+  .prose h3 { font-size: 1.08rem; color: var(--ink); }
+  .sub-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+
+  .row--flip { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  #report .row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  figure figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.9rem; }
+  .ben { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .ben .card { border-top: 3px solid var(--accent); display: flex; flex-direction: column; gap: 8px; }
+  .ben h3 { font-size: 1.08rem; }
+  .ben p { color: var(--ink-soft); }
+  .role { margin-top: 4px; padding: 14px 18px; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: var(--accent-soft); color: var(--ink); }
+  .ed { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 34px; align-items: start; }
+  .ed-price { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.93rem; }
+  .next { display: flex; flex-direction: column; gap: 14px; max-width: 76ch; }
+  .next p { color: var(--ink-soft); }
+
+  @media (max-width: 860px) {
+    .row, .row--flip, #report .row, .ben, .ed { grid-template-columns: 1fr; }
+    .row--flip figure { order: 2; }
+  }
+  @media (max-width: 560px) {
+    .page-head { padding-block: 28px 18px; }
+    section.block { padding-block: 38px; }
+  }
+</style>
+
+%%HEADER%%
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <span class="eyebrow">For organisations</span>
+    <h1>A more consistent approach to investigations, without compromising professional judgement.</h1>
+    <p class="lede">For safety managers, investigation managers and the organisations they work for. IWS gives every investigation the same structure and the same kind of record, whoever conducts it. The investigator still decides what the evidence shows. IWS keeps that reasoning connected to the evidence and the findings, so it can be reviewed.</p>
+    <nav class="onpage" aria-label="On this page"><a href="#report">Investigation before reporting</a><a href="#benefits">What it gives an organisation</a><a href="#gaps">Gaps and uncertainty</a><a href="#editions">Organisation editions</a></nav>
+  </section>
+
+  <section class="block" id="report">
+    <div class="row">
+      <div class="text">
+        <span class="eyebrow"><span class="stage-no">1</span>Investigation before reporting</span>
+        <h2>The report should emerge from the investigation</h2>
+        <div class="prose">
+          <p>In many organisations the report is where the investigation happens. Evidence is summarised into a Word document as it arrives, hypotheses are argued in draft paragraphs, and the reasoning that connects the evidence to a finding ends up spread across versions, emails and the investigator's memory. A reviewer sees the conclusion, but has to reconstruct how it was reached.</p>
+          <p>IWS keeps that work in the investigation record instead. Evidence is captured once and linked to the events and conditions it bears on. Each hypothesis is tested, and its argument is written down where the test is made. The report is drafted from the record once the analysis is done, so it states what the analysis supports.</p>
+        </div>
+      </div>
+      <figure><div class="crop" style="--W: 3840; --x: 220; --y: 840; --cw: 2180; --ch: 1090"><img class="zoomable" src="%%SHOT_10%%" alt="An argued Influence test from the %%FEATURED_TITLE%% case study: evidence for and against side by side, the probability and the result, recorded against the object" data-caption="An argued Influence test from the %%FEATURED_TITLE%% case study: evidence for and against side by side, the probability and the result, recorded against the object" loading="lazy"></div><figcaption>An Influence test from the %%FEATURED_TITLE%% case study, argued in the record: evidence for and against, the probability and the result.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="benefits">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">2</span>What it gives an organisation</span>
+      <h2>Four benefits for the people who manage investigations</h2>
+    </div>
+    <div class="ben">
+      <article class="card"><h3>Consistency of process</h3><p>Every investigation uses the same method. Hypotheses are placed on the AcciMap and tested for Existence, then Influence, then Importance where it applies, with a result and a probability recorded for each test. Investigators of differing experience work through the same questions, giving managers a common standard to review against.</p></article>
+      <article class="card"><h3>Transparency and traceability</h3><p>A finding stays connected to its tests, the arguments for and against, and the evidence behind them. The Evidence and Argument Tables set this out object by object, so a reviewer can trace each finding to its support, or see where that support is thin.</p></article>
+      <article class="card"><h3>Less administration, more investigation</h3><p>Evidence is captured once and used wherever it applies. The Evidence and Argument Tables and the reports are generated from the record rather than assembled by hand, so investigators spend less time on documents and more on gathering evidence and analysing it.</p></article>
+      <article class="card"><h3>Reasoning kept with the record</h3><p>The record keeps why each hypothesis was accepted, excluded or left open, with a dated log of the decisions made along the way. If a finding is questioned months later, or the investigation changes hands, the reasoning is still there to read.</p></article>
+    </div>
+  </section>
+
+  <section class="block" id="gaps">
+    <div class="row row--flip">
+      <figure><div class="crop" style="--W: 3840; --x: 720; --y: 290; --cw: 1560; --ch: 1170"><img class="zoomable" src="%%SHOT_08%%" alt="The %%FEATURED_TITLE%% AcciMap part way through testing: the objects that have passed their tests shaded and joined by arrows, the rest still open as hypotheses" data-caption="The %%FEATURED_TITLE%% AcciMap part way through testing: the objects that have passed their tests shaded and joined by arrows, the rest still open as hypotheses" loading="lazy"></div><figcaption>%%FEATURED_TITLE%% part way through: objects that have passed their tests are shaded and joined by arrows, and the rest are still open as hypotheses.</figcaption></figure>
+      <div class="text">
+        <span class="eyebrow"><span class="stage-no">3</span>Gaps and uncertainty</span>
+        <h2>The structure makes gaps easier to see</h2>
+        <div class="prose">
+          <p>A structured workflow can't make up for evidence that wasn't gathered, and IWS doesn't decide what caused an occurrence. What it does is make the state of the analysis plain. An untested hypothesis stays a hypothesis on the map. A test the evidence can't settle is recorded as inconclusive. An arrow appears only between objects that have passed their tests, and each result carries the probability the investigator assigned, so a weakly supported finding reads as one.</p>
+        </div>
+        <p class="role">Synoptic does not replace investigative judgement or independent review. Its role is to make the evidence, reasoning and uncertainty behind each assessment visible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="editions">
+    <div class="section-head">
+      <span class="eyebrow"><span class="stage-no">4</span>Organisation editions</span>
+      <h2>Adapted to your organisation's investigation framework</h2>
+    </div>
+    <div class="ed">
+      <div class="prose">
+        <p>Where an organisation has its own investigation framework, IWS can be supplied as that organisation's own build, with its framework, terminology and reporting built in as an organisation pack. Each edition is scoped with the organisation, and what it contains depends on what the organisation uses.</p>
+        <p>Organisation editions retain Synoptic's desktop-based approach, with investigation files stored and managed within your organisation's existing systems.</p>
+        <p><a href="download.html#organisation">The Organisation level alongside Free and Professional &rarr;</a></p>
+      </div>
+      <div class="card">
+        <p class="sub-label">An organisation pack can set</p>
+        <ul class="facts">
+          <li>The AcciMap's lanes and the example prompts in each</li>
+          <li>The evidence categories offered when filing evidence</li>
+          <li>The starting list of reasons for the Influence test</li>
+          <li>Default templates and the report styles offered</li>
+          <li>The strongest AI access its investigators can choose</li>
+          <li>Where needed, a findings map built on the organisation's own taxonomy</li>
+        </ul>
+        <p class="ed-price">Pricing by arrangement, scoped to your requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block next" id="next">
+    <h2>See the approach in practice</h2>
+    <p>Follow a complete investigation from first notification to the published documents in one of the three case studies, or read how findings are derived on the Methodology page.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="case-studies.html">See the case studies</a>
+      <a class="btn" href="methodology.html">Read the methodology</a>
+    </div>
+  </section>
+
+%%FOOTER%%
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot at full size">
+  <button class="lightbox__close" type="button" id="lb-close" aria-label="Close">×</button>
+  <div class="lightbox__body"><img id="lb-img" alt=""><p class="lightbox__caption" id="lb-caption"></p></div>
+</div>
+<script>
+  (function () {
+    var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCaption = document.getElementById("lb-caption");
+    function openImage(src, text) { lbImg.src = src; lbCaption.textContent = text || ""; lb.classList.add("is-open"); document.body.classList.add("has-lightbox"); }
+    function closeLb() { lb.classList.remove("is-open"); document.body.classList.remove("has-lightbox"); lbImg.removeAttribute("src"); }
+    Array.prototype.forEach.call(document.querySelectorAll("img.zoomable"), function (img) { img.addEventListener("click", function () { openImage(img.src, img.dataset.caption || img.alt); }); });
+    document.getElementById("lb-close").addEventListener("click", function (e) { e.stopPropagation(); closeLb(); });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    lb.addEventListener("click", closeLb);
+    window.addEventListener("keydown", function (e) { if (lb.classList.contains("is-open") && e.key === "Escape") closeLb(); });
+  })();
+</script>
