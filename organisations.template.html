@@ -49,6 +49,19 @@
     .page-head { padding-block: 28px 18px; }
     section.block { padding-block: 38px; }
   }
+  /* Finalisation dots, drawn as the canvas draws them */
+  .od { position: relative; display: block; width: 64px; height: 30px; border: 1.5px solid #334155; background: #fff; border-radius: 3px; flex: none; }
+  .od::after { content: ""; position: absolute; top: 5px; right: 5px; width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9); background: var(--dot); }
+  .od--open { --dot: #F59E0B; }
+  .od--done { --dot: #22C55E; }
+  .dots { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 0.93rem; color: var(--ink-soft); }
+  .dots li { display: flex; align-items: center; gap: 12px; }
+  .dots b { color: var(--ink); font-weight: 600; }
+  .progress { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 34px; align-items: center; margin-top: 40px; padding-top: 34px; border-top: 1px solid var(--line); }
+  .progress .dots { margin: 2px 0 4px; }
+  @media (max-width: 860px) { .progress { grid-template-columns: 1fr; gap: 20px; } }
+  .tap { display: none; position: absolute; right: 8px; bottom: 8px; padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.94); color: var(--ink); font-size: 0.75rem; font-weight: 600; pointer-events: none; }
+  @media (max-width: 560px) { .progress .tap { display: block; } }
 </style>
 
 %%HEADER%%
@@ -99,6 +112,20 @@
         </div>
         <p class="role">IWS does not replace investigative judgement or independent review. Its role is to make the evidence, reasoning and uncertainty behind each assessment visible.</p>
       </div>
+    </div>
+
+    <div class="progress">
+      <div class="prose">
+        <h3>Investigation progress at a glance</h3>
+        <ul class="dots" aria-label="Finalisation dots">
+          <li><span class="od od--open" aria-hidden="true"></span><span><b>Amber:</b> not yet finalised</span></li>
+          <li><span class="od od--done" aria-hidden="true"></span><span><b>Green:</b> finalised by the investigator</span></li>
+        </ul>
+        <p>The AcciMap shows which objects have been finalised and which still need attention. Safety managers and reviewers can see where an investigation stands, then open individual objects to examine the evidence, assessments and reasoning.</p>
+        <p>During a handover, an incoming investigator can quickly identify outstanding work while retaining the reasoning behind what's already been completed.</p>
+        <p>Finalisation is recorded by the investigator, independently of the assessment outcome. The Dashboard also provides a count of finalised objects.</p>
+      </div>
+      <figure><div class="crop" style="--W: 3840; --x: 1620; --y: 1230; --cw: 2100; --ch: 860"><img class="zoomable" src="%%SHOT_08%%" alt="The lower half of the %%FEATURED_TITLE%% AcciMap part way through: the occurrence sequence finalised with green dots, the conditions and actions above it still amber" data-caption="The lower half of the %%FEATURED_TITLE%% AcciMap part way through: the occurrence sequence finalised with green dots, the conditions and actions above it still amber." loading="lazy"><span class="tap" aria-hidden="true">Tap to enlarge</span></div><figcaption>%%FEATURED_TITLE%% part way through. The occurrence sequence along the bottom is finalised; the conditions and actions above it are still open.</figcaption></figure>
     </div>
   </section>
 
