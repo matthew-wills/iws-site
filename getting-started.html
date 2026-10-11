@@ -153,6 +153,21 @@ footer .legal { line-height: 1.6; }
 @media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
 @media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
 
+/* The application's start-screen illustration in the upper right of a
+   page head (HEADER_ART in build-site.mjs), understated like the app's.
+   The zero-height box spans the content column, so the picture fills the
+   space at its right (--art-w, the same on every page); the page head
+   beside it gives up the same width, so text never runs under it, and is
+   at least as tall as the picture plus its usual bottom spacing, so what
+   follows moves down rather than meeting it. Hidden below 1080 px. */
+.header-art { display: none; }
+@media (min-width: 1080px) {
+  :root { --art-w: 400px; }
+  .header-art { display: block; position: relative; height: 0; }
+  .header-art svg { position: absolute; top: 44px; right: 0; width: var(--art-w); height: auto; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12); opacity: 0.3; filter: saturate(0.85); pointer-events: none; }
+  .header-art + .page-head { margin-right: calc(var(--art-w) + 40px); min-height: calc(44px + var(--art-w) * 210 / 360 + 30px); }
+}
+
 
   [id] { scroll-margin-top: 76px; }
 
@@ -258,6 +273,7 @@ footer .legal { line-height: 1.6; }
 </header>
 
 <main class="wrap" id="top">
+  <div class="header-art" aria-hidden="true"><svg viewBox="0 0 360 210" focusable="false"><rect x="0" y="0" width="360" height="52" fill="#DDEAF8"/><rect x="0" y="52" width="360" height="52" fill="#FDEEDC"/><rect x="0" y="104" width="360" height="53" fill="#ECE8FA"/><rect x="0" y="157" width="360" height="53" fill="#FBE5E8"/><rect x="24" y="14" width="92" height="26" rx="4" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/><rect x="150" y="66" width="92" height="26" rx="4" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/><rect x="60" y="118" width="92" height="26" rx="4" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/><rect x="236" y="170" width="100" height="26" rx="13" fill="#FCE7F3" stroke="#B91C1C" stroke-width="1.8"/><g fill="none" stroke="#15803D" stroke-width="1.8"><path d="M 92 40 C 120 55 150 60 178 66"/><path d="M 196 92 C 170 105 140 112 126 118"/><path d="M 130 144 C 180 160 215 172 237.5 177"/><path d="M 242 79 C 280 110 286 150 286 170"/></g></svg></div>
   <section class="page-head">
     <span class="eyebrow">Getting started</span>
     <h1>Your first investigation</h1>

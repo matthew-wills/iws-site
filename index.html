@@ -153,6 +153,21 @@ footer .legal { line-height: 1.6; }
 @media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
 @media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
 
+/* The application's start-screen illustration in the upper right of a
+   page head (HEADER_ART in build-site.mjs), understated like the app's.
+   The zero-height box spans the content column, so the picture fills the
+   space at its right (--art-w, the same on every page); the page head
+   beside it gives up the same width, so text never runs under it, and is
+   at least as tall as the picture plus its usual bottom spacing, so what
+   follows moves down rather than meeting it. Hidden below 1080 px. */
+.header-art { display: none; }
+@media (min-width: 1080px) {
+  :root { --art-w: 400px; }
+  .header-art { display: block; position: relative; height: 0; }
+  .header-art svg { position: absolute; top: 44px; right: 0; width: var(--art-w); height: auto; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12); opacity: 0.3; filter: saturate(0.85); pointer-events: none; }
+  .header-art + .page-head { margin-right: calc(var(--art-w) + 40px); min-height: calc(44px + var(--art-w) * 210 / 360 + 30px); }
+}
+
 
   [id] { scroll-margin-top: 76px; }
   .hero { padding-block: 48px 8px; display: flex; flex-direction: column; gap: 18px; max-width: 74ch; }

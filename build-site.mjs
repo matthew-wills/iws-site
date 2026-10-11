@@ -157,7 +157,18 @@ const footer = (prefix, links = []) =>
     `    <span>${[...links, [`${prefix}changelog.html`, "Changelog"]].map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ")}</span>`,
     `  </footer>`,
   ].join("\n");
-const chrome = (html, prefix, current, links) => html.replace("%%HEADER%%", () => header(prefix, current)).replace("%%FOOTER%%", () => footer(prefix, links));
+/** The application's start-screen illustration (src/App.tsx in the app
+ *  repo, `welcome__deco--map`), shown in the upper right of the page
+ *  heads that carry %%HEADER_ART%%. Keep it identical to the app's;
+ *  theme.css (.header-art) places it and hides it on narrow screens. */
+const HEADER_ART = [
+  `<div class="header-art" aria-hidden="true"><svg viewBox="0 0 360 210" focusable="false">`,
+  `<rect x="0" y="0" width="360" height="52" fill="#DDEAF8"/><rect x="0" y="52" width="360" height="52" fill="#FDEEDC"/><rect x="0" y="104" width="360" height="53" fill="#ECE8FA"/><rect x="0" y="157" width="360" height="53" fill="#FBE5E8"/>`,
+  `<rect x="24" y="14" width="92" height="26" rx="4" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/><rect x="150" y="66" width="92" height="26" rx="4" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/><rect x="60" y="118" width="92" height="26" rx="4" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/><rect x="236" y="170" width="100" height="26" rx="13" fill="#FCE7F3" stroke="#B91C1C" stroke-width="1.8"/>`,
+  `<g fill="none" stroke="#15803D" stroke-width="1.8"><path d="M 92 40 C 120 55 150 60 178 66"/><path d="M 196 92 C 170 105 140 112 126 118"/><path d="M 130 144 C 180 160 215 172 237.5 177"/><path d="M 242 79 C 280 110 286 150 286 170"/></g>`,
+  `</svg></div>`,
+].join("");
+const chrome = (html, prefix, current, links) => html.replace("%%HEADER%%", () => header(prefix, current)).replace("%%HEADER_ART%%", () => HEADER_ART).replace("%%FOOTER%%", () => footer(prefix, links));
 const meta = (r) =>
   r
     ? `${r.words.toLocaleString("en-AU")} words · ${r.runLog?.engine ?? "endpoint"} · ${r.runLog?.calls?.length ?? "?"} model calls · drafted ${new Date(r.runLog?.drafted_at ?? Date.now()).toLocaleDateString("en-AU")}`
