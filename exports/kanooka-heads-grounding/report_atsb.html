@@ -154,6 +154,18 @@ footer .legal { line-height: 1.6; }
 @media (max-width: 960px) { .studies { grid-template-columns: 1fr; max-width: 620px; } .studies--small { grid-template-columns: 1fr 1fr; max-width: none; } }
 @media (max-width: 560px) { .studies--small { grid-template-columns: 1fr; } }
 
+/* The application's start-screen illustration in the upper right of a
+   page head (HEADER_ART in build-site.mjs). The zero-height box spans the
+   page width, so the picture sits at the right of the content column;
+   the page head beside it gives up the same width, so text never runs
+   under it. Desktop only. */
+.header-art { display: none; }
+@media (min-width: 1080px) {
+  .header-art { display: block; position: relative; height: 0; }
+  .header-art svg { position: absolute; top: 44px; right: 0; width: 280px; height: auto; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12); opacity: 0.4; filter: saturate(0.85); pointer-events: none; }
+  .header-art + .page-head { margin-right: 312px; min-height: 207px; }
+}
+
   .doc-head { padding-block: 36px 16px; display: flex; flex-direction: column; gap: 8px; }
   .doc-head p { color: var(--ink-soft); max-width: 66ch; font-size: 1.02rem; }
   .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
