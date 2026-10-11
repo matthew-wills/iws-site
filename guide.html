@@ -158,12 +158,18 @@ footer .legal { line-height: 1.6; }
    page head (HEADER_ART in build-site.mjs). The zero-height box spans the
    page width, so the picture sits at the right of the content column;
    the page head beside it gives up the same width, so text never runs
-   under it. Desktop only. */
+   under it, and is at least as tall as the picture, so what follows moves
+   down rather than meeting it. Full size from 1200 px, smaller from
+   1080 px, hidden below. */
 .header-art { display: none; }
 @media (min-width: 1080px) {
   .header-art { display: block; position: relative; height: 0; }
-  .header-art svg { position: absolute; top: 44px; right: 0; width: 280px; height: auto; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12); opacity: 0.4; filter: saturate(0.85); pointer-events: none; }
-  .header-art + .page-head { margin-right: 312px; min-height: 207px; }
+  .header-art svg { position: absolute; top: 44px; right: 0; width: 280px; height: auto; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14); opacity: 0.85; pointer-events: none; }
+  .header-art + .page-head { margin-right: 312px; min-height: 238px; }
+}
+@media (min-width: 1200px) {
+  .header-art svg { width: 420px; }
+  .header-art + .page-head { margin-right: 452px; min-height: 320px; }
 }
 
   .guide-head { padding-block: 40px 22px; display: flex; flex-direction: column; gap: 10px; }
