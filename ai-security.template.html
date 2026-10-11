@@ -32,12 +32,20 @@
   .mode .small { font-size: 0.9rem; margin-top: auto; }
   .mode.lead { border-color: #93c5fd; }
   .steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 0.93rem; }
-  .risks { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  .risks th { text-align: left; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; padding: 0 14px 10px; border-bottom: 1px solid var(--line-strong); }
-  .risks td { padding: 13px 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
-  .risks tbody tr:nth-child(even) td { background: var(--paper); }
-  .risks td:first-child { color: var(--ink); width: 28%; }
-  .risks td:last-child { width: 30%; }
+  /* Risks, safeguards, limits: each column keeps its own pale tint and a
+     muted accent on its heading, the safeguards column a little stronger. */
+  .risks { --risk-tint: #fdf6e7; --risk-accent: #b7832a; --risk-ink: #8a5a12;
+           --guard-tint: #e3f3f5; --guard-accent: #1490a8; --guard-ink: #0b6577;
+           --limit-tint: #eef2f6; --limit-accent: #8796ab; --limit-ink: #4b5a70;
+           width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.95rem; }
+  .risks th { text-align: left; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: 10px 14px; border-top: 3px solid; }
+  .risks th:nth-child(1) { color: var(--risk-ink); border-top-color: var(--risk-accent); background: var(--risk-tint); }
+  .risks th:nth-child(2) { color: var(--guard-ink); border-top-color: var(--guard-accent); background: var(--guard-tint); }
+  .risks th:nth-child(3) { color: var(--limit-ink); border-top-color: var(--limit-accent); background: var(--limit-tint); }
+  .risks td { padding: 13px 14px; border-bottom: 1px solid var(--paper); vertical-align: top; color: var(--ink-soft); }
+  .risks td:nth-child(1) { color: var(--ink); width: 28%; background: var(--risk-tint); }
+  .risks td:nth-child(2) { color: var(--ink); background: var(--guard-tint); box-shadow: inset 3px 0 0 var(--guard-accent); }
+  .risks td:nth-child(3) { width: 30%; background: var(--limit-tint); }
   .parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
   .part h3 { font-size: 1.05rem; margin-bottom: 12px; }
   .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 34px; max-width: 980px; }
@@ -53,10 +61,12 @@
   }
   @media (max-width: 560px) {
     .risks thead { display: none; }
-    .risks tr { display: grid; padding-block: 8px; border-bottom: 1px solid var(--line); }
-    .risks td, .risks td:first-child, .risks td:last-child { width: auto; border-bottom: none; padding: 2px 0; background: none; }
-    .risks tbody tr:nth-child(even) td { background: none; }
-    .risks td:last-child { font-style: italic; }
+    .risks tr { display: grid; margin-bottom: 14px; }
+    .risks td, .risks td:nth-child(1), .risks td:nth-child(3) { width: auto; border-bottom: none; padding: 8px 12px; }
+    .risks td::before { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+    .risks td:nth-child(1)::before { content: "What can go wrong"; color: var(--risk-ink); }
+    .risks td:nth-child(2)::before { content: "How Synoptic addresses it"; color: var(--guard-ink); }
+    .risks td:nth-child(3)::before { content: "What still needs checking"; color: var(--limit-ink); }
   }
 </style>
 
@@ -118,11 +128,11 @@
   <section class="block" id="limits">
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">2</span>Limitations</span>
-      <h2>A model can write a plausible report that is wrong</h2>
-      <p>The errors read like the truths, so each known failure has a control. None of the controls proves a draft accurate.</p>
+      <h2>AI-assisted drafting, with safeguards built in</h2>
+      <p>AI can significantly reduce the time spent drafting an investigation report. Synoptic is designed to help investigators benefit from that capability while maintaining control over the evidence, reasoning and final conclusions. The table below shows the risks we recognise, the safeguards we've built in, and the limitations that still require investigator judgement.</p>
     </div>
     <table class="risks">
-      <thead><tr><th>What can go wrong</th><th>The control in IWS</th><th>Its limit</th></tr></thead>
+      <thead><tr><th>What can go wrong</th><th>How Synoptic addresses it</th><th>What still needs checking</th></tr></thead>
       <tbody>
         <tr><td>A gap filled from general knowledge</td><td>Grounding rules on every prompt; at Endpoint, the audit flags unsupported claims</td><td>The audit is a model and can miss things. Chat has only the self-audit instruction.</td></tr>
         <tr><td>&ldquo;Likely&rdquo; rounded up to &ldquo;virtually certain&rdquo;</td><td>Check the record compares each confidence word with the test that produced it</td><td>Run by hand for chat pastes and drafted sections</td></tr>
