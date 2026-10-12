@@ -7,6 +7,9 @@
   /* The guide fragment (guide-fragment.html, rendered by the
      application's scripts/render-user-guide.tsx) brings its own styles,
      its contents column and filter, and the script that runs them. */
+  /* A cropped figure carries its width and height from the build (for
+     Safari's lazy loading); keep its height following its width. */
+  .manual__crop .manual__shot { height: auto; }
 </style>
 
 %%HEADER%%

@@ -62,12 +62,14 @@ const favicons = (rel) => {
   return `<link rel="icon" href="${up}favicon.ico" sizes="any">\n<link rel="icon" href="${up}favicon.svg" type="image/svg+xml">\n`;
 };
 const VIEWPORT = `<meta name="viewport" content="width=device-width, initial-scale=1">\n`;
-/** A cropped screenshot (`.crop`) is an absolutely placed, lazily loaded
- *  image larger than its frame. With no size of its own before it loads,
- *  its box is 0 px high and sits outside the frame, and Safari's lazy
- *  loader treats it as never visible, so it never loads (iPad). Giving the
- *  image its real width and height lets the browser size the box before
- *  the file arrives; the crop CSS still sets the rendered size. Read from
+/** A cropped screenshot (`.crop`, and the User Guide's `.manual__crop`) is
+ *  an absolutely placed, lazily loaded image larger than its frame. With
+ *  no size of its own before it loads, its box is 0 px high and sits
+ *  outside the frame, and Safari's lazy loader treats it as never visible,
+ *  so it never loads (iPad). Giving the image its real width and height
+ *  lets the browser size the box before the file arrives; the crop CSS
+ *  still sets the rendered size, with `height: auto` so the attribute
+ *  never fixes it (guide.template.html adds that for the guide). Read from
  *  the PNG header, relative to the page. */
 const pngSize = new Map();
 const pngDimensions = (file) => {
@@ -82,7 +84,7 @@ const pngDimensions = (file) => {
   return pngSize.get(file);
 };
 const sizeCroppedImages = (rel, html) =>
-  html.replace(/(<div class="crop"[^>]*>\s*<img\b)([^>]*?)(\s*\/?>)/g, (whole, open, attrs, close) => {
+  html.replace(/(<div class="(?:crop|manual__crop)"[^>]*>\s*<img\b)([^>]*?)(\s*\/?>)/g, (whole, open, attrs, close) => {
     if (/\swidth=/.test(attrs)) return whole;
     const src = attrs.match(/\ssrc="([^"]+)"/)?.[1];
     const size = src && pngDimensions(join(here, dirname(rel), src));
