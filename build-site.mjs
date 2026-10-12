@@ -62,9 +62,40 @@ const favicons = (rel) => {
   return `<link rel="icon" href="${up}favicon.ico" sizes="any">\n<link rel="icon" href="${up}favicon.svg" type="image/svg+xml">\n`;
 };
 const VIEWPORT = `<meta name="viewport" content="width=device-width, initial-scale=1">\n`;
+/** A cropped screenshot (`.crop`) is an absolutely placed, lazily loaded
+ *  image larger than its frame. With no size of its own before it loads,
+ *  its box is 0 px high and sits outside the frame, and Safari's lazy
+ *  loader treats it as never visible, so it never loads (iPad). Giving the
+ *  image its real width and height lets the browser size the box before
+ *  the file arrives; the crop CSS still sets the rendered size. Read from
+ *  the PNG header, relative to the page. */
+const pngSize = new Map();
+const pngDimensions = (file) => {
+  if (!pngSize.has(file)) {
+    let size = null;
+    if (/\.png$/i.test(file) && existsSync(file)) {
+      const head = readFileSync(file).subarray(0, 24);
+      if (head.toString("latin1", 12, 16) === "IHDR") size = [head.readUInt32BE(16), head.readUInt32BE(20)];
+    }
+    pngSize.set(file, size);
+  }
+  return pngSize.get(file);
+};
+const sizeCroppedImages = (rel, html) =>
+  html.replace(/(<div class="crop"[^>]*>\s*<img\b)([^>]*?)(\s*\/?>)/g, (whole, open, attrs, close) => {
+    if (/\swidth=/.test(attrs)) return whole;
+    const src = attrs.match(/\ssrc="([^"]+)"/)?.[1];
+    const size = src && pngDimensions(join(here, dirname(rel), src));
+    if (!size) {
+      console.log(`crop: no PNG size for ${src} in ${rel}`);
+      return whole;
+    }
+    return `${open}${attrs} width="${size[0]}" height="${size[1]}"${close}`;
+  });
 const write = (rel, html) => {
   const path = join(here, rel);
   mkdirSync(dirname(path), { recursive: true });
+  html = sizeCroppedImages(rel, html);
   writeFileSync(path, html.includes(VIEWPORT) ? html.replace(VIEWPORT, () => VIEWPORT + favicons(rel)) : html);
   built.push(rel.split("\\").join("/"));
 };
