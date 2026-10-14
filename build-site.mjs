@@ -553,7 +553,7 @@ const sitePages = [
   ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.`],
   ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
   ["organisations", "For organisations", `How ${BRAND} helps an organisation establish a more consistent investigative process: traceable findings, reasoning kept with the investigation record, and editions adapted to the organisation's own investigation framework.`],
-  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how to buy and activate a licence.`],
+  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how a licence is activated.`],
   ["documentation", "Documentation", `How to learn ${BRAND}: the Getting started walkthrough of a first investigation, and the User Guide to every tab, form and setting.`],
   ["getting-started", "Getting started", `Your first investigation in ${BRAND}, step by step on a small fictional occurrence, from the start screen to the Evidence and Argument Tables.`],
 ];
