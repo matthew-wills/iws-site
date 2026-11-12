@@ -43,7 +43,7 @@
   .sends h3 { font-size: 0.98rem; }
   .sends .facts li { font-size: 0.92rem; }
 
-  .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .tiers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .tier { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
   .tier-body { display: flex; flex-direction: column; gap: 10px; }
   .tier.lead { border-color: #93c5fd; box-shadow: var(--shadow); }
@@ -65,12 +65,16 @@
   .terms .card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; }
   .terms h3 { font-size: 1rem; }
   .terms p { color: var(--ink-soft); font-size: 0.93rem; }
-  .tier-note { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--ink-soft); }
 
+  @media (max-width: 1100px) {
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 960px) {
     .download { grid-template-columns: 1fr; }
-    .tiers { grid-template-columns: 1fr; max-width: 560px; }
     .terms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .tiers { grid-template-columns: 1fr; max-width: 560px; }
   }
   @media (max-width: 560px) {
     .terms { grid-template-columns: 1fr; }
@@ -85,7 +89,7 @@
   <section class="page-head">
     <span class="eyebrow">Download</span>
     <h1>Download Investigation Workflow Suite (IWS)</h1>
-    <p class="lede">Free to conduct and structure an investigation, with no time limit. Professional takes it through to the finished report.</p>
+    <p class="lede">Free opens and reads any investigation. Education is free for study and teaching. Professional takes an investigation through to the finished report, and Organisation configures IWS for the way your organisation investigates.</p>
   </section>
 
   <section class="block" id="get" style="border-top: none; padding-top: 8px">
@@ -128,67 +132,10 @@
   <section class="block" id="pricing">
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">1</span>Licensing</span>
-      <h2>One application, three levels</h2>
-      <p>Free covers conducting and structuring the investigation. Professional takes it through to the finished report. Organisation makes IWS fit the way your organisation investigates.</p>
+      <h2>One application, four licence levels</h2>
+      <p>The same application at every level. A licence decides what you can do in it, never whether you can open and read your own work. These are the levels planned for the public release.</p>
     </div>
-    <div class="tiers">
-      <article class="tier card" id="free">
-        <div class="tier-body">
-          <span class="eyebrow">Free</span>
-          <h3>Structure the investigation</h3>
-          <p class="price"><span class="amount">$0</span><small>No watermark and no time limit.</small></p>
-          <p class="who">The complete investigation workspace.</p>
-          <ul class="facts">
-            <li>The AcciMap, with its six lanes, and every factor tested for Existence, Influence and Importance</li>
-            <li>Evidence and Argument Tables: Argument For, Argument Against and Reasoning, exported to Word</li>
-            <li>Investigations and their folders, the checklist and dashboard, evidence capture, interviews and transcripts, the timeline, finalising and the log</li>
-            <li>Exports of the AcciMap image, the timeline image, the report-drafting collation and the project snapshot</li>
-          </ul>
-          <p class="tier-note">Suitable for students learning safety investigation methods. Training providers interested in a course-specific configuration can read about <a href="organisations.html#training">IWS for investigation training</a>.</p>
-        </div>
-        <div class="tier-foot">
-          <a class="btn btn-primary launch-placeholder" aria-disabled="true">Download IWS</a>
-          <p class="foot-note">Windows 10 or 11, 64-bit. No account required.</p>
-        </div>
-      </article>
-      <article class="tier card lead" id="professional">
-        <div class="tier-body">
-          <div class="tier-top"><span class="eyebrow">Professional</span><span class="pill rec">Recommended</span></div>
-          <h3>Complete the investigation</h3>
-          <p class="price"><span class="amount amount--text">Pricing to be announced</span><small>We're gauging interest and the support Professional users will need before we set a price.</small></p>
-          <p class="who">The complete investigation-to-report workflow.</p>
-          <ul class="facts">
-            <li>Everything in Free</li>
-            <li>AI-assisted drafting and Chat AI</li>
-            <li>Finished Word reports and executive briefing slides, with your own Word template</li>
-          </ul>
-          <p class="note">AI service and model costs are not included. You connect your own suitable AI; see <a href="ai-security.html#your-ai">bring your own AI</a>.</p>
-        </div>
-        <div class="tier-foot">
-          <a class="btn btn-primary launch-placeholder" aria-disabled="true">Start a Professional trial</a>
-          <p class="foot-note"><a href="#trial">About the trial</a> · <a href="#buy">About pricing</a></p>
-        </div>
-      </article>
-      <article class="tier card" id="organisation">
-        <div class="tier-body">
-          <span class="eyebrow">Organisation</span>
-          <h3>Built around your organisation</h3>
-          <p class="price"><span class="amount amount--text">By arrangement</span><small>Scoped to your requirements.</small></p>
-          <p class="who">IWS adapted around your organisation's framework, rather than your investigators working around the software.</p>
-          <ul class="facts">
-            <li>Everything in Professional</li>
-            <li>Your organisation's framework, terminology and reporting, built in as an organisation pack</li>
-            <li>Its own map lanes and default templates</li>
-            <li>Where needed, a findings map built on your own taxonomy</li>
-            <li>Delivered as your organisation's own build of IWS</li>
-          </ul>
-        </div>
-        <div class="tier-foot">
-          <a class="btn launch-placeholder" aria-disabled="true">Talk to us</a>
-          <p class="foot-note"><a href="organisations.html">More about organisation editions</a></p>
-        </div>
-      </article>
-    </div>
+%%LICENCE_TIERS%%
   </section>
 
   <section class="block" id="questions">
@@ -199,32 +146,33 @@
     <div class="terms">
       <div class="card" id="trial">
         <h3>Is there a trial?</h3>
-        <p>Yes: everything in Professional, for a limited time, once per email address. IWS offers it on one quiet line the first time it runs, and Settings &gt; General &gt; Licence offers it again. Starting it needs the computer online once; offline, keep working in Free and start it later.</p>
+        <p>Yes: everything in Professional for 90 days, once per email address. IWS offers it on one quiet line the first time it runs, and Settings &gt; General &gt; Licence offers it again. Starting it needs the computer online once.</p>
         <p>A trial request sends your name, your email address, the edition and a randomly generated installation identifier, which is not a hardware serial number or hardware fingerprint. The licence server also records the IP address the request comes from. Nothing about any investigation is sent.</p>
-        <p class="launch-placeholder lp-text">How long these details are kept.</p>
+%%TRIAL_NOT_OPEN%%        %%TRIAL_RETENTION%%
       </div>
       <div class="card" id="trial-ends">
         <h3>What happens when a licence ends?</h3>
-        <p>A paid licence keeps working for 14 days after its expiry date, so a renewal that arrives late does not interrupt an investigation. A trial has no such period.</p>
-        <p>After that, IWS carries on as Free. Every investigation stays open and editable. Professional-only actions, such as drafting and report export, pause until a licence is active. Nothing is deleted.</p>
+        <p>IWS warns you before a licence ends: a notice at start-up 30, 14 and 7 days before, then every day in the last week. A trial warns from 14 days before. The licence is checked on the computer itself, so the warnings need no network connection.</p>
+        <p>A paid, Organisation or Education licence keeps working for 14 days after its expiry date, so a renewal that arrives late does not interrupt an investigation. A trial has no such period. A licence that ends while you are working changes nothing until you close IWS.</p>
+        <p>After that, IWS opens as Free. Every investigation can still be opened, read and exported, and nothing is deleted. Creating, editing and saving wait until a licence is active.</p>
       </div>
       <div class="card" id="your-data">
         <h3>What stays free?</h3>
-        <p>Everything in the Free column, with no time limit: the whole investigation workspace, including the AcciMap and the Evidence and Argument Tables, with their exports. A licence decides which features are available, never whether you can open your own work.</p>
+        <p>Reading your own work, with no time limit. Without a licence IWS opens any investigation, shows everything in it and exports the Evidence and Argument Tables and the working record. A licence decides what you can do in IWS, never whether you can open and read your own work. The investigation file is plain JSON, so it can be read without IWS as well.</p>
       </div>
       <div class="card" id="buy">
         <h3>When can I buy Professional?</h3>
         <p>Not just yet. IWS is actively being developed, and we'd like to understand how much interest there is, and what support Professional users will need, before we settle on a price.</p>
-        <p>In the meantime, Free has no time limit, and the trial lets you try everything in Professional. If you'd like to hear when Professional is available, or tell us how you'd use it, we'd be glad to hear from you.</p>
-        <p class="launch-placeholder lp-text">Who to contact.</p>
+        <p>In the meantime, the trial gives you everything in Professional for 90 days. If you'd like to hear when Professional is available, or tell us how you'd use it, we'd be glad to hear from you.</p>
+        %%BUY_CONTACT%%
       </div>
       <div class="card" id="activate">
         <h3>How is a licence activated?</h3>
         <p>Paste the licence key into Settings &gt; General &gt; Licence. The key is checked on the machine itself, with no account to create and no network needed.</p>
       </div>
       <div class="card" id="upgrade">
-        <h3>Can I start in Free and upgrade later?</h3>
-        <p>Yes. Apply a licence at any time and the Professional actions become available in the investigations you already have. The level changing writes nothing to an investigation.</p>
+        <h3>Can I add a licence later?</h3>
+        <p>Yes. Apply a licence at any time and its features become available in the investigations you already have. Changing level writes nothing to an investigation.</p>
       </div>
     </div>
     <p class="hint" style="margin-top: 18px">How AI connects, and where each AI access setting sends data, is set out on the <a href="ai-security.html#data">AI and security</a> page.</p>
