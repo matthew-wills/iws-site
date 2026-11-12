@@ -31,7 +31,7 @@ import { spawnSync } from "node:child_process";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { BUSINESS, LAUNCH, LICENCE_LEVELS, WORDING } from "./site-config.mjs";
+import { BUSINESS, LAUNCH, LICENCE_LEVELS, LICENCE_OPEN, NO_LICENCE_LINE, WORDING } from "./site-config.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -49,6 +49,12 @@ const configProblems = () => {
   if (LAUNCH.installerUrl) need("LAUNCH.installerUrl", "legalName", "abn", "contactEmail", "eulaUrl");
   if (LAUNCH.indexable) need("LAUNCH.indexable", "domain");
   if (LAUNCH.pricePublished) need("LAUNCH.pricePublished", "paymentContact", "eulaUrl");
+  const needDetail = (what, ...keys) => {
+    const gone = keys.filter((k) => !LICENCE_OPEN[k]);
+    if (gone.length) problems.push(`${what} needs LICENCE_OPEN.${gone.join(", LICENCE_OPEN.")}`);
+  };
+  if (LAUNCH.trialOpen) needDetail("LAUNCH.trialOpen", "trialLength");
+  if (LAUNCH.educationOpen) needDetail("LAUNCH.educationOpen", "educationScope");
   return problems;
 };
 const problems = configProblems();
@@ -608,6 +614,18 @@ const tierAction = ({ label, primary, kind }) => {
   const cls = primary ? "btn btn-primary" : "btn";
   return href ? `<a class="${cls}" href="${esc(href)}">${label}</a>` : `<a class="${cls} launch-placeholder" aria-disabled="true">${label}</a>`;
 };
+/** An undecided licence detail: its value from LICENCE_OPEN, or a visible
+ *  "To be confirmed" placeholder. Never a guess. */
+const OPEN_DETAILS = {
+  "%%TBC_EDUCATION_SCOPE%%": ["educationScope", "what else Education includes"],
+  "%%TBC_TRIAL_LENGTH%%": ["trialLength", "trial length"],
+  "%%TBC_ORGANISATION_SALES%%": ["organisationSales", "how Organisation is sold"],
+};
+const openDetail = (text) =>
+  Object.entries(OPEN_DETAILS).reduce(
+    (t, [token, [key, what]]) => t.replaceAll(token, () => (LICENCE_OPEN[key] ? esc(LICENCE_OPEN[key]) : `<span class="tbc">To be confirmed: ${what}</span>`)),
+    text,
+  );
 const tierCard = (t) => {
   const foot = t.id === "education" && BUSINESS.educationEulaUrl ? `${t.footNote} · <a href="${esc(siteHref("", BUSINESS.educationEulaUrl))}">Education licence terms</a>` : t.footNote;
   return [
@@ -615,10 +633,10 @@ const tierCard = (t) => {
     `        <div class="tier-body">`,
     t.lead ? `          <div class="tier-top"><span class="eyebrow">${t.name}</span><span class="pill rec">Recommended</span></div>` : `          <span class="eyebrow">${t.name}</span>`,
     `          <h3>${t.heading}</h3>`,
-    `          <p class="price"><span class="amount${t.priceIsText ? " amount--text" : ""}">${t.price}</span><small>${t.priceNote}</small></p>`,
+    `          <p class="price"><span class="amount${t.priceIsText ? " amount--text" : ""}">${t.price}</span><small>${openDetail(t.priceNote)}</small></p>`,
     `          <p class="who">${t.line}</p>`,
     `          <ul class="facts">`,
-    ...t.points.map((p) => `            <li>${p}</li>`),
+    ...t.points.map((p) => `            <li>${openDetail(p)}</li>`),
     `          </ul>`,
     ...t.notes.map((n) => `          <p class="note">${n}</p>`),
     `        </div>`,
@@ -633,7 +651,8 @@ const tierCard = (t) => {
  *  that wait for the privacy notice and the payment details. */
 const fillLicensing = (html) =>
   html
-    .replace("%%LICENCE_TIERS%%", () => `    <div class="tiers">\n${LICENCE_LEVELS.map(tierCard).join("\n")}\n    </div>`)
+    .replace("%%LICENCE_TIERS%%", () => `    <div class="tiers">\n${LICENCE_LEVELS.map(tierCard).join("\n")}\n    </div>
+    <p class="free-line">${NO_LICENCE_LINE}</p>`)
     .replace(
       "%%TRIAL_NOT_OPEN%%",
       () => (LAUNCH.trialOpen ? "" : "        <p>The trial opens when the licence terms and the privacy notice are published. Until then IWS asks for no personal details and sends none.</p>\n"),
@@ -681,7 +700,7 @@ const sitePages = [
   ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how a draft can be checked against the investigation record, and what the investigator still checks, where investigation data goes under each AI access setting, and how to bring your own AI.`],
   ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
   ["organisations", "For organisations", `How ${BRAND} helps an organisation establish a more consistent investigative process: traceable findings, reasoning kept with the investigation record, and editions adapted to the organisation's own investigation framework.`],
-  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Education, Professional and Organisation licence levels, and how a licence is activated.`],
+  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Education, Professional and Organisation licence levels, and how a licence is activated.`],
   ["documentation", "Documentation", `How to learn ${BRAND}: the Getting started walkthrough of a first investigation, and the User Guide to every tab, form and setting.`],
   ["getting-started", "Getting started", `Your first investigation in ${BRAND}, step by step on a small fictional occurrence, from the start screen to the Evidence and Argument Tables.`],
 ];
