@@ -20,6 +20,7 @@ export const BUSINESS = {
   supportEmail: null, // optional; falls back to contactEmail
   salesEmail: null, // optional; Organisation enquiries; falls back to contactEmail
   domain: null, // e.g. "example.com.au", no scheme, no slash
+  // Decision D8: the privacy notice and licence terms are pages on this site (privacy.html, terms.html) at go-live.
   eulaUrl: null, // the Professional licence terms (page on this site, or a PDF)
   educationEulaUrl: null, // the Education licence terms (#1237)
   privacyUrl: null, // the privacy notice (#1237)
