@@ -40,12 +40,24 @@ export const LAUNCH = {
   checksumsUrl: null, // SHA256SUMS.txt
   trialOpen: false, // true only when the licence server is live
   educationOpen: false, // true only when Education licences can be issued
-  freeReadOnly: true, // decision D1: describe the 11/11 levels (read-only Free, Education)
   pricePublished: false, // decision D2: keep "Pricing to be announced"
 };
 
-/** Held ready for the day the price is published (decision D2). */
-export const PRICING = { trialDays: 90, earlyAdopter: "A$245 a year", standard: "A$395 a year", graceDays: 14 };
+/** Licence details that are not settled (Matthew, 13/11/2026: "pricing is
+ *  still to be fully determined"; the levels are Education, Professional with
+ *  a trial, and Organisation). Every value is null until decided, and the page
+ *  then shows a "To be confirmed" placeholder, never a guess. No price lives
+ *  here: every price reads "Pricing to be announced" (decision D2). */
+export const LICENCE_OPEN = {
+  educationScope: null, // what Education includes beyond the 11/11 decisions (full workspace, tables and Word reports, no AI)
+  trialLength: null, // how long the Professional trial runs, e.g. "30 days"
+  organisationSales: null, // how Organisation is sold and supported
+};
+
+/** Shown under the three cards as a plain line, not a fourth plan. */
+// D1-free: confirm with Matthew
+export const NO_LICENCE_LINE =
+  "Without a licence, IWS opens as read-only. You can open and read any investigation and export what it already holds, with no time limit. Creating, editing and saving need a licence.";
 
 /** The shared wording (decisions D4, D5, D6). Used whole, never retyped.
  *  Once the app carries the same constants (issues #1274 and #1271), compare
@@ -73,32 +85,18 @@ export const WORDING = {
  *  placeholder), D10 (no Professional branding on the card until #1235). */
 export const LICENCE_LEVELS = [
   {
-    id: "free",
-    name: "Free",
-    heading: "Read an investigation",
-    price: "$0",
-    priceNote: "No licence needed, no watermark and no time limit.",
-    line: "Open and read any investigation, and export what it already holds.",
-    points: [
-      "Everything in an investigation, open to read: the AcciMap, the evidence, the interviews, the timeline and the log",
-      "Exports of what already exists: the Evidence and Argument Tables and the working record",
-      "No creating, editing or saving. Those need a licence, and the Professional trial is free for 90 days.",
-    ],
-    notes: [],
-    action: { label: "Download IWS", primary: true, kind: "download" },
-    footNote: "Windows 10 or 11, 64-bit. No account required.",
-  },
-  {
     id: "education",
     name: "Education",
     heading: "Learn the method",
-    price: "Free",
+    price: "Pricing to be announced",
+    priceIsText: true,
     priceNote: "For students and teaching staff. 12 months, renewable.",
     line: "The full investigation analysis for study and teaching, with no AI.",
     points: [
       "The complete investigation workspace: the AcciMap, every factor tested for Existence, Influence and Importance, evidence, interviews and the timeline",
       "Evidence and Argument Tables and Word reports, each labelled “Prepared under an education licence, not for operational use”",
       "No AI drafting",
+      "%%TBC_EDUCATION_SCOPE%%",
     ],
     notes: ["For study and teaching only, never for an operational investigation. Requested with the email address your education provider gave you."],
     // Decision D7: a disabled launch placeholder until Education is open.
@@ -117,6 +115,7 @@ export const LICENCE_LEVELS = [
       "The complete investigation workspace, with nothing labelled",
       "Finished Word reports and executive briefing slides, in the built-in report types and looks",
       "Optional AI-assisted drafting, by copy and paste or through a connected AI service you supply",
+      "A trial before you commit: %%TBC_TRIAL_LENGTH%%",
     ],
     notes: [
       'AI service and model costs are not included. You connect your own suitable AI; see <a href="ai-security.html#your-ai">bring your own AI</a>.',
@@ -130,9 +129,9 @@ export const LICENCE_LEVELS = [
     id: "organisation",
     name: "Organisation",
     heading: "Configured for your organisation",
-    price: "By arrangement",
+    price: "Pricing to be announced",
     priceIsText: true,
-    priceNote: "Scoped to your requirements.",
+    priceNote: "%%TBC_ORGANISATION_SALES%%",
     line: "IWS configured and supported for the way your organisation investigates, rather than your investigators working around the software.",
     points: [
       "Everything in Professional",
