@@ -67,6 +67,7 @@ p { margin: 0; }
 .block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
 .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
 .hint { color: var(--ink-soft); }
+.site-note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); max-width: 78ch; margin-top: 14px; }
 
 /* Header, like the app's own header bar */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
@@ -279,6 +280,7 @@ footer .legal { line-height: 1.6; }
     <span class="eyebrow">Getting started</span>
     <h1>Your first investigation</h1>
     <p class="lede">One pass through the application on a small fictional occurrence, from the start screen to the Evidence and Argument Tables in Word. It takes 20 to 30 minutes, and every step works at the Free level, with no licence.</p>
+    <p class="site-note">This copy was produced for an earlier pre-release build. Since then the AI access settings have been renamed (No AI, Copy and paste, Connected AI), new files are saved as .iwsx, an organisation's own Word template has moved to the Organisation level, and the handling of names has changed. It is replaced with the current guide at the public release. Where this copy and the <a href="ai-security.html">AI and security</a> or <a href="download.html#pricing">Download</a> pages disagree, those pages are right.</p>
     <nav class="onpage" aria-label="On this page"><a href="#before">Before you start</a><a href="#steps">The steps</a><a href="#have">What you'll have</a><a href="#next">Where next</a></nav>
   </section>
 

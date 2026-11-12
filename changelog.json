@@ -1,12 +1,12 @@
 [
   {
-    "version": "0.12.0",
+    "version": "Next release",
     "planned": true,
     "features": [
       "Dashboard: completeness tiles above the checklist and the to-do list, each with a jump to the work.",
       "Jump to the map: a to-do's origin, an evidence item's use or a record check takes you to the object, highlighted.",
       "Timeline: time precision and zone, source, status, links to the map, phases and your own columns.",
-      "Evidence: drop a PDF or any file onto an object or the Evidence tab; open it in your own reader; newest first; text extracts read as extracts; your own categories; an optional attachments folder beside the investigation.",
+      "Evidence: drop a PDF or any file onto an object or the Evidence tab; open it in your own reader; newest first; text extracts read as extracts; your own categories.",
       "Figures: tick an image to carry it into the report with a caption and cross-reference links.",
       "Evidence and Argument Tables document (then called the E/I/I tables): a contents page, the map, one table per page, and the evidence under each table as an option.",
       "Report styles: each described with its length and an example; the map, timeline and Evidence and Argument Tables as optional appendices.",
@@ -25,6 +25,7 @@
   {
     "version": "0.11.0",
     "date": "30 September 2026",
+    "note": "Since changed: the trial is 90 days, exports carry no watermark, and the tier then called Standard is now Free.",
     "features": [
       "Six report styles: standard, three-page preliminary update, executive brief, and three final-report styles modelled on published investigation reports.",
       "Repair against the audit: flagged sections sent back with the record excerpts, re-audited, and landed one at a time.",
@@ -44,6 +45,7 @@
   {
     "version": "0.10.0",
     "date": "29 September 2026",
+    "note": "Since changed: the training build was withdrawn. There is one standard build.",
     "features": [
       "Two standard builds, generic and training, each as an installer and a portable exe.",
       "Interviews are a record: import a Teams transcript (docx or vtt) or type notes, keep the investigator's notes beside it, name people by role, and mark it final. Drafting uses the finalised record as the interview's evidence.",

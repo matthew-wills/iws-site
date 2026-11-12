@@ -67,6 +67,7 @@ p { margin: 0; }
 .block--wide { --wide: min(1500px, 100vw - 40px); width: var(--wide); margin-inline: calc((100% - var(--wide)) / 2); }
 .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
 .hint { color: var(--ink-soft); }
+.site-note { padding: 12px 16px; background: var(--warn-soft); border-radius: 10px; font-size: 0.93rem; color: var(--ink); max-width: 78ch; margin-top: 14px; }
 
 /* Header, like the app's own header bar */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
@@ -490,6 +491,7 @@ footer .legal { line-height: 1.6; }
     <div class="report-meta"><span>14,078 words</span><span>a frontier model</span><span>23 model calls</span><span>drafted 08/10/2026</span></div>
   </div>
   <p class="note">Everything in this case study is fictional: the organisations, the places, the people and every record. The report is published exactly as the pipeline produced it, faults and all. The grounding audit and the record check below are what the application reported about its own draft, and they have limits of their own. We have done our best to make AI drafting accurate, but a model can be wrong. Whatever it generates is a first draft. The investigator checks it against the record and signs it off as true and correct before it is used.</p>
+  <p class="note">These layouts follow the published report structure of the Australian Transport Safety Bureau, the US National Transportation Safety Board and the UK Air Accidents Investigation Branch. They are not produced, reviewed or endorsed by those organisations.</p>
   <nav class="report-tabs" aria-label="Report parts">
     <a href="#report">Report</a>
     <a href="#audit">Grounding audit</a>

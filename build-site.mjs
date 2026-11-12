@@ -254,7 +254,9 @@ const fillShared = (html) =>
     .replaceAll("%%AI_RESPONSIBILITY%%", () => WORDING.aiResponsibility)
     .replaceAll("%%AI_EULA_LINK%%", () => AI_EULA_LINK)
     .replaceAll("%%NAMES_STATEMENT%%", () => WORDING.namesStatement.map((p) => `<p>${p}</p>`).join("\n          "))
-    .replaceAll("%%NAMES_LINK%%", () => WORDING.namesLink);
+    .replaceAll("%%NAMES_LINK%%", () => WORDING.namesLink)
+    // Decision D6: a dated note now; the guide is regenerated at release.
+    .replaceAll("%%GUIDE_STALE_NOTE%%", () => WORDING.guideStaleNote);
 const chrome = (html, prefix, current, links) =>
   fillShared(html.replace("%%HEADER%%", () => header(prefix, current)).replace("%%HEADER_ART%%", () => HEADER_ART).replace("%%FOOTER%%", () => footer(prefix, links)));
 const meta = (r) =>
@@ -316,6 +318,9 @@ const layoutCopy = {
 const LAYOUTS_NOTE =
   "These layouts follow the published report structure of the Australian Transport Safety Bureau, the US National Transportation Safety Board and the UK Air Accidents Investigation Branch. They are not produced, reviewed or endorsed by those organisations.";
 
+/** The disclaimer on a report page or document viewer in an agency-named
+ *  layout (atsb, ntsb, aaib), as a note. Empty for every other report. */
+const layoutsNoteFor = (style, cls) => (style && style in layoutCopy ? `\n  <p class="${cls}">${esc(LAYOUTS_NOTE)}</p>` : "");
 /** A study page's outputs block, from meta.json's "outputs": each entry
  *  names a document and the page shown as its preview, so a preview is
  *  always a page the application generated. Paths are relative to
@@ -491,6 +496,7 @@ for (const study of studies) {
       .replaceAll("%%CASE_TITLE%%", esc(study.title))
       .replace("%%HEADING%%", heading)
       .replace("%%BLURB%%", blurb)
+      .replace("%%LAYOUTS_NOTE%%", () => layoutsNoteFor(style, "note"))
       .replace("%%META%%", meta(r).split(" · ").map((m) => `<span>${m}</span>`).join(""))
       .replace("%%REPORT%%", r.report)
       .replace("%%AUDIT%%", r.audit || '<p class="hint">No audit was recorded for this run.</p>')
@@ -528,6 +534,7 @@ for (const study of studies) {
       .replaceAll("%%CASE_TITLE%%", esc(study.title))
       .replace("%%HEADING%%", heading)
       .replace("%%BLURB%%", blurb)
+      .replace("%%LAYOUTS_NOTE%%", () => layoutsNoteFor(style, "site-note"))
       .replace("%%PDF%%", `${name}.pdf`)
       .replace("%%EXTRA%%", extra)
       .replace("%%PAGES%%", figures);
@@ -590,6 +597,7 @@ const withInstallerLink = (html) =>
 /** The licence cards on the Download page, from LICENCE_LEVELS. A card's
  *  button is a launch placeholder until the thing behind it is switched on
  *  in LAUNCH (and the business details it needs exist: the build checks). */
+// Decision D7: the Education button is a disabled launch placeholder until educationOpen.
 const tierAction = ({ label, primary, kind }) => {
   const href = {
     download: LAUNCH.installerUrl,
@@ -784,7 +792,7 @@ const releaseHtml = releases
   .map((r) =>
     [
       `    <div class="release">`,
-      `      <div><span class="v">${r.version}</span><span class="d">${r.planned ? "Planned, not yet released" : r.date}</span></div>`,
+      `      <div><span class="v">${r.version}</span><span class="d">${r.planned ? "Planned, not yet released" : r.date}</span>${r.note ? `<p class="hint">${esc(r.note)}</p>` : ""}</div>`,
       `      <div class="parts">`,
       [changeList("Added", r.features), changeList("Fixed", r.fixes)].filter(Boolean).join("\n"),
       `      </div>`,
