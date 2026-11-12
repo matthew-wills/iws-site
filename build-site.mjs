@@ -31,7 +31,7 @@ import { spawnSync } from "node:child_process";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { BUSINESS, LAUNCH } from "./site-config.mjs";
+import { BUSINESS, LAUNCH, WORDING } from "./site-config.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -246,10 +246,20 @@ const HEADER_ART = [
   `<g fill="none" stroke="#15803D" stroke-width="1.8"><path d="M 92 40 C 120 55 150 60 178 66"/><path d="M 196 92 C 170 105 140 112 126 118"/><path d="M 130 144 C 180 160 215 172 237.5 177"/><path d="M 242 79 C 280 110 286 150 286 170"/></g>`,
   `</svg></div>`,
 ].join("");
-const chrome = (html, prefix, current, links) => html.replace("%%HEADER%%", () => header(prefix, current)).replace("%%HEADER_ART%%", () => HEADER_ART).replace("%%FOOTER%%", () => footer(prefix, links));
+/** The shared wording from site-config.mjs, filled wherever a page carries
+ *  one of its holes. Never retyped in a template. */
+const AI_EULA_LINK = BUSINESS.eulaUrl ? ` The <a href="${esc(siteHref("", BUSINESS.eulaUrl))}">licence terms</a> set this out in full.` : "";
+const fillShared = (html) =>
+  html
+    .replaceAll("%%AI_RESPONSIBILITY%%", () => WORDING.aiResponsibility)
+    .replaceAll("%%AI_EULA_LINK%%", () => AI_EULA_LINK)
+    .replaceAll("%%NAMES_STATEMENT%%", () => WORDING.namesStatement.map((p) => `<p>${p}</p>`).join("\n          "))
+    .replaceAll("%%NAMES_LINK%%", () => WORDING.namesLink);
+const chrome = (html, prefix, current, links) =>
+  fillShared(html.replace("%%HEADER%%", () => header(prefix, current)).replace("%%HEADER_ART%%", () => HEADER_ART).replace("%%FOOTER%%", () => footer(prefix, links)));
 const meta = (r) =>
   r
-    ? `${r.words.toLocaleString("en-AU")} words · ${r.runLog?.engine ?? "endpoint"} · ${r.runLog?.calls?.length ?? "?"} model calls · drafted ${new Date(r.runLog?.drafted_at ?? Date.now()).toLocaleDateString("en-AU")}`
+    ? `${r.words.toLocaleString("en-AU")} words · ${r.runLog?.engine ? WORDING.frontierModel : "a connected model"} · ${r.runLog?.calls?.length ?? "?"} model calls · drafted ${new Date(r.runLog?.drafted_at ?? Date.now()).toLocaleDateString("en-AU")}`
     : "";
 const copyInto = (from, to, keep) => {
   mkdirSync(to, { recursive: true });
@@ -531,7 +541,7 @@ for (const study of studies) {
   // with neither just drops the placeholder.
   const shell = readFileSync(join(here, "case-study.template.html"), "utf8");
   const versionNote = study.note ? `<p class="note">${esc(study.note)}</p>` : "";
-  const content = readFileSync(join(study.dir, "content.html"), "utf8")
+  const content = fillShared(readFileSync(join(study.dir, "content.html"), "utf8"))
     .replace("%%VERSION_NOTE%%", () => versionNote)
     .replace("%%OUTPUTS%%", () => outputsBlock(study, pagesRoot, reports, notes))
     .replace("%%LAYOUTS%%", () => layoutsBlock(study, reports));
@@ -604,7 +614,7 @@ write(
 const sitePages = [
   ["product", "Product", `What ${BRAND} does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what Free and Professional each include.`],
   ["methodology", "Methodology", `An investigation in ${BRAND} starts from the critical event, tests each hypothesis on the AcciMap against the evidence, and derives the findings from the results.`],
-  ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.`],
+  ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how a draft can be checked against the investigation record, and what the investigator still checks, where investigation data goes under each AI access setting, and how to bring your own AI.`],
   ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
   ["organisations", "For organisations", `How ${BRAND} helps an organisation establish a more consistent investigative process: traceable findings, reasoning kept with the investigation record, and editions adapted to the organisation's own investigation framework.`],
   ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how a licence is activated.`],

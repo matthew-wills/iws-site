@@ -7,7 +7,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="robots" content="noindex, nofollow">
 <title>AI and security | Investigation Workflow Suite (IWS)</title>
-<meta name="description" content="What optional AI drafting does in Investigation Workflow Suite (IWS), how drafts are checked against the investigation record, where investigation data goes under each AI access setting, and how to bring your own AI.">
+<meta name="description" content="What optional AI drafting does in Investigation Workflow Suite (IWS), how a draft can be checked against the investigation record, and what the investigator still checks, where investigation data goes under each AI access setting, and how to bring your own AI.">
 <style>
 /* The application's own look, carried onto the site: Segoe UI, a cool
    off-white ground, slate text, the blue the app uses for every primary
@@ -267,7 +267,7 @@ footer .legal { line-height: 1.6; }
     <span class="eyebrow">AI and security</span>
     <h1>An AI model cannot conduct the investigation, but it can help with drafting the report.</h1>
     <p class="principle">When the analysis is strong, the drafting becomes straightforward.</p>
-    <p class="lede">The hard analytical work happens during the investigation: testing each factor against the evidence and recording the reasoning. IWS keeps the evidence, the assessments and the reasoning together, so optional AI drafting works from a record that is already established. The investigator stays responsible for reviewing and approving the report.</p>
+    <p class="lede">The hard analytical work happens during the investigation: testing each factor against the evidence and recording the reasoning. IWS keeps the evidence, the assessments and the reasoning together, so optional AI drafting works from a record that is already established. We have done our best to make AI drafting accurate, but a model can be wrong. Whatever it generates is a first draft. The investigator checks it against the record and signs it off as true and correct before it is used.</p>
     <nav class="onpage" aria-label="On this page"><a href="#drafting">Drafting</a><a href="#limits">Limitations</a><a href="#data">Data and security</a><a href="#models">Choosing a model</a></nav>
   </section>
 
@@ -275,16 +275,16 @@ footer .legal { line-height: 1.6; }
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">1</span>Drafting</span>
       <h2>How a draft is made, and what checks it</h2>
-      <p>One setting, AI access, decides how every Draft action reaches a model. Free is limited to No AI. Professional, and a Professional trial, also allow Chat and Endpoint.</p>
+      <p>One setting, AI access, decides how every Draft action reaches a model. Free is limited to No AI. Professional, and a Professional trial, also allow Copy and paste and Connected AI. Education has no AI.</p>
     </div>
     <div class="modes">
       <div class="card mode">
-        <p class="mode-tag">No AI <span class="lic">Free</span></p>
+        <p class="mode-tag">No AI <span class="lic">Every level</span></p>
         <h3>You write it</h3>
         <p>You write each paragraph against the record, and the report is the record assembled under your report style's headings. No model is involved and nothing is sent.</p>
       </div>
       <div class="card mode">
-        <p class="mode-tag">Chat <span class="lic lic--pro">Professional</span></p>
+        <p class="mode-tag">Copy and paste <span class="lic lic--pro">Professional</span></p>
         <h3>Copy out, paste back</h3>
         <ol class="steps">
           <li>Copy prompt: the record, the grounding rules and an instruction to audit and correct its own draft before replying.</li>
@@ -295,7 +295,7 @@ footer .legal { line-height: 1.6; }
         <p class="small">IWS makes no network call. There is no model audit, repair or polish at this tier.</p>
       </div>
       <div class="card mode lead">
-        <p class="mode-tag">Endpoint <span class="lic lic--pro">Professional</span></p>
+        <p class="mode-tag">Connected AI <span class="lic lic--pro">Professional</span></p>
         <h3>A connected model service</h3>
         <ol class="steps">
           <li>Draft a paragraph, a section, or the whole report. IWS sends the prompt to the model you configured.</li>
@@ -310,7 +310,7 @@ footer .legal { line-height: 1.6; }
         <p>Whichever way it was made, a draft carries where it came from (&ldquo;Drafted by&rdquo; and the model, or &ldquo;Pasted from chat&rdquo;) and is marked out of date when the record under it changes.</p>
         <p>Check the record has no model in it, so the same text always gets the same result. It is available at every AI access setting once something is drafted.</p>
       </div>
-      <figure><div class="crop" style="--W: 2200; --x: 505; --y: 622; --cw: 1660; --ch: 662"><img class="zoomable" src="shots/tarlton-springs-rto/15-settings-ai-access.png" alt="Settings, AI access: the Chat and Endpoint options, each saying what is sent and what is checked" data-caption="Settings, AI access: the Chat and Endpoint options, each saying what is sent and what is checked" loading="lazy" width="2200" height="1520"></div><figcaption>Settings, AI access. Each option says what leaves the computer and what is checked.</figcaption></figure>
+      <figure><div class="crop" style="--W: 2200; --x: 505; --y: 622; --cw: 1660; --ch: 662"><img class="zoomable" src="shots/tarlton-springs-rto/15-settings-ai-access.png" alt="Settings, AI access: the Copy and paste and Connected AI options (labelled Chat and Endpoint in the version pictured), each saying what is sent and what is checked" data-caption="Settings, AI access: the Copy and paste and Connected AI options (labelled Chat and Endpoint in the version pictured), each saying what is sent and what is checked" loading="lazy" width="2200" height="1520"></div><figcaption>Settings, AI access. Each option says what leaves the computer and what is checked.</figcaption></figure>
     </div>
   </section>
 
@@ -323,7 +323,7 @@ footer .legal { line-height: 1.6; }
     <table class="risks">
       <thead><tr><th>What can go wrong</th><th>How Synoptic addresses it</th><th>What still needs checking</th></tr></thead>
       <tbody>
-        <tr><td>A gap filled from general knowledge</td><td>Grounding rules on every prompt; at Endpoint, the audit flags unsupported claims</td><td>The audit is a model and can miss things. Chat has only the self-audit instruction.</td></tr>
+        <tr><td>A gap filled from general knowledge</td><td>Grounding rules on every prompt; at Connected AI, the audit flags unsupported claims</td><td>The audit is a model and can miss things. Copy and paste has only the self-audit instruction.</td></tr>
         <tr><td>&ldquo;Likely&rdquo; rounded up to &ldquo;virtually certain&rdquo;</td><td>Check the record compares each confidence word with the test that produced it</td><td>Run by hand for chat pastes and drafted sections</td></tr>
         <tr><td>An excluded factor written back in as contributing</td><td>Check the record compares categories and findings with the tests</td><td>As above</td></tr>
         <tr><td>A recommendation the investigation never made</td><td>A grounding rule, and a check for recommending language on a safety issue the record has none for</td><td>The check matches wording, so unusual phrasing can pass</td></tr>
@@ -337,15 +337,15 @@ footer .legal { line-height: 1.6; }
     <div class="section-head">
       <span class="eyebrow"><span class="stage-no">3</span>Data and security</span>
       <h2>Where investigation data is kept, and where it can go</h2>
-      <p>IWS keeps investigation records in storage you control. It does not encrypt or automatically anonymise investigation material, so sensitive records should be protected using your organisation's approved storage and access controls.</p>
+      <p>IWS keeps investigation records in storage you control. It does not encrypt or automatically anonymise investigation material, so sensitive records should be protected using your organisation's approved storage and access controls. <a href="#names">How names are kept from a model, and what you still check</a>.</p>
     </div>
     <div class="parts">
       <div class="part">
         <h3>What IWS stores locally</h3>
         <ul class="facts">
-          <li>The investigation is one .sfm file of plain, unencrypted JSON, with pasted images and captured files held inside it. Its folder can also hold <code>evidence/</code>, <code>exports/</code> and, if you turn it on, <code>attachments/</code>. Protect them as you would any sensitive document, including on a shared or synced folder.</li>
+          <li>The investigation is one .iwsx file of plain, unencrypted JSON, with pasted images and captured files held inside it (earlier versions wrote .sfm, which still opens). Its folder also holds <code>evidence/</code> and <code>exports/</code>. Protect them as you would any sensitive document, including on a shared or synced folder.</li>
           <li>Opening a captured file writes a plain copy of it to the investigation's <code>evidence/</code> folder, or to the system's temporary folder when the investigation has not yet been saved to disk.</li>
-          <li>Endpoint settings and any API key are kept in plain text in the app's local settings for that Windows user, not in the Windows credential store. A key is never written into the .sfm, an export or a run log, and IWS attempts to remove it from error messages shown on screen.</li>
+          <li>Connected AI settings and any API key are kept in plain text in the app's local settings for that Windows user, not in the Windows credential store. A key is never written into the investigation file, an export or a run log, and IWS attempts to remove it from error messages shown on screen.</li>
           <li>No telemetry, analytics or crash reporting. With AI access at No AI, nothing about the investigation leaves the computer.</li>
           <li>Licence requests are separate from AI drafting; what a trial request sends is set out on the <a href="download.html#trial">Download page</a>.</li>
         </ul>
@@ -353,9 +353,10 @@ footer .legal { line-height: 1.6; }
       <div class="part">
         <h3>What may be sent to an AI provider</h3>
         <ul class="facts">
-          <li>At Chat or Endpoint, the collated record behind the draft: one object, a section or the whole investigation, with its tests, reasoning, timeline, finalised interviews, evidence text and safety reports. Attached files are named, not sent.</li>
+          <li>At Copy and paste or Connected AI, the collated record behind the draft: one object, a section or the whole investigation, with its tests, reasoning, timeline, finalised interviews, evidence text and safety reports. Attached files are named, not sent.</li>
           <li>A protected safety report's text goes with an instruction not to quote it.</li>
-          <li>Transcript speakers appear by role, mapped by the investigator when the transcript is imported. Any other name, including the interview attendee details, a name typed anywhere else in the record or one spoken in a transcript, is sent as written.</li>
+          <li id="names"><p>IWS is designed to keep people's names away from a model. Transcript speakers and interview attendees are sent by role. A person on the investigation's People list is swapped for their role in every prompt, and IWS lists the names it finds in the interviews so you can decide each one.</p>
+          <p>These are safeguards and they have limits. A name IWS has not been told about, or one typed where it does not look, is sent as written, and a small number of actions send names as written and say so. The investigator is responsible for checking every prompt before it is sent and every output before it is used. <a href="guide.html#manual-draft-sent">What is sent to a model, and what never is</a> lists exactly what goes.</p></li>
           <li>Testing an endpoint or refreshing its model list sends no investigation content.</li>
         </ul>
       </div>
@@ -386,7 +387,7 @@ footer .legal { line-height: 1.6; }
     </div>
     <ul class="facts cols">
       <li>Draft a finished or fictional investigation, such as one of the case studies, and compare the result against its record.</li>
-      <li>Run Check the record and, at Endpoint, the audit, and read what they flag.</li>
+      <li>Run Check the record and, at Connected AI, the audit, and read what they flag.</li>
       <li>Check the confidence words, excluded factors and recommendations by hand.</li>
       <li>Make sure the model's context holds the whole record without truncating it.</li>
       <li>Test again when the model, its settings or your report style change.</li>

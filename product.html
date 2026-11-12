@@ -308,7 +308,7 @@ footer .legal { line-height: 1.6; }
     <span class="anchor" id="record"></span>
     <span class="eyebrow">Product</span>
     <h1>What IWS does, stage by stage</h1>
-    <p class="lede">IWS holds the whole investigation in one record: the checklist, the evidence, the interviews, the timeline, the AcciMap, the tests and the reports, in a single investigation file, with an optional attachments folder beside it, on the drive you choose. Each stage below works on that same record.</p>
+    <p class="lede">IWS holds the whole investigation in one record: the checklist, the evidence, the interviews, the timeline, the AcciMap, the tests and the reports, in a single investigation file, on the drive you choose. Each stage below works on that same record.</p>
     <nav class="onpage" aria-label="On this page"><a href="#evidence">Evidence</a><a href="#analysis">Analysis</a><a href="#assessment">Assessment</a><a href="#reporting">Reporting</a><a href="#around">Around the investigation</a></nav>
   </section>
 
@@ -333,7 +333,7 @@ footer .legal { line-height: 1.6; }
     <div class="row ev-iv">
       <div class="text">
         <h3>Interviews</h3>
-        <p>Import a Teams transcript and give each speaker a role. Names stay with the transcript; the record and the report see only the roles.</p>
+        <p>Import a Teams transcript and give each speaker a role. The record and the report then refer to each person by role. <a href="ai-security.html#names">How names are kept from a model, and what you still check</a></p>
       </div>
       <figure><div class="crop" style="--W: 1280; --x: 54; --y: 160; --cw: 1176; --ch: 870"><img class="zoomable" src="shots/tarlton-springs-rto/22-interview-speakers.png" alt="An imported interview transcript, each speaker given a role" data-caption="An imported interview transcript, each speaker given a role" loading="lazy" width="1280" height="1520"></div></figure>
     </div>
@@ -436,7 +436,7 @@ footer .legal { line-height: 1.6; }
         <ul class="facts">
           <li>The final report also comes in ATSB-, NTSB- and AAIB-inspired layouts, each following that body's published report structure. They are not produced, reviewed or endorsed by those organisations.</li>
           <li>With Professional, reports are written to Word, on your own Word template if you have one.</li>
-          <li>AI drafting is optional, also with Professional. A draft is written from the record, and you decide what stays. <a href="ai-security.html">How AI drafting works and where data goes</a></li>
+          <li>AI drafting is optional, also with Professional, and a draft is written from the record. We have done our best to make AI drafting accurate, but a model can be wrong. Whatever it generates is a first draft. The investigator checks it against the record and signs it off as true and correct before it is used. <a href="ai-security.html">How AI drafting works and where data goes</a></li>
         </ul>
         <p><a href="case-studies.html">Read all four documents in the case studies</a></p>
       </div>
@@ -449,7 +449,7 @@ footer .legal { line-height: 1.6; }
     <ul class="around">
       <li><h3>Dashboard</h3><p>The checklist, one to-do list fed from the checklist and from objects on the map, and the distribution list that prints at the foot of every report.</p></li>
       <li><h3>Log</h3><p>Your running sheet, plus entries the application adds when a decision is made: a checklist answer, a test result, a finalised interview, a draft or an export.</p></li>
-      <li><h3>One portable file</h3><p>No account and no database. The investigation is one .sfm file in plain JSON, with pasted images and captured files held inside it as text, so it can be read without IWS. The one exception is opt-in: a setting that keeps large dropped files in an attachments folder beside it.</p></li>
+      <li><h3>One portable file</h3><p>No account and no database. The investigation is one .iwsx file in plain JSON, with pasted images and captured files held inside it as text, so it can be read without IWS. Files saved as .sfm by earlier versions still open.</p></li>
       <li><h3>Shared-folder protection</h3><p>Before each save, IWS checks whether the file has changed on disk since it was last opened or saved here. If it has, the save is held and you choose: reload theirs, save yours as a copy, or overwrite. Nothing is merged. While the file is open, a lock file beside it tells anyone else who opens it that it is in use.</p></li>
     </ul>
   </section>
