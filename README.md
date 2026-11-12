@@ -47,8 +47,8 @@ repository (`investigation-workflow-suite`, expected as a sibling folder).
       featured study's slug, title and the name of its Evidence and
       Argument Tables document.
     - `%%CONTACT%%` - where "Talk to us" and "Contact us" go, set once as
-      `CONTACT_EMAIL` in `build-site.mjs` (until it is set, the download
-      page's Organisation card, and the build prints a note).
+      `BUSINESS.contactEmail` in `site-config.mjs` (until it is set, the
+      download page's Organisation card).
     - `%%GUIDE%%` - the rendered User Guide; `%%RELEASES%%` - the
       changelog entries; `%%CONTENT%%` - one case study's page body.
 - `case-studies/<slug>/` - one folder per case study, holding `meta.json`
@@ -208,19 +208,35 @@ production site:
 
 Every built page then carries `<meta name="robots" content="noindex, nofollow">`
 and a slim bar above the header reading "Development preview. Not the live
-site." Without the variable the output is exactly the production site, so
-always rebuild without it before publishing to production. The preview bar
+site." Without the variable the output is the production site, which
+still carries the same noindex meta until `LAUNCH.indexable` is set in
+`site-config.mjs` at go-live. Always rebuild without the variable before
+publishing to production. The preview bar
 and meta are written by `document()` in `build-site.mjs`; nothing in a
 template changes.
 
-## Configuring the contact address
+## Business details, launch switches and shared wording
 
-Set `CONTACT_EMAIL` near the top of `build-site.mjs` (one constant, one place), then rebuild. It is unset for now. While it is empty, every "Talk to us" link points at the Organisation card on the download page and the build prints a note. Use a shared business address, not a personal one.
+`site-config.mjs` is the one place for these; `build-site.mjs` imports it.
+
+- `BUSINESS`: the company name, ABN, contact address, domain, licence
+  terms and privacy notice links. Every value is null until supplied, and
+  the build prints which are missing. Use a shared business address for
+  `contactEmail`, not a personal one. While it is null every "Talk to us"
+  link points at the Organisation card on the download page.
+- `LAUNCH`: switches flipped at go-live (indexable, version, installer,
+  trial, Education, price). The build exits with an error if the trial,
+  Education requests, a download, indexing or a published price is
+  switched on while the details it depends on are missing.
+- `WORDING` and `LICENCE_LEVELS`: the AI responsibility line, the names
+  statement and the licence cards, written once and filled into the pages
+  by the build (holes such as `%%AI_RESPONSIBILITY%%`). Never retype them
+  in a template.
 
 ## Not yet
 
-Real download links (held until the 0.12.0 release), the contact address
-(`CONTACT_EMAIL` in `build-site.mjs`) and a way to buy a Professional
+Real download links (held until the public release), the business details
+(`BUSINESS` in `site-config.mjs`) and a way to buy a Professional
 licence, and the interactive causal map
 explainer. See
 `docs/plan-public-release.md` in the application repository.

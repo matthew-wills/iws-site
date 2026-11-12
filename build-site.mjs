@@ -1,10 +1,12 @@
 /**
  * Assemble the site pages from the templates.
  *
- * CONTACT ADDRESS: the one place to set it is the CONTACT_EMAIL constant
- * below (search for it). It is deliberately unset ("TBD"); never use a
- * personal address. While unset, "Talk to us" links go to the Organisation
- * card on the download page.
+ * BUSINESS DETAILS, LAUNCH SWITCHES AND SHARED WORDING: all in
+ * site-config.mjs. The contact address is BUSINESS.contactEmail; it is
+ * deliberately unset until decided (never use a personal address). While
+ * unset, "Talk to us" links go to the Organisation card on the download
+ * page. The build refuses a launch switch that is on while the details it
+ * depends on are missing.
  *
  *   node build-site.mjs <appCaseStudiesDir>
  *
@@ -29,7 +31,36 @@ import { spawnSync } from "node:child_process";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { BUSINESS, LAUNCH } from "./site-config.mjs";
+
 const here = dirname(fileURLToPath(import.meta.url));
+
+/** The guard on the legal details: nothing that collects personal data, and
+ *  no download, can be switched on while the details behind it are missing.
+ *  Exits 1 with every reason it finds. */
+const configProblems = () => {
+  const problems = [];
+  const need = (what, ...keys) => {
+    const gone = keys.filter((k) => !BUSINESS[k]);
+    if (gone.length) problems.push(`${what} needs ${gone.join(", ")}`);
+  };
+  if (LAUNCH.trialOpen) need("LAUNCH.trialOpen", "privacyUrl", "eulaUrl");
+  if (LAUNCH.educationOpen) need("LAUNCH.educationOpen", "privacyUrl", "educationEulaUrl");
+  if (LAUNCH.installerUrl) need("LAUNCH.installerUrl", "legalName", "abn", "contactEmail", "eulaUrl");
+  if (LAUNCH.indexable) need("LAUNCH.indexable", "domain");
+  if (LAUNCH.pricePublished) need("LAUNCH.pricePublished", "paymentContact", "eulaUrl");
+  return problems;
+};
+const problems = configProblems();
+if (problems.length) {
+  console.error(`site-config.mjs: refusing to build.\n  ${problems.join("\n  ")}`);
+  process.exit(1);
+}
+const OPTIONAL_DETAILS = ["acn", "registeredOffice", "supportEmail", "salesEmail"];
+const missingBusiness = Object.entries(BUSINESS)
+  .filter(([k, v]) => v === null && !OPTIONAL_DETAILS.includes(k))
+  .map(([k]) => k);
+if (missingBusiness.length) console.log(`business details: missing ${missingBusiness.join(", ")}`);
 /** Synoptic is the company and the site's visual brand (the header's mark
  *  and name, with its descriptor). Investigation Workflow Suite (IWS) is
  *  the application: the name suffixed onto every page title and used
@@ -39,7 +70,8 @@ const DESCRIPTOR = "Safety Investigation Software";
 const BRAND = "Investigation Workflow Suite (IWS)";
 /** IWS_PREVIEW=1 builds the development preview: every page gets a
  *  noindex meta and a slim "Development preview" bar above the header.
- *  Without it the output is exactly the production site. */
+ *  Without it the output is the production site, which still carries the
+ *  noindex meta until LAUNCH.indexable is set at go-live (decision D3). */
 const PREVIEW = process.env.IWS_PREVIEW === "1";
 const PREVIEW_HEAD = `<meta name="robots" content="noindex, nofollow">\n`;
 const PREVIEW_BAR = [
@@ -108,7 +140,7 @@ const write = (rel, html) => {
 const document = (title, body, description) => {
   const withoutTitle = body.replace(/<title>[^<]*<\/title>\r?\n?/, "");
   const desc = description ? `<meta name="description" content="${esc(description)}">\n` : "";
-  const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n${PREVIEW ? PREVIEW_HEAD : ""}<title>${title}</title>\n${desc}`;
+  const head = `<!doctype html>\n<html lang="en-AU">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n${PREVIEW || !LAUNCH.indexable ? PREVIEW_HEAD : ""}<title>${title}</title>\n${desc}`;
   // The template opens with its <style>; the head closes after it and the
   // body opens, so the markup that follows lands where it should.
   const bodyOpen = `</style>\n</head>\n<body>${PREVIEW ? `\n${PREVIEW_BAR}` : ""}`;
@@ -158,13 +190,10 @@ const NAV = [
  *  shown and the nav is untouched. */
 const NAV_SCRIPT = `  <script>(function () { var top = document.currentScript.parentElement, btn = top.querySelector(".nav-toggle"); top.classList.add("js-nav"); function set(open) { top.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", String(open)); } btn.addEventListener("click", function () { set(!top.classList.contains("nav-open")); }); document.addEventListener("keydown", function (e) { if (e.key === "Escape" && top.classList.contains("nav-open")) { set(false); btn.focus(); } }); })();</script>`;
 const MAKER = `${BRAND} is made by ${COMPANY} ${DESCRIPTOR}.`;
-/** Where every "Talk to us" and "Contact us" link on the site goes: one
- *  address, set here once it is decided (plan-public-release.md, step 2).
- *  Until then the links point at the Organisation card on the download
- *  page and the build says so. */
-const CONTACT_EMAIL = "";
-const CONTACT_HREF = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : "download.html#organisation";
-if (!CONTACT_EMAIL) console.log("contact: no address set in build-site.mjs; Talk to us links point at download.html#organisation");
+/** Where every "Talk to us" and "Contact us" link on the site goes: the
+ *  one address in site-config.mjs. Until it is set the links point at the
+ *  Organisation card on the download page. */
+const CONTACT_HREF = BUSINESS.contactEmail ? `mailto:${BUSINESS.contactEmail}` : "download.html#organisation";
 const header = (prefix, current) =>
   [
     `<header class="top">`,
@@ -183,11 +212,27 @@ const header = (prefix, current) =>
     NAV_SCRIPT,
     `</header>`,
   ].join("\n");
+/** The footer's maker line. With the business details set it names the
+ *  company and its ABN; until then it stays as it was. */
+const legalLine =
+  BUSINESS.legalName && BUSINESS.businessName && BUSINESS.abn
+    ? `${BRAND} is made by ${esc(BUSINESS.businessName)}, a business name of ${esc(BUSINESS.legalName)} (ABN ${esc(BUSINESS.abn)}).<br>© ${BUSINESS.copyrightYear} ${esc(BUSINESS.legalName)}`
+    : `${MAKER}<br>© 2026 ${COMPANY} ${DESCRIPTOR}`;
+/** A site-relative URL gets the page's prefix; a full one stays as it is. */
+const siteHref = (prefix, url) => (/^(https?:|mailto:)/.test(url) ? url : `${prefix}${url}`);
 const footer = (prefix, links = []) =>
   [
     `  <footer>`,
-    `    <span class="legal">${MAKER}<br>© 2026 ${COMPANY} ${DESCRIPTOR}</span>`,
-    `    <span>${[...links, [`${prefix}changelog.html`, "Changelog"]].map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ")}</span>`,
+    `    <span class="legal">${legalLine}</span>`,
+    `    <span>${[
+      ...links,
+      ...(BUSINESS.privacyUrl ? [[siteHref(prefix, BUSINESS.privacyUrl), "Privacy"]] : []),
+      ...(BUSINESS.eulaUrl ? [[siteHref(prefix, BUSINESS.eulaUrl), "Licence terms"]] : []),
+      ...(BUSINESS.contactEmail ? [[`mailto:${BUSINESS.contactEmail}`, "Contact"]] : []),
+      [`${prefix}changelog.html`, "Changelog"],
+    ]
+      .map(([href, label]) => `<a href="${href}">${label}</a>`)
+      .join(" · ")}</span>`,
     `  </footer>`,
   ].join("\n");
 /** The application's start-screen illustration (src/App.tsx in the app
@@ -525,6 +570,13 @@ const homeCards = studies.map((s) => studyCard(s, "", "h3")).join("\n");
 const featuredTables = (featured.docsBuilt ?? []).find((d) => d === "evidence_argument_tables" || d === "eii_tables") ?? "evidence_argument_tables";
 /** The top-level pages are filled from the same featured study: its
  *  screenshots, its slug and the case cards. */
+const dlHeading = LAUNCH.version ? `IWS ${LAUNCH.version} for Windows` : "IWS for Windows";
+const dlInstaller = LAUNCH.installerFile ?? "A Windows installer (64-bit setup .exe)";
+/** The Download button stays a launch placeholder until LAUNCH.installerUrl is set. */
+const withInstallerLink = (html) =>
+  LAUNCH.installerUrl
+    ? html.replace(/class="([^"]*?)\s*launch-placeholder" aria-disabled="true">Download IWS<\/a>/g, (_, cls) => `class="${cls}" href="${esc(LAUNCH.installerUrl)}">Download IWS</a>`)
+    : html;
 const fillFeatured = (templateName, current) =>
   featured.shotFiles
     .reduce(
@@ -532,6 +584,8 @@ const fillFeatured = (templateName, current) =>
       chrome(readFileSync(join(here, templateName), "utf8"), "", current, [["#top", "Back to top"]]).replace("%%THEME%%", theme),
     )
     .replaceAll("%%CONTACT%%", CONTACT_HREF)
+    .replaceAll("%%DL_HEADING%%", dlHeading)
+    .replaceAll("%%DL_INSTALLER%%", () => esc(dlInstaller))
     .replaceAll("%%FEATURED_TABLES%%", featuredTables)
     .replaceAll("%%FEATURED_TITLE%%", esc(featured.title))
     .replaceAll("%%FEATURED%%", featured.slug)
@@ -648,7 +702,7 @@ const fillGettingStarted = (html) => Object.entries(gsHoles).reduce((h, [hole, v
 
 const topPages = sitePages.map(([name, title, description]) => {
   const filled = fillFeatured(`${name}.template.html`, navKey[name]);
-  const html = name === "getting-started" ? fillGettingStarted(filled) : filled;
+  const html = name === "getting-started" ? fillGettingStarted(filled) : withInstallerLink(filled);
   write(`${name}.html`, document(`${title} | ${BRAND}`, html, description));
   return html;
 });
