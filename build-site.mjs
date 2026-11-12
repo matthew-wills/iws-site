@@ -31,7 +31,7 @@ import { spawnSync } from "node:child_process";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { BUSINESS, LAUNCH, WORDING } from "./site-config.mjs";
+import { BUSINESS, LAUNCH, LICENCE_LEVELS, WORDING } from "./site-config.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -587,11 +587,67 @@ const withInstallerLink = (html) =>
   LAUNCH.installerUrl
     ? html.replace(/class="([^"]*?)\s*launch-placeholder" aria-disabled="true">Download IWS<\/a>/g, (_, cls) => `class="${cls}" href="${esc(LAUNCH.installerUrl)}">Download IWS</a>`)
     : html;
+/** The licence cards on the Download page, from LICENCE_LEVELS. A card's
+ *  button is a launch placeholder until the thing behind it is switched on
+ *  in LAUNCH (and the business details it needs exist: the build checks). */
+const tierAction = ({ label, primary, kind }) => {
+  const href = {
+    download: LAUNCH.installerUrl,
+    education: LAUNCH.educationOpen ? "#get" : null,
+    trial: LAUNCH.trialOpen ? "#get" : null,
+    contact: BUSINESS.contactEmail ? `mailto:${BUSINESS.contactEmail}` : null,
+  }[kind];
+  const cls = primary ? "btn btn-primary" : "btn";
+  return href ? `<a class="${cls}" href="${esc(href)}">${label}</a>` : `<a class="${cls} launch-placeholder" aria-disabled="true">${label}</a>`;
+};
+const tierCard = (t) => {
+  const foot = t.id === "education" && BUSINESS.educationEulaUrl ? `${t.footNote} · <a href="${esc(siteHref("", BUSINESS.educationEulaUrl))}">Education licence terms</a>` : t.footNote;
+  return [
+    `      <article class="tier card${t.lead ? " lead" : ""}" id="${t.id}">`,
+    `        <div class="tier-body">`,
+    t.lead ? `          <div class="tier-top"><span class="eyebrow">${t.name}</span><span class="pill rec">Recommended</span></div>` : `          <span class="eyebrow">${t.name}</span>`,
+    `          <h3>${t.heading}</h3>`,
+    `          <p class="price"><span class="amount${t.priceIsText ? " amount--text" : ""}">${t.price}</span><small>${t.priceNote}</small></p>`,
+    `          <p class="who">${t.line}</p>`,
+    `          <ul class="facts">`,
+    ...t.points.map((p) => `            <li>${p}</li>`),
+    `          </ul>`,
+    ...t.notes.map((n) => `          <p class="note">${n}</p>`),
+    `        </div>`,
+    `        <div class="tier-foot">`,
+    `          ${tierAction(t.action)}`,
+    `          <p class="foot-note">${foot}</p>`,
+    `        </div>`,
+    `      </article>`,
+  ].join("\n");
+};
+/** The licensing section's holes on the Download page, and the two lines
+ *  that wait for the privacy notice and the payment details. */
+const fillLicensing = (html) =>
+  html
+    .replace("%%LICENCE_TIERS%%", () => `    <div class="tiers">\n${LICENCE_LEVELS.map(tierCard).join("\n")}\n    </div>`)
+    .replace(
+      "%%TRIAL_NOT_OPEN%%",
+      () => (LAUNCH.trialOpen ? "" : "        <p>The trial opens when the licence terms and the privacy notice are published. Until then IWS asks for no personal details and sends none.</p>\n"),
+    )
+    .replace(
+      "%%TRIAL_RETENTION%%",
+      () => (BUSINESS.trialDataRetention ? `<p>${esc(BUSINESS.trialDataRetention)}</p>` : `<p class="launch-placeholder lp-text">How long these details are kept.</p>`),
+    )
+    .replace(
+      "%%BUY_CONTACT%%",
+      () =>
+        LAUNCH.pricePublished
+          ? `<p>${esc(BUSINESS.paymentContact)}</p>`
+          : BUSINESS.contactEmail
+            ? `<p>To hear when Professional is available, or to tell us how you would use it, email <a href="mailto:${esc(BUSINESS.contactEmail)}">${esc(BUSINESS.contactEmail)}</a>.</p>`
+            : `<p class="launch-placeholder lp-text">Who to contact.</p>`,
+    );
 const fillFeatured = (templateName, current) =>
   featured.shotFiles
     .reduce(
       (h, f) => h.split(`%%SHOT_${f.slice(0, 2)}%%`).join(`shots/${featured.slug}/${f}`),
-      chrome(readFileSync(join(here, templateName), "utf8"), "", current, [["#top", "Back to top"]]).replace("%%THEME%%", theme),
+      chrome(fillLicensing(readFileSync(join(here, templateName), "utf8")), "", current, [["#top", "Back to top"]]).replace("%%THEME%%", theme),
     )
     .replaceAll("%%CONTACT%%", CONTACT_HREF)
     .replaceAll("%%DL_HEADING%%", dlHeading)
@@ -612,12 +668,12 @@ write(
 );
 /** The other top-level pages: template, nav key, title and description. */
 const sitePages = [
-  ["product", "Product", `What ${BRAND} does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what Free and Professional each include.`],
+  ["product", "Product", `What ${BRAND} does at each stage of an investigation: evidence, analysis on the AcciMap, assessment of each factor, and reporting, with what each licence level includes.`],
   ["methodology", "Methodology", `An investigation in ${BRAND} starts from the critical event, tests each hypothesis on the AcciMap against the evidence, and derives the findings from the results.`],
   ["ai-security", "AI and security", `What optional AI drafting does in ${BRAND}, how a draft can be checked against the investigation record, and what the investigator still checks, where investigation data goes under each AI access setting, and how to bring your own AI.`],
   ["case-studies", "Case studies", `Three fictional safety investigations in aviation, maritime and mining, carried out in ${BRAND} from first notification to the published documents.`],
   ["organisations", "For organisations", `How ${BRAND} helps an organisation establish a more consistent investigative process: traceable findings, reasoning kept with the investigation record, and editions adapted to the organisation's own investigation framework.`],
-  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Professional and Organisation levels, and how a licence is activated.`],
+  ["download", "Download", `Download ${BRAND} for Windows 10 and 11: the Free, Education, Professional and Organisation licence levels, and how a licence is activated.`],
   ["documentation", "Documentation", `How to learn ${BRAND}: the Getting started walkthrough of a first investigation, and the User Guide to every tab, form and setting.`],
   ["getting-started", "Getting started", `Your first investigation in ${BRAND}, step by step on a small fictional occurrence, from the start screen to the Evidence and Argument Tables.`],
 ];
