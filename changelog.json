@@ -3,23 +3,42 @@
     "version": "Next release",
     "planned": true,
     "features": [
-      "Dashboard: completeness tiles above the checklist and the to-do list, each with a jump to the work.",
-      "Jump to the map: a to-do's origin, an evidence item's use or a record check takes you to the object, highlighted.",
-      "Timeline: time precision and zone, source, status, links to the map, phases and your own columns.",
-      "Evidence: drop a PDF or any file onto an object or the Evidence tab; open it in your own reader; newest first; text extracts read as extracts; your own categories.",
-      "Figures: tick an image to carry it into the report with a caption and cross-reference links.",
-      "Evidence and Argument Tables document (then called the E/I/I tables): a contents page, the map, one table per page, and the evidence under each table as an option.",
-      "Report styles: each described with its length and an example; the map, timeline and Evidence and Argument Tables as optional appendices.",
+      "Interviews: an Interview tab covering before, during and after an interview, and interview workflow for the standard record.",
+      "Settings: a review with two bands, renamed pages and one save rule.",
+      "Standard of proof: set as Pass, Inconclusive and Fail bands, recorded in the investigation.",
+      "Names: one To decide list and four Decided lists on the Names &amp; Abbreviations page."
+    ],
+    "fixes": [
+      "A copied email pastes with the template's own paragraph gaps."
+    ]
+  },
+  {
+    "version": "Since 0.11",
+    "date": "Internal builds, not yet released",
+    "features": [
+      "Evidence: drop a PDF or any file onto an object or the Evidence tab; captured material as tiles in a grid; an item form in four headed sections; replace an item's image or file without losing the work around it; link evidence to an object or a timeline event by picking, from either side; your own categories; text extracts keep their structure from paste to report.",
+      "Figures: tick an image or a text extract to carry it into the report with a caption and cross-reference links.",
+      "Timeline: time precision and zone, named clocks, source, status, phases and your own columns; durations as bars; import events from a spreadsheet; focus a span, compress gaps, arrange cards so none overlap; portrait view with the event table alongside; a portrait page export; links to the map and the evidence.",
+      "Map: objects closed as undetermined are drawn hatched, with Show, Fade or Hide controls; Arrange lays the map out lane by lane with arrows pointing left to right; zoom out to 5 per cent.",
+      "Analysis: one rule for finalising an object, with Close as undetermined where the findings policy allows it and one Unresolved matters section in the report; Importance is tested after an inconclusive Influence; a record check warns when Influence passes without Existence established.",
+      "Dashboard: completeness tiles above the checklist and the to-do list, each with a jump to the work. Jump to the map from a to-do, an evidence item's use or a record check.",
+      "Draft report: its own tab, with Draft my report, step plans and time left for each AI run, audit, repair and polish as separate steps, redraw a section, per-claim audit actions, a Stop control, and the report edited in place. A review copy carries the audit and check marks as plain-language Word comments.",
+      "AI: reasoning effort for each endpoint and role, usage, cost and timing for each run in the Log, and a User Guide list of exactly what is sent to a model and what never is.",
+      "Reports and exports: Evidence and Argument Tables with a contents page, one table per page and numbered argument points; report styles each described with its length and an example; the map, timeline and tables as optional appendices; built-in report looks; Save as PDF; the working record exported by part or by section; every file labelled IWS or IWS (AI).",
+      "People and names: a People register, who is who from the interviews, Replace names with roles, an optional AI check of the corrected transcript against the audio, an interview summary, a per-investigation abbreviations list and a Names &amp; Abbreviations page.",
       "Probability wording: the likelihood bands and their accepted phrases adjustable in Settings; the object form shows what a slider position reads as.",
-      "A Findings list says when a finding stated without a likelihood term was established as fact.",
-      "Record before Draft report in the tab order; the Draft report page in three bands.",
-      "The User Guide illustrated throughout, with every control explained.",
+      "Admin &amp; Comms with a starter set of seven email templates for any industry, and a Details tab for the facts that fill every cover.",
+      "Files: new investigations save as .iwsx and interview files as .iwsi; existing .sfm files keep opening and saving under their own name.",
+      "Settings reorganised and the AI access and Models pages redesigned; a fictional-case label on every document; a Windows-style menu bar and slimmer tab bar; an Example report (PDF) and the User Guide illustrated throughout, with every control explained.",
       "The maker named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
     ],
     "fixes": [
+      "Saving is safer: one save coordinator, a file is replaced safely, a new investigation never overwrites an existing one, closing never discards without a choice, and Overwrite keeps the other investigator's version as a copy. Every edit is an undo step, and typing no longer saves the whole file on every keystroke.",
       "Record checks read only the sentence that restates a factor's own claim, leave excluded hypotheses and other risk factors unconnected by design, and read a numbered Findings list item by item.",
-      "The command-line export carries figures like the app's own export, and a figure's caption reads as its own sentence.",
-      "User Guide passages that named old tabs or described behaviour the app no longer has are corrected."
+      "Drafting keeps numbers true to the record, never assigns a gender the record does not state, holds back unfinalised or out-of-date sections, and treats a refused or wrong-shaped AI reply as a failed pass, never as the report.",
+      "The finished report is written without gap markers, and a dropped connection to an AI endpoint is retried.",
+      "A crash shows a screen instead of a blank window; embedded files open safely and the app makes no external image requests.",
+      "The command-line export carries figures like the app's own export, and User Guide passages that described old behaviour are corrected."
     ]
   },
   {
