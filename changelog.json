@@ -1,18 +1,5 @@
 [
   {
-    "version": "Next release",
-    "planned": true,
-    "features": [
-      "Interviews: an Interview tab covering before, during and after an interview, and interview workflow for the standard record.",
-      "Settings: a review with two bands, renamed pages and one save rule.",
-      "Standard of proof: set as Pass, Inconclusive and Fail bands, recorded in the investigation.",
-      "Names: one To decide list and four Decided lists on the Names &amp; Abbreviations page."
-    ],
-    "fixes": [
-      "A copied email pastes with the template's own paragraph gaps."
-    ]
-  },
-  {
     "version": "Since 0.11",
     "date": "Internal builds, not yet released",
     "features": [
@@ -30,6 +17,10 @@
       "Admin &amp; Comms with a starter set of seven email templates for any industry, and a Details tab for the facts that fill every cover.",
       "Files: new investigations save as .iwsx and interview files as .iwsi; existing .sfm files keep opening and saving under their own name.",
       "Settings reorganised and the AI access and Models pages redesigned; a fictional-case label on every document; a Windows-style menu bar and slimmer tab bar; an Example report (PDF) and the User Guide illustrated throughout, with every control explained.",
+      "Interviews: each interview has an Interview page for before and during it (the invitation, attendees, preparation, a notepad, and the interview guide beside the notepad), alongside its Record page; the record's interview summary can be drafted with AI.",
+      "Standard of proof: Pass, Inconclusive and Fail bands, set in Settings as the default for new investigations, recorded in each investigation and stated in every drafted report.",
+      "Settings: pages regrouped into two bands and renamed, a Shared practice page for the organisation's policies, a padlock on a page that is locked as a whole, and one save rule.",
+      "Names &amp; Abbreviations: one To decide list and four Decided lists.",
       "The maker named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
     ],
     "fixes": [
@@ -38,7 +29,10 @@
       "Drafting keeps numbers true to the record, never assigns a gender the record does not state, holds back unfinalised or out-of-date sections, and treats a refused or wrong-shaped AI reply as a failed pass, never as the report.",
       "The finished report is written without gap markers, and a dropped connection to an AI endpoint is retried.",
       "A crash shows a screen instead of a blank window; embedded files open safely and the app makes no external image requests.",
-      "The command-line export carries figures like the app's own export, and User Guide passages that described old behaviour are corrected."
+      "The command-line export carries figures like the app's own export, and User Guide passages that described old behaviour are corrected.",
+      "A copied email pastes with the template's own paragraph gaps.",
+      "Typing in what a timeline duration spans, or in a terms of reference line, no longer lags behind the keyboard, and each edit is one undo step.",
+      "Help's object key says an excluded hypothesis comes only from a failed Existence test."
     ]
   },
   {
