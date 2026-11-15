@@ -6,7 +6,7 @@
   margin: 0.5em 0;
   font-size: 0.8em;
   text-align: center;
-  color: #7dc3d2; /* the light teal of docxHouse TEAL_LIGHT */
+  color: #475569; /* the slate grey of docxHouse MUTED, as the Word label prints (#249) */
 }
 
 .md {
@@ -232,13 +232,13 @@
   text-align: left;
 }
 
-.md__figure-extract {
-  margin: 4px 0 6px 20px;
+/* The extract itself is ordinary markdown (headings set as bold
+   lines, tables, lists, quotations), indented from the frame. */
+.md__figure-frame > .md {
+  margin-left: 20px;
 }
 
-.md__figure-quote {
-  margin-left: 34px;
-  padding-left: 10px;
+.md__figure-frame .md__quote {
   border-left: 2px solid #000000;
 }
 
@@ -271,4 +271,49 @@
   font-size: 0.92em;
   background: rgba(127, 127, 127, 0.1);
   border-left: 2px solid rgba(127, 127, 127, 0.5);
+}
+
+/* An object's analysis written but not finalised, or out of date (issue
+   #1241): a muted dark blue with a thin bar and a tag that says so and
+   opens the object. Not the canvas E/I/I colours and not the warning
+   amber; the tag's words carry the meaning, never the colour alone. The
+   finished report leaves this text out. */
+.md-unsettled {
+  /* Each colour read once, here; the rules below use these. */
+  --md-unsettled-text: var(--chrome-report-unfinalised-text, #1e3a6e);
+  --md-unsettled-bar: var(--chrome-report-unfinalised-bar, #7b93bf);
+  --md-unsettled-tag-bg: var(--chrome-report-unfinalised-tag-bg, #e6ebf5);
+
+  margin: 4px 0;
+  padding: 2px 0 2px 10px;
+  color: var(--md-unsettled-text);
+  border-left: 2px solid var(--md-unsettled-bar);
+}
+
+.md-unsettled .md > :first-child {
+  margin-top: 4px;
+}
+
+.md-unsettled .md > :last-child {
+  margin-bottom: 0;
+}
+
+.md-unsettled__tag {
+  padding: 1px 8px;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-unsettled-text);
+  background: var(--md-unsettled-tag-bg);
+  border: 1px solid var(--md-unsettled-bar);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.md-unsettled__tag:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.md-unsettled__tag:disabled {
+  cursor: default;
 }
