@@ -14,8 +14,8 @@
   "outputs": [
     { "doc": "evidence_argument_tables", "page": 14, "caption": "the 41 m sight line, surveyed to both drivers' eye heights, with its Influence passed at 90 per cent" },
     { "doc": "report_preliminary", "page": 5, "caption": "the open lines of enquiry, starting with how the spur was opened under a works order" },
-    { "doc": "report_standard", "page": 5, "caption": "the start of the analysis: two vehicles at the intersection, neither aware of the other" },
-    { "doc": "report_executive", "page": 5, "caption": "the findings, in the briefing's own words" }
+    { "doc": "report_standard", "page": 8, "caption": "the start of the analysis, from the intersection's creation under a works order" },
+    { "doc": "report_executive", "page": 8, "caption": "the findings, in the briefing's own words" }
   ],
   "layouts": ["atsb", "ntsb", "aaib"]
 }

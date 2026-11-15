@@ -59,7 +59,7 @@ export const LICENCE_OPEN = {
 export const NO_LICENCE_LINE =
   "Without a licence, IWS opens as read-only. You can open and read any investigation and export what it already holds, with no time limit. Creating, editing and saving need a licence.";
 
-/** The shared wording (decisions D4, D5, D6). Used whole, never retyped.
+/** The shared wording (decisions D4, D5). Used whole, never retyped.
  *  Once the app carries the same constants (issues #1274 and #1271), compare
  *  these with the app's text at each release. */
 export const WORDING = {
@@ -74,9 +74,6 @@ export const WORDING = {
   namesLink: "How names are kept from a model, and what you still check",
   // Decision D5: "a frontier model" in place of the vendor's name.
   frontierModel: "a frontier model",
-  // Decision D6: the dated note now, full regeneration at release.
-  guideStaleNote:
-    'This copy was produced for an earlier pre-release build. Since then the AI access settings have been renamed (No AI, Copy and paste, Connected AI), new files are saved as .iwsx, an organisation\'s own Word template has moved to the Organisation level, and the handling of names has changed. It is replaced with the current guide at the public release. Where this copy and the <a href="ai-security.html">AI and security</a> or <a href="download.html#pricing">Download</a> pages disagree, those pages are right.',
 };
 
 /** The licence levels, as data, so the Download cards and any short line

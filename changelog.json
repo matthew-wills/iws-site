@@ -20,7 +20,6 @@
       "Interviews: each interview has an Interview page for before and during it (the invitation, attendees, preparation, a notepad, and the interview guide beside the notepad), alongside its Record page; the record's interview summary can be drafted with AI.",
       "Standard of proof: Pass, Inconclusive and Fail bands, set in Settings as the default for new investigations, recorded in each investigation and stated in every drafted report.",
       "Settings: pages regrouped into two bands and renamed, a Shared practice page for the organisation's policies, a padlock on a page that is locked as a whole, and one save rule.",
-      "Names &amp; Abbreviations: one To decide list and four Decided lists.",
       "The maker named: Investigation Workflow Suite is made by Synoptic Safety Investigation Software."
     ],
     "fixes": [
@@ -31,7 +30,7 @@
       "A crash shows a screen instead of a blank window; embedded files open safely and the app makes no external image requests.",
       "The command-line export carries figures like the app's own export, and User Guide passages that described old behaviour are corrected.",
       "A copied email pastes with the template's own paragraph gaps.",
-      "Typing in what a timeline duration spans, or in a terms of reference line, no longer lags behind the keyboard, and each edit is one undo step.",
+      "Typing in what a timeline duration spans no longer lags behind the keyboard, and each edit is one undo step.",
       "Help's object key says an excluded hypothesis comes only from a failed Existence test."
     ]
   },
