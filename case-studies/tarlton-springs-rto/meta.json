@@ -14,8 +14,8 @@
   "outputs": [
     { "doc": "evidence_argument_tables", "page": 5, "caption": "the standard's threshold, its Influence argued for and against and accepted at 70 per cent" },
     { "doc": "report_preliminary", "page": 4, "caption": "what was known while the work was still running" },
-    { "doc": "report_standard", "page": 8, "caption": "the start of the analysis, and the decision to reject above V1" },
-    { "doc": "report_executive", "page": 5, "caption": "the findings, in the briefing's own words" }
+    { "doc": "report_standard", "page": 10, "caption": "the start of the analysis, from the aerodrome and operator conditions through the departure" },
+    { "doc": "report_executive", "page": 12, "caption": "the findings, in the briefing's own words" }
   ],
   "layouts": ["atsb", "ntsb", "aaib"]
 }

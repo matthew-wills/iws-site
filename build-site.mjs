@@ -260,9 +260,7 @@ const fillShared = (html) =>
     .replaceAll("%%AI_RESPONSIBILITY%%", () => WORDING.aiResponsibility)
     .replaceAll("%%AI_EULA_LINK%%", () => AI_EULA_LINK)
     .replaceAll("%%NAMES_STATEMENT%%", () => WORDING.namesStatement.map((p) => `<p>${p}</p>`).join("\n          "))
-    .replaceAll("%%NAMES_LINK%%", () => WORDING.namesLink)
-    // Decision D6: a dated note now; the guide is regenerated at release.
-    .replaceAll("%%GUIDE_STALE_NOTE%%", () => WORDING.guideStaleNote);
+    .replaceAll("%%NAMES_LINK%%", () => WORDING.namesLink);
 const chrome = (html, prefix, current, links) =>
   fillShared(html.replace("%%HEADER%%", () => header(prefix, current)).replace("%%HEADER_ART%%", () => HEADER_ART).replace("%%FOOTER%%", () => footer(prefix, links)));
 const meta = (r) =>
