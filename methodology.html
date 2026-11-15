@@ -386,7 +386,7 @@ footer .legal { line-height: 1.6; }
     <div class="tests3">
       <div class="t3"><p class="t3__name">Existence</p><p class="t3__q">&ldquo;Did this event or condition actually exist or occur?&rdquo;</p><p>Asked first, of every object, the critical event included. A fail excludes a hypothesis.</p></div>
       <div class="t3"><p class="t3__name">Influence</p><p class="t3__q">&ldquo;Did it influence this occurrence?&rdquo;</p><p>Asked only once Existence passes. Had it not existed, would the occurrence probably not have happened, or been less severe?</p></div>
-      <div class="t3"><p class="t3__name">Importance</p><p class="t3__q">&ldquo;Is it important enough to address anyway?&rdquo;</p><p>Asked only where Influence fails. Would addressing it reduce the likelihood or severity of a future occurrence?</p></div>
+      <div class="t3"><p class="t3__name">Importance</p><p class="t3__q">&ldquo;Is it important enough to address anyway?&rdquo;</p><p>Asked where Influence fails or cannot be settled. A pass makes it a finding in its own right. A fail leaves it on the map as an event or condition: it happened, but it is not a safety factor. Would addressing it reduce the likelihood or severity of a future occurrence?</p></div>
     </div>
     <p class="ce-note">The critical event&rsquo;s Existence is established through evidence, like any other object&rsquo;s: the investigation has to show that it happened. In place of Influence it records the proof of its significance, unless it leads on to a later occurrence, when the form asks &ldquo;Did it lead to the subsequent occurrence?&rdquo; It has no Importance test.</p>
     <div class="row tests-row">
@@ -418,27 +418,28 @@ footer .legal { line-height: 1.6; }
           <tr><th scope="rowgroup" rowspan="1" class="g__label">Contributing safety factors</th><td>Pass</td><td>Increased risk</td><td>Pass</td><td>&ndash;</td><td class="cls__class">Contributing Safety Factor</td><td class="cls__rep">Yes: Contributing safety factors</td></tr>
         </tbody>
         <tbody class="g g--orf">
-          <tr><th scope="rowgroup" rowspan="1" class="g__label">Other risk factors</th><td>Pass</td><td>Increased risk</td><td>Fail</td><td>Pass</td><td class="cls__class">Other Risk Factor</td><td class="cls__rep">Yes: Other factors that increased risk</td></tr>
+          <tr><th scope="rowgroup" rowspan="1" class="g__label">Other risk factors</th><td>Pass</td><td>Increased risk</td><td>Fail or inconclusive</td><td>Pass</td><td class="cls__class">Other Risk Factor</td><td class="cls__rep">Yes: Other factors that increased risk</td></tr>
         </tbody>
         <tbody class="g g--pos">
           <tr><th scope="rowgroup" rowspan="1" class="g__label">Positive events</th><td>Pass</td><td>Decreased risk</td><td>Any</td><td>Any</td><td class="cls__class">Positive Event</td><td class="cls__rep">Yes: Other findings, reduced risk</td></tr>
         </tbody>
         <tbody class="g g--neu">
-          <tr><th scope="rowgroup" rowspan="1" class="g__label">Established events and conditions</th><td>Pass</td><td>Neutral</td><td>Any</td><td>Any</td><td class="cls__class">Event/Condition</td><td class="cls__rep">No</td></tr>
+          <tr><th scope="rowgroup" rowspan="2" class="g__label">Established events and conditions</th><td>Pass</td><td>Neutral</td><td>Any</td><td>Any</td><td class="cls__class">Event/Condition</td><td class="cls__rep">No</td></tr>
+          <tr><td>Pass</td><td>Increased risk</td><td>Fail or inconclusive</td><td>Fail</td><td class="cls__class">Event/Condition</td><td class="cls__rep">No</td></tr>
         </tbody>
         <tbody class="g g--ex">
-          <tr><th scope="rowgroup" rowspan="2" class="g__label">Excluded hypotheses</th><td>Fail</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Excluded Hypothesis</td><td class="cls__rep">Yes: Other findings, ruled out</td></tr>
-          <tr><td>Pass</td><td>Increased risk</td><td>Fail</td><td>Fail</td><td class="cls__class">Excluded Hypothesis</td><td class="cls__rep">Yes: Other findings, ruled out</td></tr>
+          <tr><th scope="rowgroup" rowspan="1" class="g__label">Excluded hypotheses</th><td>Fail</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Excluded Hypothesis</td><td class="cls__rep">Yes: Other findings, ruled out</td></tr>
         </tbody>
         <tbody class="g g--open">
-          <tr><th scope="rowgroup" rowspan="4" class="g__label">Unresolved or inconclusive</th><td>Untested</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Hypothesis (untested)</td><td class="cls__rep">No</td></tr>
+          <tr><th scope="rowgroup" rowspan="5" class="g__label">Unresolved or inconclusive</th><td>Untested</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Hypothesis (untested)</td><td class="cls__rep">No</td></tr>
           <tr><td>Inconclusive</td><td>Any</td><td>&ndash;</td><td>&ndash;</td><td class="cls__class">Open hypothesis</td><td class="cls__rep">No</td></tr>
           <tr><td>Pass</td><td>Increased risk</td><td>Not yet settled</td><td>&ndash;</td><td class="cls__class">Safety Factor (testing in progress)</td><td class="cls__rep">No*</td></tr>
-          <tr><td>Pass</td><td>Increased risk</td><td>Fail</td><td>Not yet settled</td><td class="cls__class">Safety Factor (testing in progress)</td><td class="cls__rep">No</td></tr>
+          <tr><td>Pass</td><td>Increased risk</td><td>Fail or inconclusive</td><td>Not yet settled</td><td class="cls__class">Safety Factor (testing in progress)</td><td class="cls__rep">No</td></tr>
+          <tr><td colspan="4">A test left inconclusive on purpose, then Close as undetermined</td><td class="cls__class">Undetermined (closed)</td><td class="cls__rep">Yes: Unresolved matters, never a finding</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="cls-note">The critical event is always classified as the critical event. Findings headings are the built-in wording and can be renamed per report style or in Settings. *An increased-risk object in Risk Controls or a lane above it whose Influence test was examined and left inconclusive is listed under Other findings as unresolved.</p>
+    <p class="cls-note">The critical event is always classified as the critical event. Findings headings are the built-in wording and can be renamed per report style or in Settings. *An increased-risk object in Risk Controls or a lane above it whose Influence test was examined and left inconclusive is listed under Unresolved matters until it passes Importance. Objects closed as undetermined are listed there too.</p>
   </section>
 
   <section class="block" id="proof">
