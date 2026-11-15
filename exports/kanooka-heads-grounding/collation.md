@@ -2,7 +2,9 @@
 
 Purpose: this is a structured collation of a safety investigation built with the E/I/I method (Existence / Influence / Importance), for drafting the investigation report. Categories were assigned by testing, not assumption: contributing safety factors passed Existence and Influence; other risk factors failed Influence but passed Importance; excluded hypotheses failed testing and are retained as part of the investigative record. A test marked Inconclusive is NOT a finding and must never be reported as one, but it must still be reported. The investigation examined the matter and could not settle it, and the report says so plainly: what the evidence did and did not support, the argument on each side where one was recorded, why it could not be resolved, and what would be needed to resolve it. Any test note below carries the investigator's own explanation and is the basis for that discussion. Passing over an unresolved matter in silence is a worse error than reporting it as unresolved. Ground every statement in the material below; do not invent facts.
 
-Generated: 2026-10-08T04:01:41.519Z
+Standard of proof: Likely or probable (Pass from 65%, Fail to 35%).
+
+Generated: 2026-11-15T17:49:50.692Z
 
 ## Sources requested for this section that are empty
 
@@ -21,7 +23,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: MV Tarrakin Star, a 24.4 m aluminium catamaran passenger ferry certificated for 96 passengers, made contact with Boolarong Bank at 6.8 kt over the ground at 18:12:04 local on 07/07/2026 while inbound on service TF18, and came to rest within 11 m, heeled 4 degrees to starboard, 74 m west of the charted centreline of the Merrandi Channel and 54 m outside the dredged channel, on a falling tide in darkness. 38 passengers, a master, a deckhand and a kiosk attendant were on board. Furrows consistent with the starboard hull and skeg run 11 m from the point of first contact on a heading of 197 degrees.
 - Significance: Substantial damage: starboard hull bottom plating set up over 4.1 m with a 180 mm split in way of the No. 2 void and progressive flooding of that void to approximately 260 mm by the time the vessel refloated; starboard propeller blades bent and the shaft bent 1.4 mm; starboard rudder stock distorted 3 degrees; starboard skeg torn away. Nil serious injuries; one passenger reported a grazed shin and two were treated at the wharf for distress. All 38 passengers were transferred ashore by the port workboat by 19:26. The vessel refloated on the tide at 00:20 and was withdrawn from service. The Merrandi Channel was closed to commercial traffic for 19 hours. The vessel came to rest where the bed is 0.50 m below chart datum; 30 m further west the bed is 0.35 m higher again, and there it would have taken the ground harder and taken a larger list.
-- Investigator notes: The critical event. Everything else on this map exists to explain it.
 - Why Notification TFP-OCC-2026-0093, raised 07/07/2026 19:05 local (09:05 UTC) matters: The first agreed statement of the occurrence and the source of the facts everything else is dated against: the vessel, the voyage, the position, the persons on board, the injuries and the damage.
 - Attached extract (Occurrence notification TFP-OCC-2026-0093) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -136,16 +137,20 @@ naming what is missing, and draft the rest from what IS here.
     point of first contact on a heading of 197 degrees.
   ```
 
-## Causal chains
+## Causal chains (objects that passed Influence only)
 
-- Last service moved into darkness without reopening the daylight-only risk assessment -> No night passage plan or hold point for loss of the primary fix -> Transit continued at eight knots from the plotter freeze until the shallow alarm -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Defect procedure never requires a fault that cleared itself to be recorded -> Chart plotter display froze during the channel transit and did not recover -> Transit continued at eight knots from the plotter freeze until the shallow alarm -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Clearing of the beacon's sightline deferred unfunded for three works rounds -> No. 4 beacon screened by mangroves from the channel, 0.84 to 0.34 nm -> Heading eased five degrees to starboard without a decision to turn -> Vessel left the dredged channel on the bank side -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Unshielded boat ramp floodlights aligned behind the No. 4 beacon from the north -> Heading eased five degrees to starboard without a decision to turn -> Vessel left the dredged channel on the bank side -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Defect procedure never requires a fault that cleared itself to be recorded -> Chart plotter display froze during the channel transit and did not recover -> Heading eased five degrees to starboard without a decision to turn -> Vessel left the dredged channel on the bank side -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Last service moved into darkness without reopening the daylight-only risk assessment -> No night passage plan or hold point for loss of the primary fix -> Transit continued at eight knots from the plotter freeze until the shallow alarm -> Vessel left the dredged channel on the bank side -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Defect procedure never requires a fault that cleared itself to be recorded -> Chart plotter display froze during the channel transit and did not recover -> Transit continued at eight knots from the plotter freeze until the shallow alarm -> Vessel left the dredged channel on the bank side -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
-- Engines stopped and no attempt made to refloat on a falling tide -> Grounding on Boolarong Bank with 38 passengers embarked
+One line per object that passed Influence and leads, through other such objects, to the critical event, naming what its arrows lead to. Read the lines in order to follow a chain. An object that failed Influence, was inconclusive at it, was not yet tested at it, or was excluded is in none of these chains, and neither is a positive event; each object considered and not found contributing is listed under its own heading with the safety factors.
+
+- Clearing of the beacon's sightline deferred unfunded for three works rounds -> No. 4 beacon screened by mangroves from the channel, 0.84 to 0.34 nm
+- Defect procedure never requires a fault that cleared itself to be recorded -> Chart plotter display froze during the channel transit and did not recover
+- Last service moved into darkness without reopening the daylight-only risk assessment -> No night passage plan or hold point for loss of the primary fix
+- Chart plotter display froze during the channel transit and did not recover -> Heading eased five degrees to starboard without a decision to turn; Transit continued at eight knots from the plotter freeze until the shallow alarm
+- No night passage plan or hold point for loss of the primary fix -> Transit continued at eight knots from the plotter freeze until the shallow alarm
+- No. 4 beacon screened by mangroves from the channel, 0.84 to 0.34 nm -> Heading eased five degrees to starboard without a decision to turn
+- Heading eased five degrees to starboard without a decision to turn -> Vessel left the dredged channel on the bank side
+- Transit continued at eight knots from the plotter freeze until the shallow alarm -> Vessel left the dredged channel on the bank side; Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning
+- Vessel left the dredged channel on the bank side -> Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning
+- Shallow alarm at its 2019 setting of 0.9 m gave sixteen seconds' warning -> Grounding on Boolarong Bank with 38 passengers embarked
 
 ## Safety issues (organisational level)
 
@@ -157,7 +162,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: Work order WO-118, raised 09/2023, records mangrove regrowth on Merrandi Islet screening the No. 4 beacon from the northern approach between about half a mile and a quarter mile, recommends trimming to 2 m on a three-yearly cycle, and estimates $18,500. It was deferred at the 2023, 2024 and 2025 works rounds, each entry reading 'defer, unfunded, refer next round'. WO-176, raised 03/2026, records the same sightline as 'now fully closed on the northern approach'. The Authority's file note against WO-176 records that the islet is 240 m from the beacon and so falls outside the 50 m scope of schedule 2.4, and that the work therefore competes for the general waterways vote rather than the aids to navigation vote. The 2019 aerial survey gives the canopy at 2.1 m; it measured 5.8 m on 18/07/2026 against a lantern height of 4.2 m.
 - Significance: WO-118 recommended trimming to 2 m and a three-yearly cycle. The canopy grew from 2.1 m in 2019 to 5.8 m in 07/2026, about half a metre a year, so a trim funded at the 2023 round would have left it near 3.5 m on the night, under the 4.2 m lantern, and the beacon open to the channel over the stretch where it was screened.
-- Investigator notes: Recorded in the Authority's own register in its own words, including 'now fully closed on the northern approach' in 03/2026. Nothing here had to be reconstructed. Note the file note against WO-176: the islet is 240 m away, so the work competes with boat ramps rather than with aids to navigation.
 - Why Kanooka Heads Port Authority aids to navigation register and register extract, copied 19/07/2026 matters: The whole beacon story in one file: the solar conversion that halved the nominal range and was never told to anybody who uses the channel, the sightline work order deferred three rounds because an islet 240 m away is outside a 50 m scope, and a monthly check made from the one direction in which the screening cannot be seen.
 - Attached extract (Port Authority aids to navigation records for the No. 4 beacon) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -211,6 +215,9 @@ naming what is missing, and draft the rest from what IS here.
   Ferries.
   ```
 - Led to: No. 4 beacon screened by mangroves from the channel, 0.84 to 0.34 nm
+- Safety actions recorded against it:
+  - [action taken] Work order WO-176 funded from the 2026 waterways contingency and the Merrandi Islet canopy trimmed to 2 m on 24/07/2026, restoring the No. 4 beacon's sightline over the northern approach. A three-yearly trimming cycle has been programmed and the sightline re-measured from the inbound track on completion. (Harbour Master, Kanooka Heads), Closed, 2026-07-24
+  - [recommendation] That the aids to navigation services agreement replace the 50 m vegetation scope at schedule 2.4 with a sightline test, so that work needed to keep an aid visible from the water it serves is funded as an aid to navigation whatever its distance from the structure. The present scope put a screening canopy 240 m from the beacon into the general waterways vote, where it competed with boat ramps and was deferred three rounds while the aid it screened went on being charted as lit. (Investigator in charge), Open, response due 30/09/2026, 2026-07-27
 
 ### Last service moved into darkness without reopening the daylight-only risk assessment
 - Lane: Organisational Influences
@@ -221,7 +228,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: RRA-07 issue 2 (03/2023) is the current route risk assessment for the Merrandi Channel. It carries the operating restriction 'daylight transits only', and states that a night transit requires the General Manager Operations' approval and a specific passage plan. CHG-2026-014, approved by the Operations Manager on 22/04/2026, moved service TF18 from 16:15 to 17:35 for the winter timetable from 01/06/2026, assessed the change as 'timetable change only', recorded 'no new hazard identified' and answered 'No' to route risk assessment review required. RRA-07 was not reopened and no issue 3 exists. No night passage plan was written and the General Manager Operations' approval was neither sought nor given. TF18 does not run on Sundays or public holidays, and ran 31 times in darkness between 01/06/2026 and the occurrence, which was the thirty-first.
 - Evidence for influence: RRA-07 named both the approver and the plan a night transit needed. A review of it against a night operation would have reached the unlit reach between the No. 2 and No. 4 beacons, which the assessment already names as a hazard, and could not have closed without a night passage plan. Instead the change put a 96-passenger vessel through a 40 m channel in darkness 31 times, through a process that asked whether the change was new rather than whether the assessment still held.
 - Evidence against influence: A reopened assessment might have produced a night plan that said no more than the daylight one does, with no hold point in it, and the vessel would have met the frozen plotter in the same way. The Operations Manager's account of what he understood the restriction to require of him has been given verbally and has not been taken as a formal interview, so why the change was assessed as a timetable change only is not yet established.
-- Investigator notes: The decision that turned a daylight route into a night one. Read CHG-2026-014 against RRA-07 and the whole thing is on two pages: the restriction names an approver, and the change was approved by somebody else who never saw it.
 - Why RRA-07 issue 2 (03/2023) and CHG-2026-014 (approved 22/04/2026) matters: Read together these are the organisational finding. RRA-07 restricts the channel to daylight transits and names the General Manager Operations as the approver of any night transit; CHG-2026-014 moved the last service into darkness, assessed it as a timetable change only, and was approved one level below that.
 - Attached extract (Route Risk Assessment RRA-07 and change record CHG-2026-014) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -313,7 +319,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: OPS-3 3.4 requires the channel transit to be made on the charted centreline, monitored on the chart plotter, with the No. 2 and No. 4 beacons identified before passing No. 1. Appendix A, issue 2 and current, names the plotter as the primary means of position fixing and, as the secondary, the visual transit of the No. 4 beacon with the town wharf leading lights, and closes with the note that the plan is written for the daylight transit and that night transits are not scheduled. There is no night passage plan for the Merrandi Channel, no guidance anywhere on what to do if the plotter is lost during the transit, and no abort or hold point named in the plan at all. The leading lights half of that secondary means bear 195 degrees but lie about 1.9 nm beyond the No. 6 beacon and do not resolve as two lights until the vessel is inside the channel's southern third, so at the point in the transit where the plotter was lost the beacon was the whole of it. OPS-3 3.6 requires a reduction of speed and consideration of anchoring, but only in reduced visibility, which this was not.
 - Significance: This is the operator's own defence against exactly this sequence, and it was never written. A hold point costs nothing on a flat night with no traffic, and every master asked said they would have used one.
-- Investigator notes: The safety issue this map exists to find. The plan names the plotter as the primary means and says nothing whatever about losing it. Both masters interviewed said independently that the right answer was to stop, and both said nothing tells you to.
 - Why Tarrakin Ferries Operations Manual OPS-3 revision 6, 02/2023, and appendix A issue 2 matters: The procedure the transit was made under, and the shape of the hole in it. The plan names a speed, a course, a primary and a secondary means of fixing, and states that night transits are not scheduled. It gives no hold point, no abort criterion, and nothing at all about losing the plotter.
 - Attached extract (Operations Manual OPS-3, passage planning, and the Merrandi Channel plan) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -390,6 +395,8 @@ naming what is missing, and draft the rest from what IS here.
   transit was the thirty-first.
   ```
 - Led to: Transit continued at eight knots from the plotter freeze until the shallow alarm
+- Safety actions recorded against it:
+  - [recommendation] That Tarrakin Ferries write a night passage plan for the Merrandi Channel before any further darkness transit, and that it name a hold point: the loss of the primary means of position fixing inside the channel requires the way to be taken off the vessel until the position is re-established by another means. Both masters interviewed said independently that stopping was the right answer and that nothing anywhere asks for it. (Investigator in charge), Open, response due 30/09/2026, 2026-07-27
 
 ### Defect procedure never requires a fault that cleared itself to be recorded
 - Lane: Risk Controls
@@ -400,7 +407,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: OPS-9 9.1 requires immediate reporting only of a defect rendering the vessel unseaworthy or affecting a statutory item. The chart plotter is not a statutory item on this vessel on this route, although it is the primary means of position fixing named in the passage plan. 9.2 puts all other defects in the vessel defect book at the end of the shift in which they are found, which for a fault that has come and gone by then is no trigger at all, and the manual nowhere says whether such a fault is a defect. 9.3 requires the outgoing master to brief the relieving master on any defect, and requires nothing about that brief to be written down and nothing of the relieving master afterwards. Both masters described the same reading independently: 'The book is for things that are broken when you hand over. If it's broken you write it, if it came good you say it.' The book's eleven entries in the 90 days before the occurrence are all faults present when they were written.
 - Evidence for influence: On the outgoing master's account the plotter froze three or four times on this vessel in the year before the occurrence, it froze on the relieving master a month earlier, and it froze twice on the morning of 07/07/2026, and none of those freezes was ever written down because each had cleared itself. Recorded, they would have reached the Operations Manager's weekly review and the maintenance system, and from there the contractor, who identified cause code 0x51 against the 11/2024 firmware in one bench test. The fix for the fault that froze the display at 18:07 was never applied because no freeze was ever on paper.
 - Evidence against influence: The chain from a written entry to an applied fix runs through somebody ashore finding the manufacturer's bulletin, and the operator held no subscription to the bulletins, so a recorded freeze might have been reviewed at the end of the week, noted and left. Nothing establishes how many recorded freezes it would have taken for the unit to be sent to the contractor, or how quickly.
-- Investigator notes: Both masters described the same unwritten rule in almost the same words, and the manual bears them out. This is the procedure finding the defect chain rests on; the omission at 13:05 is one instance of it and is tested on its own object. Careful in the report that this explains the omission rather than excusing it.
 - Why Tarrakin Ferries Operations Manual OPS-9 revision 4, 08/2024 matters: The rule that decided whether the plotter fault travelled anywhere. The change-of-master brief need not be written, nothing requires the relieving master to check that a defect mentioned in it was booked, and a non-statutory item is due at the end of the shift in which it is found, which for an intermittent fault is no trigger at all.
 - Attached extract (Operations Manual OPS-9, defect reporting and rectification) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -463,7 +469,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence for influence: Had 4.2 applied, the range change of 11/2025 would have gone out as a notice to mariners before it took effect, and the Authority would have been recording the beacon's availability. Those are the only two mechanisms in the code that would have carried anything about the No. 4 beacon to the people using the channel, and neither existed for it.
 - Evidence against influence: Neither mechanism reaches this occurrence. A notice of the range change would have told the operator about a light that was screened over the stretch where the vessel left the channel, and a better known light is no more visible through a mangrove canopy; the solar conversion object fails on the same ground. An availability figure measures whether a light is lit, and this one was lit the whole time. The screening itself was not left because of the code: 4.1 applies to every aid whatever the channel's status, the Authority's own register has recorded the screening since 09/2023, and what kept WO-118 unfunded was the services agreement's 50 m vegetation scope, which put the work in the general waterways vote.
 - Importance: It did not influence this occurrence and it is still worth addressing. On a channel carrying a 96-passenger ferry in darkness, the code gives the operator no right to be told when a beacon's range, character or position changes and no figure for how often the aids work. The solar conversion reached nobody for eight months for exactly that reason, and the next change, to a light that is not screened, would reach nobody either.
-- Investigator notes: Settled on Existence and failed on Influence, and the second is the point worth teaching. Both of the mechanisms the code withholds run into something else on this record: notice of the range change runs into a screened light, and the general duty at 4.1 applied to this beacon whatever the channel's status. The code is not why the screening was left; it is why nobody using the channel was ever told anything.
 - Why Waterways Aids to Navigation Code WAN-2, section 4 matters: The external requirement and its threshold. The Merrandi Channel is not a declared shipping channel, so none of the availability, recording or notification duties at 4.2 apply to any of its beacons. The general duty at 4.1 applies to every aid, and the Port Authority reads it as lit and on station.
 - Attached extract (Waterways Aids to Navigation Code WAN-2, section 4) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -581,7 +586,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence for influence: The master called the beacon 'a nothing' in front of the town and the new floodlights, and said 'It used to be a proper light. It was a mains light.' For at least the last 37 seconds of his search the light was clear of the islet and not yet seen, and a weaker light against a bright background is harder to pick up in that time. The passage plan he was working to still gave the No. 4 beacon at 6 M.
 - Evidence against influence: Over the half mile in which the vessel left the channel the beacon was screened by the canopy, and a screened light is not made visible by being brighter. The master already knew the light was weaker, in his own words, so a notice would have told him nothing he did not know. Range is not the limit at these distances either: the search ran from 0.47 nm to 0.25 nm, well inside even the measured 2.6 nm. Nothing in the record shows the plan's 6 M figure was used for anything on the night.
 - Importance: It did not influence this occurrence and it is still a finding. A light on a 96-passenger route had its nominal range halved, the chart correction was still pending eight months later, and no user of the channel was told. The operator's passage plan described a light that was no longer there. On a night when the light is not screened, or with another aid changed the same way, a master working to the plan is looking for something twice as strong as what is there.
-- Investigator notes: The cleanest single document finding in the file, and the one everybody reaches for first. The evidence will not carry it to this occurrence: over the stretch where the vessel left the channel the light was screened, and a stronger light behind a mangrove canopy is still behind it. It stays a finding because nobody using the channel was told, which sa-3 now answers.
 - Why Tarrakin Ferries Operations Manual OPS-3 revision 6, 02/2023, and appendix A issue 2 matters: The procedure the transit was made under, and the shape of the hole in it. The plan names a speed, a course, a primary and a secondary means of fixing, and states that night transits are not scheduled. It gives no hold point, no abort criterion, and nothing at all about losing the plotter.
 - Attached extract (Operations Manual OPS-3, passage planning, and the Merrandi Channel plan) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -667,6 +671,8 @@ naming what is missing, and draft the rest from what IS here.
   aids, and the aids to navigation register has never been provided to Tarrakin
   Ferries.
   ```
+- Safety actions recorded against it:
+  - [proactive] Local notice to waterway users LNM-2026-14 issued on 22/07/2026 giving the No. 4 beacon's solar conversion and its 3 M nominal range, and the Port Authority's aids to navigation register made available to every commercial operator using the channel. Tarrakin Ferries has reissued the Merrandi Channel passage plan appendix as issue 3 with the corrected range. (Aids to Navigation Officer, Kanooka Shire Council), In progress, 2026-07-22
 
 ### Darkness transit rostered to close a split duty within 20 minutes of the spread limit
 - Lane: Organisational Influences
@@ -679,7 +685,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence for influence: The roster put the master through a darkness channel transit at the end of a split duty on day nine of twelve, after 6 hours 15 minutes of sleep, and he described himself as tired. The decisions the occurrence turned on, not stopping when the plotter froze and easing back rather than stopping once he saw the beacon dead ahead, are the kind fatigue is expected to degrade.
 - Evidence against influence: A roster can reach this occurrence only through the master's fatigue, and the recorded evidence gives no sign of it on the night (see the fatigue object). Helm work held the centreline to within 3 m for the first two minutes in the channel; the response to the shallow alarm was 4 seconds; the radio work after the grounding was complete and correct at the first attempt; and the decision not to refloat was made in about thirty seconds and was right. Not stopping when the plotter froze is what both masters said nothing in any document asks of them, and the outgoing master, off a morning shift, gave the same account of the handover and the beacon.
 - Importance: It failed Influence for this occurrence and remains a finding worth acting on. The winter timetable puts the last darkness transit of the day at the end of a split duty whose spread runs to within twenty minutes of the operator's own limit, on every day of a twelve-day tour, with a fatigue diary the operator asks for and never reads, and no relief master to break a tour when somebody reports unfit. Nothing about that changes because it did not bite here.
-- Investigator notes: Split out of the old roster object on 09/10/2026. This is the roster as a standing design, tested on its own: it exists on the operator's records, it fails Influence because the record shows no effect of fatigue on the night, and it stays a finding because it puts every winter darkness transit in the same place in the duty.
 - Why Crew records and roster, Tarrakin Ferries, copied 13/07/2026 matters: Establishes competence, currency and the shape of the duty: a master with eleven years and about 4,100 transits of this channel, on day nine of twelve, on a split duty inside every limit that applies to it, with 26 of the 30 darkness transits before the occurrence made by him. It also holds the winter roster that puts the TF18 transit at the end of that split on every day of the tour.
 - Attached extract (Crew records, certificates and the roster for 07/07/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -730,7 +735,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: Raised by the deckhand, who had to ask three passengers to move away from the kiosk counter and pass behind it through a 0.6 m gap to reach the forward saloon locker while issuing lifejackets. The survey on 16/07/2026 found the locker face cannot be reached from 22 of the 34 forward saloon seats without passing behind the counter, and that with people standing at the counter the inboard gap is the only route. The muster placard directs passengers to a locker they cannot see from their seats. The arrangement approved at build in 2011 had an open bench in that position with the locker face clear; the counter was fitted in a 2019 interior refit carried out under a minor modification notice that did not trigger a re-survey of the safety equipment arrangement. The operator says the same counter is fitted to its two other 24 m vessels.
 - Significance: Forty lifejackets behind a counter, in a saloon of 34 seats, with a placard pointing at something nobody can see, is a defence that is not there when it is needed.
 - Importance: It did not influence this occurrence and it is still a finding. The vessel was aground, upright, stable and not sinking; the muster was unhurried and took a couple of minutes longer than it should have. Change one thing (a fire, a capsize risk, a night evacuation into the water, or a deckhand injured in the impact) and a locker the passengers cannot reach without crew help becomes the difference between a saloon that equips itself and one that waits. The locker is still behind the counter on this vessel, and on the operator's answer of 16/07 it is behind the same counter on the other two.
-- Investigator notes: Left in draft deliberately. The fleet-wide question is out with the operator and the state regulator and the object should not be finalised until those answers are in, even though its own tests are settled.
 - Why Stowage survey, MV Tarrakin Star forward saloon, 16/07/2026 matters: A defect the investigation found rather than looked for, raised by the deckhand's own account. The locker cannot be reached from most of the saloon it serves, the arrangement was created by a refit that triggered no re-survey, and the same counter is fitted to two other vessels.
 - Attached extract (Forward saloon lifejacket stowage survey) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -765,7 +769,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: The range and visibility check on 18/07/2026, made from the port workboat on the inbound track and at the same time of night, found the No. 4 beacon is not visible at all from the channel between 0.84 nm and 0.34 nm north of it. The sightline over that stretch passes through the mangrove canopy on Merrandi Islet, which stands about 240 m up-channel of the beacon in the shoal strip between the dredged western edge and the bank; the canopy measured 5.8 m against a lantern height of 4.2 m. Beyond 0.84 nm the sightline passes west of the islet and inside 0.34 nm it passes east of it. The register has recorded the same screening since 09/2023 and recorded the sightline as 'now fully closed on the northern approach' in 03/2026. Both masters interviewed raised the beacon unprompted, and neither has ever reported it.
 - Evidence for influence: With the plotter frozen the beacon was the only means of fixing left, and it was screened while the new heading was held. The bridge audio has 'Right. Where's four' at 18:08:31 and 'There's four' at 18:10:02, 91 seconds apart; the vessel was 0.47 nm north of the beacon when he began looking, crossed the channel's western edge at about 0.40 nm, inside the screened arc, and was 0.25 nm north when he called it. Seen on the starboard bow where it belongs, the light would have shown the vessel drawing west within a minute of the turn, while it was still in the channel.
 - Evidence against influence: The heading change began at 18:07:06, while the master was at the frozen plotter and before he started looking for the beacon, so the beacon's absence cannot have caused the turn, only its going unnoticed. The light was also clear of the islet for at least the last 37 seconds of the search before he called it (0.34 nm at about 18:09:25, called at 0.25 nm), and for longer from the vessel's own track west of the inbound one, so for part of the search there was something to see and it was not seen.
-- Investigator notes: The condition the sightline deferral leads to, and the one I would put in front of the Authority first. The screened arc was measured from the inbound track at the same time of night, not modelled. The search was not wholly inside it: the light opened for at least the last 37 seconds before he called it.
 - Why AUD-2026-0093, transcribed 16/07/2026, verified by the Port Authority's traffic officer matters: What was actually said, in order. It fixes the plotter freeze, the 91 seconds between 'Where's four' and 'There's four', the decision not to refloat, and the deckhand's account of the forward lifejacket locker as it was happening rather than in hindsight.
 - Attached extract (VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -898,7 +901,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: The plotter's internal event log records the display process not responding at 18:07:06 local with no accompanying reset, and the same cause code 0x51 at 10:42 and 11:17 that morning, where the unit recovered itself. The bridge audio matches to the second: 'Oh, come on' at 18:07:11, repeated screen taps at 18:07:26, and '(unintelligible) frozen again' at 18:07:44. The master's account is that the chart picture remained on the screen with the vessel symbol stationary and the display not accepting touch input. The unit was bench tested for 46 hours on 21/07/2026 with the same antenna and cabling; the fault did not recur and no defect was found. The contractor identified cause code 0x51 as known to the manufacturer and addressed by firmware issued in 11/2024, which this unit had never had applied.
 - Significance: This is the moment the transit stopped being the one in the passage plan. Everything the master did afterwards he did without the primary means of position fixing the plan told him to use.
-- Investigator notes: The trigger. Existence sat at 90% for a fortnight because the bench test could not reproduce the fault, which was the wrong place to carry that doubt: the bench test goes to what caused the freeze, not to whether the display froze. The freeze itself is established three independent ways and is now graded as such, and the cause question sits in the to-do list against this object.
 - Why Plotter event log recovered 09/07/2026; contractor bench test report, 21/07/2026 matters: The unit's own account of itself, and the one piece of evidence that ties the morning's two freezes to the evening's. It also sets the limit of what can be proved: the fault did not recur on a 46 hour bench test and no defect was found.
 - Attached extract (Chart plotter internal event log and bench test) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1003,7 +1005,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: From 18:07:06, the second the plotter froze, the heading increased steadily from 195 to 200 degrees over about a minute and was then held. The recorded rate of turn peaks at 6 degrees per minute at 18:07:40, while the master was at the frozen screen (screen taps at 18:07:26, 'frozen again' at 18:07:44), and is back to zero by 18:08:50; rudder angle follows helm demand within 1.5 degrees throughout, so the turn was steered. In interview the master said: 'I eased her to starboard while I was fiddling with the plotter and then looking for four. Five degrees. I never made that decision.' His safety report says the same. Nothing on the bridge showed him the new heading: the plotter's vessel symbol was frozen and the beacon was screened.
 - Significance: This is the action that took the vessel out of the channel. Held at 200 degrees against the channel's 195, it moved the vessel west at about 20 m a minute and across the 20 m to the western edge by about 18:09:00.
-- Investigator notes: Added 09/10/2026. The one action between the freeze and the bank that had no words on the map. Most of the turn was made at the plotter, before the spoken search, so it is a turn nobody noticed rather than a turn made looking for the light.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1145,7 +1146,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: The AIS track records no reduction of speed after the freeze at 18:07:06: 8.4 kt at the freeze and 8.1 kt at 18:08:00, and the fall to 7.1 kt by 18:11:48 is accounted for by shoaling drag with no throttle movement on the engine recorder until 18:11:52. The bridge audio records the master's attention moving to the search for the beacon at 18:08:31, 85 seconds after the freeze, and no consideration of stopping at any point. At 18:10:02 he saw the beacon dead ahead and knew he was off the line to the west. He brought the vessel back to port to regain the channel rather than stopping, because he took himself to be just outside the edge when he was 39 m west of the centreline; the course over ground came back from 200 to 197 degrees, still west of the channel's 195. There was no other traffic in the channel, the water was flat, the wind was offshore at 8 kt and the vessel could have been stopped in 92 m. The master's account, in interview and in his safety report, is that he did not consider stopping when the plotter froze, that he went straight to the visual transit because in his mind the visual transit is the backup, and that after the sighting stopping on the edge of a bank he could not see felt worse than easing back in. No lookout was on the bridge: the deckhand had been sent to collect fares at 18:04:14 and this is the normal practice on the route, which nothing in OPS-3 addresses either way.
 - Significance: Continuing at eight knots with no means of fixing the vessel's position is what turned the loss of the plotter into a grounding. Stopping was available from the freeze until about 18:11:40, including the 98 seconds after the master knew he was off the line, and cost nothing.
-- Investigator notes: Do not let this one carry the report. It is a contributing factor and it sits downstream of a passage plan with no hold point in it and a beacon that was not there to be found.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1320,7 +1320,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: The vessel was 1 m west of the charted centreline abeam the No. 2 beacon at 18:05:30 and held it until 18:07:06. From that time the heading increased steadily from 195 to 200 degrees over about a minute and was then held, and the vessel set west at about 20 m per minute. It reached the channel's western edge at about 18:09:00, 0.40 nm north of the No. 4 beacon, was 39 m west of the centreline by 18:10:02 and over Boolarong Bank from about 18:11:00. The recorded rate of turn peaks at 6 degrees per minute at 18:07:40 and is back to zero by 18:08:50, which is a heading change applied and held rather than a current or wind effect; the wind was offshore at 8 kt and there is no cross-set in the channel at that state of tide.
 - Significance: Nothing else on this map matters without this. The channel is 40 m wide and dredged to 3.2 m, and the bank on its western side dries in places; once outside the western edge the vessel was over water that shoals at about 1 in 70.
-- Investigator notes: The event everything upstream is about. The AIS does the arguing here: it is a held heading, not a set, and the heading change that caused it is now its own object in Individual Actions. This one is the departure itself.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1444,7 +1443,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: The echo sounder's shallow alarm is set to 0.9 m under the keel, the value written into the setup at commissioning in 2019 and never changed. It sounded once on the voyage, at 18:11:48, and the bridge audio records the tone beginning at that second. Both throttles were moved to astern together 4 seconds later and contact followed at 18:12:04, 16 seconds after the alarm. At 7.1 kt the vessel covered 58 m in that time; at the surveyed bank gradient of about 1 in 70 across that section the alarm could not have sounded appreciably earlier at that setting, and the vessel's own trials figure for a crash stop from 8 kt is 92 m. Astern thrust was developing but had not reached full at the moment of contact.
 - Significance: The last defence the vessel had gave sixteen seconds against a stopping distance it could not achieve in them. That is a finding about the setting and the speed, not about the equipment, which did exactly what it was set to do.
-- Investigator notes: The link to make sure the report draws: the alarm worked perfectly and was still useless, because a 0.9 m setting on a 1 in 70 gradient at seven knots buys you less than a stopping distance.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1533,7 +1531,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence for influence: Had 4.2 applied, the range change of 11/2025 would have gone out as a notice to mariners before it took effect, and the Authority would have been recording the beacon's availability. Those are the only two mechanisms in the code that would have carried anything about the No. 4 beacon to the people using the channel, and neither existed for it.
 - Evidence against influence: Neither mechanism reaches this occurrence. A notice of the range change would have told the operator about a light that was screened over the stretch where the vessel left the channel, and a better known light is no more visible through a mangrove canopy; the solar conversion object fails on the same ground. An availability figure measures whether a light is lit, and this one was lit the whole time. The screening itself was not left because of the code: 4.1 applies to every aid whatever the channel's status, the Authority's own register has recorded the screening since 09/2023, and what kept WO-118 unfunded was the services agreement's 50 m vegetation scope, which put the work in the general waterways vote.
 - Importance: It did not influence this occurrence and it is still worth addressing. On a channel carrying a 96-passenger ferry in darkness, the code gives the operator no right to be told when a beacon's range, character or position changes and no figure for how often the aids work. The solar conversion reached nobody for eight months for exactly that reason, and the next change, to a light that is not screened, would reach nobody either.
-- Investigator notes: Settled on Existence and failed on Influence, and the second is the point worth teaching. Both of the mechanisms the code withholds run into something else on this record: notice of the range change runs into a screened light, and the general duty at 4.1 applied to this beacon whatever the channel's status. The code is not why the screening was left; it is why nobody using the channel was ever told anything.
 - Why Waterways Aids to Navigation Code WAN-2, section 4 matters: The external requirement and its threshold. The Merrandi Channel is not a declared shipping channel, so none of the availability, recording or notification duties at 4.2 apply to any of its beacons. The general duty at 4.1 applies to every aid, and the Port Authority reads it as lit and on station.
 - Attached extract (Waterways Aids to Navigation Code WAN-2, section 4) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -1651,7 +1648,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence for influence: The master called the beacon 'a nothing' in front of the town and the new floodlights, and said 'It used to be a proper light. It was a mains light.' For at least the last 37 seconds of his search the light was clear of the islet and not yet seen, and a weaker light against a bright background is harder to pick up in that time. The passage plan he was working to still gave the No. 4 beacon at 6 M.
 - Evidence against influence: Over the half mile in which the vessel left the channel the beacon was screened by the canopy, and a screened light is not made visible by being brighter. The master already knew the light was weaker, in his own words, so a notice would have told him nothing he did not know. Range is not the limit at these distances either: the search ran from 0.47 nm to 0.25 nm, well inside even the measured 2.6 nm. Nothing in the record shows the plan's 6 M figure was used for anything on the night.
 - Importance: It did not influence this occurrence and it is still a finding. A light on a 96-passenger route had its nominal range halved, the chart correction was still pending eight months later, and no user of the channel was told. The operator's passage plan described a light that was no longer there. On a night when the light is not screened, or with another aid changed the same way, a master working to the plan is looking for something twice as strong as what is there.
-- Investigator notes: The cleanest single document finding in the file, and the one everybody reaches for first. The evidence will not carry it to this occurrence: over the stretch where the vessel left the channel the light was screened, and a stronger light behind a mangrove canopy is still behind it. It stays a finding because nobody using the channel was told, which sa-3 now answers.
 - Why Tarrakin Ferries Operations Manual OPS-3 revision 6, 02/2023, and appendix A issue 2 matters: The procedure the transit was made under, and the shape of the hole in it. The plan names a speed, a course, a primary and a secondary means of fixing, and states that night transits are not scheduled. It gives no hold point, no abort criterion, and nothing at all about losing the plotter.
 - Attached extract (Operations Manual OPS-3, passage planning, and the Merrandi Channel plan) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -1749,7 +1745,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence for influence: The roster put the master through a darkness channel transit at the end of a split duty on day nine of twelve, after 6 hours 15 minutes of sleep, and he described himself as tired. The decisions the occurrence turned on, not stopping when the plotter froze and easing back rather than stopping once he saw the beacon dead ahead, are the kind fatigue is expected to degrade.
 - Evidence against influence: A roster can reach this occurrence only through the master's fatigue, and the recorded evidence gives no sign of it on the night (see the fatigue object). Helm work held the centreline to within 3 m for the first two minutes in the channel; the response to the shallow alarm was 4 seconds; the radio work after the grounding was complete and correct at the first attempt; and the decision not to refloat was made in about thirty seconds and was right. Not stopping when the plotter froze is what both masters said nothing in any document asks of them, and the outgoing master, off a morning shift, gave the same account of the handover and the beacon.
 - Importance: It failed Influence for this occurrence and remains a finding worth acting on. The winter timetable puts the last darkness transit of the day at the end of a split duty whose spread runs to within twenty minutes of the operator's own limit, on every day of a twelve-day tour, with a fatigue diary the operator asks for and never reads, and no relief master to break a tour when somebody reports unfit. Nothing about that changes because it did not bite here.
-- Investigator notes: Split out of the old roster object on 09/10/2026. This is the roster as a standing design, tested on its own: it exists on the operator's records, it fails Influence because the record shows no effect of fatigue on the night, and it stays a finding because it puts every winter darkness transit in the same place in the duty.
 - Why Crew records and roster, Tarrakin Ferries, copied 13/07/2026 matters: Establishes competence, currency and the shape of the duty: a master with eleven years and about 4,100 transits of this channel, on day nine of twelve, on a split duty inside every limit that applies to it, with 26 of the 30 darkness transits before the occurrence made by him. It also holds the winter roster that puts the TF18 transit at the end of that split on every day of the tour.
 - Attached extract (Crew records, certificates and the roster for 07/07/2026) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1800,7 +1795,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: Raised by the deckhand, who had to ask three passengers to move away from the kiosk counter and pass behind it through a 0.6 m gap to reach the forward saloon locker while issuing lifejackets. The survey on 16/07/2026 found the locker face cannot be reached from 22 of the 34 forward saloon seats without passing behind the counter, and that with people standing at the counter the inboard gap is the only route. The muster placard directs passengers to a locker they cannot see from their seats. The arrangement approved at build in 2011 had an open bench in that position with the locker face clear; the counter was fitted in a 2019 interior refit carried out under a minor modification notice that did not trigger a re-survey of the safety equipment arrangement. The operator says the same counter is fitted to its two other 24 m vessels.
 - Significance: Forty lifejackets behind a counter, in a saloon of 34 seats, with a placard pointing at something nobody can see, is a defence that is not there when it is needed.
 - Importance: It did not influence this occurrence and it is still a finding. The vessel was aground, upright, stable and not sinking; the muster was unhurried and took a couple of minutes longer than it should have. Change one thing (a fire, a capsize risk, a night evacuation into the water, or a deckhand injured in the impact) and a locker the passengers cannot reach without crew help becomes the difference between a saloon that equips itself and one that waits. The locker is still behind the counter on this vessel, and on the operator's answer of 16/07 it is behind the same counter on the other two.
-- Investigator notes: Left in draft deliberately. The fleet-wide question is out with the operator and the state regulator and the object should not be finalised until those answers are in, even though its own tests are settled.
 - Why Stowage survey, MV Tarrakin Star forward saloon, 16/07/2026 matters: A defect the investigation found rather than looked for, raised by the deckhand's own account. The locker cannot be reached from most of the saloon it serves, the arrangement was created by a refit that triggered no re-survey, and the same counter is fitted to two other vessels.
 - Attached extract (Forward saloon lifejacket stowage survey) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1834,7 +1828,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: The plotter's log records two freezes on the morning shift, at 10:42 and 11:17 local, both of which the unit recovered from by itself. The outgoing master told the relieving master about both at the handover at about 13:05 at the town wharf; the relieving master replied that it had done the same to him the month before. Neither entered it in the wheelhouse defect book, neither reported it to the Operations Manager, and no entry of any kind was made for 07/07/2026 before the occurrence. Both accounts of the handover agree in every particular and both men volunteered the omission before they were asked about it.
 - Significance: An entry at 13:05 would have put the fault in the book a foot from where the relieving master was standing, in about eleven seconds, and nothing required either man to make it.
 - Importance: It did not influence this occurrence and it is still a finding, because it is the practice and not a lapse: both masters made the same omission, both volunteered it, and both described the same rule for it. A cleared fault on the vessel's primary means of position fixing passed on by word of mouth leaves the next master knowing and everyone ashore not, and the next fault passed on that way may be one that an entry on the day would catch.
-- Investigator notes: Careful with the wording of this one. It is an omission both masters made, both volunteered, and neither was asked to avoid. The finding is the practice, not the two men, and the practice is tested on the procedure object, which is where the arrow to the freeze now runs.
 - Why Plotter event log recovered 09/07/2026; contractor bench test report, 21/07/2026 matters: The unit's own account of itself, and the one piece of evidence that ties the morning's two freezes to the evening's. It also sets the limit of what can be proved: the fault did not recur on a 46 hour bench test and no defect was found.
 - Attached extract (Chart plotter internal event log and bench test) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -1919,7 +1912,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence: Both engines were stopped 27 seconds after contact and were not restarted. The master's pan pan at 18:13:04 states 'I am not attempting to refloat' as a decision already made, 60 seconds after the vessel came to rest. He directed the No. 2 starboard void to be sounded, reported 75 mm of ingress to Port Control at 18:17:05 and had it sounded ten minutely thereafter. Passengers were addressed within 36 seconds of the impact and again at 18:14:52, and lifejackets were issued to all 38. The survey later confirmed a 180 mm split in the starboard hull plating in way of that void, with ingress reaching approximately 260 mm by the time the vessel refloated on the tide at 00:20. His reasoning in interview: falling tide, unknown bottom, thirty eight people aboard, and a vessel that cannot sink while it is on the bank.
 - Significance: The vessel was holed. Backing a holed vessel off a bank into the channel on a falling tide, at night, with 38 passengers aboard and no assessment of the damage, is the decision that turns a grounding into something else. That decision was never taken, and the decision against it was made inside a minute.
-- Investigator notes: Recorded as a positive event because it is one. The same investigation that finds he should have stopped when the plotter froze should say that what he did after the impact was right and was done fast.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -2085,7 +2077,6 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Existence: The gauge record and the tide table are independent of each other and of the vessel, and they agree to within 0.03 m at the moment of the grounding, which is the ordinary scatter between a gauge and a table rather than a set-down. Taken at face value it changes nothing: at the predicted height there would have been 1.44 m of water against an effective draught of 1.53 m, and the vessel would have touched at the predicted tide as well. The 5% is the standing of the hypothesis and not of those readings, which are themselves settled.
 - Finalised: yes
 - Evidence: Hypothesis tested because the vessel grounded three hours into a falling tide with a two-day westerly behind it, and a set-down of a few tenths would have mattered. It fails, and what refutes it is measurement rather than argument. The Port Authority's gauge at Kanooka Heads read 0.91 m at 18:12. The height predicted for that minute was 0.94 m, so the stand was 0.03 m under the tide table, and the gauge's largest departure from the table in the twelve hours to 20:00 was 0.07 m. With the bed at the contact point surveyed at 0.50 m below chart datum there was 1.41 m of water over it, against a static draught of 1.35 m and a calculated squat of 0.18 m at 6.8 kt. The vessel touched because it was 54 m outside a channel dredged to 3.2 m, not because the water was lower than the chart and the tide table said it would be.
-- Investigator notes: Raised on the first day because a grounding on a falling tide invites it, and because an offshore wind had been blowing for two days. Disposed of in a morning with the port's own gauge, and kept on the map so the report can say it was tested.
 - Why MET-TIDE-0093-070726, retrieved 09/07/2026 matters: Disposes of the weather and the tide as factors and establishes the one environmental condition that matters: a transit made 35 minutes after the end of civil twilight with no moon, in which every reference available to the master was an artificial light.
 - Attached extract (Tide predictions and gauge record, weather observations, light and moon) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -2152,7 +2143,6 @@ naming what is missing, and draft the rest from what IS here.
 - Note on Existence: The recorder traces, the shape of the turn and the post-occurrence examination agree. The starboard shaft, propeller and rudder damage all date from the contact, not before it. The 5% is the standing of the hypothesis and not of the traces, which are themselves settled.
 - Finalised: yes
 - Evidence: Hypothesis tested because a five degree heading change followed by a steady set out of the channel is what a jammed rudder or a lost engine looks like from outside. It fails, on two independent grounds, and what refutes it is measurement rather than argument. The engine recorder gives both engines at 1,780 and 1,784 rpm within 12 rpm of each other from 18:03 to 18:11:52 with no alarm, no excursion and no throttle movement; steering gear hydraulic pressure holds continuously at 96 to 99 bar against a normal band of 90 to 105; and rudder angle follows helm demand within 1.5 degrees throughout. The rate of turn on the recorder peaks at 6 degrees per minute and returns to zero, which is a heading applied and then held, not a sheer. Separately, the whole steering system was removed and function tested on 12/07/2026 and every component was serviceable with no internal leakage and no sign of a pre-existing defect. The bridge audio contains no steering or engine remark at any point.
-- Investigator notes: The first hypothesis anyone offers for a vessel that leaves a channel, and the first one the data kills. Kept on the map because the report should show it was tested, not assumed away.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -2250,7 +2240,6 @@ naming what is missing, and draft the rest from what IS here.
 - Evidence: The survey on 18/07/2026 found 14 unshielded LED floodlights on 12 m columns at the new boat ramp, each presenting about 4,800 candela toward the channel, commissioned on 22/05/2026, ten days before the winter timetable began. From 0.5 nm north of the beacon the array lies behind it within 4 degrees of the same bearing and within 1.5 degrees of the same elevation, and it is continuously lit while the beacon flashes green for 0.4 seconds every 2.5 seconds. The Port Authority's aids to navigation officer was not consulted on the development and no assessment against the channel's aids was required or made.
 - Evidence for influence: The master described looking 'into a wall of light' and called the beacon 'a nothing' against the town and the new car park, and the outgoing master independently called it 'washed out altogether from up the top'. For at least the last 37 seconds before the master called the beacon it was clear of the islet and not seen, which is the stretch in which the floodlights, rather than the canopy, stood between him and the light.
 - Evidence against influence: Over most of the search the beacon was screened by the canopy and would not have been visible against a black background either. The heading change began at the plotter, before the search, so the floodlights cannot have caused the turn. No measurement exists of what could be seen on the night, only a survey eleven days later, nothing establishes a detection threshold for a 0.4 second green flash against that background, and the master himself said twice that he could not tell whether the lights were why he could not see the beacon.
-- Investigator notes: Left in draft on purpose. The floodlights are measured and not in doubt; what they did on the night is. Both masters describe them the same way, and none of it establishes that the floodlights rather than the mangroves are why he could not see the light. Say so in the report rather than picking a side.
 - Why AUD-2026-0093, transcribed 16/07/2026, verified by the Port Authority's traffic officer matters: What was actually said, in order. It fixes the plotter freeze, the 91 seconds between 'Where's four' and 'There's four', the decision not to refloat, and the deckhand's account of the forward lifejacket locker as it was happening rather than in hindsight.
 - Attached extract (VHF channels 12 and 16 and bridge camera audio, 17:32 to 19:26 local) (verbatim record of the source; may be quoted, and reproduce any figure exactly as it appears):
   ```
@@ -2349,7 +2338,6 @@ naming what is missing, and draft the rest from what IS here.
 - Finalised: yes
 - Evidence for: Day nine of a twelve-day tour, on a split duty of 05:40 to 08:40 and 13:00 to 19:20 with a 13 hour 40 minute spread, the channel transit falling in its last hour and a quarter. The master's own fatigue diary gives 6 hours 15 minutes of sleep the night before, and in interview he said 'I was tired. I'd be lying if I said otherwise.' Having seen the beacon dead ahead at 18:10:02 and known he was off the line, he eased the vessel back to port rather than stopping, on his account because he took himself to be just outside the edge when he was nearly 40 m west of the centreline, which is the kind of misjudgement fatigue is expected to produce.
 - Evidence against: In the same answer he said 'I wasn't fighting to stay awake and I wasn't slow', and the recorded performance agrees with him. Helm work held the centreline to within 3 m for the first two minutes in the channel; the response to the shallow alarm was 4 seconds; the radio work after the grounding was complete and correct at the first attempt; and the decision not to refloat was made in about thirty seconds and was right. Six and a quarter hours is what he says is normal for him on a split, and nothing else in the record bears on his state.
-- Investigator notes: Split out of the old roster object on 09/10/2026. This is the proposition the old object's Influence was really arguing: was he fatigued. The evidence will not settle it either way, so it stays on the map as tested and set aside, with no arrow.
 - Why Port Control AIS receiver log and vessel recorder readout AIS-2026-0093-R1, issued 15/07/2026 matters: The load-bearing physical evidence for where the vessel was and what was being done with it. It fixes the moment the vessel left the centreline, shows the set west as a held heading change rather than a current effect, and disposes of a steering or propulsion failure on recorded parameters.
 - Attached extract (AIS track, engine monitoring recorder and steering data, service TF18) (the investigator's description of what was observed, NOT anyone's words; summarise it, never quote it or attribute it as speech):
   ```
@@ -2520,6 +2508,15 @@ naming what is missing, and draft the rest from what IS here.
   tour. No relief master is rostered: a master who reports unfit is covered by
   extending another master's tour.
   ```
+
+## Considered and not found contributing
+
+Each of these was examined and is NOT a contributing factor, whatever its arrows on the map; its full record is under its own heading above. The report must still mention each one, say that it was considered, and explain from the reason recorded why it was not found to be contributing. Never describe one as having caused or contributed to the occurrence.
+
+- Tide set down below prediction over Boolarong Bank (excluded hypothesis; Existence Fail - very unlikely / Influence Not tested): reason recorded at Existence: The gauge record and the tide table are independent of each other and of the vessel, and they agree to within 0.03 m at the moment of the grounding, which is the ordinary scatter between a gauge and a table rather than a set-down. Taken at face value it changes nothing: at the predicted height there would have been 1.44 m of water against an effective draught of 1.53 m, and the vessel would have touched at the predicted tide as well. The 5% is the standing of the hypothesis and not of those readings, which are themselves settled.
+- Unshielded boat ramp floodlights aligned behind the No. 4 beacon from the north (safety factor, influence not settled; Existence Pass - virtually certain / Influence Inconclusive - about as likely as not): reason recorded at Influence: Inconclusive, and recorded as inconclusive rather than dropped. The alignment is real and the masters' accounts are consistent and independent; whether the floodlights delayed the sighting in the seconds after the light cleared the islet, and so the moment the held heading was noticed, cannot be established either way on the evidence available. The report owes the reader this reasoning rather than silence, and the Authority owes the channel a lighting assessment however this test lands.
+- Plotter fault passed on verbally at the change of master and not entered in the defect book (other factor that increased risk; Existence Pass - virtually certain / Influence Fail - unlikely): reason recorded at Influence: Failed. The freeze at 18:07 was a firmware fault. An entry made at 13:05 would have been reviewed by the Operations Manager at the end of the week, and nothing written that afternoon could have applied firmware to the unit, or taken the vessel off TF18, by 18:07. The defect chain that does reach the freeze runs through the procedure, tested on its own object: a year of freezes that were never written down, of which these two are the last.
+- Steering or propulsion failure before the vessel left the centreline (excluded hypothesis; Existence Fail - very unlikely / Influence Not tested): reason recorded at Existence: The recorder traces, the shape of the turn and the post-occurrence examination agree. The starboard shaft, propeller and rudder damage all date from the contact, not before it. The 5% is the standing of the hypothesis and not of the traces, which are themselves settled.
 
 ## Timeline (sequence of events, all times local time; corrections are the investigator's zone or clock adjustments)
 
@@ -3468,65 +3465,65 @@ Background: Role at the time of the occurrence: Master, MV Tarrakin Star, on the
 
 The investigator has finalised this record: it is settled, and stands as the account of what this person said.
 
-Verbatim transcript of the interview, as corrected by the investigator. Speakers are named by the role the investigator assigned them. It is what was actually said: where the notes below differ from it, the transcript is what happened.
+Transcript of the interview, as corrected by the investigator. This is a machine-generated transcript (automatic speech recognition), so it can mishear words, names and figures. Speakers are named by the role the investigator assigned them. It is still the authoritative record of what was said: where the notes below differ from it, the transcript is what happened.
 
-Lead investigator: We're recording. Thanks for coming in. Just for the record, you're happy for us to record this?
+00:00:01.800 Lead investigator: We're recording. Thanks for coming in. Just for the record, you're happy for us to record this?
 
-Master: Yeah, go ahead.
+00:00:09.620 Master: Yeah, go ahead.
 
-Lead investigator: Good. What I'd like first is for you to take me through Tuesday in your own words. Start wherever you want and don't worry about what I might be after. I'll keep my questions until you're finished.
+00:00:11.240 Lead investigator: Good. What I'd like first is for you to take me through Tuesday in your own words. Start wherever you want and don't worry about what I might be after. I'll keep my questions until you're finished.
 
-Master: Right. So it was day nine of a twelve, and it was a split, which is what we do in winter. Early run on one of the other boats, home in the middle of the day, back on at one. I took her over from the morning bloke about five past one at the town wharf. Nothing out of the ordinary. He told me the plotter had frozen on him twice that morning and come good on its own both times. I said something like, yeah, it did that to me last month. And that was the end of it. Neither of us wrote it down. The afternoon was normal. Two round trips. Then TF18 is the last one, seventeen thirty five off Muntari. Thirty eight on. It was properly dark by then. Clear, bit of westerly, no sea in the entrance at all. Best conditions you could ask for, honestly. Came down and picked up number one and went into the channel on the line. At number two I was happy. I was where I wanted to be. And then the plotter froze. The picture stays there, that's the thing, it looks fine. The boat just stops moving on it. And it wouldn't take a touch. I had a go at it twice. Then I went looking for number four out the window, because that's what you do. Centreline, plotter, number four. That's the transit. I've done it four thousand times. And it wasn't there. I couldn't find it. I opened the window because I thought maybe the glass, and it still wasn't there. When I did pick it up it was dead ahead of me instead of out on the starboard bow where it belongs, and I knew straight away I was off the line to the west. The alarm went a minute and a half or so after that. I had both of them astern straight away and she went on anyway. Stopped the engines. Didn't touch them again. Got on the box to Port Control, got the jackets out, got the void sounded, and waited for the workboat. That's it, really.
+00:00:22.400 Master: Right. So it was day nine of a twelve, and it was a split, which is what we do in winter. Early run on one of the other boats, home in the middle of the day, back on at one. I took her over from the morning bloke about five past one at the town wharf. Nothing out of the ordinary. He told me the plotter had frozen on him twice that morning and come good on its own both times. I said something like, yeah, it did that to me last month. And that was the end of it. Neither of us wrote it down. The afternoon was normal. Two round trips. Then TF18 is the last one, seventeen thirty five off Muntari. Thirty eight on. It was properly dark by then. Clear, bit of westerly, no sea in the entrance at all. Best conditions you could ask for, honestly. Came down and picked up number one and went into the channel on the line. At number two I was happy. I was where I wanted to be. And then the plotter froze. The picture stays there, that's the thing, it looks fine. The boat just stops moving on it. And it wouldn't take a touch. I had a go at it twice. Then I went looking for number four out the window, because that's what you do. Centreline, plotter, number four. That's the transit. I've done it four thousand times. And it wasn't there. I couldn't find it. I opened the window because I thought maybe the glass, and it still wasn't there. When I did pick it up it was dead ahead of me instead of out on the starboard bow where it belongs, and I knew straight away I was off the line to the west. The alarm went a minute and a half or so after that. I had both of them astern straight away and she went on anyway. Stopped the engines. Didn't touch them again. Got on the box to Port Control, got the jackets out, got the void sounded, and waited for the workboat. That's it, really.
 
-Lead investigator: Thank you. I'd like to go back to the changeover. What exactly did he say to you about the plotter?
+00:02:09.820 Lead investigator: Thank you. I'd like to go back to the changeover. What exactly did he say to you about the plotter?
 
-Master: He said it froze on him twice on the morning runs and it came back by itself both times. He said it was probably the heat in the wheelhouse. He wasn't worried about it and neither was I.
+00:02:15.560 Master: He said it froze on him twice on the morning runs and it came back by itself both times. He said it was probably the heat in the wheelhouse. He wasn't worried about it and neither was I.
 
-Lead investigator: Did either of you enter it in the defect book?
+00:02:25.300 Lead investigator: Did either of you enter it in the defect book?
 
-Master: No. And I've thought about that more than anything else. The book's a foot from where I was standing. It would have taken eleven seconds. But it's not a defect in your head, is it. It's a thing that happened and stopped happening. If it had stayed frozen he'd have written it up and I'd have had a different boat.
+00:02:28.040 Master: No. And I've thought about that more than anything else. The book's a foot from where I was standing. It would have taken eleven seconds. But it's not a defect in your head, is it. It's a thing that happened and stopped happening. If it had stayed frozen he'd have written it up and I'd have had a different boat.
 
-Second investigator: Is that how it usually goes on the boats? A thing that comes good doesn't get written up?
+00:02:45.520 Second investigator: Is that how it usually goes on the boats? A thing that comes good doesn't get written up?
 
-Master: Honestly, yes. The book is for things that are broken when you hand over. If it's broken you write it, if it came good you say it. Everyone does that and nobody has ever told us not to.
+00:02:51.260 Master: Honestly, yes. The book is for things that are broken when you hand over. If it's broken you write it, if it came good you say it. Everyone does that and nobody has ever told us not to.
 
-Lead investigator: When the plotter froze in the channel, did you consider stopping?
+00:03:01.000 Lead investigator: When the plotter froze in the channel, did you consider stopping?
 
-Master: No. And that's the honest answer and it's not a good one. I didn't think about it. I went straight to the visual transit because in my head the visual transit is the backup. There's nothing that tells you to stop. There's nothing that tells you anything. We haven't got a night plan for that channel. The plan we've got says night transits aren't scheduled.
+00:03:06.740 Master: No. And that's the honest answer and it's not a good one. I didn't think about it. I went straight to the visual transit because in my head the visual transit is the backup. There's nothing that tells you to stop. There's nothing that tells you anything. We haven't got a night plan for that channel. The plan we've got says night transits aren't scheduled.
 
-Lead investigator: You said you went looking for number four and couldn't find it. Talk me through that minute and a half.
+00:03:25.220 Lead investigator: You said you went looking for number four and couldn't find it. Talk me through that minute and a half.
 
-Master: It's the longest minute and a half I've had. You're looking into a wall of light. The town's there, and now there's that car park with the new floodlights, and it's all one glow from out there. Four is a green flash, 0.4 of a second every two and a half. In front of that lot it's a nothing. It used to be a proper light. It was a mains light. And I'll tell you what I did without deciding to do it, which is I eased her to starboard while I was fiddling with the plotter and then looking for four. Five degrees. I never made that decision.
+00:03:31.960 Master: It's the longest minute and a half I've had. You're looking into a wall of light. The town's there, and now there's that car park with the new floodlights, and it's all one glow from out there. Four is a green flash, 0.4 of a second every two and a half. In front of that lot it's a nothing. It used to be a proper light. It was a mains light. And I'll tell you what I did without deciding to do it, which is I eased her to starboard while I was fiddling with the plotter and then looking for four. Five degrees. I never made that decision.
 
-Second investigator: You've said the beacon has been getting harder to see for two years. What did you do about that, over those two years?
+00:03:57.180 Second investigator: You've said the beacon has been getting harder to see for two years. What did you do about that, over those two years?
 
-Master: Said it to the other masters. Said it in the tearoom. Said it to the bloke on the workboat once. Never wrote it down, never told the office, never told the port. And before you ask me why, it's because there's nowhere to put it. There's no form for the beacon looks dim. It's not our beacon. And I don't know who'd read it.
+00:04:03.920 Master: Said it to the other masters. Said it in the tearoom. Said it to the bloke on the workboat once. Never wrote it down, never told the office, never told the port. And before you ask me why, it's because there's nowhere to put it. There's no form for the beacon looks dim. It's not our beacon. And I don't know who'd read it.
 
-Lead investigator: The timetable changed on the first of June and the run moved into darkness. What came with that change?
+00:04:22.400 Lead investigator: The timetable changed on the first of June and the run moved into darkness. What came with that change?
 
-Master: A new roster sheet. That's it. No brief, no plan, no conversation. The run moved an hour and twenty and the only thing anybody told me was the new departure time.
+00:04:29.140 Master: A new roster sheet. That's it. No brief, no plan, no conversation. The run moved an hour and twenty and the only thing anybody told me was the new departure time.
 
-Lead investigator: You'd done twenty six of those night transits before Tuesday. How did the others go?
+00:04:38.880 Lead investigator: You'd done twenty six of those night transits before Tuesday. How did the others go?
 
-Master: Fine. That's the part that bothers me. Twenty six of them were fine, so by Tuesday I thought it was a normal thing to do. It isn't. It just hadn't bitten anybody yet.
+00:04:44.620 Master: Fine. That's the part that bothers me. Twenty six of them were fine, so by Tuesday I thought it was a normal thing to do. It isn't. It just hadn't bitten anybody yet.
 
-Lead investigator: I have to ask about how you were feeling. Day nine of twelve, a split duty, back on at one.
+00:04:54.360 Lead investigator: I have to ask about how you were feeling. Day nine of twelve, a split duty, back on at one.
 
-Master: I was tired. I'd be lying if I said otherwise. Six and a quarter hours the night before, which is about normal for me on a split. But I wasn't fighting to stay awake and I wasn't slow. I'd rather you didn't hang it on the roster, because the roster's been like that for eleven years and I knew where I was. What was different on Tuesday was the dark and the plotter.
+00:05:01.100 Master: I was tired. I'd be lying if I said otherwise. Six and a quarter hours the night before, which is about normal for me on a split. But I wasn't fighting to stay awake and I wasn't slow. I'd rather you didn't hang it on the roster, because the roster's been like that for eleven years and I knew where I was. What was different on Tuesday was the dark and the plotter.
 
-Second investigator: After she touched, you decided not to try to back off. Take me through that.
+00:05:19.580 Second investigator: After she touched, you decided not to try to back off. Take me through that.
 
-Master: Falling tide, unknown bottom, thirty eight people aboard and I've just heard her grind for nine seconds. If I pull her off and she's holed, I'm in eleven feet of water with a list. On the bank she can't sink. That's not a clever decision, that's the first thing they teach you. Stop the engines, assess, don't make it worse.
+00:05:26.320 Master: Falling tide, unknown bottom, thirty eight people aboard and I've just heard her grind for nine seconds. If I pull her off and she's holed, I'm in eleven feet of water with a list. On the bank she can't sink. That's not a clever decision, that's the first thing they teach you. Stop the engines, assess, don't make it worse.
 
-Lead investigator: Going back to when you saw four dead ahead. You knew you were off the line. What did you do then, and did stopping cross your mind?
+00:05:44.800 Lead investigator: Going back to when you saw four dead ahead. You knew you were off the line. What did you do then, and did stopping cross your mind?
 
-Master: I brought her back to port to get in again. I thought I was just outside the edge, a boat width maybe, so a few degrees and I'd be back on the line. Stopping right there, on the edge of a bank I couldn't see, felt worse than easing her back in. I was wrong about how far out I was. I was nearly forty metres out.
+00:05:52.540 Master: I brought her back to port to get in again. I thought I was just outside the edge, a boat width maybe, so a few degrees and I'd be back on the line. Stopping right there, on the edge of a bank I couldn't see, felt worse than easing her back in. I was wrong about how far out I was. I was nearly forty metres out.
 
-Lead investigator: Last one from me. What do you think this investigation ought to be looking at?
+00:06:15.020 Lead investigator: Last one from me. What do you think this investigation ought to be looking at?
 
-Master: The beacon and the night plan. In that order. My bit I'll wear and I've already written it down. But if you fix me and you leave that channel the way it is, you've fixed nothing at all.
+00:06:20.760 Master: The beacon and the night plan. In that order. My bit I'll wear and I've already written it down. But if you fix me and you leave that channel the way it is, you've fixed nothing at all.
 
-Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
+The interview record, from the investigator's own write-up of what was said:
 
 Free recall:
 Took the vessel over at about 13:05 at the town wharf. The outgoing master told him the plotter had frozen twice that morning and come good on its own both times. He replied that it had done the same to him the month before. Neither of them wrote it down.
@@ -3571,14 +3568,6 @@ Nothing outstanding with this witness. He was asked at the end what the investig
 
 To put to the operator rather than to him: whether any master on the route has ever been given a night passage plan for any channel, and whether the company reporting system's 'navigation hazard' category has ever been used on this route. Checked 20/07: it exists, it has not been used on this route in three years, and no master interviewed knew it was there.
 
-Investigator's notes:
-Recorded interview, transcript is the record. The notes windows above are my own write-up beside it and the points below are working points, not a substitute for either.
-Free recall was chronological and unprompted and he did not need steering. He volunteered the defect book omission and the failure to stop before I raised either of them, and he volunteered that both were his.
-Two things he raised that I had not put on my list. First, that he eased five degrees to starboard without making a decision to do it, which is the mechanism the AIS shows and which I could not otherwise have explained. The AIS puts most of that turn at the plotter, before 'Where's four', so it is a turn he did not notice rather than a turn made looking for the light. Second, that twenty six uneventful darkness transits had made the run feel normal to him by the twenty seventh.
-On the foreshore lighting he was careful, twice, to say he could not tell me whether the lights were why he could not see the beacon, only that it is harder than it used to be. Do not overread this into the shore lighting object; the survey does not carry it either.
-On reporting the beacon: 'There's no form for the beacon looks dim.' That is the reporting gap in one line and it should go in the report in his words.
-Demeanour: composed, direct, no deflection, and noticeably harder on himself than the evidence is. Worth watching in the drafting that the report does not simply adopt his own framing of his part in it.
-
 Additional questions:
 Asked what would have prompted him to stop when the plotter froze. Answer: nothing did, and nothing in any document asks the question.
 Asked whether any briefing or plan accompanied the winter timetable change. Answer: a new roster sheet.
@@ -3591,100 +3580,6 @@ Interviewee recommendations:
 Asked what he thought the investigation should look at. His answer: 'The beacon and the night plan. In that order. If you fix me and you leave that channel the way it is, you've fixed nothing at all.'
 Action for me: ask the Port Authority directly whether any operator has ever asked about the channel's aids, and whether the register has ever been given to Tarrakin Ferries. Answer obtained 20/07: no to both.
 
-### Deckhand (record not finalised)
-
-Attendees: Lead: Lead investigator, Fleet Safety; Assisting: Second investigator; Interviewee: Deckhand; Support person: Union representative (present, did not participate)
-
-Background: Role at the time of the occurrence: Deckhand, MV Tarrakin Star, on the day; Time in the role: 7 months; Time with the organisation: 7 months with Tarrakin Ferries; Where normally based: Kanooka Heads; Experience on this type or equipment: First winter season on the route; Other ratings or qualifications held: Basic marine safety certificate; coxswain's certificate; Total experience in the industry: Approximately 3 years in commercial marine operations; Most recent training or check: Vessel familiarisation and drills completed 12/2025; Duty and rest in the days before the occurrence: Same duty as the master from 13:00; not on a split
-
-The investigator has NOT finalised this record yet. Treat it as a working draft - the transcript may still be part-corrected and the notes unfinished - and do not quote from it as though it were settled.
-
-Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
-
-Free recall:
-Started with the changeover at the town wharf at about 13:05. Was not on the
-bridge for it and did not hear the handover between the two masters. Says
-crew changeovers happen on the aft deck while the boat is turning round and
-the masters do theirs in the wheelhouse.
-
-Afternoon was ordinary. Two round trips, light loads, nothing said about the
-plotter or anything else.
-
-TF18 loaded 38 at Muntari. Went round the saloons on departure doing the
-safety announcement and then started the fares. Was in the main saloon at the
-servery end for most of the transit.
-
-Was called up to the bridge at about 18:04 and the master said to go and do
-the fares instead, which was normal. "He didn't want me up there and there
-was no reason for me to be up there."
-
-Felt the boat change note before the alarm went, "she went heavy", and was
-already moving forward when the impact came. Describes the impact as a hard
-shove and then a long scraping.
-
-Master was on the public address within about thirty seconds and the deckhand
-started the lifejackets from aft forward.
-
-Aft saloon was easy. Forward saloon was not, because the locker is behind the
-kiosk counter and there were three passengers standing at it. Had to ask them
-to move, go round the end of the counter through a narrow gap, and hand the
-jackets out over the counter.
-
-Sounded the No. 2 starboard void at the master's direction, found about 75 mm
-of water, and sounded it every ten minutes after that.
-
-All 38 passengers off by workboat, last one at about 19:26.
-
-Additional questions:
-Asked whether the master seemed different at any point during the transit.
-Answer: no, and the deckhand would not have been able to tell, having been in
-the saloon from about 18:05.
-
-Asked whether a lookout is normally kept on the bridge at night on this run.
-Answer: no. "There's one bloke up there. There's always been one bloke up
-there." Says nobody has ever asked her to stand a lookout on any vessel in
-this company, in daylight or in the dark, and that the fares have to be done
-during the transit because there is nowhere else in the timetable for them.
-
-Asked what she was told when the winter timetable started. Answer: the new
-times. Nothing else. No briefing about the run being in darkness.
-
-Asked whether she had ever seen the No. 4 beacon. Answer: does not know which
-one it is. Has never been shown the channel marks and does not have a role
-that requires it.
-
-Asked about the lifejacket locker: had she raised it before? Answer: no,
-because "it's how the boat is". Has since submitted a safety report about it
-(SR-2026-0291).
-
-Follow-up questions:
-Still to ask: whether the other two 24 m vessels have the same servery
-counter in front of the same locker (put to the operator; answered yes on
-16/07).
-
-Still to ask the operator: is a second person on the bridge required, or
-expected, or neither, for a channel transit in darkness? Nothing in OPS-3
-says anything either way and the deckhand's account is that it has never
-happened.
-
-Investigator's notes:
-Not recorded, at her request. Second investigator present and has read and agreed the notes above, which are the record of this interview.
-She is a careful witness and was clear about the limits of what she saw. She volunteered three times that she was in the saloon from about 18:05 and could not speak to anything on the bridge.
-The lookout point is hers, not mine, and I had not put it on my list. The passage plan names a speed, a course and three beacons and says nothing at all about who is on the bridge. On a 40 m channel in the dark that is worth saying in the report even though I cannot carry it to a finding here: the master did not fail to see something a second pair of eyes would have seen, because the beacon was screened from both of them.
-The lifejacket account is the best evidence in the file for that finding and it came from a witness who thought it was not relevant to the grounding. That is the argument for asking every witness the open question at the end.
-Record deliberately not finalised. The lookout question is out with the operator and her answer may have to be put to her again when it comes back.
-
-Additional questions:
-Asked whether the master seemed different at any point in the transit. Answer: no, and she would not have been able to tell from the saloon.
-Asked whether a lookout is normally kept on the bridge at night. Answer: no, and nobody has ever asked her to stand one on any vessel in this company.
-Asked what she was told when the winter timetable started. Answer: the new times, and nothing else.
-Asked whether she had ever seen the No. 4 beacon. Answer: does not know which one it is and has never been shown the channel marks.
-Asked whether she had raised the lifejacket locker before. Answer: no, 'it's how the boat is'. Has since submitted SR-2026-0291 about it.
-
-Interviewee recommendations:
-Her point, unprompted: she would not know how to get forty lifejackets out of the forward locker in a hurry, and she believes the other two vessels are the same.
-Action for me: confirm the stowage arrangement on the other two 24 m vessels. Answered by the operator 16/07: the same counter is fitted to both.
-
 ### Outgoing master, morning shift (record finalised)
 
 Attendees: Lead: Lead investigator, Fleet Safety; Assisting: Second investigator; Interviewee: Outgoing master, morning shift; Support person: None (telephone interview, offered and declined)
@@ -3693,7 +3588,7 @@ Background: Role at the time of the occurrence: Master, MV Tarrakin Star, mornin
 
 The investigator has finalised this record: it is settled, and stands as the account of what this person said.
 
-Working notes from the interview, in the investigator's own shorthand. No approved synopsis exists, so read these as raw notes rather than a settled account:
+The interview record, from the investigator's own write-up of what was said:
 
 Free recall:
 Worked the morning shift on 07/07/2026, 05:40 to 13:05, four sectors.
@@ -3746,13 +3641,6 @@ master could use for an aid to navigation. Checked on 20/07: it has a
 "navigation hazard" category, unused on this route in three years, and no
 master interviewed knew it existed.
 
-Investigator's notes:
-Not recorded. Telephone interview agreed in advance, notes taken contemporaneously and read back to him at the end, which he agreed. The notes above are the record of this interview.
-The two masters' accounts of the handover agree in every particular, including who said what, and they agree on the thing that matters most: neither of them thought a fault that had come good was something the book was for. That is not two people making the same mistake, it is the system working the way everybody in it understands it to work.
-His answer on what he would have done had it frozen in the channel is the most useful thing in this interview and also the one to handle most carefully in the report. It is a hypothetical, given after the event, by a man who knows what happened. It is evidence that the right action was available and obvious to a competent master on this route. It is not evidence about what the relieving master would have done.
-He volunteered the beacon before I raised it, which makes both masters interviewed, neither of whom has ever reported it.
-Record finalised 20/07/2026, after the reporting-category check came back.
-
 Additional questions:
 Asked what he would have done had the plotter frozen inside the channel. Answer: taken the way off her and sat there. 'There's no traffic. There's nothing to hit if you're stopped.'
 Asked whether any rule requires that. Answer: not that he knows of. 'That's just what you'd do.'
@@ -3763,6 +3651,8 @@ Asked why he had never reported it. Answer: 'Who to? It's the council's light. T
 Interviewee recommendations:
 His point: somebody should be able to report an aid to navigation and know where it goes, and at present nobody on the route can.
 Action for me: check whether the company reporting system has any category a master could use for an aid to navigation. Checked 20/07: there is a 'navigation hazard' category, unused on this route in three years, and no master interviewed knew it existed.
+
+1 further interview is not yet finalised and was left out. Do not infer what it contains.
 
 ## Safety reports submitted by those involved
 
@@ -3894,93 +3784,3 @@ jackets out of there in a hurry.
   trigger a re-survey of the safety equipment arrangement. The same servery
   counter is fitted to the operator's two other 24 m vessels.
   ```
-## Investigation log (contemporaneous record of activity)
-
-- 2026-07-07T09:40:00.000Z: Notified by the master's own safety report SR-2026-0288, timed 18:52, before the operator's notification was raised. Initial assessment: serious marine incident, investigation warranted. Investigation opened, scope written into the notebook, investigation folder created.
-- 2026-07-08T04:15:00.000Z: Vessel refloated overnight and secured at the town wharf. Plotter and echo sounder heads removed and sealed. Port Control AIS log and VHF recordings requested; bridge camera downloaded before slipping. Master and deckhand stood down and tested; results negative. Evening Muntari services suspended by the General Manager Operations.
-- 2026-07-10T07:20:00.000Z: Grounding position survey and bed levels received; the survey itself was run on 08/07, the day after the grounding. Steering gear removed for function test. Deckhand's safety report SR-2026-0291 received; forward saloon stowage added to the scope on the strength of it.
-- 2026-07-14T06:05:00.000Z: Master interviewed and recorded; transcript imported and speaker roles mapped. Deckhand interviewed, not recorded at her request. Both raised the No. 4 beacon. Range and visibility check of the beacon requested from the port workboat, at night, on the inbound track.
-- 2026-07-19T02:30:00.000Z: Range and visibility check completed: the beacon is not visible from the channel between 0.84 nm and 0.34 nm north of it, and the solar conversion of 11/2025 halved its nominal range with no notice to any operator. Foreshore lighting surveyed the same night. Aids to navigation register obtained; WO-118 deferred three rounds.
-- 2026-07-23T05:50:00.000Z: Outgoing master interviewed by telephone, not recorded, notes read back and agreed. Both masters interviewed have now raised the beacon unprompted and neither has ever reported it; the company's 'navigation hazard' reporting category is unused on this route and unknown to all of them. Raised with the Port Authority and the operator ahead of the draft. Two objects remain in draft, pending the fleet stowage answer and the shore lighting question.
-
-## Checklist status
-
-### Notification and triage
-- [Yes] Has the notification been read in full, and the immediate facts confirmed with someone who was there?
-- [Yes] Is it clear what happened, what nearly happened, and how much worse it could reasonably have been?
-- [Yes] Does the occurrence have to be reported to a regulator or an external investigation authority, and has that been done?
-- [Yes] Are there earlier occurrences or reports on the same theme that should be considered alongside this one?
-- [No] Is legal or regulatory advice needed before the investigation starts?
-- [Yes] Has the decision to investigate, or not to, been made and the reasons for it logged?
-
-### Initiation and administration
-- [Yes] Has the scope been written down: the questions the investigation must answer, and what it deliberately will not examine?
-- [Yes] Is the investigator free of any involvement in the occurrence that would compromise independence?
-- [Yes] Does the investigator have the access, the time and the standing the scope needs?
-- [Yes] Are specialist advisers needed (human factors, fatigue, engineering, operations, medical)?
-- [Yes] Has a realistic timeframe been set, with time allowed for review and for the safety actions that follow?
-- [Yes] Has the standard of proof the investigation works to been agreed and set in Settings?
-- [Yes] Has the investigation folder been created and the place evidence will be stored confirmed?
-- [Yes] Have the people who need to know the investigation is running been told?
-- [Yes] Is it settled who the report goes to, and has the distribution list been filled in?
-
-### Containment
-- [Yes] Does anything need to change now to keep operating safely while the investigation runs?
-- [Yes] If an immediate safety action has been taken, is it recorded with who decided it and when?
-- [Yes] If nothing was needed, has that decision and its reasoning been logged as well?
-- [Yes] Have risks found outside the scope been referred to whoever owns them, rather than absorbed into this investigation?
-- [Yes] Is the scope still right in light of what has been found so far?
-
-### Evidence gathering
-- [Yes] Perishable evidence identified first: anything that will be overwritten, cleaned up, repaired or returned to service
-- [Yes] The site, the equipment and the surroundings, photographed or inspected before anything is moved
-- [Yes] Camera or CCTV coverage, where applicable
-- [Yes] Recorded operational data (FDR, QAR, engine, vehicle or process data, where applicable)
-- [Yes] Recorded audio (CVR, ATC, radio or telephone recordings, where applicable)
-- [Yes] Weather and environmental records
-- [Yes] Procedures, manuals, checklists and regulatory requirements, taken at the version in force on the day
-- [Yes] Personnel records: qualifications, training, recency, duty and rest, rostering
-- [Yes] Maintenance, serviceability and defect history
-- [Yes] Records of recent change to equipment, procedures, staffing or the organisation
-- [Yes] Statements from witnesses and others involved
-- [Yes] Material held by third parties, contractors or suppliers
-- [Yes] Testing or examination of components, where applicable
-- [No] Is a detailed fatigue assessment required?
-- [Yes] Is testing for impairment required by the applicable rules, and has it been done or ruled out?
-- [Yes] Has everything gathered been filed in the evidence register with a caption, its significance, and a reference?
-- [Yes] Has each text extract been marked as verbatim or as the investigator's own description?
-- [Yes] Has the sequence of events been built in the timeline, each event with its source and its time basis?
-
-### Interviews
-- [Yes] Has everyone worth interviewing been identified, and the order of the interviews thought through?
-- [Yes] Are the interviews happening early enough that accounts are not lost to the passage of time?
-- [Yes] Has each interviewee been told in writing what the interview is for, and given reasonable notice?
-- [Yes] Has duty, rest and workload been considered so that nobody is interviewed while fatigued?
-- [Yes] Has each interviewee been offered a support person, and the purpose and limits of the interview explained?
-- [Yes] Has each interview been written up while it is fresh, checked against the record, and finalised?
-- [Yes] Has each interviewee been given the chance to correct their own account, where that is appropriate?
-- [Yes] Have any welfare concerns raised in an interview been passed to someone who can act on them?
-- [Yes] Has what the interviews added been carried into the evidence register and the timeline?
-
-### Analysis
-- [Yes] Is there an object on the map for every event or condition that might have played a part, including the ones you expect to exclude?
-- [Yes] Is the critical event placed, and do the causal chains run back to it?
-- [No] Has every object been tested for Existence, then Influence, then Importance, with the confidence behind each result recorded?
-- [Yes] Where the evidence cuts both ways, has the test been argued with the evidence for and against recorded?
-- [Yes] Is anything that was examined and could not be settled marked inconclusive, with a comment saying why?
-- [Yes] Do excluded hypotheses stay on the record with the reason they were excluded?
-- [Yes] Have the things that went right been recorded as well as the things that went wrong?
-- [No] Has every object whose evidence is settled been finalised?
-- [Yes] Does the analysis answer the questions the scope set?
-
-### Reporting and review
-- [No] Has a preliminary update been issued where the investigation is long-running or the risk warrants telling people early?
-- [Yes] Has each drafted section been read against the evidence register, the timeline and the map before it was finalised?
-- [No] Has the draft been read by someone who was not part of the investigation?
-- [No] Have the people and the areas written about had the chance to correct matters of fact?
-- [Yes] Does every finding state what it rests on, and avoid naming individuals where the systemic point does not need it?
-- [No] Does each safety action have an owner and a date, and is it recorded somewhere it will be followed up?
-- [No] Has the report gone to everyone on the distribution list and been filed with the investigation?
-- [No] Have the map, the Evidence and Argument Tables and the full export been filed as the working record behind the report?
-- [No] Is the to-do list clear and the evidence register complete, with nothing left outstanding?
-- [No] Can the investigation be closed, and has the closing decision been logged?
