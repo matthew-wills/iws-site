@@ -37,7 +37,7 @@
     },
     "standardOfProof": [
       [
-        "Every test is read against your standard of proof. It is 70 per cent unless you change it, at Settings > Analysis > Standard of proof, anywhere from 50 to 95. Leave it at 70 for this walkthrough."
+        "Every test is read against the investigation's standard of proof: Pass from 65 per cent and Fail to 35 per cent, with Inconclusive between, unless you change it. A new investigation records the default set at Settings > Method and wording > Standard of proof, and its Details tab shows and changes its own. Leave it as it is for this walkthrough."
       ]
     ],
     "lookFirst": [
@@ -77,7 +77,7 @@
           "id": "gs-new-investigation",
           "src": "guide-images/gs-new-investigation.png",
           "file": "gs-new-investigation.png",
-          "alt": "The New investigation dialog with Dock 2 forklift contact typed into Investigation name, and beneath it the folder the app will create: a folder of that name holding the .sfm file and an exports folder.",
+          "alt": "The New investigation dialog with Dock 2 forklift contact typed into Investigation name, and beneath it the folder the app will create: a folder of that name holding the .iwsx file and an exports folder.",
           "caption": "The dialog shows the folder it will create before you choose where it goes.",
           "displayWidth": 480
         }
@@ -86,13 +86,13 @@
         [
           "A folder named Dock 2 forklift contact, holding ",
           {
-            "code": "Dock 2 forklift contact.sfm"
+            "code": "Dock 2 forklift contact.iwsx"
           },
           " and an empty ",
           {
             "code": "exports"
           },
-          " folder. The tabs Dashboard, Log, Evidence, Timeline, AcciMap, Record and Draft report run across the top of the window, and the investigation's name sits at the right of the header."
+          " folder. The tabs Details, Dashboard, Admin & Comms, Evidence, Timeline, AcciMap, Record, Draft report and Log run across the top of the window, and the investigation's name sits at the right of the menu bar above them."
         ]
       ],
       "number": 1
@@ -106,10 +106,10 @@
       ],
       "body": [
         [
-          "The Checklist is the investigation's question flow, seeded from the template in Settings > Templates. Answer each question Yes, No or N/A, and click an answer again to clear it. For this walkthrough the first section, Notification and triage, is enough: answer Yes to the first two questions, No to the next three (nothing about this invented case has to be reported, there are no earlier reports and no legal advice is needed) and Yes to the last, the decision to investigate."
+          "The Checklist is the investigation's question flow, seeded from the template in Settings > Method and wording > Checklists and interview text. Answer each question Yes, No or N/A, and click an answer again to clear it. For this walkthrough the first section, Initiation, is enough: answer Yes to the first three items, N/A to the fourth (nothing about this invented case has to be reported to a regulator) and Yes to the last three."
         ],
         [
-          "Some questions carry guidance notes, including an evidence-gathering list. On a real occurrence read it on day one, because CCTV, recorded data and rosters are overwritten on their own schedule, not yours. Click a section's title to tuck it away once it is done."
+          "Some sections carry guidance notes, including the evidence-gathering list, which works through People, Environment, Equipment, Procedures and Organisation (PEEPO). On a real occurrence read it on day one, because CCTV, recorded data and rosters are overwritten on their own schedule, not yours. Click a section's title to tuck it away once it is done."
         ]
       ],
       "figures": [
@@ -117,22 +117,22 @@
           "id": "gs-checklist",
           "src": "guide-images/gs-checklist.png",
           "file": "gs-checklist.png",
-          "alt": "The Notification and triage section of the Checklist with all six questions answered: Yes, Yes, No, No, No and Yes. Its count reads 6/6.",
-          "caption": "Notification and triage, answered.",
-          "displayWidth": 884
+          "alt": "The Initiation section of the Checklist with all seven items answered: Yes, Yes, Yes, N/A, Yes, Yes and Yes. Its count reads 7/7.",
+          "caption": "Initiation, answered.",
+          "displayWidth": 568
         },
         {
           "id": "gs-log-checklist",
           "src": "guide-images/gs-log-checklist.png",
           "file": "gs-log-checklist.png",
-          "alt": "The Log tab listing six automatic entries, one per checklist answer, each naming the question and the answer given.",
-          "caption": "The Log has already recorded every answer.",
+          "alt": "The Log tab, with System chosen, listing seven automatic entries, one per checklist answer, each naming the question and the answer given.",
+          "caption": "The Log has already recorded every answer (choose System to see them).",
           "displayWidth": 1070
         }
       ],
       "see": [
         [
-          "Notification and triage counting 6/6. Open the Log tab: every answer is already there as an entry, so the decision to investigate is logged without a separate step."
+          "Initiation counting 7/7. Open the Log tab: every answer is already there as an entry, so the decision to investigate is logged without a separate step."
         ]
       ],
       "number": 2
@@ -147,7 +147,7 @@
       ],
       "body": [
         [
-          "Click the box headed Add to the evidence register and paste (",
+          "Click the strip headed Add to the evidence register and paste (",
           {
             "kbd": "Ctrl+V"
           },
@@ -156,10 +156,10 @@
             "ref": "gs:before",
             "text": "Before you start"
           },
-          ". A file dragged from Explorer and dropped on the box works the same way, a PDF or a photograph included. The capture appears as a tile below the box. Paste the other two pieces the same way."
+          ". A file dragged from Explorer and dropped on the strip works the same way, a PDF or a photograph included. The capture appears as a tile below the strip. Paste the other two pieces the same way."
         ],
         [
-          "Click a tile to open its form. Give it a Caption (the name you will know it by when you link it), its Significance (why it matters) and a Category, set This text is to Verbatim, since you pasted the words as written, then Save. Use the three headings in the case as the captions (",
+          "Click a tile to open its form. Give it a Caption (the name you will know it by when you link it), its Why it matters to the investigation and a Category, set This text is to Verbatim, since you pasted the words as written, then Save. Use the three headings in the case as the captions (",
           {
             "enter": "Incident notification DEP-0412"
           },
@@ -183,7 +183,7 @@
           {
             "enter": "Correspondence"
           },
-          ". Write the Significance in your own words; a line is enough."
+          ". Write the Why it matters in your own words; a line is enough."
         ]
       ],
       "figures": [
@@ -191,22 +191,22 @@
           "id": "gs-evidence-item",
           "src": "guide-images/gs-evidence-item.png",
           "file": "gs-evidence-item.png",
-          "alt": "The evidence item form for the pre-start check: the pasted text at the top, then Caption reading FL-3 pre-start check, 14/04/2026, Significance, Category reading Document Extracts, and Reference.",
-          "caption": "The item form. Caption, Significance and Category are all you need now.",
+          "alt": "The evidence item form for the pre-start check: the pasted text at the top, then Caption reading FL-3 pre-start check, 14/04/2026, Why it matters to the investigation, Category reading Document Extracts, and Reference.",
+          "caption": "The item form. Caption, Why it matters and Category are all you need now.",
           "displayWidth": 940
         },
         {
           "id": "gs-capture",
           "src": "guide-images/gs-capture.png",
           "file": "gs-capture.png",
-          "alt": "Captured material with the category filter above (All 3, Correspondence 2, Document Extracts 1), the Add to the evidence register box, and three tiles under Not yet linked to anything, each headed by its caption.",
-          "caption": "Three captures, each under its caption, not yet linked to anything.",
+          "alt": "Captured material with the category filter above (All 3, Correspondence 2, Document Extracts 1), the Add to the evidence register strip, and three tiles, each headed by its caption.",
+          "caption": "Three captures in the register, each headed by its caption.",
           "displayWidth": 1072
         }
       ],
       "see": [
         [
-          "Three tiles in the register under Not yet linked to anything, each headed by its caption, and the category filter above them counting what is there."
+          "Three tiles in the register, each headed by its caption, and the category filter above them counting what is there."
         ]
       ],
       "number": 3
@@ -217,16 +217,16 @@
       "where": [
         "Timeline tab",
         "+ Event",
-        "Event, Date, Time (UTC)",
+        "Date, Time, Event",
         "Done"
       ],
       "body": [
         [
-          "Press + Event. The card opens with New event and today's date filled in; replace them. Write the Event in one short sentence, ",
+          "Press + Event. The card opens with today's date filled in and the Event left blank; fill both in. Write the Event in one short sentence, ",
           {
             "enter": "FL-3 reverses onto delivery driver's foot at Dock 2"
           },
-          ", then its Date and Time. The timeline is kept in UTC, so use the UTC time from the notification: ",
+          ", then its Date and Time. The timeline is kept in UTC, so use the UTC time from the notification and leave Source on UTC: ",
           {
             "enter": "13/04/2026"
           },
@@ -234,7 +234,7 @@
           {
             "enter": "21:40"
           },
-          ". Leave the rest of the card for now and press Done."
+          ". Leave the rest of the card for now, including Duration (an event can later be given a duration that ends at a later event), and press Done."
         ],
         [
           "Building the sequence before the map is the method's order: a factor is easier to judge once you know when it sat."
@@ -245,7 +245,7 @@
           "id": "gs-timeline-event",
           "src": "guide-images/gs-timeline-event.png",
           "file": "gs-timeline-event.png",
-          "alt": "The Timeline event card with the Event line reading FL-3 reverses onto delivery driver's foot at Dock 2, Date 13/04/2026, Time (UTC) 21:40:00 known to the minute, and the effective time beneath.",
+          "alt": "The Timeline event card with the Event line reading FL-3 reverses onto delivery driver's foot at Dock 2, Date 13/04/2026, Time 21:40:00 with Source UTC and Accuracy To the minute, and the UTC reading beneath.",
           "caption": "Only the Event and its time are needed to start.",
           "displayWidth": 760
         }
@@ -383,7 +383,7 @@
           {
             "enter": "The dock was busy and the roller door was running, so a working beeper might not have been heard."
           },
-          " Set the slider to 90 per cent, which reads as very likely, and say in the line beneath why one side carried it: ",
+          " Set the slider to 90 per cent, which reads as very likely, and say in Reasoning for this test, beneath it, why one side carried it: ",
           {
             "enter": "A working beeper would very likely have warned him; the noise does not outweigh his account."
           }
@@ -392,7 +392,7 @@
           "A Pass on Influence makes an increased-risk object a contributing factor, and testing is done. Had Influence failed, the last question, Importance, would appear: is it important enough to address anyway? Where the evidence is not there yet, press Insufficient evidence rather than guessing."
         ],
         [
-          "At or above your standard of proof a test reads Pass; at or below its mirror (30 per cent at the default 70) it reads Fail; in between, Inconclusive. The exported tables print the two argument boxes as Argument For and Argument Against and the line under the slider as Reasoning, so write all three for a reader who has only the tables."
+          "At or above Pass from (65 per cent by default) a test reads Pass; at or below Fail to (35 per cent by default) it reads Fail; in between, Inconclusive. The exported tables print each box as numbered points (F1, F2 for, A1, A2 against) and Reasoning for this test as Reasoning, so write all three for a reader who has only the tables."
         ]
       ],
       "figures": [
@@ -401,7 +401,7 @@
           "src": "guide-images/gs-test.png",
           "file": "gs-test.png",
           "alt": "The two tests on the factor's form. Existence in Conclusive mode with its summary, the slider at 100 per cent and a Pass. Influence in Argument mode with Evidence for influence and Evidence against influence side by side, the slider at 90 per cent reading very likely, and a Pass.",
-          "caption": "Existence and Influence both passed. The line under each slider is what the tables print as Reasoning.",
+          "caption": "Existence and Influence both passed. What you write in Reasoning for this test, under each slider, is what the tables print as Reasoning.",
           "displayWidth": 613
         }
       ],
@@ -418,11 +418,11 @@
       "where": [
         "Object form",
         "Supporting material",
-        "Link existing evidence…"
+        "Link evidence…"
       ],
       "body": [
         [
-          "The right-hand column of the form ends with Supporting material. Press Link existing evidence… (it reads Close while the list is open) and pick FL-3 pre-start check, 14/04/2026 by its caption. The list closes after each pick, so press Link existing evidence… again for Delivery driver's written account. Pasting or dropping straight into this panel also works, and captures and links in one step. Save."
+          "The right-hand column of the form ends with Supporting material. Press Link evidence…: the form steps aside, kept as you left it, and the Evidence tab opens with a banner naming the object. Click FL-3 pre-start check, 14/04/2026 and Delivery driver's written account to pick them, then press Link 2 items in the banner. The form comes back with both added, still to be saved. Pasting or dropping straight into this panel also works, and captures and links in one step. Save."
         ],
         [
           "Then open the critical event and link Incident notification DEP-0412 to it the same way, so its Existence rests on the item it cites."
@@ -433,9 +433,9 @@
           "id": "gs-link-evidence",
           "src": "guide-images/gs-link-evidence.png",
           "file": "gs-link-evidence.png",
-          "alt": "The Supporting material panel of the factor's form: the capture box, the pre-start check linked as a tile, then the list Link existing evidence opens, offering Delivery driver's written account and Incident notification DEP-0412 by caption and category, with Close above it.",
-          "caption": "Link existing evidence… lists what is not already linked.",
-          "displayWidth": 335
+          "alt": "The Evidence tab picking for the factor: the banner naming it, with Cancel and Link 2 items, over the register: FL-3 pre-start check, 14/04/2026 and Delivery driver's written account marked Picked, and Incident notification DEP-0412 still to pick.",
+          "caption": "Click each item to pick it, then press Link 2 items in the banner.",
+          "displayWidth": 1100
         }
       ],
       "see": [
@@ -481,12 +481,12 @@
       "title": "Finalise it",
       "where": [
         "Object form",
-        "tick Finalised",
-        "Save"
+        "Finalise",
+        "Close"
       ],
       "body": [
         [
-          "When the tests and the evidence are settled, tick Finalised at the foot of the form and press Save. Do the same for the critical event. If new evidence arrives later, untick it and work the tests again."
+          "When the tests and the evidence are settled, press Finalise at the foot of the form, which saves any unsaved edits in the form along with the lock, then Close. Do the same for the critical event. If new evidence arrives later, press Re-open and work the tests again."
         ]
       ],
       "figures": [
@@ -518,14 +518,14 @@
       ],
       "body": [
         [
-          "Because this occurrence is invented, first open the Record tab and make sure Fictional case, beside Style, is ticked, so every export carries the fictional-case label."
+          "Because this occurrence is invented, first open the Details tab and tick Fictional case under Report labelling, so every export carries the fictional-case label."
         ],
         [
-          "Press Export in the header, tick Evidence and Argument Tables (.docx) under Word documents and press Export selected. At Free the reports stay in the list, greyed out and marked Available with Professional.; the tables, the images and the report-drafting collation are all yours. A timestamped snapshot of the ",
+          "Choose File, Export…, tick Evidence and Argument Tables (.docx) under Word documents and press Export selected. The tables, the images and the report-drafting collation are all yours at Free. A timestamped snapshot of the investigation, an ",
           {
-            "code": ".sfm"
+            "code": ".iwsx"
           },
-          " is always included. Ticks are remembered for the next export."
+          " file, is always included. Ticks are remembered for the next export."
         ]
       ],
       "figures": [
@@ -533,7 +533,7 @@
           "id": "gs-export-dialog",
           "src": "guide-images/gs-export-dialog.png",
           "file": "gs-export-dialog.png",
-          "alt": "The Export dialog at Free: Evidence and Argument Tables (.docx) ticked under Word documents, the investigation report and summary greyed out with Available with Professional., and the Markdown and image options below.",
+          "alt": "The Export dialog at Free: Evidence and Argument Tables (.docx) ticked under Word documents, and the Markdown and image options below.",
           "caption": "Tick the tables and press Export selected.",
           "displayWidth": 520
         },
@@ -541,9 +541,9 @@
           "id": "gs-export-notice",
           "src": "guide-images/gs-export-notice.png",
           "file": "gs-export-notice.png",
-          "alt": "The export notice: Saved 2 files, naming the Evidence and Argument Tables .docx and the project snapshot .sfm, and the exports folder they went into.",
+          "alt": "The export notice: Saved 2 files, naming the Evidence and Argument Tables .docx and the project snapshot .iwsx, and the exports folder they went into.",
           "caption": "The notice names what was saved and where. In the desktop app it also carries Open file and Show in folder.",
-          "displayWidth": 466
+          "displayWidth": 436
         }
       ],
       "see": [
@@ -565,7 +565,7 @@
       [
         "The investigation folder, with the ",
         {
-          "code": ".sfm"
+          "code": ".iwsx"
         },
         " file and its exports"
       ],
