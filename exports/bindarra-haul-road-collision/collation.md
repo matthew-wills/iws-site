@@ -4,7 +4,7 @@ Purpose: this is a structured collation of a safety investigation built with the
 
 Standard of proof: Likely or probable (Pass from 65%, Fail to 35%).
 
-Generated: 2026-11-15T18:37:40.614Z
+Generated: 2026-11-15T19:14:08.788Z
 
 ## Sources requested for this section that are empty
 
@@ -2669,7 +2669,7 @@ Each of these was examined and is NOT a contributing factor, whatever its arrows
 
 ### Haul truck operator (record finalised)
 
-Attendees: Lead: Lead investigator, Orrabinda Resources Safety; Assisting: Second investigator; Interviewee: Haul truck operator; Support person: Nominated support person (present, did not participate)
+Attendees: Lead: Declan Moorcroft; Assisting: Anika Sorensen; Interviewee: Brodie Kellaway; Support person: Megan Talbot
 
 Background: Role at the time of the occurrence: Haul truck operator, HT-407, Stage 4 night shift; Time in the role: 14 months at Bindarra; Time with the organisation: 4 years 2 months with Tarrowen Mining Services; Where normally based: Bindarra, fly-in fly-out; Experience on this type or equipment: 7 years on 220 t class rigid haul trucks; Other ratings or qualifications held: Dozer and water cart verifications of competency, both current; Total experience in the industry: 11 years in open pit mining; Most recent training or check: Annual refresher 02/2026; verification of competency on type 06/2025; Duty and rest in the days before the occurrence: Night 10 of a 14 night swing, 8 hours 47 minutes into a 12 hour 30 minute shift; 6 hours 30 minutes sleep in the preceding day
 
@@ -2679,75 +2679,75 @@ Transcript of the interview, as corrected by the investigator. This is a machine
 
 00:00:03.120 Lead investigator: We're recording now. Thanks for coming in on your day off. Just for the record, you're happy for this to be recorded?
 
-00:00:11.900 Haul truck operator, HT-407: Yeah, that's fine.
+00:00:11.900 Haul truck operator: Yeah, that's fine.
 
 00:00:14.020 Lead investigator: And you've got your support person here, and you can stop any time you want to. What I'd like first is for you to take me through the shift in your own words. Start wherever you want. I'll hold my questions until you're done.
 
-00:00:25.600 Haul truck operator, HT-407: Alright. It was night ten of fourteen. Pre-start at six, out to the truck about twenty past, and I had 407, same as the night before. It was an ordinary night. Nothing on the pre-start. The dig was on the north side of Stage 4 and we were hauling to the ROM pad, so it's up the ramp loaded, dump, back down empty. We had crib about two. Came back out, did one cycle, and I was on the way back down for the second. Coming down empty you're doing thirty-seven, thirty-eight, you sit it on the retarder and you don't really touch the brakes. That's just how you drive it. There's a crest above the three-twelve. I've come over that crest and there's a glow on the road, and then the whip comes up over it, and it's a light vehicle, coming out of the side onto my road. I got on the brakes and I pulled it right, into the windrow, because that was the only place I had to go. And I hit him. Left front. He went down the hill in front of me and then he went over. I stopped, I called it in, dispatch told me to stay in the cab until they'd stopped the ramp, and then I got out and went down to him. He was talking to me. He was stuck, the door was on the ground. I stayed there with him until the ERT got in.
+00:00:25.600 Haul truck operator: Alright. It was night ten of fourteen. Pre-start at six, out to the truck about twenty past, and I had 407, same as the night before. It was an ordinary night. Nothing on the pre-start. The dig was on the north side of Stage 4 and we were hauling to the ROM pad, so it's up the ramp loaded, dump, back down empty. We had crib about two. Came back out, did one cycle, and I was on the way back down for the second. Coming down empty you're doing thirty-seven, thirty-eight, you sit it on the retarder and you don't really touch the brakes. That's just how you drive it. There's a crest above the three-twelve. I've come over that crest and there's a glow on the road, and then the whip comes up over it, and it's a light vehicle, coming out of the side onto my road. I got on the brakes and I pulled it right, into the windrow, because that was the only place I had to go. And I hit him. Left front. He went down the hill in front of me and then he went over. I stopped, I called it in, dispatch told me to stay in the cab until they'd stopped the ramp, and then I got out and went down to him. He was talking to me. He was stuck, the door was on the ground. I stayed there with him until the ERT got in.
 
 00:01:49.200 Lead investigator: Thank you. That's what I needed. Can I take you back to the crest. When you say the whip came up over it, how far away would you say he was?
 
-00:02:00.900 Haul truck operator, HT-407: Not far. I'd say forty metres. It wasn't a long way. It was the sort of distance where you know straight away it's going to happen.
+00:02:00.900 Haul truck operator: Not far. I'd say forty metres. It wasn't a long way. It was the sort of distance where you know straight away it's going to happen.
 
 00:02:10.100 Lead investigator: And what did you do first, in order, as best you remember it?
 
-00:02:16.300 Haul truck operator, HT-407: Brakes and steer. Same movement, really. The retarder was already on, so it was foot brake and wheel. I didn't think about it, I just did it.
+00:02:16.300 Haul truck operator: Brakes and steer. Same movement, really. The retarder was already on, so it was foot brake and wheel. I didn't think about it, I just did it.
 
 00:02:26.700 Second investigator: Did you consider going left instead, down the open side of the road?
 
-00:02:32.900 Haul truck operator, HT-407: No. If I go left I'm taking him with me, and there's nothing on that side, it's a hundred and something metres down. Right is the wall. Right was the only answer.
+00:02:32.900 Haul truck operator: No. If I go left I'm taking him with me, and there's nothing on that side, it's a hundred and something metres down. Right is the wall. Right was the only answer.
 
 00:02:44.200 Lead investigator: Did you know there was a road joining the ramp at three-twelve?
 
-00:02:50.900 Haul truck operator, HT-407: I knew they'd cut something in there, because you could see the machines doing it a couple of weeks back. I thought it was still closed. There was a closed sign on it.
+00:02:50.900 Haul truck operator: I knew they'd cut something in there, because you could see the machines doing it a couple of weeks back. I thought it was still closed. There was a closed sign on it.
 
 00:03:02.100 Lead investigator: When did you last see that sign?
 
-00:03:08.400 Haul truck operator, HT-407: I couldn't tell you a date. It was there, and then at some point it wasn't, and I didn't think anything of it. You're not looking at the side of the road, you're looking at the road.
+00:03:08.400 Haul truck operator: I couldn't tell you a date. It was there, and then at some point it wasn't, and I didn't think anything of it. You're not looking at the side of the road, you're looking at the road.
 
 00:03:17.800 Lead investigator: What does your in-cab screen show you on that part of the ramp?
 
-00:03:24.600 Haul truck operator, HT-407: The ramp. Just the ramp. There's no road there on the screen. There's no intersection marked, nothing.
+00:03:24.600 Haul truck operator: The ramp. Just the ramp. There's no road there on the screen. There's no intersection marked, nothing.
 
 00:03:33.400 Second investigator: Would you expect a new road to appear on it?
 
-00:03:39.600 Haul truck operator, HT-407: I'd expect so, yeah. When they moved the ROM pad tip head last year that was on the screen the next night. That's how you know where you're going.
+00:03:39.600 Haul truck operator: I'd expect so, yeah. When they moved the ROM pad tip head last year that was on the screen the next night. That's how you know where you're going.
 
 00:03:48.900 Lead investigator: Tell me about the collision awareness system. What does it do for you on a normal night?
 
-00:03:56.800 Haul truck operator, HT-407: It sings out when you get near another truck. Up top, on the haul road, you'll get it two or three times a shift, passing someone, coming into the ROM pad. It's a tone and a thing comes up on the screen.
+00:03:56.800 Haul truck operator: It sings out when you get near another truck. Up top, on the haul road, you'll get it two or three times a shift, passing someone, coming into the ROM pad. It's a tone and a thing comes up on the screen.
 
 00:04:09.100 Lead investigator: And down in the pit, on the ramp, below the crest?
 
-00:04:15.300 Haul truck operator, HT-407: Never. I've never had it go off down there. Not once. And I've been on this pit fourteen months.
+00:04:15.300 Haul truck operator: Never. I've never had it go off down there. Not once. And I've been on this pit fourteen months.
 
 00:04:25.500 Second investigator: Did you have a view about why it never goes off down there?
 
-00:04:32.800 Haul truck operator, HT-407: I assumed there was nothing to go off at. You don't see light vehicles on that ramp at night, so if the thing's quiet, the road's empty. That's what I'd have told you the day before. Nobody ever told me it's switched off down there. I found that out from the supervisor, afterwards. That's the bit that's been sitting with me.
+00:04:32.800 Haul truck operator: I assumed there was nothing to go off at. You don't see light vehicles on that ramp at night, so if the thing's quiet, the road's empty. That's what I'd have told you the day before. Nobody ever told me it's switched off down there. I found that out from the supervisor, afterwards. That's the bit that's been sitting with me.
 
 00:04:55.300 Lead investigator: Let's talk about radio calls. What does the site require before you go through an intersection?
 
-00:05:03.600 Haul truck operator, HT-407: There's a list in the crib room. The ROM pad turn-off, the three-sixty crossover, and I think there's seven more on the other pits. You call before you go through those.
+00:05:03.600 Haul truck operator: There's a list in the crib room. The ROM pad turn-off, the three-sixty crossover, and I think there's seven more on the other pits. You call before you go through those.
 
 00:05:13.900 Lead investigator: And at an intersection that isn't on the list?
 
-00:05:21.100 Haul truck operator, HT-407: You don't call. Nobody calls. If you called every corner and every turn-off you'd never get off the channel, and dispatch would tell you to get off it.
+00:05:21.100 Haul truck operator: You don't call. Nobody calls. If you called every corner and every turn-off you'd never get off the channel, and dispatch would tell you to get off it.
 
 00:05:32.400 Lead investigator: Did you make a call before three-twelve that night?
 
-00:05:38.600 Haul truck operator, HT-407: No. It's not an intersection as far as I knew. It's a closed road off the side of the ramp.
+00:05:38.600 Haul truck operator: No. It's not an intersection as far as I knew. It's a closed road off the side of the ramp.
 
 00:05:45.900 Lead investigator: What was the visibility like coming down? Any dust?
 
-00:05:54.200 Haul truck operator, HT-407: There's always a bit of dust. The cart had been through earlier but it dries out. There was some hanging around, yeah. I couldn't tell you if it made a difference. I'm not going to say it did when I don't know.
+00:05:54.200 Haul truck operator: There's always a bit of dust. The cart had been through earlier but it dries out. There was some hanging around, yeah. I couldn't tell you if it made a difference. I'm not going to say it did when I don't know.
 
 00:06:06.500 Second investigator: How were you feeling at that point in the shift?
 
-00:06:12.700 Haul truck operator, HT-407: Tired, the way you are on night ten. Not falling asleep tired. I'd had a decent sleep that day, six and a half hours, which is better than some. I was awake and I was driving properly.
+00:06:12.700 Haul truck operator: Tired, the way you are on night ten. Not falling asleep tired. I'd had a decent sleep that day, six and a half hours, which is better than some. I was awake and I was driving properly.
 
 00:06:25.000 Lead investigator: Is there anything I haven't asked you that you think I should have?
 
-00:06:32.300 Haul truck operator, HT-407: Put a sign on it and put it on the map. That's it. If there'd been a sign on my side of that crest I'd have been at twenty and I'd have been looking for him. And tell people where that system is turned off. I drove that road for fourteen months thinking it was watching for me, and it wasn't.
+00:06:32.300 Haul truck operator: Put a sign on it and put it on the map. That's it. If there'd been a sign on my side of that crest I'd have been at twenty and I'd have been looking for him. And tell people where that system is turned off. I drove that road for fourteen months thinking it was watching for me, and it wasn't.
 
 00:06:52.900 Lead investigator: That's fair. Thank you. I'll stop the recording there.
 
@@ -2765,7 +2765,7 @@ Action for me: get the twelve month alert statistics for the fleet, broken down 
 
 ### Night shift supervisor (record finalised)
 
-Attendees: Lead: Lead investigator, Orrabinda Resources Safety; Assisting: Second investigator; Interviewee: Night shift supervisor; Support person: Nominated support person (present, did not participate)
+Attendees: Lead: Declan Moorcroft; Assisting: Anika Sorensen; Interviewee: Callum Ellery; Support person: Rhys Penhallow
 
 Background: Role at the time of the occurrence: Night Shift Supervisor, Stage 4 pit, Tarrowen Mining Services; Time in the role: 2 years 6 months in the role; Time with the organisation: 8 years with Tarrowen Mining Services; Where normally based: Bindarra, fly-in fly-out; Experience on this type or equipment: Supervisory across the whole Stage 4 mobile fleet; Other ratings or qualifications held: Haul truck, excavator and dozer verifications of competency, all current; Total experience in the industry: 19 years in open pit mining; Most recent training or check: Supervisor refresher 11/2025; site general induction 04/2024; Duty and rest in the days before the occurrence: Night 10 of 14, the same shift pattern as the crews he supervises
 
