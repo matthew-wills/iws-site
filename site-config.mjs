@@ -88,9 +88,9 @@ export const LICENCE_LEVELS = [
     id: "education",
     name: "Education",
     heading: "Learn the method",
-    price: "Pricing to be announced",
+    price: "Free",
     priceIsText: true,
-    priceNote: "For students and teaching staff. 12 months, renewable.",
+    priceNote: "For students and teaching staff, at no cost. 12 months, renewable.",
     line: "The full investigation analysis for study and teaching, with no AI.",
     points: [
       "The complete investigation workspace: the AcciMap, every factor tested for Existence, Influence and Importance, evidence, interviews and the timeline",
