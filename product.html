@@ -247,7 +247,8 @@ footer .legal { line-height: 1.6; }
   .key li { display: grid; grid-template-columns: 118px 1fr; gap: 12px; align-items: center; }
   .key b { color: var(--ink); font-weight: 600; }
   .sw { display: flex; align-items: center; justify-content: center; height: 30px; font-size: 0.74rem; color: #0f172a; border: 1.5px solid #334155; background: #fff; }
-  .sw--open { border-style: dashed; }
+  .sw--open { border-style: dashed; border-radius: 999px; }
+  .sw--und { border-style: dashed; border-color: #64748B; border-radius: 999px; background: repeating-linear-gradient(135deg, #F1F5F9 0px, #F1F5F9 7px, #DDE3EA 7px, #DDE3EA 10px); }
   .sw--csf { background: #BFDBFE; }
   .sw--orf { background: #FED7AA; }
   .sw--pos { background: #BBF7D0; border-radius: 999px; }
@@ -374,14 +375,15 @@ footer .legal { line-height: 1.6; }
       </div>
       <div class="col">
         <h3>The map reflects the assessments</h3>
-        <p class="kp">Each object's look follows the results recorded in its form, so the map shows what has been tested, what passed and what was excluded.</p>
+        <p class="kp">Each object's look follows the results recorded in its form, so the map shows what has been tested, what passed and what was excluded. An object is an oval unless Increased risk is ticked, when its corners are square. A critical event, an excluded hypothesis and an object with Decreased risk ticked are always ovals.</p>
         <ul class="key" aria-label="Key to the AcciMap">
           <li><span class="sw sw--open">Hypothesis</span><span><b>Dashed border:</b> Existence not yet passed. Untested, inconclusive or short of evidence.</span></li>
           <li><span class="sw sw--sf">Safety factor</span><span><b>Solid border:</b> Existence passed, Influence still to settle.</span></li>
           <li><span class="sw sw--csf">Contributing</span><span><b>Blue:</b> passed Existence and Influence.</span></li>
           <li><span class="sw sw--orf">Other factor</span><span><b>Orange:</b> increased risk without influencing this occurrence.</span></li>
-          <li><span class="sw sw--pos">Reduced risk</span><span><b>Pale green:</b> marked by the investigator as reducing risk.</span></li>
+          <li><span class="sw sw--pos">Positive event</span><span><b>Pale green:</b> marked by the investigator as reducing risk.</span></li>
           <li><span class="sw sw--ex">Excluded</span><span><b>Struck through:</b> excluded, and kept on the map.</span></li>
+          <li><span class="sw sw--und">Undetermined</span><span><b>Grey hatching, dashed border:</b> closed as undetermined with Close as undetermined. It was tested and could not be settled either way. Never a finding. Show, Fade or Hide sets how considered objects are drawn.</span></li>
           <li><span class="sw sw--ce">Critical event</span><span><b>Red:</b> the critical event.</span></li>
           <li><span class="arr" aria-hidden="true"></span><span><b>Solid green arrow:</b> the object it leaves has passed Existence and Influence. Grey and dashed until then.</span></li>
         </ul>
